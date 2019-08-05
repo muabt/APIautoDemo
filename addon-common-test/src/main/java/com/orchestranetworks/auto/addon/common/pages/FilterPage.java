@@ -110,20 +110,22 @@ public class FilterPage extends WebPageObject {
 	public void input_search_value(String value, String type, String fieldName) {
 		String xPathTxtOfField = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input";
 		String xPathEnum = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input[@value='Select an item to add']";
-
+		String xPathCheckbox = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//tr//label[text()='" + value + "']";
+		
 		switch (type) {
 		case "IN":
 			waitTypeAndTab(xPathTxtOfField, value);
 			break;
 		case "ENUM":
 			inputDDLThenEnter(xPathEnum, "", value);
-			waitAbit(1000);
+			waitAbit(500);
 			break;
 		case "DATE":
 			input_date_time(fieldName, value);
 			break;
 		case "BOO":
-			checkCheckbox(value);
+			waitElementToBePresent(xPathCheckbox).waitUntilClickable().click();
+			waitAbit(500);
 			break;
 		}
 	}
