@@ -6,15 +6,14 @@ import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.WebPageObject;
 import com.orchestranetworks.auto.addon.XFormat;
-import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class DatasetPage extends WebPageObject {
 	// Parent xpath
 
 	private static final String BTN_CREATE_A_RECORD = "Create a record";
 
-	private static final String BTN_FILTERS = "Filters";
 
 	private static final String BTN_CREATE_A_DATASET = "Create a dataset";
 	private static final String BTN_CLOSE_POPUP = "//div[@class='_ebx-pop-up_bottom']//*[.='Close']";
@@ -32,11 +31,9 @@ public class DatasetPage extends WebPageObject {
 	public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
 	public static final String XPATH_CHECKBOX_RECORD = "//div[@id='ebx_WorkspaceContent']//tr[td[text()='%1$s'] or td/div[text()='%1$s']]//input[@type='checkbox']";
 	private static final String XPATH_DATASET_NAME = "//h2[contains(@class,'menu-selector-is-sub-title')]//span[@class='_ebx-documentation-label']";
-	private static final String XPATH_FIELD_LIST_IN_SEARCH = "//ul[@class='ebx_Fields']";
 	private static final String XPATH_EXPAND_BUTTON = "//label[contains(.,'%s')]//button[@title='expand']";
 	private static final String XPATH_DATETIME = "//label[text()='%s']/ancestor::tr//span//input[contains(@name,'%s')]";
 	private static final String XPATH_SORT_DESCENDING_FOR_FIELD = "//span[text()='%s']/ancestor::th[@title='Click to sort in descending order']";
-	private static final String XPATH_SEARCH_TEXTBOX = "//input[@name='%s']";
 	private static final String XPATH_TOTAL_SEARCH_RESULT = "(//div[@class='ebx_ToolsAlignRight']//button//span)[1]";
 
 	public DatasetPage(WebDriver driver) {
@@ -355,9 +352,6 @@ public class DatasetPage extends WebPageObject {
 		waitTypeAndTabWithLabel(Constants.LBL_LABEL, label);
 	}
 
-	public void click_btn_filter() {
-		clickBtn(BTN_FILTERS);
-	}
 
 	public void confirmation_OK() {
 		confirmPopupOK();
@@ -369,19 +363,6 @@ public class DatasetPage extends WebPageObject {
 
 	}
 
-	public void input_search_keyword_in_text_search(String keyword) {
-		waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "criteria"), keyword);
-	}
-
-	public void input_search_keyword_in_validation_search(String keyword) {
-		waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "message"), keyword);
-
-	}
-
-	public void input_search_keyword_in_fuzzy_search(String keyword) {
-		waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "TESE_searchValue"), keyword);
-
-	}
 
 	public void select_first_records(int numOfRecord) {
 		for (int i = 1; i <= numOfRecord; i++) {
@@ -396,32 +377,6 @@ public class DatasetPage extends WebPageObject {
 
 	public void click_btn_expand_with_label(String label) {
 		clickOnElement(XFormat.of(XPATH_EXPAND_BUTTON, label));
-		waitForAllLoadingCompleted();
-	}
-
-	public void select_field_to_search(String searchType, String label) {
-		if (searchType.equals(Constants.TEXT_SEARCH) || searchType.equals(Constants.VALIDATION_SEARCH)) {
-			checkCheckbox(label);
-			waitAbit(500);
-		} else {
-			checkCheckbox("//form[@id='FILTER_4_filterForm']", label, 1);
-			waitAbit(500);
-		}
-	}
-
-	public void click_btn_apply_text_search() {
-		clickBtn(Constants.BTN_APPLY, 2);
-		waitForAllLoadingCompleted();
-	}
-
-	public void click_btn_apply_validation_search() {
-		clickBtn(Constants.BTN_APPLY, 3);
-		waitForAllLoadingCompleted();
-	}
-
-	public void click_btn_apply_fuzzy_search() {
-		clickBtn(Constants.BTN_APPLY, 4);
-		waitAbit(5000);
 		waitForAllLoadingCompleted();
 	}
 
@@ -466,4 +421,5 @@ public class DatasetPage extends WebPageObject {
 	public String get_total_search_result() {
 		return getTextValue(XPATH_TOTAL_SEARCH_RESULT);
 	}
+
 }

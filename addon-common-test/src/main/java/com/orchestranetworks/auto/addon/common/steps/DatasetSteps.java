@@ -31,26 +31,8 @@ public class DatasetSteps {
 		onDatasetPage.go_to_navigation(path);
 	}
 
-	@Step
-	public void input_search_keyword_in_text_search(String keyword) {
-		onDatasetPage.input_search_keyword_in_text_search(keyword);
-	}
 
-	@Step
-	public void input_search_keyword_in_validation_search(String keyword) {
-		onDatasetPage.input_search_keyword_in_validation_search(keyword);
-	}
-
-	@Step
-	public void input_search_keyword_in_fuzzy_search(String keyword) {
-		onDatasetPage.input_search_keyword_in_fuzzy_search(keyword);
-	}
-
-	@Step
-	public void click_btn_filter() {
-		onDatasetPage.click_btn_filter();
-	}
-
+	
 	@Step
 	public void click_btn_action_dataset() {
 		onDatasetPage.click_btn_action_dataset();
@@ -105,11 +87,6 @@ public class DatasetSteps {
 		onDatasetPage.select_table_service(service);
 	}
 
-	@Step
-	public void verify_warning_popup_display(String content) {
-		Assert.assertEquals("Verify popup displayed:", content, onDatasetPage.get_text_popup_message());
-		onDatasetPage.click_btn_close_popup();
-	}
 
 	@Step
 	public void click_on_table_name(String sTable) {
@@ -275,36 +252,6 @@ public class DatasetSteps {
 	@Step
 	public void click_btn_duplicate() {
 		onDatasetPage.click_btn_duplicate();
-	}
-
-	@Step
-	public void click_btn_expand_with_label(String label) {
-		onDatasetPage.click_btn_expand_with_label(label);
-	}
-
-	@Step
-	public void unselect_field_with_label(String searchType, String searchItem) {
-		onDatasetPage.select_field_to_search(searchType, searchItem);
-	}
-
-	@Step
-	public void select_search_item(String searchType, String searchItem) {
-		onDatasetPage.select_field_to_search(searchType, searchItem);
-	}
-
-	@Step
-	public void click_btn_apply_text_search() {
-		onDatasetPage.click_btn_apply_text_search();
-	}
-
-	@Step
-	public void click_btn_apply_fuzzy_search() {
-		onDatasetPage.click_btn_apply_fuzzy_search();
-	}
-
-	@Step
-	public void click_btn_apply_validation_search() {
-		onDatasetPage.click_btn_apply_validation_search();
 	}
 
 	@Step

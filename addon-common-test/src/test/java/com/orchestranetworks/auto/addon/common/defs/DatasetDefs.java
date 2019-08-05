@@ -31,85 +31,6 @@ public class DatasetDefs {
 		onDatasetSteps.go_to_data_set(datasetName);
 	}
 
-	@When("^I select filter by text with keyword and field below$")
-	public void i_select_filter_by_text_with_keyword_and_field_below(DataTable dt) throws Throwable {
-		onDatasetSteps.click_btn_filter();
-		onDatasetSteps.click_btn_expand_with_label(Constants.TEXT_SEARCH);
-		onDatasetSteps.unselect_field_with_label(Constants.TEXT_SEARCH, "Select all");
-		List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-		Map<String, String> row = list.get(0);
-
-		String fieldContains = row.get("Field contains:");
-		String inField = row.get("In fields");
-
-		if (!fieldContains.isEmpty()) {
-			onDatasetSteps.input_search_keyword_in_text_search(fieldContains);
-		}
-
-		if (!inField.isEmpty()) {
-			String[] item = inField.split(", ");
-			for (int i = 0; i < item.length; i++) {
-				onDatasetSteps.select_search_item(Constants.TEXT_SEARCH, item[i]);
-			}
-		}
-		onDatasetSteps.click_btn_apply_text_search();
-	}
-
-	@When("^I select filter by fuzzy search with keyword and field below$")
-	public void i_select_filter_by_fuzzy_search_with_keyword_and_field_below(DataTable dt) throws Throwable {
-		onDatasetSteps.click_btn_filter();
-		onDatasetSteps.click_btn_expand_with_label(Constants.FUZZY_SEARCH);
-		onDatasetSteps.unselect_field_with_label(Constants.FUZZY_SEARCH, "Select all");
-
-		List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-		Map<String, String> row = list.get(0);
-
-		String recordContains = row.get("Record contains:");
-		String fields = row.get("Fields");
-
-		if (!fields.isEmpty()) {
-			String[] item = fields.split(", ");
-			for (int i = 0; i < item.length; i++) {
-				onDatasetSteps.select_search_item(Constants.FUZZY_SEARCH, item[i]);
-			}
-		}
-
-		if (!recordContains.isEmpty()) {
-			onDatasetSteps.input_search_keyword_in_fuzzy_search(recordContains);
-		}
-		onDatasetSteps.click_btn_apply_fuzzy_search();
-	}
-
-	@Then("^I should see empty search keyword error message$")
-    public void i_should_see_empty_search_keyword_error_message() throws Throwable {
-		onDatasetSteps.verify_warning_popup_display("Unable to search the empty string");
-	}
-
-	@When("^I select filter by validation with keyword and field below$")
-	public void i_select_filter_by_validation_with_keyword_and_field_below(DataTable dt) throws Throwable {
-		onDatasetSteps.click_btn_filter();
-		onDatasetSteps.click_btn_expand_with_label(Constants.VALIDATION_SEARCH);
-		onDatasetSteps.unselect_field_with_label(Constants.VALIDATION_SEARCH, "Errors");
-
-		List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-		Map<String, String> row = list.get(0);
-
-		String msgContains = row.get("Message contains:");
-		String severity = row.get("Severity");
-
-		if (!msgContains.isEmpty()) {
-			onDatasetSteps.input_search_keyword_in_validation_search(msgContains);
-		}
-
-		if (!severity.isEmpty()) {
-			String[] itemList = severity.split(", ");
-			for (int i = 0; i < itemList.length; i++) {
-				onDatasetSteps.select_search_item(Constants.VALIDATION_SEARCH, itemList[i]);
-			}
-		}
-		onDatasetSteps.click_btn_apply_validation_search();
-	}
-
 	@And("^I create record with the followings$")
 	public void i_create_record_with_the_followings(DataTable dt) throws Throwable {
 		onDatasetSteps.click_btn_create_table_record();
@@ -165,6 +86,7 @@ public class DatasetDefs {
 		onDatasetSteps.expand_group(groupPath);
 		onDatasetSteps.select_table_on_group(tablePath);
 	}
+
 	@When("^user wants to input data into table as following with the \"([^\"]*)\"$")
 	public void user_wants_to_input_data_into_table_as_following_with_the_something(String dataKey,
 			List<List<String>> dataTable) throws Throwable {
@@ -356,4 +278,5 @@ public class DatasetDefs {
 	public void i_should_see_the_total_search_results_something(String totalResult) throws Throwable {
 		onDatasetSteps.verify_total_search_result(totalResult);
 	}
+
 }

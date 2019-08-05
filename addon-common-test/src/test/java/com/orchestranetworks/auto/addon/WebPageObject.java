@@ -263,8 +263,8 @@ public class WebPageObject extends PageObject {
 	}
 
 	/**
-	 * @author hue Wait until attribule of element to be a specific value,
-	 *         timeout 30s
+	 * @author hue Wait until attribule of element to be a specific value, timeout
+	 *         30s
 	 * @param xPath
 	 */
 	public void waitForAttributeToBe(String xPath, String attribute, String value) {
@@ -444,12 +444,20 @@ public class WebPageObject extends PageObject {
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();
 	}
 
+	public void selectDDLBoxAddCriteria(String value) {
+		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
+		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
+		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";
+		clickOnElement(xPathAddCri);
+		waitElementToBePresent(xPathValue).waitUntilClickable().click();
+		waitForAllLoadingCompleted();
+	}
+
 	public void selectDDLInput(String label, String value) {
-		String xPathDDL = " //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
+		String xPathDDL = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
 				+ label + "']]//button[@title='Open drop-down list']";
 		String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[text()='" + value
 				+ "' and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item')) ]";
-
 		clickOnElement(xPathDDL);
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();
 	}
@@ -470,6 +478,7 @@ public class WebPageObject extends PageObject {
 		waitABit(1000);
 		e.sendKeys(Keys.ENTER);
 	}
+	
 
 	/**
 	 * =====================================CHECK-BOX============================================================

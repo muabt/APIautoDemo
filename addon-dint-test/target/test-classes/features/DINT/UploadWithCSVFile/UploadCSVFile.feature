@@ -6,7 +6,7 @@ Feature: Upload CSV file
     Given the user is on the EBX home page
 
   Scenario: Upload file with CSV
-    Given user login to EBX with username "alice" and password "onvn"
+    Given I login to EBX with username "alice" and password "onvn"
     And user accesses dataspace "Master Data - Reference"
     And user accesses data set "Burger"
     And user selects table "Products"
