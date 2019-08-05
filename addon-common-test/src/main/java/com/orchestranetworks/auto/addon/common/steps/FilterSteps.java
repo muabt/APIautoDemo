@@ -85,4 +85,8 @@ public class FilterSteps {
 		onFilterPage.click_btn_apply_search();
 	}
 
+	public void select_advanced_mode() {
+		onFilterPage.select_advanced_mode();
+	}
+
 }

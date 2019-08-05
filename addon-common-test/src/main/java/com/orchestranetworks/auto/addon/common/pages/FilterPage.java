@@ -106,6 +106,17 @@ public class FilterPage extends WebPageObject {
 		waitABit(1000);
 		e.sendKeys(Keys.ENTER);
 	}
+	
+
+	public void selectDDLBoxAddCriteria(String value) {
+		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
+		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
+		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";
+		clickOnElement(xPathAddCri);
+		waitElementToBePresent(xPathValue).waitUntilClickable().click();
+		waitForAllLoadingCompleted();
+	}
+
 
 	public void input_search_value(String value, String type, String fieldName) {
 		String xPathTxtOfField = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input";
@@ -142,6 +153,15 @@ public class FilterPage extends WebPageObject {
 	public void input_search_keyword_in_fuzzy_search(String keyword) {
 		waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "TESE_searchValue"), keyword);
 
+	}
+	
+	public void go_to_service_of_advance_search() {
+		
+	}
+	
+	public void select_advanced_mode() {
+		String xPathParent = "//div[@id='ebx_FilterBlockList']";
+		clickBtn(xPathParent, "Actions");
 	}
 
 }

@@ -42,6 +42,35 @@ public class FilterDefs {
 		}
 		onFilterSteps.click_btn_apply_search();
 	}
+	
+	 @When("^I select filter by advanced search with criterion$")
+	    public void i_select_filter_by_advanced_search_with_criterion(DataTable dt) throws Throwable {
+			onFilterSteps.click_btn_filter();
+			onFilterSteps.select_advanced_mode();
+			
+			List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+			for (int i = 0; i < list.size(); i++) {
+				Map<String, String> row = list.get(i);
+				String criterion = row.get("Criterion");
+				String oper = row.get("Operation");
+				String value = row.get("Value");
+				String type = row.get("Field type");
+
+				onFilterSteps.select_criteria_with_label(criterion);
+
+				if (!oper.isEmpty()) {
+					onFilterSteps.select_operator_of_field(oper, criterion);
+				}
+
+				if (!value.isEmpty()) {
+					String[] itemList = value.split(", ");
+					for (int j = 0; j < itemList.length; j++) {
+						onFilterSteps.input_search_value(itemList[j], type, criterion);
+					}
+				}
+			}
+			onFilterSteps.click_btn_apply_search();
+	 }
 
 	@When("^I select filter by text with keyword and field below$")
 	public void i_select_filter_by_text_with_keyword_and_field_below(DataTable dt) throws Throwable {
