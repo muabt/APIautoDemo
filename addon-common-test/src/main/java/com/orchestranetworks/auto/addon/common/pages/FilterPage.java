@@ -4,8 +4,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.WebPageObject;
 import com.orchestranetworks.auto.addon.XFormat;
+import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 import net.serenitybdd.core.pages.WebElementFacade;
 
@@ -111,7 +111,7 @@ public class FilterPage extends WebPageObject {
 		String xPathTxtOfField = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input";
 		String xPathEnum = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input[@value='Select an item to add']";
 		String xPathCheckbox = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//tr//label[text()='" + value + "']";
-		
+
 		switch (type) {
 		case "IN":
 			waitTypeAndTab(xPathTxtOfField, value);

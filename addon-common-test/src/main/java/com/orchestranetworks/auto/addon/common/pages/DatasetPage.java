@@ -6,14 +6,13 @@ import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.SessionData;
-import com.orchestranetworks.auto.addon.WebPageObject;
 import com.orchestranetworks.auto.addon.XFormat;
+import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class DatasetPage extends WebPageObject {
 	// Parent xpath
 
 	private static final String BTN_CREATE_A_RECORD = "Create a record";
-
 
 	private static final String BTN_CREATE_A_DATASET = "Create a dataset";
 	private static final String BTN_CLOSE_POPUP = "//div[@class='_ebx-pop-up_bottom']//*[.='Close']";
@@ -352,7 +351,6 @@ public class DatasetPage extends WebPageObject {
 		waitTypeAndTabWithLabel(Constants.LBL_LABEL, label);
 	}
 
-
 	public void confirmation_OK() {
 		confirmPopupOK();
 
@@ -362,7 +360,6 @@ public class DatasetPage extends WebPageObject {
 		selectDDLBox("Owner", owner);
 
 	}
-
 
 	public void select_first_records(int numOfRecord) {
 		for (int i = 1; i <= numOfRecord; i++) {
