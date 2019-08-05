@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import com.orchestranetworks.auto.addon.DMDVScriptConstants;
 import com.orchestranetworks.auto.addon.FileUtils;
 import com.orchestranetworks.auto.addon.LogWork;
-import com.orchestranetworks.auto.addon.WebPageObject;
+import com.orchestranetworks.auto.addon.common.WebPageObject;
 import com.orchestranetworks.auto.addon.dmdv.ConverterUtils;
 import com.orchestranetworks.auto.addon.dmdv.LinkDataDisplayBean;
 import com.orchestranetworks.auto.addon.dmdv.NodeDataDisplayBean;
@@ -43,7 +43,7 @@ public class GraphDataPage extends WebPageObject {
 		return node.getText();
 	}
 
-//MuaBT add
+	// MuaBT add
 	public String getLinkLabel(String linkKey) {
 		String script = String.format(DMDVScriptConstants.GET_LINK_DATA_BY_KEY, new Object[] { linkKey });
 		String jsonResult = executeJS(script);
@@ -241,9 +241,10 @@ public class GraphDataPage extends WebPageObject {
 			indicators += (node.isHasRight() ? "RIGHT," : "");
 			indicators += (node.isHasTop() ? "TOP," : "");
 			indicators += (node.isHasBottom() ? "BOTTOM," : "");
-			indicators = (indicators.length()>=1?indicators.substring(0, indicators.length()-1):"");
+			indicators = (indicators.length() >= 1 ? indicators.substring(0, indicators.length() - 1) : "");
 			String parent = (node.getGroup().equals("-1") ? "" : node.getGroup());
-			System.out.println("| " + node.getKey() + "	| " + node.getText() + " | " + indicators + " |" + parent + "	|");
+			System.out.println(
+					"| " + node.getKey() + "	| " + node.getText() + " | " + indicators + " |" + parent + "	|");
 			rs.add(node);
 		}
 		return rs;

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.LogWork;
 import com.orchestranetworks.auto.addon.SessionData;
-import com.orchestranetworks.auto.addon.WebPageObject;
+import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class ManualMergePages extends WebPageObject {
 
@@ -92,7 +92,7 @@ public class ManualMergePages extends WebPageObject {
 		List<String> expectedHeader = expectedTb.get(0);
 		List<String> actualHeader = expectedTb.get(0);
 		boolean diff = true;
-		
+
 		if (expectedTb.isEmpty() || actualTb.isEmpty()) {
 			LogWork.error("Data Table Expected or Actual is empty. Nothing to compare.");
 		}

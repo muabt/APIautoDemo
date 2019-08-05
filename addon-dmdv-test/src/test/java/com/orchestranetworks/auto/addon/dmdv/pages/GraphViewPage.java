@@ -17,7 +17,7 @@ import com.orchestranetworks.auto.addon.DMDVScriptConstants;
 import com.orchestranetworks.auto.addon.FileUtils;
 import com.orchestranetworks.auto.addon.LogWork;
 import com.orchestranetworks.auto.addon.Node;
-import com.orchestranetworks.auto.addon.WebPageObject;
+import com.orchestranetworks.auto.addon.common.WebPageObject;
 import com.orchestranetworks.auto.addon.dmdv.ConverterUtils;
 import com.orchestranetworks.auto.addon.dmdv.LinkModelBean;
 import com.orchestranetworks.auto.addon.dmdv.NodeModelBean;
@@ -283,8 +283,9 @@ public class GraphViewPage extends WebPageObject {
 	 * }
 	 */
 	/*
-	 * public void save_graph_name() { clickBtn("Save", 2); switchToLastIFrame();
-	 * confirmPopupYES(); switchToFirstIFrame(); confirmPopupOK(); }
+	 * public void save_graph_name() { clickBtn("Save", 2);
+	 * switchToLastIFrame(); confirmPopupYES(); switchToFirstIFrame();
+	 * confirmPopupOK(); }
 	 */
 
 	// MuaBT add
@@ -340,8 +341,8 @@ public class GraphViewPage extends WebPageObject {
 
 	public void click_btn_template_configuration() {
 		clickBtn("Template");
-//		switchToLastIFrame();
-//		clickOnElement("//*[@id=\"workspaceToolBar\"]/button[@title='Template']");
+		// switchToLastIFrame();
+		// clickOnElement("//*[@id=\"workspaceToolBar\"]/button[@title='Template']");
 	}
 
 	public void enter_template_configuration(String config, String option, String value) {
@@ -359,7 +360,8 @@ public class GraphViewPage extends WebPageObject {
 
 	public void click_btn_save_configuration() {
 		clickBtn("Save");
-		// clickOnElement("//*[@class='ebx_FlatButton ebx_Button ebx_DefaultButton']");
+		// clickOnElement("//*[@class='ebx_FlatButton ebx_Button
+		// ebx_DefaultButton']");
 
 	}
 

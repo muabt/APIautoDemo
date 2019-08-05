@@ -6,7 +6,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.DMDVScriptConstants;
-import com.orchestranetworks.auto.addon.WebPageObject;
+import com.orchestranetworks.auto.addon.common.WebPageObject;
 import com.orchestranetworks.auto.addon.dmdv.ConverterUtils;
 import com.orchestranetworks.auto.addon.dmdv.IncrementalLinkDisplayBean;
 import com.orchestranetworks.auto.addon.dmdv.IncrementalNodeDisplayBean;
@@ -38,7 +38,7 @@ public class IncrementalGraphPage extends WebPageObject {
 		}
 		return rs;
 	}
-	
+
 	public void waitGraphCompleted() {
 		boolean inProgress = true;
 		int count = 0;
@@ -48,7 +48,7 @@ public class IncrementalGraphPage extends WebPageObject {
 			inProgress = (Boolean) executeJS(script);
 			waitAbit(5000);
 			System.err.println("Waiting collapse/expand");
-			if(count == 12){
+			if (count == 12) {
 				break;
 			}
 		}
@@ -62,7 +62,8 @@ public class IncrementalGraphPage extends WebPageObject {
 	}
 
 	public void collapseNode(String nodeKey) {
-		String script = String.format(DMDVScriptConstants.COLLAPSE_NODES_OF_INCREMENTAL_GRAPH, new Object[] { nodeKey });
+		String script = String.format(DMDVScriptConstants.COLLAPSE_NODES_OF_INCREMENTAL_GRAPH,
+				new Object[] { nodeKey });
 		executeJS(script);
 		waitGraphCompleted();
 		System.out.println("Done collapse");
@@ -82,7 +83,8 @@ public class IncrementalGraphPage extends WebPageObject {
 	}
 
 	public IncrementalNodeDisplayBean getNodeByKey(String nodeKey) {
-		String script = String.format(DMDVScriptConstants.GET_NODE_DATA_BY_KEY_OF_INCREMENTAL_GRAPH,  new Object[] { nodeKey });
+		String script = String.format(DMDVScriptConstants.GET_NODE_DATA_BY_KEY_OF_INCREMENTAL_GRAPH,
+				new Object[] { nodeKey });
 		String jsonResult = executeJS(script);
 		System.out.println("FOUND:  " + jsonResult);
 		return ConverterUtils.parse(jsonResult, IncrementalNodeDisplayBean.class);

@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.openqa.selenium.WebDriver;
 
-import com.orchestranetworks.auto.addon.WebPageObject;
+import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class ImportCSVFilePage extends WebPageObject {
 	static String fseparator = File.separator;

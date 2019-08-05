@@ -2,7 +2,7 @@ package com.orchestranetworks.auto.addon.dint.pages;
 
 import org.openqa.selenium.WebDriver;
 
-import com.orchestranetworks.auto.addon.WebPageObject;
+import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class ImportCSVResultPage extends WebPageObject {
 
