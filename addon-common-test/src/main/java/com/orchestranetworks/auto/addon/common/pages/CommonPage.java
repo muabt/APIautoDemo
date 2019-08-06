@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.common.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.Constants;
@@ -17,9 +18,8 @@ public class CommonPage extends WebPageObject {
 
 	private static final String XPATH_SECTION_TREE_REDUCED = "_ebx-tree_section _ebx-tree_section_is-reduced";
 	private static final String XPATH_MENU_ICON_PERSPECTIVE = "//div[@class='_ebx-custom-perspective-navigation_menu_icon']";
-
-	private static final String XPATH_NAVIGATION_PANEL = "//div[@class='_ebx-scrollable-container_content']";
 	private static final String NAVIGATION_ITEM = "//span[text()='%s']";
+	private static final String XPATH_SELECTOR_PANEL = "//div[@class='yui-panel-container shadow']";
 
 	private static final String TITLE_MENU_TITLE_DATASET = "Data";
 	private static final String TITLE_MENU_TITLE_DATASPACE = "Dataspaces";
@@ -66,6 +66,7 @@ public class CommonPage extends WebPageObject {
 	}
 
 	public void click_menu(String title) {
+		switchOutDefaultIFrame();
 		switch (title.toLowerCase()) {
 		case "dataset":
 			title = TITLE_MENU_TITLE_DATASET;
@@ -161,4 +162,46 @@ public class CommonPage extends WebPageObject {
 		clickBtn(Constants.BTN_APPLY);
 	}
 
+	public void go_to_admin_service(String service) {
+		go_to_navigation(service);
+	}
+
+	public void confirm_popup() {
+		confirmPopupOK();
+	}
+
+	public void click_btn_submit() {
+		clickBtn("Submit");
+	}
+
+	public void go_to_navigation(String path) {
+		String[] itemList = path.split(">");
+		collapseAll();
+		for (int i = 0; i < itemList.length - 1; i++) {
+			expandItem(itemList[i]);
+			waitABit(2000);
+		}
+		selectNavigationMenuItem(itemList[itemList.length - 1]);
+	}
+
+	public void selectNavigationMenuItem(String item) {
+		item = SessionData.getValueFromSession(item);
+		clickOnElement(XFormat.of(NAVIGATION_ITEM, item));
+	}
+
+	public void remove_div() {
+		switchToIFrame(Constants.IFRAME_LEGACY);
+		boolean isPresent = findAllElement(XPATH_SELECTOR_PANEL).size() > 0;
+		if (isPresent) {
+			((JavascriptExecutor) getDriver()).executeScript("arguments[0].style.visibility='hidden';",
+					findBy(XPATH_SELECTOR_PANEL));
+			waitForInvisibilityOfElement(XPATH_SELECTOR_PANEL);
+		}
+		waitAbit(2000);
+	}
+
+	public void select_an_admin_feature() {
+		remove_div();
+		clickOnElement("//h2[@title='Select dataset']");
+	}
 }

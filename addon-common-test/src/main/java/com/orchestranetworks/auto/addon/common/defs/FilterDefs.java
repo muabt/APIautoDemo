@@ -42,36 +42,37 @@ public class FilterDefs {
 		}
 		onFilterSteps.click_btn_apply_search();
 	}
-	
-	 @When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
-	    public void i_select_filter_by_advanced_search_with_criterion_and_logical_something(String logical,DataTable dt) throws Throwable {
-			onFilterSteps.click_btn_filter();
-			onFilterSteps.select_advanced_mode();
-			onFilterSteps.select_logical_search(logical);
-			
-			List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-			for (int i = 0; i < list.size(); i++) {
-				Map<String, String> row = list.get(i);
-				String criterion = row.get("Criterion");
-				String oper = row.get("Operation");
-				String value = row.get("Value");
-				String type = row.get("Field type");
 
-				onFilterSteps.select_criteria_with_label(criterion);
+	@When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
+	public void i_select_filter_by_advanced_search_with_criterion_and_logical_something(String logical, DataTable dt)
+			throws Throwable {
+		onFilterSteps.click_btn_filter();
+		onFilterSteps.select_advanced_mode();
+		onFilterSteps.select_logical_search(logical);
 
-				if (!oper.isEmpty()) {
-					onFilterSteps.select_operator_of_field(oper, criterion);
-				}
+		List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+		for (int i = 0; i < list.size(); i++) {
+			Map<String, String> row = list.get(i);
+			String criterion = row.get("Criterion");
+			String oper = row.get("Operation");
+			String value = row.get("Value");
+			String type = row.get("Field type");
 
-				if (!value.isEmpty()) {
-					String[] itemList = value.split(", ");
-					for (int j = 0; j < itemList.length; j++) {
-						onFilterSteps.input_search_value(itemList[j], type, criterion);
-					}
+			onFilterSteps.select_criteria_with_label(criterion);
+
+			if (!oper.isEmpty()) {
+				onFilterSteps.select_operator_of_field(oper, criterion);
+			}
+
+			if (!value.isEmpty()) {
+				String[] itemList = value.split(", ");
+				for (int j = 0; j < itemList.length; j++) {
+					onFilterSteps.input_search_value(itemList[j], type, criterion);
 				}
 			}
-			onFilterSteps.click_btn_apply_search();
-	 }
+		}
+		onFilterSteps.click_btn_apply_search();
+	}
 
 	@When("^I select filter by text with keyword and field below$")
 	public void i_select_filter_by_text_with_keyword_and_field_below(DataTable dt) throws Throwable {
@@ -93,6 +94,9 @@ public class FilterDefs {
 			for (int i = 0; i < item.length; i++) {
 				onFilterSteps.select_search_item(Constants.TEXT_SEARCH, item[i]);
 			}
+		} else {
+			onFilterSteps.select_search_item(Constants.TEXT_SEARCH, "Select all");
+
 		}
 		onFilterSteps.click_btn_apply_text_search();
 	}

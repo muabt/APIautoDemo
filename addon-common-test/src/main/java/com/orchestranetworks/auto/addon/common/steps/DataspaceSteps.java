@@ -36,6 +36,11 @@ public class DataspaceSteps {
 	public void select_dataspace_service(String servicePath) {
 		onDataspacePage.select_dataspace_service(servicePath);
 	}
+	
+	@Step 
+	public void close_dataspace(String servicePath) {
+		onDataspacePage.close_dataspace(servicePath);
+	}
 
 	@Step
 	public void click_btn_create() {

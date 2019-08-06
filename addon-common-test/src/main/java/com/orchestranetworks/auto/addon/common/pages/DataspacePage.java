@@ -3,12 +3,13 @@ package com.orchestranetworks.auto.addon.common.pages;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.XFormat;
 import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class DataspacePage extends WebPageObject {
 
 	private static final String BTN_CREATE_A_DATASPACE = "Create a dataspace";
-	private static final String XPATH_SERVICE = "//a[text()='%s']|//span[text()='%s']";
+	private static final String XPATH_SERVICE = "//a[text()='%1$s']|//span[text()='%1$s']";
 
 	public DataspacePage(WebDriver driver) {
 		super(driver);
@@ -17,10 +18,16 @@ public class DataspacePage extends WebPageObject {
 	public void select_dataspace_service(String servicePath) {
 		String[] services = servicePath.split(">");
 		for (int i = 0; i < services.length; i++) {
-			clickOnElement(XPATH_SERVICE);
+			clickOnElement(XFormat.of(XPATH_SERVICE, services[i]));
 		}
 		waitForAllLoadingCompleted();
 
+	}
+
+	public void close_dataspace(String servicePath) {
+		waitAbit(500);
+		select_dataspace_service(servicePath);
+		confirmPopupOK();
 	}
 
 	public void click_btn_create_dataspace() {
