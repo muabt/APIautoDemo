@@ -190,7 +190,6 @@ public class DatasetPage extends WebPageObject {
 		clickOnElement(XFormat.of(NAVIGATION_ITEM, tableName));
 		switchToLastIFrame();
 		waitForPresenceOfElement(XPATH_TABLE);
-
 	}
 
 	// TODO need refactor

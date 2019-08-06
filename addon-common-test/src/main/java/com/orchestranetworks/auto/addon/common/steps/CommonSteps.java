@@ -94,4 +94,8 @@ public class CommonSteps {
 	public void click_btn_submit() {
 		onCommonPage.click_btn_submit();
 	}
+
+	public void click_on_table_name_service(String tblName) {
+		onCommonPage.click_on_table_service(tblName);
+	}
 }

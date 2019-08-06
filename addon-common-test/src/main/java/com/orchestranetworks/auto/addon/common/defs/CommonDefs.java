@@ -52,6 +52,12 @@ public class CommonDefs {
 	public void i_access_to_administration_service_something(String service) throws Throwable {
 		onCommonSteps.go_to_admin_service(service);
 	}
+	
+	 @And("^I access table \"([^\"]*)\" service$")
+	    public void i_access_table_something_service(String tblName) throws Throwable {
+		 onCommonSteps.click_on_table_name_service(tblName);
+
+	 }
 
 
     @And("^I delete the dataspace \"([^\"]*)\" with service \"([^\"]*)\"$")
