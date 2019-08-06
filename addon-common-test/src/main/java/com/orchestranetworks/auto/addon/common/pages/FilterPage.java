@@ -20,9 +20,9 @@ public class FilterPage extends WebPageObject {
 	private static final String BTN_FILTERS = "Filters";
 	private static final String XPATH_EXPAND_BUTTON = "//label[contains(.,'%s')]//button[@title='expand']";
 	private static final String XPATH_SEARCH_TEXTBOX = "//input[@name='%s']";
-	private static final String XPATH_FIELD_LIST_IN_SEARCH = "//ul[@class='ebx_Fields']";
 	private static final String BTN_CLOSE_POPUP = "//div[@class='_ebx-pop-up_bottom']//*[.='Close']";
 	private static final String XPATH_POPUP_MESSAGE = "//div[@class='_ebx-pop-up']//*[@class='_ebx-notification-box_list_item']";
+	public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
 
 	public void select_field_to_search(String searchType, String label) {
 		if (searchType.equals(Constants.TEXT_SEARCH) || searchType.equals(Constants.VALIDATION_SEARCH)) {
@@ -73,7 +73,7 @@ public class FilterPage extends WebPageObject {
 	}
 
 	public void select_search_criteria(String criteria) {
-		selectDDLBoxAddCriteria(criteria);
+		select_ddl_add_criterion(criteria);
 		waitAbit(1000);
 	}
 
@@ -99,7 +99,7 @@ public class FilterPage extends WebPageObject {
 		waitElementToBePresent(xPathOper).waitUntilClickable().click();
 	}
 
-	public void inputDDLThenEnter(String xPathDDL, String label, String value) {
+	public void input_ddl_then_enter(String xPathDDL, String label, String value) {
 		WebElementFacade e = waitElementToBePresent(xPathDDL);
 		e.clear();
 		e.type(value);
@@ -108,7 +108,7 @@ public class FilterPage extends WebPageObject {
 	}
 	
 
-	public void selectDDLBoxAddCriteria(String value) {
+	public void select_ddl_add_criterion(String value) {
 		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
 		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
 		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";
@@ -128,7 +128,7 @@ public class FilterPage extends WebPageObject {
 			waitTypeAndTab(xPathTxtOfField, value);
 			break;
 		case "ENUM":
-			inputDDLThenEnter(xPathEnum, "", value);
+			input_ddl_then_enter(xPathEnum, "", value);
 			waitAbit(500);
 			break;
 		case "DATE":
@@ -155,13 +155,28 @@ public class FilterPage extends WebPageObject {
 
 	}
 	
-	public void go_to_service_of_advance_search() {
-		
-	}
-	
 	public void select_advanced_mode() {
 		String xPathParent = "//div[@id='ebx_FilterBlockList']";
 		clickBtn(xPathParent, "Actions");
+		clickOnElement(XFormat.of(NAVIGATION_ITEM, "Advanced mode"));
+	}
+	
+	public void select_ddl_logical(String value) {
+		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
+		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
+		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";
+		clickOnElement(xPathAddCri);
+		waitElementToBePresent(xPathValue).waitUntilClickable().click();
+		waitForAllLoadingCompleted();
 	}
 
+	public void select_logical_search(String value) {
+		String xPathLogical = "//option[.='All criteria match']/parent::select";
+		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
+		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";	
+		
+		clickOnElement(xPathLogical);
+		waitElementToBePresent(xPathValue).waitUntilClickable().click();
+		waitForAllLoadingCompleted();
+	}
 }

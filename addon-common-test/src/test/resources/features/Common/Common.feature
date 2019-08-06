@@ -7,7 +7,7 @@ Feature: Create new data model
     Given I login to EBX succesfully
 
   @Dataspace
-  Scenario: Create new data set
+  Scenario: Create new data space
     And I access "Dataspaces" menu
     And I access dataspace "Master Data - Reference>[03] Parties data>Company employees>Store"
     And I create child Dataspace with information as following

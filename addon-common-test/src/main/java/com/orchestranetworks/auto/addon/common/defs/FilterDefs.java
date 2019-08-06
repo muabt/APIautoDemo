@@ -43,10 +43,11 @@ public class FilterDefs {
 		onFilterSteps.click_btn_apply_search();
 	}
 	
-	 @When("^I select filter by advanced search with criterion$")
-	    public void i_select_filter_by_advanced_search_with_criterion(DataTable dt) throws Throwable {
+	 @When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
+	    public void i_select_filter_by_advanced_search_with_criterion_and_logical_something(String logical,DataTable dt) throws Throwable {
 			onFilterSteps.click_btn_filter();
 			onFilterSteps.select_advanced_mode();
+			onFilterSteps.select_logical_search(logical);
 			
 			List<Map<String, String>> list = dt.asMaps(String.class, String.class);
 			for (int i = 0; i < list.size(); i++) {

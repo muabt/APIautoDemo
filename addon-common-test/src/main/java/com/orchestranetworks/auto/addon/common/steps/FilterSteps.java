@@ -89,4 +89,8 @@ public class FilterSteps {
 		onFilterPage.select_advanced_mode();
 	}
 
+	public void select_logical_search(String value) {
+		onFilterPage.select_logical_search(value);
+	}
+
 }
