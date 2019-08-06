@@ -42,7 +42,12 @@ public class DataspaceDefs {
 	public void user_select_dataspace_service_something(String servicePath) throws Throwable {
 		onDataspaceSteps.click_dataspace_actions();
 		onDataspaceSteps.select_dataspace_service(servicePath);
+	}
 
+	@And("^I close dataspace with service \"([^\"]*)\"$")
+    public void i_close_dataspace_with_service_something(String servicePath) throws Throwable {
+		onDataspaceSteps.click_dataspace_actions();
+		onDataspaceSteps.close_dataspace(servicePath);
 	}
 
 	@Then("^I should see Dataspace with information as following$")

@@ -11,6 +11,7 @@ public final class Constants {
 	public static final String JS_SESSION_STORAGE_CLEAR = "window.sessionStorage.clear();";
 	public static final String JS_LOCAL_STORAGE_CLEAR = "window.localStorage.clear();";
 
+	public static final String BTN_SELECT_DATASET = "Select dataset";
 	public static final String BTN_APPLY = "Apply";
 	public static final String BTN_SAVE_AND_CLOSE = "Save and close";
 	public static final String BTN_SELECT_AND_SORT = "Select and sort";
@@ -20,8 +21,10 @@ public final class Constants {
 	public static final String BTN_CLOSE = "Close";
 	public static final String BTN_NEXT = "Next";
 	public static final String BTN_DELETE = "Delete";
+	public static final String BTN_SELECT_ADMIN_FEATURE = "Select an administration feature";
 	public static final String LBL_UNIQUE_NAME = "Unique name";
 	public static final String LBL_LABEL = "Label";
 	public static final String LBL_IDENTIFIER = "Identifier";
 	public static final String LBL_OWNER = "Owner";
+
 }

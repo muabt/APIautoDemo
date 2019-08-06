@@ -80,4 +80,18 @@ public class CommonSteps {
 	public void click_btn_apply() {
 		onCommonPage.click_btn_apply();
 	}
+
+	@Step
+	public void go_to_admin_service(String service) {
+		onCommonPage.select_an_admin_feature();
+		onCommonPage.go_to_admin_service(service);
+	}
+	
+	public void confirm_popup() {
+		onCommonPage.confirmPopupOK();
+	}
+	
+	public void click_btn_submit() {
+		onCommonPage.click_btn_submit();
+	}
 }

@@ -1,8 +1,5 @@
 package com.orchestranetworks.auto.addon.common.defs;
 
-import java.util.List;
-import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.LoadConfig;
@@ -10,10 +7,8 @@ import com.orchestranetworks.auto.addon.common.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.common.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.common.steps.LoginSteps;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.ClearCookiesPolicy;
 import net.thucydides.core.annotations.Managed;
@@ -27,7 +22,8 @@ public class CommonDefs {
 	CommonSteps onCommonSteps;
 	@Steps
 	LoginSteps onLoginSteps;
-	
+	@Steps
+	DatasetSteps onDatasetSteps;
 
 	@Given("^the user is on the EBX home page$")
 	public void the_user_is_on_the_EBX_home_page() throws Exception {
@@ -50,6 +46,20 @@ public class CommonDefs {
 	@And("^I access \"([^\"]*)\" menu$")
 	public void user_accesses_something_menu(String menu) throws Throwable {
 		onCommonSteps.click_on_menu(menu);
+	}
+
+	@And("^I access to administration service \"([^\"]*)\"$")
+	public void i_access_to_administration_service_something(String service) throws Throwable {
+		onCommonSteps.go_to_admin_service(service);
+	}
+
+
+    @And("^I delete the dataspace \"([^\"]*)\" with service \"([^\"]*)\"$")
+    public void i_delete_the_dataspace_something_with_service_something(String dataspaceName, String servicePath) throws Throwable {
+		onDatasetSteps.select_record_with_PK(dataspaceName);
+		onDatasetSteps.select_table_service(servicePath);
+		onCommonSteps.click_btn_submit();
+		onCommonSteps.confirm_popup();
 	}
 
 	// MuaBT add
