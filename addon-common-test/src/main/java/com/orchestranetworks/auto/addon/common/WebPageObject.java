@@ -449,11 +449,45 @@ public class WebPageObject extends PageObject {
 	public void selectDDLInput(String label, String value) {
 		String xPathDDL = " //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
 				+ label + "']]//button[@title='Open drop-down list']";
-		String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[text()='" + value
-				+ "' and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item')) ]";
+		String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + sSpecialTextPredicates(value)
+				+ " and string-length(normalize-space(text())=" + value.length()
+				+ ")) and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
 
 		clickOnElement(xPathDDL);
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();
+	}
+
+	public String sSpecialTextPredicates(String givenText) {
+		String[] tokens = givenText.split(" ");
+		int numText = tokens.length;
+		String resultsPattern = "";
+		if (numText > 1) {
+			resultsPattern = "contains(text(),'" + tokens[0] + "')";
+			for (int i = 1; i < numText; i++) {
+				resultsPattern += " and contains(text(),'" + tokens[i] + "')";
+			}
+			return resultsPattern;
+		} else {
+			return "contains(text(),'" + givenText + "')";
+		}
+	}
+
+	public static String parseFrenchTitleToXpath(String title) {
+		int index = 0;
+		String[] subStrings = title.split(" ");
+
+		String containsText = "";
+		do {
+			if (index == 0)
+				containsText = containsText + "contains(text(),'" + subStrings[index] + "')";
+			else
+				containsText = containsText + " and contains(text(),'" + subStrings[index] + "')";
+			index++;
+		} while (index < subStrings.length);
+
+		System.out.println("title: " + title);
+		System.out.println("containsText: " + containsText);
+		return containsText;
 	}
 
 	// TO-DO: need to rename method to inputDLLThentab
