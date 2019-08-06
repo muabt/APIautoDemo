@@ -384,7 +384,8 @@ public class DatasetPage extends WebPageObject {
 			waitTypeAndTabWithLabel(col, cell);
 			break;
 		case "DDL":
-			inputDDLThenEnter(col, cell);
+			selectDDLInput(col, cell);
+			// inputDDLThenEnter(col, cell);
 			break;
 		case "RADIO":
 			selectRadioBoxGroup(col, cell);

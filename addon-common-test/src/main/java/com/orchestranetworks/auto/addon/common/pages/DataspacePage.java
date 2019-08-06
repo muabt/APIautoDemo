@@ -30,7 +30,7 @@ public class DataspacePage extends WebPageObject {
 	}
 
 	public void select_owner(String owner) {
-		enterDDLInput(Constants.LBL_OWNER, owner);
+		inputDDLThenTab(Constants.LBL_OWNER, owner);
 	}
 
 	public void enter_english_label(String engLabel) {

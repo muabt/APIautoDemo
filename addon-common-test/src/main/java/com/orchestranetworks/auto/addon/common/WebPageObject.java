@@ -457,7 +457,7 @@ public class WebPageObject extends PageObject {
 	}
 
 	// TO-DO: need to rename method to inputDLLThentab
-	public void enterDDLInput(String label, String value) {
+	public void inputDDLThenTab(String label, String value) {
 		String xPathDDL = " //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
 				+ label + "']]//input[@type='text']";
 		waitTypeAndTab(xPathDDL, value);
