@@ -7,12 +7,12 @@ Feature: Create new data model
     Given I login to EBX succesfully
 
   @Dataspace
-  Scenario: Create new data set
+  Scenario: Create new dataspace
     And I access "dataspace" menu
-    And I access dataspace "Master Data - Reference>[03] Parties data>Company employees>Store"
+    And I access dataspace "Master Data - Reference>[03] Parties data>Company employees"
     And I create child Dataspace with information as following
-      | Identifier | Owner              | English Label |
-      | Store      | John Smith (admin) | Store         |
+      | Identifier  | Owner              | English Label |
+      | Store-child | John Smith (admin) | Store         |
     Then I should see Dataspace with information as following
       | Identifier | Type      | Creation | Status | Owner              | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       | Store      | Dataspace |          | Open   | John Smith (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
