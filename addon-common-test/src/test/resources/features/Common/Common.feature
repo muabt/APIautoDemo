@@ -7,8 +7,8 @@ Feature: Create new data model
     Given I login to EBX succesfully
 
   @Dataspace
-  Scenario: Create new data space
-    And I access "Dataspaces" menu
+  Scenario: Create new data set
+    And I access "dataspace" menu
     And I access dataspace "Master Data - Reference>[03] Parties data>Company employees>Store"
     And I create child Dataspace with information as following
       | Identifier | Owner              | English Label |
@@ -48,6 +48,7 @@ Feature: Create new data model
       | Unique name        | Owner              | Label         |
       | Flowers-Duplicated | Vicky Chan (vicky) | Flowers Child |
 
+  @NEW-RECORD
   Scenario: Create new record in exist table
     Given I access dataspace "FastTrack>[03] Parties data>Company employees"
     And I access dataset "Company employees"

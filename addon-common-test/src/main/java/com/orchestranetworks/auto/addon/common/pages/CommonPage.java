@@ -70,7 +70,7 @@ public class CommonPage extends WebPageObject {
 		case "dataset":
 			title = TITLE_MENU_TITLE_DATASET;
 			break;
-		case "dataspaces":
+		case "dataspace":
 			title = TITLE_MENU_TITLE_DATASPACE;
 			break;
 		case "workflow":
@@ -79,13 +79,13 @@ public class CommonPage extends WebPageObject {
 		case "insight":
 			title = TITLE_MENU_TITLE_INSIGHT;
 			break;
-		case "datamodels":
+		case "datamodel":
 			title = TITLE_MENU_TITLE_DATAMODEL;
 			break;
-		case "workflow models":
+		case "workflow model":
 			title = TITLE_MENU_TITLE_WORKFLOW_MODEL;
 			break;
-		case "data services":
+		case "data service":
 			title = TITLE_MENU_TITLE_SERVICE;
 			break;
 		case "administration":
