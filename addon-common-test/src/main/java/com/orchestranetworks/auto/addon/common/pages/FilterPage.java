@@ -99,6 +99,12 @@ public class FilterPage extends WebPageObject {
 		waitElementToBePresent(xPathOper).waitUntilClickable().click();
 	}
 
+	/**
+	 * TODO: Webpageobject was updated this method inputDDLThenEnter after
+	 * receiving comment, if it can reuse in this case, try common instead of
+	 * input_ddl_then_enter
+	 * 
+	 */
 	public void input_ddl_then_enter(String xPathDDL, String label, String value) {
 		WebElementFacade e = waitElementToBePresent(xPathDDL);
 		e.clear();
@@ -106,8 +112,9 @@ public class FilterPage extends WebPageObject {
 		waitABit(1000);
 		e.sendKeys(Keys.ENTER);
 	}
-	
 
+	// Change to private
+	// And Update xPathDLL for ths specific case
 	public void select_ddl_add_criterion(String value) {
 		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
 		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
@@ -117,7 +124,11 @@ public class FilterPage extends WebPageObject {
 		waitForAllLoadingCompleted();
 	}
 
-
+	/**
+	 * TODO: Rename "type" to meaningful value Example: INPUT instead of IN,
+	 * BOOLEAN instead of BOO
+	 * 
+	 */
 	public void input_search_value(String value, String type, String fieldName) {
 		String xPathTxtOfField = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input";
 		String xPathEnum = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input[@value='Select an item to add']";
@@ -154,13 +165,16 @@ public class FilterPage extends WebPageObject {
 		waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "TESE_searchValue"), keyword);
 
 	}
-	
+
+	// TODO: Change Label "Action" to using Constant
 	public void select_advanced_mode() {
 		String xPathParent = "//div[@id='ebx_FilterBlockList']";
 		clickBtn(xPathParent, "Actions");
 		clickOnElement(XFormat.of(NAVIGATION_ITEM, "Advanced mode"));
 	}
-	
+
+	// TODO: Change to private
+	// TODO: / And Update xPathDLL for ths specific case
 	public void select_ddl_logical(String value) {
 		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
 		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
@@ -170,11 +184,13 @@ public class FilterPage extends WebPageObject {
 		waitForAllLoadingCompleted();
 	}
 
+	// TODO: Change to private
+	// TODO: And Update xPathDLL for ths specific case
 	public void select_logical_search(String value) {
 		String xPathLogical = "//option[.='All criteria match']/parent::select";
 		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
-		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";	
-		
+		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";
+
 		clickOnElement(xPathLogical);
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();
 		waitForAllLoadingCompleted();

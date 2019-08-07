@@ -15,6 +15,14 @@ public class FilterDefs {
 	@Steps
 	FilterSteps onFilterSteps;
 
+	// Thao Need to update
+	// 1. Change method name
+	// * from input_search_keyword_in_validation_search to
+	// input_validation_keyword
+	// * from input_search_keyword_in_fuzzy_search to input_fuzzy_keyword
+	// * from:input_search_keyword_in_text_search to input_text_keyword
+	// 2. handle split white space
+
 	@When("^I select filter by simple search with criterion$")
 	public void i_select_filter_by_simple_search_with_criterion(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -131,6 +139,7 @@ public class FilterDefs {
 		onFilterSteps.verify_warning_popup_display("Unable to search the empty string");
 	}
 
+	/** TODO: Thao needs update handle split white space */
 	@When("^I select filter by validation with keyword and field below$")
 	public void i_select_filter_by_validation_with_keyword_and_field_below(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -145,6 +154,7 @@ public class FilterDefs {
 
 		if (!msgContains.isEmpty()) {
 			onFilterSteps.input_search_keyword_in_validation_search(msgContains);
+
 		}
 
 		if (!severity.isEmpty()) {

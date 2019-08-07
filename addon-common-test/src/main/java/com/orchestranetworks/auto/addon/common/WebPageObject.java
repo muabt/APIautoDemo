@@ -472,6 +472,25 @@ public class WebPageObject extends PageObject {
 		}
 	}
 
+	public static String parseFrenchTitleToXpath(String title) {
+		int index = 0;
+		String[] subStrings = title.split(" ");
+
+		String containsText = "";
+		do {
+			if (index == 0)
+				containsText = containsText + "contains(text(),'" + subStrings[index] + "')";
+			else
+				containsText = containsText + " and contains(text(),'" + subStrings[index] + "')";
+			index++;
+		} while (index < subStrings.length);
+
+		System.out.println("title: " + title);
+		System.out.println("containsText: " + containsText);
+		return containsText;
+	}
+
+	// TO-DO: need to rename method to inputDLLThentab
 	public void inputDDLThenTab(String label, String value) {
 		String xPathDDL = " //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
 				+ label + "']]//input[@type='text']";
@@ -639,11 +658,6 @@ public class WebPageObject extends PageObject {
 	public <T> T executeJS(String command) {
 		JavascriptExecutor jsExec = (JavascriptExecutor) driver;
 		return (T) jsExec.executeScript(command);
-	}
-
-	public <T> T executeJS(String command, WebElement e) {
-		JavascriptExecutor jsExec = (JavascriptExecutor) driver;
-		return (T) jsExec.executeScript(command, e);
 	}
 
 	public WebElementFacade scrollElementIntoView(String xPath) {
