@@ -52,7 +52,6 @@ public class DatasetPage extends WebPageObject {
 
 	public void click_btn_change_dataspace() {
 		switchOutDefaultIFrame();
-
 		if (isElementExistNow(xPathBtn(BTN_CHANGE_DATASPACE))) {
 			clickBtn(BTN_CHANGE_DATASPACE);
 			waitForPresenceOfElement(XPATH_NAVIGATION_PANEL);
@@ -64,14 +63,13 @@ public class DatasetPage extends WebPageObject {
 		String[] itemList = path.split(">");
 		collapseAll();
 		for (int i = 0; i < itemList.length - 1; i++) {
-			expandItem(itemList[i]);
+			expandItem(itemList[i].trim());
 			waitABit(2000);
 		}
-		selectNavigationMenuItem(itemList[itemList.length - 1]);
+		selectNavigationMenuItem(itemList[itemList.length - 1].trim());
 	}
 
 	public void click_btn_change_dataset() {
-		// switchOutDefaultIFrame();
 		boolean isPresent = findAllElement(XPATH_NAVIGATION_PANEL).size() > 0;
 		if (!isPresent) {
 			clickBtn(BTN_SELECT_DATASET);
@@ -127,7 +125,7 @@ public class DatasetPage extends WebPageObject {
 	public void select_table_service(String service) {
 		String[] services = service.split(">");
 		for (int i = 0; i < services.length; i++) {
-			clickOnElement(XFormat.of(NAVIGATION_ITEM, services[i]));
+			clickOnElement(XFormat.of(NAVIGATION_ITEM, services[i].trim()));
 		}
 		waitForAllLoadingCompleted();
 		switchToFirstIFrame();
@@ -234,7 +232,7 @@ public class DatasetPage extends WebPageObject {
 	public void select_dataset_service(String service) {
 		String[] services = service.split(">");
 		for (int i = 0; i < services.length; i++) {
-			clickOnElement("//span[text()='" + services[i] + "']");
+			clickOnElement("//span[text()='" + services[i].trim() + "']");
 		}
 	}
 
@@ -320,9 +318,7 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void click_btn_create_child_dataset(String parentDataset) {
-
 		clickBtn("//li[@data-key='" + parentDataset + "']", "Create a child dataset");
-
 	}
 
 	public void create_child_dataset(String parentDataset) {
@@ -334,10 +330,6 @@ public class DatasetPage extends WebPageObject {
 		String xpathUnique = "//input[@id='ebx-label-1']";
 		String uniqName = getTextValue(xpathUnique);
 		SessionData.saveValueToSession(Constants.CHILD_DATASET, uniqName);
-	}
-
-	public void get_unique_name(String dataset) {
-
 	}
 
 	public void click_btn_cancel() {
@@ -358,7 +350,6 @@ public class DatasetPage extends WebPageObject {
 
 	public void confirmation_OK() {
 		confirmPopupOK();
-
 	}
 
 	public void select_dataset_owner(String owner) {
@@ -389,8 +380,7 @@ public class DatasetPage extends WebPageObject {
 			waitTypeAndTabWithLabel(col, cell);
 			break;
 		case "DDL":
-			selectDDLInput(col, cell);
-			// inputDDLThenEnter(col, cell);
+			inputDDLThenEnter(col, cell);
 			break;
 		case "RADIO":
 			selectRadioBoxGroup(col, cell);
