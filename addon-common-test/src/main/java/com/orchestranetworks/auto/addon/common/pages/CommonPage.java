@@ -18,7 +18,7 @@ public class CommonPage extends WebPageObject {
 
 	private static final String XPATH_SECTION_TREE_REDUCED = "_ebx-tree_section _ebx-tree_section_is-reduced";
 	private static final String XPATH_MENU_ICON_PERSPECTIVE = "//div[@class='_ebx-custom-perspective-navigation_menu_icon']";
-	private static final String NAVIGATION_ITEM = "//span[.='%s']";
+	private static final String NAVIGATION_ITEM = "//span[%s]";
 	private static final String XPATH_SELECTOR_PANEL = "//div[@class='yui-panel-container shadow']";
 	private static final String XPATH_TABLE = "//table[@class='ebx_tvFixed']";
 
@@ -187,7 +187,7 @@ public class CommonPage extends WebPageObject {
 
 	public void selectNavigationMenuItem(String item) {
 		item = SessionData.getValueFromSession(item);
-		clickOnElement(XFormat.of(NAVIGATION_ITEM, item));
+		clickOnElement(XFormat.of(NAVIGATION_ITEM, sSpecialTextPredicates(item)));
 	}
 
 	public void remove_div_on_administration_workspace() {
@@ -203,8 +203,8 @@ public class CommonPage extends WebPageObject {
 		waitAbit(1000);
 	}
 	
-	public void click_on_table_service(String tableName) {
-		clickOnElement(XFormat.of(NAVIGATION_ITEM, tableName));
+	public void click_on_table_service_of_administration(String tableName) {
+		clickOnElement(XFormat.of(NAVIGATION_ITEM, sSpecialTextPredicates(tableName)));
 		waitForPresenceOfElement(XPATH_TABLE);
 	}
 

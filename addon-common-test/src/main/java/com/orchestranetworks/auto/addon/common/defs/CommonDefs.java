@@ -55,11 +55,9 @@ public class CommonDefs {
 	
 	 @And("^I access table \"([^\"]*)\" service$")
 	    public void i_access_table_something_service(String tblName) throws Throwable {
-		 onCommonSteps.click_on_table_name_service(tblName);
-
+		 onCommonSteps.select_table_of_administration(tblName);
 	 }
-
-
+	 
     @And("^I delete the dataspace \"([^\"]*)\" with service \"([^\"]*)\"$")
     public void i_delete_the_dataspace_something_with_service_something(String dataspaceName, String servicePath) throws Throwable {
 		onDatasetSteps.select_record_with_PK(dataspaceName);

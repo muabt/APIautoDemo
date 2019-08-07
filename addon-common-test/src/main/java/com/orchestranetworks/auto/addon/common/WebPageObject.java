@@ -450,7 +450,8 @@ public class WebPageObject extends PageObject {
 		String xPathDDL = " //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
 				+ label + "']]//button[@title='Open drop-down list']";
 		String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + sSpecialTextPredicates(value)
-				+ " and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
+				+ " and string-length(normalize-space(text())=" + value.length()
+				+ ")) and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
 
 		clickOnElement(xPathDDL);
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();
@@ -461,14 +462,13 @@ public class WebPageObject extends PageObject {
 		int numText = tokens.length;
 		String resultsPattern = "";
 		if (numText > 1) {
-			resultsPattern = "contains(text(),'" + tokens[0] + "')";
+			resultsPattern = "contains(.,'" + tokens[0] + "')";
 			for (int i = 1; i < numText; i++) {
-				resultsPattern += " and contains(text(),'" + tokens[i] + "')";
+				resultsPattern += " and contains(.,'" + tokens[i] + "')";
 			}
-			return resultsPattern + "and string-length(normalize-space(text())=" + givenText.length() + "))";
+			return resultsPattern;
 		} else {
-			return "contains(text(),'" + givenText + "') and string-length(normalize-space(text())="
-					+ givenText.length() + "))";
+			return "contains(.,'" + givenText + "')";
 		}
 	}
 
