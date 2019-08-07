@@ -16,8 +16,8 @@ public class FilterSteps {
 	}
 
 	@Step
-	public void input_search_keyword_in_text_search(String keyword) {
-		onFilterPage.input_search_keyword_in_text_search(keyword);
+	public void input_text_keyword(String keyword) {
+		onFilterPage.input_text_keyword(keyword);
 	}
 	
 	@Step
@@ -51,13 +51,13 @@ public class FilterSteps {
 	}	
 
 	@Step
-	public void input_search_keyword_in_validation_search(String keyword) {
-		onFilterPage.input_search_keyword_in_validation_search(keyword);
+	public void input_validation_keyword(String keyword) {
+		onFilterPage.input_validation_keyword(keyword);
 	}
 
 	@Step
-	public void input_search_keyword_in_fuzzy_search(String keyword) {
-		onFilterPage.input_search_keyword_in_fuzzy_search(keyword);
+	public void input_fuzzy_keyword(String keyword) {
+		onFilterPage.input_fuzzy_keyword(keyword);
 	}
 	
 	@Step

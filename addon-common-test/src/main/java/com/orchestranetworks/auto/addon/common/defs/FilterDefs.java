@@ -15,14 +15,6 @@ public class FilterDefs {
 	@Steps
 	FilterSteps onFilterSteps;
 
-	// Thao Need to update
-	// 1. Change method name
-	// * from input_search_keyword_in_validation_search to
-	// input_validation_keyword
-	// * from input_search_keyword_in_fuzzy_search to input_fuzzy_keyword
-	// * from:input_search_keyword_in_text_search to input_text_keyword
-	// 2. handle split white space
-
 	@When("^I select filter by simple search with criterion$")
 	public void i_select_filter_by_simple_search_with_criterion(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -42,9 +34,9 @@ public class FilterDefs {
 			}
 
 			if (!value.isEmpty()) {
-				String[] itemList = value.split(", ");
+				String[] itemList = value.split(",");
 				for (int j = 0; j < itemList.length; j++) {
-					onFilterSteps.input_search_value(itemList[j], type, criterion);
+					onFilterSteps.input_search_value(itemList[j].trim(), type, criterion);
 				}
 			}
 		}
@@ -73,9 +65,9 @@ public class FilterDefs {
 			}
 
 			if (!value.isEmpty()) {
-				String[] itemList = value.split(", ");
+				String[] itemList = value.split(",");
 				for (int j = 0; j < itemList.length; j++) {
-					onFilterSteps.input_search_value(itemList[j], type, criterion);
+					onFilterSteps.input_search_value(itemList[j].trim(), type, criterion);
 				}
 			}
 		}
@@ -94,13 +86,13 @@ public class FilterDefs {
 		String inField = row.get("In fields");
 
 		if (!fieldContains.isEmpty()) {
-			onFilterSteps.input_search_keyword_in_text_search(fieldContains);
+			onFilterSteps.input_text_keyword(fieldContains);
 		}
 
 		if (!inField.isEmpty()) {
-			String[] item = inField.split(", ");
+			String[] item = inField.split(",");
 			for (int i = 0; i < item.length; i++) {
-				onFilterSteps.select_search_item(Constants.TEXT_SEARCH, item[i]);
+				onFilterSteps.select_search_item(Constants.TEXT_SEARCH, item[i].trim());
 			}
 		} else {
 			onFilterSteps.select_search_item(Constants.TEXT_SEARCH, "Select all");
@@ -122,14 +114,14 @@ public class FilterDefs {
 		String fields = row.get("Fields");
 
 		if (!fields.isEmpty()) {
-			String[] item = fields.split(", ");
+			String[] item = fields.split(",");
 			for (int i = 0; i < item.length; i++) {
-				onFilterSteps.select_search_item(Constants.FUZZY_SEARCH, item[i]);
+				onFilterSteps.select_search_item(Constants.FUZZY_SEARCH, item[i].trim());
 			}
 		}
 
 		if (!recordContains.isEmpty()) {
-			onFilterSteps.input_search_keyword_in_fuzzy_search(recordContains);
+			onFilterSteps.input_fuzzy_keyword(recordContains);
 		}
 		onFilterSteps.click_btn_apply_fuzzy_search();
 	}
@@ -139,7 +131,6 @@ public class FilterDefs {
 		onFilterSteps.verify_warning_popup_display(content);
 	}
 
-	/** TODO: Thao needs update handle split white space */
 	@When("^I select filter by validation with keyword and field below$")
 	public void i_select_filter_by_validation_with_keyword_and_field_below(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -153,14 +144,14 @@ public class FilterDefs {
 		String severity = row.get("Severity");
 
 		if (!msgContains.isEmpty()) {
-			onFilterSteps.input_search_keyword_in_validation_search(msgContains);
+			onFilterSteps.input_validation_keyword(msgContains);
 
 		}
 
 		if (!severity.isEmpty()) {
-			String[] itemList = severity.split(", ");
+			String[] itemList = severity.split(",");
 			for (int i = 0; i < itemList.length; i++) {
-				onFilterSteps.select_search_item(Constants.VALIDATION_SEARCH, itemList[i]);
+				onFilterSteps.select_search_item(Constants.VALIDATION_SEARCH, itemList[i].trim());
 			}
 		}
 		onFilterSteps.click_btn_apply_validation_search();

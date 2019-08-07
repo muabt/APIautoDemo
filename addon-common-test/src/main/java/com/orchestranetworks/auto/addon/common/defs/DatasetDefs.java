@@ -51,7 +51,7 @@ public class DatasetDefs {
 				}
 			}
 		}
-		onDatasetSteps.click_btn_save_and_close();;
+		onDatasetSteps.click_btn_save_and_close();
 	}
 
 	@Then("^I create a new record with credentials and PK is \"([^\"]*)\"$")

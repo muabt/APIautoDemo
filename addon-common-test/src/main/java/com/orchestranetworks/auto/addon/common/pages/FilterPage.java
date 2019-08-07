@@ -99,97 +99,69 @@ public class FilterPage extends WebPageObject {
 		waitElementToBePresent(xPathOper).waitUntilClickable().click();
 	}
 
-	/**
-	 * TODO: Webpageobject was updated this method inputDDLThenEnter after
-	 * receiving comment, if it can reuse in this case, try common instead of
-	 * input_ddl_then_enter
-	 * 
-	 */
-	public void input_ddl_then_enter(String xPathDDL, String label, String value) {
+	public void input_ddl_then_enter(String xPathDDL,String value) {
 		WebElementFacade e = waitElementToBePresent(xPathDDL);
 		e.clear();
 		e.type(value);
 		waitABit(1000);
 		e.sendKeys(Keys.ENTER);
 	}
-
-	// Change to private
-	// And Update xPathDLL for ths specific case
-	public void select_ddl_add_criterion(String value) {
+	
+	private void select_ddl_add_criterion(String value) {
 		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
-		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
-		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";
+		String xPathValue ="//select/option[contains(.,'" + value + "')]";
 		clickOnElement(xPathAddCri);
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();
 		waitForAllLoadingCompleted();
 	}
 
-	/**
-	 * TODO: Rename "type" to meaningful value Example: INPUT instead of IN,
-	 * BOOLEAN instead of BOO
-	 * 
-	 */
 	public void input_search_value(String value, String type, String fieldName) {
 		String xPathTxtOfField = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input";
 		String xPathEnum = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input[@value='Select an item to add']";
 		String xPathCheckbox = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//tr//label[text()='" + value + "']";
 
 		switch (type) {
-		case "IN":
+		case "INPUT":
 			waitTypeAndTab(xPathTxtOfField, value);
 			break;
 		case "ENUM":
-			input_ddl_then_enter(xPathEnum, "", value);
+			input_ddl_then_enter(xPathEnum, value);
 			waitAbit(500);
 			break;
 		case "DATE":
 			input_date_time(fieldName, value);
 			break;
-		case "BOO":
+		case "BOOLEAN":
 			waitElementToBePresent(xPathCheckbox).waitUntilClickable().click();
 			waitAbit(500);
 			break;
 		}
 	}
 
-	public void input_search_keyword_in_text_search(String keyword) {
+	public void input_text_keyword(String keyword) {
 		waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "criteria"), keyword);
 	}
 
-	public void input_search_keyword_in_validation_search(String keyword) {
+	public void input_validation_keyword(String keyword) {
 		waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "message"), keyword);
 
 	}
 
-	public void input_search_keyword_in_fuzzy_search(String keyword) {
+	public void input_fuzzy_keyword(String keyword) {
 		waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "TESE_searchValue"), keyword);
 
 	}
 
-	// TODO: Change Label "Action" to using Constant
 	public void select_advanced_mode() {
 		String xPathParent = "//div[@id='ebx_FilterBlockList']";
-		clickBtn(xPathParent, "Actions");
+		clickBtn(xPathParent, Constants.BTN_ACTIONS);
 		clickOnElement(XFormat.of(NAVIGATION_ITEM, "Advanced mode"));
 	}
 
-	// TODO: Change to private
-	// TODO: / And Update xPathDLL for ths specific case
-	public void select_ddl_logical(String value) {
-		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
-		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
-		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";
-		clickOnElement(xPathAddCri);
-		waitElementToBePresent(xPathValue).waitUntilClickable().click();
-		waitForAllLoadingCompleted();
-	}
-
-	// TODO: Change to private
-	// TODO: And Update xPathDLL for ths specific case
+	
 	public void select_logical_search(String value) {
 		String xPathLogical = "//option[.='All criteria match']/parent::select";
-		String xPathDDL = "(//div[*[ .=''] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='']]//button[@title='Open drop-down list'] | //label[.='']/parent::div/following-sibling::div//select)";
-		String xPathValue = xPathDDL + "/option[contains(.,'" + value + "')]";
+		String xPathValue ="//select/option[contains(.,'" + value + "')]";
 
 		clickOnElement(xPathLogical);
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();

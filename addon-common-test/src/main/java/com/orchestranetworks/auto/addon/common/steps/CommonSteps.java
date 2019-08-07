@@ -80,11 +80,13 @@ public class CommonSteps {
 	public void click_btn_apply() {
 		onCommonPage.click_btn_apply();
 	}
-
+	
+	@Step
 	public void confirm_popup() {
 		onCommonPage.confirmPopupOK();
 	}
 	
+	@Step
 	public void click_btn_submit() {
 		onCommonPage.click_btn_submit();
 	}
