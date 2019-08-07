@@ -41,7 +41,7 @@ public class FilterPage extends WebPageObject {
 
 	public String get_text_popup_message() {
 		waitForAllLoadingCompleted();
-		switchToFirstIFrame();
+		switchOutDefaultIFrame();
 		return getTextValue(XPATH_POPUP_MESSAGE);
 	}
 

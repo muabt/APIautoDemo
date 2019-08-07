@@ -134,9 +134,9 @@ public class FilterDefs {
 		onFilterSteps.click_btn_apply_fuzzy_search();
 	}
 
-	@Then("^I should see empty search keyword error message$")
-	public void i_should_see_empty_search_keyword_error_message() throws Throwable {
-		onFilterSteps.verify_warning_popup_display("Unable to search the empty string");
+	@Then("^I should see the popup with error message \"([^\"]*)\"$")
+	public void i_should_see_the_popup_with_error_message_something(String content) throws Throwable {
+		onFilterSteps.verify_warning_popup_display(content);
 	}
 
 	/** TODO: Thao needs update handle split white space */
