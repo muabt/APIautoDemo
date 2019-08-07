@@ -29,14 +29,15 @@ Feature: Filter with all types
       | Record contains: | Fields        |
       | Joanne Light     | Email, Person |
 
-  #Scenario: Filter by fuzzy search
-  #Given I access dataspace "FastTrack>[03] Parties data>Company employees"
-  #And I access dataset "Company employees"
-  #And I access table "Employees"
-  #When I select filter by fuzzy search with keyword and field below
-  #| Record contains: | Fields        |
-  #|                  | Email, Person |
-  #Then I should see empty search keyword error message
+  Scenario: Filter by fuzzy search
+    Given I access dataspace "FastTrack>[03] Parties data>Company employees"
+    And I access dataset "Company employees"
+    And I access table "Employees"
+    When I select filter by fuzzy search with keyword and field below
+      | Record contains: | Fields        |
+      |                  | Email, Person |
+    Then I should see the popup with error message "Unable to search the empty string"
+
   Scenario: Filter by simple search
     Given I access dataspace "FastTrack>[03] Parties data>Company employees"
     And I access dataset "Company employees"
