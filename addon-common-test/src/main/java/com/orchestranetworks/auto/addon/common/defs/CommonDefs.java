@@ -48,24 +48,6 @@ public class CommonDefs {
 		onCommonSteps.click_on_menu(menu);
 	}
 
-	@And("^I access to administration service \"([^\"]*)\"$")
-	public void i_access_to_administration_service_something(String service) throws Throwable {
-		onCommonSteps.go_to_admin_service(service);
-	}
-	
-	 @And("^I access table \"([^\"]*)\" service$")
-	    public void i_access_table_something_service(String tblName) throws Throwable {
-		 onCommonSteps.select_table_of_administration(tblName);
-	 }
-	 
-    @And("^I delete the dataspace \"([^\"]*)\" with service \"([^\"]*)\"$")
-    public void i_delete_the_dataspace_something_with_service_something(String dataspaceName, String servicePath) throws Throwable {
-		onDatasetSteps.select_record_with_PK(dataspaceName);
-		onDatasetSteps.select_table_service(servicePath);
-		onCommonSteps.click_btn_submit();
-		onCommonSteps.confirm_popup();
-	}
-
 	// MuaBT add
 	@Given("^user change language to \"([^\"]*)\"$")
 	public void user_change_language_to_something(String languagename) throws Throwable {

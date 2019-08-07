@@ -5,9 +5,9 @@ Feature: Create new data model
 
   @Create-data-set
   Scenario Outline: Create new data set
-    Given user login to EBX succesfully
+    Given I login to EBX succesfully
     When user wants to create data set "StoreDataset" from an embedded data model
-    Given user accesses dataspace "FastTrack>[01] Reference data>Store"
+    Given I access dataspace "FastTrack>[01] Reference data>Store"
     And user creates new dataset with information as following with the "<KEY>"
       | KEY | Publication    | Unique name  | Owner | English label | French label |
       |  01 | StoreDataModel | StoreDataset |       | StoreDataset  |              |

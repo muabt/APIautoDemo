@@ -28,7 +28,7 @@ public class DatasetPage extends WebPageObject {
 	private static final String XPATH_NO_RECORDS_FOUND = "//div[contains(@class,'tvMessageEmpty') and .='No records found.']";
 	private static final String XPATH_NAVIGATION_PANEL = "//div[@class='_ebx-navigation-menu-selector_pane']";
 	public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
-	public static final String XPATH_CHECKBOX_RECORD = "//div[@id='ebx_WorkspaceContent']//tr[td[text()='%1$s'] or td/div[text()='%1$s']]//input[@type='checkbox']";
+	public static final String XPATH_CHECKBOX_RECORD = "//div[@id='ebx_WorkspaceContent']//tr[(td[%1$s]) or (td/div[%1$s])]//input[@type='checkbox']";
 	private static final String XPATH_DATASET_NAME = "//h2[contains(@class,'menu-selector-is-sub-title')]//span[@class='_ebx-documentation-label']";
 	private static final String XPATH_EXPAND_BUTTON = "//label[contains(.,'%s')]//button[@title='expand']";
 	private static final String XPATH_DATETIME = "//label[text()='%s']/ancestor::tr//span//input[contains(@name,'%s')]";
@@ -51,6 +51,8 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void click_btn_change_dataspace() {
+		switchOutDefaultIFrame();
+
 		if (isElementExistNow(xPathBtn(BTN_CHANGE_DATASPACE))) {
 			clickBtn(BTN_CHANGE_DATASPACE);
 			waitForPresenceOfElement(XPATH_NAVIGATION_PANEL);
@@ -69,6 +71,7 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void click_btn_change_dataset() {
+		// switchOutDefaultIFrame();
 		boolean isPresent = findAllElement(XPATH_NAVIGATION_PANEL).size() > 0;
 		if (!isPresent) {
 			clickBtn(BTN_SELECT_DATASET);
@@ -202,7 +205,6 @@ public class DatasetPage extends WebPageObject {
 
 	public void click_btn_save_and_close() {
 		clickBtn(Constants.BTN_SAVE_AND_CLOSE);
-
 	}
 
 	public String get_text_cell(String label) {
@@ -225,6 +227,7 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void click_btn_action_dataset() {
+		switchOutDefaultIFrame();
 		clickBtn(Constants.BTN_ACTIONS);
 	}
 
@@ -260,15 +263,17 @@ public class DatasetPage extends WebPageObject {
 	public void select_record_with_PK(String recordPK) {
 		switchToLastIFrame();
 		waitForPresenceOfElement(XPATH_TABLE);
-		clickByJS(XFormat.of(XPATH_CHECKBOX_RECORD, recordPK));
+		clickByJS(XFormat.of(XPATH_CHECKBOX_RECORD, sSpecialTextPredicates(recordPK)));
 
 	}
 
 	public void select_record_with_PK(String[] primaryKey) {
-		String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[td[.='%s']]";
+		String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[td[%s]]";
+		primaryKey[0] = sSpecialTextPredicates(primaryKey[0]);
 		if (primaryKey.length >= 2) {
 			for (int i = 1; i < primaryKey.length; i++) {
-				xPathRow += " and td[text()='%s']";
+				primaryKey[i] = sSpecialTextPredicates(primaryKey[i]);
+				xPathRow += " and td[%s]";
 			}
 			xPathRow += "]";
 		}
@@ -315,6 +320,7 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void click_btn_create_child_dataset(String parentDataset) {
+
 		clickBtn("//li[@data-key='" + parentDataset + "']", "Create a child dataset");
 
 	}

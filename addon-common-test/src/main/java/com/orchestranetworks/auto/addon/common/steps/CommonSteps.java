@@ -81,12 +81,6 @@ public class CommonSteps {
 		onCommonPage.click_btn_apply();
 	}
 
-	@Step
-	public void go_to_admin_service(String service) {
-		onCommonPage.select_an_admin_feature();
-		onCommonPage.go_to_admin_service(service);
-	}
-	
 	public void confirm_popup() {
 		onCommonPage.confirmPopupOK();
 	}
@@ -95,7 +89,5 @@ public class CommonSteps {
 		onCommonPage.click_btn_submit();
 	}
 
-	public void select_table_of_administration(String tblName) {
-		onCommonPage.click_on_table_service_of_administration(tblName);
-	}
+	
 }

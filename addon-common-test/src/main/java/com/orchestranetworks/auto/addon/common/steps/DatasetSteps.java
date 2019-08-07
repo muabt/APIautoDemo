@@ -138,7 +138,11 @@ public class DatasetSteps {
 	@Step
 	public void click_btn_save_and_close() {
 		onDatasetPage.click_btn_save_and_close();
-
+	}
+	
+	
+	public void click_btn_close() {
+		onDatasetPage.click_btn_close();
 	}
 
 	@Step

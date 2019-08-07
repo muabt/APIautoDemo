@@ -19,8 +19,6 @@ public class CommonPage extends WebPageObject {
 	private static final String XPATH_SECTION_TREE_REDUCED = "_ebx-tree_section _ebx-tree_section_is-reduced";
 	private static final String XPATH_MENU_ICON_PERSPECTIVE = "//div[@class='_ebx-custom-perspective-navigation_menu_icon']";
 	private static final String NAVIGATION_ITEM = "//span[%s]";
-	private static final String XPATH_SELECTOR_PANEL = "//div[@class='yui-panel-container shadow']";
-	private static final String XPATH_TABLE = "//table[@class='ebx_tvFixed']";
 
 	private static final String TITLE_MENU_TITLE_DATASET = "Data";
 	private static final String TITLE_MENU_TITLE_DATASPACE = "Dataspaces";
@@ -140,9 +138,9 @@ public class CommonPage extends WebPageObject {
 		boolean isPresent = findAllElement(XPATH_SECTION_TREE_REDUCED).size() > 0;
 		if (isPresent) {
 			clickOnElement(XPATH_MENU_ICON_PERSPECTIVE);
-			clickOnElement(XFormat.of(NAVIGATION_ITEM, item));
+			clickOnElement(XFormat.of(NAVIGATION_ITEM, sSpecialTextPredicates(item)));
 		} else {
-			clickOnElement(XFormat.of(NAVIGATION_ITEM, item));
+			clickOnElement(XFormat.of(NAVIGATION_ITEM, sSpecialTextPredicates(item)));
 		}
 	}
 
@@ -188,28 +186,5 @@ public class CommonPage extends WebPageObject {
 	public void selectNavigationMenuItem(String item) {
 		item = SessionData.getValueFromSession(item);
 		clickOnElement(XFormat.of(NAVIGATION_ITEM, sSpecialTextPredicates(item)));
-	}
-
-	public void remove_div_on_administration_workspace() {
-		switchToIFrame(Constants.IFRAME_LEGACY);
-		boolean isPresent = findAllElement(XPATH_SELECTOR_PANEL).size() > 0;
-		if (isPresent) {
-			((JavascriptExecutor) getDriver()).executeScript("arguments[0].style.visibility='hidden';",
-					findBy(XPATH_SELECTOR_PANEL));
-			((JavascriptExecutor) getDriver()).executeScript("arguments[0].style.visibility='hidden';",
-					findBy("//div[@id='ebx_SelectorPanel_mask']"));
-			waitForInvisibilityOfElement(XPATH_SELECTOR_PANEL);
-		}
-		waitAbit(1000);
-	}
-	
-	public void click_on_table_service_of_administration(String tableName) {
-		clickOnElement(XFormat.of(NAVIGATION_ITEM, sSpecialTextPredicates(tableName)));
-		waitForPresenceOfElement(XPATH_TABLE);
-	}
-
-	public void select_an_admin_feature() {
-		remove_div_on_administration_workspace();
-		clickBtn(Constants.BTN_SELECT_ADMIN_FEATURE);
 	}
 }

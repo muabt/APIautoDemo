@@ -51,7 +51,7 @@ public class DatasetDefs {
 				}
 			}
 		}
-		onDatasetSteps.click_btn_save_and_close();
+		onDatasetSteps.click_btn_save_and_close();;
 	}
 
 	@Then("^I create a new record with credentials and PK is \"([^\"]*)\"$")
@@ -163,7 +163,6 @@ public class DatasetDefs {
 				onDatasetSteps.click_btn_create();
 			}
 		}
-
 	}
 
 	@Then("^the table \"([^\"]*)\" should be displayed as bellow with  the \"([^\"]*)\"$")
@@ -206,13 +205,13 @@ public class DatasetDefs {
 			DataTable dt) throws Throwable {
 		List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
 		onDatasetSteps.click_btn_change_dataset();
-		onDatasetSteps.click_btn_create_child_dataset(parentDataset);
 		Map<String, String> row = dataTable.get(0);
 		String uniqueName = row.get("Unique name");
 		String owner = row.get("Owner");
 		String label = row.get("Label");
 
 		if (!uniqueName.isEmpty()) {
+			onDatasetSteps.click_btn_create_child_dataset(parentDataset);
 			onDatasetSteps.enter_dataset_name(uniqueName);
 		} else {
 			onDatasetSteps.create_child_dataset(parentDataset);
@@ -225,7 +224,7 @@ public class DatasetDefs {
 			onDatasetSteps.enter_english_label(label);
 		}
 		onDatasetSteps.click_btn_create();
-
+		onDatasetSteps.click_btn_close();
 	}
 
 	@And("^I access table \"([^\"]*)\"$")
@@ -239,18 +238,17 @@ public class DatasetDefs {
 		onDatasetSteps.select_table_service(service);
 	}
 
-	@And("^I want to delete dataset \"([^\"]*)\"$")
-	public void user_wants_to_delete_dataset_something(String service) throws Throwable {
+	@And("^I want to delete dataset$")
+	public void user_wants_to_delete_dataset_something() throws Throwable {
 		onDatasetSteps.click_btn_action_dataset();
 		onDatasetSteps.select_dataset_service("Delete");
 		onDatasetSteps.confirmation_OK();
 	}
-
-	@When("^I want to duplicate a dataset from dataset \"([^\"]*)\"$")
-	public void i_want_to_duplicate_a_dataset_from_dataset_something(String sourceDataset, DataTable dt)
+	
+	@When("^I want to duplicate a dataset from dataset followings$")
+	public void i_want_to_duplicate_a_dataset_from_dataset_followings(DataTable dt)
 			throws Throwable {
 
-		onDatasetSteps.go_to_data_set(sourceDataset);
 		onDatasetSteps.select_dataset_service("Actions>Duplicate");
 
 		List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
@@ -271,6 +269,7 @@ public class DatasetDefs {
 			onDatasetSteps.enter_english_label(label);
 		}
 		onDatasetSteps.click_btn_duplicate();
+		onDatasetSteps.confirmation_OK();
 	}
 
 	@Then("^I should see the total search results \"([^\"]*)\"$")

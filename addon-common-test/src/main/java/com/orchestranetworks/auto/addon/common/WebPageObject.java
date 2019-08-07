@@ -265,8 +265,8 @@ public class WebPageObject extends PageObject {
 	}
 
 	/**
-	 * @author hue Wait until attribule of element to be a specific value,
-	 *         timeout 30s
+	 * @author hue Wait until attribule of element to be a specific value, timeout
+	 *         30s
 	 * @param xPath
 	 */
 	public void waitForAttributeToBe(String xPath, String attribute, String value) {
@@ -466,9 +466,10 @@ public class WebPageObject extends PageObject {
 			for (int i = 1; i < numText; i++) {
 				resultsPattern += " and contains(.,'" + tokens[i] + "')";
 			}
-			return resultsPattern;
+			return resultsPattern + "and string-length(normalize-space(.=" + givenText.length() + "))";
 		} else {
-			return "contains(.,'" + givenText + "')";
+			return "contains(.,'" + givenText + "') and string-length(normalize-space(.="
+					+ givenText.length() + "))";
 		}
 	}
 
