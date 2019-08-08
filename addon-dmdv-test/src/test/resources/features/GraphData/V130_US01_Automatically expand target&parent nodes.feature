@@ -1,5 +1,5 @@
 #Author: tbui@tibco.com
-@DMDV130-GraphData
+@DMDV130
 Feature: Test graph data with configuration
 
   Background: 

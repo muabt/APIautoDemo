@@ -1,5 +1,5 @@
 #Author: tbui@tibco.com
-@DMDV100-GraphModel
+@DMDV100
 Feature: Test graph data with configuration
  
   Background: 
@@ -242,7 +242,9 @@ Scenario: GenM_65 - Check Generated successfully with model Include Fields, Grou
     Then the graph should be displayed
     Then the graph model should contains following tables and groups
       | TableA |  |
+      | TableA |  |
     Then the graph model should contains following fields
+      | id:String | TableA |
       | id:String | TableA |
     Then the graph model should contains following links
       | TableA | TableA | aa |  | 0..n |
@@ -258,8 +260,16 @@ Scenario: GenM_65 - Check Generated successfully with model Include Fields, Grou
       | TableC |  |
       | TableD |  |
       | TableE |  |
+      | TableB |  |
+      | TableC |  |
+      | TableD |  |
+      | TableE |  |
     Then the graph model should contains following fields
       | id:String | TableA |
+      | id:String | TableB |
+      | id:String | TableC |
+      | id:String | TableD |
+      | id:String | TableE |
       | id:String | TableB |
       | id:String | TableC |
       | id:String | TableD |

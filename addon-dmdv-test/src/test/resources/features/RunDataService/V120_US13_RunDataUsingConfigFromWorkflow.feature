@@ -1,5 +1,5 @@
 #Author: tbui@tibco.com
-@DMDV120-US13
+@DMDV120
 Feature: US13 Ability to call the graph services from workflow
 
   Background: 
@@ -185,7 +185,7 @@ Feature: US13 Ability to call the graph services from workflow
       | A1 | LEFT,RIGHT,TOP,BOTTOM |  |
       | B1 |                       |  |
     Then the label of link label should be display as following
-      | 1 | 0 |  |
+      | 1 | 0 | Link from Table A to Table B |
     When user collapse source on node "0"
     Then the label of all nodes is displayed as following
       | A1 | LEFT,RIGHT,TOP,BOTTOM |  |
@@ -227,7 +227,7 @@ Feature: US13 Ability to call the graph services from workflow
       | MWorkflow24  |
 
   #***************************************************
-  Scenario Outline: Check that label node with Default label and Localize label.
+  Scenario Outline: US13-89- Check that label node with Default label and Localize label.
     Given user accesses Data workflows menu
     Given user accesses Workflow launchers
     And user lunch workflow model "<workflowname>"
@@ -240,7 +240,7 @@ Feature: US13 Ability to call the graph services from workflow
       | configuration-name | label | workflowname |
       | US13-89            | A1    | MWorkflow24  |
    #***************************************************   
-        Scenario Outline: Check that label node with Default label and Localize label.
+        Scenario Outline: US13-90 - Check that label node with Default label and Localize label.
     Given user accesses Data workflows menu
     Given user accesses Workflow launchers
     And user lunch workflow model "<workflowname>"
@@ -254,3 +254,5 @@ Feature: US13 Ability to call the graph services from workflow
     Examples: 
       | configuration-name | label                        | workflowname |  |
       | US13-90            | Link from Table A to Table B | MWorkflow24  |  |
+
+      

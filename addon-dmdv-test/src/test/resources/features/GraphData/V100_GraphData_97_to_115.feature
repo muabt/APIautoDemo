@@ -1,4 +1,4 @@
-@DMDV100-GraphData
+@DMDV100
 Feature: Test graph data with configuration
   Background: 
     Given I login to EBX succesfully

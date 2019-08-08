@@ -1,4 +1,4 @@
-@Adaption
+@Fastrack
 
 Feature: Generate data model graph
   As user

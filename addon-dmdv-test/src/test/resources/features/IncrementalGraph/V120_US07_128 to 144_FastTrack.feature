@@ -1,4 +1,4 @@
-@DMDV120-UAT
+@Fastrack
 Feature: US07-Provide service for incremental tree
 
   Background: 

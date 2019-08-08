@@ -1,5 +1,5 @@
 #Author: tbui@tibco.com
-@DMDV120-US13
+@DMDV120
 Feature: US13 Ability to call the graph services from a perspective
 
   Background: 
@@ -37,7 +37,7 @@ Feature: US13 Ability to call the graph services from a perspective
       | M_DataGraph     | MValue14   |
 
   #*************************************************
-  Scenario Outline: US13(10,11,12,16,28) Check that show error message with abnormal cases when running service on Perspective
+  Scenario Outline: US13(10,11,16,28) Check that show error message with abnormal cases when running service on Perspective
     Given user accesses select perspective menu
     Given user accesses perspective "<perspectivename>"
     And user select action "<actionname>"
@@ -49,8 +49,7 @@ Feature: US13 Ability to call the graph services from a perspective
       | M_DataGraph     | MValue2    | An error occured while displaying MValue2. Please contact your administrator.  |
       | M_DataGraph     | MValue7    | An error occured while displaying MValue7. Please contact your administrator.  |
       | M_DataGraph     | MValue19   | An error occured while displaying MValue19. Please contact your administrator. |
-      | M_DataGraph     | MValue3    | Unrecognized path: ./d.                                                        |
-
+      
   # ***********************************
   Scenario Outline: US13(13,24,31) Check that show list graph configuration screen when running service on Perspective.
     Given user accesses select perspective menu
@@ -261,3 +260,5 @@ Feature: US13 Ability to call the graph services from a perspective
     Examples: 
       | perspectivename | actionname |
       | M_DataGraph_2   | MValue25   |
+
+      

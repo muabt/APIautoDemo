@@ -3456,50 +3456,49 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
     When user expands on node "0"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
-      | 1 | C1 | PLUS_SIGN  |
-      | 2 | B1 | PLUS_SIGN  |
+      | 2 | C1 | PLUS_SIGN  |
+      | 1 | B1 | PLUS_SIGN  |
       | 0 | A1 | MINUS_SIGN |
     Then the graph should contains following links
       #| Start Node | End Node |
       | 0 | 2 |
-      | 1 | 0 |
-      | 0 | 1 |
-    When user expands on node "2"
-    Then the graph should contains following nodes
-      #| Key | Label | Button Icon |
-      | 1 | C1 |            |
-      | 2 | B1 | MINUS_SIGN |
-      | 0 | A1 | MINUS_SIGN |
-    Then the graph should contains following links
-      #| Start Node | End Node |
-      | 0 | 2 |
-      | 1 | 0 |
-      | 0 | 1 |
-      | 2 | 1 |
-    When user collapses on node "2"
-    Then the graph should contains following nodes
-      #| Key | Label | Button Icon |
-      | 1 | C1 | PLUS_SIGN  |
-      | 2 | B1 | PLUS_SIGN  |
-      | 0 | A1 | MINUS_SIGN |
-    Then the graph should contains following links
-      #| Start Node | End Node |
-      | 0 | 2 |
-      | 1 | 0 |
+      | 2 | 0 |
       | 0 | 1 |
     When user expands on node "1"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
-      | 1 | C1 | MINUS_SIGN |
-      | 2 | B1 |            |
+      | 2 | C1 |            |
+      | 1 | B1 | MINUS_SIGN |
       | 0 | A1 | MINUS_SIGN |
     Then the graph should contains following links
       #| Start Node | End Node |
       | 0 | 2 |
-      | 1 | 0 |
+      | 2 | 0 |
       | 0 | 1 |
-      | 2 | 1 |
-
+      | 1 | 2 |
+    When user collapses on node "1"
+    Then the graph should contains following nodes
+      #| Key | Label | Button Icon |
+      | 2 | C1 | PLUS_SIGN  |
+      | 1 | B1 | PLUS_SIGN  |
+      | 0 | A1 | MINUS_SIGN |
+    Then the graph should contains following links
+      #| Start Node | End Node |
+      | 0 | 2 |
+      | 2 | 0 |
+      | 0 | 1 |
+    When user expands on node "2"
+    Then the graph should contains following nodes
+      #| Key | Label | Button Icon |
+      | 2 | C1 | MINUS_SIGN |
+      | 1 | B1 |            |
+      | 0 | A1 | MINUS_SIGN |
+    Then the graph should contains following links
+      #| Start Node | End Node |
+      | 0 | 2 |
+      | 2 | 0 |
+      | 0 | 1 |
+      | 1 | 2 |
   #*******************************************
   Scenario: US07-89 Check expand & collapse node for a starting node when it have many incoming/ outgoing node (n level) on another table by a FK
     Given I access dataspace "Master Data - Reference>DMDV_v1.2.0"
@@ -3513,26 +3512,26 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
     When user expands on node "0"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
-      | 1 | C1 | PLUS_SIGN  |
-      | 2 | B1 | PLUS_SIGN  |
+      | 2 | C1 | PLUS_SIGN  |
+      | 1 | B1 | PLUS_SIGN  |
       | 0 | A1 | MINUS_SIGN |
     Then the graph should contains following links
       #| Start Node | End Node |
       | 0 | 2 |
-      | 1 | 0 |
+      | 2 | 0 |
       | 0 | 1 |
-    When user expands on node "2"
+    When user expands on node "1"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
-      | 1 | C1 |            |
-      | 2 | B1 | MINUS_SIGN |
+      | 2 | C1 |            |
+      | 1 | B1 | MINUS_SIGN |
       | 0 | A1 | MINUS_SIGN |
     Then the graph should contains following links
       #| Start Node | End Node |
       | 0 | 2 |
-      | 1 | 0 |
+      | 2 | 0 |
       | 0 | 1 |
-      | 2 | 1 |
+      | 1 | 2 |
     When user collapses on node "0"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
@@ -3540,15 +3539,15 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
     When user expands on node "0"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
-      | 1 | C1 |            |
-      | 2 | B1 | MINUS_SIGN |
+      | 2 | C1 |            |
+      | 1 | B1 | MINUS_SIGN |
       | 0 | A1 | MINUS_SIGN |
     Then the graph should contains following links
       #| Start Node | End Node |
-      | 0 | 2 |
-      | 1 | 0 |
+      | 1 | 2 |
+      | 2 | 0 |
       | 0 | 1 |
-      | 2 | 1 |
+      | 0 | 2 |
 
   #*************************************
   Scenario: US07-90 Check expand & collapse node for a starting node when it have many incoming& outgoing node (n level) on another table by a FK
@@ -3669,12 +3668,12 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | B1 | MINUS_SIGN |
-      | 1 | C1 |            |
-      | 2 | A1 |            |
+      | 2 | C1 |            |
+      | 1 | A1 |            |
       | 3 | D1 | PLUS_SIGN  |
     Then the graph should contains following links
       #| Start Node | End Node |
-      | 0 | 2 |
+      | 0 | 1 |
       | 1 | 0 |
       | 0 | 3 |
       | 2 | 0 |
@@ -3682,13 +3681,13 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | B1 | MINUS_SIGN |
-      | 1 | C1 |            |
-      | 2 | A1 |            |
+      | 2 | C1 |            |
+      | 1 | A1 |            |
       | 3 | D1 | MINUS_SIGN |
       | 4 | X1 |            |
     Then the graph should contains following links
       #| Start Node | End Node |
-      | 0 | 2 |
+      | 0 | 1 |
       | 1 | 0 |
       | 0 | 3 |
       | 2 | 0 |
@@ -3978,21 +3977,21 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | A1 | MINUS_SIGN |
-      | 1 | F1 | PLUS_SIGN  |
+      | 3 | F1 | PLUS_SIGN  |
       | 2 | C1 | PLUS_SIGN  |
-      | 3 | B1 | PLUS_SIGN  |
+      | 1 | B1 | PLUS_SIGN  |
     Then the graph should contains following links
       #| Start Node | End Node |
       | 0 | 1 |
       | 0 | 2 |
       | 0 | 3 |
-    When user expands on node "3"
+    When user expands on node "1"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | A1 | MINUS_SIGN |
-      | 1 | F1 | PLUS_SIGN  |
+      | 3 | F1 | PLUS_SIGN  |
       | 2 | C1 | PLUS_SIGN  |
-      | 3 | B1 | MINUS_SIGN |
+      | 1 | B1 | MINUS_SIGN |
       | 4 | D1 | PLUS_SIGN  |
       | 5 | E1 | PLUS_SIGN  |
     Then the graph should contains following links
@@ -4000,17 +3999,17 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
       | 0 | 1 |
       | 0 | 2 |
       | 0 | 3 |
-      | 2 | 3 |
-      | 3 | 4 |
-      | 3 | 1 |
-      | 3 | 5 |
+      | 1 | 4 |
+      | 2 | 1 |
+      | 1 | 5 |
+      | 1 | 3 |
     When user expands on node "2"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | A1 | MINUS_SIGN |
-      | 1 | F1 | PLUS_SIGN  |
+      | 3 | F1 | PLUS_SIGN  |
       | 2 | C1 | MINUS_SIGN |
-      | 3 | B1 | MINUS_SIGN |
+      | 1 | B1 | MINUS_SIGN |
       | 4 | D1 | PLUS_SIGN  |
       | 5 | E1 | PLUS_SIGN  |
     Then the graph should contains following links
@@ -4018,18 +4017,18 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
       | 0 | 1 |
       | 0 | 2 |
       | 0 | 3 |
-      | 2 | 3 |
-      | 3 | 4 |
-      | 3 | 1 |
-      | 3 | 5 |
+      | 1 | 4 |
       | 2 | 1 |
+      | 1 | 5 |
+      | 1 | 3 |
+      | 2 | 3 |
     When user expands on node "4"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | A1 | MINUS_SIGN |
-      | 1 | F1 | PLUS_SIGN  |
+      | 3 | F1 | PLUS_SIGN  |
       | 2 | C1 | MINUS_SIGN |
-      | 3 | B1 | MINUS_SIGN |
+      | 1 | B1 | MINUS_SIGN |
       | 4 | D1 | MINUS_SIGN |
       | 5 | E1 | PLUS_SIGN  |
     Then the graph should contains following links
@@ -4037,20 +4036,20 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
       | 0 | 1 |
       | 0 | 2 |
       | 0 | 3 |
+      | 1 | 4 |
+      | 2 | 1 |
+      | 1 | 5 |
+      | 1 | 3 |
       | 2 | 3 |
       | 3 | 4 |
-      | 3 | 1 |
-      | 3 | 5 |
-      | 2 | 1 |
-      | 1 | 4 |
       | 4 | 5 |
     When user expands on node "5"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | A1 | MINUS_SIGN |
-      | 1 | F1 |            |
+      | 3 | F1 |            |
       | 2 | C1 | MINUS_SIGN |
-      | 3 | B1 | MINUS_SIGN |
+      | 1 | B1 | MINUS_SIGN |
       | 4 | D1 | MINUS_SIGN |
       | 5 | E1 | MINUS_SIGN |
     Then the graph should contains following links
@@ -4058,14 +4057,14 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
       | 0 | 1 |
       | 0 | 2 |
       | 0 | 3 |
+      | 1 | 4 |
+      | 2 | 1 |
+      | 1 | 5 |
+      | 1 | 3 |
       | 2 | 3 |
       | 3 | 4 |
-      | 3 | 1 |
-      | 3 | 5 |
-      | 2 | 1 |
-      | 1 | 4 |
       | 4 | 5 |
-      | 1 | 5 |
+      | 3 | 5 |
     When user collapses on node "0"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
@@ -4074,44 +4073,45 @@ Feature: US07-Provide service for incremental tree (another table (Same dataset)
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | A1 | MINUS_SIGN |
-      | 1 | F1 |            |
+      | 3 | F1 |            |
       | 2 | C1 | MINUS_SIGN |
-      | 3 | B1 | MINUS_SIGN |
+      | 1 | B1 | MINUS_SIGN |
       | 4 | D1 | MINUS_SIGN |
       | 5 | E1 | MINUS_SIGN |
     Then the graph should contains following links
       #| Start Node | End Node |
       | 0 | 1 |
-      | 0 | 2 |
-      | 0 | 3 |
-      | 2 | 3 |
-      | 3 | 4 |
-      | 3 | 1 |
+      | 1 | 4 |
       | 3 | 5 |
       | 2 | 1 |
-      | 1 | 4 |
-      | 4 | 5 |
+      | 0 | 2 |
+      | 0 | 3 |
+      | 3 | 4 |
       | 1 | 5 |
+      | 1 | 3 |
+      | 4 | 5 |
+      | 2 | 3 |
     When user collapses on node "4"
     Then the graph should contains following nodes
       #| Key | Label | Button Icon |
       | 0 | A1 | MINUS_SIGN |
-      | 1 | F1 | PLUS_SIGN  |
+      | 3 | F1 | PLUS_SIGN  |
       | 2 | C1 | MINUS_SIGN |
-      | 3 | B1 | MINUS_SIGN |
+      | 1 | B1 | MINUS_SIGN |
       | 4 | D1 | PLUS_SIGN  |
       | 5 | E1 | PLUS_SIGN  |
     Then the graph should contains following links
       #| Start Node | End Node |
       | 0 | 1 |
-      | 0 | 2 |
-      | 0 | 3 |
-      | 2 | 3 |
-      | 3 | 4 |
-      | 3 | 1 |
+      | 1 | 4 |
       | 3 | 5 |
       | 2 | 1 |
+      | 0 | 2 |
+      | 0 | 3 |
       | 1 | 5 |
+      | 1 | 3 |
+      | 2 | 3 |
+
 
   #****************************************************
   Scenario: US07-98 Check expand & collapse node for a starting node when it have many incoming& outgoing node (n level) on another table by many FKs
