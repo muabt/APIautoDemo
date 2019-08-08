@@ -266,18 +266,19 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void select_record_with_PK(String[] primaryKey) {
-		String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[td[%s]]";
+		String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[(td[%s])";
 		primaryKey[0] = sSpecialTextPredicates(primaryKey[0]);
 		if (primaryKey.length >= 2) {
 			for (int i = 1; i < primaryKey.length; i++) {
 				primaryKey[i] = sSpecialTextPredicates(primaryKey[i]);
-				xPathRow += " and td[%s]";
+				xPathRow += " and (td[%s])";
 			}
 			xPathRow += "]";
 		}
 
 		xPathRow = XFormat.of(xPathRow, primaryKey);
 		switchToLastIFrame();
+		System.out.println(xPathRow + "//input[@type='checkbox']");
 		clickByJS(xPathRow + "//input[@type='checkbox']");
 	}
 

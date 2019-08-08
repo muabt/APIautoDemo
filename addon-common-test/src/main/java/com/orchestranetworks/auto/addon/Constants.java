@@ -4,9 +4,12 @@ public final class Constants {
 
 	public static final String CHILD_DATASET = "Child Dataset";
 	public static final String IFRAME_LEGACY = "ebx-legacy-component";
+	public static final String IFRAME_INTERNAL_POPUP = "ebx_InternalPopup_frame";
 	public static final String TEXT_SEARCH = "Text search";
 	public static final String FUZZY_SEARCH = "Fuzzy search";
 	public static final String VALIDATION_SEARCH = "Validation search";
+	public static final String ADVANCED_MODE = "Advanced mode";
+	public static final String ADD_LOGICAL_BLOCK = "Add a logical block";
 	public static final String JS_HIDDEN = "arguments[0].style.visibility='hidden';";
 	public static final String JS_SESSION_STORAGE_CLEAR = "window.sessionStorage.clear();";
 	public static final String JS_LOCAL_STORAGE_CLEAR = "window.localStorage.clear();";
@@ -21,6 +24,7 @@ public final class Constants {
 	public static final String BTN_CLOSE = "Close";
 	public static final String BTN_NEXT = "Next";
 	public static final String BTN_DELETE = "Delete";
+	public static final String BTN_ADD = "Add";
 	public static final String BTN_SELECT_ADMIN_FEATURE = "Select an administration feature";
 	public static final String LBL_UNIQUE_NAME = "Unique name";
 	public static final String LBL_LABEL = "Label";

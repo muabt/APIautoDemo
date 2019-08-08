@@ -53,7 +53,11 @@ public class FilterPage extends WebPageObject {
 	public void click_btn_apply_search() {
 		clickBtn(Constants.BTN_APPLY, 1);
 		waitForAllLoadingCompleted();
+	}
 
+	public void click_btn_add_block() {
+		clickBtn(Constants.BTN_ADD);
+		switchToIFrame(Constants.IFRAME_LEGACY);
 	}
 
 	public void click_btn_apply_text_search() {
@@ -68,7 +72,6 @@ public class FilterPage extends WebPageObject {
 
 	public void click_btn_apply_fuzzy_search() {
 		clickBtn(Constants.BTN_APPLY, 4);
-		waitAbit(5000);
 		waitForAllLoadingCompleted();
 	}
 
@@ -99,17 +102,17 @@ public class FilterPage extends WebPageObject {
 		waitElementToBePresent(xPathOper).waitUntilClickable().click();
 	}
 
-	public void input_ddl_then_enter(String xPathDDL,String value) {
+	public void input_ddl_then_enter(String xPathDDL, String value) {
 		WebElementFacade e = waitElementToBePresent(xPathDDL);
 		e.clear();
 		e.type(value);
 		waitABit(1000);
 		e.sendKeys(Keys.ENTER);
 	}
-	
+
 	private void select_ddl_add_criterion(String value) {
 		String xPathAddCri = "//option[.='Add a criterion']/parent::select";
-		String xPathValue ="//select/option[contains(.,'" + value + "')]";
+		String xPathValue = "//select/option[contains(.,'" + value + "')]";
 		clickOnElement(xPathAddCri);
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();
 		waitForAllLoadingCompleted();
@@ -155,13 +158,25 @@ public class FilterPage extends WebPageObject {
 	public void select_advanced_mode() {
 		String xPathParent = "//div[@id='ebx_FilterBlockList']";
 		clickBtn(xPathParent, Constants.BTN_ACTIONS);
-		clickOnElement(XFormat.of(NAVIGATION_ITEM, "Advanced mode"));
+		clickOnElement(XFormat.of(NAVIGATION_ITEM, Constants.ADVANCED_MODE));
 	}
 
-	
+	public void add_logical_block() {
+		String xPathParent = "//div[@id='ebx_FilterBlockList']";
+		clickBtn(xPathParent, Constants.BTN_ACTIONS);
+		clickOnElement(XFormat.of(NAVIGATION_ITEM, Constants.ADD_LOGICAL_BLOCK));
+		waitForAllLoadingCompleted();
+		switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+	}
+
+	public void select_logical_block_info(String logicalValue, String criteria) {
+		select_logical_search(logicalValue);
+		select_ddl_add_criterion(criteria);
+	}
+
 	public void select_logical_search(String value) {
 		String xPathLogical = "//option[.='All criteria match']/parent::select";
-		String xPathValue ="//select/option[contains(.,'" + value + "')]";
+		String xPathValue = "//select/option[contains(.,'" + value + "')]";
 
 		clickOnElement(xPathLogical);
 		waitElementToBePresent(xPathValue).waitUntilClickable().click();
