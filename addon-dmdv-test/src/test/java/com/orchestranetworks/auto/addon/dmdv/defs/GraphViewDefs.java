@@ -232,6 +232,7 @@ public class GraphViewDefs {
 	@And("^user views \"([^\"]*)\" of record has ID is \"([^\"]*)\"$")
 	public void user_views_something_of_record_has_id_is_something(String service, String recordID) throws Throwable {
 		onDatasetSteps.select_record_with_PK(recordID);
+		onDatasetSteps.click_btn_action_table();
 		onDatasetSteps.select_table_service(service);
 	}
 
