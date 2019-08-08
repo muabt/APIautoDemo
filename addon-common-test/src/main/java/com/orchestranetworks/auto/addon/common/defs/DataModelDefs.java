@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.common.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.common.steps.DataModelSteps;
 
 import cucumber.api.java.en.And;
@@ -15,12 +16,14 @@ public class DataModelDefs {
 	@Steps
 	DataModelSteps onDataModelSteps;
 	@Steps
-	DatasetDefs onDatasetDefs;
+	CommonSteps onCommonSteps;
 
 	@Given("^I access data model \"([^\"]*)\"$")
-		public void user_accesses_data_model(String path) throws Exception {
+	public void user_accesses_data_model(String path) throws Exception {
+		onCommonSteps.click_on_menu_data_models();
 		onDataModelSteps.select_data_model(path);
-		}
+	}
+
 	@When("^user want to create new Data Model has the name \"([^\"]*)\"$")
 	public void user_want_to_create_new_data_model_has_the_name_something(String dataModelName) {
 		onDataModelSteps.click_on_menu_data_models();
