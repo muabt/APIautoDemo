@@ -42,7 +42,7 @@ public class FilterSteps {
 
 	@Step
 	public void unselect_field_with_label(String searchType, String searchItem) {
-		onFilterPage.select_field_to_search(searchType, searchItem);
+		onFilterPage.unselect_field_to_search(searchType, searchItem);
 	}
 
 	@Step
@@ -85,7 +85,7 @@ public class FilterSteps {
 	public void click_btn_apply_search() {
 		onFilterPage.click_btn_apply_search();
 	}
-	
+
 	@Step
 	public void click_btn_add() {
 		onFilterPage.click_btn_add_block();

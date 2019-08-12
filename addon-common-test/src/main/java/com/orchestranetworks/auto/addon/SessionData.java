@@ -207,8 +207,8 @@ public class SessionData {
 			for (int col = 0; col < expectedHeader.size(); col++) {
 				String expectedCell = getDataTbVal(actualTb, row, col);
 				String actualCell = getDataTbVal(actualTb, row, col);
-				if (expectedCell.contains("- $")) {
-					expectedCell.replaceAll("- $", "").trim();
+				if (expectedCell.contains("- {")) {
+					expectedCell.replaceAll("- {", "").trim();
 				}
 				softAssertions.assertThat(expectedCell).isEqualTo(expectedCell);
 				if (!expectedCell.equals(actualCell)) {

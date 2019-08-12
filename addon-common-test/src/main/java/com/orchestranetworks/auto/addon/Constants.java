@@ -3,6 +3,7 @@ package com.orchestranetworks.auto.addon;
 public final class Constants {
 
 	public static final String CHILD_DATASET = "Child Dataset";
+	public static final String DATASPACE_IDENTIFIER = "Dataspace Identifier";
 	public static final String IFRAME_LEGACY = "ebx-legacy-component";
 	public static final String IFRAME_INTERNAL_POPUP = "ebx_InternalPopup_frame";
 	public static final String TEXT_SEARCH = "Text search";

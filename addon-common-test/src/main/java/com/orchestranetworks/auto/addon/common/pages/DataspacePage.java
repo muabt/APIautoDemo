@@ -10,6 +10,7 @@ public class DataspacePage extends WebPageObject {
 
 	private static final String BTN_CREATE_A_DATASPACE = "Create a dataspace";
 	private static final String XPATH_SERVICE = "//a[text()='%1$s']|//span[text()='%1$s']";
+	private static final String XPATH_DATASPACE_ID = "//tr[td[.='Identifier']]/td[@class='ebx_Input']";
 
 	public DataspacePage(WebDriver driver) {
 		super(driver);
@@ -52,6 +53,15 @@ public class DataspacePage extends WebPageObject {
 	public void click_dataspace_actions(String string) {
 		clickBtn(Constants.BTN_ACTIONS);
 
+	}
+
+	public void click_btn_create() {
+		clickBtn(Constants.BTN_CREATE);
+
+	}
+
+	public String get_dataspace_id() {
+		return getText(XPATH_DATASPACE_ID);
 	}
 
 }

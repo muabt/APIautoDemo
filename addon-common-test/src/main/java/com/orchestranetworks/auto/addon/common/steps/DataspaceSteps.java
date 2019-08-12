@@ -1,6 +1,7 @@
 package com.orchestranetworks.auto.addon.common.steps;
 
 import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.pages.DataspacePage;
 
 import net.thucydides.core.annotations.Step;
@@ -36,16 +37,16 @@ public class DataspaceSteps {
 	public void select_dataspace_service(String servicePath) {
 		onDataspacePage.select_dataspace_service(servicePath);
 	}
-	
-	@Step 
+
+	@Step
 	public void close_dataspace(String servicePath) {
 		onDataspacePage.close_dataspace(servicePath);
 	}
 
 	@Step
 	public void click_btn_create() {
-		onDataspacePage.clickBtn(Constants.BTN_CREATE);
-
+		onDataspacePage.click_btn_create();
+		SessionData.saveValueToSession(Constants.DATASPACE_IDENTIFIER, onDataspacePage.get_dataspace_id());
 	}
 
 	@Step
