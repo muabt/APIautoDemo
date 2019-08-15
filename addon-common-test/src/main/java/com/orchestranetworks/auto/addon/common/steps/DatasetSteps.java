@@ -31,8 +31,6 @@ public class DatasetSteps {
 		onDatasetPage.go_to_navigation(path);
 	}
 
-
-	
 	@Step
 	public void click_btn_action_dataset() {
 		onDatasetPage.click_btn_action_dataset();
@@ -87,7 +85,6 @@ public class DatasetSteps {
 		onDatasetPage.select_table_service(service);
 	}
 
-
 	@Step
 	public void click_on_table_name(String sTable) {
 		onDatasetPage.click_on_table(sTable);
@@ -139,8 +136,7 @@ public class DatasetSteps {
 	public void click_btn_save_and_close() {
 		onDatasetPage.click_btn_save_and_close();
 	}
-	
-	
+
 	public void click_btn_close() {
 		onDatasetPage.click_btn_close();
 	}

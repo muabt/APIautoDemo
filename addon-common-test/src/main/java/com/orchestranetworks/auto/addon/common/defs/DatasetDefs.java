@@ -196,8 +196,13 @@ public class DatasetDefs {
 
 	}
 
-	@When("^I select some records as following$")
-	public void user_selects_records_as_following(DataTable dt) throws Throwable {
+	@When("^I select some records with primary key as following$")
+	public void user_selects_records_as_following(List<List<String>> dt) throws Throwable {
+		for (int i = 1; i < dt.size(); i++) {
+			String[] col = dt.get(i).toArray(new String[0]);
+			onDatasetSteps.select_record_with_PK(col);
+		}
+
 	}
 
 	@When("^I create a child of dataset of \"([^\"]*)\" with credentials as following$")
@@ -244,10 +249,9 @@ public class DatasetDefs {
 		onDatasetSteps.select_dataset_service("Delete");
 		onDatasetSteps.confirmation_OK();
 	}
-	
+
 	@When("^I want to duplicate a dataset from dataset followings$")
-	public void i_want_to_duplicate_a_dataset_from_dataset_followings(DataTable dt)
-			throws Throwable {
+	public void i_want_to_duplicate_a_dataset_from_dataset_followings(DataTable dt) throws Throwable {
 
 		onDatasetSteps.select_dataset_service("Actions>Duplicate");
 

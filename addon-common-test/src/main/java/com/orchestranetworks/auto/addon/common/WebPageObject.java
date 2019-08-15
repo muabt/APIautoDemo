@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -21,6 +22,7 @@ import io.appium.java_client.functions.ExpectedCondition;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.webelements.Checkbox;
 
 public class WebPageObject extends PageObject {
 	@Managed(uniqueSession = true)
@@ -265,8 +267,8 @@ public class WebPageObject extends PageObject {
 	}
 
 	/**
-	 * @author hue Wait until attribule of element to be a specific value, timeout
-	 *         30s
+	 * @author hue Wait until attribule of element to be a specific value,
+	 *         timeout 30s
 	 * @param xPath
 	 */
 	public void waitForAttributeToBe(String xPath, String attribute, String value) {
@@ -468,8 +470,7 @@ public class WebPageObject extends PageObject {
 			}
 			return resultsPattern + "and string-length(normalize-space(.=" + givenText.length() + "))";
 		} else {
-			return "contains(.,'" + givenText + "') and string-length(normalize-space(.="
-					+ givenText.length() + "))";
+			return "contains(.,'" + givenText + "') and string-length(normalize-space(.=" + givenText.length() + "))";
 		}
 	}
 
@@ -495,7 +496,7 @@ public class WebPageObject extends PageObject {
 	public String xPathCheckbox(String parentXpath, String label, int index) {
 		String xPath = "(" + parentXpath + "//label[descendant-or-self::*[normalize-space(text())='" + label
 				+ "' or normalize-space(.)='" + label + "' or @value='" + label
-				+ "']][child::input[@type='checkbox']])[" + index + "]";
+				+ "']][child::input[@type='checkbox']])[" + index + "]/input";
 		return xPath;
 	}
 
@@ -504,7 +505,19 @@ public class WebPageObject extends PageObject {
 	}
 
 	public void checkCheckbox(String label) {
-		checkCheckbox("", label, 1);
+		Checkbox chbx = new Checkbox($(xPathCheckbox("", label, 1)));
+		if (!chbx.isChecked()) {
+			chbx.setChecked(true);
+		}
+		Assert.assertEquals(chbx.isChecked(), true);
+	}
+
+	public void uncheckCheckbox(String label) {
+		Checkbox chbx = new Checkbox($(xPathCheckbox("", label, 1)));
+		if (chbx.isChecked()) {
+			chbx.setChecked(false);
+		}
+		Assert.assertEquals(chbx.isChecked(), false);
 	}
 
 	/**

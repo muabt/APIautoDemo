@@ -273,12 +273,10 @@ public class DatasetPage extends WebPageObject {
 				primaryKey[i] = sSpecialTextPredicates(primaryKey[i]);
 				xPathRow += " and (td[%s])";
 			}
-			xPathRow += "]";
 		}
-
+		xPathRow += "]";
 		xPathRow = XFormat.of(xPathRow, primaryKey);
 		switchToLastIFrame();
-		System.out.println(xPathRow + "//input[@type='checkbox']");
 		clickByJS(xPathRow + "//input[@type='checkbox']");
 	}
 

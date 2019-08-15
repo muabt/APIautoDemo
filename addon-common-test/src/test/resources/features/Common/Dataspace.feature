@@ -1,4 +1,3 @@
-@STORE
 Feature: Create new data model
   As user
   I want to create new Store data set
@@ -12,7 +11,7 @@ Feature: Create new data model
     And I access dataspace "FastTrack>[03] Parties data>Company employees"
     And I create child Dataspace with information as following
       | Identifier | Owner              | English Label |
-      | Store      | John Smith (admin) | Store         |
+      |            | John Smith (admin) | Store         |
     Then I should see Dataspace with information as following
       | Identifier | Type      | Creation | Status | Owner              | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       | Store      | Dataspace |          | Open   | John Smith (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |

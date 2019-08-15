@@ -1,13 +1,10 @@
 package com.orchestranetworks.auto.addon.mame.pages;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 
-import com.orchestranetworks.auto.addon.LogWork;
-import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class ManualMergePages extends WebPageObject {
@@ -16,8 +13,11 @@ public class ManualMergePages extends WebPageObject {
 		super(driver);
 	}
 
+	private static final String XPATH_RCV_CELL = "(//record-view//div[@class='bottom']//tr[contains(@class,\"row\")][%r%]/td[contains(@class,'cell-container')]//span[@title])[%c%]";
+
 	public List<List<String>> get_actual_mergedtable() {
 		switchToIFrame("serviceIframe");
+		waitAbit(3000);
 		int numOfHeader = 0;
 		String xPathListHeader = "//record-view//div[@class='top ebx_tvHeaderContainer']//span[@class='ebx_RawLabel']";
 		String headerCellValue = "";
@@ -39,8 +39,8 @@ public class ManualMergePages extends WebPageObject {
 		for (int rowind = 1; rowind <= numOfRow; rowind++) {
 			List<String> row = new ArrayList<String>();
 			for (int colInd = 1; colInd <= numOfHeader; colInd++) {
-				String xPathCell = "(//record-view//div[@class='bottom']//tr[contains(@class,\"row\")][" + rowind
-						+ "]/td[contains(@class,'cell-container')]//span[@title])[" + colInd + "]";
+				String xPathCell = XPATH_RCV_CELL.replaceAll("%r%", String.valueOf(rowind)).replaceAll("%c%",
+						String.valueOf(colInd));
 				cellValue = getText(xPathCell);
 				row.add(cellValue);
 			}
@@ -79,45 +79,45 @@ public class ManualMergePages extends WebPageObject {
 	}
 
 	public void click_button_next() {
-		clickBtn("Next");
-
+		waitAbit(3000);
+		switchToIFrame("serviceIframe");
+		String xPath = "//button[@class='ebx_Button ebx_DefaultButton']";
+		clickOnElement(xPath);
 	}
 
 	public void click_button_merge() {
-		clickBtn("Merge");
-
+		String xPath = "//button[@class='ebx_Button ebx_DefaultButton mergeBtn']";
+		clickOnElement(xPath);
 	}
 
-	private boolean compareRecordViewTable(List<List<String>> expectedTb, List<List<String>> actualTb) {
-		List<String> expectedHeader = expectedTb.get(0);
-		List<String> actualHeader = expectedTb.get(0);
-		boolean diff = true;
+	public boolean is_cell_highlighted(int row, int col) {
+		String xPathCell = XPATH_RCV_CELL.replaceAll("%r%", String.valueOf(row)).replaceAll("%c%",
+				String.valueOf(col + 1));
+		xPathCell = xPathCell + "//ancestor::*[local-name()='td' or local-name()='th']";
+		String highlightedColor = "rgba(244, 244, 244, 1)";
+		String color = getElement(xPathCell).getCssValue("background-color");
+		return color.equals(highlightedColor) ? true : false;
+	}
 
-		if (expectedTb.isEmpty() || actualTb.isEmpty()) {
-			LogWork.error("Data Table Expected or Actual is empty. Nothing to compare.");
-		}
-		if (expectedTb.size() != actualTb.size()) {
-			LogWork.error("Data Table Expected or Actual is different in number of row");
-		}
-		if (expectedHeader.size() != actualHeader.size()) {
-			LogWork.error("Data Table Expected or Actual is different in number of row");
-		}
-		SessionData.addDataTable("EXPECTED_TBL", expectedTb, false);
-		SessionData.addDataTable("ACTUAL_TBL", actualTb, false);
-		LinkedHashMap<Integer, List<String>> expectedData = new LinkedHashMap<>();
-		LinkedHashMap<Integer, List<String>> actualData = new LinkedHashMap<>();
-		expectedData = SessionData.getDataTbRows("EXPECTED_TBL");
-		actualData = SessionData.getDataTbRows("ACTUAL_TBL");
-		for (int row : expectedData.keySet()) {
-			for (int col = 1; col <= expectedHeader.size(); col++) {
-				String expectedCell = SessionData.getDataTbVal("EXPECTED_TBL", row, col);
-				String actualCell = SessionData.getDataTbVal("ACTUAL_TBL", row, col);
-				if (expectedCell.contains("- %H%")) {
-					expectedCell = expectedCell.replaceAll("- %H%", "").trim();
-				}
-			}
-		}
-		return diff;
+	// public List<Map<String, String>> get_actual_record_metadata() {
+	// List<Map<String, String>> actualRecordMetadata = new
+	// ArrayList<Map<String, String>>();
+	// for (int i = 0; i < actualRecordMetadata.size(); i++) {
+	// Map<String, String> row = actualRecordMetadata.get(i);
+	// row.get("groupId");
+	//
+	// actualRecordMetadata.get(i).get("groupId");
+	// actualRecordMetadata.get(i).get("state");
+	// actualRecordMetadata.get(i).get("autoCreated");
+	// actualRecordMetadata.get(i).get("functionalId");
+	// }
+	// return actualRecordMetadata;
+	// }
+
+	public String get_value_table(int rowInd, String colName) {
+		int rowIndex = rowInd + 1;
+		int colIndex = getColumnIndexWithLabel(colName);
+		return getTextDataCell(rowIndex, colIndex);
 	}
 
 }

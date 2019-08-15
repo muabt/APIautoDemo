@@ -25,13 +25,17 @@ public class FilterPage extends WebPageObject {
 	public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
 
 	public void select_field_to_search(String searchType, String label) {
-		if (searchType.equals(Constants.TEXT_SEARCH) || searchType.equals(Constants.VALIDATION_SEARCH)) {
-			checkCheckbox(label);
-			waitAbit(500);
-		} else {
+		if (searchType.equals(Constants.FUZZY_SEARCH)) {
 			checkCheckbox("//form[@id='FILTER_4_filterForm']", label, 1);
 			waitAbit(500);
+		} else {
+			checkCheckbox(label);
+			waitAbit(500);
 		}
+	}
+
+	public void unselect_field_to_search(String searchType, String label) {
+		uncheckCheckbox(label);
 	}
 
 	public void click_btn_expand_with_label(String label) {

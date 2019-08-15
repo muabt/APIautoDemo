@@ -45,7 +45,7 @@ public class DataspaceDefs {
 	}
 
 	@And("^I close dataspace with service \"([^\"]*)\"$")
-    public void i_close_dataspace_with_service_something(String servicePath) throws Throwable {
+	public void i_close_dataspace_with_service_something(String servicePath) throws Throwable {
 		onDataspaceSteps.click_dataspace_actions();
 		onDataspaceSteps.close_dataspace(servicePath);
 	}
