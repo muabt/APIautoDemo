@@ -68,3 +68,5 @@ Feature: Run Metadatas service
     Then I should list tabs as following "<KEY>"
       | KEY | Tab name | Record                                                                                    | State  | Group             |
       |  01 | Main     | MAIN SWITCHBOARDs  and the label This record has been auto-created from a merge operation | Golden | MAIN SWITCHBOARDs |
+
+      
