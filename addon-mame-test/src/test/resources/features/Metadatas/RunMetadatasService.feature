@@ -9,7 +9,7 @@ Feature: Run Metadatas service
     Given I login to EBX succesfully
 
   Scenario Outline: SC-MTD013 Check the correctness of displayed data after launching the Metadata service
-                     SC-MTD007 Check the correctness of information which displays in Main tab when lauching metadata on a record which is Golden and auto-created is No
+                    SC-MTD007 Check the correctness of information which displays in Main tab when lauching metadata on a record which is Golden and auto-created is No
 
     When I access "Dataspaces" menu
     And I login to EBX succesfully
@@ -43,7 +43,7 @@ Feature: Run Metadatas service
     Then I should see detailed record as following "<KEY>"
       | KEY | Identifier | Parent    | Name      | Comment             |
       |  01 |          1 | Fast food | Fast food | There is no commemt |
-    And I want to see group of record
+    When I want to see group of record
     Then I should see manage group of table "Fast food"
     And I should see Duplicates table as following
       | State  | Identifier | Parent    | Name | Comment     | Text                 |
@@ -77,7 +77,6 @@ Feature: Run Metadatas service
       | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
-    Then The selected dataspace and its all datasets should be displayed on the left pannel
     And I access dataset "Store Item"
     And I access table as following "<KEY>"
       | KEY | Table  |
