@@ -22,7 +22,6 @@ Feature: Run Metadatas service
       | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
-    Then The selected dataspace and its all datasets should be displayed on the left pannel
     And I access dataset "Store Item"
     And I access table "Categories"
     When I select some records as following
@@ -173,7 +172,6 @@ Feature: Run Metadatas service
       | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
-    Then The selected dataspace and its all datasets should be displayed on the left pannel
     And I access dataset "Store Item"
     And I access table "Brands"
     When I double click a record as following
