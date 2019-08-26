@@ -10,9 +10,6 @@ Feature: Run Metadatas service
 
   Scenario Outline: SC-MTD013 Check the correctness of displayed data after launching the Metadata service
                     SC-MTD007 Check the correctness of information which displays in Main tab when lauching metadata on a record which is Golden and auto-created is No
-
-    When I access "Dataspaces" menu
-    And I login to EBX succesfully
     When I access "Dataspaces" menu
     And I access dataspace "Reference-child"
     And I create child Dataspace with information as following
@@ -77,6 +74,7 @@ Feature: Run Metadatas service
       | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
+   
     And I access dataset "Store Item"
     And I access table as following "<KEY>"
       | KEY | Table  |
