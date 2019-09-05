@@ -1,3 +1,4 @@
+@PRE-TESTING
 Feature: Perspective
   As user
   I want to access to perspective action

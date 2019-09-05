@@ -33,7 +33,7 @@ public class LoginPage extends WebPageObject {
 	}
 
 	public void click_btn_login() {
-		clickBtn("Log in");
+		clickBtn(Constants.BTN_LOGIN);
 		waitForAllLoadingCompleted();
 	}
 

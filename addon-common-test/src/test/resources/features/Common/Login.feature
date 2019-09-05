@@ -1,16 +1,14 @@
-@LOGIN
+@PRE-TESTING
 Feature: Login to system
   In order to using EBX system
   As a user
   I want to login to EBX system
 
-  @type1
   Scenario: Login with a username
     Given the user is on the EBX home page
     When user login to EBX with username "tracy" and password "onvn"
     Then user should be logged successfully
 
-  @type2-login
   Scenario Outline: Login with lot of input
     Given the user is on the EBX home page
     When user login to EBX with username is <user> and password is <pass>
@@ -21,7 +19,6 @@ Feature: Login to system
       | tracy | onvn | success |
       | lily  |  123 | fail    |
 
-  @type3
   Scenario Outline: Using datatable
     Given the user is on the EBX home page
     When user login to EBX with username and password as following with the "<KEY>"

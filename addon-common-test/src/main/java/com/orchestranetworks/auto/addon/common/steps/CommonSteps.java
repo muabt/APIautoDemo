@@ -1,12 +1,14 @@
 package com.orchestranetworks.auto.addon.common.steps;
 
 import com.orchestranetworks.auto.addon.common.pages.CommonPage;
+import com.orchestranetworks.auto.addon.common.pages.DatasetPage;
 
 import net.thucydides.core.annotations.Step;
 
 public class CommonSteps {
 
 	CommonPage onCommonPage;
+	DatasetPage onDatasetPage;
 
 	@Step
 	public void user_access_to_ebx_home_page() {
@@ -16,6 +18,8 @@ public class CommonSteps {
 
 	@Step
 	public void click_on_user_panel() {
+		onCommonPage.switchOutDefaultIFrame();
+		onDatasetPage.remove_choose_dataset_div();
 		onCommonPage.click_on_user_panel();
 
 	}

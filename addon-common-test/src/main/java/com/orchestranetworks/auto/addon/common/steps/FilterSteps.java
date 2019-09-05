@@ -1,7 +1,5 @@
 package com.orchestranetworks.auto.addon.common.steps;
 
-import org.junit.Assert;
-
 import com.orchestranetworks.auto.addon.common.pages.FilterPage;
 
 import net.thucydides.core.annotations.Step;
@@ -61,12 +59,6 @@ public class FilterSteps {
 	}
 
 	@Step
-	public void verify_warning_popup_display(String content) {
-		Assert.assertEquals("Verify popup displayed:", content, onFilterPage.get_text_popup_message());
-		onFilterPage.click_btn_close_popup();
-	}
-
-	@Step
 	public void click_btn_apply_text_search() {
 		onFilterPage.click_btn_apply_text_search();
 	}
@@ -110,5 +102,4 @@ public class FilterSteps {
 	public void select_logical_block_info(String logicalValue, String criteria) {
 		onFilterPage.select_logical_block_info(logicalValue, criteria);
 	}
-
 }

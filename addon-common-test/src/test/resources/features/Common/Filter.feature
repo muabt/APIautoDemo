@@ -1,8 +1,9 @@
+@PRE-TESTING
 Feature: Filter with all types
   I want to use Filter on EBX
 
   Background: 
-    Given I login to EBX succesfully
+    Given I login to EBX with user "tracy" and password "onvn" successfully
 
   Scenario: Filter by text search
     Given I access dataspace "FastTrack"
@@ -12,8 +13,8 @@ Feature: Filter with all types
       | Field contains: | In fields             |
       | Big Mac         | ID, Name, Description |
     Then I should see the total search results "1 - 6 of 6"
+    And I logout successfully
 
-  @ValidationSearch
   Scenario: Filter by validation search
     Given I access dataspace "FastTrack>[03] Parties data>Company employees"
     And I access dataset "Company employees"
@@ -22,7 +23,6 @@ Feature: Filter with all types
       | Message contains: | Severity         |
       | start with 'a'    | Errors, Warnings |
 
-  @FuzzySearch
   Scenario: Filter by fuzzy search
     Given I access dataspace "FastTrack>[03] Parties data>Company employees"
     And I access dataset "Company employees"
@@ -30,6 +30,7 @@ Feature: Filter with all types
     When I select filter by fuzzy search with keyword and field below
       | Record contains: | Fields        |
       | Joanne Light     | Email, Person |
+    Then I should see the total search results "1 - 1 of 1"
 
   Scenario: Filter by fuzzy search
     Given I access dataspace "FastTrack>[03] Parties data>Company employees"
@@ -40,7 +41,6 @@ Feature: Filter with all types
       |                  | Email, Person |
     Then I should see the popup with error message "Unable to search the empty string"
 
-  @SimpleSearch
   Scenario: Filter by simple search
     Given I access dataspace "FastTrack>[03] Parties data>Company employees"
     And I access dataset "Company employees"
@@ -54,7 +54,6 @@ Feature: Filter with all types
       | Hiring reason |            | (01) New position, (13) Transfer | ENUM       |
       | Manager       |            | Yes, No                          | BOOLEAN    |
 
-  @AdvanceSearch
   Scenario: Filter by advanced search
     Given I access dataspace "FastTrack>[03] Parties data>Company employees"
     And I access dataset "Company employees"

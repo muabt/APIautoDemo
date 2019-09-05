@@ -1,11 +1,11 @@
-Feature: Create new data model
+@PRE-TESTING
+Feature: Create new data space
   As user
-  I want to create new Store data set
+  I want to create new dataspace
 
   Background: 
     Given I login to EBX succesfully
 
-  @Dataspace
   Scenario: Create new data space
     And I access "dataspace" menu
     And I access dataspace "FastTrack>[03] Parties data>Company employees"

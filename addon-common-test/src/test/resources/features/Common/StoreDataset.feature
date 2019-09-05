@@ -1,4 +1,3 @@
-@STORE
 Feature: Create new data model
   As user
   I want to create new Store data set
@@ -7,7 +6,7 @@ Feature: Create new data model
   Scenario Outline: Create new data set
     Given I login to EBX succesfully
     When user wants to create data set "StoreDataset" from an embedded data model
-    Given I access dataspace "FastTrack>[01] Reference data>Store"
+    Given I access dataspace "Master Data - Reference"
     And user creates new dataset with information as following with the "<KEY>"
       | KEY | Publication    | Unique name  | Owner | English label | French label |
       |  01 | StoreDataModel | StoreDataset |       | StoreDataset  |              |

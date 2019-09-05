@@ -7,7 +7,6 @@ import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.common.steps.FilterSteps;
 
 import cucumber.api.DataTable;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
@@ -15,6 +14,27 @@ public class FilterDefs {
 	@Steps
 	FilterSteps onFilterSteps;
 
+	/**
+	 * Select filter by simple search using given criterion and logical
+	 *
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">When</font> I select filter by simple search with criterion
+	 *     <ul>
+	 *			     <font color="green">| Criterion | Operation  | Value  | Field type |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| Identifier | =  | 23 | ENUM |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| Email | startsWith  | a | INPUT |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt the criterion and logical used for search
+	 * @throws Throwable
+	 */
 	@When("^I select filter by simple search with criterion$")
 	public void i_select_filter_by_simple_search_with_criterion(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -43,8 +63,28 @@ public class FilterDefs {
 		onFilterSteps.click_btn_apply_search();
 	}
 
+	/**
+	 * Select filter by advanced search using given criterion and logical
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I select filter by simple search with criterion "<font color="green">All criteria match</font>"
+	 *     <ul>
+	 *			     <font color="green">| Criterion | Operation  | Value  | Field type |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| Identifier | =  | 23 | ENUM |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| Email | startsWith  | a | INPUT |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param logical logical mode of advanced search
+	 * @param dt List of criterion that user want to use
+	 * @throws Throwable
+	 */
 	@When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
-	public void i_select_filter_by_advanced_search_with_criterion_and_logical_something(String logical, DataTable dt)
+	public void i_select_filter_by_advanced_search_with_criterion_and_logical(String logical, DataTable dt)
 			throws Throwable {
 		onFilterSteps.click_btn_filter();
 		onFilterSteps.select_advanced_mode();
@@ -74,7 +114,26 @@ public class FilterDefs {
 		onFilterSteps.click_btn_apply_search();
 	}
 
-	// TODO : Need refactor after handle selected=on attribute in DDL
+	/**
+	 * Select filter by advanced search using given logical
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">Given</font> I access dataspace "<font color="green">FastTrack>[03] Parties data>Company employees</font>"
+	 *     <ul>
+	 *			     <font color="green">| Logical | Criterion | Operation  | Value  | Field type |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| At least one criterion matches | Identifier | =  | 23 | INPUT |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| Not all criteria match | Person |   | Aaron Eaton | ENUM |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt List of criterion that user want to use
+	 * @throws Throwable
+	 */
+	// TODO : Need refactor after handle selected=on attribute iblockn DDL
 	@When("^I select filter by advanced search with logical block$")
 	public void i_select_filter_by_advanced_search_with_logical_block(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -88,7 +147,7 @@ public class FilterDefs {
 			String oper = row.get("Operation");
 			String value = row.get("Value");
 			String type = row.get("Field type");
-			
+
 			onFilterSteps.add_logical_block();
 			if (!criterion.isEmpty()) {
 				onFilterSteps.select_logical_block_info(logical, criterion);
@@ -107,6 +166,23 @@ public class FilterDefs {
 		onFilterSteps.click_btn_apply_search();
 	}
 
+	/**
+	 * Select the filter by using given text and field
+	 *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I select filter by text with keyword and field below
+	 *     <ul>
+	 *			     <font color="green">| Field contains: | In fields             |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| Big Mac         | ID, Name, Description |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt data to used to select filter
+	 * @throws Throwable
+	 */
 	@When("^I select filter by text with keyword and field below$")
 	public void i_select_filter_by_text_with_keyword_and_field_below(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -134,6 +210,23 @@ public class FilterDefs {
 		onFilterSteps.click_btn_apply_text_search();
 	}
 
+	/**
+	 * Select the filter in fuzzy search using given keyword
+	 *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I select filter by fuzzy search with keyword and field below
+	 *     <ul>
+	 *			     <font color="green">| Record contains: | Fields        |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|                  | Email, Person |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt
+	 * @throws Throwable
+	 */
 	@When("^I select filter by fuzzy search with keyword and field below$")
 	public void i_select_filter_by_fuzzy_search_with_keyword_and_field_below(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -159,11 +252,22 @@ public class FilterDefs {
 		onFilterSteps.click_btn_apply_fuzzy_search();
 	}
 
-	@Then("^I should see the popup with error message \"([^\"]*)\"$")
-	public void i_should_see_the_popup_with_error_message_something(String content) throws Throwable {
-		onFilterSteps.verify_warning_popup_display(content);
-	}
-
+	/**
+	 * Select filter by validation using the given keyword and field
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I select filter by validation with keyword and field below
+	 *     <ul>
+	 *			     <font color="green">| Message contains: | Severity         |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| start with 'a'    | Errors, Warnings |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt keyword and field use for search
+	 * @throws Throwable
+	 */
 	@When("^I select filter by validation with keyword and field below$")
 	public void i_select_filter_by_validation_with_keyword_and_field_below(DataTable dt) throws Throwable {
 		onFilterSteps.click_btn_filter();
@@ -189,5 +293,4 @@ public class FilterDefs {
 		}
 		onFilterSteps.click_btn_apply_validation_search();
 	}
-
 }

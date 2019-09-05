@@ -29,14 +29,13 @@ public class CommonPage extends WebPageObject {
 	private static final String TITLE_MENU_TITLE_SERVICE = "Data services";
 	private static final String TITLE_MENU_TITLE_ADMINISTRATION = "Administration";
 	//
-	private static final String XPATH_BTN_LOGOUT = "//button[@id='ebx_Logout']";
-	private static final String XPATH_USER_PANEL = "//div[@class='_ebx-profile_avatar _ebx-profile_avatar-only']";
+	private static final String XPATH_USER_PANEL = "//span[contains(@class,'_ebx-profile_button_contains_avatar')]/button";
 	private static final String XPATH_LANGUAGE = "//span[@class='ebx-simpleButton-label' and text()='Language']";
 	private static final String XPATH_CHOOSE_LANGUAGE = "//span[@class='_ebx-menu_item_label' and text()='%s']";
 	private static final String XPATH_PERSPECTIVE_NAME = "//ul[@class='_ebx-menu_list']//span[text()='%s']";
 	private static final String XPATH_SELECTION_MENU_OPTION = "//div[@id='ebx_MenuForMenuButtons']//a[.='%s']";
 	private static final String XPATH_NEW_DATASET_NAME = "//h2[contains(@class,'menu-selector-is-sub-title')]//span[@class='_ebx-documentation-label']";
-
+	
 	public void access_to_homepage() {
 		open();
 		clearCache();
@@ -56,12 +55,10 @@ public class CommonPage extends WebPageObject {
 
 	public void click_on_user_panel() {
 		findBy(XPATH_USER_PANEL).click();
-
 	}
 
 	public void click_btn_logout() {
-		findBy(XPATH_BTN_LOGOUT).click();
-
+		clickBtn(Constants.BTN_LOGOUT);
 	}
 
 	public void click_menu(String title) {

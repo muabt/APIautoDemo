@@ -20,16 +20,51 @@ public class DatasetDefs {
 	@Steps
 	CommonSteps onCommonSteps;
 
+	/**
+	 * Access to the specified data space
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I access dataspace "<font color="green">Master Data - Reference>DMDV_v1.3.0</font>"
+	 * </p>
+	 * @param path path to the data space. Eg: FastTrack>[03] Parties data>Company employees
+	 * @throws Exception
+	 */
 	@When("^I access dataspace \"([^\"]*)\"$")
 	public void user_accesses_dataspace(String path) throws Exception {
 		onDatasetSteps.go_to_dataspace(path);
 	}
 
+	/**
+	 * Access to the specified data set
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I access dataset "<font color="green">V130_US25</font>"
+	 * </p>
+	 *
+	 * @param datasetName name of the data set
+	 * @throws Exception
+	 */
 	@When("^I access dataset \"([^\"]*)\"$")
 	public void user_accesses_data_set(String datasetName) throws Exception {
 		onDatasetSteps.go_to_data_set(datasetName);
 	}
 
+	/**
+	 * Create record with given information
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">And</font> I create record with the followings
+	 *      <ul>
+	 *			     <font color="green">| Identifer:TXT | Civil status:DDL | First name:TXT | Last name:TXT | Maiden name:TXT | Birth date:DATE | Gender:RADIO | Marital status:DDL | GDPR type:DDL |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|               | Dr.              | Jenifer        | Pham          |                 | 7/29/1988       | Female       | (C) Single         | Child         |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt information of the record
+	 * @throws Throwable
+	 */
 	@And("^I create record with the followings$")
 	public void i_create_record_with_the_followings(DataTable dt) throws Throwable {
 		onDatasetSteps.click_btn_create_table_record();
@@ -54,8 +89,25 @@ public class DatasetDefs {
 		onDatasetSteps.click_btn_save_and_close();
 	}
 
+	/**
+	 * Create a new record with given information
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">Then</font> I create a new record with credentials and PK is "<font color="green">Identifier</font>
+	 *      <ul>
+	 *			     <font color="green">| Identifier | Name        |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| MAX        | Noodle soup |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param pkName name of PK field
+	 * @param dt data of the record that user want to create
+	 */
 	@Then("^I create a new record with credentials and PK is \"([^\"]*)\"$")
-	public void i_create_a_new_record_with_credentials_and_pk_is_something(String pkName, DataTable dt) {
+	public void i_create_a_new_record_with_credentials_and_pk(String pkName, DataTable dt) {
 
 		List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
 		Map<String, String> row = dataTable.get(0);
@@ -73,21 +125,70 @@ public class DatasetDefs {
 		onDatasetSteps.click_btn_save_and_close();
 	}
 
+	/**
+	 * Create a data set from embedded data model
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">When</font> user wants to create data set "<font color="green">StoreDataSet</font> from an embedded data model
+	 * </ul>
+	 * </p>
+	 * @param datasetName Name of the dataset that user want to create
+	 * @throws Throwable
+	 */
 	@When("^user wants to create data set \"([^\"]*)\" from an embedded data model$")
-	public void user_wants_to_create_data_set_something_from_an_embedded_data_model(String datasetName)
+	public void user_wants_to_create_data_set_from_an_embedded_data_model(String datasetName)
 			throws Throwable {
 		onCommonSteps.click_on_menu_dataset();
 
 	}
 
+	/**
+	 * Access a specified table from specified group
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">And</font> I access table "<font color="green">/root/GroupA/TableA_123</font>" on group "<font color="green">/root/GroupA</font>"
+	 * </ul>
+	 * </p>
+	 * @param tablePath path of the table
+	 * @param groupPath path of the group
+	 * @throws Throwable
+	 */
 	@And("^I access table \"([^\"]*)\" on group \"([^\"]*)\"$")
-	public void user_selects_table_something_on_group_something(String tablePath, String groupPath) throws Throwable {
+	public void user_selects_table_on_group(String tablePath, String groupPath) throws Throwable {
 		onDatasetSteps.expand_group(groupPath);
 		onDatasetSteps.select_table_on_group(tablePath);
 	}
 
+    /**
+     * Put data into tables
+     *
+     * <p>
+     * Need to check the data tables before putting any data into it.
+     * Delete all the old data if it existed.
+     * </p>
+	 *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> user wants to input data into table as following with the <<font color="orange">KEY</font>>
+	 *     <ul>
+	 *			     <font color="green">| KEY | Table       |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 | Stores      |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  02 | Categories  |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+     * @param dataKey key of the data in serenity session
+     * @param dataTable table that user want to input new data
+     * @throws Throwable
+     */
 	@When("^user wants to input data into table as following with the \"([^\"]*)\"$")
-	public void user_wants_to_input_data_into_table_as_following_with_the_something(String dataKey,
+	public void user_wants_to_input_data_into_table_as_following(String dataKey,
 			List<List<String>> dataTable) throws Throwable {
 		SessionData.addDataTable("TABLENAME_TBL", dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();
@@ -102,8 +203,30 @@ public class DatasetDefs {
 
 	}
 
+    /**
+     * Input the data to the specific tables and add the data to the serenity session
+     *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> user input data table "<font color="green">Stores</font>" as following with the "<<font color="orange">KEY</font>>"
+	 *     <ul>
+	 *			     <font color="green">| KEY | Identifier | Name            | Street              | City          | State | Postcode | Country       |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 |          1 | Computer Market | 56 Kendall Square   | Boston        | MA    |    12870 | United States |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 |          2 | Phone Depot     | 19 Brookline Avenue | Austin        | TX    |    84743 | United States |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+     * @param tableName name of the table that user want to input data
+     * @param dataKey data key that user want to store data to session
+     * @param dataTable contain data that will be input to the table
+     * @throws Throwable
+     */
 	@And("^user input data table \"([^\"]*)\" as following with the \"([^\"]*)\"$")
-	public void user_input_data_table_as_following_with_the_something(String tableName, String dataKey,
+	public void user_input_data_table_as_following(String tableName, String dataKey,
 			List<List<String>> dataTable) throws Throwable {
 		SessionData.addDataTable("TABLE_TBL", dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();
@@ -126,8 +249,28 @@ public class DatasetDefs {
 		}
 	}
 
+    /**
+     * Create new dataset given the information
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> user creates new dataset with information as following with the "<<font color="orange">KEY</font>>"
+	 *     <ul>
+	 *			     <font color="green">| KEY | Publication    | Unique name  | Owner | English label | French label |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 | StoreDataModel | StoreDataset |       | StoreDataset  |              |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  02 | StoreDataModel | StoreDataset |       | StoreDataset  |              |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dataKey key to store given information in serenity session
+     * @param dataTable The information of the data set
+     * @throws Throwable
+     */
 	@And("^user creates new dataset with information as following with the \"([^\"]*)\"$")
-	public void user_creates_new_dataset_with_information_as_following_with_the_something(String dataKey,
+	public void user_creates_new_dataset_with_information_as_following(String dataKey,
 			List<List<String>> dataTable) throws Throwable {
 		SessionData.addDataTable("DATASET_TBL", dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();
@@ -165,8 +308,29 @@ public class DatasetDefs {
 		}
 	}
 
+    /**
+     * Confirm the data table contains the
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> the table "<font color="green">Store</font>" should be displayed as bellow with  the "<<font color="orange">KEY</font>>"
+	 *     <ul>
+	 *			     <font color="green">| KEY | Identifier | Name            | Street              | City          | State | Postcode | Country       |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 |          1 | Computer Market | 56 Kendall Square   | Boston        | MA    |    12870 | United States |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 |          2 | Phone Depot     | 19 Brookline Avenue | Austin        | TX    |    84743 | United States |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param tableName name of the specifie table
+     * @param dataKey dataKey to store the table in Serenity session
+     * @param dataTable data to be confirmed
+     * @throws Throwable
+     */
 	@Then("^the table \"([^\"]*)\" should be displayed as bellow with  the \"([^\"]*)\"$")
-	public void the_table_something_should_be_displayed_as_bellow_with_the_something(String tableName, String dataKey,
+	public void the_table_should_be_displayed_as_bellow(String tableName, String dataKey,
 			List<List<String>> dataTable) throws Throwable {
 		String dataTableKey = "VERIFY_TBL";
 		SessionData.addDataTable(dataTableKey, dataTable, false);
@@ -190,12 +354,39 @@ public class DatasetDefs {
 		}
 	}
 
+    /**
+     * Select number of first records in the table
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">When</font>I select first "<font color="green">4</font>" records in table
+	 * </ul>
+	 * </p>
+	 * @param numOfRecord number of first records that want to select
+     * @throws Throwable
+     */
 	@When("^I select first \"([^\"]*)\" records in table$")
-	public void user_selects_first_something_records_in_table(String numOfRecord) throws Throwable {
+	public void user_selects_first_num_of_records_in_table(String numOfRecord) throws Throwable {
 		onDatasetSteps.select_first_records(numOfRecord);
 
 	}
 
+    /**
+     * Select a record from the table given the primary key
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I select some records with primary key as following
+	 *     <ul>
+	 *			     <font color="green">| ID |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| 1 |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt primary key of the record that user want to select
+     * @throws Throwable
+     */
 	@When("^I select some records with primary key as following$")
 	public void user_selects_records_as_following(List<List<String>> dt) throws Throwable {
 		for (int i = 1; i < dt.size(); i++) {
@@ -205,8 +396,25 @@ public class DatasetDefs {
 
 	}
 
+    /**
+     * Create a child data set of an existed data set given the information
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I create a child of dataset of "<font color="green">Flower</font>" with credentials as following
+	 *     <ul>
+	 *			     <font color="green">| Unique name | Owner              | Label         |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|             | Vicky Chan (vicky) | Flowers Child |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param parentDataset parent data set that user want to create child
+     * @param dt List contain the information of new child data set that user want to create
+     * @throws Throwable
+     */
 	@When("^I create a child of dataset of \"([^\"]*)\" with credentials as following$")
-	public void user_creates_a_child_of_dataset_of_something_with_credentials_as_following(String parentDataset,
+	public void user_creates_a_child_of_dataset_with_credentials_as_following(String parentDataset,
 			DataTable dt) throws Throwable {
 		List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
 		onDatasetSteps.click_btn_change_dataset();
@@ -232,26 +440,74 @@ public class DatasetDefs {
 		onDatasetSteps.click_btn_close();
 	}
 
+    /**
+     * Access to a table of a dataset
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">And</font> I access table "<font color="green">Employee</font>"
+	 * </ul>
+	 * </p>
+	 * @param tblName table name that user want to access
+     * @throws Throwable
+     */
 	@And("^I access table \"([^\"]*)\"$")
-	public void user_accesses_table_something(String tblName) throws Throwable {
+	public void user_accesses_table(String tblName) throws Throwable {
 		onDatasetSteps.click_on_table_name(tblName);
 	}
 
+    /**
+     * Select the table service
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">And</font> I select table service "<font color="green">View history</font>"
+	 * </ul>
+	 * </p>
+	 * @param service table service that user want to execute
+     * @throws Throwable
+     */
 	@And("^I select table service \"([^\"]*)\"$")
-	public void user_select_table_service_something(String service) throws Throwable {
+	public void user_select_table_service(String service) throws Throwable {
 		onDatasetSteps.click_btn_action_table();
 		onDatasetSteps.select_table_service(service);
 	}
 
+    /**
+     * Delete a specified dataset
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">And</font> I want to delete dataset
+	 * </ul>
+	 * </p>
+	 * @throws Throwable
+     */
 	@And("^I want to delete dataset$")
-	public void user_wants_to_delete_dataset_something() throws Throwable {
+	public void user_wants_to_delete_dataset() throws Throwable {
 		onDatasetSteps.click_btn_action_dataset();
 		onDatasetSteps.select_dataset_service("Delete");
 		onDatasetSteps.confirmation_OK();
 	}
 
+	/**
+	 * Duplicate a specified dataset
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> I want to duplicate a dataset from dataset followings
+	 *     <ul>
+	 *			     <font color="green">| Unique name        | Owner              | Label              |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">| Flowers-Duplicated | Vicky Chan (vicky) | Flowers Duplicated |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt data table
+	 * @throws Throwable
+	 */
 	@When("^I want to duplicate a dataset from dataset followings$")
-	public void i_want_to_duplicate_a_dataset_from_dataset_followings(DataTable dt) throws Throwable {
+	public void i_want_to_duplicate_a_dataset_from_dataset(DataTable dt) throws Throwable {
 
 		onDatasetSteps.select_dataset_service("Actions>Duplicate");
 
@@ -276,9 +532,72 @@ public class DatasetDefs {
 		onDatasetSteps.confirmation_OK();
 	}
 
+	/**
+	 * Verify the search result
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">Then</font> I should see the total search results "<font color="green">1 - 6 of 6</font>"
+	 * </ul>
+	 * </p>
+	 * @param totalResult expected result that user want to verify
+	 * @throws Throwable
+	 */
 	@Then("^I should see the total search results \"([^\"]*)\"$")
-	public void i_should_see_the_total_search_results_something(String totalResult) throws Throwable {
+	public void i_should_see_the_total_search_results(String totalResult) throws Throwable {
 		onDatasetSteps.verify_total_search_result(totalResult);
 	}
 
+	/**
+	 * Verify the access table same as given information
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> the table should see as following
+	 *     <ul>
+	 *			     <font color="green">| ID | Email Type  | Color Type | Resource | Locale |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  1 | a@gmail.com | '#924141'  |          | abc    |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param targetTable contain information of the table that user want to verify
+	 * @throws Throwable
+	 */
+	@When("^the table should see as following$")
+	public void the_table_should_be_updated_with_correspond_imported_data(List<List<String>> targetTable)
+			throws Throwable {
+		String tblName = "TBL_EXP";
+		SessionData.addDataTable(tblName, targetTable, false);
+		onDatasetSteps.verify_data_table(tblName);
+	}
+
+	/**
+	 * Create a child data set of a given dataset
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> I create and access to child of dataset  "<font color="green">Employee</font>"
+	 * </p>
+	 * @param dataset parent dataset
+	 * @throws Throwable
+	 */
+	@And("^I create and access to child of dataset \"([^\"]*)\"$")
+	public void i_create_and_access_to_child_of_dataset(String dataset) throws Throwable {
+		onDatasetSteps.click_btn_change_dataset();
+		onDatasetSteps.create_child_dataset(dataset);
+		onDatasetSteps.click_btn_create();
+		onDatasetSteps.click_btn_close();
+	}
+
+	/**
+	 * Verify the popup shown with the given message
+	 * <b>Example</b>:
+	 * <font color="blue">Then</font> I should see the popup with error message  "<font color="green">Unable to search the empty string</font>"
+	 * </p>
+	 * @param content Message
+	 * @throws Throwable
+	 */
+	@Then("^I should see the popup with error message \"([^\"]*)\"$")
+	public void i_should_see_the_popup_with_error_message(String content) throws Throwable {
+		onDatasetSteps.verify_warning_popup_display(content);
+	}
 }

@@ -52,7 +52,7 @@ public class LoadConfig {
 	}
 
 	public static String getUserName() {
-		return getSystemProperties("pass", "user.name");
+		return getSystemProperties("name", "user.name");
 	}
 
 	public static String getPassword() {
@@ -72,4 +72,15 @@ public class LoadConfig {
 		return env.getProperty(ThucydidesSystemProperty.WEBDRIVER_BASE_URL);
 	}
 
+	public static String getDownloadFolder() {
+		return env.getProperty("chrome_preferences.download.default_directory");
+	}
+	
+	public static String getDriverExecution() {
+		return env.getProperty("webdriver.chrome.driver");
+	}
+	
+	public static String getDriverHeadless() {
+		return env.getProperty("chrome.switches");
+	}
 }

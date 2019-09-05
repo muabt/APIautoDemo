@@ -25,6 +25,7 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.webelements.Checkbox;
 
 public class WebPageObject extends PageObject {
+
 	@Managed(uniqueSession = true)
 	protected WebDriver driver;
 	private static String downloadFolder = System.getProperty("user.dir");
@@ -152,9 +153,9 @@ public class WebPageObject extends PageObject {
 	}
 
 	public void waitForAllLoadingCompleted() {
-		waitABit(150);
-		waitUntilHTMLReady(40);
-		waitForJQueryLoadingCompleted(40);
+		waitABit(180);
+		waitUntilHTMLReady(600);
+		waitForJQueryLoadingCompleted(600);
 
 	}
 
@@ -496,28 +497,29 @@ public class WebPageObject extends PageObject {
 	public String xPathCheckbox(String parentXpath, String label, int index) {
 		String xPath = "(" + parentXpath + "//label[descendant-or-self::*[normalize-space(text())='" + label
 				+ "' or normalize-space(.)='" + label + "' or @value='" + label
-				+ "']][child::input[@type='checkbox']])[" + index + "]/input";
+				+ "']][child::input[@type='checkbox']][not(ancestor::*[@style='display: none;'])])[" + index
+				+ "]/input";
 		return xPath;
 	}
 
 	public void checkCheckbox(String parentXpath, String label, int index) {
-		waitElementToBePresent(xPathCheckbox(parentXpath, label, index)).waitUntilClickable().click();
+		Checkbox chbx = new Checkbox($(xPathCheckbox(parentXpath, label, index)));
+		chbx.setChecked(true);
+		Assert.assertEquals(true, chbx.isChecked());
 	}
 
 	public void checkCheckbox(String label) {
-		Checkbox chbx = new Checkbox($(xPathCheckbox("", label, 1)));
-		if (!chbx.isChecked()) {
-			chbx.setChecked(true);
-		}
-		Assert.assertEquals(chbx.isChecked(), true);
+		checkCheckbox("", label, 1);
+	}
+
+	public void uncheckCheckbox(String parentXpath, String label, int index) {
+		Checkbox chbx = new Checkbox($(xPathCheckbox(parentXpath, label, index)));
+		chbx.setChecked(false);
+		Assert.assertEquals(false, chbx.isChecked());
 	}
 
 	public void uncheckCheckbox(String label) {
-		Checkbox chbx = new Checkbox($(xPathCheckbox("", label, 1)));
-		if (chbx.isChecked()) {
-			chbx.setChecked(false);
-		}
-		Assert.assertEquals(chbx.isChecked(), false);
+		uncheckCheckbox("", label, 1);
 	}
 
 	/**
@@ -568,9 +570,10 @@ public class WebPageObject extends PageObject {
 
 	public String getTextDataCell(int rowInd, int colInd) {
 		String xpathDataCell = "((//div[@id='ebx_workspaceTable_container']//tr[contains(@class,'ebx')][" + rowInd
-				+ "]//td[not(*)]) | (//div[@id='ebx_workspaceTable_container']//tr[contains(@class,'ebx')][" + rowInd
-				+ "]//td[child::div[not(*)]]))[" + colInd + "]";
-		System.out.println("XPATH DATA CELL: " + xpathDataCell);
+				+ "]//td[not(*) and not(@class='ebx_tvInheritanceCell'  or @class='ebx_tvSelectCell') ]) | (//div[@id='ebx_workspaceTable_container']//tr[contains(@class,'ebx')]["
+				+ rowInd
+				+ "]//td[child::div[not(*) and not(@class='ebx_tvInheritanceCell'  or @class='ebx_tvSelectCell') ]]))["
+				+ colInd + "]";
 		return getTextValue(xpathDataCell);
 
 	}
@@ -625,7 +628,7 @@ public class WebPageObject extends PageObject {
 	}
 
 	public void collapseAll() {
-		String xPathExpandedBtn = xPathBtn("Expanded");
+		String xPathExpandedBtn = "//button[(@type='button' or @type='submit' or not(@type)) and not(@style='display: none;')][descendant-or-self::*[text()='Expanded' or @title='Expanded' or @value='Expanded']]";
 		int numOfExpandedBtn = findAllElement(xPathExpandedBtn).size();
 		for (int i = numOfExpandedBtn; i >= 1; i--) {
 			clickOnElement(findBtn("Expanded", i));
@@ -670,4 +673,5 @@ public class WebPageObject extends PageObject {
 		highlightElement(e);
 		return e;
 	}
+
 }

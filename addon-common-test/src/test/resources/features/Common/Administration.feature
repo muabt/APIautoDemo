@@ -1,4 +1,4 @@
-@111
+@PRE-TESTING
 Feature: Administration workspace
   As user
   I want to use all service of Administration workspace
@@ -6,7 +6,7 @@ Feature: Administration workspace
   Background: 
     Given I login to EBX succesfully
 
-  Scenario: 
+  Scenario: Delete the dataspace in administration workspace
     And I access "dataspace" menu
     And I access dataspace "FastTrack>[03] Parties data>Company employees"
     And I create child Dataspace with information as following

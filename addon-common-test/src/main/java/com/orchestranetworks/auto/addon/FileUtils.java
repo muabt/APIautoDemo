@@ -1,9 +1,12 @@
 package com.orchestranetworks.auto.addon;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.File;
 import java.io.IOException;
 
 public class FileUtils {
+	public static String fseparator = File.separator;
 
 	public static File getLatestFilefromDir(String dirPath) {
 		File dir = new File(dirPath);
@@ -31,7 +34,20 @@ public class FileUtils {
 			} else if (file.isDirectory()) {
 				deleteFiles(file);
 			}
-
 		}
 	}
+
+	public static String getDataFolderPath() {
+		String dataPath = System.getProperty("user.dir") + "/src/main/resources/data/";
+		return dataPath.replaceAll("/", "\\"+fseparator);
+	}
+
+	public static void compareXMLFiles(String actualFile, String expectedFile) {
+		File source = new File(getDataFolderPath() + expectedFile);
+		File target = new File(actualFile);
+		System.out.println("Source="+source);
+		System.out.println("target="+target);
+		assertThat(target).hasSameContentAs(source);
+	}
+
 }

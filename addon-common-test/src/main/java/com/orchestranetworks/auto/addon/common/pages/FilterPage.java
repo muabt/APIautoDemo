@@ -21,7 +21,6 @@ public class FilterPage extends WebPageObject {
 	private static final String XPATH_EXPAND_BUTTON = "//label[contains(.,'%s')]//button[@title='expand']";
 	private static final String XPATH_SEARCH_TEXTBOX = "//input[@name='%s']";
 	private static final String BTN_CLOSE_POPUP = "//div[@class='_ebx-pop-up_bottom']//*[.='Close']";
-	private static final String XPATH_POPUP_MESSAGE = "//div[@class='_ebx-pop-up']//*[@class='_ebx-notification-box_list_item']";
 	public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
 
 	public void select_field_to_search(String searchType, String label) {
@@ -41,12 +40,6 @@ public class FilterPage extends WebPageObject {
 	public void click_btn_expand_with_label(String label) {
 		clickOnElement(XFormat.of(XPATH_EXPAND_BUTTON, label));
 		waitForAllLoadingCompleted();
-	}
-
-	public String get_text_popup_message() {
-		waitForAllLoadingCompleted();
-		switchOutDefaultIFrame();
-		return getTextValue(XPATH_POPUP_MESSAGE);
 	}
 
 	public void click_btn_close_popup() {

@@ -117,7 +117,7 @@ public class DataModelPage extends WebPageObject {
 	public void select_data_model_service(String service) {
 		String[] services = service.split(">");
 		for (int i = 0; i < services.length; i++) {
-			clickOnElement(XFormat.of(NAVIGATION_ITEM, services));
+			clickOnElement(XFormat.of(NAVIGATION_ITEM, services[i]));
 		}
 	}
 

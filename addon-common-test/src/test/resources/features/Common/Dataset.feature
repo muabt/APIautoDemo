@@ -1,23 +1,27 @@
-@2
+@PRE-TESTING
 Feature: Dataset and table
   As user
   I want to interact with dataset and table content
 
-  Background:
+  Background: 
     Given I login to EBX succesfully
 
-  @Dataset&Table
+
   Scenario: Create new data set
     And I access dataspace "FastTrack"
     And I access dataset "Flowers"
     When I create a child of dataset of "Flowers" with credentials as following
       | Unique name | Owner              | Label         |
       |             | Vicky Chan (vicky) | Flowers Child |
+    And I access table "All_type"
+    And the table should see as following
+      | ID | Email Type  | Color Type | Resource | Locale |
+      |  1 | a@gmail.com | '#924141'  |          | abc    |
     And I access table "Flowers"
     #When I select first "4" records in table
     When I select some records with primary key as following
       | ID |
-      | 1  |
+      |  1 |
     And I select table service "View history"
     And I want to delete dataset
 

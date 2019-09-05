@@ -1,4 +1,3 @@
-@STORE
 Feature: Create new data model
   As user
   I want to create new Store Datamodel
@@ -6,7 +5,6 @@ Feature: Create new data model
   Background: 
     Given I login to EBX succesfully
 
-  @Create-data-model
   Scenario Outline: Create new Data model
     When user want to create new Data Model has the name "StoreDataModel"
     And user creates tables with information as following with the "<KEY>"

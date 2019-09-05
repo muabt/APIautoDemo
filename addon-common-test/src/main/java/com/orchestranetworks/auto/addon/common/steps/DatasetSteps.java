@@ -2,9 +2,12 @@ package com.orchestranetworks.auto.addon.common.steps;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Assert;
 
 import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.pages.DatasetPage;
 
 import net.thucydides.core.annotations.Step;
@@ -18,6 +21,11 @@ public class DatasetSteps {
 		onDatasetPage.remove_choose_dataset_div();
 		onDatasetPage.click_btn_change_dataspace();
 		onDatasetPage.go_to_navigation(path);
+	}
+
+	@Step
+	public void remove_choose_dataset_div() {
+		onDatasetPage.remove_choose_dataset_div();
 	}
 
 	@Step
@@ -289,5 +297,36 @@ public class DatasetSteps {
 	public void verify_total_search_result(String expectedResult) {
 		String actualResult = onDatasetPage.get_total_search_result();
 		assertEquals(expectedResult, actualResult);
+	}
+
+	@Step
+	public void verify_data_table(String expTable) {
+		List<List<String>> actualTable = onDatasetPage.getTableData();
+		SessionData.addDataTable("RECORD_VIEW_ACT", actualTable, false);
+		// assertEquals(expTable, actualTable);
+		SessionData.compareTableNotFixHeader(expTable, "RECORD_VIEW_ACT");
+	}
+
+	@Step
+	public void verify_warning_popup_display(String content) {
+		Assert.assertEquals(content, onDatasetPage.get_text_popup_message());
+		onDatasetPage.click_btn_close_popup();
+		onDatasetPage.switchToIFrame(Constants.IFRAME_LEGACY);
+	}
+	
+	@Step
+	public void verify_warning_popup_display_contains(String content) {
+		Assert.assertTrue("Verify popup displayed: ", onDatasetPage.get_text_popup_message().contains(content));
+		onDatasetPage.click_btn_close_popup();
+		onDatasetPage.switchToIFrame(Constants.IFRAME_LEGACY);
+	}
+
+	public void click_btn_export() {
+		onDatasetPage.click_btn_export();
+	}
+
+	public void click_btn_close_popup() {
+		onDatasetPage.close_popup_with_frame();
+
 	}
 }

@@ -18,26 +18,76 @@ public class DataModelDefs {
 	@Steps
 	CommonSteps onCommonSteps;
 
+	/**
+	 * Access to a specific data model
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">Given</font> I access data model "<font color="green">DMP-01</font>"
+	 * </p>
+	 * @param path name of the data model
+	 * @throws Exception
+	 */
 	@Given("^I access data model \"([^\"]*)\"$")
 	public void user_accesses_data_model(String path) throws Exception {
 		onCommonSteps.click_on_menu_data_models();
 		onDataModelSteps.select_data_model(path);
 	}
 
+	/**
+	 * Create a data model with specific name
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> user want to create new Data Model has the name "<font color="green">StoreDataModel</font>"
+	 * </p>
+	 * @param dataModelName name of data model that user want to create
+	 */
 	@When("^user want to create new Data Model has the name \"([^\"]*)\"$")
-	public void user_want_to_create_new_data_model_has_the_name_something(String dataModelName) {
+	public void user_want_to_create_new_data_model_has_the_name(String dataModelName) {
 		onDataModelSteps.click_on_menu_data_models();
 		onDataModelSteps.create_new_data_model(dataModelName);
 	}
 
+	/**
+	 * Select data model given the name
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">When</font> user want to select Data Model has the name "<font color="green">StoreDataModel</font>"
+	 * </p>
+	 * @param dataModelName data model name
+	 */
 	@When("^user want to select Data Model has the name \"([^\"]*)\"$")
-	public void user_want_to_select_data_model_has_the_name_something(String dataModelName) {
+	public void user_want_to_select_data_model_has_the_name(String dataModelName) {
 		onDataModelSteps.click_on_menu_data_models();
 		onDataModelSteps.select_data_model(dataModelName);
 	}
 
+	/**
+	 * Create multiple tables on the data model given the information
+	 *<p>
+	 * The read data from the table will be stored in the Serenity Session by
+	 * using {@link net.serenitybdd.core.Serenity#setSessionVariable(Object)}
+	 * </p>
+	 *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> user creates tables with information as following with the <<font color="orange">KEY</font>>
+	 *     <ul>
+	 *			     <font color="green">| KEY | Name      | Label and description English | French      | Kind of element |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 | Store     | Stores                        | Stores      | Table           |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 | Category  | Categories                    | Categories  | Table           |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dataKey the key to save data table to Serenity session
+	 * @param dataTable contain information of the tables
+	 * @throws Throwable
+	 */
 	@And("^user creates tables with information as following with the \"([^\"]*)\"$")
-	public void user_creates_tables_with_information_as_following_with_the_something(String dataKey,
+	public void user_creates_tables_with_information_as_following(String dataKey,
 			List<List<String>> dataTable) throws Throwable {
 		SessionData.addDataTable("TABLE_TBL", dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();
@@ -67,8 +117,34 @@ public class DataModelDefs {
 		}
 	}
 
+	/**
+	 * Create multiple elements on the table given the information
+	 *
+	 * <p>
+	 * The read data from the table will be stored in the Serenity Session by
+	 * using {@link net.serenitybdd.core.Serenity#setSessionVariable(Object)}
+	 * </p>
+	 *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> user creates element as following with the <<font color="orange">KEY</font>>
+	 *     <ul>
+	 *			     <font color="green">| KEY | Table name | Field name | Label and description English | French   | Kind of element | Data type |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 | Address    | street     | Street                        | Street   | Field           | String    |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 | Address    | city       | City                          | City     | Field           | String    |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dataKey the key to save data to Serenity session
+	 * @param dataTable contain information of the elements
+	 * @throws Throwable
+	 */
 	@And("^user creates element as following with the \"([^\"]*)\"$")
-	public void user_creates_element_for_table_as_following_with_the_something(String dataKey,
+	public void user_creates_element_for_table_as_following(String dataKey,
 			List<List<String>> dataTable) throws Throwable {
 		String table = "";
 		SessionData.addDataTable("FIELD_TBL", dataTable, false);
@@ -121,14 +197,41 @@ public class DataModelDefs {
 		}
 	}
 
+	/**
+	 * Click button to publish data model
+	 *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> user publishes data model
+	 * </p>
+	 * @throws Throwable
+	 */
 	@And("^user publishes data model$")
 	public void user_publishes_data_model() throws Throwable {
 		onDataModelSteps.publish_data_model();
 
 	}
 
+	/**
+	 * Create complex data types using the specific data
+	 *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> user creates complex data types as following with the <<font color="orange">KEY</font>>
+	 *     <ul>
+	 *			     <font color="green">| KEY | Type name | Label and description English |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|  01 | Address   | Address                       |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dataKey key to store the data table
+	 * @param dataTable data table
+	 * @throws Throwable
+	 */
 	@And("^user creates complex data types as following with the \"([^\"]*)\"$")
-	public void user_creates_complex_data_types_as_following_with_the_something(String dataKey,
+	public void user_creates_complex_data_types_as_following(String dataKey,
 			List<List<String>> dataTable) throws Throwable {
 		SessionData.addDataTable("COMPLEX_TBL", dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();

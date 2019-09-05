@@ -1,16 +1,25 @@
 package com.orchestranetworks.auto.addon.common.pages;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.FileUtils;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.XFormat;
 import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class DatasetPage extends WebPageObject {
 	// Parent xpath
+	static String fseparator = File.separator;
+
+	private static String DOWNLOAD_FOLDER = FileUtils.getDataFolderPath() + "output";
 
 	private static final String BTN_CREATE_A_RECORD = "Create a record";
 
@@ -26,7 +35,7 @@ public class DatasetPage extends WebPageObject {
 	private static final String XPATH_RADIO_FIELD = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='%s']]//*[@class='ebx_RadioButtonGroup']";
 	private static final String XPATH_DLL_FIELD = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='%s']]//button[@title='Open drop-down list']";
 	private static final String XPATH_NO_RECORDS_FOUND = "//div[contains(@class,'tvMessageEmpty') and .='No records found.']";
-	private static final String XPATH_NAVIGATION_PANEL = "//div[@class='_ebx-navigation-menu-selector_pane']";
+	private static final String XPATH_NAVIGATION_PANEL = "//div[@class='_ebx-modeless-modal _ebx-modeless-modal-with-background']";
 	public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
 	public static final String XPATH_CHECKBOX_RECORD = "//div[@id='ebx_WorkspaceContent']//tr[(td[%1$s]) or (td/div[%1$s])]//input[@type='checkbox']";
 	private static final String XPATH_DATASET_NAME = "//h2[contains(@class,'menu-selector-is-sub-title')]//span[@class='_ebx-documentation-label']";
@@ -34,6 +43,9 @@ public class DatasetPage extends WebPageObject {
 	private static final String XPATH_DATETIME = "//label[text()='%s']/ancestor::tr//span//input[contains(@name,'%s')]";
 	private static final String XPATH_SORT_DESCENDING_FOR_FIELD = "//span[text()='%s']/ancestor::th[@title='Click to sort in descending order']";
 	private static final String XPATH_TOTAL_SEARCH_RESULT = "(//div[@class='ebx_ToolsAlignRight']//button//span)[1]";
+
+	private static final String XPATH_TBL_ROW = "//div[@id='ebx_workspaceTable_fixedScroller']//table[@class='ebx_tvFixed']/tbody/tr";
+	private static final String XPATH_TBL_HEADER = "//div[@id='ebx_workspaceTable_headerContainer']//th[contains(@id,'tableField')]";
 
 	public DatasetPage(WebDriver driver) {
 		super(driver);
@@ -56,7 +68,6 @@ public class DatasetPage extends WebPageObject {
 			clickBtn(BTN_CHANGE_DATASPACE);
 			waitForPresenceOfElement(XPATH_NAVIGATION_PANEL);
 		}
-
 	}
 
 	public void go_to_navigation(String path) {
@@ -130,12 +141,6 @@ public class DatasetPage extends WebPageObject {
 		waitForAllLoadingCompleted();
 		switchToFirstIFrame();
 		waitAbit(2000);
-	}
-
-	public String get_text_popup_message() {
-		waitForAllLoadingCompleted();
-		switchToFirstIFrame();
-		return getTextValue(XPATH_POPUP_MESSAGE);
 	}
 
 	public void click_btn_close_popup() {
@@ -294,19 +299,18 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void remove_choose_dataset_div() {
+		waitForAllLoadingCompleted();
 		boolean isPresent = findAllElement(XPATH_NAVIGATION_PANEL).size() > 0;
 		if (isPresent) {
 			((JavascriptExecutor) getDriver()).executeScript("arguments[0].style.visibility='hidden';",
 					findBy(XPATH_NAVIGATION_PANEL));
 			waitForInvisibilityOfElement(XPATH_NAVIGATION_PANEL);
-
 		}
 	}
 
 	public void select_dataset(String keyTitle) {
 		String child = SessionData.getValueFromSession(keyTitle);
 		selectNavigationMenuItem(child);
-
 	}
 
 	private String get_text_dataset_name(String keyTitle) {
@@ -317,7 +321,7 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void click_btn_create_child_dataset(String parentDataset) {
-		clickBtn("//li[@data-key='" + parentDataset + "']", "Create a child dataset");
+		clickBtn("//li[@data-key='" + parentDataset + "']", Constants.BTN_CREATE_CHILD_DATASET);
 	}
 
 	public void create_child_dataset(String parentDataset) {
@@ -332,15 +336,15 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void click_btn_cancel() {
-		clickBtn("Cancel");
+		clickBtn(Constants.BTN_CANCEL);
 	}
 
 	public void click_btn_duplicate() {
-		clickBtn("Duplicate");
+		clickBtn(Constants.BTN_DUPLICATE);
 	}
 
 	public void select_owner_child_dataset(String ownerName) {
-		selectDDLBox("Owner", ownerName);
+		selectDDLBox(Constants.LBL_OWNER, ownerName);
 	}
 
 	public void input_dataset_label(String label) {
@@ -352,7 +356,7 @@ public class DatasetPage extends WebPageObject {
 	}
 
 	public void select_dataset_owner(String owner) {
-		selectDDLBox("Owner", owner);
+		selectDDLBox(Constants.LBL_OWNER, owner);
 
 	}
 
@@ -412,6 +416,67 @@ public class DatasetPage extends WebPageObject {
 
 	public String get_total_search_result() {
 		return getTextValue(XPATH_TOTAL_SEARCH_RESULT);
+	}
+
+	public List<List<String>> getTableData() {
+		List<List<String>> tbl = new ArrayList<List<String>>();
+		List<String> lsHeader = getTableHeader();
+		int numOfRow = findAllElement(XPATH_TBL_ROW).size();
+		// Add header
+		tbl.add(lsHeader);
+		// Add List row
+		for (int i = 1; i <= numOfRow; i++) {
+			tbl.add(getTableRow(i, lsHeader.size()));
+		}
+		return tbl;
+	}
+
+	private List<String> getTableRow(int rowind, int numOfCol) {
+		List<String> row = new ArrayList<String>();
+		for (int j = 1; j <= numOfCol; j++) {
+			row.add(getTextDataCell(rowind, j));
+		}
+		return row;
+	}
+
+	private List<String> getTableHeader() {
+		List<String> listHeader = new ArrayList<String>();
+		int numOfHeader = findAllElement(XPATH_TBL_HEADER).size();
+		for (int i = 1; i <= numOfHeader; i++) {
+			String xPathHeaderCell = "(" + XPATH_TBL_HEADER + ")[" + i + "]";
+			String col = getText(xPathHeaderCell);
+			listHeader.add(col);
+		}
+		return listHeader;
+	}
+
+	public String get_text_popup_message() {
+		waitForAllLoadingCompleted();
+		switchOutDefaultIFrame();
+		String msg = getTextValue(XPATH_POPUP_MESSAGE).replaceAll("\n", " ");
+		return msg;
+	}
+
+	private void deleteDownloadFolder() throws IOException {
+
+		File files = new File(DOWNLOAD_FOLDER);
+		FileUtils.deleteFiles(files);
+	}
+
+	public void click_btn_export() {
+		try {
+			deleteDownloadFolder();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		clickBtn(Constants.BTN_EXPORT);
+		waitAbit(5000);
+	}
+
+	public void close_popup_with_frame() {
+		switchToIFrame("ebx_InternalPopup_frame");
+		clickBtn("Close");
+
 	}
 
 }
