@@ -1,10 +1,15 @@
 package com.orchestranetworks.auto.addon.mame.pages;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.aspectj.weaver.NewFieldTypeMunger;
 import org.openqa.selenium.WebDriver;
 
+import com.orchestranetworks.auto.addon.LogWork;
+import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class ManualMergePages extends WebPageObject {
@@ -41,7 +46,7 @@ public class ManualMergePages extends WebPageObject {
 			for (int colInd = 1; colInd <= numOfHeader; colInd++) {
 				String xPathCell = XPATH_RCV_CELL.replaceAll("%r%", String.valueOf(rowind)).replaceAll("%c%",
 						String.valueOf(colInd));
-				cellValue = getText(xPathCell);
+				cellValue = getTextCell(xPathCell);
 				row.add(cellValue);
 			}
 			actualTable.add(row);
@@ -70,12 +75,19 @@ public class ManualMergePages extends WebPageObject {
 		for (int colInd = 1; colInd <= numOfHeader; colInd++) {
 			String xPathCell = "(//preview-record-view//div[@class='bottom']//td[contains(@class,\"cell-container ebx_tvEven\")]//span[@title])["
 					+ colInd + "]";
-			cellValue = getText(xPathCell);
+			cellValue = getTextCell(xPathCell);
 			row.add(cellValue);
 		}
 		actualTablePreview.add(row);
 
 		return actualTablePreview;
+	}
+	private String getTextCell(String xPathCell) {
+		try {
+			return getText(xPathCell);
+		} catch (Exception e) {
+			return "";
+		}
 	}
 
 	public void click_button_next() {
@@ -99,20 +111,19 @@ public class ManualMergePages extends WebPageObject {
 		return color.equals(highlightedColor) ? true : false;
 	}
 
-	// public List<Map<String, String>> get_actual_record_metadata() {
-	// List<Map<String, String>> actualRecordMetadata = new
-	// ArrayList<Map<String, String>>();
-	// for (int i = 0; i < actualRecordMetadata.size(); i++) {
-	// Map<String, String> row = actualRecordMetadata.get(i);
-	// row.get("groupId");
-	//
-	// actualRecordMetadata.get(i).get("groupId");
-	// actualRecordMetadata.get(i).get("state");
-	// actualRecordMetadata.get(i).get("autoCreated");
-	// actualRecordMetadata.get(i).get("functionalId");
-	// }
-	// return actualRecordMetadata;
-	// }
+//	public List<Map<String, String>> get_actual_record_metadata() {
+//		List<Map<String, String>> actualRecordMetadata = new ArrayList<Map<String, String>>();
+//		for (int i = 0; i < actualRecordMetadata.size(); i++) {
+//			Map<String, String> row = actualRecordMetadata.get(i);
+//			row.get("groupId");
+//
+//			actualRecordMetadata.get(i).get("groupId");
+//			actualRecordMetadata.get(i).get("state");
+//			actualRecordMetadata.get(i).get("autoCreated");
+//			actualRecordMetadata.get(i).get("functionalId");
+//		}
+//		return actualRecordMetadata;
+//	}
 
 	public String get_value_table(int rowInd, String colName) {
 		int rowIndex = rowInd + 1;
