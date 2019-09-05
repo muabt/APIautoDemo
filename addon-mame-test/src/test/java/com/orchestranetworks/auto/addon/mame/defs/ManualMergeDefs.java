@@ -5,6 +5,7 @@ import java.util.Map;
 
 import cucumber.api.DataTable;
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.common.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.mame.steps.ManualMergeSteps;
 
 import cucumber.api.java.en.And;
@@ -17,6 +18,8 @@ import java.util.List;
 public class ManualMergeDefs {
 	@Steps
 	ManualMergeSteps onManualMergeSteps;
+	@Steps
+	DatasetSteps onDatasetSteps;
 
 	@Then("^record view table will be displayed and highlighted as below$")
 	public void user_will_see_the_data_as_below(List<List<String>> tableMerge) {
@@ -25,6 +28,13 @@ public class ManualMergeDefs {
 		onManualMergeSteps.verify_datatable(tblName);
 	}
 
+	@Then("^record view table will be showed as below$")
+    public void record_view_table_will_be_showed_as_below(List<List<String>> tableMerge) {
+		String tblName = "RECORD_VIEW_EXP";
+		SessionData.addDataTable(tblName, tableMerge, false);
+		onManualMergeSteps.verify_datatable(tblName);
+    }
+	
 	@And("^preview table is displayed as below$")
 	public void table_is_highlighted_and_display_on_preview_table_as_below(List<List<String>> tablePreview) {
 		onManualMergeSteps.verify_table_preview(tablePreview);

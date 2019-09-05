@@ -96,7 +96,6 @@ public class DatasetSteps {
 
 	@Step
 	public void click_on_table_name(String sTable) {
-		onDatasetPage.switchToIFrame(Constants.IFRAME_LEGACY);
 		onDatasetPage.click_on_table(sTable);
 	}
 
@@ -110,6 +109,11 @@ public class DatasetSteps {
 			onDatasetPage.confirmPopupOK();
 		}
 
+	}
+	
+	@Step
+	public void switch_to_iframe(String id) {
+		onDatasetPage.switchToIFrame(id);
 	}
 
 	@Step

@@ -9,7 +9,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.common.pages.DatasetPage;
 import com.orchestranetworks.auto.addon.mame.pages.ManualMergePages;
 
 import cucumber.api.DataTable;
@@ -20,6 +22,7 @@ import cucumber.api.java.en.When;
 public class ManualMergeSteps {
 
 	ManualMergePages onManualMergePages;
+	DatasetPage onDatasetPage;
 
 	public void verify_datatable(String expTable) {
 		List<List<String>> actualTable = onManualMergePages.get_actual_mergedtable();
