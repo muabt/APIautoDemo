@@ -35,6 +35,7 @@ public class DatasetSteps {
 
 	@Step
 	public void go_to_data_set(String path) {
+		onDatasetPage.switchOutDefaultIFrame();
 		onDatasetPage.click_btn_change_dataset();
 		onDatasetPage.go_to_navigation(path);
 	}
@@ -95,6 +96,7 @@ public class DatasetSteps {
 
 	@Step
 	public void click_on_table_name(String sTable) {
+		onDatasetPage.switchToIFrame(Constants.IFRAME_LEGACY);
 		onDatasetPage.click_on_table(sTable);
 	}
 

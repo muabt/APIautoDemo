@@ -92,7 +92,7 @@ public class ManualMergePages extends WebPageObject {
 
 	public void click_button_next() {
 		waitAbit(3000);
-		switchToIFrame("serviceIframe");
+//		switchToIFrame("serviceIframe");
 		String xPath = "//button[@class='ebx_Button ebx_DefaultButton']";
 		clickOnElement(xPath);
 	}

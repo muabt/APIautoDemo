@@ -19,34 +19,33 @@ public class ManualMergeDefs {
 	ManualMergeSteps onManualMergeSteps;
 
 	@Then("^record view table will be displayed and highlighted as below$")
-	
-	public void user_will_see_the_data_as_below(List<List<String>> tableMerge)  {
+	public void user_will_see_the_data_as_below(List<List<String>> tableMerge) {
 		String tblName = "RECORD_VIEW_EXP";
 		SessionData.addDataTable(tblName, tableMerge, false);
 		onManualMergeSteps.verify_datatable(tblName);
 	}
 
 	@And("^preview table is displayed as below$")
-	public void table_is_highlighted_and_display_on_preview_table_as_below(List<List<String>> tablePreview)
-	{
-
+	public void table_is_highlighted_and_display_on_preview_table_as_below(List<List<String>> tablePreview) {
 		onManualMergeSteps.verify_table_preview(tablePreview);
 	}
-	
-	 @And("^the screen displays buttons as below$")
-	    public void the_screen_displays_buttons_as_below() {
-	    }
 
+	/*
+	 * @And("^the screen displays buttons as below$") public void
+	 * the_screen_displays_buttons_as_below() {
+	 * 
+	 * }
+	 */
 
-	@When("^user completes merging process$")
-	public void user_completes_merging_process() {
+	@When("^I complete merging process$")
+	public void i_complete_merging_process() {
 		onManualMergeSteps.click_button_next();
 		onManualMergeSteps.click_button_merge();
 
 	}
 
 	@Then("^user will see table RecordMetadata as below$")
-	public void user_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect){
+	public void user_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) {
 		List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
 		for (int i = 0; i < list.size(); i++) {
 			Map<String, String> row = list.get(i);

@@ -16,10 +16,10 @@ Feature: Survivor record selection mode is defined
     And preview table is displayed as below
       | id | Owner | Employee |
       |    |       |          |
-    And the screen displays buttons as below
-      | Name               | Status  |
-      | Reset              | Enable |
-      | Cancel last action | Disable  |
+    #And the screen displays buttons as below
+      #| Name               | Status  |
+      #| Reset              | Enable |
+      #| Cancel last action | Disable  |
     
     Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source
     Given I login to EBX succesfully
@@ -34,6 +34,7 @@ Feature: Survivor record selection mode is defined
     |  2 | Alex  |          |
     And preview table is displayed as below
     | ID | Owner | Employee |
+    ||||
     And the screen displays buttons as below
       | Name               | Status  |
       | Reset              | Disable |
