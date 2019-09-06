@@ -28,9 +28,9 @@ public class ManualMergeDefs {
 		onManualMergeSteps.verify_datatable(tblName);
 	}
 
-	@Then("^record view table will be showed as below$")
-    public void record_view_table_will_be_showed_as_below(List<List<String>> tableMerge) {
-		String tblName = "RECORD_VIEW_EXP";
+	@Then("^the table will be showed as below$")
+    public void the_table_will_be_showed_as_below(List<List<String>> tableMerge) {
+		String tblName = "TABLE_VIEW";
 		SessionData.addDataTable(tblName, tableMerge, false);
 		onManualMergeSteps.verify_datatable(tblName);
     }
@@ -39,7 +39,7 @@ public class ManualMergeDefs {
 	public void table_is_highlighted_and_display_on_preview_table_as_below(List<List<String>> tablePreview) {
 		onManualMergeSteps.verify_table_preview(tablePreview);
 	}
-
+	
 	/*
 	 * @And("^the screen displays buttons as below$") public void
 	 * the_screen_displays_buttons_as_below() {
@@ -54,8 +54,8 @@ public class ManualMergeDefs {
 
 	}
 
-	@Then("^user will see table RecordMetadata as below$")
-	public void user_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) {
+	@Then("^I will see table RecordMetadata as below$")
+	public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) throws Throwable {
 		List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
 		for (int i = 0; i < list.size(); i++) {
 			Map<String, String> row = list.get(i);

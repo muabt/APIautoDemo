@@ -32,18 +32,18 @@ Feature: Manual Merge
     When I complete merging process
     Then I access dataset "Master Data - Reference > Resource > Resource-child28 > Updater_Table19_MDS"
     And I access table "RecordMetadata"
-    Then record view table will be showed as below
-      | id   | groupId  | state  | autoCreated | functionalId |
-      | KEY1 | GROUP_ID | Golden | No          |            1 |
-      | KEY2 | GROUP_ID | Merged | No          |            2 |
-      | KEY3 | GROUP_ID | Merged | No          |            3 |
-      | KEY4 | GROUP_ID | Merged | No          |            4 |
-      | KEY5 | GROUP_ID | Merged | No          |            5 |
+    Then I will see table RecordMetadata as below
+      | recordId | groupId  | state  | autoCreated | functionalId |
+      | KEY1     | GROUP_ID | Golden | No          |            1 |
+      | KEY2     | GROUP_ID | Merged | No          |            2 |
+      | KEY3     | GROUP_ID | Merged | No          |            3 |
+      | KEY4     | GROUP_ID | Merged | No          |            4 |
+      | KEY5     | GROUP_ID | Merged | No          |            5 |
     And I close dataspace with service "Resource-child22"
-    And I access "administration" menu
-    And I access to administration service "Dataspaces"
-    And I access table "Dataspaces/snapshots" service
-    And I select filter by text with keyword and field below
-      | Field contains:  | In fields |
-      | Resource-child20 |           |
-    And I delete the dataspace "Dataspace Store (Store)" with service "Delete dataspaces and snapshots recursively"
+    #And I access "administration" menu
+    #And I access to administration service "Dataspaces"
+    #And I access table "Dataspaces/snapshots" service
+    #And I select filter by text with keyword and field below
+      #| Field contains:  | In fields |
+      #| Resource-child20 |           |
+    #And I delete the dataspace "Dataspace Store (Store)" with service "Delete dataspaces and snapshots recursively"

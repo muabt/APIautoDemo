@@ -21,7 +21,6 @@ public class CommonSteps {
 		onCommonPage.switchOutDefaultIFrame();
 		onDatasetPage.remove_choose_dataset_div();
 		onCommonPage.click_on_user_panel();
-
 	}
 
 	@Step
