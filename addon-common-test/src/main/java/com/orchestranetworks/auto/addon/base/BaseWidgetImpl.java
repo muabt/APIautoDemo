@@ -56,7 +56,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 	}
 
 	public void executeJS(String script, String xpath) {
-		((JavascriptExecutor) getDriver()).executeScript(script, findBy(xpath));
+		((JavascriptExecutor) getDriver()).executeScript(script, getElement(xpath));
 	}
 
 	public String getText(String xPath) {
@@ -70,8 +70,8 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 	public boolean isElementExistNow(String xPath) {
 		waitForAllLoadingCompleted();
 		try {
-			List<WebElementFacade> subDataCellResults = withTimeoutOf(120, TimeUnit.MILLISECONDS).thenFindAll(xPath);
-			if (subDataCellResults.size() != 0) {
+			List<WebElementFacade> e = findAllElement(xPath);
+			if (e.size() != 0) {
 				highlightElement(xPath);
 				return true;
 			}

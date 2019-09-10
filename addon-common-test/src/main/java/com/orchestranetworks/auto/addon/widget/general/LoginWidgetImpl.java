@@ -30,6 +30,6 @@ public class LoginWidgetImpl extends BaseWidgetImpl implements LoginWidget {
 	@Override
 	public void clickBtnLogin() {
 		clickBtn("Log in");
-		waitForVisibilityOfElement("");
+		waitForInvisibilityOfElement(XPATH_INPUT_PASSWORD);
 	}
 }
