@@ -38,20 +38,6 @@ public class CommonDefs {
 		onCommonSteps.user_access_to_ebx_home_page();
 	}
 
-	/**
-	 * Method to login to the ebx
-	 * <p>
-	 * <b>Example</b>:
-	 * <font color="blue">Given</font> I login to EBX succesfully
-	 * </p>
-	 * @throws Throwable
-	 */
-	@Given("^I login to EBX succesfully$")
-	public void user_login_to_ebx_succesfully() throws Throwable {
-		onCommonSteps.user_access_to_ebx_home_page();
-		onLoginSteps.login_to_system(LoadConfig.getUserName(), LoadConfig.getPassword());
-		onLoginSteps.verify_login_success();
-	}
 
     /**
      * Log out to the ebx

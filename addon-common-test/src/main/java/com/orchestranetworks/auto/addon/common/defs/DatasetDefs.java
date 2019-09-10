@@ -20,33 +20,8 @@ public class DatasetDefs {
 	@Steps
 	CommonSteps onCommonSteps;
 
-	/**
-	 * Access to the specified data space
-	 * <p>
-	 * <b>Example</b>:
-	 * <font color="blue">When</font> I access dataspace "<font color="green">Master Data - Reference>DMDV_v1.3.0</font>"
-	 * </p>
-	 * @param path path to the data space. Eg: FastTrack>[03] Parties data>Company employees
-	 * @throws Exception
-	 */
-	@When("^I access dataspace \"([^\"]*)\"$")
-	public void user_accesses_dataspace(String path) throws Exception {
-		onDatasetSteps.go_to_dataspace(path);
-	}
 
-	/**
-	 * Access to the specified data set
-	 * <b>Example</b>:
-	 * <font color="blue">When</font> I access dataset "<font color="green">V130_US25</font>"
-	 * </p>
-	 *
-	 * @param datasetName name of the data set
-	 * @throws Exception
-	 */
-	@When("^I access dataset \"([^\"]*)\"$")
-	public void user_accesses_data_set(String datasetName) throws Exception {
-		onDatasetSteps.go_to_data_set(datasetName);
-	}
+
 
 	/**
 	 * Create record with given information
@@ -440,21 +415,7 @@ public class DatasetDefs {
 		onDatasetSteps.click_btn_close();
 	}
 
-    /**
-     * Access to a table of a dataset
-	 * <p>
-	 * <b>Example</b>:
-	 * <ul>
-	 * <font color="blue">And</font> I access table "<font color="green">Employee</font>"
-	 * </ul>
-	 * </p>
-	 * @param tblName table name that user want to access
-     * @throws Throwable
-     */
-	@And("^I access table \"([^\"]*)\"$")
-	public void user_accesses_table(String tblName) throws Throwable {
-		onDatasetSteps.click_on_table_name(tblName);
-	}
+
 
     /**
      * Select the table service
