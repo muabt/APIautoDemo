@@ -22,17 +22,13 @@ public class ManualMergeDefs {
 
 	@Then("^record view table will be displayed and highlighted as below$")
 	public void user_will_see_the_data_as_below(List<List<String>> tableMerge) {
-		String tblName = "RECORD_VIEW_EXP";
-		SessionData.addDataTable(tblName, tableMerge, false);
-		onManualMergeSteps.verify_datatable(tblName);
+		onManualMergeSteps.verify_record_view_table(tableMerge);
 	}
-
-	@Then("^the table will be showed as below$")
-    public void the_table_will_be_showed_as_below(List<List<String>> tableMerge) {
-		String tblName = "TABLE_VIEW";
-		SessionData.addDataTable(tblName, tableMerge, false);
-		onManualMergeSteps.verify_datatable(tblName);
-    }
+//
+//	@Then("^the table will be showed as below$")
+//    public void the_table_will_be_showed_as_below(List<List<String>> tableMerge) {
+//		onManualMergeSteps.verify_record_view_table(tableMerge);
+//    }
 	
 	@And("^preview table is displayed as below$")
 	public void table_is_highlighted_and_display_on_preview_table_as_below(List<List<String>> tablePreview) {
@@ -65,19 +61,14 @@ public class ManualMergeDefs {
 			String functionalID = row.get("functionalId");
 
 			if (!recordID.isEmpty()) {
-				onManualMergeSteps.verify_record_value(i, "recordId", recordID);
 			}
 			if (!groupID.isEmpty()) {
-				onManualMergeSteps.verify_group_id(i);
 			}
 			if (!state.isEmpty()) {
-				onManualMergeSteps.verify_record_value(i, "state", state);
 			}
 			if (!autoCreated.isEmpty()) {
-				onManualMergeSteps.verify_record_value(i, "autoCreated", autoCreated);
 			}
 			if (!functionalID.isEmpty()) {
-				onManualMergeSteps.verify_record_value(i, "functionalId", functionalID);
 			}
 		}
 

@@ -305,13 +305,13 @@ public class DatasetSteps {
 		assertEquals(expectedResult, actualResult);
 	}
 
-	@Step
-	public void verify_data_table(String expTable) {
-		List<List<String>> actualTable = onDatasetPage.getTableData();
-		SessionData.addDataTable("RECORD_VIEW_ACT", actualTable, false);
-		// assertEquals(expTable, actualTable);
-		SessionData.compareTableNotFixHeader(expTable, "RECORD_VIEW_ACT");
-	}
+//	@Step
+//	public void verify_data_table(String expTable) {
+//		List<List<String>> actualTable = onDatasetPage.getTableData();
+//		SessionData.addDataTable("RECORD_VIEW_ACT", actualTable, false);
+//		// assertEquals(expTable, actualTable);
+//		SessionData.compareTableNotFixHeader(expTable, "RECORD_VIEW_ACT");
+//	}
 
 	@Step
 	public void verify_warning_popup_display(String content) {

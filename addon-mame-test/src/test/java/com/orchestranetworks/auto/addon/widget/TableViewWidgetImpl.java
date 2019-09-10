@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.widget;
 
+import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
@@ -8,19 +9,18 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MergeViewWidgetImpl extends BaseWidgetImpl implements MergeViewWidget {
+public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidget {
     private static final String XPATH_RCV_CELL = "(//record-view//div[@class='bottom']//tr[contains(@class,\"row\")][%r%]/td[contains(@class,'cell-container')]//span[@title])[%c%]";
 
-    public MergeViewWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
+    public TableViewWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
         super(page, locator, webElement, timeoutInMilliseconds);
     }
 
-    public MergeViewWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
+    public TableViewWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
         super(page, locator, timeoutInMilliseconds);
     }
 
-    public List<List<String>> get_actual_mergedtable() {
-        switchToIFrame("serviceIframe");
+    public List<List<String>> getDataRecordViewTable() {
         int numOfHeader = 0;
         String xPathListHeader = "//record-view//div[@class='top ebx_tvHeaderContainer']//span[@class='ebx_RawLabel']";
         String headerCellValue = "";
@@ -49,11 +49,11 @@ public class MergeViewWidgetImpl extends BaseWidgetImpl implements MergeViewWidg
             }
             actualTable.add(row);
         }
-
+        SessionData.addDataTable("RECORD_VIEW_TBL", actualTable, false);
         return actualTable;
     }
 
-    public List<List<String>> get_actual_previewTable() {
+    public List<List<String>> getDataPreviewTable() {
 
         int numOfHeader = 0;
         String xPathListHeader = "//preview-record-view//div[@class='top ebx_tvHeaderContainer']//span[@class='ebx_RawLabel']";
@@ -89,23 +89,41 @@ public class MergeViewWidgetImpl extends BaseWidgetImpl implements MergeViewWidg
         }
     }
 
+
+    public boolean isCellHighlighted(int row, int col) {
+        String xPathCell = XPATH_RCV_CELL.replaceAll("%r%", String.valueOf(row)).replaceAll("%c%",
+                String.valueOf(col + 1));
+        xPathCell = xPathCell + "//ancestor::*[local-name()='td' or local-name()='th']";
+        String highlightedColor = "rgba(244, 244, 244, 1)";
+        String color = getElement(xPathCell).getCssValue("background-color");
+        return color.equals(highlightedColor) ? true : false;
+    }
+
+    public String get_value_table(int rowInd, String colName) {
+        int rowIndex = rowInd + 1;
+        int colIndex = getColumnIndexWithLabel(colName);
+        return getTextDataCell(rowIndex, colIndex);
+    }
+
     @Override
     public void clickBtnNext() {
-
+        clickBtn("Next");
     }
 
     @Override
     public void clickBtnCancel() {
+        clickBtn("Cancel the merge process");
 
     }
 
     @Override
     public void clickBtnApplyMergePolicy() {
-
+        clickBtn("Apply merge policy");
     }
 
     @Override
-    public void clickBtnUndo() {
+    public void clickBtnCancelLastAction() {
+        clickBtn("Cancel last action");
 
     }
 
@@ -113,4 +131,5 @@ public class MergeViewWidgetImpl extends BaseWidgetImpl implements MergeViewWidg
     public void changeMergeStep(String step) {
 
     }
+
 }

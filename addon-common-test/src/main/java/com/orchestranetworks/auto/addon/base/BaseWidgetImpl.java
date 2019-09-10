@@ -38,8 +38,8 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 		return this.getPage().getDriver();
 	}
 
-	private WebElementFacade getElement(String xPath) {
-		return getElement(xPath);
+	public WebElementFacade getElement(String xPath) {
+		return getPage().find(By.xpath(xPath));
 	}
 
 	public void clickOnElement(String xPath) {
@@ -80,9 +80,11 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 		}
 		return false;
 	}
+
 	public List<WebElementFacade> findAllElement(String xPath) {
 		return getPage().findAll(xPath);
 	}
+
 	/**
 	 * =====================================IFRAME============================================================
 	 */
@@ -162,9 +164,9 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 	public WebElementFacade waitElementToBePresent(String xPath) {
 		waitForAllLoadingCompleted();
 		this.getPage().waitFor(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
-		WebElementFacade foundElement = findBy(xPath);
+		WebElementFacade foundElement = getElement(xPath);
 		if (foundElement != null) {
-			highlightElement(findBy(xPath));
+			highlightElement(xPath);
 		}
 		return foundElement;
 	}

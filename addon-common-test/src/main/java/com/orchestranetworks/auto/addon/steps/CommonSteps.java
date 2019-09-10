@@ -29,6 +29,7 @@ public class CommonSteps extends ScenarioSteps {
         Assert.assertTrue(is_login_success());
     }
 
+
     @Step
     public void click_btn_logout() {
         onCommonPage.getUserCard().clickBtnLogout();
@@ -63,6 +64,10 @@ public class CommonSteps extends ScenarioSteps {
     public boolean is_login_success() {
         return onCommonPage.getHeader().isHeaderExist();
     }
+    public void remove_choose_dataset_div(){
+        onCommonPage.getHeader().removeChooseDatasetDiv();
+    }
+
 
     @Step
     public void go_to_dataspace(String path) {

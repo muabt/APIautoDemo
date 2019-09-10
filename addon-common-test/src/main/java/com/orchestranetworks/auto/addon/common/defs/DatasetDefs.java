@@ -525,14 +525,14 @@ public class DatasetDefs {
 	 * @param targetTable contain information of the table that user want to verify
 	 * @throws Throwable
 	 */
-	@When("^the table should see as following$")
+	/*@When("^the table should see as following$")
 	public void the_table_should_be_updated_with_correspond_imported_data(List<List<String>> targetTable)
 			throws Throwable {
 		String tblName = "TBL_EXP";
 		SessionData.addDataTable(tblName, targetTable, false);
 		onDatasetSteps.verify_data_table(tblName);
 	}
-
+*/
 	/**
 	 * Create a child data set of a given dataset
 	 * <b>Example</b>:

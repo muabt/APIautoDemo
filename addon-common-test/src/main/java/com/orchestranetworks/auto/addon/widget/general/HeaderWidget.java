@@ -5,15 +5,17 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy(HeaderWidgetImpl.class)
 public interface HeaderWidget extends WidgetObject {
-	void accessMenu(String menu);
+    void accessMenu(String menu);
 
-	void openUserCard();
+    void openUserCard();
 
-	void clickBtnSelectPerspective();
+    void clickBtnSelectPerspective();
 
-	boolean isHeaderExist();
+    boolean isHeaderExist();
 
     void openUserPanel();
 
-	void selectPerspective(String perName);
+    void selectPerspective(String perName);
+
+    void removeChooseDatasetDiv();
 }

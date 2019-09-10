@@ -1,6 +1,7 @@
 package com.orchestranetworks.auto.addon.pages;
 
 import com.orchestranetworks.auto.addon.widget.general.*;
+import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
@@ -8,7 +9,7 @@ import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 
 import net.serenitybdd.core.pages.PageObject;
-
+@DefaultUrl("http://automation.vn.orchestranetworks.com/ebx-ui/")
 public class CommonPage extends PageObject {
     private ToolbarWidget toolbar;
     private NavigationWidget navPanel;

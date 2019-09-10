@@ -26,6 +26,7 @@ public class CommonDefs {
         onCommonSteps.access_login_page();
         onCommonSteps.login_to_system(LoadConfig.getUserName(), LoadConfig.getPassword());
         onCommonSteps.verify_login_success();
+        onCommonSteps.remove_choose_dataset_div();
     }
 
     /**

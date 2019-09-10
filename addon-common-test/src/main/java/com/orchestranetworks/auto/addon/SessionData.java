@@ -179,46 +179,6 @@ public class SessionData {
 
 	private static SoftAssertions softAssertions;
 
-	public static boolean compareTableNotFixHeader(String expectedTb, String actualTb) {
-		softAssertions = new SoftAssertions();
-		boolean diff = true;
-
-		LinkedHashMap<Integer, List<String>> expectedData = new LinkedHashMap<>();
-		LinkedHashMap<Integer, List<String>> actualData = new LinkedHashMap<>();
-
-		expectedData = getDataTbRows(expectedTb);
-		actualData = getDataTbRows(actualTb);
-
-		List<String> expectedHeader = expectedData.get(0);
-		List<String> actualHeader = actualData.get(0);
-
-		assertThat(actualData.keySet()).isEqualTo(expectedData.keySet());
-		assertThat(expectedHeader).isEqualTo(actualHeader);
-
-		if (!expectedData.keySet().equals(actualData.keySet())) {
-			LogWork.error("Number of rows is not equal, expected:" + expectedData.keySet() + ", but was:"
-					+ actualData.keySet());
-		}
-		if (!expectedHeader.equals(actualHeader)) {
-			LogWork.error("Number of colunm is not equal, expected:" + expectedData.keySet() + ", but was:"
-					+ actualData.keySet());
-		}
-		for (int row : expectedData.keySet()) {
-			for (int col = 0; col < expectedHeader.size(); col++) {
-				String expectedCell = getDataTbVal(actualTb, row, col);
-				String actualCell = getDataTbVal(actualTb, row, col);
-				if (expectedCell.contains("- {")) {
-					expectedCell.replaceAll("- {", "").trim();
-				}
-				softAssertions.assertThat(expectedCell).isEqualTo(expectedCell);
-				if (!expectedCell.equals(actualCell)) {
-					diff = false;
-				}
-			}
-		}
-		softAssertions.assertAll();
-		return diff;
-	}
 
 	public static SoftAssertions softAssert() {
 		if (softAssertions == null) {
