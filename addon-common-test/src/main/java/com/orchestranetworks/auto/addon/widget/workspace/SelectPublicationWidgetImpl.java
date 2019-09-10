@@ -16,4 +16,9 @@ public class SelectPublicationWidgetImpl extends BaseWidgetImpl implements Selec
 	public SelectPublicationWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
 	}
+
+	@Override
+	public void selectPublication(String publicationName) {
+
+	}
 }

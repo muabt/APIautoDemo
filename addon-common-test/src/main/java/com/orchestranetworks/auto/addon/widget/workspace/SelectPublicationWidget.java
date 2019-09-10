@@ -5,8 +5,5 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy(SelectPublicationWidgetImpl.class)
 public interface SelectPublicationWidget extends WidgetObject {
-    void clickBackBtn();
-    void clickCancelBtn();
-    void clickNextBtn();
     void selectPublication(String publicationName);
 }
