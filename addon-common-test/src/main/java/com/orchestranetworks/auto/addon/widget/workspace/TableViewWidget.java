@@ -5,5 +5,5 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy(TableViewWidgetImpl.class)
 public interface TableViewWidget extends WidgetObject {
-
+    void selectFirstRecords(int numberOfRecords);
 }

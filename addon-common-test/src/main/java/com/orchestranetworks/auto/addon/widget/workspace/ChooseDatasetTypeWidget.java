@@ -6,6 +6,6 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy(ChooseDatasetTypeWidgetImpl.class)
 public interface ChooseDatasetTypeWidget extends WidgetObject {
     void clickBtnPackagedDataModel();
-    void clickBtnSemanticModel();
-    void clickBtnRelationalModel();
+    void clickBtnEmbeddedDataModel();
+    void clickBtnExternalDataModel();
 }

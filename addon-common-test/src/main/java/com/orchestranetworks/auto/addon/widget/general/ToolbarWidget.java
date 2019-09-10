@@ -13,4 +13,12 @@ public interface ToolbarWidget extends WidgetObject {
 	WebElementFacade getBtnActions();
 
 	void selectService(String service);
+
+	void clickNextPage();
+
+	void clickBackPage();
+
+	void clickLastPage();
+
+	void clickFirstPage();
 }

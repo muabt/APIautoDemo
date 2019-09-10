@@ -19,16 +19,16 @@ public class ChooseDatasetTypeWidgetImpl extends BaseWidgetImpl implements Choos
 
 	@Override
 	public void clickBtnPackagedDataModel() {
-
+		clickBtn("Packaged data model");
 	}
 
 	@Override
-	public void clickBtnSemanticModel() {
-
+	public void clickBtnEmbeddedDataModel() {
+		clickBtn("Embedded data model");
 	}
 
 	@Override
-	public void clickBtnRelationalModel() {
-
+	public void clickBtnExternalDataModel() {
+		clickBtn("External data model");
 	}
 }

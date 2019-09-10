@@ -19,6 +19,6 @@ public class SelectPublicationWidgetImpl extends BaseWidgetImpl implements Selec
 
 	@Override
 	public void selectPublication(String publicationName) {
-
+		selectDDLBox("Publication", publicationName);
 	}
 }

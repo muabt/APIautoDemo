@@ -19,12 +19,12 @@ public class ChooseDatamodelTypeWidgetImpl extends BaseWidgetImpl implements Cho
 
 	@Override
 	public void clickBtnSemanticModel() {
-
+		clickBtn("Semantic model");
 	}
 
 	@Override
 	public void clickBtnRelationalModel() {
-
+		clickBtn("Relational model");
 	}
 
 }

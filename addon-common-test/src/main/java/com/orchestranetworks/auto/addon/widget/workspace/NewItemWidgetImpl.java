@@ -24,7 +24,6 @@ public class NewItemWidgetImpl extends BaseWidgetImpl implements NewItemWidget {
 
 	@Override
 	public void enterUniqueName(String uniqueName) {
-
 	}
 
 	@Override

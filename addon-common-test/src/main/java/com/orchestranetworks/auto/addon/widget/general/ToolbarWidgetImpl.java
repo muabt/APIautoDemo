@@ -39,4 +39,24 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
 		clickBtn("Actions");
 		find(By.linkText(service)).waitUntilClickable().click();
 	}
+
+	@Override
+	public void clickNextPage() {
+
+	}
+
+	@Override
+	public void clickBackPage() {
+
+	}
+
+	@Override
+	public void clickLastPage() {
+
+	}
+
+	@Override
+	public void clickFirstPage() {
+
+	}
 }

@@ -16,4 +16,16 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 	public TableViewWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
 	}
+
+	@Override
+	public void selectFirstRecords(int numberOfRecords) {
+		for (int i=0; i < numberOfRecords; i++) {
+			select_record_with_index(i);
+		}
+	}
+
+	private void select_record_with_index(int index) {
+		String xPathSelectRecord = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])[" + index + "]";
+		clickOnElement(xPathSelectRecord);
+	}
 }
