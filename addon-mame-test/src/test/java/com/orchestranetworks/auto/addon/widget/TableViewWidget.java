@@ -15,5 +15,9 @@ public interface TableViewWidget extends WidgetObject {
     List<List<String>> getDataRecordViewTable();
     boolean isCellHighlighted(int row, int col);
     List<List<String>> getDataPreviewTable();
-
+    String getTextOfResetBtn();
+    String getValueCancelLastAction(String status);
+  	String getTextOfCancelActionButton();
+  	String getActualTableName();
+    
 }

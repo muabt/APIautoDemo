@@ -79,5 +79,11 @@ public class ManualMergeSteps {
     public void click_button_merge() {
         onManualMergePages.getPreviewWidget().clickBtnMerge();
     }
+    
+    public void get_text_of_reset_button() {
+    	onManualMergePages.getTableViewWidget().getTextOfResetBtn();
+    }
+    
+    
 
 }
