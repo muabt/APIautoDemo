@@ -81,11 +81,7 @@ public class CommonSteps extends ScenarioSteps {
 
 	private void go_to_path(String path) {
 		String[] itemList = path.split(">");
-		onCommonPage.getNavPanel().collapseNavigationItems();
-		for (int i = 0; i < itemList.length - 1; i++) {
-			onCommonPage.getNavPanel().expandNavigationItem(itemList[i].trim());
-			waitABit(2000);
-		}
+		onCommonPage.getNavPanel().expandNavigationItem(itemList);
 		onCommonPage.getNavPanel().accessNavigationItem(itemList[itemList.length - 1].trim());
 	}
 

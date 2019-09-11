@@ -25,7 +25,9 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 	public void changeDataspace() {
 		removeChooseDatasetDiv();
 		switchOutDefaultIFrame();
-		clickBtn("Change dataspace");
+		if (isElementExistNow(xPathBtn("Change dataspace"))) {
+			clickBtn("Change dataspace");
+		}
 	}
 
 	@Override
@@ -41,12 +43,12 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 	}
 
 	@Override
-	public void expandNavigationItem(String path) {
-		String[] itemList = path.split(">");
+	public void expandNavigationItem(String[] itemList) {
 		collapseAll();
+		waitAbit(1000);
 		for (int i = 0; i < itemList.length - 1; i++) {
-			expandItem(itemList[i]);
-			// TODO: add wait time
+			expandItem(itemList[i].trim());
+            waitAbit(1000);
 		}
 	}
 
@@ -59,14 +61,15 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 	public void collapseNavigationItem(String menu) {
 		String xPathExpanded = "//li[descendant-or-self::*[contains(text(),'" + menu
 				+ "')]]//button[@title='Expanded']";
-		findBy(xPathExpanded).waitUntilClickable().click();
+		clickOnElement(xPathExpanded);
 	}
 
 	@Override
 	public void accessNavigationItem(String menu) {
 		// No extents Webpageobject then using default method of serenity
 		menu = SessionData.getValueFromSession(menu);
-		findBy(XFormat.of(XPATH_NAVIGATION_ITEM, menu)).waitUntilClickable().click();
+		String xpath = XFormat.of(XPATH_NAVIGATION_ITEM, menu);
+		clickOnElement(xpath);
 	}
 
 	private void collapseAll() {
@@ -81,7 +84,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 		String xPathCollapsed = "//li[descendant-or-self::*[contains(text(),'" + item
 				+ "')]]//button[@title='Collapsed']";
 		if (isElementExistNow(xPathCollapsed)) {
-			clickBtn(xPathCollapsed);
+			clickOnElement(xPathCollapsed);
 		}
 	}
 

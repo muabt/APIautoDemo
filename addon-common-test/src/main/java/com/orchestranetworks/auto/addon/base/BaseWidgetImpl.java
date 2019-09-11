@@ -568,6 +568,13 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 
 	}
 
+	protected void waitAbit(long millisecond) {
+		try {
+			Thread.sleep(millisecond);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	protected void removeChooseDatasetDiv() {
 		waitForAllLoadingCompleted();
 		boolean isPresent = getPage().findAll(XPATH_NAVIGATION_PANEL).size() > 0;

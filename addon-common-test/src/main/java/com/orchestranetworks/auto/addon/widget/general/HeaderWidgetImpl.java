@@ -35,6 +35,7 @@ public class HeaderWidgetImpl extends BaseWidgetImpl implements HeaderWidget {
 
 	@Override
 	public void accessMenu(String menu) {
+		switchOutDefaultIFrame();
 		switch (menu.toLowerCase()) {
 		case "dataset":
 			menu = TITLE_MENU_TITLE_DATASET;

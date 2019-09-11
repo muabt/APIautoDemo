@@ -11,7 +11,7 @@ public interface NavigationWidget extends WidgetObject {
 
 	void expandNavigationItems();
 
-	void expandNavigationItem(String menu);
+	void expandNavigationItem(String[] menu);
 
 	void collapseNavigationItems();
 
