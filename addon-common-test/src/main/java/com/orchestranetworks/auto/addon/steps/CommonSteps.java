@@ -85,4 +85,5 @@ public class CommonSteps extends ScenarioSteps {
 	public void click_on_table_name(String tblName) {
 		onCommonPage.getNavPanel().accessNavigationItem(tblName);
 	}
+
 }

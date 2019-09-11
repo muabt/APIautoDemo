@@ -34,7 +34,9 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 	public void changeDataset() {
 		removeChooseDatasetDiv();
 		switchOutDefaultIFrame();
-		clickBtn("Change dataset");
+        if (isElementExistNow(xPathBtn("Select dataset"))) {
+            clickBtn("Select dataset");
+        }
 	}
 
 	@Override
@@ -48,7 +50,6 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 		waitAbit(1000);
 		for (int i = 0; i < itemList.length - 1; i++) {
 			expandItem(itemList[i].trim());
-            waitAbit(1000);
 		}
 	}
 
@@ -83,8 +84,11 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 	private void expandItem(String item) {
 		String xPathCollapsed = "//li[descendant-or-self::*[contains(text(),'" + item
 				+ "')]]//button[@title='Collapsed']";
+		String xPathExpanded = "//li[descendant-or-self::*[contains(text(),'" + item
+				+ "')]]//button[@title='Expanded']";
 		if (isElementExistNow(xPathCollapsed)) {
 			clickOnElement(xPathCollapsed);
+			waitForPresenceOfElement(xPathExpanded);
 		}
 	}
 
