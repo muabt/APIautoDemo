@@ -3,6 +3,7 @@ package com.orchestranetworks.auto.addon.base;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.orchestranetworks.auto.addon.Constants;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -575,12 +576,14 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 			e.printStackTrace();
 		}
 	}
+
 	protected void removeChooseDatasetDiv() {
 		waitForAllLoadingCompleted();
 		boolean isPresent = getPage().findAll(XPATH_NAVIGATION_PANEL).size() > 0;
 		if (isPresent) {
-			((JavascriptExecutor) getDriver()).executeScript("arguments[0].style.visibility='hidden';",
-					findBy(XPATH_NAVIGATION_PANEL));
+            executeJS(Constants.JS_HIDDEN, XPATH_NAVIGATION_PANEL);
+            executeJS(Constants.JS_HIDDEN,
+                    "//div[@class='_ebx-modeless _ebx-modeless_with-shadow _ebx-navigation-menu-selector_modeless']");
 			waitForInvisibilityOfElement(XPATH_NAVIGATION_PANEL);
 		}
 	}

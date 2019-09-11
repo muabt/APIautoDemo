@@ -31,7 +31,6 @@ public class HeaderWidgetImpl extends BaseWidgetImpl implements HeaderWidget {
 	private static final String XPATH_MENU = "//*[@title='%s']";
 	private static final String XPATH_USER_CARD = "//button[*[contains(@*,'avatar')]]";
 	private static final String XPATH_SELECT_PERSPECTIVE = "//button[@title='Select perspective']";
-	private static final String XPATH_NAVIGATION_PANEL = "//div[@class='_ebx-modeless-modal _ebx-modeless-modal-with-background']";
 
 	@Override
 	public void accessMenu(String menu) {
@@ -92,19 +91,5 @@ public class HeaderWidgetImpl extends BaseWidgetImpl implements HeaderWidget {
 	@Override
 	public void selectPerspective(String perName) {
 		clickBtn("Select perspective");
-	}
-
-	@Override
-	public void removeChooseDatasetDiv() {
-		String xPathDatasetDiv = XPATH_NAVIGATION_PANEL;
-		boolean isPresent = findAllElement(xPathDatasetDiv).size() > 0;
-
-		if (isPresent) {
-			executeJS(Constants.JS_HIDDEN, XPATH_NAVIGATION_PANEL);
-			executeJS(Constants.JS_HIDDEN,
-					"//div[@class='_ebx-modeless _ebx-modeless_with-shadow _ebx-navigation-menu-selector_modeless']");
-			waitForInvisibilityOfElement(xPathDatasetDiv);
-
-		}
 	}
 }

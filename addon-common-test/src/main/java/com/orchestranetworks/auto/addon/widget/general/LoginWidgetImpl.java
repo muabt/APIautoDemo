@@ -31,5 +31,6 @@ public class LoginWidgetImpl extends BaseWidgetImpl implements LoginWidget {
 	public void clickBtnLogin() {
 		clickBtn("Log in");
 		waitForInvisibilityOfElement(XPATH_INPUT_PASSWORD);
+		removeChooseDatasetDiv();
 	}
 }

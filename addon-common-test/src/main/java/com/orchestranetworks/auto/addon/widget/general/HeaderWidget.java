@@ -16,6 +16,4 @@ public interface HeaderWidget extends WidgetObject {
     void openUserPanel();
 
     void selectPerspective(String perName);
-
-    void removeChooseDatasetDiv();
 }

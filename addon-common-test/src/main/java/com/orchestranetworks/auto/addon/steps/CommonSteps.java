@@ -63,10 +63,6 @@ public class CommonSteps extends ScenarioSteps {
 		return onCommonPage.getHeader().isHeaderExist();
 	}
 
-	public void remove_choose_dataset_div() {
-		onCommonPage.getHeader().removeChooseDatasetDiv();
-	}
-
 	@Step
 	public void go_to_dataspace(String path) {
 		onCommonPage.getNavPanel().changeDataspace();

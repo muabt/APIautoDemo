@@ -24,7 +24,6 @@ public class CommonDefs {
 	public void user_login_to_ebx_succesfully() {
 		onCommonSteps.access_login_page();
 		onCommonSteps.login_to_system(LoadConfig.getUserName(), LoadConfig.getPassword());
-		onCommonSteps.remove_choose_dataset_div();
 		onCommonSteps.verify_login_success();
 
 	}
