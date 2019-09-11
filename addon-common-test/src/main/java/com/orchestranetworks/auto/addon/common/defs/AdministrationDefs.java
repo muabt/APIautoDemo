@@ -5,6 +5,7 @@ import com.orchestranetworks.auto.addon.common.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.common.steps.DatasetSteps;
 
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
 public class AdministrationDefs {
@@ -31,7 +32,38 @@ public class AdministrationDefs {
     public void i_access_to_administration_service(String service) throws Throwable {
         onAdministrationSteps.go_to_admin_service(service);
     }
-
+    
+    /**
+	 * Access to the specified parent item administration area
+	 * <p>
+	 * <b>Example</b>: <font color="blue">When</font> I access to
+	 * "<font color="green">Match and Merge configuration</font>" parent item
+	 * </p>
+	 *
+	 * @param path
+	 *            path to the parent item in administration area. 
+	 */
+    
+	@And("^I access to \"([^\"]*)\" parent item$")
+	public void user_accesses_group_administration(String path) {
+		onAdministrationSteps.go_to_group_administration(path);
+	}
+	
+	/**
+	 * Access to the specified item administration area
+	 * <p>
+	 * <b>Example</b>: <font color="blue">When</font> I access to
+	 * "<font color="green">Match and Merge configuration</font>" item
+	 * </p>
+	 *
+	 * @param path
+	 *            path to the parent item in administration area. 
+	 */
+	@And("^I access to \"([^\"]*)\" item$")
+	public void user_accesses_administration(String path) {
+		onAdministrationSteps.go_to_administration_item(path);
+	}
+    
     /**
      * Access a table service
      *

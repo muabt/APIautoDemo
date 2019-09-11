@@ -9,6 +9,7 @@ import com.orchestranetworks.auto.addon.XFormat;
 import com.orchestranetworks.auto.addon.common.WebPageObject;
 
 public class AdministrationPage extends WebPageObject {
+	
 	private static final String NAVIGATION_ITEM = "//span[%s]";
 	private static final String XPATH_SELECTOR_PANEL = "//div[@class='yui-panel-container shadow']";
 	private static final String XPATH_TABLE = "//table[@class='ebx_tvFixed']";
@@ -43,12 +44,12 @@ public class AdministrationPage extends WebPageObject {
 	public void go_to_admin_service(String service) {
 		go_to_navigation(service);
 	}
-
+	
 	public void go_to_navigation(String path) {
 		String[] itemList = path.split(">");
 		collapseAll();
 		for (int i = 0; i < itemList.length - 1; i++) {
-			expandItem(itemList[i]);
+			expandItem(itemList[i].trim());
 			waitABit(2000);
 		}
 		selectNavigationMenuItem(itemList[itemList.length - 1]);
@@ -57,5 +58,17 @@ public class AdministrationPage extends WebPageObject {
 	public void selectNavigationMenuItem(String item) {
 		item = SessionData.getValueFromSession(item);
 		clickOnElement(XFormat.of(NAVIGATION_ITEM, sSpecialTextPredicates(item)));
+	}
+	
+	public void go_to_group_administration(String item) {
+		switchToIFrame(Constants.IFRAME_LEGACY);
+		clickOnElement("//span/a[contains(text(),'" + item + "')]");
+		clickOnElement("//div[@id='ebx_NavigationTree']//a");
+		waitAbit(2000);
+	}
+	
+	public void go_to_administration_item(String item) {
+		clickOnElement("//span/a/span/span[contains(text(),'" + item + "')]");
+		waitAbit(2000);
 	}
 }

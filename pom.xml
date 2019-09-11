@@ -138,6 +138,21 @@
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<profiles>
+        <profile>
+            <id>debug</id>
+            <activation>
+                <property>
+                    <name>debug</name>
+                </property>
+            </activation>
+
+            <properties>
+                <maven.surefire.debug>-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y</maven.surefire.debug>
+            </properties>
+        </profile>
+    </profiles>
 
 	<build>
 		<plugins>
@@ -147,11 +162,8 @@
 				<version>2.19.1</version>
 				<configuration>
 				    <includes>
-						<!-- <include>**/*.java</include> -->
-						<!-- <include>**/*Test.java</include> -->
 						<include>**/*TestSuite.java</include>
 					</includes>
-					<skip>false</skip>
 				</configuration>
 			</plugin>
 			<!--  plugin>
