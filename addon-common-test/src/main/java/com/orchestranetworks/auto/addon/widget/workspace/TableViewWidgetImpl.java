@@ -15,17 +15,20 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
 	public TableViewWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
+		switchToLastIFrame();
 	}
 
 	@Override
 	public void selectFirstRecords(int numberOfRecords) {
-		for (int i=0; i < numberOfRecords; i++) {
+		for (int i = 1; i < numberOfRecords; i++) {
 			select_record_with_index(i);
 		}
 	}
 
 	private void select_record_with_index(int index) {
 		String xPathSelectRecord = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])[" + index + "]";
-		clickOnElement(xPathSelectRecord);
+		// Use waitUntilClickable will throw TimeoutException, so just click() only
+		getElement(xPathSelectRecord).click();
+		//clickOnElement(xPathSelectRecord);
 	}
 }

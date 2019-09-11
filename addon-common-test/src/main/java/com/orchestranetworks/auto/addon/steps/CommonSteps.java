@@ -1,9 +1,11 @@
 package com.orchestranetworks.auto.addon.steps;
 
+import static com.orchestranetworks.auto.addon.Constants.IFRAME_LEGACY;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 
+import com.orchestranetworks.auto.addon.widget.general.NavigationWidgetImpl;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
