@@ -79,6 +79,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     public void accessNavigationItem(String menu) {
         menu = SessionData.getValueFromSession(menu);
         String xpath = XFormat.of(XPATH_NAVIGATION_ITEM, menu);
+        waitAbit(1000);
         clickOnElement(xpath);
     }
 

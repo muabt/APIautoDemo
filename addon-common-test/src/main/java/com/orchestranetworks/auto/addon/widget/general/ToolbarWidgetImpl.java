@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.widget.general;
 
+import com.orchestranetworks.auto.addon.XFormat;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -19,6 +20,8 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
 		super(page, locator, timeoutInMilliseconds);
 	}
 
+	private static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
+
 	@Override
 	public void clickBtnFilter() {
 		clickBtn("Filters");
@@ -37,7 +40,14 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
 	@Override
 	public void selectService(String service) {
 		clickBtn("Actions");
-		find(By.linkText(service)).waitUntilClickable().click();
+
+		String[] services = service.split(">");
+		for (int i = 0; i < services.length; i++) {
+			clickOnElement(XFormat.of(NAVIGATION_ITEM, services[i].trim()));
+		}
+		waitForAllLoadingCompleted();
+		switchToFirstIFrame();
+		waitAbit(2000);
 	}
 
 	@Override

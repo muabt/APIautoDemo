@@ -20,9 +20,6 @@ public class DatasetDefs {
 	@Steps
 	CommonSteps onCommonSteps;
 
-
-
-
 	/**
 	 * Create record with given information
 	 * <p>
@@ -115,7 +112,6 @@ public class DatasetDefs {
 	public void user_wants_to_create_data_set_from_an_embedded_data_model(String datasetName)
 			throws Throwable {
 		onCommonSteps.click_on_menu_dataset();
-
 	}
 
 	/**
@@ -340,7 +336,7 @@ public class DatasetDefs {
 	 * @param numOfRecord number of first records that want to select
      * @throws Throwable
      */
-	@When("^I1 select first \"([^\"]*)\" records in table$")
+	@When("^I select first \"([^\"]*)\" records in table$")
 	public void user_selects_first_num_of_records_in_table(String numOfRecord) throws Throwable {
 		onDatasetSteps.select_first_records(numOfRecord);
 
