@@ -23,10 +23,6 @@ public class AdministrationWidgetImpl extends BaseWidgetImpl implements Administ
 
 	@Override
 	public void selectAnAdminFeature() {
-		
-	}
-	
-	public void select_an_admin_feature() {
 		remove_div_on_administration_workspace();
 		clickBtn(Constants.BTN_SELECT_ADMIN_FEATURE);
 	}

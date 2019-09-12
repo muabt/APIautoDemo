@@ -100,7 +100,7 @@ public class AdministrationDefs {
     @And("^I delete the dataspace \"([^\"]*)\" with service \"([^\"]*)\"$")
     public void i_delete_the_dataspace_with_service(String dataspaceName, String servicePath)
             throws Throwable {
-        onDatasetSteps.select_record_with_PK(dataspaceName);
+       // onDatasetSteps.select_record_with_PK(dataspaceName);
         onDatasetSteps.click_btn_action_table();
         onDatasetSteps.select_table_service(servicePath);
         onCommonSteps.click_btn_submit();

@@ -81,11 +81,11 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         String xpath = XFormat.of(XPATH_NAVIGATION_ITEM, menu);
         clickOnElement(xpath);
     }
+    
+    @Override
     public void goToPath(String path) {
         String[] itemList = path.split(">");
         expandNavigationItem(itemList);
        accessNavigationItem(itemList[itemList.length - 1].trim());
     }
-
-
 }

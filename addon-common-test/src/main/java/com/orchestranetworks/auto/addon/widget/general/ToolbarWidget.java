@@ -16,11 +16,15 @@ public interface ToolbarWidget extends WidgetObject {
 
 	void clickNextPage();
 
-	void clickBackPage();
+	void clickPreviousPage();
 
 	void clickLastPage();
 
 	void clickFirstPage();
+
+	void selectDatasetService(String service);
+	
+	void clickBtnCreateRecord();
 
     void clickBtnCreateDataspace();
 }

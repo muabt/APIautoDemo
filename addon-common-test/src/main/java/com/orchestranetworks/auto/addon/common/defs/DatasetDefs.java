@@ -345,7 +345,7 @@ public class DatasetDefs {
 	public void user_selects_records_as_following(List<List<String>> dt) throws Throwable {
 		for (int i = 1; i < dt.size(); i++) {
 			String[] col = dt.get(i).toArray(new String[0]);
-			onDatasetSteps.select_record_with_PK(col);
+			//onDatasetSteps.select_record_with_PK(col);
 		}
 
 	}

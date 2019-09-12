@@ -22,9 +22,8 @@ public class DatasetDefs {
      * @throws Throwable
      */
     @When("^I select first \"([^\"]*)\" records in table$")
-    public void user_selects_first_num_of_records_in_table(String numOfRecord) {
-       /// onDatasetSteps.select_first_records(numOfRecord);
-        onDatasetSteps.selectFirstRecords(numOfRecord);
+    public void I_select_first_num_of_records_in_table(String numOfRecord) {
+        onDatasetSteps.select_first_record(numOfRecord);
     }
 
     /**
@@ -39,7 +38,7 @@ public class DatasetDefs {
      * @throws Throwable
      */
     @And("^I select table service \"([^\"]*)\"$")
-    public void user_select_table_service(String service) throws Throwable {
-        onDatasetSteps.selectTableService(service);
+    public void I_select_table_service(String service) throws Throwable {
+        onDatasetSteps.select_table_service(service);
     }
 }

@@ -20,6 +20,7 @@ public class CommonPage extends PageObject {
     private FooterWidget footer;
     private LoginWidget login;
     private UserCardWidget userCard;
+    private PopupWidget popup;
 
     public CommonPage(WebDriver driver) {
         super(driver);
@@ -29,6 +30,7 @@ public class CommonPage extends PageObject {
         this.footer = new FooterWidgetImpl(this, null, 100);
         this.login = new LoginWidgetImpl(this, null, 100);
         this.userCard = new UserCardWidgetImpl(this, null, 100);
+        this.popup = new PopupWidgetImpl(this, null, 100);
     }
 
     public ToolbarWidget getToolbar() {
@@ -53,6 +55,10 @@ public class CommonPage extends PageObject {
 
     public UserCardWidget getUserCard() {
         return userCard;
+    }
+    
+    public PopupWidget getPopupWidget() {
+    	return popup;
     }
 
     public void access_login_page() {

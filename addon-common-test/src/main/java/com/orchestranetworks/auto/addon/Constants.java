@@ -34,7 +34,9 @@ public final class Constants {
 	public static final String BTN_SELECT_ADMIN_FEATURE = "Select an administration feature";
 	public static final String BTN_CANCEL = "Cancel";
 	public static final String BTN_EXPORT = "Export";
+	public static final String BTN_CREATE_A_RECORD = "Create a record";
 
+	
 	public static final String LBL_UNIQUE_NAME = "Unique name";
 	public static final String LBL_LABEL = "Label";
 	public static final String LBL_IDENTIFIER = "Identifier";

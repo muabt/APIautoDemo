@@ -77,9 +77,19 @@ public class CommonSteps extends ScenarioSteps {
     }
 
 
-    @Step
-    public void click_on_table_name(String tblName) {
-        onCommonPage.getNavPanel().accessNavigationItem(tblName);
-    }
+	@Step
+	public void click_on_table_name(String tblName) {
+		onCommonPage.getNavPanel().accessNavigationItem(tblName);
+	}
+	
+	@Step
+	public void click_btn_submit() {
+		onCommonPage.getFooter().clickBtnSubmit();
+	}
+	
+	@Step
+	public void confirmPopupOk() {
+		onCommonPage.getPopupWidget().confirmPopupOk();
+	}
 
 }

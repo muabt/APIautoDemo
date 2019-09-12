@@ -7,8 +7,8 @@ import org.junit.Assert;
 
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.steps.DataModelSteps;
-import com.orchestranetworks.auto.addon.common.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.dmdv.steps.GraphViewSteps;
+import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -25,7 +25,6 @@ public class GraphViewDefs {
 
 	@When("^user views data model graph$")
 	public void user_views_data_model_graph() throws Exception {
-		onDatasetSteps.click_btn_action_dataset();
 		onDatasetSteps.select_dataset_service("Visualization>Display data model");
 		onGraphViewSteps.generate_graph();
 	}
@@ -39,7 +38,6 @@ public class GraphViewDefs {
 
 	@When("^user views data model API graph by service$")
 	public void user_views_data_model_API_graph_by_service() throws Exception {
-		onDatasetSteps.click_btn_action_dataset();
 		onDatasetSteps.select_dataset_service("Add-on Tests>dmdvTestGraphModelAPIWithoutConfiguration");
 		// onGraphViewSteps.generate_graph();
 	}
@@ -232,7 +230,6 @@ public class GraphViewDefs {
 	@And("^user views \"([^\"]*)\" of record has ID is \"([^\"]*)\"$")
 	public void user_views_something_of_record_has_id_is_something(String service, String recordID) throws Throwable {
 		onDatasetSteps.select_record_with_PK(recordID);
-		onDatasetSteps.click_btn_action_table();
 		onDatasetSteps.select_table_service(service);
 	}
 
@@ -249,14 +246,10 @@ public class GraphViewDefs {
 
 	@And("^user add permission with element \"([^\"]*)\"$")
 	public void user_add_permission_with_element_something(String name) throws Throwable {
-		onDatasetSteps.click_btn_action_dataset();
-		onDatasetSteps.click_on_permission();
-		// TODO need refactor method name
-		onDatasetSteps.click_on_createnewrecord();
+		onDatasetSteps.select_dataset_service("Permissions");
+		onDatasetSteps.click_btn_create_record();
 		onDatasetSteps.choose_profile();
-		onDatasetSteps.choose_policy();
 		onDatasetSteps.click_btn_save_and_close();
-
 	}
 
 	// MuaBT added

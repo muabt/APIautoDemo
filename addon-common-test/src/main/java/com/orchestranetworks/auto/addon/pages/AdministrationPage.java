@@ -18,6 +18,7 @@ import com.orchestranetworks.auto.addon.widget.workspace.AdministrationWidgetImp
 import net.serenitybdd.core.pages.PageObject;
 
 public class AdministrationPage extends PageObject {
+	
 	private ToolbarWidget toolbar;
 	private NavigationWidget navPanel;
 	private HeaderWidget header;
@@ -58,7 +59,5 @@ public class AdministrationPage extends PageObject {
 	public AdministrationWidget getAdministration() {
 		return administration;
 	}
-	
-	
 
 }

@@ -4,6 +4,7 @@ import com.orchestranetworks.auto.addon.widget.general.FooterWidget;
 import com.orchestranetworks.auto.addon.widget.general.HeaderWidget;
 import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
 import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
+import com.orchestranetworks.auto.addon.widget.workspace.FieldCreationWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 
 import net.serenitybdd.core.pages.PageObject;
@@ -13,6 +14,7 @@ public class PermissionPage extends PageObject {
 	private NavigationWidget navPanel;
 	private HeaderWidget headerWidget;
 	private FooterWidget footerWidget;
+	private FieldCreationWidget fieldCreationWidget;
 
 	private TableViewWidget defaultViewWidget;
 
@@ -22,6 +24,7 @@ public class PermissionPage extends PageObject {
 		this.headerWidget = headerWidget;
 		this.footerWidget = footerWidget;
 		this.defaultViewWidget = defaultViewWidget;
+		this.fieldCreationWidget = fieldCreationWidget;
 	}
 
 	public ToolbarWidget getToolbar() {
@@ -38,6 +41,10 @@ public class PermissionPage extends PageObject {
 
 	public TableViewWidget getDefaultViewWidget() {
 		return defaultViewWidget;
+	}
+	
+	public FieldCreationWidget getFieldCreationWidget() {
+		return fieldCreationWidget;
 	}
 
 }

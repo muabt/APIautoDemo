@@ -73,7 +73,7 @@ public class DatasetSteps {
 
 	}
 
-	@Step
+	/*@Step
 	public void select_record_with_PK(String recordID) {
 		if (recordID.contains("|")) {
 			String[] ids = recordID.split("\\|");
@@ -87,7 +87,7 @@ public class DatasetSteps {
 	public void select_record_with_PK(String[] recordPKs) {
 		onDatasetPage.select_record_with_PK(recordPKs);
 
-	}
+	}*/
 
 	@Step
 	public void select_table_service(String service) {

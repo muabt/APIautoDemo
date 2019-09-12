@@ -263,7 +263,7 @@ public class DatasetPage extends WebPageObject {
 		return type;
 	}
 
-	public void select_record_with_PK(String recordPK) {
+	/*public void select_record_with_PK(String recordPK) {
 		switchToLastIFrame();
 		waitForPresenceOfElement(XPATH_TABLE);
 		clickByJS(XFormat.of(XPATH_CHECKBOX_RECORD, sSpecialTextPredicates(recordPK)));
@@ -284,7 +284,7 @@ public class DatasetPage extends WebPageObject {
 		switchToLastIFrame();
 		clickByJS(xPathRow + "//input[@type='checkbox']");
 	}
-
+*/
 	public void click_btn_permissions() {
 		clickOnElement(XPATH_BTN_PERMISSIONS);
 	}
