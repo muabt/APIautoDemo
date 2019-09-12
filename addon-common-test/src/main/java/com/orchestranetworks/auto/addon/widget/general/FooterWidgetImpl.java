@@ -8,7 +8,6 @@ import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import net.serenitybdd.core.pages.PageObject;
 
 public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
-	private final String XPATH_BTN = "(//button[(@type='button' or @type='submit' or not(@type)) and not(@style='display: none;')][descendant-or-self::*[text()='{0}' or @title='{0}' or @value='{0}']])[1]";
 
 	public FooterWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
 			long timeoutInMilliseconds) {
