@@ -326,23 +326,6 @@ public class DatasetDefs {
 	}
 
     /**
-     * Select number of first records in the table
-	 * <p>
-	 * <b>Example</b>:
-	 * <ul>
-	 * <font color="blue">When</font>I select first "<font color="green">4</font>" records in table
-	 * </ul>
-	 * </p>
-	 * @param numOfRecord number of first records that want to select
-     * @throws Throwable
-     */
-	@When("^I select first \"([^\"]*)\" records in table$")
-	public void user_selects_first_num_of_records_in_table(String numOfRecord) throws Throwable {
-		onDatasetSteps.select_first_records(numOfRecord);
-
-	}
-
-    /**
      * Select a record from the table given the primary key
 	 * <p>
 	 * <b>Example</b>:
@@ -409,25 +392,6 @@ public class DatasetDefs {
 		}
 		onDatasetSteps.click_btn_create();
 		onDatasetSteps.click_btn_close();
-	}
-
-
-
-    /**
-     * Select the table service
-	 * <p>
-	 * <b>Example</b>:
-	 * <ul>
-	 * <font color="blue">And</font> I select table service "<font color="green">View history</font>"
-	 * </ul>
-	 * </p>
-	 * @param service table service that user want to execute
-     * @throws Throwable
-     */
-	@And("^I select table service \"([^\"]*)\"$")
-	public void user_select_table_service(String service) throws Throwable {
-		onDatasetSteps.click_btn_action_table();
-		onDatasetSteps.select_table_service(service);
 	}
 
     /**

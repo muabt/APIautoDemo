@@ -19,7 +19,7 @@ public class ManualMergePages extends WebPageObject {
     private SummaryWidget summaryWidget;
     private PreviewWidget previewWidget;
 
-    public ManualMergePages(WebDriver driver, PreviewWidget preview) {
+    public ManualMergePages(WebDriver driver) {
         super(driver);
         this.navPanel = new NavigationWidgetImpl(this, null, 100);
         this.header = new HeaderWidgetImpl(this, null, 100);
