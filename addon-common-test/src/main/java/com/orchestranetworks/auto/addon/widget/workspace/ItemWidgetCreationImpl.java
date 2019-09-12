@@ -20,7 +20,7 @@ public class ItemWidgetCreationImpl extends BaseWidgetImpl implements ItemCreati
 
 	@Override
 	public void enterIdentifier(String id) {
-
+		waitTypeAndTabWithLabel("Identifier",id);
 	}
 
 	@Override
@@ -29,12 +29,12 @@ public class ItemWidgetCreationImpl extends BaseWidgetImpl implements ItemCreati
 
 	@Override
 	public void enterOwner(String owner) {
-
+		waitTypeAndTabWithLabel("Owner",owner);
 	}
 
 	@Override
 	public void enterEnglishLabel(String label) {
-
+		waitTypeAndTabWithLabel("Label",label);
 	}
 
 	@Override

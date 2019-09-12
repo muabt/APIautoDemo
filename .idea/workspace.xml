@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e4fad84-fb34-4f01-937c-d0fe01f61b40" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/common/pages/CommonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/common/pages/CommonPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" afterDir="false" />
+    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[BEN] add">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/base/BaseWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/base/BaseWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/common/defs/DataspaceDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/common/defs/DataspaceDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DataspaceDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DataspaceDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/DataspaceBriefInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/DataspaceBriefInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DatasetSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DatasetSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DataspaceSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DataspaceSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/LoginWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/LoginWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/LoginWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/LoginWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemWidgetCreationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemWidgetCreationImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Filter.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Filter.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/StoreDataModel.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/StoreDataModel.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/serenity.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,41 +29,40 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
+  <component name="FavoritesManager">
+    <favorites_list name="addon-test-web" />
   </component>
-  <component name="ErrorTreeViewConfiguration">
-    <option name="hideWarnings" value="true" />
-    <option name="HIDE_WARNINGS" value="true" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
+        <option name="createModuleGroups" value="true" />
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/compiler.xml" />
-        <option value="$PROJECT_DIR$/.idea/encodings.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1984" />
-    <option name="y" value="-11" />
-    <option name="width" value="1857" />
-    <option name="height" value="1092" />
-  </component>
+  <component name="ProjectId" id="1Qfj1qFiti4eIXZ86jjbadWTBn0" />
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.orchestranetworks.auto.addon.pages" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -63,15 +76,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in addon-dint-test">
-    <configuration name="All Features in: ImportCSVFileFunction" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber java.Feature: Dataspace">
+    <configuration name="Feature: Dataspace" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-dint-test/src/test/resources/features/ImportCSVFileFunction" />
-      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.common.defs com.orchestranetworks.auto.addon.dint.defs" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-dint-test" />
+      <module name="addon-common-test" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
-      <option name="SUGGESTED_NAME" value="All Features in: ImportCSVFileFunction" />
+      <option name="SUGGESTED_NAME" value="Feature: Dataspace" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -82,15 +95,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Import valid CSV file" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Create new data space" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-dint-test/src/test/resources/features/ImportCSVFileFunction/ImportCSVFile_1_to_30.feature" />
-      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.common.defs com.orchestranetworks.auto.addon.dint.defs" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" />
+      <option name="GLUE" value="com.orchestranetworks.auto.addon.common.defs net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-dint-test" />
-      <option name="NAME_FILTER" value="^Import valid CSV file$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^Import valid CSV file$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Import valid CSV file" />
+      <module name="addon-common-test" />
+      <option name="NAME_FILTER" value="^Create new data space$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^Create new data space$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Create new data space" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -101,19 +114,70 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in addon-dint-test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="addon-dint-test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+    <configuration name="Scenario: Delete the dataspace in administration workspace1" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Administration.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-common-test" />
+      <option name="NAME_FILTER" value="^Delete the dataspace in administration workspace1$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^Delete the dataspace in administration workspace1$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Delete the dataspace in administration workspace1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the sources of survivor field are different lenght" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
+      <option name="GLUE" value="com.orchestranetworks.auto.addon.common.defs net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-mame-test" />
+      <option name="NAME_FILTER" value="^SC\-MPMM80 Validate the pre\-selected records at merge view screen when the sources of survivor field are different lenght$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM80 Validate the pre\-selected records at merge view screen when the sources of survivor field are different lenght$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the sources of survivor field are different lenght" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: " type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" />
+      <option name="GLUE" value="com.orchestranetworks.auto.addon.common.defs net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-common-test" />
+      <option name="NAME_FILTER" value="^$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in addon-dint-test" />
-        <item itemvalue="Cucumber java.Scenario: Import valid CSV file" />
-        <item itemvalue="Cucumber java.All Features in: ImportCSVFileFunction" />
+        <item itemvalue="Cucumber java.Feature: Dataspace" />
+        <item itemvalue="Cucumber java.Scenario: Create new data space" />
+        <item itemvalue="Cucumber java.Scenario: " />
+        <item itemvalue="Cucumber java.Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the sources of survivor field are different lenght" />
+        <item itemvalue="Cucumber java.Scenario: Delete the dataspace in administration workspace1" />
       </list>
     </recent_temporary>
   </component>
@@ -122,20 +186,99 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6e4fad84-fb34-4f01-937c-d0fe01f61b40" name="Default Changelist" comment="" />
-      <created>1565081813919</created>
+      <changelist id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="" />
+      <created>1568168332356</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1565081813919</updated>
+      <updated>1568168332356</updated>
     </task>
+    <task id="LOCAL-00001" summary="[BEN] Add file">
+      <created>1568184963191</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1568184963191</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[BEN] Fix Navigation item">
+      <created>1568190520073</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1568190520073</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[BEN] Fix Navigation item">
+      <created>1568258173776</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568258173776</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[BEN] Update">
+      <created>1568259700507</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1568259700507</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[BEN] Update">
+      <created>1568270760097</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1568270760097</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[BEN] Update NavigationWidget">
+      <created>1568271573753</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1568271573753</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[BEN] add i_access_table_of_dataset_in_dataspace">
+      <created>1568273179207</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1568273179207</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[BEN] add">
+      <created>1568276498035</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1568276498035</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[BEN] update selectOwner">
+      <created>1568277478114</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1568277478114</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="[BEN]Add widget" />
-    <option name="LAST_COMMIT_MESSAGE" value="[BEN]Add widget" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[BEN] Add file" />
+    <MESSAGE value="[BEN] Fix Navigation item" />
+    <MESSAGE value="[BEN] Update" />
+    <MESSAGE value="[BEN] Update NavigationWidget" />
+    <MESSAGE value="[BEN] add i_access_table_of_dataset_in_dataspace" />
+    <MESSAGE value="[BEN] add" />
+    <MESSAGE value="[BEN] update selectOwner" />
+    <option name="LAST_COMMIT_MESSAGE" value="[BEN] update selectOwner" />
   </component>
 </project>

@@ -39,7 +39,7 @@ public class DatasetSteps extends ScenarioSteps {
     
     @Step
     public void select_dataset_service(String service) {
-    	commonPage.getToolbar().selectDatasetService(service);
+    	commonPage.getNavPanel().selectDatasetService(service);
     }
     
     @Step 

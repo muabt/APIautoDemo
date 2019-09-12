@@ -53,6 +53,7 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
 	@Override
 	public void clickBtnCreate() {
 		clickBtn("Create");
+		waitForInvisibilityOfElement(xPathBtn("Create"));
 	}
 
 	@Override

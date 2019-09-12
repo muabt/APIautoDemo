@@ -5,7 +5,7 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy(LoginWidgetImpl.class)
 public interface LoginWidget extends WidgetObject {
-    void enterUsername(String userName);
+    LoginWidget enterUsername(String userName);
     void enterPassword(String password);
     void clickBtnLogin();
 

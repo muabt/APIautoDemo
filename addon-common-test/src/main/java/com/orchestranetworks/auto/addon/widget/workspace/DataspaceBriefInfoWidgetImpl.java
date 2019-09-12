@@ -8,4 +8,34 @@ public class DataspaceBriefInfoWidgetImpl extends BaseWidgetImpl implements Data
     public DataspaceBriefInfoWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
         super(page, locator, timeoutInMilliseconds);
     }
+
+    @Override
+    public String getTextIdentifier() {
+        return getTextWithLabel("Identifier");
+    }
+
+    @Override
+    public String getTextType() {
+        return getTextWithLabel("Type");
+    }
+
+    @Override
+    public String getTextOwner() {
+        return getTextWithLabel("Owner");
+    }
+
+    @Override
+    public String getTextStatus() {
+        return getTextWithLabel("Status");
+    }
+
+    @Override
+    public String getTextLoadingStrategy() {
+        return getTextWithLabel("Loading strategy");
+    }
+
+    @Override
+    public String getTextChildMergePolicy() {
+        return getTextWithLabel("Child merge policy");
+    }
 }

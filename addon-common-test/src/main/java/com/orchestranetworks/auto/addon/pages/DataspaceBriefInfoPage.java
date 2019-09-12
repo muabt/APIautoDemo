@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.pages;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.widget.general.*;
 import com.orchestranetworks.auto.addon.widget.workspace.AdministrationWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.DataspaceBriefInfoWidget;
@@ -28,6 +29,7 @@ public class DataspaceBriefInfoPage extends PageObject {
     }
 
     public ToolbarWidget getToolbarWidget() {
+        getDriver().switchTo().frame(Constants.IFRAME_LEGACY);
         return toolbar;
     }
 }

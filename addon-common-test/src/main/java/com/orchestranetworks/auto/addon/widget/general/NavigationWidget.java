@@ -20,8 +20,10 @@ public interface NavigationWidget extends WidgetObject {
 	void accessNavigationItem(String menu);
 
     void goToPath(String path);
-    
+
+    void selectDatasetService(String service);
+
     void goToGroupAdministration(String path);
-    
+
     void goToAdministrationItem(String path);
 }

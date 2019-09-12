@@ -6,25 +6,24 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy(ToolbarWidgetImpl.class)
 public interface ToolbarWidget extends WidgetObject {
-	void clickBtnFilter();
+    void clickBtnFilter();
 
-	WebElementFacade getBtnView();
+    void clickBtnView();
 
-	WebElementFacade getBtnActions();
+    void clickBtnActions();
 
-	void selectService(String service);
+    void selectService(String service);
 
-	void clickNextPage();
+    void clickNextPage();
 
-	void clickPreviousPage();
+    void clickPreviousPage();
 
-	void clickLastPage();
+    void clickLastPage();
 
-	void clickFirstPage();
+    void clickFirstPage();
 
-	void selectDatasetService(String service);
-	
-	void clickBtnCreateRecord();
+    void clickBtnCreateRecord();
 
     void clickBtnCreateDataspace();
+
 }

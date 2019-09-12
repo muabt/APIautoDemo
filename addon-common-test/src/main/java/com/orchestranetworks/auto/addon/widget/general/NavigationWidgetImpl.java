@@ -79,15 +79,19 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     public void accessNavigationItem(String menu) {
         menu = SessionData.getValueFromSession(menu);
         String xpath = XFormat.of(XPATH_NAVIGATION_ITEM, menu);
-        scrollElementIntoCenterView(xpath).click();
-        //clickOnElement(xpath);
+        clickOnElement(xpath);
     }
-
+    
     @Override
     public void goToPath(String path) {
         String[] itemList = path.split(">");
         expandNavigationItem(itemList);
        accessNavigationItem(itemList[itemList.length - 1].trim());
+    }
+
+    @Override
+    public void selectDatasetService(String service) {
+    clickBtn("Actions");
     }
 
     @Override

@@ -5,4 +5,10 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy(DataspaceBriefInfoWidgetImpl.class)
 public interface DataspaceBriefInfoWidget extends WidgetObject {
+    String getTextIdentifier();
+    String getTextType();
+    String getTextOwner();
+    String getTextStatus();
+    String getTextLoadingStrategy();
+    String getTextChildMergePolicy();
 }
