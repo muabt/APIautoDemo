@@ -51,11 +51,8 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         for (int i = 0; i < itemList.length - 1; i++) {
             String xPathCollapsed = "//li[descendant-or-self::*[contains(text(),'" + itemList[i].trim()
                     + "')]]//button[@title='Collapsed']";
-            String xPathExpanded = "//li[descendant-or-self::*[contains(text(),'" + itemList[i].trim()
-                    + "')]]//button[@title='Expanded']";
             clickOnElement(xPathCollapsed);
-            waitForPresenceOfElement(xPathExpanded);
-            waitAbit(1000);
+            waitForInvisibilityOfElement(xPathCollapsed);
         }
     }
 
@@ -65,6 +62,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         int numOfExpandedBtn = findAllElement(xPathExpandedBtn).size();
         for (int i = numOfExpandedBtn; i > 0; i--) {
             clickBtn("Expanded", i);
+            waitForInvisibilityOfElement(xPathBtn("Expanded", i));
         }
     }
 

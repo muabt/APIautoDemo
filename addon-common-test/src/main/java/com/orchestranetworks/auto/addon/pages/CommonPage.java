@@ -9,6 +9,9 @@ import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 
 import net.serenitybdd.core.pages.PageObject;
+
+import java.util.concurrent.TimeUnit;
+
 @DefaultUrl("http://automation.vn.orchestranetworks.com/ebx-ui/")
 public class CommonPage extends PageObject {
     private ToolbarWidget toolbar;
@@ -57,6 +60,7 @@ public class CommonPage extends PageObject {
         clearCache();
         getDriver().navigate().to(LoadConfig.getURL());
         getDriver().manage().window().maximize();
+        setImplicitTimeout(1000,TimeUnit.MILLISECONDS);
     }
 
     private void clearCache() {
