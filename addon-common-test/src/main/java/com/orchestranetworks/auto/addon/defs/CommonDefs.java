@@ -20,7 +20,7 @@ public class CommonDefs {
 	 * </p>
 	 */
 	@Given("^I login to EBX succesfully$")
-	public void user_login_to_ebx_succesfully() {
+	public void i_login_to_ebx_succesfully() {
 		onCommonSteps.access_login_page();
 		onCommonSteps.login_to_system(LoadConfig.getUserName(), LoadConfig.getPassword());
 		onCommonSteps.verify_login_success();
@@ -76,7 +76,7 @@ public class CommonDefs {
 	 *            a menu item such as 'administration', 'dataspace', 'workflow'
 	 */
 	@And("^I access \"([^\"]*)\" menu$")
-	public void user_accesses_menu(String menu) {
+	public void i_access_menu(String menu) {
 		onCommonSteps.access_menu(menu);
 	}
 
@@ -128,10 +128,9 @@ public class CommonDefs {
 	 *            data>Company employees
 	 */
 	@When("^I access dataspace \"([^\"]*)\"$")
-	public void user_accesses_dataspace(String path) {
+	public void i_access_dataspace(String path) {
 		onCommonSteps.go_to_dataspace(path);
 	}
-
 	/**
 	 * Access to the specified data set <b>Example</b>:
 	 * <font color="blue">When</font> I access dataset

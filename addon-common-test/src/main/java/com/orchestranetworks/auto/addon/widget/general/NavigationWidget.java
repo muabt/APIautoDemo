@@ -19,4 +19,5 @@ public interface NavigationWidget extends WidgetObject {
 
 	void accessNavigationItem(String menu);
 
+    void goToPath(String path);
 }
