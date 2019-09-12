@@ -3,7 +3,7 @@ Feature: Dataset and table
   As user
   I want to interact with dataset and table content
 
-  Background: 
+  Background:
     Given I login to EBX succesfully
 
 
@@ -16,12 +16,12 @@ Feature: Dataset and table
     And I access table "All_type"
     And the table should see as following
       | ID | Email Type  | Color Type | Resource | Locale |
-      |  1 | a@gmail.com | '#924141'  |          | abc    |
+      | 1  | a@gmail.com | '#924141'  |          | abc    |
     And I access table "Flowers"
     #When I select first "4" records in table
     When I select some records with primary key as following
       | ID |
-      |  1 |
+      | 1  |
     And I select table service "View history"
     And I want to delete dataset
 
@@ -40,3 +40,6 @@ Feature: Dataset and table
     And I create record with the followings
       | Identifer:TXT | Civil status:DDL | First name:TXT | Last name:TXT | Maiden name:TXT | Birth date:DATE | Gender:RADIO | Marital status:DDL | GDPR type:DDL |
       |               | Dr.              | Jenifer        | Pham          |                 | 7/29/1988       | Female       | (C) Single         | Child         |
+
+  Scenario: Access table
+    And I access table "Employee" of dataset "Human_Resource" in dataspace "Master Data - Reference>Reference-child"
