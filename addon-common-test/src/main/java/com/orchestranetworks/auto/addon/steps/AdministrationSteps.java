@@ -13,24 +13,23 @@ public class AdministrationSteps extends ScenarioSteps {
 	
 	@Step
 	public void go_to_admin_service(String service) {
-		administration.getAdministration().selectAnAdminFeature();
-		//administration.go_to_admin_service(service);
+		administration.getNavPanel().goToPath(service);
 	}
 	
 
 	@Step
 	public void select_table_of_administration(String tblName) {
-		//administration.click_on_table_service_of_administration(tblName);
+		administration.getNavPanel().accessNavigationItem(tblName);
 	}
 	
 	@Step
 	public void go_to_group_administration(String path) {
-	//	administration.go_to_group_administration(path);
+		administration.getNavPanel().goToGroupAdministration(path);
 	}
 	
 	@Step
 	public void go_to_administration_item(String path) {
-		//administration.go_to_administration_item(path);
+		administration.getNavPanel().goToAdministrationItem(path);
 	}
 
     public void access_matching_table() {

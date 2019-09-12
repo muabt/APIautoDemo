@@ -46,7 +46,7 @@ public class AdministrationDefs {
 	 */
 
 	@And("^I access to \"([^\"]*)\" parent item$")
-	public void i_accesses_group_administration(String path) {
+	public void i_access_group_administration(String path) {
 		onAdministrationSteps.go_to_group_administration(path);
 	}
 
@@ -60,7 +60,7 @@ public class AdministrationDefs {
 	 * @param path path to the parent item in administration area.
 	 */
 	@And("^I access to \"([^\"]*)\" item$")
-	public void i_accesses_administration(String path) {
+	public void i_access_administration(String path) {
 		onAdministrationSteps.go_to_administration_item(path);
 	}
 

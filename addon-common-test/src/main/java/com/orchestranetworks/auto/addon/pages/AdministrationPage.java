@@ -59,5 +59,7 @@ public class AdministrationPage extends PageObject {
 	public AdministrationWidget getAdministration() {
 		return administration;
 	}
+	
+	
 
 }

@@ -88,4 +88,18 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         expandNavigationItem(itemList);
        accessNavigationItem(itemList[itemList.length - 1].trim());
     }
+    
+    @Override
+    public void goToGroupAdministration(String item) {
+		switchToIFrame(Constants.IFRAME_LEGACY);
+		clickOnElement("//span/a[contains(text(),'" + item + "')]");
+		clickOnElement("//div[@id='ebx_NavigationTree']//a");
+		waitAbit(2000);
+	}
+	
+    @Override
+	public void goToAdministrationItem(String item) {
+		clickOnElement("//span/a/span/span[contains(text(),'" + item + "')]");
+		waitAbit(2000);
+	}
 }
