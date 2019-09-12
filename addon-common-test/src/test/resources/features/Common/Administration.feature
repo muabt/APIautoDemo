@@ -3,8 +3,12 @@ Feature: Administration workspace
   As user
   I want to use all service of Administration workspace
 
-  Background: 
+  Background:
     Given I login to EBX succesfully
+
+  Scenario: Delete the dataspace in administration workspace1
+    Given I want to create matching table
+
 
   Scenario: Delete the dataspace in administration workspace
     And I access "dataspace" menu

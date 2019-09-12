@@ -60,7 +60,7 @@ public class CommonPage extends PageObject {
         clearCache();
         getDriver().navigate().to(LoadConfig.getURL());
         getDriver().manage().window().maximize();
-        setImplicitTimeout(1000,TimeUnit.MILLISECONDS);
+        setImplicitTimeout(500,TimeUnit.MILLISECONDS);
     }
 
     private void clearCache() {
