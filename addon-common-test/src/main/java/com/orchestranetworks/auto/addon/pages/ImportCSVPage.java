@@ -6,8 +6,9 @@ import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
 import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.WebDriver;
 
-public class ImportCSVPage extends PageObject {
+public class ImportCSVPage extends BasePage {
     private ToolbarWidget toolbar;
     private NavigationWidget navPanel;
     private HeaderWidget headerWidget;
@@ -15,7 +16,8 @@ public class ImportCSVPage extends PageObject {
 
     private TableViewWidget defaultViewWidget;
 
-    public ImportCSVPage() {
+    public ImportCSVPage(WebDriver driver) {
+        super(driver);
         this.toolbar = toolbar;
         this.navPanel = navPanel;
         this.headerWidget = headerWidget;

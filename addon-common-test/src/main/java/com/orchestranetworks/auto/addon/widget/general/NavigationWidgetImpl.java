@@ -79,16 +79,17 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     public void accessNavigationItem(String menu) {
         menu = SessionData.getValueFromSession(menu);
         String xpath = XFormat.of(XPATH_NAVIGATION_ITEM, menu);
-        clickOnElement(xpath);
+        scrollElementIntoCenterView(xpath).click();
+        //clickOnElement(xpath);
     }
-    
+
     @Override
     public void goToPath(String path) {
         String[] itemList = path.split(">");
         expandNavigationItem(itemList);
        accessNavigationItem(itemList[itemList.length - 1].trim());
     }
-    
+
     @Override
     public void goToGroupAdministration(String item) {
 		switchToIFrame(Constants.IFRAME_LEGACY);
@@ -96,7 +97,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 		clickOnElement("//div[@id='ebx_NavigationTree']//a");
 		waitAbit(2000);
 	}
-	
+
     @Override
 	public void goToAdministrationItem(String item) {
 		clickOnElement("//span/a/span/span[contains(text(),'" + item + "')]");

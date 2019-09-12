@@ -7,8 +7,9 @@ import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.WebDriver;
 
-public class ImportXMLPage extends PageObject {
+public class ImportXMLPage extends BasePage {
 	private ToolbarWidget toolbar;
 	private NavigationWidget navPanel;
 	private HeaderWidget headerWidget;
@@ -16,7 +17,8 @@ public class ImportXMLPage extends PageObject {
 
 	private TableViewWidget defaultViewWidget;
 
-	public ImportXMLPage() {
+	public ImportXMLPage(WebDriver driver) {
+		super(driver);
 		this.toolbar = toolbar;
 		this.navPanel = navPanel;
 		this.headerWidget = headerWidget;

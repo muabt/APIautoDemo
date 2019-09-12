@@ -73,7 +73,7 @@ public class ManualMergeSteps {
     }
 
     public void click_button_next() {
-        onManualMergePages.getTableViewWidget().clickBtnNext();
+        onManualMergePages.getPreviewWidget().clickBtnNext();
     }
 
     public void click_button_merge() {

@@ -13,7 +13,7 @@ import net.serenitybdd.core.pages.PageObject;
 import java.util.concurrent.TimeUnit;
 
 @DefaultUrl("http://automation.vn.orchestranetworks.com/ebx-ui/")
-public class CommonPage extends PageObject {
+public class CommonPage extends BasePage {
     private ToolbarWidget toolbar;
     private NavigationWidget navPanel;
     private HeaderWidget header;

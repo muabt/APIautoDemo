@@ -1,23 +1,21 @@
 package com.orchestranetworks.auto.addon.pages;
 
 import com.orchestranetworks.auto.addon.widget.*;
-import com.orchestranetworks.auto.addon.widget.general.HeaderWidget;
-import com.orchestranetworks.auto.addon.widget.general.HeaderWidgetImpl;
-import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
-import com.orchestranetworks.auto.addon.widget.general.NavigationWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.general.*;
+
 
 
 import org.openqa.selenium.WebDriver;
 
-import com.orchestranetworks.auto.addon.common.WebPageObject;
 
-public class ManualMergePages extends WebPageObject {
+public class ManualMergePages extends BasePage {
     private NavigationWidget navPanel;
     private HeaderWidget header;
     private TableViewWidget tableViewWidget;
     private RelationWidget relationWidget;
     private SummaryWidget summaryWidget;
     private PreviewWidget previewWidget;
+    private FooterWidget footerWidget;
 
     public ManualMergePages(WebDriver driver) {
         super(driver);
@@ -27,6 +25,7 @@ public class ManualMergePages extends WebPageObject {
         this.relationWidget = new RelationWidgetImpl(this, null, 100);
         this.previewWidget = new PreviewWidgetImpl(this, null, 100);
         this.summaryWidget = new SummaryWidgetImpl(this, null, 100);
+        this.footerWidget = new FooterWidgetImpl(this, null, 100);
     }
 
     public NavigationWidget getNavPanel() {
@@ -72,8 +71,9 @@ public class ManualMergePages extends WebPageObject {
 	public TableViewWidget getActualTableName() {
 		tableViewWidget.getActualTableName();
 		return tableViewWidget;
-		
-		
 	}
+	public FooterWidget getFooterWidget() {
+        return footerWidget;
+    }
 
 }

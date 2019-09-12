@@ -7,8 +7,9 @@ import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.WebDriver;
 
-public class DatamodelInformationPage extends PageObject {
+public class DatamodelInformationPage extends BasePage {
 	private ToolbarWidget toolbar;
 	private NavigationWidget navPanel;
 	private HeaderWidget headerWidget;
@@ -16,7 +17,8 @@ public class DatamodelInformationPage extends PageObject {
 
 	private TableViewWidget defaultViewWidget;
 
-	public DatamodelInformationPage() {
+	public DatamodelInformationPage(WebDriver driver) {
+		super(driver);
 		this.toolbar = toolbar;
 		this.navPanel = navPanel;
 		this.headerWidget = headerWidget;

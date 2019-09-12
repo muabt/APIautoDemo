@@ -17,7 +17,7 @@ import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 
 import net.serenitybdd.core.pages.PageObject;
 
-public class DefaultViewPage extends PageObject {
+public class DefaultViewPage extends BasePage {
 	private ToolbarWidget toolbar;
 	private SearchWidget textSearch;
 	private SearchWidget validationSearch;
@@ -67,6 +67,7 @@ public class DefaultViewPage extends PageObject {
 	}
 
 	public TableViewWidget getDefaultViewWidget() {
+		switchToLastIFrame();
 		return defaultViewWidget;
 	}
 

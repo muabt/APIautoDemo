@@ -15,10 +15,7 @@ import com.orchestranetworks.auto.addon.widget.general.ToolbarWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.AdministrationWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.AdministrationWidgetImpl;
 
-import net.serenitybdd.core.pages.PageObject;
-
-public class AdministrationPage extends PageObject {
-	
+public class AdministrationPage extends BasePage {
 	private ToolbarWidget toolbar;
 	private NavigationWidget navPanel;
 	private HeaderWidget header;

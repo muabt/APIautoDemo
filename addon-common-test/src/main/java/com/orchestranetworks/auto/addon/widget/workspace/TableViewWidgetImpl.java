@@ -20,7 +20,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
 	public TableViewWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
-		switchToLastIFrame();
+		System.out.println("table view widget constructor");
 	}
 
 	@Override

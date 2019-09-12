@@ -6,4 +6,5 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy(PreviewWidgetImpl.class)
 public interface PreviewWidget extends WidgetObject {
     void clickBtnMerge();
+    void clickBtnNext();
 }

@@ -8,8 +8,9 @@ import com.orchestranetworks.auto.addon.widget.workspace.FieldCreationWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.WebDriver;
 
-public class PermissionPage extends PageObject {
+public class PermissionPage extends BasePage {
 	private ToolbarWidget toolbar;
 	private NavigationWidget navPanel;
 	private HeaderWidget headerWidget;
@@ -18,7 +19,8 @@ public class PermissionPage extends PageObject {
 
 	private TableViewWidget defaultViewWidget;
 
-	public PermissionPage() {
+	public PermissionPage(WebDriver driver) {
+		super(driver);
 		this.toolbar = toolbar;
 		this.navPanel = navPanel;
 		this.headerWidget = headerWidget;
