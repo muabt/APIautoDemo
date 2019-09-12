@@ -10,28 +10,28 @@ Feature: Run Metadatas service
 
   Scenario Outline: SC-MTD013 Check the correctness of displayed data after launching the Metadata service
                     SC-MTD007 Check the correctness of information which displays in Main tab when lauching metadata on a record which is Golden and auto-created is No
+
     When I access "Dataspaces" menu
     And I access dataspace "Reference-child"
     And I create child Dataspace with information as following
       | Identifier | Owner              | English Label |
-      | $ID$       | admin admin(admin) |               |
+      |            | admin admin(admin) |               |
     Then I should see Dataspace with information as following
       | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access dataset "Store Item"
     And I access table "Categories"
-    When I select some records as following
+    When I select some records with primary key as following
       | KEY | Identifier | Parent    | Name      | Comment             |
       |  01 |          1 | Fast food | Fast food | There is no commemt |
     And I select table service "Match and Merge > Metadatas"
-    Then I should list tabs as following "<KEY>"
-      | KEY | Tab name      |
-      |  01 | Main          |
-      |  02 | Execution log |
+    Then I should list tabs are "Main,Execution log"
     When I want to verify data displayed in main tab
-      | KEY | Record    | State  | Group     |
-      |  01 | Fast food | Golden | Fast food |
+      | Record    | State  | Group     |
+      | Fast food | Golden | Fast food |
+    
+    
     When I want to see detail record
     Then I should see detailed record as following "<KEY>"
       | KEY | Identifier | Parent    | Name      | Comment             |
@@ -74,7 +74,6 @@ Feature: Run Metadatas service
       | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
-   
     And I access dataset "Store Item"
     And I access table as following "<KEY>"
       | KEY | Table  |
