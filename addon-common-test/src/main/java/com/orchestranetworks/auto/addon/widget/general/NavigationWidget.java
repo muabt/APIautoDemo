@@ -9,11 +9,11 @@ public interface NavigationWidget extends WidgetObject {
 
 	void changeDataset();
 
-	void expandNavigationItems();
+	void expandAllNavigationItems();
 
 	void expandNavigationItem(String[] menu);
 
-	void collapseNavigationItems();
+	void collapseAllNavigationItems();
 
 	void collapseNavigationItem(String menu);
 

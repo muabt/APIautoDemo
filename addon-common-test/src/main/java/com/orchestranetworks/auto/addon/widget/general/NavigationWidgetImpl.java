@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.widget.general;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -40,27 +41,31 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     }
 
     @Override
-    public void expandNavigationItems() {
+    public void expandAllNavigationItems() {
 
     }
 
     @Override
     public void expandNavigationItem(String[] itemList) {
-        collapseAll();
+        collapseAllNavigationItems();
         for (int i = 0; i < itemList.length - 1; i++) {
             String xPathCollapsed = "//li[descendant-or-self::*[contains(text(),'" + itemList[i].trim()
                     + "')]]//button[@title='Collapsed']";
             String xPathExpanded = "//li[descendant-or-self::*[contains(text(),'" + itemList[i].trim()
                     + "')]]//button[@title='Expanded']";
             clickOnElement(xPathCollapsed);
-            waitForAllLoadingCompleted();
             waitForPresenceOfElement(xPathExpanded);
+            waitAbit(1000);
         }
     }
 
     @Override
-    public void collapseNavigationItems() {
-        collapseAll();
+    public void collapseAllNavigationItems() {
+        String xPathExpandedBtn = "//button[@title='Expanded']";
+        int numOfExpandedBtn = findAllElement(xPathExpandedBtn).size();
+        for (int i = numOfExpandedBtn; i > 0; i--) {
+            clickBtn("Expanded", i);
+        }
     }
 
     @Override
@@ -77,13 +82,6 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         clickOnElement(xpath);
     }
 
-    private void collapseAll() {
-        String xPathExpandedBtn = "//button[@title='Expanded']";
-        int numOfExpandedBtn = findAllElement(xPathExpandedBtn).size();
-        for (int i = numOfExpandedBtn; i > 0; i--) {
-            clickBtn("Expanded", i);
-        }
-    }
 
 
 }
