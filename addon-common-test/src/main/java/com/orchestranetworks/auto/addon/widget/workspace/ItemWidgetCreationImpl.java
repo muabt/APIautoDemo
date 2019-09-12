@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.widget.workspace;
 
+import com.orchestranetworks.auto.addon.Constants;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -38,6 +39,6 @@ public class ItemWidgetCreationImpl extends BaseWidgetImpl implements ItemCreati
 
 	@Override
 	public void selectOwner(String owner) {
-
+		inputDDLThenTab(Constants.LBL_OWNER, owner);
 	}
 }
