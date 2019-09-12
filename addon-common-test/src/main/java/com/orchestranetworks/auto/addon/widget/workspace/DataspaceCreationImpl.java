@@ -5,13 +5,13 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import net.serenitybdd.core.pages.PageObject;
 
-public class NewDataspaceImpl extends NewItemWidgetImpl {
-	public NewDataspaceImpl(PageObject page, ElementLocator locator, WebElement webElement,
+public class DataspaceCreationImpl extends ItemWidgetCreationImpl {
+	public DataspaceCreationImpl(PageObject page, ElementLocator locator, WebElement webElement,
 			long timeoutInMilliseconds) {
 		super(page, locator, webElement, timeoutInMilliseconds);
 	}
 
-	public NewDataspaceImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
+	public DataspaceCreationImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
 	}
 }

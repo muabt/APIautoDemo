@@ -5,12 +5,12 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import net.serenitybdd.core.pages.PageObject;
 
-public class NewFieldImpl extends NewItemWidgetImpl {
-	public NewFieldImpl(PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
+public class FieldCreationImpl extends ItemWidgetCreationImpl {
+	public FieldCreationImpl(PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
 		super(page, locator, webElement, timeoutInMilliseconds);
 	}
 
-	public NewFieldImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
+	public FieldCreationImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
 	}
 }

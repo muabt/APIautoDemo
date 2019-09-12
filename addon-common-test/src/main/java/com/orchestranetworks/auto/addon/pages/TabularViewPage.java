@@ -4,7 +4,7 @@ import com.orchestranetworks.auto.addon.widget.general.FooterWidget;
 import com.orchestranetworks.auto.addon.widget.general.HeaderWidget;
 import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
 import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
-import com.orchestranetworks.auto.addon.widget.workspace.NewItemWidget;
+import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
 
 import net.serenitybdd.core.pages.PageObject;
 
@@ -14,7 +14,7 @@ public class TabularViewPage extends PageObject {
 	private HeaderWidget headerWidget;
 	private FooterWidget footerWidget;
 
-	private NewItemWidget newDataSet;
+	private ItemCreationWidget newDataSet;
 
 	public TabularViewPage() {
 		this.toolbar = toolbar;
@@ -36,7 +36,7 @@ public class TabularViewPage extends PageObject {
 		return footerWidget;
 	}
 
-	public NewItemWidget getDefaultViewWidget() {
+	public ItemCreationWidget getDefaultViewWidget() {
 		return newDataSet;
 	}
 

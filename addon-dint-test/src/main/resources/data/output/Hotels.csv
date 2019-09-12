@@ -1,0 +1,97 @@
+Id;Name;Number;Street;City;State;ZIP code;Country;Latitude;Longitude;Phone;Fax
+233;Four Seasons Hotel Buenos Aires;11;Regent Street;Londres;;SW1Y 4ST;Royaume-Uni;51.50826000000;-0.133826399999975;+54 (11) 4321-1200;+54 (11) 4321-1201
+235;Four Seasons Hotel Baku;1;Neftchilar Avenue;Baku;;AZ1095;Azerbaijan;40.363556;49.834928;+994 12 404 2424;+994 12 404 2425
+236;Four Seasons Hotel Vancouver;791;West Georgia Street;Vancouver;British Columbia;V6C 2T4;Canada;49.2832;-123.1185;+1 (604) 689-9333;+1 (604) 684-4555
+237;Four Seasons Resort Whistler;4591;Blackcomb Way;Whistler;British Columbia;V0N 1B4;Canada;50.118812;-122.9457;+1 (604) 935-3400;+1 (604) 935-3455
+238;Four Seasons Hotel Toronto;60;Yorkville Avenue;Toronto;Ontario;M4W 0A4;Canada;43.67141;-79.39008;+1 (416) 964-0411;+1 (416) 964-2301
+239;Four Seasons Hotel Guangzhou;5;Zhujiang West Road;Pearl River New City Tianhe District;Guangzhou;510623;China;23.11762268;113.3235294;+86 20 8883 3888;+86 20 8883 3999
+240;Four Seasons Hotel Hong Kong;8;Finance Street;Central;Hong Kong;;China;22.286793;114.156543;+(852) 3196-8888;+(852) 3196-8899
+241;Four Seasons at Beijing;48;iangMaQiao Road;100125 Chaoyang District Beijing;;;China;39.950395;116.466447;+86 (10) 5695 8888;
+242;Four Seasons Hotel Hangzhou at West Lake;5;Lingyin Road;Hangzhou;;310013;China;30.251194;120.127713;+86 (571) 8829-8888;+86 (571) 8829-2298
+243;Four Seasons Hotel Shanghai;500;Weihai Road;Shanghai;;200041;China;31.227463;121.462322;+86 (21) 6256-8888;+86 (21) 6256-5678
+244;Four Seasons Hotel Shenzhen;138;Fuhua Third Road Futian District;Shenzhen;;518048;China;22.534296;114.058079;+86 755 8826 8888;+86 755 8826 8999
+245;Four Seasons Hotel Macao Cotai Strip®;;Estrada da Baía de N. Senhora da Esperança S/N;Taipa Macau;;;China;22.15015;113.55731;+(853) 2881-8888;+(853) 2881-8899
+246;Four Seasons Resort Costa Rica at Peninsula Papagayo;;Peninsula Papagayo;Guanacaste;;;Costa Rica;10.611239;-85.688939;+(506) 2696-0000;+(506) 2696-0010
+247;Four Seasons Hotel Prague;;Veleslavínova 2a/1098;Praha 1;;110 00;Czech Republic;50.087658;14.415105;+420 221 427 000;+420 221 426 000
+248;Four Seasons Resort Sharm El Sheikh Egypt;1;Four Seasons Boulevard P.O. Box 203;Sharm El Sheikh;South Sinai;;Egypt;27.955264;34.393036;+20 (69) 360-3555;+20 (69) 360-3550
+249;Four Seasons Hotel Alexandria at San Stefano Egypt;399;El Geish Road;Alexandria;;;Egypt;31.245719;29.96574;+20 (3) 581-8000;+20 (3) 581-8080
+250;Four Seasons Hotel Cairo at Nile Plaza;1089;Corniche El Nil;Garden City Cairo;;11519;Egypt;30.037067;31.229428;+20 (2) 2791-7000;+20 (2) 2791-6900
+251;Four Seasons Hotel Cairo at The First Residence;35;Giza Street;Giza Cairo;;12311;Egypt;30.024247;31.217553;;+20 (2) 3568-1616
+252;Four Seasons Hotel Hampshire;;Chalky Lane Dogmersfield;Dogmersfield;Hampshire RG27 8TD;;England;51.25468;-0.890936;+44 (1252) 853000;+44 (1252) 853010
+253;Four Seasons Hotel London at Canary Wharf;46;Westferry Circus;Canary Wharf;London;E14 8RS;England;51.506569;-0.028024;;+44 (20) 7510-1998
+254;Four Seasons Hotel London at Park Lane;;Hamilton Place Park Lane;London;;W1J 7DR;England;51.50426826;-0.149753094;+44 (20) 7499-0888;+44 (20) 7493-1895
+255;Four Seasons Hotel George V Paris;31;avenue George V;75008 Paris;;;France;48.868512;2.301136;+33 (1) 49 52 70 00;+33 (1) 49 52 70 10
+256;Four Seasons Resort Bora Bora;;Motu Tehotu - BP 547;Bora Bora;;98730;French Polynesia;-16.474115;-151.702031;+(689) 40 603 130;
+257;Four Seasons Hotel Gresham Palace Budapest;;Széchenyi István tér 5-6.;Budapest;;1051;Hungary;47.499902;19.047776;+36 (1) 268-6000;+36 (1) 268-5000
+258;Four Seasons Hotel Mumbai;114;Dr. E. Moses Road;Worli Mumbai;;400 018;India;18.9936654;72.82022595;+91 (22) 2481-8000;+91 (22) 2481-8001
+259;Four Seasons Resort Bali at Jimbaran Bay;;Jimbaran;Kuta Selatan;Bali;80361;Indonesia;-8.783382;115.159078;+62 (361) 701010;+62 (361) 701020
+260;Four Seasons Resort Bali at Sayan;;Sayan;Ubud;Bali;80571;Indonesia;-8.49572;115.24482;+62 (361) 977577;+62 (361) 977588
+261;Four Seasons Hotel Jakarta;;Jalan H.R. Rasuna Said;Jakarta;;12920;Indonesia;-6.206325;106.827911;+62 (21) 252-3456;+62 (21) 252-4480
+262;Four Seasons Hotel Dublin;;Simmonscourt Road;Dublin 4;;;Ireland;53.3255;-6.22725;+353 (1) 665 4000;+353 (1) 665 4099
+263;Four Seasons Hotel Milano;6/8/2014;Via Gesù ;20121 Milano;;;Italy;45.469435;9.195159;+39 02 77088;+39 02 7708 5000
+264;Four Seasons Hotel Firenze;99;Borgo Pinti ;Firenze;;50121;Italy;43.777051;11.266435;+39 (055) 2626 1;+39 (055) 2626 500
+265;Four Seasons Hotel Tokyo at Marunouchi;1/11/2001;Pacific Century Place Marunouchi;Chiyoda-ku;Tokyo;100-6277;Japan;35.677865;139.76704;+81 (3) 5222-7222;+81 (3) 5222-1255
+266;Four Seasons Hotel Amman;;5th Circle Al-Kindi Street;Jabal Amman;Amman;;Jordan;31.962339;35.881283;+962 (6) 550-5555;+962 (6) 550-5556
+267;Four Seasons Hotel Riyadh at Kingdom Centre;;Kingdom Centre  P.O. Box 231000;Riyadh 11321;;;Kingdom of Saudi Arabia;24.715804;46.67387;+966 (11) 211-5000;+966 (11) 211-5001
+268;Four Seasons Hotel Beirut;1418;Professor Wafic Sinno Avenue;Minet El Hosn;Beirut;2020 4107;Lebanon;33.9018;35.4989;+961 (1) 761000;+961 (1) 761100
+269;Four Seasons Resort Langkawi Malaysia;;Jalan Tanjung Rhu;07000 Langkawi;Kedah Darul Aman;;Malaysia;6.446299;99.807723;+60 (4) 950 8888;+60 (4) 950 8899
+270;Four Seasons Resort Mauritius at Anahita;;Coastal Road;Beau Champ;;;Mauritius;-20.28363;57.79428;+(230) 402 3100;+ (230) 402 3120
+271;Four Seasons Hotel Mexico D.F.;;Paseo de la Reforma #500;Colonia Juarez;Mexico D.F.;6600;Mexico;19.42313008;-99.17452812;+52 (55) 5230-1818;+52 (55) 5230-1808
+272;Four Seasons Resort Punta Mita México;;Punta Mita Bahía de Banderas;Nayarit;;63734;Mexico;20.781013;-105.52935;+52 (329) 291-6000;+52 (329) 291-6060
+273;Four Seasons Resort Marrakech;1;Boulevard de la Menara;Marrakech;;40000;Morocco;31.620077;-8.017423;+(212) 524 359 200;+(212) 524 359 201
+274;Four Seasons Hotel Ritz Lisbon;88;Rua Rodrigo da Fonseca;Lisbon 1099-039;;;Portugal;38.72552;-9.15519;+351 (21) 381-1400;+351 (21) 383-1783
+275;Four Seasons Hotel Doha;;The Corniche;P.O. Box 24665 Doha;;;Qatar;25.324037;51.539167;+(974) 4494 8888;+(974) 4494 8282
+276;Four Seasons Resort Maldives at Landaa Giraavaru;;;Baa Atoll;;;Republic of Maldives;5.1047702;73.0680618;+(960) 66 00 888;+(960) 66 00 800
+277;Four Seasons Maldives Four Seasons Explorer;;;North Male Atoll;;;Republic of Maldives;4.4159999;73.5;+(960) 66 00 888;+(960) 66 00 800
+278;Four Seasons Resort Maldives at Kuda Huraa;;;North Malé Atoll;;;Republic of Maldives;4.4159999;73.5;+(960) 66 44 888;+(960) 66 44 800
+279;Four Seasons Hotel Lion Palace St. Petersburg;1;Voznesensky Prospekt;St. Petersburg;;190000;Russia;59.935838;30.308533;+7 (812) 339 8000;+7 (812) 339 8099
+280;Four Seasons Hotel Moscow;2;Okhotny Ryad Str.;Moscow;;109012;Russian Federation;55.756739;37.617146;+7 (499) 277 71 00;+7 (499) 277 71 99
+281;Four Seasons Resort Seychelles;;Petite Anse Baie Lazare;Mahé;;;Seychelles;-4.753848;55.465508;+(248) 439 3000;+ (248) 439 3001
+282;Four Seasons Hotel Singapore;190;Orchard Boulevard;Singapore;;248646;Singapore;1.304513744;103.8280535;+(65) 6734-1110;+(65) 6733-0682
+283;Four Seasons Hotel des Bergues Geneva;33;Quai des Bergues;1201 Geneva;;;Switzerland;46.206997;6.146922;+41 (22) 908 70 00;+41 (22) 908 74 00
+284;Four Seasons Hotel Damascus;;Shukri Al Quatli Street P.O. Box 6311;Damascus;;;Syria;33.514197;36.29114;+963 (11) 339 1000;+963 (11) 339 0900
+285;Four Seasons Safari Lodge Serengeti Tanzania;;Central Serengeti Serengeti National Park P.O. Box 14321;Arusha;;;Tanzania;-2.234375;34.919131;+255 (0) 778 888 888;
+286;Four Seasons Hotel Bangkok;155;Rajadamri Road;Bangkok;;10330;Thailand;13.740802;100.540254;;+66 2 253-9195
+287;Four Seasons Resort Chiang Mai;502;Moo 1 Mae Rim-Samoeng Old Road;Chiang Ma;;50180;Thailand;18.916193;98.931627;+66 53 298-181;+66 53 298-190
+288;Four Seasons Tented Camp Golden Triangle Thailand;;P.O. Box 18 Chiang Saen Post Office;Chiang Rai;;57150;Thailand;20.274194;100.081455;+66 53 910-200;+66 53 652-189
+289;Four Seasons Resort Koh Samui Thailand;219;Moo 5 Angthong;Koh Samui Surat Thani ;;84140;Thailand;9.570621;99.915115;+66 77 243-000;+66 77 243-002
+290;Four Seasons Hotel Istanbul at the Bosphorus;;Çñraßan Cad. No. 28;Istanbul;Be?ikta?;34349;Turkey;41.042527;29.011807;+90 (212) 381 40 00;+90 (212) 381 40 10
+291;Four Seasons Hotel Istanbul at Sultanahmet;;Tevkifhane Sokak No. 1;Sultanahmet Eminönü;Istanbul;34110;Turkey;41.006496;28.980264;+90 (212) 402 30 00;+90 (212) 402 30 10
+292;Four Seasons Resort Scottsdale at Troon North;10600;East Crescent Moon Drive;Scottsdale;Arizona;85262-8342;U.S.A.;33.73187;-111.85286;+1 (480) 515-5700;+1 (480) 515-5599
+293;Beverly Wilshire Beverly Hills (A Four Seasons Hotel);9500;Wilshire Boulevard;Beverly Hills;California;90212;U.S.A.;34.0668941;-118.4007579;+1 (310) 275-5200;+1 (310) 274-2851
+294;Four Seasons Residence Club San Diego Aviara (Residence Rental);7210;Blue Heron Place;Carlsbad;California;92011;U.S.A.;33.097;-117.2835;+1 (760) 603-3700;+1 (760) 603-3701
+295;Four Seasons Hotel Silicon Valley at East Palo Alto;2050;University Avenue;East Palo Alto;California;94303;U.S.A.;37.460382;-122.142355;+1 (650) 566-1200;+1 (650) 566-1221
+296;Four Seasons Los Angeles at Beverly Hills;300;South Doheny Drive;Los Angeles;California;90048;U.S.A.;34.073086;-118.389226;+1 (310) 273-2222;+1 (310) 859-3824
+297;Four Seasons Hotel San Francisco;757;Market Street;San Francisco;California;94103;U.S.A.;37.78640256;-122.4037778;+1 (415) 633-3000;+1 (415) 633-3001
+298;Four Seasons Resort The Biltmore Santa Barbara;1260;Channel Drive;Santa Barbara;California;93108;U.S.A.;34.41661064;-119.6415424;+1 (805) 969-2261;+1 (805) 565-8323
+299;Four Seasons Hotel Westlake Village;;Two Dole Drive;Westlake Village;California;91362;U.S.A.;34.15175;-118.804266;+1 (818) 575-3000;+1 (818) 575-3100
+300;Four Seasons Hotel Denver;1111;14th Street;Denver;Colorado;80202;U.S.A.;39.746151;-104.998319;+1 (303) 389-3000;+1 (303) 389-3009
+301;Four Seasons Resort and Residences Vail;;One Vail Road;Vail;Colorado;81657;U.S.A.;39.64354;-106.37911;+1 (970) 477-8600;+1 (970) 477-8666
+302;Four Seasons Hotel Washington DC;2800;Pennsylvania Avenue N.W.;Washington;DC;20007;U.S.A.;38.904607;-77.057562;+1 (202) 342-0444;+1 (202) 944-2076
+303;Four Seasons Resort Orlando at Walt Disney World® Resort;10100;Dream Tree Blvd;Golden Oak;Florida;32836;U.S.A.;28.397139;-81.542759;+1 (800) 267-3046;
+304;Four Seasons Hotel Miami;1435;Brickell Avenue;Miami;Florida;33131;U.S.A.;25.759469;-80.192351;+1 (305) 358-3535;+1 (305) 358-7758
+305;Four Seasons Resort Palm Beach;2800;South Ocean Boulevard;Palm Beach;Florida;33480;U.S.A.;26.618609;-80.037613;+1 (561) 582-2800;+1 (561) 547-1557
+306;Four Seasons Hotel Atlanta;75;Fourteenth Street NE;Atlanta;Georgia;30309;U.S.A.;33.786373;-84.385305;+1 (404) 881-9898;+1 (404) 873-4692
+307;Four Seasons Resort Huallai at Historic Ka`upulehu;72-100;Ka upulehu Drive;Kailua-Kona;Hawaii;96740;U.S.A.;19.8281;-155.992001;+1 (808) 325-8000;+1 (808) 325-8200
+308;Four Seasons Resort Lanai at Manele Bay;;One Manele Bay Road P.O. Box  631380;Lanai City;Hawaii;96763;U.S.A.;20.742128;-156.894927;+1 (808) 565-2000;+1 (808) 565-2483
+309;Four Seasons Resort Lanai The Lodge at Koele;;One Keomoku Highway P.O. Box 631380;Lanai City;Hawaii;96763;U.S.A.;20.86926;-156.90604;+1 (808) 565-4000;+1 (808) 565-4561
+310;Four Seasons Resort Maui at Wailea;3900;Wailea Alanui Drive;Wailea Maui;Hawaii;96753;U.S.A.;20.68024;-156.44246;+1 (808) 874-8000;+1 (808) 874-2244
+311;Four Seasons Hotel Chicago;120;East Delaware Place;Chicago;Illinois;60611-1443;U.S.A.;41.899183;-87.625629;+1 (312) 280-8800;+1 (312) 280-1748
+312;The Ritz-Carlton Chicago (A Four Seasons Hotel);160;East Pearson Street at Water Tower Place ;Chicago;Illinois;60611-2308;U.S.A.;41.897584;-87.622893;+1 (312) 266-1000;+1 (312) 266-1194
+313;Four Seasons Hotel Baltimore;200;International Drive;Baltimore;Maryland;21202;U.S.A.;39.28239699;-76.60238743;+1 (410) 576-5800;+1 (410) 223-1479
+314;Four Seasons Hotel Boston;200;Boylston Street;Boston;Massachusetts;2116;U.S.A.;42.352051;-71.068315;+1 (617) 338-4400;+1 (617) 423-0154
+315;Four Seasons Hotel St. Louis;999;North 2nd Street;St. Louis;Missouri;63102;U.S.A.;38.632968;-90.184025;+1 (314) 881-5800;+1 (314) 881-5700
+316;Four Seasons Hotel Las Vegas;3960;Las Vegas Boulevard South;Las Vegas;Nevada;89119;U.S.A.;36.09017;-115.17427;+1 (702) 632-5000;+1 (702) 632-5195
+317;Four Seasons Resort Rancho Encantado Santa Fe;198;State Road 592;Santa Fe;New Mexico;87506;U.S.A.;35.800359;-105.924415;+1 (505) 946-5700;+1 (505) 946-5888
+318;Four Seasons Hotel New York;57;East 57th Street;New York;New York;10022;U.S.A.;40.761914;-73.971482;+1 (212) 758-5700;+1 (212) 758-5711
+319;Four Seasons Hotel Philadelphia;;One Logan Square;Philadelphia;Pennsylvania;19103-6933;U.S.A.;39.95679348;-75.16970158;+1 (215) 963-1500;+1 (215) 963-9506
+320;Four Seasons Hotel Austin;98;San Jacinto Boulevard;Austin;Texas;78701-4039;U.S.A.;30.26198629;-97.74235725;+1 (512) 478-4500;+1 (512) 478-3117
+321;Four Seasons Hotel Houston;1300;Lamar Street;Houston;Texas;77010-3017;U.S.A.;29.75432768;-95.36304474;+1 (713) 650-1300;+1 (713) 652-6220
+322;Four Seasons Resort and Club Dallas at Las Colinas;4150;North MacArthur Boulevard;Irving;Texas;75038;U.S.A.;32.863273;-96.959529;+1 (972) 717-0700;+1 (972) 717-2550
+323;Four Seasons Hotel Seattle;99;Union Street;Seattle;Washington;98101;U.S.A.;47.607841;-122.33911;+1 (206) 749-7000;+1 (206) 749-7099
+324;Four Seasons Resort Jackson Hole;7680;Granite Loop Road P.O. Box 544;Teton Village;Wyoming;83025;U.S.A.;43.5888;-110.827;+1 (307) 732-5175;+1 (307) 732-5001
+325;Four Seasons Resort Carmelo Uruguay;;Ruta 21 km 262;Carmelo;Dpto. de Colonia;;Uruguay;-33.95404;-58.338876; +598 (4542) 9000 ;+598 (4542) 9999
+326;Four Seasons Resort Nevis West Indies;;P.O. Box 565 Pinney's Beach;Charlestown;Nevis;;West Indies Caribbean;17.15825;-62.629649;+1 (869) 469-1111;+1 (869) 469-1112
+327;Four Seasons Hotel Singapore;190;Orchard Boulevard;Singapore;null;248646;Singapore;1.304513744;103.8280535;+(65) 6734-1110;+(65) 6733-0682
+328;Four Seasons Hotel Sydney;199;George Street;Sydney;NSW;2000;Australia;-33.861822;151.207795;+61 (2) 9250-3100;+61 (2) 9251-2851
+329;Four Seasons Hotel Tokyo at Marunouchi;1/11/2001;Pacific Century Place Marunouchi;Chiyoda-ku;Tokyo;100-6277;Japan;35.677865;139.76704;+81 (3) 5222-7222;+81 (3) 5222-1255
