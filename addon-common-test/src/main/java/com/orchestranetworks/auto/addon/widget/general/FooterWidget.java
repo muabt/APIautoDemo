@@ -24,5 +24,7 @@ public interface FooterWidget extends WidgetObject {
 
 	// Screen View modification
 	void clickBtnSaveAndQuit();
+	
+	void clickBtnSubmit();
 
 }

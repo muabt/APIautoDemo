@@ -64,4 +64,9 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
 	public void clickBtnSaveAndQuit() {
 		clickBtn("Save and quit");
 	}
+
+	@Override
+	public void clickBtnSubmit() {
+		clickBtn("Submit");
+	}
 }
