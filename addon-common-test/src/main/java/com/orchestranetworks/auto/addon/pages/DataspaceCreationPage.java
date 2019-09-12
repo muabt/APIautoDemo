@@ -14,14 +14,14 @@ public class DataspaceCreationPage extends PageObject {
     private HeaderWidget headerWidget;
     private FooterWidget footerWidget;
 
-    private ItemCreationWidget newDataSet;
+    private ItemCreationWidget dataspaceCreation;
 
     public DataspaceCreationPage() {
         this.toolbar = toolbar;
         this.navPanel = navPanel;
         this.headerWidget = headerWidget;
         this.footerWidget = footerWidget;
-        this.newDataSet = newDataSet;
+        this.dataspaceCreation = dataspaceCreation;
     }
 
     public ToolbarWidget getToolbar() {
@@ -36,8 +36,8 @@ public class DataspaceCreationPage extends PageObject {
         return footerWidget;
     }
 
-    public ItemCreationWidget getDefaultViewWidget() {
-        return newDataSet;
+    public ItemCreationWidget getDataspaceCreationWidget() {
+        return dataspaceCreation;
     }
 
 }

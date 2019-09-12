@@ -9,6 +9,11 @@ Feature: Create new data space
   Scenario: Create new data space
     And I access "dataspace" menu
     And I access dataspace "FastTrack>[03] Parties data>Company employees"
+
+    When I create a child of dataspace "FastTrack>[03] Parties data>Company employees" with information as following
+      | Identifier | Owner              | English Label |
+      |            | John Smith (admin) | Store         |
+
     And I create child Dataspace with information as following
       | Identifier | Owner              | English Label |
       |            | John Smith (admin) | Store         |

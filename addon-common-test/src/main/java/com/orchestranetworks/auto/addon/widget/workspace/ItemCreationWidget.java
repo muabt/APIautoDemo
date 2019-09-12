@@ -13,4 +13,5 @@ public interface ItemCreationWidget extends WidgetObject {
 
 	void enterEnglishLabel(String label);
 
+    void selectOwner(String owner);
 }

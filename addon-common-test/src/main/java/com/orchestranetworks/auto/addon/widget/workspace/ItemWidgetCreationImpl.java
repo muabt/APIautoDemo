@@ -35,4 +35,9 @@ public class ItemWidgetCreationImpl extends BaseWidgetImpl implements ItemCreati
 	public void enterEnglishLabel(String label) {
 
 	}
+
+	@Override
+	public void selectOwner(String owner) {
+
+	}
 }

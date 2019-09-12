@@ -21,4 +21,6 @@ public interface ToolbarWidget extends WidgetObject {
 	void clickLastPage();
 
 	void clickFirstPage();
+
+    void clickBtnCreateDataspace();
 }
