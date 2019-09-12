@@ -20,7 +20,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
 	@Override
 	public void selectFirstRecords(int numberOfRecords) {
-		for (int i = 1; i < numberOfRecords; i++) {
+		for (int i = 1; i <= numberOfRecords; i++) {
 			select_record_with_index(i);
 		}
 	}
@@ -29,6 +29,6 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 		String xPathSelectRecord = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])[" + index + "]";
 		// Use waitUntilClickable will throw TimeoutException, so just click() only
 		getElement(xPathSelectRecord).click();
-		//clickOnElement(xPathSelectRecord);
+		waitForInvisibilityOfElement(xPathSelectRecord);
 	}
 }
