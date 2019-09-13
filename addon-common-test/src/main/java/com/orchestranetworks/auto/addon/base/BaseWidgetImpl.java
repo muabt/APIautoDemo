@@ -507,20 +507,6 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     /**
-     * =====================================POPUP/ALERT============================================================
-     */
-    public void confirmPopupOK() {
-        String xPath = "//div[@id='ebx_DialogBox']//button[text()='OK']|//div[@class='_ebx-pop-up']//button[contains(.,'OK')]";
-        waitElementToBePresent(xPath).waitUntilClickable().click();
-        waitForAllLoadingCompleted();
-    }
-
-    public void confirmPopupYES() {
-        String xPath = "//div[@id='ebx_DialogBox']//button[text()='Yes']";
-        waitElementToBePresent(xPath).waitUntilClickable().click();
-    }
-
-    /**
      * =====================================TABLE============================================================
      */
 
