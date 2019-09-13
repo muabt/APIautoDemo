@@ -25,7 +25,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
 	@Override
 	public void selectFirstRecords(int numberOfRecords) {
-		for (int i = 1; i < numberOfRecords; i++) {
+		for (int i = 1; i <= numberOfRecords; i++) {
 			selectRecordWithIndex(i);
 		}
 	}
