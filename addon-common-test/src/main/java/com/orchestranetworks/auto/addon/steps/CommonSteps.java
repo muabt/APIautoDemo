@@ -1,6 +1,5 @@
 package com.orchestranetworks.auto.addon.steps;
 
-import static com.orchestranetworks.auto.addon.Constants.IFRAME_LEGACY;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.orchestranetworks.auto.addon.pages.CommonPage;
@@ -71,8 +70,12 @@ public class CommonSteps extends ScenarioSteps {
     }
 
     @Step
-    public void go_to_data_set(String path) {
+    public void go_to_dataset(String path) {
         onCommonPage.getNavPanel().changeDataset();
+        onCommonPage.getNavPanel().goToPath(path);
+    }
+    public void go_to_administration_item(String path){
+        onCommonPage.getNavPanel().selectAdministrationFeature();
         onCommonPage.getNavPanel().goToPath(path);
     }
 
@@ -89,7 +92,7 @@ public class CommonSteps extends ScenarioSteps {
 	
 	@Step
 	public void confirmPopupOk() {
-		onCommonPage.getPopupWidget().confirmPopupOk();
+		onCommonPage.getPopupWidget().confirmOK();
 	}
 
 }

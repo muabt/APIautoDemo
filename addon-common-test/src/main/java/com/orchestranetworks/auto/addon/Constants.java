@@ -42,4 +42,6 @@ public final class Constants {
 	public static final String LBL_IDENTIFIER = "Identifier";
 	public static final String LBL_OWNER = "Owner";
 
+    public static final String MENU_ADMINISTRATION = "Administration" ;
+	public static final String MENU_DATASET = "Data" ;
 }

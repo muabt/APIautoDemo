@@ -1,6 +1,7 @@
 package com.orchestranetworks.auto.addon.defs;
 
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.steps.DataspaceSteps;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
@@ -18,6 +19,8 @@ public class DataspaceDefs {
     DataspaceSteps onDataspaceSteps;
     @Steps
     CommonDefs onCommonDefs;
+    @Steps
+    AdministrationSteps onAdministrationSteps;
 
     /**
      * Create the dataspace given the information
@@ -104,6 +107,7 @@ public class DataspaceDefs {
         info.add(row.get("Child merge policy"));
         onDataspaceSteps.verify_dataspace(info);
     }
+
 
 }
 

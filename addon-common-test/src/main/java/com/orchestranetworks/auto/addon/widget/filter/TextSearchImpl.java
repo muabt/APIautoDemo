@@ -1,6 +1,7 @@
 package com.orchestranetworks.auto.addon.widget.filter;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import net.serenitybdd.core.pages.PageObject;
@@ -14,5 +15,10 @@ public class TextSearchImpl extends SearchWidgetImpl {
 	public TextSearchImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
 	}
+
+	public void searchWithKeyWord(String dataspace){
+		inputKeyword(dataspace);
+		clickApply();
+	};
 
 }

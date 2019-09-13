@@ -19,7 +19,15 @@ public class PopupWidgetImpl extends BaseWidgetImpl implements PopupWidget {
 	}
 
 	@Override
-	public void confirmPopupOk() {
-		confirmPopupOK();
+	public void confirmOK() {
+		String xPath = "//div[@id='ebx_DialogBox']//button[text()='OK']|//div[@class='_ebx-pop-up']//button[contains(.,'OK')]";
+		clickOnElement(xPath);
+		waitForInvisibilityOfElement(xPath);
+	}
+	@Override
+	public void confirmYES() {
+		String xPath = "//div[@id='ebx_DialogBox']//button[text()='Yes']";
+		clickOnElement(xPath);
+		waitForInvisibilityOfElement(xPath);
 	}
 }

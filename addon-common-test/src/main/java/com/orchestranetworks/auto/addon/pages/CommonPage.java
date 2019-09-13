@@ -38,6 +38,7 @@ public class CommonPage extends BasePage {
     }
 
     public NavigationWidget getNavPanel() {
+        switchToIFrame(Constants.IFRAME_LEGACY);
         return navPanel;
     }
 

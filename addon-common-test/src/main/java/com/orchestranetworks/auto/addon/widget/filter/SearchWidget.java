@@ -7,11 +7,13 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy(SearchWidgetImpl.class)
 public interface SearchWidget extends WidgetObject {
 
-	void clickApply(String id);
+	void clickApply();
 
 	void inputKeyword(String id);
 
-	WebElementFacade getBtnExpand();
+	void clickBtnExpand();
 
 	void switchToFilterPanel();
+
+
 }

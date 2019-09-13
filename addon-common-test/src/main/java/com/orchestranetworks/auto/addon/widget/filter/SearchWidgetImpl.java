@@ -11,33 +11,33 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
-	public SearchWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
-			long timeoutInMilliseconds) {
-		super(page, locator, webElement, timeoutInMilliseconds);
-	}
+    public SearchWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
+                            long timeoutInMilliseconds) {
+        super(page, locator, webElement, timeoutInMilliseconds);
+    }
 
-	public SearchWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
-		super(page, locator, timeoutInMilliseconds);
-	}
+    public SearchWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
+        super(page, locator, timeoutInMilliseconds);
+    }
 
-	@Override
-	public void clickApply(String id) {
+    @Override
+    public void clickApply() {
 
-	}
+    }
 
-	@Override
-	public void inputKeyword(String id) {
+    @Override
+    public void inputKeyword(String id) {
 
-	}
+    }
 
-	@Override
-	public WebElementFacade getBtnExpand() {
-		return null;
-	}
+    @Override
+    public void clickBtnExpand() {
+        clickBtn("expand");
+    }
 
-	@Override
-	public void switchToFilterPanel() {
-		switchToIFrame(Constants.IFRAME_LEGACY);
+    @Override
+    public void switchToFilterPanel() {
+        switchToIFrame(Constants.IFRAME_LEGACY);
 
-	}
+    }
 }

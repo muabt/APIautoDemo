@@ -137,7 +137,7 @@ public class CommonDefs {
      */
     @When("^I access dataset \"([^\"]*)\"$")
     public void I_access_data_set(String path) {
-        onCommonSteps.go_to_data_set(path);
+        onCommonSteps.go_to_dataset(path);
     }
 
     /**
@@ -174,7 +174,7 @@ public class CommonDefs {
     public void i_access_table_of_dataset_in_dataspace(String dataspacePath, String datasetPath,
                                                        String tableName) {
         onCommonSteps.go_to_dataspace(dataspacePath);
-        onCommonSteps.go_to_data_set(datasetPath);
+        onCommonSteps.go_to_dataset(datasetPath);
         onCommonSteps.click_on_table_name(tableName);
     }
 }

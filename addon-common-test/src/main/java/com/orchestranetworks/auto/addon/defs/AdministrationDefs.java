@@ -1,5 +1,7 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
@@ -82,30 +84,15 @@ public class AdministrationDefs {
 	public void i_access_table_service(String tblName) throws Throwable {
 		onAdministrationSteps.select_table_of_administration(tblName);
 	}
-
-	/**
-	 * Delete a data space of EBX using a service
-	 *
-	 * <p>
-	 * <b>Example</b>: Delete the Dataspace Store (Store)
-	 *
-	 * <ul>
-	 * <font color="blue">And</font> I delete the dataspace
-	 * "<font color="green">Dataspace Store (Store)</font>" with service
-	 * "<font color="green">Delete dataspaces and snapshots recursively</font>"
-	 * </ul>
-	 * </p>
-	 * 
-	 * @param dataspaceName name of data space need to delete
-	 * @param servicePath   name of the service used to dedelete
-	 * @throws Throwable
-	 */
-	@And("^I delete the dataspace \"([^\"]*)\" with service \"([^\"]*)\"$")
-	public void i_delete_the_dataspace_with_service(String dataspaceName, String servicePath) throws Throwable {
-		onDatasetSteps.select_record_with_PK(dataspaceName);
-		onDatasetSteps.select_table_service(servicePath);
-		onCommonSteps.click_btn_submit();
-		onCommonSteps.confirmPopupOk();
+	@And("^I delete the dataspace$")
+	public void i_delete_the_dataspace() {
+		String dataspace = SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER);
+		onCommonSteps.access_menu(Constants.MENU_ADMINISTRATION);
+		onCommonSteps.go_to_administration_item("Repository management>Dataspaces");
+		onCommonSteps.go_to_administration_item("Dataspaces/snapshots");
+		onAdministrationSteps.filter_item(dataspace);
+		onAdministrationSteps.close_dataspace(dataspace);
+		onAdministrationSteps.delete_dataspace(dataspace);
 	}
 
 	@Given("^I want to create matching table$")

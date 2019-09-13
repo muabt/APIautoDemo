@@ -24,16 +24,16 @@ public class DatasetSteps extends ScenarioSteps {
     
     @Step
 	public void select_record_with_PK(String[] recordPKs) {
-    	defaultViewPage.getDefaultViewWidget().selectRecordWithPk(recordPKs);
+    	defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordPKs);
 	}
     
     @Step
 	public void select_record_with_PK(String recordID) {
 		if (recordID.contains("|")) {
 			String[] ids = recordID.split("\\|");
-			defaultViewPage.getDefaultViewWidget().selectRecordWithPk(ids);
+			defaultViewPage.getDefaultViewWidget().selectRecordWithPK(ids);
 		} else {
-			defaultViewPage.getDefaultViewWidget().selectRecordWithPk(recordID);
+			defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordID);
 		}
 	}
     

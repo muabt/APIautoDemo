@@ -5,9 +5,9 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy(NavigationWidgetImpl.class)
 public interface NavigationWidget extends WidgetObject {
-	void changeDataspace();
+	NavigationWidget changeDataspace();
 
-	void changeDataset();
+	NavigationWidget changeDataset();
 
 	void expandAllNavigationItems();
 
@@ -26,4 +26,6 @@ public interface NavigationWidget extends WidgetObject {
     void goToGroupAdministration(String path);
 
     void goToAdministrationItem(String path);
+
+	NavigationWidget selectAdministrationFeature();
 }

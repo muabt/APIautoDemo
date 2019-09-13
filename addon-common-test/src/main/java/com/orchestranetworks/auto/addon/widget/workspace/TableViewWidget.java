@@ -8,7 +8,7 @@ public interface TableViewWidget extends WidgetObject {
 	
     void selectFirstRecords(int numberOfRecords);
        
-    void selectRecordWithPk(String[] primaryKey);
+    void selectRecordWithPK(String[] primaryKey);
     
-    void selectRecordWithPk(String selectRecordWithPk);
+    void selectRecordWithPK(String selectRecordWithPk);
 }

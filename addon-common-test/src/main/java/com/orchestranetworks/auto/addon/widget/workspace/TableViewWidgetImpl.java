@@ -38,7 +38,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 	}
 	
 	@Override
-	public void selectRecordWithPk(String[] primaryKey) {
+	public void selectRecordWithPK(String[] primaryKey) {
 		String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[(td[%s])";
 		primaryKey[0] = sSpecialTextPredicates(primaryKey[0]);
 		if (primaryKey.length >= 2) {
@@ -54,8 +54,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 	}
 	
 	@Override
-	public void selectRecordWithPk(String recordPK) {
-		switchToLastIFrame();
+	public void selectRecordWithPK(String recordPK) {
 		waitForPresenceOfElement(XPATH_TABLE);
 		clickByJS(XFormat.of(XPATH_CHECKBOX_RECORD, sSpecialTextPredicates(recordPK)));
 	}

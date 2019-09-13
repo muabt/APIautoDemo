@@ -30,12 +30,13 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
 
     @Override
     public void clickBtnView() {
-         clickBtn("View");
+        clickBtn("View");
     }
 
     @Override
-    public void clickBtnActions() {
-         clickBtn("Actions");
+    public ToolbarWidget clickBtnActions() {
+        clickBtn("Actions");
+        return this;
     }
 
     @Override

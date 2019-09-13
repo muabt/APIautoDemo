@@ -1,7 +1,6 @@
 package com.orchestranetworks.auto.addon.widget.general;
 
 import com.orchestranetworks.auto.addon.Constants;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -25,21 +24,23 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     }
 
     @Override
-    public void changeDataspace() {
+    public NavigationWidget changeDataspace() {
         removeChooseDatasetDiv();
         switchOutDefaultIFrame();
         if (isElementExistNow(xPathBtn("Change dataspace"))) {
             clickBtn("Change dataspace");
         }
+        return this;
     }
 
     @Override
-    public void changeDataset() {
+    public NavigationWidget changeDataset() {
         removeChooseDatasetDiv();
         switchOutDefaultIFrame();
         if (isElementExistNow(xPathBtn("Select dataset"))) {
             clickBtn("Select dataset");
         }
+        return this;
     }
 
     @Override
@@ -81,30 +82,37 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         String xpath = XFormat.of(XPATH_NAVIGATION_ITEM, menu);
         clickOnElement(xpath);
     }
-    
+
     @Override
     public void goToPath(String path) {
         String[] itemList = path.split(">");
         expandNavigationItem(itemList);
-       accessNavigationItem(itemList[itemList.length - 1].trim());
+        accessNavigationItem(itemList[itemList.length - 1].trim());
     }
 
     @Override
     public void selectDatasetService(String service) {
-    clickBtn("Actions");
+        clickBtn("Actions");
     }
 
     @Override
     public void goToGroupAdministration(String item) {
-		switchToIFrame(Constants.IFRAME_LEGACY);
-		clickOnElement("//span/a[contains(text(),'" + item + "')]");
-		clickOnElement("//div[@id='ebx_NavigationTree']//a");
-		waitAbit(2000);
-	}
+        switchToIFrame(Constants.IFRAME_LEGACY);
+        clickOnElement("//span/a[contains(text(),'" + item + "')]");
+        clickOnElement("//div[@id='ebx_NavigationTree']//a");
+        waitAbit(2000);
+    }
 
     @Override
-	public void goToAdministrationItem(String item) {
-		clickOnElement("//span/a/span/span[contains(text(),'" + item + "')]");
-		waitAbit(2000);
-	}
+    public void goToAdministrationItem(String item) {
+        clickOnElement("//span/a/span/span[contains(text(),'" + item + "')]");
+        waitAbit(2000);
+    }
+
+    @Override
+    public NavigationWidget selectAdministrationFeature() {
+        if (getElement("//div[@id='ebx_SelectorPanel_c' or @id='ebx_Navigation']").getAttribute("style").contains("hidden"))
+            clickBtn("Select an administration feature");
+        return this;
+    }
 }
