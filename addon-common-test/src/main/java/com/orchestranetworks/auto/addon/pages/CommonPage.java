@@ -1,6 +1,7 @@
 package com.orchestranetworks.auto.addon.pages;
 
 import com.orchestranetworks.auto.addon.widget.general.*;
+import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -38,7 +39,6 @@ public class CommonPage extends BasePage {
     }
 
     public NavigationWidget getNavPanel() {
-        switchToIFrame(Constants.IFRAME_LEGACY);
         return navPanel;
     }
 

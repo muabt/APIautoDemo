@@ -14,6 +14,7 @@ import net.serenitybdd.core.pages.PageObject;
 public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWidget {
     public static final String XPATH_NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
     public static final String XPATH_BTN_COLLAPSED = "//li[descendant-or-self::*[contains(text(),'%1$s')]]//button[@title='Collapsed'] | //table[contains(@class,'collapsed')][descendant::*[text()='%1$s']]//a";
+    public static final String MENU_SELECTOR_PANE = "//div[contains(@class,'menu-selector_pane')]";
 
     public NavigationWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                 long timeoutInMilliseconds) {
@@ -26,9 +27,8 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 
     @Override
     public NavigationWidget changeDataspace() {
-        removeChooseDatasetDiv();
         switchOutDefaultIFrame();
-        if (isElementExistNow(xPathBtn("Change dataspace"))) {
+        if (!isElementExistNow(MENU_SELECTOR_PANE) && isElementExistNow(xPathBtn("Change dataspace"))) {
             clickBtn("Change dataspace");
         }
         return this;
@@ -36,9 +36,8 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 
     @Override
     public NavigationWidget changeDataset() {
-        removeChooseDatasetDiv();
         switchOutDefaultIFrame();
-        if (isElementExistNow(xPathBtn("Select dataset"))) {
+        if (!isElementExistNow(MENU_SELECTOR_PANE)) {
             clickBtn("Select dataset");
         }
         return this;
@@ -79,9 +78,10 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 
     @Override
     public void accessNavigationItem(String menu) {
+        waitAbit(2000);
         menu = SessionData.getValueFromSession(menu);
         String xpath = XFormat.of(XPATH_NAVIGATION_ITEM, menu);
-        clickOnElement(xpath);
+        scrollElementIntoCenterView(xpath).click();
     }
 
     @Override
@@ -114,6 +114,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     public NavigationWidget selectAdministrationFeature() {
         if (getElement("//div[@id='ebx_SelectorPanel_c' or @id='ebx_Navigation']").getAttribute("style").contains("hidden"))
             clickBtn("Select an administration feature");
+        switchToIFrame(Constants.IFRAME_LEGACY);
         return this;
     }
 }

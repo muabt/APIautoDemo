@@ -1,7 +1,9 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -173,8 +175,16 @@ public class CommonDefs {
     @And("^I access table \"([^\"]*)\" of dataset \"([^\"]*)\" in dataspace \"([^\"]*)\"$")
     public void i_access_table_of_dataset_in_dataspace(String dataspacePath, String datasetPath,
                                                        String tableName) {
+        onCommonSteps.access_menu(Constants.MENU_DATASET);
         onCommonSteps.go_to_dataspace(dataspacePath);
         onCommonSteps.go_to_dataset(datasetPath);
         onCommonSteps.click_on_table_name(tableName);
+    }
+
+    @When("^I access table \"([^\"]*)\" of dataset \"([^\"]*)\"$")
+    public void i_access_table_of_dataset(String tableName, String datasetPath)  {
+        onCommonSteps.go_to_dataset(datasetPath);
+        onCommonSteps.click_on_table_name(tableName);
+
     }
 }

@@ -21,51 +21,51 @@ public class DatasetSteps extends ScenarioSteps {
 
     @Step
     public void select_table_service(String service) {
-        commonPage.getToolbar().selectService(service);
+        commonPage.getToolbar().clickBtnActions().selectService(service);
     }
-    
+
     @Step
-	public void select_record_with_PK(String[] recordPKs) {
-    	defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordPKs);
-	}
-    
+    public void select_record_with_PK(String[] recordPKs) {
+        defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordPKs);
+    }
+
     @Step
-	public void select_record_with_PK(String recordID) {
-		if (recordID.contains("|")) {
-			String[] ids = recordID.split("\\|");
-			defaultViewPage.getDefaultViewWidget().selectRecordWithPK(ids);
-		} else {
-			defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordID);
-		}
-	}
-    
+    public void select_record_with_PK(String recordID) {
+        if (recordID.contains("|")) {
+            String[] ids = recordID.split("\\|");
+            defaultViewPage.getDefaultViewWidget().selectRecordWithPK(ids);
+        } else {
+            defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordID);
+        }
+    }
+
     @Step
     public void select_dataset_service(String service) {
-    	commonPage.getNavPanel().selectDatasetService(service);
+        commonPage.getNavPanel().selectDatasetService(service);
     }
-    
-    @Step 
+
+    @Step
     public void click_btn_create_record() {
-    	defaultViewPage.getToolbar().clickBtnCreateRecord();
+        defaultViewPage.getToolbar().clickBtnCreateRecord();
     }
-    
-    @Step 
+
+    @Step
     public void click_profile() {
-    	permissionPage.getFieldCreationWidget().clickProfile();
+        permissionPage.getFieldCreationWidget().clickProfile();
     }
-    
+
     @Step
     public void choose_profile() {
-    	permissionPage.getFieldCreationWidget().chooseProfile();
+        permissionPage.getFieldCreationWidget().chooseProfile();
     }
-    
+
     @Step
     public void click_btn_save_and_close() {
-    	commonPage.getFooter().clickBtnSaveAndClose();
+        commonPage.getFooter().clickBtnSaveAndClose();
     }
-    
+
     @Step
-	public void input_record_field(String col, String cell, String dataType) {
-    	recordDetailPage.getItemCreationWidget().inputFieldContent(col, cell, dataType);
-	}
+    public void input_record_field(String col, String cell, String dataType) {
+        recordDetailPage.getItemCreationWidget().inputFieldContent(col, cell, dataType);
+    }
 }

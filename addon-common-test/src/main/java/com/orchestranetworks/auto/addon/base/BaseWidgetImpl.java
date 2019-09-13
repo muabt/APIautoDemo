@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.orchestranetworks.auto.addon.Constants;
 import org.junit.Assert;
-import org.openqa.selenium.By;
+import net.serenitybdd.core.annotations.findby.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
