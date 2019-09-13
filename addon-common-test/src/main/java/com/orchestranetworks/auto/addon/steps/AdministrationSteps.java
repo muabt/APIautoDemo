@@ -2,9 +2,7 @@ package com.orchestranetworks.auto.addon.steps;
 
 import com.orchestranetworks.auto.addon.pages.AdministrationPage;
 
-import com.orchestranetworks.auto.addon.widget.filter.TextSearchImpl;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import static com.orchestranetworks.auto.addon.Constants.IFRAME_LEGACY;

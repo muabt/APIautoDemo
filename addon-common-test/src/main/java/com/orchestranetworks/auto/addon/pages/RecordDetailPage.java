@@ -4,6 +4,7 @@ import com.orchestranetworks.auto.addon.widget.general.FooterWidget;
 import com.orchestranetworks.auto.addon.widget.general.HeaderWidget;
 import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
 import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
+import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 
 import net.serenitybdd.core.pages.PageObject;
@@ -16,6 +17,7 @@ public class RecordDetailPage extends BasePage {
 	private FooterWidget footerWidget;
 
 	private TableViewWidget defaultViewWidget;
+	private ItemCreationWidget itemCreationWidget;
 
 	public RecordDetailPage(WebDriver driver) {
 		super(driver);
@@ -24,6 +26,7 @@ public class RecordDetailPage extends BasePage {
 		this.headerWidget = headerWidget;
 		this.footerWidget = footerWidget;
 		this.defaultViewWidget = defaultViewWidget;
+		this.itemCreationWidget = itemCreationWidget;
 	}
 
 	public ToolbarWidget getToolbar() {
@@ -40,6 +43,10 @@ public class RecordDetailPage extends BasePage {
 
 	public TableViewWidget getDefaultViewWidget() {
 		return defaultViewWidget;
+	}
+	
+	public ItemCreationWidget getItemCreationWidget() {
+		return itemCreationWidget;
 	}
 
 }

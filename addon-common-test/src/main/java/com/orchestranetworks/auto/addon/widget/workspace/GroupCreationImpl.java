@@ -5,7 +5,7 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import net.serenitybdd.core.pages.PageObject;
 
-public class GroupCreationImpl extends ItemWidgetCreationImpl {
+public class GroupCreationImpl extends ItemCreationWidgetImpl {
 	public GroupCreationImpl(PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
 		super(page, locator, webElement, timeoutInMilliseconds);
 	}

@@ -5,7 +5,7 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import net.serenitybdd.core.pages.PageObject;
 
-public class DatasetCreationImpl extends ItemWidgetCreationImpl {
+public class DatasetCreationImpl extends ItemCreationWidgetImpl {
 	public DatasetCreationImpl(PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
 		super(page, locator, webElement, timeoutInMilliseconds);
 	}

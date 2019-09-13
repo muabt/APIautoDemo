@@ -3,6 +3,7 @@ package com.orchestranetworks.auto.addon.steps;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.PermissionPage;
+import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -11,6 +12,7 @@ public class DatasetSteps extends ScenarioSteps {
     DefaultViewPage defaultViewPage;
     CommonPage commonPage;
     PermissionPage permissionPage;
+    RecordDetailPage recordDetailPage;
 
     @Step
     public void select_first_record(String num) {
@@ -62,4 +64,8 @@ public class DatasetSteps extends ScenarioSteps {
     	commonPage.getFooter().clickBtnSaveAndClose();
     }
     
+    @Step
+	public void input_record_field(String col, String cell, String dataType) {
+    	recordDetailPage.getItemCreationWidget().inputFieldContent(col, cell, dataType);
+	}
 }

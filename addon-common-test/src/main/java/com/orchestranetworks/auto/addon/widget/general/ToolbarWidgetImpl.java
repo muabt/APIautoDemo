@@ -81,4 +81,5 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
     public void clickBtnCreateDataspace() {
         clickBtn("Create a dataspace");
     }
+
 }

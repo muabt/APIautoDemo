@@ -5,7 +5,7 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import net.serenitybdd.core.pages.PageObject;
 
-public class TableCreationImpl extends ItemWidgetCreationImpl {
+public class TableCreationImpl extends ItemCreationWidgetImpl {
 	public TableCreationImpl(PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
 		super(page, locator, webElement, timeoutInMilliseconds);
 	}

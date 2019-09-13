@@ -1,6 +1,10 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import java.util.List;
+
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
+
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
@@ -41,4 +45,45 @@ public class DatasetDefs {
     public void I_select_table_service(String service) throws Throwable {
         onDatasetSteps.select_table_service(service);
     }
+    
+    /**
+	 * Create record with given information
+	 * <p>
+	 * <b>Example</b>:
+	 * <ul>
+	 * <font color="blue">And</font> I create record with the followings
+	 *      <ul>
+	 *			     <font color="green">| Identifer:TXT | Civil status:DDL | First name:TXT | Last name:TXT | Maiden name:TXT | Birth date:DATE | Gender:RADIO | Marital status:DDL | GDPR type:DDL |</font>
+	 *     </ul>
+	 *     <ul>
+	 *			     <font color="green">|               | Dr.              | Jenifer        | Pham          |                 | 7/29/1988       | Female       | (C) Single         | Child         |</font>
+	 *     </ul>
+	 * </ul>
+	 * </p>
+	 * @param dt information of the record
+	 * @throws Throwable
+	 */
+	@And("^I create record with the followings$")
+	public void i_create_record_with_the_followings(DataTable dt) throws Throwable {
+		onDatasetSteps.click_btn_create_record();
+
+		List<List<String>> dataTable = dt.asLists(String.class);
+		List<String> header = dataTable.get(0);
+		// Get header then split to 2 element of array
+		for (int i = 0; i < header.size(); i++) {
+			String[] tmp = header.get(i).split(":");
+			// Get row of data table
+			for (int j = 1; j < dataTable.size(); j++) {
+				List<String> row = dataTable.get(j);
+				String col = tmp[0];
+				String dataType = tmp[1];
+				String cell = row.get(i);
+
+				if (!cell.isEmpty()) {
+					onDatasetSteps.input_record_field(col, cell, dataType);
+				}
+			}
+		}
+		onDatasetSteps.click_btn_save_and_close();
+	}
 }
