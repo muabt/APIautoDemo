@@ -11,7 +11,7 @@ public interface SearchWidget extends WidgetObject {
 
 	void inputKeyword(String id);
 
-	void clickBtnExpand();
+	void clickBtnExpand(String label);
 
 	void switchToFilterPanel();
 
@@ -19,4 +19,7 @@ public interface SearchWidget extends WidgetObject {
 
 	void selectAdvancedMode();
 
+	void unselectField(String field);
+
+	void addLogicalBlock();
 }

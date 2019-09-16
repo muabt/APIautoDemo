@@ -8,11 +8,11 @@ import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
 import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.pages.WebElementFacade;
 
 public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     private static final String XPATH_SEARCH_TEXTBOX = "//input[@name='%s']";
     public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
+    private static final String XPATH_EXPAND_BUTTON = "//label[contains(.,'%s')]//button[@title='expand']";
 
     public SearchWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                             long timeoutInMilliseconds) {
@@ -35,8 +35,9 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     }
 
     @Override
-    public void clickBtnExpand() {
-        clickBtn("expand");
+    public void clickBtnExpand(String label) {
+        clickOnElement(XFormat.of(XPATH_EXPAND_BUTTON, label));
+        waitForAllLoadingCompleted();
     }
 
     @Override
@@ -59,5 +60,19 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         String xPathParent = "//div[@id='ebx_FilterBlockList']";
         clickBtn(xPathParent, Constants.BTN_ACTIONS);
         clickOnElement(XFormat.of(NAVIGATION_ITEM, Constants.ADVANCED_MODE));
+    }
+
+    @Override
+    public void unselectField(String field) {
+        uncheckCheckbox(field);
+    }
+
+    @Override
+    public void addLogicalBlock() {
+        String xPathParent = "//div[@id='ebx_FilterBlockList']";
+        clickBtn(xPathParent, Constants.BTN_ACTIONS);
+        clickOnElement(XFormat.of(NAVIGATION_ITEM, Constants.ADD_LOGICAL_BLOCK));
+        waitForAllLoadingCompleted();
+        switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
     }
 }
