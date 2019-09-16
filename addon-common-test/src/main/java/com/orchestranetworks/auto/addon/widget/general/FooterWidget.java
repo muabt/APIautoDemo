@@ -27,4 +27,5 @@ public interface FooterWidget extends WidgetObject {
 	
 	void clickBtnSubmit();
 
+	void clickBtnCreateAndAdd();
 }

@@ -70,4 +70,9 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
 	public void clickBtnSubmit() {
 		clickBtn("Submit");
 	}
+
+	@Override
+	public void clickBtnCreateAndAdd() {
+
+	}
 }

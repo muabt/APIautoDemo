@@ -15,5 +15,8 @@ public interface SearchWidget extends WidgetObject {
 
 	void switchToFilterPanel();
 
+	void selectSearchCriteria(String criteria);
+
+	void selectAdvancedMode();
 
 }
