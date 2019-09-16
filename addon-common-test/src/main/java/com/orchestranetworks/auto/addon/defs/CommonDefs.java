@@ -21,8 +21,8 @@ public class CommonDefs {
      * succesfully
      * </p>
      */
-    @Given("^I login to EBX succesfully$")
-    public void i_login_to_ebx_succesfully() {
+    @Given("^I login to EBX successfully$")
+    public void i_login_to_ebx_successfully() {
         onCommonSteps.access_login_page();
         onCommonSteps.login_to_system(LoadConfig.getUserName(), LoadConfig.getPassword());
         onCommonSteps.verify_login_success();

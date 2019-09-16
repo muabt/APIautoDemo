@@ -11,6 +11,6 @@ Feature: Run Match feature
     And I access to "Match and Merge configuration" parent item
     And I access to "Matching table" item
     And I create record with the followings
-      | Data model:DDL | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: genealogy| Person |     Yes      |                              |                  |                |                     |
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I select first "1" records in table

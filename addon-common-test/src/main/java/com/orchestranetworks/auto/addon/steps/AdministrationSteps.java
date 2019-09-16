@@ -54,6 +54,11 @@ public class AdministrationSteps extends ScenarioSteps {
 		administration.getPopup().confirmOK();
 	}
 
+	@Step
+    public void select_record_with_name(String tableName){
+        administration.getDefaultViewWidget().accessRecordWithTableName(tableName);
+    }
+
 	public void filter_item(String dataspace) {
     	administration.getToolbar().clickBtnFilter();
 //		((TextSearchImpl)administration.getTextSearch()).searchWithKeyWord(dataspace);

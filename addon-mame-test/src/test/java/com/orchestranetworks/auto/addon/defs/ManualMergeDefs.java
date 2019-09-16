@@ -2,6 +2,7 @@ package com.orchestranetworks.auto.addon.defs;
 
 import java.util.Map;
 
+import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import cucumber.api.DataTable;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.steps.DatasetSteps;
@@ -21,6 +22,8 @@ public class ManualMergeDefs {
 	ManualMergeSteps onManualMergeSteps;
 	@Steps
 	DatasetSteps onDatasetSteps;
+	@Steps
+    AdministrationSteps onAdministrationSteps;
 
 	@Then("^record view table will be displayed and highlighted as below$")
 	public void user_will_see_the_data_as_below(List<List<String>> tableMerge) {
@@ -78,7 +81,8 @@ public class ManualMergeDefs {
 
 	@Given("^I want to access the Matching record of table \"([^\"]*)\"$")
 	public void i_want_to_access_the_matching_record_of_table(String tblName) {
-
+	    onAdministrationSteps.access_matching_table();
+	    onAdministrationSteps.select_record_with_name(tblName);
 	}
 
 	@And("^I select the expected source field \"([^\"]*)\"$")
