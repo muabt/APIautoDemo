@@ -75,4 +75,5 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         waitForAllLoadingCompleted();
         switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
     }
+
 }
