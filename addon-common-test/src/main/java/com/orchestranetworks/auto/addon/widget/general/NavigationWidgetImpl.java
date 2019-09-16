@@ -14,7 +14,7 @@ import net.serenitybdd.core.pages.PageObject;
 public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWidget {
     public static final String XPATH_NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
     public static final String XPATH_BTN_COLLAPSED = "//li[descendant-or-self::*[contains(text(),'%1$s')]]//button[@title='Collapsed'] | //table[contains(@class,'collapsed')][descendant::*[text()='%1$s']]//a";
-    public static final String MENU_SELECTOR_PANE = "//div[contains(@class,'menu-selector_pane')]";
+    public static final String MENU_SELECTOR_PANE = "//div[contains(@class,'navigation-menu-selector_modeless') and not(contains(@style,'hidden'))]";
 
     public NavigationWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                 long timeoutInMilliseconds) {

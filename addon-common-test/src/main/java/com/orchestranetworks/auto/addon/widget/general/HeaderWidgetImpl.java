@@ -80,6 +80,7 @@ public class HeaderWidgetImpl extends BaseWidgetImpl implements HeaderWidget {
 
 	@Override
 	public boolean isHeaderExist() {
+		waitForAllLoadingCompleted();
 		return isElementExistNow(XPATH_SELECT_PERSPECTIVE);
 	}
 

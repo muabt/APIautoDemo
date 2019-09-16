@@ -132,7 +132,16 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     public void waitForAllLoadingCompleted() {
         waitUntilHTMLReady(30);
         waitForJQueryLoadingCompleted(30);
+        waitForLoadingGIFCompleted(30);
     }
+    public void waitForLoadingGIFCompleted(int timeoutInSeconds){
+        String xPathLoadingGIF= "//img [contains(@src,'loader.gif')]";
+        String xPathLoadingMainBody= "//div[contains(@class,'loading')]";
+       waitForInvisibilityOfElement(xPathLoadingGIF);
+       waitForInvisibilityOfElement(xPathLoadingMainBody);
+
+    }
+
 
     public void waitUntilHTMLReady(int timeoutInSeconds) {
         new FluentWait<WebDriver>(getDriver()).withTimeout(timeoutInSeconds, TimeUnit.SECONDS)
@@ -201,12 +210,9 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 
     public boolean waitUntilElementVisible(String xPath, int timeoutInSeconds) {
         try {
-            this.getPage().setImplicitTimeout(50, TimeUnit.MILLISECONDS);
             waitForVisibilityOfElement(xPath);
-            this.getPage().resetImplicitTimeout();
             return true;
         } catch (Exception e) {
-            this.getPage().resetImplicitTimeout();
             return false;
         }
     }
