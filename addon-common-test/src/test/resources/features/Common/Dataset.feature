@@ -42,4 +42,5 @@ Feature: Dataset and table
       |               | Dr.              | Jenifer        | Pham          |                 | 7/29/1988       | Female       | (C) Single         | Child         |
 
   Scenario: Access table
+
     And I access table "Employee" of dataset "Human_Resource" in dataspace "Master Data - Reference>Reference-child"
