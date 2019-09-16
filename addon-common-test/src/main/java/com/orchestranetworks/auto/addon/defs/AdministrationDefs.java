@@ -19,23 +19,6 @@ public class AdministrationDefs {
 	@Steps
 	CommonSteps onCommonSteps;
 
-	/**
-	 * Give an access to administration service of EBX
-	 * <p>
-	 * <b>Example</b>: Access to dataspaces administration service:
-	 * <ul>
-	 * <font color="blue">And</font> I access to administration service
-	 * "<font color="green">Dataspaces</font>"
-	 * </ul>
-	 * </p>
-	 *
-	 * @param service Name of the service, such as "Directory, User Interface"
-	 * @throws Throwable
-	 */
-	@And("^I access to administration service \"([^\"]*)\"$")
-	public void i_access_to_administration_service(String service) throws Throwable {
-		onAdministrationSteps.go_to_admin_service(service);
-	}
 
 	/**
 	 * Access to the specified parent item administration area
@@ -44,6 +27,7 @@ public class AdministrationDefs {
 	 * "<font color="green">Match and Merge configuration</font>" parent item
 	 * </p>
 	 *
+	 * @author ctv
 	 * @param path path to the parent item in administration area.
 	 */
 
@@ -58,7 +42,7 @@ public class AdministrationDefs {
 	 * <b>Example</b>: <font color="blue">When</font> I access to
 	 * "<font color="green">Match and Merge configuration</font>" item
 	 * </p>
-	 *
+	 * * @author ctv
 	 * @param path path to the parent item in administration area.
 	 */
 	@And("^I access to \"([^\"]*)\" item$")
@@ -66,24 +50,7 @@ public class AdministrationDefs {
 		onAdministrationSteps.go_to_administration_item(path);
 	}
 
-	/**
-	 * Access a table service
-	 *
-	 * <p>
-	 * <b>Example</b>: Access to table service
-	 * <ul>
-	 * <font color="blue">And</font> I access table
-	 * "<font color="green">Employee</font>"
-	 * </ul>
-	 * </p>
-	 *
-	 * @param tblName table name that want to
-	 * @throws Throwable
-	 */
-	@And("^I access table \"([^\"]*)\" service$")
-	public void i_access_table_service(String tblName) throws Throwable {
-		onAdministrationSteps.select_table_of_administration(tblName);
-	}
+
 	@And("^I delete the dataspace$")
 	public void i_delete_the_dataspace() {
 		String dataspace = SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER);

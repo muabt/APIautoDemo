@@ -159,6 +159,22 @@ public class CommonDefs {
         onCommonSteps.click_on_table_name(tblName);
     }
     /**
+     * Give an access to administration service of EBX
+     * <p>
+     * <b>Example</b>: Access to dataspaces administration service:
+     * <ul>
+     * <font color="blue">And</font> I access to administration feature
+     * "<font color="green">Repository management>Dataspaces</font>"
+     * </ul>
+     * </p>
+     *
+     * @param path Path to service, such as "Directory, User Interface"
+     */
+    @And("^I access administration feature \"([^\"]*)\"$")
+    public void i_access_administration_feature(String path) throws Throwable {
+        onCommonSteps.go_to_administration_item(path);
+    }
+    /**
      * Access to a table of a dataset in dataspace
      * <p>
      * <b>Example</b>:
@@ -172,6 +188,7 @@ public class CommonDefs {
      * @param datasetPath path to access dataset
      * @param dataspacePath path to dataspace
      */
+
     @And("^I access table \"([^\"]*)\" of dataset \"([^\"]*)\" in dataspace \"([^\"]*)\"$")
     public void i_access_table_of_dataset_in_dataspace(String dataspacePath, String datasetPath,
                                                        String tableName) {
