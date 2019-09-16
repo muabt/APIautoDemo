@@ -7,7 +7,9 @@ import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
@@ -71,6 +73,16 @@ public class ManualMergeDefs {
 			if (!functionalID.isEmpty()) {
 			}
 		}
+
+	}
+
+	@Given("^I want to access the Matching record of table \"([^\"]*)\"$")
+	public void i_want_to_access_the_matching_record_of_table(String tblName) {
+
+	}
+
+	@And("^I select the expected source field \"([^\"]*)\"$")
+	public void i_select_the_expected_source_field(String fieldName) {
 
 	}
 }
