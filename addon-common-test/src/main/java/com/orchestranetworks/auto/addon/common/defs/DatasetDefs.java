@@ -325,30 +325,7 @@ public class DatasetDefs {
 		}
 	}
 
-    /**
-     * Select a record from the table given the primary key
-	 * <p>
-	 * <b>Example</b>:
-	 * <font color="blue">When</font> I select some records with primary key as following
-	 *     <ul>
-	 *			     <font color="green">| ID |</font>
-	 *     </ul>
-	 *     <ul>
-	 *			     <font color="green">| 1 |</font>
-	 *     </ul>
-	 * </ul>
-	 * </p>
-	 * @param dt primary key of the record that user want to select
-     * @throws Throwable
-     */
-	@When("^I select some records with primary key as following$")
-	public void user_selects_records_as_following(List<List<String>> dt) throws Throwable {
-		for (int i = 1; i < dt.size(); i++) {
-			String[] col = dt.get(i).toArray(new String[0]);
-			//onDatasetSteps.select_record_with_PK(col);
-		}
 
-	}
 
     /**
      * Create a child data set of an existed data set given the information
