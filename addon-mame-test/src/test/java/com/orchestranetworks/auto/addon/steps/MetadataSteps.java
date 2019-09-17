@@ -6,21 +6,30 @@ import java.util.List;
 
 import com.orchestranetworks.auto.addon.pages.MetadataPage;
 import static org.assertj.core.api.Assertions.assertThat;
+
 public class MetadataSteps {
 	
 	MetadataPage onMetadataPage;
 	
-	public void verify_list_tabs(String expectedTab){
-		List<String> List = new ArrayList<String>(Arrays.asList(expectedTab.split(",")));
+	public void verify_list_tabs(List<String> listTab){
+		
+		//List<String> List = new ArrayList<String>(Arrays.asList(listTab.split(",")));
 		
 		List<String> actualTab = onMetadataPage.getMetadata().getListTab();
+		assertThat(actualTab).isEqualTo(listTab);
+			
+		}
+	
+	public void verify_data_displayed_in_main_tab(List<String> getMetadatRecordView) {	
 		
-		assertThat(actualTab).isEqualTo(expectedTab);
+	}
+	
+	public static void main(String args[]){
 		
-        verify_tab_selected (selectedTab);
-
-
-    }
+		
+		
+	}
+	
 }
 
 

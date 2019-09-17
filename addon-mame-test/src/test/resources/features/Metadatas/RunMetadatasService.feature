@@ -31,7 +31,6 @@ Feature: Run Metadatas service
       | Record    | State  | Group     |
       | Fast food | Golden | Fast food |
     
-    
     When I want to see detail record
     Then I should see detailed record as following "<KEY>"
       | KEY | Identifier | Parent    | Name      | Comment             |
@@ -54,10 +53,6 @@ Feature: Run Metadatas service
       | KEY |
       |  01 |
 
-    @SC-MTD0013
-    Examples: 
-      | KEY |
-      |  02 |
 
   Scenario Outline: SC-MTD008 Check group info when lauching metadata on a record that is apart of a group,  in this group there is one golden record.
                     SC-MTD009 Check group info when lauching metadata on a record that is apart of a group, in that group there are more than one golden records.
