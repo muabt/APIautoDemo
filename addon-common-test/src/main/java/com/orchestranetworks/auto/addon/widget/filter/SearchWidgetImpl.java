@@ -30,8 +30,18 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     }
 
     @Override
-    public void inputKeyword(String keyword) {
+    public void inputTextKeyword(String keyword) {
         waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "criteria"), keyword);
+    }
+
+    @Override
+    public void inputValidationKeyword(String keyword) {
+        waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "message"), keyword);
+    }
+
+    @Override
+    public void inputFuzzyKeyword(String keyword) {
+        waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "TESE_AUTO_searchValue"), keyword);
     }
 
     @Override

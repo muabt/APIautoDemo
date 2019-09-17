@@ -9,7 +9,11 @@ public interface SearchWidget extends WidgetObject {
 
 	void clickApply();
 
-	void inputKeyword(String id);
+	void inputTextKeyword(String keyword);
+
+	void inputValidationKeyword(String keyword);
+
+	void inputFuzzyKeyword(String keyword);
 
 	void clickBtnExpand(String label);
 
