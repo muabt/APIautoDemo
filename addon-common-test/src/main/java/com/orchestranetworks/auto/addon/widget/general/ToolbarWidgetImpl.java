@@ -53,8 +53,8 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
             clickOnElement(XFormat.of(NAVIGATION_ITEM, services[i].trim()));
         }
         waitForAllLoadingCompleted();
-        switchToFirstIFrame();
         waitAbit(1000);
+        switchToFirstIFrame();
     }
 
     @Override
