@@ -21,7 +21,7 @@ public class DatasetDefs {
 	DatasetSteps onDatasetSteps;
 	@Steps
 	CommonSteps onCommonSteps;
-	
+
 	@Steps
 	AdministrationSteps onAdministrationSteps;
 
@@ -42,31 +42,29 @@ public class DatasetDefs {
 	 * @param dt information of the record
 	 * @throws Throwable
 	 */
-
-	/*
-	@And("^I create record with the followings$")
-	public void i_create_record_with_the_followings(DataTable dt) throws Throwable {
-		onDatasetSteps.click_btn_create_table_record();
-
-		List<List<String>> dataTable = dt.asLists(String.class);
-		List<String> header = dataTable.get(0);
-		// Get header then split to 2 element of array
-		for (int i = 0; i < header.size(); i++) {
-			String[] tmp = header.get(i).split(":");
-			// Get row of data table
-			for (int j = 1; j < dataTable.size(); j++) {
-				List<String> row = dataTable.get(j);
-				String col = tmp[0];
-				String dataType = tmp[1];
-				String cell = row.get(i);
-
-				if (!cell.isEmpty()) {
-					onDatasetSteps.input_record_field(col, cell, dataType);
-				}
-			}
-		}
-		onDatasetSteps.click_btn_save_and_close();
-	}*/
+//	@And("^I create record with the followings$")
+//	public void i_create_record_with_the_followings(DataTable dt) throws Throwable {
+//		onDatasetSteps.click_btn_create_table_record();
+//
+//		List<List<String>> dataTable = dt.asLists(String.class);
+//		List<String> header = dataTable.get(0);
+//		// Get header then split to 2 element of array
+//		for (int i = 0; i < header.size(); i++) {
+//			String[] tmp = header.get(i).split(":");
+//			// Get row of data table
+//			for (int j = 1; j < dataTable.size(); j++) {
+//				List<String> row = dataTable.get(j);
+//				String col = tmp[0];
+//				String dataType = tmp[1];
+//				String cell = row.get(i);
+//
+//				if (!cell.isEmpty()) {
+//					onDatasetSteps.input_record_field(col, cell, dataType);
+//				}
+//			}
+//		}
+//		onDatasetSteps.click_btn_save_and_close();
+//	}
 
 	/**
 	 * Create a new record with given information
@@ -221,7 +219,7 @@ public class DatasetDefs {
 			}
 		}
 	}
-	
+
 	 /**
      * I want to delete all records in the current table
      *

@@ -19,6 +19,7 @@ public class DefaultViewPage extends BasePage {
     private HeaderWidget headerWidget;
     private FooterWidget footerWidget;
     private PopupWidget popupWidget;
+    private SearchWidget searchWidget;
 
     private TableViewWidget defaultViewWidget;
 
@@ -32,6 +33,7 @@ public class DefaultViewPage extends BasePage {
         this.footerWidget = new FooterWidgetImpl(this, null, 100);
         this.defaultViewWidget = new DefaultViewImpl(this, null, 100);
         this.popupWidget = new PopupWidgetImpl(this, null, 100);
+        this.searchWidget = new SearchWidgetImpl(this, null, 100);
     }
 
     public ToolbarWidget getToolbar() {
@@ -66,6 +68,9 @@ public class DefaultViewPage extends BasePage {
         return defaultViewWidget;
     }
 
+    public SearchWidget getSearchWidget() {
+        return searchWidget;
+    }
 
     public PopupWidget getPopupWidget() {
         return popupWidget;

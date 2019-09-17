@@ -86,6 +86,7 @@ public class CommonSteps extends ScenarioSteps {
 	@Step
 	public void click_on_table_name(String tblName) {
 		onCommonPage.getNavPanel().accessNavigationItem(tblName);
+		onCommonPage.switchToIFrame(IFRAME_LEGACY);
 	}
 	
 	@Step

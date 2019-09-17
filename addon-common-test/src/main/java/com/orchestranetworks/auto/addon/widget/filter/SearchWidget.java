@@ -7,23 +7,31 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy(SearchWidgetImpl.class)
 public interface SearchWidget extends WidgetObject {
 
-	void clickApply();
+    void clickApply();
 
-	void inputTextKeyword(String keyword);
+    void inputTextKeyword(String keyword);
 
-	void inputValidationKeyword(String keyword);
+    void inputValidationKeyword(String keyword);
 
-	void inputFuzzyKeyword(String keyword);
+    void inputFuzzyKeyword(String keyword);
 
-	void clickBtnExpand(String label);
+    void clickBtnExpand(String label);
 
-	void switchToFilterPanel();
+    void switchToFilterPanel();
 
-	void selectSearchCriteria(String criteria);
+    void selectLogicalSearch(String logical);
 
-	void selectAdvancedMode();
+    void selectSearchCriteria(String criteria);
 
-	void unselectField(String field);
+    void selectOperatorOfField(String operator, String field);
 
-	void addLogicalBlock();
+    void inputSearchValue(String value, String type, String field);
+
+    void selectAdvancedMode();
+
+    void unselectField(String field);
+
+    void selectField(String searchType, String label);
+
+    void addLogicalBlock();
 }

@@ -72,25 +72,39 @@ public class DatasetSteps extends ScenarioSteps {
         recordDetailPage.getItemCreationWidget().inputFieldContent(col, cell, dataType);
     }
 
+    @Step
+    public void click_on_tab_label(String label) {
+        recordDetailPage.getRecordDetailWidget().clickOnTabOfLabel(label);
+    }
 
     @Step
-	public void click_on_tab_label(String label) {
-    	recordDetailPage.getRecordDetailWidget().clickOnTabOfLabel(label);
-	}
+    public void delete_all_data_in_table() {
+        if (defaultViewPage.getDefaultViewWidget().existRecordInTable()) {
+            defaultViewPage.getDefaultViewWidget().clickBtnSelectAndSort();
+            defaultViewPage.getDefaultViewWidget().selectAllRecord();
+            recordDetailPage.getToolbar().clickBtnByLabel("Action");
+            recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
+            recordDetailPage.getDefaultViewWidget().confirmPopupOK();
+        }
 
-    @Step
-	public void delete_all_data_in_table() {
-		if (defaultViewPage.getDefaultViewWidget().existRecordInTable()) {
-			defaultViewPage.getDefaultViewWidget().clickBtnSelectAndSort();
-			defaultViewPage.getDefaultViewWidget().selectAllRecord();
-			recordDetailPage.getToolbar().clickBtnByLabel("Action");
-			recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
-			recordDetailPage.getDefaultViewWidget().confirmPopupOK();
-		}
-
-	}
+    }
     @Step
     public void confirmPopupOK() {
         defaultViewPage.getPopupWidget().confirmOK();
+    }
+
+    @Step
+    public void testFilter() {
+        defaultViewPage.getToolbar().clickBtnFilter();
+        defaultViewPage.getSearchWidget().clickBtnExpand(Constants.TEXT_SEARCH);
+        defaultViewPage.getSearchWidget().clickBtnExpand(Constants.VALIDATION_SEARCH);
+        defaultViewPage.getSearchWidget().inputTextKeyword("China");
+        defaultViewPage.getSearchWidget().selectAdvancedMode();
+        defaultViewPage.getSearchWidget().selectLogicalSearch("No criteria match");
+        defaultViewPage.getSearchWidget().selectSearchCriteria("Company");
+        defaultViewPage.getSearchWidget().selectOperatorOfField("matches", "Company");
+        defaultViewPage.getSearchWidget().inputSearchValue("test", "INPUT", "Company");
+        defaultViewPage.getSearchWidget().selectField(Constants.VALIDATION_SEARCH, "Warnings");
+        waitABit(50001);
     }
 }
