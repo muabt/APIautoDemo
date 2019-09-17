@@ -133,7 +133,7 @@ public class DatasetDefs {
      */
 	@And("^I want to delete all of record in the current table$")
 	public void detete_all_record_in_table() throws Throwable {
-		//onDatasetSteps.delete_all_data_in_table();
+		onDatasetSteps.delete_all_data_in_table();
 	}
 
 }

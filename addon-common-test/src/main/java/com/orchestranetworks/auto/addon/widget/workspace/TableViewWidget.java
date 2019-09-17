@@ -19,4 +19,6 @@ public interface TableViewWidget extends WidgetObject {
 	void selectAllRecord();
 	
 	void clickBtnSelectAndSort();
+	
+	void confirmPopupOK();
 }

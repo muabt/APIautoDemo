@@ -15,6 +15,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
+@Deprecated
 public class DatasetDefs {
 	@Steps
 	DatasetSteps onDatasetSteps;
@@ -41,6 +42,8 @@ public class DatasetDefs {
 	 * @param dt information of the record
 	 * @throws Throwable
 	 */
+	
+	/*
 	@And("^I create record with the followings$")
 	public void i_create_record_with_the_followings(DataTable dt) throws Throwable {
 		onDatasetSteps.click_btn_create_table_record();
@@ -63,7 +66,7 @@ public class DatasetDefs {
 			}
 		}
 		onDatasetSteps.click_btn_save_and_close();
-	}
+	}*/
 
 	/**
 	 * Create a new record with given information
@@ -233,10 +236,10 @@ public class DatasetDefs {
 	 * </p>
      * @throws Throwable
      */
-	@And("^I want to delete all of record in the current table$")
+	/*@And("^I want to delete all of record in the current table$")
 	public void detete_all_record_in_table() throws Throwable {
 		onAdministrationSteps.delete_all_data_in_table_of_administrator();
-	}
+	}*/
 
     /**
      * Create new dataset given the information

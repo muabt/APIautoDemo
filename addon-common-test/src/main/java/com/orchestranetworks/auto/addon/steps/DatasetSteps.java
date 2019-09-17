@@ -76,13 +76,13 @@ public class DatasetSteps extends ScenarioSteps {
 	}
     
     @Step
-	public void delete_all_data_in_table_of_administrator() {
+	public void delete_all_data_in_table() {
 		if (defaultViewPage.getDefaultViewWidget().existRecordInTable()) {
 			defaultViewPage.getDefaultViewWidget().clickBtnSelectAndSort();
 			defaultViewPage.getDefaultViewWidget().selectAllRecord();
 			recordDetailPage.getToolbar().clickBtnByLabel("Action");
 			recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
-			//recordDetailPage.getDefaultViewWidget().confirmPopupOK();
+			recordDetailPage.getDefaultViewWidget().confirmPopupOK();
 		}
 
 	}
