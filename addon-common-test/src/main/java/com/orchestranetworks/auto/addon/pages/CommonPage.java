@@ -35,6 +35,7 @@ public class CommonPage extends BasePage {
     }
 
     public ToolbarWidget getToolbar() {
+        switchToIFrame(Constants.IFRAME_LEGACY);
         return toolbar;
     }
 
