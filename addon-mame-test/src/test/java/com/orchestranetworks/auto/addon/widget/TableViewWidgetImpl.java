@@ -13,7 +13,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 	private static final String XPATH_RCV_CELL = "(//record-view//div[@class='bottom']//tr[contains(@class,\"row\")][%r%]/td[contains(@class,'cell-container')]//span[@title])[%c%]";
 
 	public TableViewWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
-			long timeoutInMilliseconds) {
+							   long timeoutInMilliseconds) {
 		super(page, locator, webElement, timeoutInMilliseconds);
 	}
 
@@ -132,33 +132,32 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
 	}
 
-	public String getTextOfResetBtn() {
+	public String getTextOfRightBtn() {
 		String xPath = "(//div[@class='resetSection']/button)[1]";
 		return getElement(xPath).getAttribute("title");
 	}
 
 	@Override
-	public String getValueCancelLastAction(String status) {
+	public String isBtnCancelLastActionActive() {
+		String status = "inactive";
 		String xPath = "//div[@class='resetSection']/button/img";
-		if(getElement(xPath).getAttribute("src").contains("inactive")) {
-			status = "inactive";
-		} else {
+		if (!getElement(xPath).getAttribute("src").contains("inactive")) {
 			status = "active";
 		}
 		return status;
 	}
-	
+
 	@Override
 	public String getTextOfCancelActionButton() {
-	String xPath = "(//div[@class='resetSection']/button)[2]";
-	return getElement(xPath).getAttribute("title");	
+		String xPath = "(//div[@class='resetSection']/button)[2]";
+		return getElement(xPath).getAttribute("title");
 	}
 
 	@Override
-	public String getActualTableName() {
-		String xPathTableName = "(//div[@class=\"ui-dropdown-content-left\"]/span)[2]";
-		return getTextValue(xPathTableName);
+	public String getMergeStepsSelection() {
+		String xPathTableName = "//div[@class='ui-dropdown-content-left']";
+		return getElement(xPathTableName).getAttribute("textContent").trim();
 	}
-	
-	
+
+
 }

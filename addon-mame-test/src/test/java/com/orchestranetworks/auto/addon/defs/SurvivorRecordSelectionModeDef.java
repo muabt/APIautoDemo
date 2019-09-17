@@ -2,7 +2,7 @@ package com.orchestranetworks.auto.addon.defs;
 
 import java.util.*;
 
-import com.orchestranetworks.auto.addon.steps.SurvivorRecordSelectionModeSteps;
+import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
@@ -10,7 +10,7 @@ import net.thucydides.core.annotations.Steps;
 
 public class SurvivorRecordSelectionModeDef {
 	@Steps
-	SurvivorRecordSelectionModeSteps onSurvivorRecordSelectionModeSteps;
+	ManualMergeSteps manualMergeSteps;
 
 	@And("^the screen displays buttons as below$")
 	public void the_screen_displays_buttons_as_below(DataTable tableButtons) {
@@ -21,16 +21,16 @@ public class SurvivorRecordSelectionModeDef {
 			String status = row.get("Status");
 
 			if (!name.isEmpty()) {
-				onSurvivorRecordSelectionModeSteps.verify_name_of_buttons(name);
+				manualMergeSteps.verify_name_of_buttons(name);
 			}
 			if (!status.isEmpty()) {
-				onSurvivorRecordSelectionModeSteps.verify_status_of_buttons(status);
+				manualMergeSteps.verify_status_of_buttons(status);
 			}
 		}
 	}
 
 	@And("^I see the table name \"([^\"]*)\" in dropdowlist$")
 	public void i_see_the_table_name_something_in_dropdowlist(String tableName) {
-		onSurvivorRecordSelectionModeSteps.verify_name_of_table(tableName);
+		manualMergeSteps.verify_name_of_table(tableName);
 	}
 }

@@ -51,28 +51,24 @@ public class ManualMergePages extends BasePage {
     public SummaryWidget getSummaryWidget() {
         return summaryWidget;
     }
-    
-    			
-    public TableViewWidget getTextOfResetBtn() {
-		tableViewWidget.getTextOfResetBtn();
-		return tableViewWidget;
-	}
-	
-	public TableViewWidget getValueCancelLastAction (String status) {
-		tableViewWidget.getValueCancelLastAction(status);
-		return tableViewWidget;
-	}
 
-	public TableViewWidget getTextOfCancelActionButton() {
-		tableViewWidget.getTextOfCancelActionButton();
-		return tableViewWidget;
-			
-	}
-	public TableViewWidget getActualTableName() {
-		tableViewWidget.getActualTableName();
-		return tableViewWidget;
-	}
-	public FooterWidget getFooterWidget() {
+
+    public TableViewWidget getTextOfRightBtn() {
+        return tableViewWidget;
+    }
+
+    public TableViewWidget getValueCancelLastAction (String status) {
+        return tableViewWidget;
+    }
+
+    public TableViewWidget getTextOfCancelActionButton() {
+        return tableViewWidget;
+
+    }
+    public TableViewWidget getActualTableName() {
+        return tableViewWidget;
+    }
+    public FooterWidget getFooterWidget() {
         return footerWidget;
     }
 
