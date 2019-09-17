@@ -42,7 +42,7 @@ public class DatasetDefs {
 	 * @param dt information of the record
 	 * @throws Throwable
 	 */
-	
+
 	/*
 	@And("^I create record with the followings$")
 	public void i_create_record_with_the_followings(DataTable dt) throws Throwable {
@@ -113,11 +113,9 @@ public class DatasetDefs {
 	 * </ul>
 	 * </p>
 	 * @param datasetName Name of the dataset that user want to create
-	 * @throws Throwable
 	 */
 	@When("^user wants to create data set \"([^\"]*)\" from an embedded data model$")
-	public void user_wants_to_create_data_set_from_an_embedded_data_model(String datasetName)
-			throws Throwable {
+	public void user_wants_to_create_data_set_from_an_embedded_data_model(String datasetName){
 		onCommonSteps.click_on_menu_dataset();
 	}
 
@@ -131,10 +129,9 @@ public class DatasetDefs {
 	 * </p>
 	 * @param tablePath path of the table
 	 * @param groupPath path of the group
-	 * @throws Throwable
 	 */
 	@And("^I access table \"([^\"]*)\" on group \"([^\"]*)\"$")
-	public void user_selects_table_on_group(String tablePath, String groupPath) throws Throwable {
+	public void user_selects_table_on_group(String tablePath, String groupPath){
 		onDatasetSteps.expand_group(groupPath);
 		onDatasetSteps.select_table_on_group(tablePath);
 	}
@@ -163,11 +160,10 @@ public class DatasetDefs {
 	 * </p>
      * @param dataKey key of the data in serenity session
      * @param dataTable table that user want to input new data
-     * @throws Throwable
      */
 	@When("^user wants to input data into table as following with the \"([^\"]*)\"$")
 	public void user_wants_to_input_data_into_table_as_following(String dataKey,
-			List<List<String>> dataTable) throws Throwable {
+			List<List<String>> dataTable){
 		SessionData.addDataTable("TABLENAME_TBL", dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();
 		testData = SessionData.getDataTbRowsByValEqualInCol("TABLENAME_TBL", "KEY", dataKey);
@@ -201,11 +197,10 @@ public class DatasetDefs {
      * @param tableName name of the table that user want to input data
      * @param dataKey data key that user want to store data to session
      * @param dataTable contain data that will be input to the table
-     * @throws Throwable
      */
 	@And("^user input data table \"([^\"]*)\" as following with the \"([^\"]*)\"$")
 	public void user_input_data_table_as_following(String tableName, String dataKey,
-			List<List<String>> dataTable) throws Throwable {
+			List<List<String>> dataTable){
 		SessionData.addDataTable("TABLE_TBL", dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();
 		testData = SessionData.getDataTbRowsByValEqualInCol("TABLE_TBL", "KEY", dataKey);
@@ -259,11 +254,10 @@ public class DatasetDefs {
 	 * </p>
 	 * @param dataKey key to store given information in serenity session
      * @param dataTable The information of the data set
-     * @throws Throwable
      */
 	@And("^user creates new dataset with information as following with the \"([^\"]*)\"$")
 	public void user_creates_new_dataset_with_information_as_following(String dataKey,
-			List<List<String>> dataTable) throws Throwable {
+			List<List<String>> dataTable){
 		SessionData.addDataTable("DATASET_TBL", dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();
 		testData = SessionData.getDataTbRowsByValEqualInCol("DATASET_TBL", "KEY", dataKey);
@@ -319,11 +313,10 @@ public class DatasetDefs {
 	 * @param tableName name of the specifie table
      * @param dataKey dataKey to store the table in Serenity session
      * @param dataTable data to be confirmed
-     * @throws Throwable
      */
 	@Then("^the table \"([^\"]*)\" should be displayed as bellow with  the \"([^\"]*)\"$")
 	public void the_table_should_be_displayed_as_bellow(String tableName, String dataKey,
-			List<List<String>> dataTable) throws Throwable {
+			List<List<String>> dataTable){
 		String dataTableKey = "VERIFY_TBL";
 		SessionData.addDataTable(dataTableKey, dataTable, false);
 		LinkedHashMap<Integer, List<String>> testData = new LinkedHashMap<>();
@@ -363,11 +356,10 @@ public class DatasetDefs {
 	 * </p>
 	 * @param parentDataset parent data set that user want to create child
      * @param dt List contain the information of new child data set that user want to create
-     * @throws Throwable
      */
 	@When("^I create a child of dataset of \"([^\"]*)\" with credentials as following$")
 	public void user_creates_a_child_of_dataset_with_credentials_as_following(String parentDataset,
-			DataTable dt) throws Throwable {
+			DataTable dt){
 		List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
 		onDatasetSteps.click_btn_change_dataset();
 		Map<String, String> row = dataTable.get(0);

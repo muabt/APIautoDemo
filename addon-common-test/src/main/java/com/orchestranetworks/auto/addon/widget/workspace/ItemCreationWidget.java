@@ -21,4 +21,7 @@ public interface ItemCreationWidget extends WidgetObject {
 	void clickProfile();
 
 	void chooseProfile();
+
+	void inputTextWithRandom(String label, String value);
+
 }

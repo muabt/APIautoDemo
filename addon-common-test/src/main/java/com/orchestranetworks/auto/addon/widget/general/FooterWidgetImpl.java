@@ -41,8 +41,9 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
 	}
 
 	@Override
+	//TODO In Create new Matching process is Save and close
 	public void clickBtnSaveAndClose() {
-		clickBtn("Save And Close");
+		clickBtn("Save and close");
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.Random;
 
 public class BasePage extends PageObject {
     private static final String XPATH_IFRAME = "//iframe[not(@title='Text Resize Monitor')]";
@@ -62,6 +63,18 @@ public class BasePage extends PageObject {
             }
         }
         return false;
+    }
+
+
+    public String getRandomString() {
+        String CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder st = new StringBuilder();
+        Random rnd = new Random();
+        while (st.length() < 5) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * CHARS.length());
+            st.append(CHARS.charAt(index));
+        }
+        return st.toString();
     }
 
 }

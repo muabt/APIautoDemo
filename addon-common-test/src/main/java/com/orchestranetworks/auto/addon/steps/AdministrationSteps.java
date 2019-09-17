@@ -39,6 +39,7 @@ public class AdministrationSteps extends ScenarioSteps {
         administration.getNavPanel().goToPath("Data quality & analytics>Match and Merge configuration");
         administration.getNavPanel().goToPath("Match and Merge configuration>Matching table");
     }
+
 	@Step
     public void delete_dataspace(String dataspace) {
         administration.getDefaultViewWidget().selectRecordWithPK(dataspace);

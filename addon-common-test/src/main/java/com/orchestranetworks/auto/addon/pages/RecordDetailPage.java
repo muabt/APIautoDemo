@@ -7,6 +7,7 @@ import com.orchestranetworks.auto.addon.widget.general.HeaderWidget;
 import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
 import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
+import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 

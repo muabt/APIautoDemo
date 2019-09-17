@@ -1,13 +1,13 @@
 package com.orchestranetworks.auto.addon.defs;
 
-import java.util.List;
-
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
-
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
+
+import java.util.List;
 
 public class DatasetDefs {
 
@@ -31,6 +31,8 @@ public class DatasetDefs {
         onDatasetSteps.select_first_record(numOfRecord);
     }
 
+
+
     /**
      * Select the table service
      * <p>
@@ -41,10 +43,9 @@ public class DatasetDefs {
      * </p>
      *
      * @param service table service that user want to execute
-     * @throws Throwable
      */
     @And("^I select table service \"([^\"]*)\"$")
-    public void I_select_table_service(String service) throws Throwable {
+    public void I_select_table_service(String service){
         onDatasetSteps.select_table_service(service);
     }
 
@@ -64,10 +65,9 @@ public class DatasetDefs {
      * </p>
      *
      * @param dt information of the record
-     * @throws Throwable
      */
     @And("^I create record with the followings$")
-    public void i_create_record_with_the_followings(DataTable dt) throws Throwable {
+    public void i_create_record_with_the_followings(DataTable dt){
         onDatasetSteps.click_btn_create_record();
 
         List<List<String>> dataTable = dt.asLists(String.class);
@@ -105,10 +105,9 @@ public class DatasetDefs {
      * </p>
      *
      * @param dt primary key of the record that user want to select
-     * @throws Throwable
      */
     @When("^I select some records with primary key as following$")
-    public void i_select_records_as_following(List<List<String>> dt) throws Throwable {
+    public void i_select_records_as_following(List<List<String>> dt){
         for (int i = 1; i < dt.size(); i++) {
             String[] col = dt.get(i).toArray(new String[0]);
             onDatasetSteps.select_record_with_PK(col);
@@ -116,12 +115,18 @@ public class DatasetDefs {
 
     }
 
-	
+    @Then("^delete it$")
+    public void delete_it(){
+        onDatasetSteps.select_table_service("Delete");
+        onDatasetSteps.confirmPopupOK();
+    }
+
+
 	@And("^I access to \"([^\"]*)\" tab$")
-	public void i_access_to_tab(String label) throws Throwable {
+	public void i_access_to_tab(String label) {
 		onDatasetSteps.click_on_tab_label(label);
 	}
-	
+
 	/**
      * I want to delete all records in the current table
      *
@@ -129,7 +134,6 @@ public class DatasetDefs {
 	 * <b>Example</b>:
 	 * <font color="blue">And</font> I want to delete all of record in the current table</font>>"
 	 * </p>
-     * @throws Throwable
      */
 	@And("^I want to delete all of record in the current table$")
 	public void detete_all_record_in_table() throws Throwable {

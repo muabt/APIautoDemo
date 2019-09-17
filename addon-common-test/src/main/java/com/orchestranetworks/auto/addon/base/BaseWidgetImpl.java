@@ -1,11 +1,14 @@
 package com.orchestranetworks.auto.addon.base;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import com.orchestranetworks.auto.addon.Constants;
-import org.junit.Assert;
+import com.orchestranetworks.auto.addon.LogWork;
+import io.appium.java_client.functions.ExpectedCondition;
 import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
+import net.serenitybdd.core.pages.WidgetObjectImpl;
+import net.thucydides.core.webelements.Checkbox;
+import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,13 +18,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.orchestranetworks.auto.addon.LogWork;
-
-import io.appium.java_client.functions.ExpectedCondition;
-import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.pages.WebElementFacade;
-import net.serenitybdd.core.pages.WidgetObjectImpl;
-import net.thucydides.core.webelements.Checkbox;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class BaseWidgetImpl extends WidgetObjectImpl {
     private static final String XPATH_IFRAME = "//iframe[not(@title='Text Resize Monitor')]";
@@ -464,6 +463,9 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         e.clear();
         e.type(value);
         e.sendKeys(Keys.ENTER);
+        waitAbit(500);
+        e.sendKeys(Keys.ENTER);
+
     }
 
     /**
@@ -584,7 +586,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
             waitForInvisibilityOfElement(XPATH_NAVIGATION_PANEL);
         }
     }
-    
+
     /**
 	 * =====================================POPUP/ALERT============================================================
 	 */
@@ -598,4 +600,5 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 		String xPath = "//div[@id='ebx_DialogBox']//button[text()='Yes']";
 		waitElementToBePresent(xPath).waitUntilClickable().click();
 	}
+
 }

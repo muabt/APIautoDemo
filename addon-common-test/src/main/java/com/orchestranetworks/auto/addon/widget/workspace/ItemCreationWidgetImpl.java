@@ -36,7 +36,6 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
 	@Override
 	public void enterEnglishLabel(String label) {
 		waitTypeAndTabWithLabel(Constants.LBL_LABEL, label);
-
 	}
 
 	@Override
@@ -85,4 +84,10 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
 	public void chooseProfile() {
 		clickOnElement("//div[@id=\"ebx_ISS_Results\"]/div[contains(text(),'(admin)')]");
 	}
+
+	@Override
+	public void inputTextWithRandom(String label, String value) {
+		inputDDLThenEnter(label, value);
+	}
+
 }
