@@ -16,7 +16,6 @@ public interface TableViewWidget extends WidgetObject {
     boolean isCellHighlighted(int row, int col);
     List<List<String>> getDataPreviewTable();
     String getTextOfResetBtn();
-    String getValueCancelLastAction(String status);
   	String getActualTableName();
     void selectMergePolicyTab();
     String getTextOfRightBtn();

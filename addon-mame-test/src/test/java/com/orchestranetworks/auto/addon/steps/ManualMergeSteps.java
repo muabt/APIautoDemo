@@ -114,6 +114,7 @@ public class ManualMergeSteps {
         onManualMergePages.getTableViewWidget().getTextOfResetBtn();
     }
 
+    @Step
     public void verify_name_of_buttons(String name) {
         switch (name) {
             case "Reset":

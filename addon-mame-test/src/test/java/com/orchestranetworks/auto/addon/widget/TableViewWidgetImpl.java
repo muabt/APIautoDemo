@@ -144,17 +144,6 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 	}
 
     @Override
-    public String getValueCancelLastAction(String status) {
-        String xPath = "//div[@class='resetSection']/button/img";
-        if (getElement(xPath).getAttribute("src").contains("inactive")) {
-            status = "inactive";
-        } else {
-            status = "active";
-        }
-        return status;
-    }
-
-    @Override
     public String getTextOfCancelActionButton() {
         String xPath = "(//div[@class='resetSection']/button)[2]";
         return getElement(xPath).getAttribute("title");
