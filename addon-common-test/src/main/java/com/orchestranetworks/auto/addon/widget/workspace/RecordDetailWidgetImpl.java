@@ -16,4 +16,9 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
 	public RecordDetailWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
 	}
+	
+	public void clickOnTabOfLabel(String label) {
+		String xPath = "//ul[@id='ebx_WorkspaceFormTabviewTabs']//span[contains(text(),'" + label + "')]";
+		clickOnElement(xPath);
+	}
 }

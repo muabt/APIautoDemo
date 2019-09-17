@@ -1,19 +1,17 @@
 package com.orchestranetworks.auto.addon.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
-import com.orchestranetworks.auto.addon.LogWork;
+import org.assertj.core.api.SoftAssertions;
+
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.pages.DatasetPage;
 import com.orchestranetworks.auto.addon.pages.ManualMergePages;
-import org.assertj.core.api.SoftAssertions;
 
 public class ManualMergeSteps {
 

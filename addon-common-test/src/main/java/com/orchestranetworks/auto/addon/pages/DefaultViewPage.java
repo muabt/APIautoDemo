@@ -70,5 +70,7 @@ public class DefaultViewPage extends BasePage {
 		switchToLastIFrame();
 		return defaultViewWidget;
 	}
+		
+	
 
 }

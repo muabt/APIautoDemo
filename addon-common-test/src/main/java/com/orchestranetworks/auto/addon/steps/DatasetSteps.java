@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.steps;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.PermissionPage;
@@ -68,4 +69,21 @@ public class DatasetSteps extends ScenarioSteps {
     public void input_record_field(String col, String cell, String dataType) {
         recordDetailPage.getItemCreationWidget().inputFieldContent(col, cell, dataType);
     }
+    
+    @Step
+	public void click_on_tab_label(String label) {
+    	recordDetailPage.getRecordDetailWidget().clickOnTabOfLabel(label);
+	}
+    
+    @Step
+	public void delete_all_data_in_table_of_administrator() {
+		if (defaultViewPage.getDefaultViewWidget().existRecordInTable()) {
+			defaultViewPage.getDefaultViewWidget().clickBtnSelectAndSort();
+			defaultViewPage.getDefaultViewWidget().selectAllRecord();
+			recordDetailPage.getToolbar().clickBtnByLabel("Action");
+			recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
+			//recordDetailPage.getDefaultViewWidget().confirmPopupOK();
+		}
+
+	}
 }

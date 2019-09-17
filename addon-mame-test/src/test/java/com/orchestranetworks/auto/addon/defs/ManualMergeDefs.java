@@ -1,21 +1,18 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import java.util.List;
 import java.util.Map;
 
-import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
-import cucumber.api.DataTable;
-import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.common.steps.DatasetSteps;
+import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 
-import cucumber.api.PendingException;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
-
-import java.util.List;
 
 public class ManualMergeDefs {
 	@Steps

@@ -13,4 +13,10 @@ public interface TableViewWidget extends WidgetObject {
     void selectRecordWithPK(String selectRecordWithPk);
 
     void accessRecordWithTableName(String tableName);
+    
+    boolean existRecordInTable();
+	
+	void selectAllRecord();
+	
+	void clickBtnSelectAndSort();
 }

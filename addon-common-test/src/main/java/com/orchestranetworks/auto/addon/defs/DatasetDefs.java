@@ -115,4 +115,25 @@ public class DatasetDefs {
         }
 
     }
+
+	
+	@And("^I access to \"([^\"]*)\" tab$")
+	public void i_access_to_tab(String label) throws Throwable {
+		onDatasetSteps.click_on_tab_label(label);
+	}
+	
+	/**
+     * I want to delete all records in the current table
+     *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> I want to delete all of record in the current table</font>>"
+	 * </p>
+     * @throws Throwable
+     */
+	@And("^I want to delete all of record in the current table$")
+	public void detete_all_record_in_table() throws Throwable {
+		//onDatasetSteps.delete_all_data_in_table();
+	}
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.common.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.common.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.common.steps.DatasetSteps;
 
@@ -19,6 +20,9 @@ public class DatasetDefs {
 	DatasetSteps onDatasetSteps;
 	@Steps
 	CommonSteps onCommonSteps;
+	
+	@Steps
+	AdministrationSteps onAdministrationSteps;
 
 	/**
 	 * Create record with given information
@@ -218,6 +222,20 @@ public class DatasetDefs {
 				onDatasetSteps.click_btn_save_and_close();
 			}
 		}
+	}
+	
+	 /**
+     * I want to delete all records in the current table
+     *
+	 * <p>
+	 * <b>Example</b>:
+	 * <font color="blue">And</font> I want to delete all of record in the current table</font>>"
+	 * </p>
+     * @throws Throwable
+     */
+	@And("^I want to delete all of record in the current table$")
+	public void detete_all_record_in_table() throws Throwable {
+		onAdministrationSteps.delete_all_data_in_table_of_administrator();
 	}
 
     /**

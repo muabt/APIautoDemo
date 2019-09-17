@@ -12,6 +12,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
+@Deprecated
 public class DataModelDefs {
 	@Steps
 	DataModelSteps onDataModelSteps;

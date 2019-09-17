@@ -71,4 +71,11 @@ public class AdministrationPage extends WebPageObject {
 		clickOnElement("//span/a/span/span[contains(text(),'" + item + "')]");
 		waitAbit(2000);
 	}
+	
+	@Deprecated
+	public void click_btn_action_table() {
+		switchToLastIFrame();
+		clickBtn("//div[@id='ebx_WorkspaceContent']", "Action");
+
+	}
 }
