@@ -158,6 +158,7 @@ public class CommonDefs {
     public void I_access_table(String tblName) {
         onCommonSteps.click_on_table_name(tblName);
     }
+
     /**
      * Give an access to administration service of EBX
      * <p>
@@ -174,6 +175,7 @@ public class CommonDefs {
     public void i_access_administration_feature(String path) throws Throwable {
         onCommonSteps.go_to_administration_item(path);
     }
+
     /**
      * Access to a table of a dataset in dataspace
      * <p>
@@ -184,14 +186,14 @@ public class CommonDefs {
      * </ul>
      * </p>
      *
-     * @param tableName table name that user want to access
-     * @param datasetPath path to access dataset
+     * @param tableName     table name that user want to access
+     * @param datasetPath   path to access dataset
      * @param dataspacePath path to dataspace
      */
 
     @And("^I access table \"([^\"]*)\" of dataset \"([^\"]*)\" in dataspace \"([^\"]*)\"$")
-    public void i_access_table_of_dataset_in_dataspace(String dataspacePath, String datasetPath,
-                                                       String tableName) {
+    public void i_access_table_of_dataset_in_dataspace(String tableName, String datasetPath,
+                                                       String dataspacePath) {
         onCommonSteps.access_menu(Constants.MENU_DATASET);
         onCommonSteps.go_to_dataspace(dataspacePath);
         onCommonSteps.go_to_dataset(datasetPath);
@@ -199,7 +201,7 @@ public class CommonDefs {
     }
 
     @When("^I access table \"([^\"]*)\" of dataset \"([^\"]*)\"$")
-    public void i_access_table_of_dataset(String tableName, String datasetPath)  {
+    public void i_access_table_of_dataset(String tableName, String datasetPath) {
         onCommonSteps.go_to_dataset(datasetPath);
         onCommonSteps.click_on_table_name(tableName);
 
