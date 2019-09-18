@@ -23,6 +23,9 @@ Feature: Survivor record selection mode is defined
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
       |            | admin admin (admin) |               |
+    Then I should see dataspace with information as following
+      | Identifier | Type      | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
+      |            | Dataspace | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "NewEmployee" of dataset "Human_Resource"
     When I select first "2" records in table
@@ -40,38 +43,32 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>Reference-child_child1"
+    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child> Dataspace identifier"
     Then I will see table RecordMetadata as below
-      | recordId | groupId  | state  | autoCreated | functionalId |
-      | KEY1     | GROUP_ID | Golden | No          | 1            |
-      | KEY2     | GROUP_ID | Merged | No          | 2            |
-    Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
-    Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-    Then I will see table MergeValueLineage as below
-      | id   | mergingProcessId | recordId      | sourceIndex | fieldPath | goldenIndex |   |
-      | KEY1 | mergingProcessId | Golden_record | 0           | admin     | /email      | 0 |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | executionDate |            | GROUP_ID | admin | no         |
-    And I close dataspace with service "Reference-child_child1"
-    And I access "administration" menu
-    And I access to administration service "Dataspaces"
-    And I access table "Dataspaces/snapshots" service
-    And I select filter by text with keyword and field below
-      | Field contains:  | In fields |
-      | Resource-child20 |           |
-    And I delete the dataspace "Dataspace Store (Store)" with service "Delete dataspaces and snapshots recursively"
+      | id | groupId  | state  | autoCreated | functionalId |
+      |    | GROUP_ID | Golden | No          | 1            |
+      |    | GROUP_ID | Merged | No          | 2            |
+#    Then I will see table MergeResult as below
+#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+#      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+#    Then I will see table Decision as below
+#      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+#      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+#    Then I will see table MergeValueLineage as below
+#      | id   | mergingProcessId | recordId      | sourceIndex | fieldPath | goldenIndex |   |
+#      | KEY1 | mergingProcessId | Golden_record | 0           | admin     | /email      | 0 |
+#    Then I will see table MergingProcess as below
+#      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+#      | KEY1 | 15            | Manual    | executionDate |            | GROUP_ID | admin | no         |
+#    And I delete the dataspace
 
   Scenario: SC-MPMM03 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and some records come from the same source
     Given I login to EBX successfully
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
-      | Identifier             | Owner               | English Label |
-      | Reference-child_child1 | admin admin (admin) |               |
-    And I access table "NewEmployee" of dataset "Human_Resource" in dataspace "Master Data - Reference>Reference-child>Reference-child_child1"
+      | Identifier | Owner               | English Label |
+      |            | admin admin (admin) |               |
+    And I select dataspace service "View or edit datasets"
+    And I access table "NewEmployee" of dataset "Human_Resource"
     When I select some records with primary key as following
       | ID |
       | 3  |
@@ -108,13 +105,7 @@ Feature: Survivor record selection mode is defined
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | executionDate |            | GROUP_ID | admin | no         |
     And I close dataspace with service "Reference-child_child1"
-    And I access "administration" menu
-    And I access to administration service "Dataspaces"
-    And I access table "Dataspaces/snapshots" service
-    And I select filter by text with keyword and field below
-      | Field contains:  | In fields |
-      | Resource-child20 |           |
-    And I delete the dataspace "Dataspace Store (Store)" with service "Delete dataspaces and snapshots recursively"
+    And I delete the dataspace
 
   Scenario: SC-MPMM05 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and Value of source field (of selected merged records)do not map with the code defined in Table trusted source
     Given I login to EBX successfully
@@ -125,15 +116,41 @@ Feature: Survivor record selection mode is defined
     When I select first "2" records in table
     And I select table service "Match and Merge>Merge"
     Then record view table will be displayed and highlighted as below
-      | Identifiers | integer        | Category    | Brand | Name             | Available       | defaultPrice | Expire_date            | testSourceField |
-      | 1           | {H}999,999,999 | {H}truongLE | {H}   | {H}Minh Tran     | {H}[List] 21/21 | {H}120,000   | {H}04/09/2019 17:29:55 | 2010            |
-      | 2           | 999,999,999    | truongLE    |       | Minh Tran Tranhg | [List] 0/4      | 120          | 04/09/2019 17:04:24    | 2010            |
+      | Indentifiers | integer     | Category    | Brand | Name             | Available       | defaultPrice | Expire_date            | testSourceField |
+      | 1            | 999,999,999 | {H}truongLE | {H}   | {H}Minh Tran     | {H}[List] 21/21 | {H}120,000   | {H}04/09/2019 17:29:55 | {H}2010         |
+      | 2            | 999,999,999 | truongLE    |       | Minh Tran Tranhg | [List] 0/4      | 120          | 04/09/2019 17:04:24    | 2010            |
     And preview table is displayed as below
-      | Identifiers      | integer  | Category | Brand | Name      | Available    | defaultPrice | Expire_date         | testSourceField |
+      | Indentifiers     | integer  | Category | Brand | Name      | Available    | defaultPrice | Expire_date         | testSourceField |
       | [auto generated] | Casumina | truongLE |       | Minh Tran | [List] 21/25 | 120,000      | 04/09/2019 17:29:55 | 2010            |
-    And I see the table name "Merge_save_tobackend" in dropdowlist
+    And I see the table name "1. Items" in dropdowlist
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I see an exception error
+
+  Scenario: SC-MPMM06 Check merging records if Survivor record selection mode is Most trusted source and all values of source field (of selected merged records) are null
+    Given I login to EBX successfully
+    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
+      | Identifier | Owner               | English Label |
+      |            | admin admin (admin) |               |
+    And I select dataspace service "View or edit datasets"
+    And I access table "National" of dataset "Human_Resource"
+    When I select some records with primary key as following
+      | ID |
+      | 8  |
+      | 9  |
+    And I select table service "Match and Merge>Merge"
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Name | Employee  | Website     |
+      | {H}8       | {H}  | {H}Davied | {H}  [html] |
+      | 9          |      | Alice     | [html]      |
+    And preview table is displayed as below
+      | Identifier | Name | Employee | Website |
+      | 8          |      | Davied   | [html]  |
+    And I see the table name "1. National" in dropdowlist
+    And the screen displays buttons as below
+      | Name               | Status   |
+      | Apply merge policy |          |
+      | Cancel last action | inactive |
+
