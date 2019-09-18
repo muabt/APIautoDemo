@@ -14,7 +14,7 @@ import com.orchestranetworks.auto.addon.pages.MetadataPage;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
-public abstract class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget {
+public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget {
 
 	public MetadataWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
@@ -87,6 +87,22 @@ public abstract class MetadataWidgetImpl extends BaseWidgetImpl implements Metad
 	public void clickBtnPreviewGroup() {
 		clickBtn("");
 	}
+
+	@Override
+	public List<List<String>> getDataRecordDetail() {
+		return null;
+	}
+
+	@Override
+	public List<List<String>> getDataRecordDuplicatesTable() {
+		return null;
+	}
+
+	@Override
+	public List<List<String>> getDataRecordSuspectTable() {
+		return null;
+	}
+
 
 }
 
