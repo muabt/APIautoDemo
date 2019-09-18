@@ -24,4 +24,9 @@ public interface ItemCreationWidget extends WidgetObject {
 
 	void inputTextWithRandom(String label, String value);
 
+    void inputDDLThenEnter(String label, String selectionMode);
+
+    void selectRadioBoxWithLabel(String label, String value);
+
+    void selectDDLByJS(String label, String value);
 }

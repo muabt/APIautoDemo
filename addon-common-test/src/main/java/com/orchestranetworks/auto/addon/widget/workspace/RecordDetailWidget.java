@@ -7,4 +7,7 @@ import net.serenitybdd.core.pages.WidgetObject;
 public interface RecordDetailWidget extends WidgetObject {
 	
 	public void clickOnTabOfLabel(String label);
+
+	void selectMergePolicyTab();
+
 }

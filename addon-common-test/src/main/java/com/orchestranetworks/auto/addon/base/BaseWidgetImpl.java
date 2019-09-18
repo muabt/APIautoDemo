@@ -133,11 +133,12 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         waitForJQueryLoadingCompleted(30);
         waitForLoadingGIFCompleted(30);
     }
-    public void waitForLoadingGIFCompleted(int timeoutInSeconds){
-        String xPathLoadingGIF= "//img [contains(@src,'loader.gif')]";
-        String xPathLoadingMainBody= "//div[contains(@class,'loading')]";
-       waitForInvisibilityOfElement(xPathLoadingGIF);
-       waitForInvisibilityOfElement(xPathLoadingMainBody);
+
+    public void waitForLoadingGIFCompleted(int timeoutInSeconds) {
+        String xPathLoadingGIF = "//img [contains(@src,'loader.gif')]";
+        String xPathLoadingMainBody = "//div[contains(@class,'loading')]";
+        waitForInvisibilityOfElement(xPathLoadingGIF);
+        waitForInvisibilityOfElement(xPathLoadingMainBody);
 
     }
 
@@ -269,6 +270,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         String xPath = "(" + parentXpath
                 + "//button[(@type='button' or @type='submit' or not(@type)) and not(@style='display: none;')][descendant-or-self::*[text()='"
                 + btnName + "' or @title='" + btnName + "' or @value='" + btnName + "']])[" + index + "]";
+        System.out.println("xPath: " + xPath);
         return xPath;
     }
 
@@ -588,17 +590,17 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     /**
-	 * =====================================POPUP/ALERT============================================================
-	 */
-	public void confirmPopupOK() {
-		String xPath = "//div[@id='ebx_DialogBox']//button[text()='OK']|//div[@class='_ebx-pop-up']//button[contains(.,'OK')]";
-		waitElementToBePresent(xPath).waitUntilClickable().click();
-		waitForAllLoadingCompleted();
-	}
+     * =====================================POPUP/ALERT============================================================
+     */
+    public void confirmPopupOK() {
+        String xPath = "//div[@id='ebx_DialogBox']//button[text()='OK']|//div[@class='_ebx-pop-up']//button[contains(.,'OK')]";
+        waitElementToBePresent(xPath).waitUntilClickable().click();
+        waitForAllLoadingCompleted();
+    }
 
-	public void confirmPopupYES() {
-		String xPath = "//div[@id='ebx_DialogBox']//button[text()='Yes']";
-		waitElementToBePresent(xPath).waitUntilClickable().click();
-	}
+    public void confirmPopupYES() {
+        String xPath = "//div[@id='ebx_DialogBox']//button[text()='Yes']";
+        waitElementToBePresent(xPath).waitUntilClickable().click();
+    }
 
 }

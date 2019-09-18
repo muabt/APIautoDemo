@@ -17,7 +17,6 @@ public interface TableViewWidget extends WidgetObject {
     List<List<String>> getDataPreviewTable();
     String getTextOfResetBtn();
   	String getActualTableName();
-    void selectMergePolicyTab();
     String getTextOfRightBtn();
     String isBtnCancelLastActionActive();
     String getTextOfCancelActionButton();

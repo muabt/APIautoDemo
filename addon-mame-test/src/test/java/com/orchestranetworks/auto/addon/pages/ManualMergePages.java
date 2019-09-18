@@ -4,7 +4,10 @@ import com.orchestranetworks.auto.addon.widget.*;
 import com.orchestranetworks.auto.addon.widget.general.*;
 
 
-
+import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
+import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidget;
+import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidgetImpl;
 import org.openqa.selenium.WebDriver;
 
 
@@ -16,6 +19,9 @@ public class ManualMergePages extends BasePage {
     private SummaryWidget summaryWidget;
     private PreviewWidget previewWidget;
     private FooterWidget footerWidget;
+    private ItemCreationWidget itemCreationWidget;
+    private RecordDetailWidget recordDetailWidget;
+    private ToolbarWidget toolbarWidget;
 
     public ManualMergePages(WebDriver driver) {
         super(driver);
@@ -26,6 +32,9 @@ public class ManualMergePages extends BasePage {
         this.previewWidget = new PreviewWidgetImpl(this, null, 100);
         this.summaryWidget = new SummaryWidgetImpl(this, null, 100);
         this.footerWidget = new FooterWidgetImpl(this, null, 100);
+        this.itemCreationWidget = new ItemCreationWidgetImpl(this,null,100);
+        this.recordDetailWidget = new RecordDetailWidgetImpl(this, null, 100);
+        this.toolbarWidget = new ToolbarWidgetImpl(this, null, 100);
     }
 
     public NavigationWidget getNavPanel() {
@@ -44,6 +53,7 @@ public class ManualMergePages extends BasePage {
     public PreviewWidget getPreviewWidget() {
         return previewWidget;
     }
+
     public RelationWidget getRelationWidget() {
         return relationWidget;
     }
@@ -53,23 +63,23 @@ public class ManualMergePages extends BasePage {
     }
 
 
-    public TableViewWidget getTextOfRightBtn() {
-        return tableViewWidget;
-    }
-
-    public TableViewWidget getValueCancelLastAction (String status) {
-        return tableViewWidget;
-    }
-
-    public TableViewWidget getTextOfCancelActionButton() {
-        return tableViewWidget;
-
-    }
     public TableViewWidget getActualTableName() {
         return tableViewWidget;
     }
+
     public FooterWidget getFooterWidget() {
         return footerWidget;
     }
 
+    public ItemCreationWidget getItemCreationWidget() {
+        return itemCreationWidget;
+    }
+
+    public RecordDetailWidget getRecordDetailWidget() {
+        return recordDetailWidget;
+    }
+
+    public ToolbarWidget getToolbarWidget(){
+        return toolbarWidget;
+    }
 }

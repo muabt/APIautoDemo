@@ -15,6 +15,8 @@ public interface FooterWidget extends WidgetObject {
 
 	void clickBtnSaveAndClose();
 
+	void clickBtnSaveAndCloseInInternalPopup();
+
 	void clickBtnClose();
 
 	// Screen View creation

@@ -106,7 +106,12 @@ public class ManualMergeSteps {
 
     @Step
     public void select_merge_policy_tab() {
-        onManualMergePages.getTableViewWidget().selectMergePolicyTab();
+        onManualMergePages.getRecordDetailWidget().selectMergePolicyTab();
+    }
+
+    @Step
+    public void select_btn_create_record() {
+        onManualMergePages.getToolbarWidget().clickBtnCreateRecordMatchAndMerge();
     }
 
     @Step
@@ -127,5 +132,25 @@ public class ManualMergeSteps {
                 assertEquals(name, onManualMergePages.getTableViewWidget().getTextOfRightBtn());
                 break;
         }
+    }
+
+    @Step
+    public void select_survivor_record(String selectionMode) {
+        onManualMergePages.getItemCreationWidget().selectDDLByJS("Survivor record selection mode", selectionMode);
+    }
+
+    @Step
+    public void select_default_merge_function(String defaultFunction) {
+        onManualMergePages.getItemCreationWidget().inputDDLThenEnter("Default merge function", defaultFunction);
+    }
+
+    @Step
+    public void use_for_merge_function(String useManualMerge) {
+        onManualMergePages.getItemCreationWidget().selectRadioBoxWithLabel("Used for manual merge", useManualMerge);
+    }
+
+    @Step
+    public void click_btn_save_and_close_merge_policy(){
+        onManualMergePages.getFooterWidget().clickBtnSaveAndClose();
     }
 }

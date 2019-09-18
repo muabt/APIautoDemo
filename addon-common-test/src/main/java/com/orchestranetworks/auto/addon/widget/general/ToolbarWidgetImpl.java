@@ -89,4 +89,11 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
         clickBtn("Create a dataspace");
     }
 
+    @Override
+    public void clickBtnCreateRecordMatchAndMerge() {
+        waitForAllLoadingCompleted();
+        switchToLastIFrame();
+        clickBtn(Constants.BTN_CREATE_A_RECORD, 2);
+        switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+    }
 }

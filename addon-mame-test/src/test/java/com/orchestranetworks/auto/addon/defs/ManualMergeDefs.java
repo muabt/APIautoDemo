@@ -2,6 +2,7 @@ package com.orchestranetworks.auto.addon.defs;
 
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
+
 import java.util.List;
 import java.util.Map;
 
@@ -102,7 +103,7 @@ public class ManualMergeDefs {
     public void i_specific_the_options_in_main_tab_of_merge_policy_as_belows(DataTable dt) {
 
         onManualMergeSteps.select_merge_policy_tab();
-        onDatasetSteps.click_btn_create_record();
+        onManualMergeSteps.select_btn_create_record();
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (int i = 0; i < list.size(); i++) {
@@ -110,28 +111,24 @@ public class ManualMergeDefs {
             String mergePolicyCode = row.get("Merge policy code");
             String selectionMode = row.get("Survivor record selection mode");
             String defaultFunction = row.get("Default merge function");
-            String autoCreated = row.get("Auto create new golden");
             String useManualMerge = row.get("Used for manual merge");
-            String applyOnMerge = row.get("Apply permission on merge view");
 
             if (!mergePolicyCode.isEmpty()) {
                 onManualMergeSteps.input_merge_policy_code();
             }
-            if (!selectionMode.isEmpty()) {
 
+            if (!selectionMode.isEmpty()) {
+                onManualMergeSteps.select_survivor_record(selectionMode);
             }
 
             if (!defaultFunction.isEmpty()) {
-
+                onManualMergeSteps.select_default_merge_function(defaultFunction);
             }
 
-            if (!autoCreated.isEmpty()) {
-
-            }
-
-            if (!applyOnMerge.isEmpty()) {
-
+            if (!useManualMerge.isEmpty()) {
+                onManualMergeSteps.use_for_merge_function(useManualMerge);
             }
         }
+        onManualMergeSteps.click_btn_save_and_close_merge_policy();
     }
 }

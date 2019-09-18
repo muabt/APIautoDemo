@@ -12,7 +12,6 @@ import java.util.List;
 
 public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidget {
     private static final String XPATH_RCV_CELL = "(//record-view//div[@class='bottom']//tr[contains(@class,\"row\")][%r%]/td[contains(@class,'cell-container')]//span[@title])[%c%]";
-    private static final String MERGE_POLICY_TAB = "//ul[@id='ebx_WorkspaceFormTabviewTabs']//span[text()='%s']";
 
 	public TableViewWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
 							   long timeoutInMilliseconds) {
@@ -170,11 +169,6 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     public String getActualTableName() {
         String xPathTableName = "(//div[@class=\"ui-dropdown-content-left\"]/span)[2]";
         return getTextValue(xPathTableName);
-    }
-
-    @Override
-    public void selectMergePolicyTab() {
-        clickOnElement(XFormat.of(MERGE_POLICY_TAB,"Merge policy'"));
     }
 
 }
