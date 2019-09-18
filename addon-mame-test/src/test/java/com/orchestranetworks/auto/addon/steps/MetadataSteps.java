@@ -29,7 +29,7 @@ public class MetadataSteps {
         onMetadataPage.getMetadata().clickBtnPreviewRecord();
     }
 	
-	public void verify_record_details  () {
+	public void verify_record_details  (List<List<String>> getDataRecordDetail) {
 		List<List<String>> recordDetails = onMetadataPage.getMetadata().getDataRecordDetail();
     }
 	

@@ -24,14 +24,10 @@ public class MetadataDefs {
 		onMetadataSteps.verify_data_displayed_in_main_tab (getMetadataRecordView);
 	}
 	
-	@When("^I want to see detail record$")
-    public void i_want_to_see_detail_record() throws Exception  {
-        onMetadataSteps.click_button_preview_record();
-    }
-	
-	@Then("^I should see detailed record as following $")
-    public void i_should_see_detailed_record_as_following() throws Exception {
-        
+	@Then("^The detail record should see as below$")
+    public void the_detail_record_should_see_as_below (List<List<String>> getDataRecordDetail) throws Exception {
+		onMetadataSteps.verify_record_details(getDataRecordDetail);		
+		
     }
 	@When("^I want to come back metadata screen$")
     public void i_want_to_come_back_metadata_screen() throws Throwable {
