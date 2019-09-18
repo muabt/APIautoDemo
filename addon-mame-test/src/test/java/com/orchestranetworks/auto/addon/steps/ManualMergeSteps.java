@@ -1,9 +1,20 @@
 package com.orchestranetworks.auto.addon.steps;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+
 import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.LogWork;
 import com.orchestranetworks.auto.addon.SessionData;
-import com.orchestranetworks.auto.addon.common.pages.DatasetPage;
+import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.BasePage;
+import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.ManualMergePages;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 import net.thucydides.core.annotations.Step;
@@ -19,7 +30,7 @@ import org.junit.Assert;
 public class ManualMergeSteps {
 
     ManualMergePages onManualMergePages;
-    DatasetPage onDatasetPage;
+    DefaultViewPage onDefaultViewPage;
     RecordDetailPage recordDetailPage;
     BasePage onBasePage;
 
@@ -28,8 +39,6 @@ public class ManualMergeSteps {
         List<List<String>> actualTbl = onManualMergePages.getTableViewWidget().getDataRecordViewTable();
         compare_record_view_tbl(expectedTbl, actualTbl);
         verify_record_view_cell_highlighted(expectedTbl);
-
-
     }
 
     private void verify_record_view_cell_highlighted(List<List<String>> expectedTbl) {
@@ -132,6 +141,21 @@ public class ManualMergeSteps {
                 assertEquals(name, onManualMergePages.getTableViewWidget().getTextOfRightBtn());
                 break;
         }
+    }
+
+    public void verify_status_of_buttons(String status) {
+        Assert.assertEquals(status, onManualMergePages.getTableViewWidget().isBtnCancelLastActionActive());
+    }
+
+    public void verify_name_of_table(String tableName) {
+        Assert.assertEquals(tableName, onManualMergePages.getTableViewWidget().getMergeStepsSelection());
+    }
+
+
+    public void verify_group_id(int rowInd) {
+        String expected = onDefaultViewPage.getDefaultViewWidget().get_text_data_cell(1, "groupId");
+        String actual = onDefaultViewPage.getDefaultViewWidget().get_text_data_cell(rowInd, "groupId");
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Step

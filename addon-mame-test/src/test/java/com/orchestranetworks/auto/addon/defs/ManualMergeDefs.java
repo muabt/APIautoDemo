@@ -2,10 +2,11 @@ package com.orchestranetworks.auto.addon.defs;
 
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
-
 import java.util.List;
 import java.util.Map;
 
+import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 import cucumber.api.DataTable;
@@ -60,23 +61,28 @@ public class ManualMergeDefs {
     @Then("^I will see table RecordMetadata as below$")
     public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) throws Throwable {
         List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
-        for (int i = 0; i < list.size(); i++) {
-            Map<String, String> row = list.get(i);
-            String recordID = row.get("recordId");
+        for (int i = 1; i <= list.size(); i++) {
+            Map<String, String> row = list.get(i - 1);
+            String recordID = row.get("id");
             String groupID = row.get("groupId");
             String state = row.get("state");
             String autoCreated = row.get("autoCreated");
             String functionalID = row.get("functionalId");
 
             if (!recordID.isEmpty()) {
+                onDatasetSteps.verify_record_value(i, "id", recordID);
             }
             if (!groupID.isEmpty()) {
+                onManualMergeSteps.verify_group_id(i);
             }
             if (!state.isEmpty()) {
+                onDatasetSteps.verify_record_value(i, "state", state);
             }
             if (!autoCreated.isEmpty()) {
+                onDatasetSteps.verify_record_value(i, "autoCreated", autoCreated);
             }
             if (!functionalID.isEmpty()) {
+                onDatasetSteps.verify_record_value(i, "functionalId", functionalID);
             }
         }
 

@@ -64,6 +64,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     public String getTextValue(String xPath) {
+        highlightElement(xPath);
         return getElement(xPath).getTextValue().trim();
     }
 
@@ -528,10 +529,11 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
      * @author hue
      */
     public int getColumnIndexWithLabel(String colName) {
+        System.out.println(colName);
         String xPathTable = "//div[@id='ebx_workspaceTable_headerContainer']";
         String xPathHeader = xPathTable + "//th[contains(@id,'ebx_workspaceTable_tableField')]";
         int colIndex = 0;
-        int listCol = findBy(xPathTable).thenFindAll(xPathHeader).size();
+        int listCol = findAllElement(xPathHeader).size();
         for (int i = 1; i <= listCol; i++) {
             String xPathColumn = "(" + xPathHeader + ")[" + i + "]//span[@class='ebx_RawLabel']";
             if (isElementExistNow(xPathColumn)) {
@@ -548,7 +550,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         String xPathTable = "//div[@id='ebx_workspaceTable_fixedScroller']//table[@class='ebx_tvFixed']";
         String xPathRows = xPathTable + "/tbody/tr";
         int rowIndex = 0;
-        int listCol = findBy(xPathTable).thenFindAll(xPathRows).size();
+        int listCol = findAllElement(xPathRows).size();
         for (int i = 1; i <= listCol; i++) {
             String xPathRow = xPathTable + "/tbody/tr[" + i + "]/td[2]";
             if (getTextValue(xPathRow).equals(label)) {
