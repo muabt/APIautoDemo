@@ -60,6 +60,7 @@ public class AdministrationSteps extends ScenarioSteps {
         administration.getDefaultViewWidget().accessRecordWithTableName(tableName);
     }
 
+    @Step
 	public void filter_item(String dataspace) {
     	administration.getToolbar().clickBtnFilter();
 //		((TextSearchImpl)administration.getTextSearch()).searchWithKeyWord(dataspace);

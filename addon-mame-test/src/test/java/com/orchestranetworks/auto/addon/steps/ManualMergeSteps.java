@@ -12,6 +12,7 @@ import java.util.List;
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LogWork;
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.BasePage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
@@ -32,8 +33,7 @@ public class ManualMergeSteps {
     ManualMergePages onManualMergePages;
     DefaultViewPage onDefaultViewPage;
     RecordDetailPage recordDetailPage;
-    BasePage onBasePage;
-
+    CommonPage onCommonPage;
 
 
     public void verify_record_view_table(List<List<String>> expectedTbl) {
@@ -101,7 +101,7 @@ public class ManualMergeSteps {
     @Step
     public void input_merge_policy_code() {
         onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
-        recordDetailPage.getItemCreationWidget().inputTextWithRandom("Merge policy code", onBasePage.getRandomString());
+        recordDetailPage.getItemCreationWidget().inputTextWithRandom("Merge policy code", onCommonPage.getRandomString());
     }
 
     @Step
@@ -157,7 +157,7 @@ public class ManualMergeSteps {
 
     @Step
     public void select_default_merge_function(String defaultFunction) {
-        onManualMergePages.getItemCreationWidget().inputDDLThenEnter("Default merge function", defaultFunction);
+        onManualMergePages.getItemCreationWidget().selectDDLByJS("Default merge function", defaultFunction);
     }
 
     @Step
@@ -166,7 +166,47 @@ public class ManualMergeSteps {
     }
 
     @Step
-    public void click_btn_save_and_close_merge_policy(){
+    public void click_btn_save() {
+        onManualMergePages.getFooterWidget().clickBtnSave();
+    }
+
+    @Step
+    public void click_btn_save_and_close_internal_popup() {
+        onManualMergePages.getFooterWidget().clickBtnSaveAndCloseInInternalPopup();
+    }
+
+    @Step
+    public void click_btn_save_and_close() {
         onManualMergePages.getFooterWidget().clickBtnSaveAndClose();
+    }
+
+    @Step
+    public void select_survivor_field_tab() {
+        onManualMergePages.getRecordDetailWidget().selectSurvivorFieldTab();
+    }
+
+    @Step
+    public void input_survivor_code() {
+        recordDetailPage.getItemCreationWidget().inputTextWithRandom("Survivorship field code", onCommonPage.getRandomString());
+    }
+
+    @Step
+    public void select_field_survivor(String field) {
+        recordDetailPage.getItemCreationWidget().selectDDLByJS("Field", field);
+    }
+
+    @Step
+    public void select_merge_function_for_field(String mergeFunction) {
+        recordDetailPage.getItemCreationWidget().selectDDLByJS("Merge function", mergeFunction);
+    }
+
+    @Step
+    public void input_condition(String condition) {
+
+    }
+
+    @Step
+    public void select_execute_option(String executeEmpty) {
+        recordDetailPage.getItemCreationWidget().selectRadioBoxWithLabel("Execute only if empty", executeEmpty);
     }
 }

@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.widget.general;
 
+import com.orchestranetworks.auto.addon.Constants;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -40,11 +41,17 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
 		clickBtn("Save");
 	}
 
-	@Override
-	//TODO In Create new Matching process is Save and close
-	public void clickBtnSaveAndClose() {
-		clickBtn("Save and close");
-	}
+    @Override
+    public void clickBtnSaveAndClose() {
+        clickBtn("Save and close");
+    }
+
+    @Override
+    public void clickBtnSaveAndCloseInInternalPopup() {
+        waitAbit(1000);
+        clickBtn("Save and close");
+        switchToIFrame(Constants.IFRAME_LEGACY);
+    }
 
 	@Override
 	public void clickBtnSaveAndCloseInInternalPopup() {

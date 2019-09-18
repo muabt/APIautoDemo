@@ -32,4 +32,10 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         waitForAllLoadingCompleted();
         clickByJS(XFormat.of(MERGE_POLICY_TAB, "Merge policy"));
     }
+
+    @Override
+    public void selectSurvivorFieldTab() {
+        waitForAllLoadingCompleted();
+        clickByJS(XFormat.of(MERGE_POLICY_TAB, "Survivor field"));
+    }
 }

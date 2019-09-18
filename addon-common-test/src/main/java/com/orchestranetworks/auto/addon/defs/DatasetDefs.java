@@ -24,7 +24,6 @@ public class DatasetDefs {
      * </p>
      *
      * @param numOfRecord number of first records that want to select
-     * @throws Throwable
      */
     @When("^I select first \"([^\"]*)\" records in table$")
     public void I_select_first_num_of_records_in_table(String numOfRecord) {
@@ -117,12 +116,6 @@ public class DatasetDefs {
         onDatasetSteps.testFilter();
     }
 
-    @Then("^delete it$")
-    public void delete_it(){
-        onDatasetSteps.select_table_service("Delete");
-        onDatasetSteps.confirmPopupOK();
-    }
-
 
 	@And("^I access to \"([^\"]*)\" tab$")
 	public void i_access_to_tab(String label) {
@@ -142,4 +135,9 @@ public class DatasetDefs {
 		onDatasetSteps.delete_all_data_in_table();
 	}
 
+    @Then("^delete it$")
+    public void delete_it(){
+        onDatasetSteps.select_table_service("Delete");
+        onDatasetSteps.confirmPopupOK();
+    }
 }

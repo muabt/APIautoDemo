@@ -38,13 +38,13 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
         clickBtn("Actions");
         return this;
     }
-    
+
     @Override
     public ToolbarWidget clickBtnByLabel(String label) {
-    	clickBtn(label);
+        clickBtn(label);
         return this;
     }
-    
+
 
     @Override
     public void selectService(String service) {

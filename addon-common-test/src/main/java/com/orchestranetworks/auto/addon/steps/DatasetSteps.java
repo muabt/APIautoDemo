@@ -30,6 +30,11 @@ public class DatasetSteps extends ScenarioSteps {
     }
 
     @Step
+    public void select_table_service_administration(String service){
+
+    }
+
+    @Step
     public void select_record_with_PK(String[] recordPKs) {
         defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordPKs);
     }

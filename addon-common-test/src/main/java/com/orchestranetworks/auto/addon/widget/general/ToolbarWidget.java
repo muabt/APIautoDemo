@@ -10,7 +10,7 @@ public interface ToolbarWidget extends WidgetObject {
     void clickBtnView();
 
     ToolbarWidget clickBtnActions();
-    
+
     ToolbarWidget clickBtnByLabel(String label);
 
     void selectService(String service);

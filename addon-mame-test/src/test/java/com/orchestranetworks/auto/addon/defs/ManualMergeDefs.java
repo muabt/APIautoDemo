@@ -59,7 +59,7 @@ public class ManualMergeDefs {
     }
 
     @Then("^I will see table RecordMetadata as below$")
-    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) throws Throwable {
+    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect){
         List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
         for (int i = 1; i <= list.size(); i++) {
             Map<String, String> row = list.get(i - 1);
@@ -135,6 +135,50 @@ public class ManualMergeDefs {
                 onManualMergeSteps.use_for_merge_function(useManualMerge);
             }
         }
-        onManualMergeSteps.click_btn_save_and_close_merge_policy();
+       // onManualMergeSteps.click_btn_save();
+        onManualMergeSteps.click_btn_save_and_close_internal_popup();
+        onManualMergeSteps.click_btn_save_and_close();
     }
+
+    @And("^I create Survivorship field with selections as followings$")
+    public void i_create_survivorship_field_with_selections_as_followings(DataTable dt){
+        onManualMergeSteps.select_survivor_field_tab();
+        onManualMergeSteps.select_btn_create_record();
+
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (int i = 0; i < list.size(); i++) {
+            Map<String, String> row = list.get(i);
+            String survivorCode = row.get("Survivorship field code");
+            String field = row.get("Field");
+            String mergeFunction = row.get("Merge function");
+            String condition = row.get("Condition for field value survivorship");
+            String executeEmpty = row.get("Execute only if empty");
+
+            if (!survivorCode.isEmpty()) {
+                onManualMergeSteps.input_survivor_code();
+            }
+
+            if (!field.isEmpty()) {
+                onManualMergeSteps.select_field_survivor(field);
+            }
+
+            if (!mergeFunction.isEmpty()) {
+                onManualMergeSteps.select_merge_function_for_field(mergeFunction);
+            }
+
+            if (!condition.isEmpty()) {
+                onManualMergeSteps.input_condition(condition);
+            }
+
+            if (!executeEmpty.isEmpty()) {
+                onManualMergeSteps.select_execute_option(executeEmpty);
+            }
+        }
+    }
+
+    @And("^some configurations like belows$")
+    public void some_configurations_like_belows(){
+
+    }
+
 }
