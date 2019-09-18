@@ -8,10 +8,14 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy(MetadataWidgetImpl.class)
 public interface MetadataWidget extends WidgetObject {
-	boolean isMainSelected(String main);
+	boolean isMainSelected();
 	List<String> getListTab();
-	List<String> getMetadatRecordView();
+	List<List<String>> getMetadataRecordView();
 	void clickBtnPreviewRecord();
     void clickBtnPreviewGroup();
+    void clickBtnClose();
+    List<List<String>> getDataRecordDetail();
+    List<List<String>> getDataRecordDuplicatesTable();
+    List<List<String>> getDataRecordSuspectTable();
 	
 }
