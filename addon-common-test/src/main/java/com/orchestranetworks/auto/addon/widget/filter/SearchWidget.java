@@ -34,4 +34,6 @@ public interface SearchWidget extends WidgetObject {
     void selectField(String searchType, String label);
 
     void addLogicalBlock();
+
+    void clickBtnAddBlock();
 }

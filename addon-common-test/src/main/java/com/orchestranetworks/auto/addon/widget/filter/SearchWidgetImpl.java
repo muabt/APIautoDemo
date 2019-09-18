@@ -140,4 +140,10 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
     }
 
+    @Override
+    public void clickBtnAddBlock() {
+        clickBtn(Constants.BTN_ADD);
+        switchToIFrame(Constants.IFRAME_LEGACY);
+    }
+
 }

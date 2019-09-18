@@ -105,6 +105,13 @@ public class DatasetSteps extends ScenarioSteps {
         defaultViewPage.getSearchWidget().selectOperatorOfField("matches", "Company");
         defaultViewPage.getSearchWidget().inputSearchValue("test", "INPUT", "Company");
         defaultViewPage.getSearchWidget().selectField(Constants.VALIDATION_SEARCH, "Warnings");
+        defaultViewPage.getSearchWidget().selectField(Constants.VALIDATION_SEARCH, "Information");
+        defaultViewPage.getSearchWidget().addLogicalBlock();
+        defaultViewPage.getSearchWidget().selectLogicalSearch("No criteria match");
+        defaultViewPage.getSearchWidget().selectSearchCriteria("Rank");
+        defaultViewPage.getSearchWidget().selectOperatorOfField("=", "Rank");
+        defaultViewPage.getSearchWidget().inputSearchValue("5", "INPUT", "Rank");
+        defaultViewPage.getSearchWidget().clickBtnAddBlock();
         waitABit(50001);
     }
 }

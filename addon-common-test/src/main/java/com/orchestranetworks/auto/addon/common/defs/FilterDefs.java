@@ -183,32 +183,32 @@ public class FilterDefs {
 	 * @param dt data to used to select filter
 	 * @throws Throwable
 	 */
-	@When("^I select filter by text with keyword and field below$")
-	public void i_select_filter_by_text_with_keyword_and_field_below(DataTable dt) throws Throwable {
-		onFilterSteps.click_btn_filter();
-		onFilterSteps.click_btn_expand_with_label(Constants.TEXT_SEARCH);
-		onFilterSteps.unselect_field_with_label(Constants.TEXT_SEARCH, "Select all");
-		List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-		Map<String, String> row = list.get(0);
-
-		String fieldContains = row.get("Field contains:");
-		String inField = row.get("In fields");
-
-		if (!fieldContains.isEmpty()) {
-			onFilterSteps.input_text_keyword(fieldContains);
-		}
-
-		if (!inField.isEmpty()) {
-			String[] item = inField.split(",");
-			for (int i = 0; i < item.length; i++) {
-				onFilterSteps.select_search_item(Constants.TEXT_SEARCH, item[i].trim());
-			}
-		} else {
-			onFilterSteps.select_search_item(Constants.TEXT_SEARCH, "Select all");
-
-		}
-		onFilterSteps.click_btn_apply_text_search();
-	}
+//	@When("^I select filter by text with keyword and field below$")
+//	public void i_select_filter_by_text_with_keyword_and_field_below(DataTable dt) throws Throwable {
+//		onFilterSteps.click_btn_filter();
+//		onFilterSteps.click_btn_expand_with_label(Constants.TEXT_SEARCH);
+//		onFilterSteps.unselect_field_with_label(Constants.TEXT_SEARCH, "Select all");
+//		List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+//		Map<String, String> row = list.get(0);
+//
+//		String fieldContains = row.get("Field contains:");
+//		String inField = row.get("In fields");
+//
+//		if (!fieldContains.isEmpty()) {
+//			onFilterSteps.input_text_keyword(fieldContains);
+//		}
+//
+//		if (!inField.isEmpty()) {
+//			String[] item = inField.split(",");
+//			for (int i = 0; i < item.length; i++) {
+//				onFilterSteps.select_search_item(Constants.TEXT_SEARCH, item[i].trim());
+//			}
+//		} else {
+//			onFilterSteps.select_search_item(Constants.TEXT_SEARCH, "Select all");
+//
+//		}
+//		onFilterSteps.click_btn_apply_text_search();
+//	}
 
 	/**
 	 * Select the filter in fuzzy search using given keyword
