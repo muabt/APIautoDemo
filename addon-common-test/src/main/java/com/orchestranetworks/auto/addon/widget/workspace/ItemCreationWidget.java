@@ -16,8 +16,6 @@ public interface ItemCreationWidget extends WidgetObject {
 
 	void inputFieldContent(String col, String cell, String dataType);
 
-	void inputDateTime(String label, String datetime);
-
 	void clickProfile();
 
 	void chooseProfile();

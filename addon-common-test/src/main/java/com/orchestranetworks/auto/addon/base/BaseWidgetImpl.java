@@ -2,6 +2,7 @@ package com.orchestranetworks.auto.addon.base;
 
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LogWork;
+import com.orchestranetworks.auto.addon.XFormat;
 import io.appium.java_client.functions.ExpectedCondition;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
@@ -25,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseWidgetImpl extends WidgetObjectImpl {
     private static final String XPATH_IFRAME = "//iframe[not(@title='Text Resize Monitor')]";
     private static final String XPATH_NAVIGATION_PANEL = "//div[@class='_ebx-modeless-modal _ebx-modeless-modal-with-background']";
+    private static final String XPATH_DATETIME = "//span[text()='%s']/ancestor::div[contains(@class,'ebx_SSFFakeFieldset')]//span/input[contains(@name,'%s')]";
 
     public BaseWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
         super(page, locator, webElement, timeoutInMilliseconds);
@@ -605,4 +607,14 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         waitElementToBePresent(xPath).waitUntilClickable().click();
     }
 
+    public void inputDateTime(String label, String datetime) {
+        String[] date = datetime.split("/");
+        // input month value
+        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "month"), date[0]);
+        // input date value
+        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "day"), date[1]);
+        // input year value
+        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "year"), date[2]);
+        waitAbit(1000);
+    }
 }

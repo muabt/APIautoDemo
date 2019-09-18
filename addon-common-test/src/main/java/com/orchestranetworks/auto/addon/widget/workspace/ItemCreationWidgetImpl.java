@@ -63,18 +63,6 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     }
 
     @Override
-    public void inputDateTime(String label, String datetime) {
-        String[] date = datetime.split("/");
-        // input month value
-        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "month"), date[0]);
-        // input date value
-        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "day"), date[1]);
-        // input year value
-        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "year"), date[2]);
-        waitAbit(500);
-    }
-
-    @Override
     public void clickProfile() {
         clickOnElement("//input[@type='text' and @value='[not defined]']");
     }
