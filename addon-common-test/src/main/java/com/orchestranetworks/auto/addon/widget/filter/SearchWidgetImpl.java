@@ -14,6 +14,7 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     private static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
     private static final String XPATH_EXPAND_BUTTON = "//label[contains(.,'%s')]//button[@title='expand']";
     private static final String XPATH_SEARCH_FIELD = "//span[text()='%s']/ancestor::div[contains(@class,'ebx_SSFFakeFieldset')]";
+    private static final String XPATH_DATETIME = "//span[text()='%s']/ancestor::div[contains(@class,'ebx_SSFFakeFieldset')]//span/input[contains(@name,'%s')]";
 
     public SearchWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                             long timeoutInMilliseconds) {
@@ -94,13 +95,13 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
             case "INPUT":
                 waitTypeAndTab(xPathTxtOfField, value);
                 break;
-//            case "ENUM":
-//                input_ddl_then_enter(xPathEnum, value);
-//                waitAbit(500);
-//                break;
-//            case "DATE":
-//                input_date_time(fieldName, value);
-//                break;
+            case "ENUM":
+                inputDDLThenEnter(xPathEnum, value);
+                waitAbit(500);
+                break;
+            case "DATE":
+                inputDateTime(fieldName, value);
+                break;
             case "BOOLEAN":
                 waitElementToBePresent(xPathCheckbox).waitUntilClickable().click();
                 waitAbit(500);
@@ -144,6 +145,17 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     public void clickBtnAddBlock() {
         clickBtn(Constants.BTN_ADD);
         switchToIFrame(Constants.IFRAME_LEGACY);
+    }
+
+    private void inputDateTime(String label, String datetime) {
+        String[] date = datetime.split("/");
+        // input month value
+        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "month"), date[0]);
+        // input date value
+        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "day"), date[1]);
+        // input year value
+        waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "year"), date[2]);
+        waitAbit(1000);
     }
 
 }
