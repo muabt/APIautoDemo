@@ -5,22 +5,14 @@ import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import java.util.List;
 import java.util.Map;
 
-import com.orchestranetworks.auto.addon.SessionData;
-import com.orchestranetworks.auto.addon.steps.DatasetSteps;
-import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 import cucumber.api.DataTable;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.es.E;
 import net.thucydides.core.annotations.Steps;
-
-import java.util.List;
-import java.util.Map;
 
 public class ManualMergeDefs {
     @Steps
@@ -51,7 +43,6 @@ public class ManualMergeDefs {
      *
      * }
      */
-
     @When("^I complete merging process$")
     public void i_complete_merging_process() {
         onManualMergeSteps.click_button_next();
@@ -141,7 +132,7 @@ public class ManualMergeDefs {
     }
 
     @When("^I specific the options in Main tab of Merge policy as belows$")
-    public void i_specific_the_options_in_main_tab_of_merge_policy_as_belows(DataTable dt) {
+    public void i_specific_the_options_in_main_tab_of_merge_policy_as_belows(DataTable dt) throws Exception {
 
         onManualMergeSteps.select_merge_policy_tab();
         onManualMergeSteps.select_btn_create_record(2);
@@ -176,7 +167,7 @@ public class ManualMergeDefs {
 
     @And("^I create Survivorship field with selections as followings$")
     public void i_create_survivorship_field_with_selections_as_followings(DataTable dt){
-        onManualMergeSteps.select_survivor_field_tab();
+        onManualMergeSteps.select_merge_policy_tab();
         onManualMergeSteps.select_btn_create_record(2);
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);

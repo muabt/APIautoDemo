@@ -55,8 +55,8 @@ public class ManualMergeSteps {
 
         assertThat(actualTb.size()).isEqualTo(expectedTb.size()).withFailMessage("Number of rows is not equal, expected:" + expectedTb.size() + ", but was:"
                 + actualTb.size());
-        assertThat(expectedHeader).isEqualTo(actualHeader).withFailMessage("Number of column is not equal, expected:" + expectedHeader.size() + ", but was:"
-                + actualHeader.size());
+        assertThat(expectedHeader).isEqualTo(actualHeader).withFailMessage("Number of column is not equal, expected:" + expectedHeader + ", but was:"
+                + actualHeader);
 
         for (int row = 0; row < expectedTb.size(); row++) {
             for (int col = 0; col < expectedHeader.size(); col++) {
