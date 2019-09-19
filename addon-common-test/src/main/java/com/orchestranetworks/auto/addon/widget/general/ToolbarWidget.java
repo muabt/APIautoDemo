@@ -27,6 +27,6 @@ public interface ToolbarWidget extends WidgetObject {
 
     void clickBtnCreateDataspace();
 
-    void clickBtnCreateRecordMatchAndMerge();
+    void clickBtnCreateRecordMatchAndMerge(int index);
 
 }

@@ -73,7 +73,7 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     }
 
     @Override
-    public void inputTextWithRandom(String label, String value) {
+    public void inputTextWith(String label, String value) {
         inputDDLThenTab(label, value);
     }
 

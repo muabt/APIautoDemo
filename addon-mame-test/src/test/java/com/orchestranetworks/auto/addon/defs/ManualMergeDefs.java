@@ -16,6 +16,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.es.E;
 import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
@@ -105,11 +106,45 @@ public class ManualMergeDefs {
 
     }
 
+    @And("^some configurations like belows$")
+    public void some_configurations_like_belows(DataTable dt) throws Exception {
+        onManualMergeSteps.select_matching_process_tab();
+        onManualMergeSteps.select_btn_create_record(1);
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String matchingProcessCode = row.get("Matching process code");
+            String active = row.get("Active");
+            String matchingExecutionOnCreation = row.get("Matching execution on creation");
+            String matchingExecutionOnUpdate = row.get("Matching execution on update");
+            String mergePolicy = row.get("Merge policy");
+            String advancedSettings = row.get("Advanced settings");
+
+            if (!matchingProcessCode.isEmpty()) {
+                onManualMergeSteps.input_matching_process_code(matchingProcessCode);
+            }
+
+            if (!active.isEmpty()) {
+                onManualMergeSteps.selectActive(active);
+            }
+
+            if (!matchingExecutionOnCreation.isEmpty()) {
+                onManualMergeSteps.select_matching_execution_on_creation(matchingExecutionOnCreation);
+            }
+
+            if (!matchingExecutionOnUpdate.isEmpty()) {
+                onManualMergeSteps.select_matching_excution_on_update(matchingExecutionOnUpdate);
+            }
+
+        }
+        onManualMergeSteps.click_btn_save_and_close_internal_popup();
+        onManualMergeSteps.click_btn_save_and_close();
+    }
+
     @When("^I specific the options in Main tab of Merge policy as belows$")
     public void i_specific_the_options_in_main_tab_of_merge_policy_as_belows(DataTable dt) {
 
         onManualMergeSteps.select_merge_policy_tab();
-        onManualMergeSteps.select_btn_create_record();
+        onManualMergeSteps.select_btn_create_record(2);
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
@@ -119,7 +154,7 @@ public class ManualMergeDefs {
             String useManualMerge = row.get("Used for manual merge");
 
             if (!mergePolicyCode.isEmpty()) {
-                onManualMergeSteps.input_merge_policy_code();
+                onManualMergeSteps.input_merge_policy_code(mergePolicyCode);
             }
 
             if (!selectionMode.isEmpty()) {
@@ -142,7 +177,7 @@ public class ManualMergeDefs {
     @And("^I create Survivorship field with selections as followings$")
     public void i_create_survivorship_field_with_selections_as_followings(DataTable dt){
         onManualMergeSteps.select_survivor_field_tab();
-        onManualMergeSteps.select_btn_create_record();
+        onManualMergeSteps.select_btn_create_record(2);
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {

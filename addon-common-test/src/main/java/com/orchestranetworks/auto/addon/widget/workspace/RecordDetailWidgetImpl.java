@@ -28,14 +28,14 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
     }
 
     @Override
-    public void selectMergePolicyTab() {
+    public void selectTab(String tabName) {
         waitForAllLoadingCompleted();
-        clickByJS(XFormat.of(MERGE_POLICY_TAB, "Merge policy"));
+        clickByJS(XFormat.of(MERGE_POLICY_TAB, tabName));
     }
 
     @Override
-    public void selectSurvivorFieldTab() {
+    public void selectRadioButton(String label, String value) {
         waitForAllLoadingCompleted();
-        clickByJS(XFormat.of(MERGE_POLICY_TAB, "Survivor field"));
+        selectRadioBoxGroup(label, value);
     }
 }

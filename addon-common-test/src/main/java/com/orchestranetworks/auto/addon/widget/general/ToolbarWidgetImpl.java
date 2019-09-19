@@ -90,10 +90,10 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
     }
 
     @Override
-    public void clickBtnCreateRecordMatchAndMerge() {
+    public void clickBtnCreateRecordMatchAndMerge(int index) {
         waitForAllLoadingCompleted();
         switchToLastIFrame();
-        clickBtn(Constants.BTN_CREATE_A_RECORD, 2);
+        clickBtn(Constants.BTN_CREATE_A_RECORD, index);
         switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
     }
 }

@@ -20,7 +20,7 @@ public interface ItemCreationWidget extends WidgetObject {
 
 	void chooseProfile();
 
-	void inputTextWithRandom(String label, String value);
+	void inputTextWith(String label, String value);
 
     void inputDDLThenEnter(String label, String selectionMode);
 

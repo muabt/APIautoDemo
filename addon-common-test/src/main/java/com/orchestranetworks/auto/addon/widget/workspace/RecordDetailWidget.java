@@ -8,8 +8,7 @@ public interface RecordDetailWidget extends WidgetObject {
 	
 	 void clickOnTabOfLabel(String label);
 
-	void selectMergePolicyTab();
+    void selectTab(String tabName);
 
-	void selectSurvivorFieldTab();
-
+	void selectRadioButton(String label, String value);
 }

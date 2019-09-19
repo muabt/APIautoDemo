@@ -1,30 +1,20 @@
 package com.orchestranetworks.auto.addon.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.LogWork;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
-import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
-import com.orchestranetworks.auto.addon.pages.BasePage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.ManualMergePages;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 import net.thucydides.core.annotations.Step;
 import org.assertj.core.api.SoftAssertions;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 import org.junit.Assert;
 
@@ -99,9 +89,17 @@ public class ManualMergeSteps {
     }
 
     @Step
-    public void input_merge_policy_code() {
+    public void input_merge_policy_code(String code) {
         onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
-        recordDetailPage.getItemCreationWidget().inputTextWithRandom("Merge policy code", onCommonPage.getRandomString());
+        String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
+        recordDetailPage.getItemCreationWidget().inputTextWith("Merge policy code", inputCode);
+    }
+
+    @Step
+    public void input_matching_process_code(String code) {
+        onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+        String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
+        recordDetailPage.getItemCreationWidget().inputTextWith("Matching process code", inputCode);
     }
 
     @Step
@@ -116,12 +114,12 @@ public class ManualMergeSteps {
 
     @Step
     public void select_merge_policy_tab() {
-        onManualMergePages.getRecordDetailWidget().selectMergePolicyTab();
+        onManualMergePages.getRecordDetailWidget().selectTab("Merge policy");
     }
 
     @Step
-    public void select_btn_create_record() {
-        onManualMergePages.getToolbarWidget().clickBtnCreateRecordMatchAndMerge();
+    public void select_btn_create_record(int index) {
+        onManualMergePages.getToolbarWidget().clickBtnCreateRecordMatchAndMerge(index);
     }
 
     @Step
@@ -151,7 +149,8 @@ public class ManualMergeSteps {
     }
 
     @Step
-    public void select_survivor_record(String selectionMode) {
+    public void
+    select_survivor_record(String selectionMode) {
         onManualMergePages.getItemCreationWidget().selectDDLByJS("Survivor record selection mode", selectionMode);
     }
 
@@ -182,12 +181,12 @@ public class ManualMergeSteps {
 
     @Step
     public void select_survivor_field_tab() {
-        onManualMergePages.getRecordDetailWidget().selectSurvivorFieldTab();
+        onManualMergePages.getRecordDetailWidget().selectTab("Survivor field");
     }
 
     @Step
     public void input_survivor_code() {
-        recordDetailPage.getItemCreationWidget().inputTextWithRandom("Survivorship field code", onCommonPage.getRandomString());
+        recordDetailPage.getItemCreationWidget().inputTextWith("Survivorship field code", onCommonPage.getRandomString());
     }
 
     @Step
@@ -208,5 +207,21 @@ public class ManualMergeSteps {
     @Step
     public void select_execute_option(String executeEmpty) {
         recordDetailPage.getItemCreationWidget().selectRadioBoxWithLabel("Execute only if empty", executeEmpty);
+    }
+
+    public void select_matching_process_tab() {
+        onManualMergePages.getRecordDetailWidget().selectTab("Matching process");
+    }
+
+    public void selectActive(String active) {
+        onManualMergePages.getRecordDetailWidget().selectRadioButton("Active", active);
+    }
+
+    public void select_matching_execution_on_creation(String matchingExecutionOnCreation) {
+        onManualMergePages.getItemCreationWidget().selectDDLByJS("Matching execution on creation", matchingExecutionOnCreation);
+    }
+
+    public void select_matching_excution_on_update(String matchingExecutionOnUpdate) {
+        onManualMergePages.getItemCreationWidget().selectDDLByJS("Matching execution on update", matchingExecutionOnUpdate);
     }
 }
