@@ -174,10 +174,4 @@ public class ManualMergeDefs {
         }
     }
 
-    @And("^some configurations like belows$")
-    public void some_configurations_like_belows(DataTable dt){
-
-
-    }
-
 }
