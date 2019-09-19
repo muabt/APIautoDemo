@@ -252,6 +252,7 @@ public class DatasetPage extends WebPageObject {
 		return getTextDataCell(rowIndex, colIndex);
 	}
 
+
 	public String check_field_type(String label) {
 		String type = "INPUT";
 		if (isElementExistNow(XFormat.of(XPATH_DLL_FIELD, label))) {

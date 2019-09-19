@@ -35,6 +35,7 @@ public class ManualMergeSteps {
     BasePage onBasePage;
 
 
+
     public void verify_record_view_table(List<List<String>> expectedTbl) {
         List<List<String>> actualTbl = onManualMergePages.getTableViewWidget().getDataRecordViewTable();
         compare_record_view_tbl(expectedTbl, actualTbl);
@@ -142,15 +143,6 @@ public class ManualMergeSteps {
                 break;
         }
     }
-
-    public void verify_status_of_buttons(String status) {
-        Assert.assertEquals(status, onManualMergePages.getTableViewWidget().isBtnCancelLastActionActive());
-    }
-
-    public void verify_name_of_table(String tableName) {
-        Assert.assertEquals(tableName, onManualMergePages.getTableViewWidget().getMergeStepsSelection());
-    }
-
 
     public void verify_group_id(int rowInd) {
         String expected = onDefaultViewPage.getDefaultViewWidget().get_text_data_cell(1, "groupId");

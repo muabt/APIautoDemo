@@ -541,7 +541,6 @@ public class WebPageObject extends PageObject {
 		for (int i = 1; i <= listCol; i++) {
 			String xPathColumn = "(" + xPathHeader + ")[" + i + "]//span[@class='ebx_RawLabel']";
 			if (isElementExistNow(xPathColumn)) {
-				System.out.println("colind=" + getText(xPathColumn));
 				if (getText(xPathColumn).equals(colName)) {
 					colIndex = i;
 					break;
