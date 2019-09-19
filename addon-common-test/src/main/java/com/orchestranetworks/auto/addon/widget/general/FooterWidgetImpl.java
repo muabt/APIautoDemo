@@ -54,11 +54,6 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
     }
 
 	@Override
-	public void clickBtnSaveAndCloseInInternalPopup() {
-
-	}
-
-	@Override
 	public void clickBtnClose() {
 		clickBtn("Close");
 	}

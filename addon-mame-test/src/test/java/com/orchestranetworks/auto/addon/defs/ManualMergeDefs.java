@@ -112,8 +112,7 @@ public class ManualMergeDefs {
         onManualMergeSteps.select_btn_create_record();
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-        for (int i = 0; i < list.size(); i++) {
-            Map<String, String> row = list.get(i);
+        for (Map<String, String> row : list) {
             String mergePolicyCode = row.get("Merge policy code");
             String selectionMode = row.get("Survivor record selection mode");
             String defaultFunction = row.get("Default merge function");
@@ -146,8 +145,7 @@ public class ManualMergeDefs {
         onManualMergeSteps.select_btn_create_record();
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-        for (int i = 0; i < list.size(); i++) {
-            Map<String, String> row = list.get(i);
+        for (Map<String, String> row : list) {
             String survivorCode = row.get("Survivorship field code");
             String field = row.get("Field");
             String mergeFunction = row.get("Merge function");
@@ -177,7 +175,8 @@ public class ManualMergeDefs {
     }
 
     @And("^some configurations like belows$")
-    public void some_configurations_like_belows(){
+    public void some_configurations_like_belows(DataTable dt){
+
 
     }
 
