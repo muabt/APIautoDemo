@@ -20,9 +20,9 @@ Feature: Manual Merge
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most trusted source            | Longest                | Disabled               | Yes                   | Yes                            |
     And I select matching policy record of table "Person"
-#    And I create Survivorship field with selections as followings
-#      | Survivorship field code | Field               | Merge function | Auto create new golden | Condition for field value survivorship | Execute only if empty |
-#      | RANDOM                  | Most trusted source | Longest        | Disabled               |                                        | Yes                   |
+    And I create Survivorship field with selections as followings
+      | Survivorship field code | Field  | Merge function | Auto create new golden | Condition for field value survivorship | Execute only if empty |
+      | RANDOM                  | Gender |                | Disabled               |                                        | Yes                   |
     And I access "dataspace" menu
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |

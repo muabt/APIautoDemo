@@ -12,7 +12,7 @@ public interface TableViewWidget extends WidgetObject {
     
     void selectRecordWithPK(String selectRecordWithPk);
 
-    void accessRecordWithTableName(String tableName);
+    void accessRecordWithText(String tableName);
     
     boolean existRecordInTable();
 	

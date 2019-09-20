@@ -13,6 +13,7 @@ import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.ManualMergePages;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.assertj.core.api.SoftAssertions;
 
@@ -92,6 +93,7 @@ public class ManualMergeSteps {
     public void input_merge_policy_code(String code) {
         onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
+        Serenity.setSessionVariable("merge_policy_code").to(inputCode);
         recordDetailPage.getItemCreationWidget().inputTextWith("Merge policy code", inputCode);
     }
 
@@ -176,11 +178,13 @@ public class ManualMergeSteps {
 
     @Step
     public void click_btn_save_and_close() {
+        onManualMergePages.switchToIFrame(Constants.IFRAME_LEGACY);
         onManualMergePages.getFooterWidget().clickBtnSaveAndClose();
     }
 
     @Step
     public void select_survivor_field_tab() {
+        onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         onManualMergePages.getRecordDetailWidget().selectTab("Survivor field");
     }
 
@@ -223,5 +227,9 @@ public class ManualMergeSteps {
 
     public void select_matching_excution_on_update(String matchingExecutionOnUpdate) {
         onManualMergePages.getItemCreationWidget().selectDDLByJS("Matching execution on update", matchingExecutionOnUpdate);
+    }
+
+    public void select_merge_policy_record(String record) {
+        onManualMergePages.getDefaultview().accessRecordWithText(record);
     }
 }

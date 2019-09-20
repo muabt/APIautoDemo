@@ -12,6 +12,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class ManualMergeDefs {
@@ -166,10 +167,11 @@ public class ManualMergeDefs {
     }
 
     @And("^I create Survivorship field with selections as followings$")
-    public void i_create_survivorship_field_with_selections_as_followings(DataTable dt){
+    public void i_create_survivorship_field_with_selections_as_followings(DataTable dt) throws Exception {
         onManualMergeSteps.select_merge_policy_tab();
-        onManualMergeSteps.select_btn_create_record(2);
-
+        onManualMergeSteps.select_merge_policy_record(Serenity.sessionVariableCalled("merge_policy_code"));
+        onManualMergeSteps.select_survivor_field_tab();
+        onManualMergeSteps.select_btn_create_record(1);
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
             String survivorCode = row.get("Survivorship field code");
@@ -198,6 +200,10 @@ public class ManualMergeDefs {
                 onManualMergeSteps.select_execute_option(executeEmpty);
             }
         }
+
+        onManualMergeSteps.click_btn_save_and_close_internal_popup();
+        onManualMergeSteps.click_btn_save_and_close_internal_popup();
+        onManualMergeSteps.click_btn_save_and_close();
     }
 
 }

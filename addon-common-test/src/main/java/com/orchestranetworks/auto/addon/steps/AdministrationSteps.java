@@ -57,7 +57,7 @@ public class AdministrationSteps extends ScenarioSteps {
 
 	@Step
     public void select_record_with_name(String tableName){
-        administration.getDefaultViewWidget().accessRecordWithTableName(tableName);
+        administration.getDefaultViewWidget().accessRecordWithText(tableName);
     }
 
     @Step

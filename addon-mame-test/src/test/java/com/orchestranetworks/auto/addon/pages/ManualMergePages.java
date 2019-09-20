@@ -1,13 +1,12 @@
 package com.orchestranetworks.auto.addon.pages;
 
 import com.orchestranetworks.auto.addon.widget.*;
+import com.orchestranetworks.auto.addon.widget.TableViewWidget;
+import com.orchestranetworks.auto.addon.widget.TableViewWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.general.*;
 
 
-import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
-import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidgetImpl;
-import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidget;
-import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.workspace.*;
 import org.openqa.selenium.WebDriver;
 
 
@@ -15,6 +14,8 @@ public class ManualMergePages extends BasePage {
     private NavigationWidget navPanel;
     private HeaderWidget header;
     private TableViewWidget tableViewWidget;
+    private com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget defaultViewWidget;
+
     private RelationWidget relationWidget;
     private SummaryWidget summaryWidget;
     private PreviewWidget previewWidget;
@@ -32,9 +33,10 @@ public class ManualMergePages extends BasePage {
         this.previewWidget = new PreviewWidgetImpl(this, null, 100);
         this.summaryWidget = new SummaryWidgetImpl(this, null, 100);
         this.footerWidget = new FooterWidgetImpl(this, null, 100);
-        this.itemCreationWidget = new ItemCreationWidgetImpl(this,null,100);
+        this.itemCreationWidget = new ItemCreationWidgetImpl(this, null, 100);
         this.recordDetailWidget = new RecordDetailWidgetImpl(this, null, 100);
         this.toolbarWidget = new ToolbarWidgetImpl(this, null, 100);
+        this.defaultViewWidget = new DefaultViewImpl(this, null, 100);
     }
 
     public NavigationWidget getNavPanel() {
@@ -79,7 +81,11 @@ public class ManualMergePages extends BasePage {
         return recordDetailWidget;
     }
 
-    public ToolbarWidget getToolbarWidget(){
+    public ToolbarWidget getToolbarWidget() {
         return toolbarWidget;
+    }
+
+    public com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget getDefaultview() {
+        return defaultViewWidget;
     }
 }

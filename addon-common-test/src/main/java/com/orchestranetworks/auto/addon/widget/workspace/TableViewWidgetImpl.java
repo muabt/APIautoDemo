@@ -62,7 +62,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
     @Override
-    public void accessRecordWithTableName(String tableName) {
+    public void accessRecordWithText(String tableName) {
         String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + tableName + "'])[1]";
         executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
     }
