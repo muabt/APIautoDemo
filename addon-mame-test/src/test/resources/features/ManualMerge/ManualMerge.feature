@@ -4,7 +4,7 @@ Feature: Manual Merge
 
   @Survivor_Field_MostTrustedSource
   Scenario: Check merging process after validate merge view screen
-    Given I login to EBX succesfully
+    Given I login to EBX successfully
     And I create a child of dataspace "Master Data - Reference > Resource" with information as following
       | Identifier | Owner               | English Label |
       |            | admin admin (admin) |               |

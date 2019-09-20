@@ -7,7 +7,7 @@ Feature: Run Match feature
     Given I login to EBX successfully
 
   Scenario: Run Match with MAME configuration with MatchingTable and Matching Policy Active.
-    Given I want to create matching table
+    Given I permit to access matching table
     And I create record with the followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |

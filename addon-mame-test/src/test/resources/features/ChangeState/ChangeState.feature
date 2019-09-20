@@ -5,7 +5,7 @@ Feature: As a datasteward
   so I set state value of records to a specific state & reset the list of suspect.
 
   Background: 
-    Given I login to EBX succesfully
+    Given I login to EBX successfully
 
   #Change state for bulk table
   Scenario Outline: SC-CS08 Check results when user changes state to "Golden" with no selection record & there are auto-created records in table
