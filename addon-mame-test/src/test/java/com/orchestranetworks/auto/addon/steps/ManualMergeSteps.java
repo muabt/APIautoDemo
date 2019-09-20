@@ -172,8 +172,15 @@ public class ManualMergeSteps {
     }
 
     @Step
-    public void click_btn_save_and_close_internal_popup() {
-        onManualMergePages.getFooterWidget().clickBtnSaveAndCloseInInternalPopup();
+    public void click_btn_save_and_close_internal_popup(int numberOfPopup) {
+        for (int i = 0; i < numberOfPopup; i++) {
+            onManualMergePages.getFooterWidget().clickBtnSaveAndCloseInInternalPopup();
+            onManualMergePages.switchOutDefaultIFrame();
+            onManualMergePages.switchToIFrame(Constants.IFRAME_LEGACY);
+            for (int j = 0; j < numberOfPopup - i; j++) {
+                onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+            }
+        }
     }
 
     @Step

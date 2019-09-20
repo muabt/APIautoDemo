@@ -128,7 +128,7 @@ public class ManualMergeDefs {
             }
 
         }
-        onManualMergeSteps.click_btn_save_and_close_internal_popup();
+        onManualMergeSteps.click_btn_save_and_close_internal_popup(1);
         onManualMergeSteps.click_btn_save_and_close();
     }
 
@@ -162,7 +162,7 @@ public class ManualMergeDefs {
             }
         }
        // onManualMergeSteps.click_btn_save();
-        onManualMergeSteps.click_btn_save_and_close_internal_popup();
+        onManualMergeSteps.click_btn_save_and_close_internal_popup(1);
         onManualMergeSteps.click_btn_save_and_close();
     }
 
@@ -201,8 +201,7 @@ public class ManualMergeDefs {
             }
         }
 
-        onManualMergeSteps.click_btn_save_and_close_internal_popup();
-        onManualMergeSteps.click_btn_save_and_close_internal_popup();
+        onManualMergeSteps.click_btn_save_and_close_internal_popup(2);
         onManualMergeSteps.click_btn_save_and_close();
     }
 

@@ -50,7 +50,6 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
     public void clickBtnSaveAndCloseInInternalPopup() {
         waitAbit(1000);
         clickBtn("Save and close");
-        switchToIFrame(Constants.IFRAME_LEGACY);
     }
 
 	@Override

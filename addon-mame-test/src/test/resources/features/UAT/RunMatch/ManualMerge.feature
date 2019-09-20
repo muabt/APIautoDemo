@@ -26,9 +26,9 @@ Feature: Manual Merge
     And I select matching policy record of table "Person"
    #  TODO: Change following statement into "I create new Merge policy as belows" or change code to use this statement for both create new and update cases
     And I create Survivorship field with selections as followings
-      | Survivorship field code | Field  | Merge function | Auto create new golden | Condition for field value survivorship | Execute only if empty |
-      | RANDOM                  | Gender |                | Disabled               |                                        | Yes                   |
-   #  TODO:Remove belows
+      | Survivorship field code | Field  | Merge function      | Auto create new golden | Condition for field value survivorship | Execute only if empty |
+      | RANDOM                  | Gender | Most trusted source | Disabled               |                                        | Yes                   |
+      #  TODO:Remove belows
     And I access "dataspace" menu
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
