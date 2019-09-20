@@ -129,10 +129,9 @@ public class ManualMergeDefs {
 
         }
         onManualMergeSteps.click_btn_save_and_close_internal_popup(1);
-        onManualMergeSteps.click_btn_save_and_close();
     }
 
-    @When("^I specific the options in Main tab of Merge policy as belows$")
+    @When("^I create new Merge policy as belows$")
     public void i_specific_the_options_in_main_tab_of_merge_policy_as_belows(DataTable dt) throws Exception {
 
         onManualMergeSteps.select_merge_policy_tab();
@@ -161,14 +160,11 @@ public class ManualMergeDefs {
                 onManualMergeSteps.use_for_merge_function(useManualMerge);
             }
         }
-       // onManualMergeSteps.click_btn_save();
         onManualMergeSteps.click_btn_save_and_close_internal_popup(1);
-        onManualMergeSteps.click_btn_save_and_close();
     }
 
     @And("^I create Survivorship field with selections as followings$")
     public void i_create_survivorship_field_with_selections_as_followings(DataTable dt) throws Exception {
-        onManualMergeSteps.select_merge_policy_tab();
         onManualMergeSteps.select_merge_policy_record(Serenity.sessionVariableCalled("merge_policy_code"));
         onManualMergeSteps.select_survivor_field_tab();
         onManualMergeSteps.select_btn_create_record(1);
