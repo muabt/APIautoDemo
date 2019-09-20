@@ -13,5 +13,5 @@ Feature: Run Match feature
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I want to access the Matching record of table "Person"
     And I access to "Matching process" tab
-    And I want to delete all of record in the table
+#    And I want to delete all of record in the table
     

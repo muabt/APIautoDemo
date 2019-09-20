@@ -93,7 +93,6 @@ public class DatasetSteps extends ScenarioSteps {
 			recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
 			recordDetailPage.getDefaultViewWidget().confirmPopupOK();
 		}
-
 	}
 
     public void verify_record_value(int rowInd, String colName, String expected) {
@@ -105,25 +104,4 @@ public class DatasetSteps extends ScenarioSteps {
         defaultViewPage.getPopupWidget().confirmOK();
     }
 
-    @Step
-    public void testFilter() {
-        defaultViewPage.getToolbar().clickBtnFilter();
-        defaultViewPage.getSearchWidget().clickBtnExpand(Constants.TEXT_SEARCH);
-        defaultViewPage.getSearchWidget().clickBtnExpand(Constants.VALIDATION_SEARCH);
-        defaultViewPage.getSearchWidget().inputTextKeyword("China");
-        defaultViewPage.getSearchWidget().selectAdvancedMode();
-        defaultViewPage.getSearchWidget().selectLogicalSearch("No criteria match");
-        defaultViewPage.getSearchWidget().selectSearchCriteria("Company");
-        defaultViewPage.getSearchWidget().selectOperatorOfField("matches", "Company");
-        defaultViewPage.getSearchWidget().inputSearchValue("test", "INPUT", "Company");
-        defaultViewPage.getSearchWidget().selectField(Constants.VALIDATION_SEARCH, "Warnings");
-        defaultViewPage.getSearchWidget().selectField(Constants.VALIDATION_SEARCH, "Information");
-        defaultViewPage.getSearchWidget().addLogicalBlock();
-        defaultViewPage.getSearchWidget().selectLogicalSearch("No criteria match");
-        defaultViewPage.getSearchWidget().selectSearchCriteria("Rank");
-        defaultViewPage.getSearchWidget().selectOperatorOfField("=", "Rank");
-        defaultViewPage.getSearchWidget().inputSearchValue("5", "INPUT", "Rank");
-        defaultViewPage.getSearchWidget().clickBtnAddBlock();
-        waitABit(50001);
-    }
 }

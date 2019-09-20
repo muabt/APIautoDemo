@@ -7,14 +7,14 @@ Feature: Manual Merge
     Given I login to EBX successfully
 
   Scenario: Merge policy with Most trusted source, Longest default merge function
-    Given I want to create matching table
+    Given I permit to access matching table
     And I create record with the followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I select matching policy record of table "Person"
     And some configurations like belows
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
-      | RANDOM                |                | No    | Inline matching                | Inline matching              |              |                   |
+      | RANDOM                |                | No     | Inline matching                | Inline matching              |              |                   |
     And I select matching policy record of table "Person"
     When I specific the options in Main tab of Merge policy as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
@@ -38,10 +38,10 @@ Feature: Manual Merge
       | Id                                   | First name               | Last name  | Gender | Residence | Age | Birth date | Birth place |
       | 00000435-cc4c-4a1c-9fe4-7690f559bc1c | Bavo Gijsbertus Josephus | Verheijden |        |           | 0   |            |             |
     And I complete merging process
+    And I permit to access matching table
+    And I select first "1" records in table
+    Then delete it
 
-
-#    And I select first "1" records in table
-#    Then delete it
 #  Scenario: Backup defs
 #   Given I want to access the Matching record of table "Items"
 #    And I select the expected source field "Indentifiers"
