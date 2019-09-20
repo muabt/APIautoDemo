@@ -11,18 +11,24 @@ Feature: Manual Merge
     And I create record with the followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
+
+
     And I select matching policy record of table "Person"
+    # TODO: Split Save and close button in table matching
     And some configurations like belows
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
       | RANDOM                |                | No     | Inline matching                | Inline matching              |              |                   |
     And I select matching policy record of table "Person"
+#  TODO: Change following statement into "I create new Merge policy as belows" or change code to use this statement for both create new and update cases
     When I specific the options in Main tab of Merge policy as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most trusted source            | Longest                | Disabled               | Yes                   | Yes                            |
     And I select matching policy record of table "Person"
+   #  TODO: Change following statement into "I create new Merge policy as belows" or change code to use this statement for both create new and update cases
     And I create Survivorship field with selections as followings
       | Survivorship field code | Field  | Merge function | Auto create new golden | Condition for field value survivorship | Execute only if empty |
       | RANDOM                  | Gender |                | Disabled               |                                        | Yes                   |
+   #  TODO:Remove belows
     And I access "dataspace" menu
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
