@@ -94,4 +94,41 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
 
         executeJS("arguments[0].click();", xPathValue);
     }
+
+    @Override
+    public String getTextErrorDataModelField() {
+        String xPathValue = "(//div[@class='ebx_Error'])[1]";
+        String message = getText(xPathValue);
+        return message;
+    }
+
+    @Override
+    public String getTextErrorTableField() {
+        String xPathValue = "(//div[@class='ebx_Error'])[2]";
+        return getText(xPathValue);
+    }
+    @Override
+    public String getTextErrorDataModelInBlock() {
+        String xPathValue = "(//span[@class='ebx_WorkspaceFormHeaderValidationMessageItem'])[1]";
+        String message = getText(xPathValue);
+        return message;
+    }
+
+    @Override
+    public String getTextErrorTableInBlock() {
+        String xPathValue = "(//span[@class='ebx_WorkspaceFormHeaderValidationMessageItem'])[2]";
+        return getText(xPathValue);
+    }
+
+    @Override
+    public String getErrorBlock() {
+        String xpathMessage = "//span[@class='ebx_WorkspaceFormHeaderValidationMessageItem']";
+        String message = getText(xpathMessage);
+        return message;
+    }
+
+    @Override
+    public void clickBtnExpand() {
+        clickBtn("expand");
+    }
 }

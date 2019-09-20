@@ -11,6 +11,8 @@ import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 
+import java.util.Collection;
+
 public class RecordDetailPage extends BasePage {
 	private ToolbarWidget toolbar;
 	private NavigationWidget navPanel;
@@ -59,4 +61,5 @@ public class RecordDetailPage extends BasePage {
 		this.recordDetailWidget = recordDetailWidget;
 	}
 
-}
+
+   }

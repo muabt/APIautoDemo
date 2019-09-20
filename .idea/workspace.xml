@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="Update feature step of access matching table">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ChangeState/ChangeState.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ChangeState/ChangeState.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ManualMerge/ManualMerge.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ManualMerge/ManualMerge.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/MatchingEngine/MatchingEngine.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/MatchingEngine/MatchingEngine.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/serenity.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/RecordDetailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/RecordDetailPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ConfigurationMatchingTableDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ConfigurationMatchingTableDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ConfigurationMatchingTableSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ConfigurationMatchingTableSteps.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/addon-dmdv-test/target/" />
-    <ignored path="$PROJECT_DIR$/addon-common-test/target/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="$PROJECT_DIR$/addon-mame-test/target/" />
-    <ignored path="$PROJECT_DIR$/addon-dint-test/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,240 +23,6 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="addon-test-web" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ManualMergeSteps.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="71" column="28" lean-forward="true" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3457#3458#0" expanded="true" />
-                <element signature="e#3525#3526#0" expanded="true" />
-                <element signature="e#3575#3576#0" expanded="true" />
-                <element signature="e#3644#3645#0" expanded="true" />
-                <element signature="e#4810#4811#0" expanded="true" />
-                <element signature="e#4894#4895#0" expanded="true" />
-                <element signature="e#5109#5110#0" expanded="true" />
-                <element signature="e#5184#5185#0" expanded="true" />
-                <element signature="e#6710#6711#0" expanded="true" />
-                <element signature="e#6777#6778#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.m2/repository/org/assertj/assertj-core/3.8.0/assertj-core-3.8.0-sources.jar!/org/assertj/core/api/SoftAssertions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="129" column="14" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/TableViewWidget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="90" selection-start-line="24" selection-start-column="90" selection-end-line="24" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/TableViewWidgetImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-306">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/serenity.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="49" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/CommonDefs.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="78" column="27" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
-              <folding>
-                <element signature="e#2409#2410#0" expanded="true" />
-                <element signature="e#2456#2457#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/ManualMergePages.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/CommonSteps.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-737">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#949#950#0" expanded="true" />
-                <element signature="e#997#998#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DatasetSteps.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1539">
-              <caret line="105" selection-start-line="105" selection-end-line="105" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/HeaderWidget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/HeaderWidgetImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-360">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/base/BaseWidgetImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="461" column="5" selection-start-line="461" selection-start-column="5" selection-end-line="461" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ManualMergeDefs.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ManualMerge/ManualMerge.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8934" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorRecordSelectionMode.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2242" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/MatchingEngine/MatchingEngine.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Metadatas/RunMetadatasService.feature">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="89" column="79" selection-start-line="89" selection-start-column="79" selection-end-line="89" selection-end-column="79" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/AdministrationDefs.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="67" column="53" selection-start-line="67" selection-start-column="53" selection-end-line="67" selection-end-column="53" />
-              <folding>
-                <element signature="e#2426#2427#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/AdministrationSteps.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -272,24 +36,6 @@
     <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/MatchingProcessDefs.java" />
-        <option value="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/MatchingProcessSteps.java" />
-        <option value="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidgetImpl.java" />
-        <option value="$PROJECT_DIR$/serenity.properties" />
-        <option value="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ManualMergeDefs.java" />
-        <option value="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DatasetSteps.java" />
-        <option value="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/AdministrationDefs.java" />
-        <option value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature" />
-        <option value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ManualMerge/ManualMerge.feature" />
-        <option value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ChangeState/ChangeState.feature" />
-        <option value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature" />
-        <option value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/MatchingEngine/MatchingEngine.feature" />
-      </list>
-    </option>
-  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -297,12 +43,6 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1989" />
@@ -314,127 +54,6 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-              <item name="ApplyMergePolicy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-              <item name="ChangeState" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-              <item name="ManualMerge" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-              <item name="MatchingEngine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-              <item name="Metadatas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-              <item name="RunMatch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="addon-test-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="addon-tests-web" type="462c0819:PsiDirectoryNode" />
-              <item name="addon-mame-test" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last.edited.regexp" value="Sample Text" />
@@ -445,12 +64,18 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.orchestranetworks.auto.addon.pages" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.orchestranetworks.auto.addon.pages" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install -Dmaven.skip.test=true" />
+      <command value="mvn clean install -Dmaven.test.skip=true " />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -464,15 +89,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber java.Scenario: Merge policy with Most trusted source, Longest default merge function">
-    <configuration name="Feature: Dataspace" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber java.Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined">
+    <configuration name="Feature: ConfigurationMatchingTable" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-common-test" />
+      <module name="addon-mame-test" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
-      <option name="SUGGESTED_NAME" value="Feature: Dataspace" />
+      <option name="SUGGESTED_NAME" value="Feature: ConfigurationMatchingTable" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -483,7 +108,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature: ManualMerge" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: ManualMerge" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
@@ -539,6 +164,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-mame-test" />
+      <option name="NAME_FILTER" value="^SC\-CFT03 Validate Combobox \&quot;Data model\&quot; when Data model is not defined$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFT03 Validate Combobox \&quot;Data model\&quot; when Data model is not defined$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorRecordSelectionMode.feature" />
@@ -559,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber java.Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined" />
+        <item itemvalue="Cucumber java.Feature: ConfigurationMatchingTable" />
         <item itemvalue="Cucumber java.Scenario: Merge policy with Most trusted source, Longest default merge function" />
         <item itemvalue="Cucumber java.Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source" />
-        <item itemvalue="Cucumber java.Feature: ManualMerge" />
         <item itemvalue="Cucumber java.Scenario:  (1)" />
-        <item itemvalue="Cucumber java.Feature: Dataspace" />
       </list>
     </recent_temporary>
   </component>
@@ -721,20 +365,6 @@
     <option name="localTasksCounter" value="21" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="Scenario__Merge_policy_with_Most_trusted_source,_Longest_default_merge_function - 2019.09.19 at 10h 28m 16s.xml">
-      <configuration name="Scenario: Merge policy with Most trusted source, Longest default merge function" configurationId="CucumberJavaRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Scenario__Merge_policy_with_Most_trusted_source,_Longest_default_merge_function - 2019.09.19 at 10h 28m 46s.xml">
-      <configuration name="Scenario: Merge policy with Most trusted source, Longest default merge function" configurationId="CucumberJavaRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Scenario__Merge_policy_with_Most_trusted_source,_Longest_default_merge_function - 2019.09.20 at 08h 48m 37s.xml">
-      <configuration name="Scenario: Merge policy with Most trusted source, Longest default merge function" configurationId="CucumberJavaRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Scenario__Merge_policy_with_Most_trusted_source,_Longest_default_merge_function - 2019.09.20 at 08h 51m 27s.xml">
-      <configuration name="Scenario: Merge policy with Most trusted source, Longest default merge function" configurationId="CucumberJavaRunConfigurationType" />
-    </history-entry>
-  </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -743,38 +373,6 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="1985" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25870648" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.32925585" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4997236" weight="0.32925585" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32925585" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5002764" side_tool="true" weight="0.32925585" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32925585" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.76285243" visible="true" weight="0.28236493" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.1310116" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-    </layout>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -792,20 +390,7 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -845,317 +430,6 @@
     <MESSAGE value="[BEN] Update test data for Manual Merge scenario" />
     <MESSAGE value="Update feature step of access matching table" />
     <option name="LAST_COMMIT_MESSAGE" value="Update feature step of access matching table" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="93" column="37" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
-          <folding>
-            <element signature="e#1863#1864#0" expanded="true" />
-            <element signature="e#1926#1927#0" expanded="true" />
-            <element signature="e#1979#1980#0" expanded="true" />
-            <element signature="e#2046#2047#0" expanded="true" />
-            <element signature="e#2095#2096#0" expanded="true" />
-            <element signature="e#2158#2159#0" expanded="true" />
-            <element signature="e#2208#2209#0" expanded="true" />
-            <element signature="e#2272#2273#0" expanded="true" />
-            <element signature="e#2510#2511#0" expanded="true" />
-            <element signature="e#2556#2557#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/AdministrationPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-          <folding>
-            <element signature="e#2250#2251#0" expanded="true" />
-            <element signature="e#2280#2281#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/MatchingProcessPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/RecordDetailWidgetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/CommonPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1778#1779#0" expanded="true" />
-            <element signature="e#1809#1810#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/RecordDetailWidget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/MetadataSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidgetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/MatchingProcessSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/MatchingProcessDefs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/HeaderWidgetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/CommonDefs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="78" column="27" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
-          <folding>
-            <element signature="e#2409#2410#0" expanded="true" />
-            <element signature="e#2456#2457#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/ManualMergePages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="89" column="79" selection-start-line="89" selection-start-column="79" selection-end-line="89" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/base/BaseWidgetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="461" column="5" selection-start-line="461" selection-start-column="5" selection-end-line="461" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/CommonSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-737">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
-            <element signature="e#997#998#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/serenity.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/serenity.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="49" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/AdministrationSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/HeaderWidget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DatasetSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1539">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/AdministrationDefs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="67" column="53" selection-start-line="67" selection-start-column="53" selection-end-line="67" selection-end-column="53" />
-          <folding>
-            <element signature="e#2426#2427#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/TableViewWidgetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/TableViewWidget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/assertj/assertj-core/3.8.0/assertj-core-3.8.0-sources.jar!/org/assertj/core/api/SoftAssertions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="129" column="14" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ManualMergeSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="71" column="28" lean-forward="true" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3457#3458#0" expanded="true" />
-            <element signature="e#3525#3526#0" expanded="true" />
-            <element signature="e#3575#3576#0" expanded="true" />
-            <element signature="e#3644#3645#0" expanded="true" />
-            <element signature="e#4810#4811#0" expanded="true" />
-            <element signature="e#4894#4895#0" expanded="true" />
-            <element signature="e#5109#5110#0" expanded="true" />
-            <element signature="e#5184#5185#0" expanded="true" />
-            <element signature="e#6710#6711#0" expanded="true" />
-            <element signature="e#6777#6778#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ManualMergeDefs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8934" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ChangeState/ChangeState.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1032">
-          <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorRecordSelectionMode.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2242" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ManualMerge/ManualMerge.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Metadatas/RunMetadatasService.feature">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="90" selection-start-line="24" selection-start-column="90" selection-end-line="24" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addon-mame-test/src/test/resources/features/MatchingEngine/MatchingEngine.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

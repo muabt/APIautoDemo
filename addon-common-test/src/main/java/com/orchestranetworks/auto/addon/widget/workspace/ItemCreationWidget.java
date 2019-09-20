@@ -27,4 +27,16 @@ public interface ItemCreationWidget extends WidgetObject {
     void selectRadioBoxWithLabel(String label, String value);
 
     void selectDDLByJS(String label, String value);
+
+    String getTextErrorDataModelField();
+
+	String getTextErrorTableField();
+
+	String getTextErrorDataModelInBlock();
+
+	String getTextErrorTableInBlock();
+
+	String getErrorBlock();
+
+	void clickBtnExpand();
 }
