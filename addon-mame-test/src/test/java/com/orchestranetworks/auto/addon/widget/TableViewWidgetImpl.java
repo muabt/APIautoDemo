@@ -1,7 +1,6 @@
 package com.orchestranetworks.auto.addon.widget;
 
-import com.orchestranetworks.auto.addon.SessionData;
-import com.orchestranetworks.auto.addon.XFormat;
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
@@ -23,35 +22,31 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
 	public List<List<String>> getDataRecordViewTable() {
-		int numOfHeader = 0;
-		String xPathListHeader = "//record-view//div[@class='top ebx_tvHeaderContainer']//span[@class='ebx_RawLabel']";
-		String headerCellValue = "";
 		List<String> listHeader = new ArrayList<String>();
-
         List<List<String>> actualTable = new ArrayList<List<String>>();
-        numOfHeader = findAllElement(xPathListHeader).size();
+
+        String xPathListHeader = "//record-view//div[@class='top ebx_tvHeaderContainer']//span[@class='ebx_RawLabel']";
+        int numOfHeader = findAllElement(xPathListHeader).size();
         for (int i = 1; i <= numOfHeader; i++) {
             String xPathHeaderCell = "(" + xPathListHeader + ")[" + i + "]";
-            headerCellValue = getText(xPathHeaderCell);
+            String  headerCellValue = getText(xPathHeaderCell);
             listHeader.add(headerCellValue);
         }
         actualTable.add(listHeader);
 
-        int numOfRow = 0;
-        String xPathRow = "//record-view//div[@class='bottom']//tr[contains(@class,\"row\")]";
-        String cellValue = "";
-        numOfRow = findAllElement(xPathRow).size() / 2;
+        String xPathRow = "//record-view//div[@class='bottom']//tr[contains(@class,'row')]";
+       int numOfRow = findAllElement(xPathRow).size() / 2;
         for (int rowind = 1; rowind <= numOfRow; rowind++) {
             List<String> row = new ArrayList<String>();
             for (int colInd = 1; colInd <= numOfHeader; colInd++) {
                 String xPathCell = XPATH_RCV_CELL.replaceAll("%r%", String.valueOf(rowind)).replaceAll("%c%",
                         String.valueOf(colInd));
-                cellValue = getTextCell(xPathCell);
+                String cellValue = getTextCell(xPathCell);
                 row.add(cellValue);
             }
             actualTable.add(row);
         }
-        SessionData.addDataTable("RECORD_VIEW_TBL", actualTable, false);
+
         return actualTable;
     }
 
