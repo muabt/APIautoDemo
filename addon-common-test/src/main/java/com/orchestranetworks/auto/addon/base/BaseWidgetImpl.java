@@ -19,9 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class BaseWidgetImpl extends WidgetObjectImpl {
@@ -47,7 +45,6 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     public void clickOnElement(String xPath) {
-        waitForAllLoadingCompleted();
         getElement(xPath).waitUntilClickable().click();
     }
 
@@ -82,7 +79,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     public boolean isElementExistNow(String xPath) {
         waitForAllLoadingCompleted();
         try {
-            List<WebElementFacade> e = findAllElement(xPath);
+            List<WebElementFacade> e = findAllElements(xPath);
             if (e.size() != 0) {
                 highlightElement(xPath);
                 return true;
@@ -93,7 +90,8 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         return false;
     }
 
-    public List<WebElementFacade> findAllElement(String xPath) {
+    public List<WebElementFacade> findAllElements(String xPath) {
+        waitForAllLoadingCompleted();
         return getPage().findAll(xPath);
     }
 
@@ -115,11 +113,11 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 
     public void switchToLastIFrame() {
         switchOutDefaultIFrame();
-        List<WebElement> iframes = getDriver().findElements(By.xpath(XPATH_IFRAME));
+        List<WebElementFacade> iframes = findAllElements(XPATH_IFRAME);
         while (iframes.size() > 0) {
             LogWork.info("Switch to IFrame has ID=" + iframes.get(0).getAttribute("id"));
             getDriver().switchTo().frame(iframes.get(0));
-            iframes = getDriver().findElements(By.xpath(XPATH_IFRAME));
+            iframes = findAllElements(XPATH_IFRAME);
         }
 
     }
@@ -327,7 +325,6 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
      * @author hue
      */
     public void clickBtn(String xPathParent, String btnName, int index) {
-        waitForAllLoadingCompleted();
         scrollElementIntoView(xPathBtn(xPathParent, btnName, index)).click();
         waitForAllLoadingCompleted();
     }
@@ -532,6 +529,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
      * =====================================SCROLL============================================================
      */
     public WebElementFacade scrollElementIntoView(String xPath) {
+        waitForAllLoadingCompleted();
         executeJS("arguments[0].scrollIntoView(false);", xPath);
         highlightElement(xPath);
         return getElement(xPath);
@@ -559,7 +557,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         String xPathTable = "//div[@id='ebx_workspaceTable_headerContainer']";
         String xPathHeader = xPathTable + "//th[contains(@id,'ebx_workspaceTable_tableField')]";
         int colIndex = 0;
-        int listCol = findAllElement(xPathHeader).size();
+        int listCol = findAllElements(xPathHeader).size();
         for (int i = 1; i <= listCol; i++) {
             String xPathColumn = "(" + xPathHeader + ")[" + i + "]//span[@class='ebx_RawLabel']";
             if (isElementExistNow(xPathColumn)) {
@@ -576,7 +574,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         String xPathTable = "//div[@id='ebx_workspaceTable_fixedScroller']//table[@class='ebx_tvFixed']";
         String xPathRows = xPathTable + "/tbody/tr";
         int rowIndex = 0;
-        int listCol = findAllElement(xPathRows).size();
+        int listCol = findAllElements(xPathRows).size();
         for (int i = 1; i <= listCol; i++) {
             String xPathRow = xPathTable + "/tbody/tr[" + i + "]/td[2]";
             if (getTextValue(xPathRow).equals(label)) {
