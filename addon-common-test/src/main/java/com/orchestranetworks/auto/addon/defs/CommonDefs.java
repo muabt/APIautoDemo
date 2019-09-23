@@ -3,7 +3,6 @@ package com.orchestranetworks.auto.addon.defs;
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;

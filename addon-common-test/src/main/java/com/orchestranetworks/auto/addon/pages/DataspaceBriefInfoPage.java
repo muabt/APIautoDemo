@@ -2,10 +2,8 @@ package com.orchestranetworks.auto.addon.pages;
 
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.widget.general.*;
-import com.orchestranetworks.auto.addon.widget.workspace.AdministrationWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.DataspaceBriefInfoWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.DataspaceBriefInfoWidgetImpl;
-import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 
 public class DataspaceBriefInfoPage extends BasePage {
@@ -38,5 +36,9 @@ public class DataspaceBriefInfoPage extends BasePage {
 
     public PopupWidget getPopupWidget() {
         return popupWidget;
+    }
+
+    public NavigationWidget getNavPanel() {
+        return navPanel;
     }
 }

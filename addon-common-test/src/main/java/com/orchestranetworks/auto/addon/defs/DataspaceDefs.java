@@ -1,7 +1,6 @@
 package com.orchestranetworks.auto.addon.defs;
 
 import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DataspaceSteps;
@@ -12,7 +11,6 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,17 +50,23 @@ public class DataspaceDefs {
     @When("^I create a child of dataspace \"([^\"]*)\" with information as following$")
     public void i_create_a_child_of_dataspace_with_information_as_following(String parentDataspacePath, DataTable dt) {
         List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
-        onCommonSteps.access_menu(Constants.MENU_DATASPACE);
-        onCommonSteps.go_to_dataspace(parentDataspacePath);
-        onDataspaceSteps.click_btn_create_dataspace();
         Map<String, String> row = dataTable.get(0);
         String identifier = row.get("Identifier");
         String owner = row.get("Owner");
         String engLabel = row.get("English Label");
 
+        onCommonSteps.access_menu(Constants.MENU_DATASPACE);
+//        if (onDataspaceSteps.is_dataspace_exist(identifier)) {
+//            onDataspaceSteps.delete_dataspace_by_service();
+//        }
+        onCommonSteps.go_to_dataspace(parentDataspacePath);
+        onDataspaceSteps.click_btn_create_dataspace();
+
         onDataspaceSteps.enter_dataspace_info(identifier, owner, engLabel);
 
         onDataspaceSteps.click_btn_create();
+
+
     }
 
 
@@ -112,7 +116,7 @@ public class DataspaceDefs {
 
     @And("^I delete the dataspace$")
     public void i_delete_the_dataspace() {
-        onCommonSteps.delete_dataspace_by_service();
+        onDataspaceSteps.delete_dataspace_by_service();
     }
 
 }

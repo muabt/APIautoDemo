@@ -9,7 +9,6 @@ import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.XFormat;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
@@ -79,6 +78,10 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         clickByJS(XFormat.of(XPATH_CHECKBOX_RECORD, sSpecialTextPredicates(recordPK)));
     }
 
+    /**
+     * TODO: Change param name to meaningful name
+     *
+     */
     @Override
     public void accessRecordWithText(String tableName) {
         String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + tableName + "'])[1]";

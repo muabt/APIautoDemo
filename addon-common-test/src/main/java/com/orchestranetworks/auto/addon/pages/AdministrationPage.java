@@ -29,6 +29,7 @@ public class AdministrationPage extends BasePage {
     private AdministrationWidget administration;
     private TableViewWidget defaultViewWidget;
 
+
     public AdministrationPage(WebDriver driver) {
         super(driver);
         this.toolbar = new ToolbarWidgetImpl(this, null, 100);

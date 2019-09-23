@@ -8,7 +8,6 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
 import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.pages.WebElementFacade;
 
 public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
     public ToolbarWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,

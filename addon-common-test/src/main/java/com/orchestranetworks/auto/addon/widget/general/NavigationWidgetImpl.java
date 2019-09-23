@@ -45,7 +45,11 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 
     @Override
     public void expandAllNavigationItems() {
-
+        String xPathCollapseBtn = "//button[@title='Collapsed']";
+        int numOfExpandedBtn = findAllElements(xPathCollapseBtn).size();
+        for (int i = numOfExpandedBtn; i > 0; i--) {
+            clickBtn("Collapsed", i);
+        }
     }
 
     @Override
@@ -55,17 +59,15 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
             System.out.println(xPathCollapsed);
             if (isElementExistNow(xPathCollapsed))
                 clickOnElement(xPathCollapsed);
-            waitForInvisibilityOfElement(xPathCollapsed);
         }
     }
 
     @Override
     public void collapseAllNavigationItems() {
         String xPathExpandedBtn = "//button[@title='Expanded']";
-        int numOfExpandedBtn = findAllElement(xPathExpandedBtn).size();
+        int numOfExpandedBtn = findAllElements(xPathExpandedBtn).size();
         for (int i = numOfExpandedBtn; i > 0; i--) {
             clickBtn("Expanded", i);
-            waitForInvisibilityOfElement(xPathBtn("Expanded", i));
         }
     }
 
@@ -116,5 +118,10 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
             clickBtn("Select an administration feature");
         switchToIFrame(Constants.IFRAME_LEGACY);
         return this;
+    }
+
+    @Override
+    public boolean isNavigationItemExist(String dataspace) {
+        return isElementExistNow(XPATH_NAVIGATION_ITEM);
     }
 }

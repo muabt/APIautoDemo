@@ -3,7 +3,6 @@ package com.orchestranetworks.auto.addon.widget.general;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
-import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LogWork;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 

@@ -29,7 +29,7 @@ public class AdministrationWidgetImpl extends BaseWidgetImpl implements Administ
 
 	private void remove_div_on_administration_workspace() {
 		switchToIFrame(Constants.IFRAME_LEGACY);
-		boolean isPresent = findAllElement(XPATH_SELECTOR_PANEL).size() > 0;
+		boolean isPresent = findAllElements(XPATH_SELECTOR_PANEL).size() > 0;
 		if (isPresent) {
 			executeJS("arguments[0].style.visibility='hidden';",XPATH_SELECTOR_PANEL);
 			executeJS("arguments[0].style.visibility='hidden';","//div[@id='ebx_SelectorPanel_mask']");

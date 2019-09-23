@@ -28,4 +28,6 @@ public interface NavigationWidget extends WidgetObject {
     void goToAdministrationItem(String path);
 
 	NavigationWidget selectAdministrationFeature();
+
+	boolean isNavigationItemExist(String dataspace);
 }

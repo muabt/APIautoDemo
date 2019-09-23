@@ -1,7 +1,6 @@
 package com.orchestranetworks.auto.addon.widget.workspace;
 
 import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.XFormat;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
