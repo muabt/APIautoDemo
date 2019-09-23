@@ -4,7 +4,7 @@ Feature: Create new data space
   I want to create new dataspace
 
   Background:
-    Given I login to EBX succesfully
+    Given I login to EBX successfully
 
   Scenario: Create new data space
     When I create a child of dataspace "Master Data - Reference>ManualMerge" with information as following

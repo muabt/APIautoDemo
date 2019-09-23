@@ -20,7 +20,7 @@ public interface ItemCreationWidget extends WidgetObject {
 
 	void chooseProfile();
 
-	void inputTextWith(String label, String value);
+	void inputDDLWithLabel(String label, String value);
 
     void inputDDLThenEnter(String label, String selectionMode);
 
@@ -39,4 +39,6 @@ public interface ItemCreationWidget extends WidgetObject {
 	String getErrorBlock();
 
 	void clickBtnExpand();
+
+	void inputTextWithLabel(String label, String value);
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.XFormat;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.ManualMergePages;
@@ -26,7 +27,7 @@ public class ManualMergeSteps {
     RecordDetailPage recordDetailPage;
     CommonPage onCommonPage;
 
-
+    @Step
     public void verify_record_view_table(List<List<String>> expectedTbl) {
         List<List<String>> actualTbl = onManualMergePages.getTableViewWidget().getDataRecordViewTable();
         compare_record_view_tbl(expectedTbl, actualTbl);
@@ -93,15 +94,16 @@ public class ManualMergeSteps {
     public void input_merge_policy_code(String code) {
         onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
-        Serenity.setSessionVariable("merge_policy_code").to(inputCode);
-        recordDetailPage.getItemCreationWidget().inputTextWith("Merge policy code", inputCode);
+        Serenity.setSessionVariable(Constants.MERGE_POLICY_CODE).to(inputCode);
+        recordDetailPage.getItemCreationWidget().inputTextWithLabel("Merge policy code", inputCode);
     }
 
     @Step
     public void input_matching_process_code(String code) {
         onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
-        recordDetailPage.getItemCreationWidget().inputTextWith("Matching process code", inputCode);
+        Serenity.setSessionVariable(Constants.MATCHING_PROCESS_CODE).to(inputCode);
+        recordDetailPage.getItemCreationWidget().inputTextWithLabel("Matching process code", inputCode);
     }
 
     @Step
@@ -125,21 +127,14 @@ public class ManualMergeSteps {
     }
 
     @Step
-    public void get_text_of_reset_button() {
-        onManualMergePages.getTableViewWidget().getTextOfResetBtn();
-    }
-
-    @Step
     public void verify_name_of_buttons(String name) {
         switch (name) {
             case "Reset":
+            case "Apply merge policy":
                 assertEquals(name, onManualMergePages.getTableViewWidget().getTextOfRightBtn());
                 break;
             case "Cancel last action":
                 assertEquals(name, onManualMergePages.getTableViewWidget().getTextOfCancelActionButton());
-                break;
-            case "Apply merge policy":
-                assertEquals(name, onManualMergePages.getTableViewWidget().getTextOfRightBtn());
                 break;
         }
     }
@@ -197,7 +192,7 @@ public class ManualMergeSteps {
 
     @Step
     public void input_survivor_code() {
-        recordDetailPage.getItemCreationWidget().inputTextWith("Survivorship field code", onCommonPage.getRandomString());
+        recordDetailPage.getItemCreationWidget().inputTextWithLabel("Survivorship field code", onCommonPage.getRandomString());
     }
 
     @Step
@@ -220,23 +215,64 @@ public class ManualMergeSteps {
         recordDetailPage.getItemCreationWidget().selectRadioBoxWithLabel("Execute only if empty", executeEmpty);
     }
 
+    @Step
     public void select_matching_process_tab() {
         onManualMergePages.getRecordDetailWidget().selectTab("Matching process");
     }
 
+    @Step
     public void selectActive(String active) {
         onManualMergePages.getRecordDetailWidget().selectRadioButton("Active", active);
     }
 
+    @Step
     public void select_matching_execution_on_creation(String matchingExecutionOnCreation) {
         onManualMergePages.getItemCreationWidget().selectDDLByJS("Matching execution on creation", matchingExecutionOnCreation);
     }
 
+    @Step
     public void select_matching_excution_on_update(String matchingExecutionOnUpdate) {
         onManualMergePages.getItemCreationWidget().selectDDLByJS("Matching execution on update", matchingExecutionOnUpdate);
     }
 
+    @Step
     public void select_merge_policy_record(String record) {
         onManualMergePages.getDefaultview().accessRecordWithText(record);
+    }
+
+    @Step
+    public void input_name_of_source(String nameOfSource) {
+        String inputCode = nameOfSource.equals("RANDOM") ? onCommonPage.getRandomString() : nameOfSource;
+        Serenity.setSessionVariable("name_of_source").to(inputCode);
+        recordDetailPage.getItemCreationWidget().inputTextWithLabel("Name of source", inputCode);
+    }
+
+    @Step
+    public void input_description(String description) {
+        recordDetailPage.getItemCreationWidget().inputTextWithLabel("Description", description);
+    }
+
+    @Step
+    public void select_matching_table(String matchingTable) {
+        recordDetailPage.getItemCreationWidget().selectDDLByJS("Matching table", matchingTable);
+    }
+
+    @Step
+    public void add_trusted_source_list(String trustedSourceList) {
+        String[] sourceList = trustedSourceList.split(",");
+        for (int i = 0; i < sourceList.length; i++) {
+            recordDetailPage.getRecordDetailWidget().addAnOccurrence();
+            recordDetailPage.getItemCreationWidget().selectDDLByJS("Trusted source list", sourceList[i].trim());
+        }
+    }
+
+    @Step
+    public void select_field_trusted_source(String field) {
+        recordDetailPage.getItemCreationWidget().selectDDLByJS("Field", field);
+    }
+
+    @Step
+    public void select_merge_policy(String mergePolicy) {
+        recordDetailPage.getItemCreationWidget().selectDDLByJS("Merge policy", mergePolicy);
     }
 }

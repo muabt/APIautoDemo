@@ -38,4 +38,9 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         waitForAllLoadingCompleted();
         selectRadioBoxGroup(label, value);
     }
+
+    @Override
+    public void addAnOccurrence() {
+        clickBtn("Add an occurrence");
+    }
 }

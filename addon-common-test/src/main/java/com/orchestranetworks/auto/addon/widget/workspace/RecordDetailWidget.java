@@ -11,4 +11,6 @@ public interface RecordDetailWidget extends WidgetObject {
     void selectTab(String tabName);
 
 	void selectRadioButton(String label, String value);
+
+    void addAnOccurrence();
 }

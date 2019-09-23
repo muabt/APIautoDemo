@@ -10,17 +10,26 @@ Feature: Manual Merge
     Given I permit to access matching table
     And I create record with the followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
+      | Publication: genealogy | Person    | Yes          |                              | First name       |                    |                       |
     And I select matching policy record of table "Person"
-    And some configurations like belows
+    And the matching process is configured as the followings
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
       | RANDOM                |                | No     | Inline matching                | Inline matching              |              |                   |
-    When I create new Merge policy as belows
+    When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most trusted source            | Longest                | Disabled               | Yes                   | Yes                            |
     And I create Survivorship field with selections as followings
       | Survivorship field code | Field  | Merge function      | Auto create new golden | Condition for field value survivorship | Execute only if empty |
       | RANDOM                  | Gender | Most trusted source | Disabled               |                                        | Yes                   |
+    And the Source in Trusted source are
+      | Name of source | Description     |
+      | Pieter         | In Person table |
+    And the Table trusted source with the followings
+      | Matching table | Trusted source list |
+      | Person         |                     |
+    And the Field trusted source with the followings
+      | Matching table | Field      | Trusted source list |
+      | Person         | First name | Pieter              |
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
@@ -38,6 +47,8 @@ Feature: Manual Merge
     And I permit to access matching table
     And I select first "1" records in table
     Then delete it
+    And I delete the dataspace
+
 
 #  Scenario: Backup defs
 #   Given I want to access the Matching record of table "Items"

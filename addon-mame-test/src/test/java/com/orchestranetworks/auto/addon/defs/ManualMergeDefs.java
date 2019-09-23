@@ -2,6 +2,7 @@ package com.orchestranetworks.auto.addon.defs;
 
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
+
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +53,7 @@ public class ManualMergeDefs {
     }
 
     @Then("^I will see table RecordMetadata as below$")
-    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect){
+    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) {
         List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
         for (int i = 1; i <= list.size(); i++) {
             Map<String, String> row = list.get(i - 1);
@@ -98,10 +99,10 @@ public class ManualMergeDefs {
 
     }
 
-    @And("^some configurations like belows$")
-    public void some_configurations_like_belows(DataTable dt) throws Exception {
+    @And("^the matching process is configured as the followings$")
+    public void the_matching_process_is_configured_as_the_followings(DataTable dt) {
         onManualMergeSteps.select_matching_process_tab();
-        onManualMergeSteps.select_btn_create_record(1);
+
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
             String matchingProcessCode = row.get("Matching process code");
@@ -112,6 +113,7 @@ public class ManualMergeDefs {
             String advancedSettings = row.get("Advanced settings");
 
             if (!matchingProcessCode.isEmpty()) {
+                onManualMergeSteps.select_btn_create_record(1);
                 onManualMergeSteps.input_matching_process_code(matchingProcessCode);
             }
 
@@ -127,12 +129,16 @@ public class ManualMergeDefs {
                 onManualMergeSteps.select_matching_excution_on_update(matchingExecutionOnUpdate);
             }
 
+            if (!mergePolicy.isEmpty()) {
+                onManualMergeSteps.select_merge_policy(mergePolicy);
+            }
+
         }
         onManualMergeSteps.click_btn_save_and_close_internal_popup(1);
     }
 
-    @When("^I create new Merge policy as belows$")
-    public void i_specific_the_options_in_main_tab_of_merge_policy_as_belows(DataTable dt) throws Exception {
+    @When("^I set Merge policy configuration as belows$")
+    public void i_set_merge_policy_configuration_as_belows(DataTable dt) {
 
         onManualMergeSteps.select_merge_policy_tab();
 
@@ -168,6 +174,7 @@ public class ManualMergeDefs {
         onManualMergeSteps.select_merge_policy_record(Serenity.sessionVariableCalled("merge_policy_code"));
         onManualMergeSteps.select_survivor_field_tab();
         onManualMergeSteps.select_btn_create_record(1);
+
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
             String survivorCode = row.get("Survivorship field code");
@@ -201,4 +208,68 @@ public class ManualMergeDefs {
         onManualMergeSteps.click_btn_save_and_close();
     }
 
+    @And("^the Source in Trusted source are$")
+    public void the_source_in_trusted_source_are(DataTable dt) {
+        onAdministrationSteps.access_source_table();
+        onAdministrationSteps.click_create_record();
+
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String nameOfSource = row.get("Name of source");
+            String description = row.get("Description");
+
+            if (!nameOfSource.isEmpty()) {
+                onManualMergeSteps.input_name_of_source(nameOfSource);
+            }
+
+            if (!description.isEmpty()) {
+                onManualMergeSteps.input_description(description);
+            }
+        }
+        onManualMergeSteps.click_btn_save_and_close();
+    }
+
+    @And("^the Table trusted source with the followings$")
+    public void the_table_trusted_source_with_the_followings(DataTable dt) {
+        onAdministrationSteps.access_table_trusted_source();
+        onAdministrationSteps.click_create_record();
+
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String matchingTable = row.get("Matching table");
+            String trustedSourceList = row.get("Trusted source list");
+
+            if (!matchingTable.isEmpty()) {
+                onManualMergeSteps.select_matching_table(matchingTable);
+            }
+
+            if (!trustedSourceList.isEmpty()) {
+                onManualMergeSteps.add_trusted_source_list(trustedSourceList);
+            }
+        }
+        onManualMergeSteps.click_btn_save_and_close();
+    }
+
+    @And("^the Field trusted source with the followings$")
+    public void the_field_trusted_source_with_the_followings(DataTable dt) {
+        onAdministrationSteps.access_field_trusted_source();
+        onAdministrationSteps.click_create_record();
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String matchingTable = row.get("Matching table");
+            String field = row.get("Field");
+            String trustedSourceList = row.get("Trusted source list");
+
+            if (!matchingTable.isEmpty()) {
+                onManualMergeSteps.select_matching_table(matchingTable);
+            }
+            if (!field.isEmpty()) {
+                onManualMergeSteps.select_field_trusted_source(field);
+            }
+            if (!trustedSourceList.isEmpty()) {
+                onManualMergeSteps.add_trusted_source_list(trustedSourceList);
+            }
+        }
+        onManualMergeSteps.click_btn_save_and_close();
+    }
 }

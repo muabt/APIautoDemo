@@ -73,7 +73,7 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     }
 
     @Override
-    public void inputTextWith(String label, String value) {
+    public void inputDDLWithLabel(String label, String value) {
         inputDDLThenTab(label, value);
     }
 
@@ -107,6 +107,7 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
         String xPathValue = "(//div[@class='ebx_Error'])[2]";
         return getText(xPathValue);
     }
+
     @Override
     public String getTextErrorDataModelInBlock() {
         String xPathValue = "(//span[@class='ebx_WorkspaceFormHeaderValidationMessageItem'])[1]";
@@ -130,5 +131,10 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     @Override
     public void clickBtnExpand() {
         clickBtn("expand");
+    }
+
+    @Override
+    public void inputTextWithLabel(String label, String value) {
+        waitTypeAndTabWithLabel(label, value);
     }
 }
