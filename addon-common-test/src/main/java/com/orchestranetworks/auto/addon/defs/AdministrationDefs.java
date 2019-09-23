@@ -55,13 +55,7 @@ public class AdministrationDefs {
 
     @And("^I delete the dataspace$")
     public void i_delete_the_dataspace() {
-        String dataspace = SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER);
-        onCommonSteps.access_menu(Constants.MENU_ADMINISTRATION);
-        onCommonSteps.go_to_administration_item("Repository management>Dataspaces");
-        onCommonSteps.go_to_administration_item("Dataspaces/snapshots");
-        onAdministrationSteps.filter_item(dataspace);
-        onAdministrationSteps.close_dataspace(dataspace);
-        onAdministrationSteps.delete_dataspace(dataspace);
+        onCommonSteps.delete_dataspace_by_service();
     }
 
     @Given("^I permit to access matching table$")

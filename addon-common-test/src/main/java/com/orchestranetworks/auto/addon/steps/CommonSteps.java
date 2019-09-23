@@ -99,4 +99,7 @@ public class CommonSteps extends ScenarioSteps {
 		onCommonPage.getPopupWidget().confirmOK();
 	}
 
+    public void delete_dataspace_by_service() {
+		onCommonPage.delete_dataspace_by_service();
+    }
 }

@@ -43,8 +43,8 @@ public class CommonDefs {
      * @param username username
      * @param password password
      */
-    @When("^user login to EBX with username \"([^\"]*)\" and password \"([^\"]*)\"$")
-    public void user_login_to_EBX_with_username_is_and_password_is(String username, String password) {
+    @When("^I login to EBX with username \"([^\"]*)\" and password \"([^\"]*)\"$")
+    public void i_login_to_EBX_with_username_is_and_password_is(String username, String password) {
         if (onCommonSteps.is_login_success()) {
             onCommonSteps.open_user_panel();
             onCommonSteps.click_btn_logout();
