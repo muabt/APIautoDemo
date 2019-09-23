@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -41,11 +42,12 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     public WebElementFacade getElement(String xPath) {
-        waitAbit(1000);
+        waitForAllLoadingCompleted();
         return getPage().find(By.xpath(xPath));
     }
 
     public void clickOnElement(String xPath) {
+        waitForAllLoadingCompleted();
         getElement(xPath).waitUntilClickable().click();
     }
 
@@ -136,6 +138,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         waitUntilHTMLReady(30);
         waitForJQueryLoadingCompleted(30);
         waitForLoadingGIFCompleted(30);
+        waitUntiljQueryRequestCompletes(30);
     }
 
     public void waitForLoadingGIFCompleted(int timeoutInSeconds) {
@@ -143,7 +146,6 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         String xPathLoadingMainBody = "//div[contains(@class,'loading')]";
         waitForInvisibilityOfElement(xPathLoadingGIF);
         waitForInvisibilityOfElement(xPathLoadingMainBody);
-
     }
 
 
@@ -179,6 +181,25 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 
         wait.until(jQueryLoad);
     }
+    public void waitUntiljQueryRequestCompletes(int timeoutInSeconds) {
+        try {
+            new FluentWait<WebDriver>(getDriver()).withTimeout(timeoutInSeconds, TimeUnit.SECONDS)
+                    .withMessage("**** INFO **** JQUERY STILL LOADING FOR OVER" + timeoutInSeconds + "SECONDS.")
+                    .pollingEvery(100, TimeUnit.MILLISECONDS).until(new ExpectedCondition<Boolean>() {
+                public Boolean apply(WebDriver d) {
+                    try {
+                        JavascriptExecutor jsExec = (JavascriptExecutor) d;
+                        return (Boolean) jsExec.executeScript("return jQuery.active == 0");
+                    } catch (Exception e) {
+                        return true;
+                    }
+                }
+            });
+        } catch (Exception e) {
+        }
+    }
+
+
 
     public WebElementFacade waitElementToBePresent(String xPath) {
         waitForAllLoadingCompleted();
@@ -305,6 +326,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
      * @author hue
      */
     public void clickBtn(String xPathParent, String btnName, int index) {
+        waitForAllLoadingCompleted();
         scrollElementIntoView(xPathBtn(xPathParent, btnName, index)).click();
         waitForAllLoadingCompleted();
     }
