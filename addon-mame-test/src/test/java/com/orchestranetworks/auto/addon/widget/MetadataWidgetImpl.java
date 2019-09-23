@@ -3,16 +3,11 @@ package com.orchestranetworks.auto.addon.widget;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.xpath.res.XPATHMessages;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
-import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
-import com.orchestranetworks.auto.addon.pages.MetadataPage;
 
 import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.pages.WebElementFacade;
 
 public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget {
 
@@ -39,7 +34,7 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
 
 	@Override
 	public List<String> getListTab() {
-		int numOfTabs = findAllElement(XPATH_TABs).size();
+		int numOfTabs = findAllElements(XPATH_TABs).size();
 		List<String> listTab = new ArrayList<String>();
 		for (int i = 1; i == numOfTabs; i++) {
 			listTab.add(getText(XPATH_TABs+"["+i+"]"));
@@ -53,7 +48,7 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
     int numOfRow = 0;
     int numOfCol = 0;
     String cellValue = "";
-    numOfRow = findAllElement(XPATH_TABLE_RECORD_VIEW).size();
+    numOfRow = findAllElements(XPATH_TABLE_RECORD_VIEW).size();
     for (int rowind = 1; rowind <= numOfRow; rowind++) {
 		List<String> row = new ArrayList<String>();
 		   for (int colInd = 1; colInd <= numOfCol; colInd++) {

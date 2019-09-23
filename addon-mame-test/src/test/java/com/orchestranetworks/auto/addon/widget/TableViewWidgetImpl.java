@@ -1,6 +1,5 @@
 package com.orchestranetworks.auto.addon.widget;
 
-import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
@@ -26,7 +25,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         List<List<String>> actualTable = new ArrayList<List<String>>();
 
         String xPathListHeader = "//record-view//div[@class='top ebx_tvHeaderContainer']//span[@class='ebx_RawLabel']";
-        int numOfHeader = findAllElement(xPathListHeader).size();
+        int numOfHeader = findAllElements(xPathListHeader).size();
         for (int i = 1; i <= numOfHeader; i++) {
             String xPathHeaderCell = "(" + xPathListHeader + ")[" + i + "]";
             String  headerCellValue = getText(xPathHeaderCell);
@@ -35,7 +34,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         actualTable.add(listHeader);
 
         String xPathRow = "//record-view//div[@class='bottom']//tr[contains(@class,'row')]";
-       int numOfRow = findAllElement(xPathRow).size() / 2;
+       int numOfRow = findAllElements(xPathRow).size() / 2;
         for (int rowind = 1; rowind <= numOfRow; rowind++) {
             List<String> row = new ArrayList<String>();
             for (int colInd = 1; colInd <= numOfHeader; colInd++) {
@@ -58,7 +57,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         List<String> listHeader = new ArrayList<String>();
 
         List<List<String>> actualTablePreview = new ArrayList<List<String>>();
-        numOfHeader = findAllElement(xPathListHeader).size();
+        numOfHeader = findAllElements(xPathListHeader).size();
         for (int i = 1; i <= numOfHeader; i++) {
             String xPathHeaderCell = "(" + xPathListHeader + ")[" + i + "]";
             headerCellValue = getText(xPathHeaderCell);

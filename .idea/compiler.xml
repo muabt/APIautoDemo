@@ -6,12 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="addon-dint-test" />
         <module name="addon-mame-test" />
         <module name="addon-common-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="addon-dint-test" target="1.8" />
       <module name="addon-dmdv-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>

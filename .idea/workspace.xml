@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="Update feature step of access matching table">
+    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[BEN] Update wwait">
+      <change afterPath="$PROJECT_DIR$/addon-common-test/src/main/resources/driver/chromedriver75" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/RecordDetailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/RecordDetailPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/CustomChromeDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/CustomChromeDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/LoadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/LoadConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/LogWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/LogWork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/AdministrationDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/AdministrationDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/CommonDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/CommonDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DataspaceDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DataspaceDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/AdministrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/AdministrationPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/CommonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/CommonPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/DataspaceBriefInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/DataspaceBriefInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/CommonSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/CommonSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DataspaceSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DataspaceSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/HeaderWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/HeaderWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/AdministrationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/AdministrationWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidgetImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ConfigurationMatchingTableDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ConfigurationMatchingTableDefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ConfigurationMatchingTableSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ConfigurationMatchingTableSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/TableViewWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/TableViewWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/serenity.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver/chromedriver75" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver/chromedriver75" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ManualMergeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ManualMergeSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/MetadataWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/MetadataWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/TableViewWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/TableViewWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/serenity.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,18 +82,26 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last.edited.regexp" value="Sample Text" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.orchestranetworks.auto.addon.pages" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.orchestranetworks.auto.addon" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
+      <recent name="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -89,15 +122,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber java.Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined">
-    <configuration name="Feature: ConfigurationMatchingTable" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber java.Feature: Dataspace">
+    <configuration name="Feature: Dataspace" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-common-test" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
+      <option name="SUGGESTED_NAME" value="Feature: Dataspace" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Feature: ManualMerge (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/ManualMerge/ManualMerge.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
-      <option name="SUGGESTED_NAME" value="Feature: ConfigurationMatchingTable" />
+      <option name="SUGGESTED_NAME" value="Feature: ManualMerge" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -126,15 +177,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario:  (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Create new data space" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: " />
+      <module name="addon-common-test" />
+      <option name="NAME_FILTER" value="^Create new data space$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^Create new data space$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Create new data space" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -145,9 +196,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Merge policy with Most trusted source, Longest default merge function" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Merge policy with Most trusted source, Longest default merge function (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/ManualMerge/ManualMerge.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
@@ -183,31 +234,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorRecordSelectionMode.feature" />
-      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-MPMM02 Check pre\-selected records at merge view screen when Survivor record selection mode is Most trusted source$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM02 Check pre\-selected records at merge view screen when Survivor record selection mode is Most trusted source$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cucumber.api.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber java.Feature: Dataspace" />
+        <item itemvalue="Cucumber java.Scenario: Merge policy with Most trusted source, Longest default merge function (1)" />
+        <item itemvalue="Cucumber java.Feature: ManualMerge (1)" />
+        <item itemvalue="Cucumber java.Scenario: Create new data space" />
         <item itemvalue="Cucumber java.Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined" />
-        <item itemvalue="Cucumber java.Feature: ConfigurationMatchingTable" />
-        <item itemvalue="Cucumber java.Scenario: Merge policy with Most trusted source, Longest default merge function" />
-        <item itemvalue="Cucumber java.Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source" />
-        <item itemvalue="Cucumber java.Scenario:  (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -362,7 +395,56 @@
       <option name="project" value="LOCAL" />
       <updated>1568945631538</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="[BEN] Update structure of feature file">
+      <created>1569210908983</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1569210908983</updated>
+    </task>
+    <task id="LOCAL-00022" summary="[BEN] Slowdown script">
+      <created>1569226451765</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1569226451765</updated>
+    </task>
+    <task id="LOCAL-00023" summary="[BEN] Update wwait">
+      <created>1569226743736</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1569226743736</updated>
+    </task>
+    <task id="LOCAL-00024" summary="[BEN] Update getDataRecordViewTable">
+      <created>1569231530630</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1569231530630</updated>
+    </task>
+    <task id="LOCAL-00025" summary="[BEN] Add Encode utils">
+      <created>1569231769133</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1569231769133</updated>
+    </task>
+    <task id="LOCAL-00026" summary="[BEN] Update wwait">
+      <created>1569232573598</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1569232573598</updated>
+    </task>
+    <task id="LOCAL-00027" summary="[BEN] Update delete_dataspace_by_service">
+      <created>1569233411316</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1569233411316</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -429,7 +511,13 @@
     <MESSAGE value="[BEN] Add MatchingProcess files" />
     <MESSAGE value="[BEN] Update test data for Manual Merge scenario" />
     <MESSAGE value="Update feature step of access matching table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update feature step of access matching table" />
+    <MESSAGE value="[BEN] Update structure of feature file" />
+    <MESSAGE value="[BEN] Slowdown script" />
+    <MESSAGE value="[BEN] Update getDataRecordViewTable" />
+    <MESSAGE value="[BEN] Add Encode utils" />
+    <MESSAGE value="[BEN] Update wwait" />
+    <MESSAGE value="[BEN] Update delete_dataspace_by_service" />
+    <option name="LAST_COMMIT_MESSAGE" value="[BEN] Update delete_dataspace_by_service" />
   </component>
   <component name="masterDetails">
     <states>
