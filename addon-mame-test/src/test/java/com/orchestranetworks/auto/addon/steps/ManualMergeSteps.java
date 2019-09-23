@@ -106,7 +106,7 @@ public class ManualMergeSteps {
 
     @Step
     public void verify_status_of_buttons(String status) {
-        Assert.assertEquals(status, onManualMergePages.getTableViewWidget().isBtnCancelLastActionActive());
+        assertThat(status).isEqualTo(onManualMergePages.getTableViewWidget().isBtnCancelLastActionActive());
     }
 
     @Step

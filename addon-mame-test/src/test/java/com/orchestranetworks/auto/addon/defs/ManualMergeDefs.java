@@ -135,7 +135,6 @@ public class ManualMergeDefs {
     public void i_specific_the_options_in_main_tab_of_merge_policy_as_belows(DataTable dt) throws Exception {
 
         onManualMergeSteps.select_merge_policy_tab();
-        onManualMergeSteps.select_btn_create_record(2);
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
@@ -145,6 +144,7 @@ public class ManualMergeDefs {
             String useManualMerge = row.get("Used for manual merge");
 
             if (!mergePolicyCode.isEmpty()) {
+                onManualMergeSteps.select_btn_create_record(2);
                 onManualMergeSteps.input_merge_policy_code(mergePolicyCode);
             }
 

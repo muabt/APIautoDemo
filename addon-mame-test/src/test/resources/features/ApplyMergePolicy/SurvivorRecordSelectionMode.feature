@@ -16,7 +16,7 @@ Feature: Survivor record selection mode is defined
       | Name               | Status   |
       | Reset              |          |
       | Cancel last action | inactive |
-    And I see the table name "1. TableNotUsedforManualMerge" in dropdowlist
+    And I see the table name "1. TableNotUsedforManualMerge" in dropdown list
 
   Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source
     Given I login to EBX successfully
@@ -37,7 +37,7 @@ Feature: Survivor record selection mode is defined
     And preview table is displayed as below
       | Identifier | Supervisor | Date of birth | National | Phone Number | Email      | Date and time created | Name   |
       | 1          | Dava       | 04/02/2019    | FR       | 123456       | [List] 1/1 | 04/25/2019 16:35:52   | Nguyen |
-    And I see the table name "1. NewEmployee" in dropdowlist
+    And I see the table name "1. NewEmployee" in dropdown list
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -81,7 +81,7 @@ Feature: Survivor record selection mode is defined
     And preview table is displayed as below
       | Identifier | Supervisor | Date of birth | National | Phone Number | Email | Date and time created | Name |
       | 3          | Vien Pham  |               | VN       |              |       |                       | Oanh |
-    And I see the table name "1. NewEmployee" in dropdowlist
+    And I see the table name "1. NewEmployee" in dropdown list
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -122,7 +122,7 @@ Feature: Survivor record selection mode is defined
     And preview table is displayed as below
       | Indentifiers     | integer  | Category | Brand | Name      | Available    | defaultPrice | Expire_date         | testSourceField |
       | [auto generated] | Casumina | truongLE |       | Minh Tran | [List] 21/25 | 120,000      | 04/09/2019 17:29:55 | 2010            |
-    And I see the table name "1. Items" in dropdowlist
+    And I see the table name "1. Items" in dropdown list
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -148,7 +148,7 @@ Feature: Survivor record selection mode is defined
     And preview table is displayed as below
       | Identifier | Name | Employee | Website |
       | 8          |      | Davied   | [html]  |
-    And I see the table name "1. National" in dropdowlist
+    And I see the table name "1. National" in dropdown list
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |

@@ -21,8 +21,6 @@ Feature: Manual Merge
     And I create Survivorship field with selections as followings
       | Survivorship field code | Field  | Merge function      | Auto create new golden | Condition for field value survivorship | Execute only if empty |
       | RANDOM                  | Gender | Most trusted source | Disabled               |                                        | Yes                   |
-      #  TODO:Remove belows
-    And I access "dataspace" menu
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |

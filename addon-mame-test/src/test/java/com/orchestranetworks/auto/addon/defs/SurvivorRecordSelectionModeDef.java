@@ -29,8 +29,8 @@ public class SurvivorRecordSelectionModeDef {
 		}
 	}
 
-	@And("^I see the table name \"([^\"]*)\" in dropdowlist$")
-	public void i_see_the_table_name_something_in_dropdowlist(String tableName) {
+	@And("^I see the table name \"([^\"]*)\" in dropdown list$")
+	public void i_see_the_table_name_something_in_dropdown_list(String tableName) {
 		manualMergeSteps.verify_name_of_table(tableName);
 	}
 }
