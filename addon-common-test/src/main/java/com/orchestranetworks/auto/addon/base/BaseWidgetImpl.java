@@ -41,6 +41,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     public WebElementFacade getElement(String xPath) {
+        waitAbit(1000);
         return getPage().find(By.xpath(xPath));
     }
 
