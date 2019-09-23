@@ -1,5 +1,7 @@
 package com.orchestranetworks.auto.addon.widget.workspace;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -7,7 +9,9 @@ import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.XFormat;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 
 public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidget {
 
@@ -30,6 +34,20 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         for (int i = 1; i <= numberOfRecords; i++) {
             selectRecordWithIndex(i);
         }
+    }
+    
+    @Override
+    public void selectLastRecord() {
+    	String xPathSelectRecord = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])";
+    	List<WebElementFacade> list = getPage().findAll(xPathSelectRecord);
+    	
+    	if (list.size() > 0) {
+    		int lastIndex = list.size();
+    		selectRecordWithIndex(lastIndex);
+    		waitForInvisibilityOfElement(xPathSelectRecord);
+    	}
+        
+        
     }
 
     private void selectRecordWithIndex(int index) {

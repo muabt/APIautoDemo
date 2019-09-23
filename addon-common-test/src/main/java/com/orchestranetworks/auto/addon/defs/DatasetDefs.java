@@ -29,6 +29,21 @@ public class DatasetDefs {
     public void I_select_first_num_of_records_in_table(String numOfRecord) {
         onDatasetSteps.select_first_record(numOfRecord);
     }
+    
+    /**
+    * Select last record in the table
+    * <p>
+    * <b>Example</b>:
+    * <ul>
+    * <font color="blue">When</font>I select last record in table
+    * </ul>
+    * </p>
+    *
+    */
+   @When("^I select last record in table$")
+   public void I_select_last_record_in_table() {
+       onDatasetSteps.select_last_record();
+   }
 
     /**
      * Select the table service

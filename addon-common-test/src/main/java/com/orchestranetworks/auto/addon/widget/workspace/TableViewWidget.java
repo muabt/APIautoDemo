@@ -7,6 +7,8 @@ import net.serenitybdd.core.pages.WidgetObject;
 public interface TableViewWidget extends WidgetObject {
 	
     void selectFirstRecords(int numberOfRecords);
+    
+    void selectLastRecord();
        
     void selectRecordWithPK(String[] primaryKey);
     

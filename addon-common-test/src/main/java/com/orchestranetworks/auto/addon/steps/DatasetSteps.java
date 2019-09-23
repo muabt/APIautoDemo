@@ -23,6 +23,11 @@ public class DatasetSteps extends ScenarioSteps {
     public void select_first_record(String num) {
         defaultViewPage.getDefaultViewWidget().selectFirstRecords(Integer.parseInt(num));
     }
+    
+    @Step
+    public void select_last_record() {
+        defaultViewPage.getDefaultViewWidget().selectLastRecord();
+    }
 
     @Step
     public void select_table_service(String service) {
