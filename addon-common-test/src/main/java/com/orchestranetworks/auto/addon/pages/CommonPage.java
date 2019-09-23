@@ -2,13 +2,11 @@ package com.orchestranetworks.auto.addon.pages;
 
 import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.utils.Encode;
 import io.restassured.RestAssured;
-import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.http.ContentType;
-import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import com.orchestranetworks.auto.addon.widget.general.*;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -18,18 +16,6 @@ import org.openqa.selenium.WebDriver;
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 
-import net.serenitybdd.core.pages.PageObject;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @DefaultUrl("http://automation.vn.orchestranetworks.com/ebx-ui/")
@@ -55,7 +41,7 @@ public class CommonPage extends BasePage {
 
 
     public ToolbarWidget getToolbar() {
-        switchToIFrame(Constants.IFRAME_LEGACY);
+       switchToIFrame(Constants.IFRAME_LEGACY);
         return toolbar;
     }
 
@@ -101,7 +87,7 @@ public class CommonPage extends BasePage {
     public void delete_dataspace_by_service() {
         RestAssured.baseURI = getBaseURL();
         String token = getLoginToken();
-        String dataspace = SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER);
+        String dataspace = Encode.of(SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER));
         RequestSpecification httpRequest = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
