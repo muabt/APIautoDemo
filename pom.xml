@@ -13,7 +13,6 @@
 
 	<modules>
 		<module>addon-common-test</module>
-		<module>addon-dint-test</module>
 		<module>addon-mame-test</module>
 	</modules>
 
