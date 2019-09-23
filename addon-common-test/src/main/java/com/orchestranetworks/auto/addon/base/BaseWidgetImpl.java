@@ -65,6 +65,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     public String getText(String xPath) {
+        highlightElement(xPath);
         return getElement(xPath).getText();
     }
 
