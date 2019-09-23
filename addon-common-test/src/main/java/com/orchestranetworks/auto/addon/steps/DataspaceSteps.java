@@ -34,6 +34,7 @@ public class DataspaceSteps extends ScenarioSteps {
 
     public void click_btn_create() {
         onDataspaceCreationPage.getFooterWidget().clickBtnCreate();
+        SessionData.saveValueToSession(Constants.DATASPACE_IDENTIFIER, onDataspaceBriefInfoPage.getDataspaceBriefInforWidget().getTextIdentifier());
     }
 
     public void click_dataspace_actions() {

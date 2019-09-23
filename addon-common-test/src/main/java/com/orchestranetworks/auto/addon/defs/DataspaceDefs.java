@@ -110,6 +110,10 @@ public class DataspaceDefs {
         onDataspaceSteps.verify_dataspace(info);
     }
 
+    @And("^I delete the dataspace$")
+    public void i_delete_the_dataspace() {
+        onCommonSteps.delete_dataspace_by_service();
+    }
 
 }
 

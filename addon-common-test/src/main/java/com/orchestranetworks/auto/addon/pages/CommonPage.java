@@ -102,7 +102,6 @@ public class CommonPage extends BasePage {
         RestAssured.baseURI = getBaseURL();
         String token = getLoginToken();
         String dataspace = SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER);
-        System.out.println(token);
         RequestSpecification httpRequest = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)

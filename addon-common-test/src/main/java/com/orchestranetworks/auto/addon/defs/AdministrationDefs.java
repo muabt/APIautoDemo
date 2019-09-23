@@ -52,12 +52,6 @@ public class AdministrationDefs {
         onAdministrationSteps.go_to_administration_item(path);
     }
 
-
-    @And("^I delete the dataspace$")
-    public void i_delete_the_dataspace() {
-        onCommonSteps.delete_dataspace_by_service();
-    }
-
     @Given("^I permit to access matching table$")
     public void i_permit_to_access_matching_table() {
         onAdministrationSteps.access_matching_table();
