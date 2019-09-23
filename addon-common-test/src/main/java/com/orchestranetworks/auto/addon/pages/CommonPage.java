@@ -116,8 +116,8 @@ public class CommonPage extends BasePage {
     private String getLoginToken() {
         RestAssured.baseURI = getBaseURL();
         JsonObject loginCredentials = new JsonObject();
-        loginCredentials.addProperty("login", "admin");
-        loginCredentials.addProperty("password", "onvn");
+        loginCredentials.addProperty("login", LoadConfig.getUserName());
+        loginCredentials.addProperty("password", LoadConfig.getPassword());
 
         RequestSpecification httpRequest = RestAssured.given().contentType("application/json")
                 .body(loginCredentials.toString());
