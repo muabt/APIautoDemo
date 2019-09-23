@@ -55,10 +55,10 @@ Feature: Manual Merge
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I select matching policy record of table "Person"
-    And some configurations like belows
+    And the matching process is configured as the followings
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
       | RANDOM                |                | No     | Inline matching                | Inline matching              |              |                   |
-    When I create new Merge policy as belows
+    When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden    | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Last update                    | Last update            | Duplicates and singletons | Yes                   | Yes                            |
     And I click button Save and close
@@ -87,10 +87,10 @@ Feature: Manual Merge
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I select matching policy record of table "Person"
-    And some configurations like belows
+    And the matching process is configured as the followings
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
       | RANDOM                |                | No     | Inline matching                | Inline matching              |              |                   |
-    When I create new Merge policy as belows
+    When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most complete                  | Longest                | Disabled               | Yes                   | Yes                            |
     And I click button Save and close
