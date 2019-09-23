@@ -53,7 +53,7 @@ public class ManualMergeDefs {
     }
 
     @Then("^I will see table RecordMetadata as below$")
-    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) {
+    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect){
         List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
         for (int i = 1; i <= list.size(); i++) {
             Map<String, String> row = list.get(i - 1);
@@ -148,6 +148,7 @@ public class ManualMergeDefs {
             String selectionMode = row.get("Survivor record selection mode");
             String defaultFunction = row.get("Default merge function");
             String useManualMerge = row.get("Used for manual merge");
+            String autoCreateNewGolden = row.get("Auto create new golden");
 
             if (!mergePolicyCode.isEmpty()) {
                 onManualMergeSteps.select_btn_create_record(2);
@@ -164,6 +165,10 @@ public class ManualMergeDefs {
 
             if (!useManualMerge.isEmpty()) {
                 onManualMergeSteps.use_for_merge_function(useManualMerge);
+            }
+
+            if (!autoCreateNewGolden.isEmpty()) {
+                onManualMergeSteps.select_auto_create_new_golden_mode(autoCreateNewGolden);
             }
         }
         onManualMergeSteps.click_btn_save_and_close_internal_popup(1);
@@ -270,6 +275,11 @@ public class ManualMergeDefs {
                 onManualMergeSteps.add_trusted_source_list(trustedSourceList);
             }
         }
+        onManualMergeSteps.click_btn_save_and_close();
+    }
+
+    @And("^I click button Save and close$")
+    public void iClickButtonSaveAndClose() {
         onManualMergeSteps.click_btn_save_and_close();
     }
 }

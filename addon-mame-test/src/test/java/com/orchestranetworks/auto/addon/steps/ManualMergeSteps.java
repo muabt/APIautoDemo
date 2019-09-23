@@ -275,4 +275,10 @@ public class ManualMergeSteps {
     public void select_merge_policy(String mergePolicy) {
         recordDetailPage.getItemCreationWidget().selectDDLByJS("Merge policy", mergePolicy);
     }
+
+    @Step
+    public void select_auto_create_new_golden_mode(String autoCreateNewGolden) {
+        onManualMergePages.getItemCreationWidget().selectDDLByJS("Mode", autoCreateNewGolden);
+    }
+
 }

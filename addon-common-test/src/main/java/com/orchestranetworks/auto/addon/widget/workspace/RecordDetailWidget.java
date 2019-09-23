@@ -6,7 +6,7 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy(RecordDetailWidgetImpl.class)
 public interface RecordDetailWidget extends WidgetObject {
 	
-	 void clickOnTabOfLabel(String label);
+	void clickOnTabOfLabel(String label);
 
     void selectTab(String tabName);
 

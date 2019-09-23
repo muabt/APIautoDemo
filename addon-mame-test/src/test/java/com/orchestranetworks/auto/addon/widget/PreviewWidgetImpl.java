@@ -12,8 +12,10 @@ public class PreviewWidgetImpl extends BaseWidgetImpl implements PreviewWidget {
 
     @Override
     public void clickBtnMerge() {
-        String xPath = "//button[@class='ebx_Button ebx_DefaultButton right']";
+        String xPath = "//button[@class='ebx_Button ebx_DefaultButton right' or @class='ebx_Button ebx_DefaultButton mergeBtn']";
+        waitForVisibilityOfElement(xPath);
         clickOnElement(xPath);
+        waitForAllLoadingCompleted();
     }
 
     @Override

@@ -96,6 +96,13 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     }
 
     @Override
+    public void clickBtnWithLabel(String label, String value) {
+        String xpathBtnExpand = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')]" +
+                "[descendant::*[.='"+ label +"']]//button[@title='"+value+"']";
+        clickOnElement(xpathBtnExpand);
+    }
+
+    @Override
     public String getTextErrorDataModelField() {
         String xPathValue = "(//div[@class='ebx_Error'])[1]";
         String message = getText(xPathValue);

@@ -28,6 +28,8 @@ public interface ItemCreationWidget extends WidgetObject {
 
     void selectDDLByJS(String label, String value);
 
+    void clickBtnWithLabel(String label, String value);
+
     String getTextErrorDataModelField();
 
 	String getTextErrorTableField();
