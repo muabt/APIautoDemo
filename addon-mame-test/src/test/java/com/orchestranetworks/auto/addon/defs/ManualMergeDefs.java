@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
+import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import cucumber.api.DataTable;
 
 import cucumber.api.java.en.And;
@@ -53,7 +55,7 @@ public class ManualMergeDefs {
     }
 
     @Then("^I will see table RecordMetadata as below$")
-    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect){
+    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) {
         List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
         for (int i = 1; i <= list.size(); i++) {
             Map<String, String> row = list.get(i - 1);
@@ -87,8 +89,8 @@ public class ManualMergeDefs {
 
 
     @Given("^I select matching policy record of table \"([^\"]*)\"$")
-    public void i_select_matching_policy_record_of_table(String tblName) {
-        onAdministrationSteps.select_record_with_name(tblName);
+    public void i_select_matching_policy_record_of_table(String label) {
+        onAdministrationSteps.select_record_with_name(label);
     }
 
     @Given("^I want to access the Matching record of table \"([^\"]*)\"$")
@@ -116,8 +118,12 @@ public class ManualMergeDefs {
             String advancedSettings = row.get("Advanced settings");
 
             if (!matchingProcessCode.isEmpty()) {
-                onManualMergeSteps.select_btn_create_record(1);
-                onManualMergeSteps.input_matching_process_code(matchingProcessCode);
+                if (onManualMergeSteps.verify_code_existed(matchingProcessCode)) {
+                    onManualMergeSteps.select_record_with_label(matchingProcessCode);
+                } else {
+                    onManualMergeSteps.select_btn_create_record(1);
+                    onManualMergeSteps.input_matching_process_code(matchingProcessCode);
+                }
             }
 
             if (!active.isEmpty()) {
@@ -151,11 +157,16 @@ public class ManualMergeDefs {
             String selectionMode = row.get("Survivor record selection mode");
             String defaultFunction = row.get("Default merge function");
             String useManualMerge = row.get("Used for manual merge");
-            String autoCreateNewGolden = row.get("Auto create new golden");
+            String mode = row.get("Mode");
+            String applyPermission = row.get("Apply permission on merge view");
 
             if (!mergePolicyCode.isEmpty()) {
-                onManualMergeSteps.select_btn_create_record(2);
-                onManualMergeSteps.input_merge_policy_code(mergePolicyCode);
+                if (onManualMergeSteps.verify_code_existed(mergePolicyCode)) {
+                    onManualMergeSteps.select_record_with_label(mergePolicyCode);
+                } else {
+                    onManualMergeSteps.select_btn_create_record(2);
+                    onManualMergeSteps.input_merge_policy_code(mergePolicyCode);
+                }
             }
 
             if (!selectionMode.isEmpty()) {
@@ -170,8 +181,12 @@ public class ManualMergeDefs {
                 onManualMergeSteps.use_for_merge_function(useManualMerge);
             }
 
-            if (!autoCreateNewGolden.isEmpty()) {
-                onManualMergeSteps.select_auto_create_new_golden_mode(autoCreateNewGolden);
+            if (!mode.isEmpty()) {
+                onManualMergeSteps.select_auto_create_new_golden_mode(mode);
+            }
+
+            if (!applyPermission.isEmpty()) {
+                onManualMergeSteps.apply_permission_on_merge_view(applyPermission);
             }
         }
         onManualMergeSteps.click_btn_save_and_close_internal_popup(1);
@@ -179,9 +194,8 @@ public class ManualMergeDefs {
 
     @And("^I create Survivorship field with selections as followings$")
     public void i_create_survivorship_field_with_selections_as_followings(DataTable dt) throws Exception {
-        onManualMergeSteps.select_merge_policy_record(Serenity.sessionVariableCalled("merge_policy_code"));
+        onManualMergeSteps.select_merge_policy_record(Serenity.sessionVariableCalled(MAMEConstants.MERGE_POLICY_CODE));
         onManualMergeSteps.select_survivor_field_tab();
-        onManualMergeSteps.select_btn_create_record(1);
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
@@ -192,7 +206,12 @@ public class ManualMergeDefs {
             String executeEmpty = row.get("Execute only if empty");
 
             if (!survivorCode.isEmpty()) {
-                onManualMergeSteps.input_survivor_code();
+                if (onManualMergeSteps.verify_code_existed(survivorCode)) {
+                    onManualMergeSteps.select_record_with_label(survivorCode);
+                } else {
+                    onManualMergeSteps.select_btn_create_record(1);
+                    onManualMergeSteps.input_survivor_code(survivorCode);
+                }
             }
 
             if (!field.isEmpty()) {
@@ -283,7 +302,7 @@ public class ManualMergeDefs {
     }
 
     @And("^I click button Save and close$")
-    public void iClickButtonSaveAndClose() {
+    public void i_click_button_save_and_close() {
         onManualMergeSteps.click_btn_save_and_close();
     }
 }

@@ -7,4 +7,5 @@ import net.serenitybdd.core.pages.WidgetObject;
 public interface AdministrationWidget extends WidgetObject{
 
 	void selectAnAdminFeature();
+	boolean verifyCodeExisted(String mergePolicyCode);
 }

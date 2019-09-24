@@ -19,8 +19,8 @@ Feature: Manual Merge
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most trusted source            | Longest                | Disabled               | Yes                   | Yes                            |
     And I create Survivorship field with selections as followings
-      | Survivorship field code | Field  | Merge function      | Auto create new golden | Condition for field value survivorship | Execute only if empty |
-      | RANDOM                  | Gender | Most trusted source | Disabled               |                                        | Yes                   |
+      | Survivorship field code | Field     | Merge function      | Condition for field value survivorship | Execute only if empty |
+      | RANDOM                  | Last name | Most trusted source |                                        | Yes                   |
     And the Source in Trusted source are
       | Name of source | Description     |
       | Pieter         | In Person table |
@@ -28,8 +28,8 @@ Feature: Manual Merge
       | Matching table | Trusted source list |
       | Person         | Pieter              |
     And the Field trusted source with the followings
-      | Matching table | Field      | Trusted source list |
-      | Person         | First name | Pieter              |
+      | Matching table | Field     | Trusted source list |
+      | Person         | Last name | Huibregt            |
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
@@ -130,19 +130,32 @@ Feature: Manual Merge
     And I select first "1" records in table
     Then delete it
 
-  Scenario: UAT-MM05
+  Scenario: UAT-MM06 Apply permission on merge view = No (Have a field is hidden in data model)
     Given I permit to access matching table
-    And I create record with the followings
-      | Data model:DDL          | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: StoreModel | Items     | Yes          |                              |                  |                    |                       |
+#    And I create record with the followings
+#      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+#      | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
     And I select matching policy record of table "Items"
     When I set Merge policy configuration as belows
-      | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden    | Used for manual merge | Apply permission on merge view |
-      | RANDOM            | Most complete                  | Last update            | Duplicates and singletons | Yes                   | Yes                            |
-    And I click button Save and close
-    And I create a child of dataspace "Master Data - Reference" with information as following
-      | Identifier      | Owner               | English Label |
-      | referenceChild1 | admin admin (admin) |               |
-    And I access table "Items" of dataset "Stores" in dataspace "Master Data - Reference > referenceChild1"
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
+      | mergeCodeMM06     | Last update                    | Last update            | Duplicates and singletons | Yes                   | No                             |
+    And I create Survivorship field with selections as followings
+      | Survivorship field code | Field    | Merge function | Condition for field value survivorship | Execute only if empty |
+      | survivorCodeMM06        | Category | Last update    |                                        | Yes                   |
+#    And I create a child of dataspace "Master Data - Reference" with information as following
+#      | Identifier      | Owner               | English Label |
+#      | referenceChild1 | admin admin (admin) |               |
+    And I access table "Items" of dataset "Metadatas" in dataspace "Master Data - Reference > referenceChild1"
     When I select first "2" records in table
     And I select table service "Match and Merge > Merge"
+    Then record view table will be displayed and highlighted as below
+      | Indentifiers | Category      | Brand       | Name             | Available         | defaultPrice | Expire_date             | testSourceField | integer | Hidden_fied |
+      | 1            | name1 - 1 {H} | Branh 1 {H} | Minh Tran {H}    | [List] 20/20  {H} | 120,000 {H}  | 04/09/2019 17:29:55 {H} | 2010 {H}        | {H}     | {H}         |
+      | 2            | name1 - 1     | Branh 1     | Minh Tran Tranhg | [List] 0/4        | 120          | 04/09/2019 17:04:24     | 2010            |         |             |
+    And preview table is displayed as below
+      | Indentifiers     | Category  | Brand   | Name      | Available    | defaultPrice | Expire_date         | testSourceField | integer | Hidden_fied |
+      | [auto generated] | name1 - 1 | Branh 1 | Minh Tran | [List] 20/24 | 120,000      | 04/09/2019 17:29:55 | 2010            |         |             |
+#    And I complete merging process
+#    And I permit to access matching table
+#    And I select first "1" records in table
+#    Then delete it

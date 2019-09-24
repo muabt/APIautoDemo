@@ -36,4 +36,11 @@ public class AdministrationWidgetImpl extends BaseWidgetImpl implements Administ
 			waitForInvisibilityOfElement(XPATH_SELECTOR_PANEL);
 		}
 	}
+
+
+	@Override
+	public boolean verifyCodeExisted(String label) {
+		String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + label + "'])[1]";
+		return isElementExistNow(xPath);
+	}
 }

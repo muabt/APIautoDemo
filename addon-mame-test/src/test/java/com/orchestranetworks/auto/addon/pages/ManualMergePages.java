@@ -38,6 +38,7 @@ public class ManualMergePages extends BasePage {
     private ItemCreationWidget itemCreationWidget;
     private RecordDetailWidget recordDetailWidget;
     private ToolbarWidget toolbarWidget;
+    private AdministrationWidget administrationWidget;
 
     public ManualMergePages(WebDriver driver) {
         super(driver);
@@ -102,5 +103,9 @@ public class ManualMergePages extends BasePage {
 
     public com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget getDefaultview() {
         return defaultViewWidget;
+    }
+
+    public AdministrationWidget getAdministrationWidget(){
+        return administrationWidget;
     }
 }

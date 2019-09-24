@@ -34,19 +34,19 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
             selectRecordWithIndex(i);
         }
     }
-    
+
     @Override
     public void selectLastRecord() {
-    	String xPathSelectRecord = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])";
-    	List<WebElementFacade> list = getPage().findAll(xPathSelectRecord);
-    	
-    	if (list.size() > 0) {
-    		int lastIndex = list.size();
-    		selectRecordWithIndex(lastIndex);
-    		waitForInvisibilityOfElement(xPathSelectRecord);
-    	}
-        
-        
+        String xPathSelectRecord = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])";
+        List<WebElementFacade> list = getPage().findAll(xPathSelectRecord);
+
+        if (list.size() > 0) {
+            int lastIndex = list.size();
+            selectRecordWithIndex(lastIndex);
+            waitForInvisibilityOfElement(xPathSelectRecord);
+        }
+
+
     }
 
     private void selectRecordWithIndex(int index) {
@@ -78,13 +78,9 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         clickByJS(XFormat.of(XPATH_CHECKBOX_RECORD, sSpecialTextPredicates(recordPK)));
     }
 
-    /**
-     * TODO: Change param name to meaningful name
-     *
-     */
     @Override
-    public void accessRecordWithText(String tableName) {
-        String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + tableName + "'])[1]";
+    public void accessRecordWithText(String label) {
+        String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + label + "'])[1]";
         executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
     }
 
@@ -110,4 +106,5 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         int colIndex = getColumnIndexWithLabel(colCode);
         return getTextDataCell(rowInd, colIndex);
     }
+
 }

@@ -17,8 +17,8 @@ public class MetadataSteps {
     public void verify_list_tabs(List<String> listTab) {
         List<String> actualTab = onMetadataPage.getMetadata().getListTab();
         boolean isSelected = onMetadataPage.getMetadata().isMainSelected();
-      //  Assert.assertEquals(listTab, actualTab);
-       assertThat(actualTab).isEqualTo(listTab);
+        //  Assert.assertEquals(listTab, actualTab);
+        assertThat(actualTab).isEqualTo(listTab);
         assertThat(isSelected).isEqualTo(true);
 
     }

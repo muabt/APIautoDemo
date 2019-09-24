@@ -23,4 +23,5 @@ public interface TableViewWidget extends WidgetObject {
 	void clickBtnSelectAndSort();
 
     String get_text_data_cell(int rowInd, String colName);
+
 }

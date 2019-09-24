@@ -94,7 +94,7 @@ public class ManualMergeSteps {
     public void input_merge_policy_code(String code) {
         onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
-        Serenity.setSessionVariable(Constants.MERGE_POLICY_CODE).to(inputCode);
+        Serenity.setSessionVariable(MAMEConstants.MERGE_POLICY_CODE).to(inputCode);
         recordDetailPage.getItemCreationWidget().inputTextWithLabel("Merge policy code", inputCode);
     }
 
@@ -286,6 +286,18 @@ public class ManualMergeSteps {
 
     @Step
     public void select_record_with_label(String mergePolicyCode) {
+        Serenity.setSessionVariable(MAMEConstants.MERGE_POLICY_CODE).to(mergePolicyCode);
         onManualMergePages.getDefaultview().accessRecordWithText(mergePolicyCode);
+        onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+    }
+
+    @Step
+    public boolean verify_code_existed(String mergePolicyCode) {
+        return onManualMergePages.getAdministrationWidget().verifyCodeExisted(mergePolicyCode);
+    }
+
+    @Step
+    public void apply_permission_on_merge_view(String applyPermission) {
+        onManualMergePages.getItemCreationWidget().selectRadioBoxWithLabel("Apply permission on merge view", applyPermission);
     }
 }
