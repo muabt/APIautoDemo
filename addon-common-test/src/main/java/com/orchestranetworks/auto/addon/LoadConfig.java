@@ -109,7 +109,8 @@ public class LoadConfig {
 
     private static String getBaseURL() {
         String url = getURL();
-        url = url.substring(0, url.indexOf(".com") + 4);
+        int end = url.indexOf("/ebx");
+        url = url.substring(0, end);
         return url;
 
     }

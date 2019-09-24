@@ -1,18 +1,17 @@
 package com.orchestranetworks.auto.addon.widget.workspace;
 
-import com.google.gson.JsonObject;
+import org.openqa.selenium.support.pagefactory.ElementLocator;
+
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import com.orchestranetworks.auto.addon.utils.Encode;
+
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.core.pages.PageObject;
-import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 public class DataspaceBriefInfoWidgetImpl extends BaseWidgetImpl implements DataspaceBriefInfoWidget {
     public DataspaceBriefInfoWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {

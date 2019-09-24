@@ -1,13 +1,28 @@
 package com.orchestranetworks.auto.addon.pages;
 
-import com.orchestranetworks.auto.addon.widget.*;
+import org.openqa.selenium.WebDriver;
+
+import com.orchestranetworks.auto.addon.widget.PreviewWidget;
+import com.orchestranetworks.auto.addon.widget.PreviewWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.RelationWidget;
+import com.orchestranetworks.auto.addon.widget.RelationWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.SummaryWidget;
+import com.orchestranetworks.auto.addon.widget.SummaryWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.TableViewWidget;
 import com.orchestranetworks.auto.addon.widget.TableViewWidgetImpl;
-import com.orchestranetworks.auto.addon.widget.general.*;
-
-
-import com.orchestranetworks.auto.addon.widget.workspace.*;
-import org.openqa.selenium.WebDriver;
+import com.orchestranetworks.auto.addon.widget.general.FooterWidget;
+import com.orchestranetworks.auto.addon.widget.general.FooterWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.general.HeaderWidget;
+import com.orchestranetworks.auto.addon.widget.general.HeaderWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
+import com.orchestranetworks.auto.addon.widget.general.NavigationWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
+import com.orchestranetworks.auto.addon.widget.general.ToolbarWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.workspace.DefaultViewImpl;
+import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
+import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidget;
+import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidgetImpl;
 
 
 public class ManualMergePages extends BasePage {

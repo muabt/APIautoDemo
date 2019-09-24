@@ -11,9 +11,6 @@ public class RunMatchSteps {
 	private RunMatchPage onRunMatchPage;
 	
 	public void input_run_match(Map<String, String> runMatchInfo) {
-//        String matchingPolicyCode = SessionData.getValueFromSession(MAMEConstants.MATCHING_POLICY_CODE_KEY);
-//        onRunMatchPage.getRunMatchWidget().selectMatchingProcessCode(MATCH_PROCESS, matchingPolicyCode);
-        
         String matchAgainst = runMatchInfo.get(MATCH_AGAINST);
         onRunMatchPage.getRunMatchWidget().selectRecordToMatchAgainst(MATCH_AGAINST, matchAgainst);
     }
@@ -21,5 +18,13 @@ public class RunMatchSteps {
 	public void click_on_run_match() {
         onRunMatchPage.getRunMatchWidget().clickBtnRunMatch();
     }
+	
+	public void verify_message_run_match_service_can_not_executed_by_no_matching_process_is_actived() {
+		onRunMatchPage.getRunMatchWidget().verifyMessageNoMatchingProcessIsActived();
+	}
+	
+	public void verify_message_run_match_service_can_not_executed_by_no_decision_tree_is_configured() {
+		onRunMatchPage.getRunMatchWidget().verifyMessageNoDecisionTreeIsConfigured();
+	}
 
 }

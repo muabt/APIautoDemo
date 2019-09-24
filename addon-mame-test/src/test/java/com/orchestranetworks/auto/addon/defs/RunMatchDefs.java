@@ -1,6 +1,5 @@
 package com.orchestranetworks.auto.addon.defs;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -45,5 +44,16 @@ public class RunMatchDefs {
     public void click_on_run_match_button() throws Throwable {
         onRunMatchSteps.click_on_run_match();
     }
-
+    
+    @Then("^Verify message Run Match service can not be executed. No matching process is actived$")
+    public void verify_message_run_match_service_can_not_executed_by_no_matching_process_is_actived() throws Throwable {
+        onRunMatchSteps.verify_message_run_match_service_can_not_executed_by_no_matching_process_is_actived();
+    }
+    
+    @Then("^Verify message Run Match service can not be executed. No Decision Tree is configured$")
+    public void verify_message_run_match_service_can_not_executed_by_no_decision_tree_is_configured() throws Throwable {
+        onRunMatchSteps.verify_message_run_match_service_can_not_executed_by_no_decision_tree_is_configured();
+    }
+    
+   
 }

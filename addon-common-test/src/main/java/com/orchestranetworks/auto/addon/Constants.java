@@ -50,5 +50,4 @@ public final class Constants {
     public static final String MERGE_POLICY_CODE = "merge_policy_code";
     public static final String MATCHING_PROCESS_CODE = "matching_process_code";
 
-    public static final String IFRAME_SERVICE = "serviceIframe" ;
 }

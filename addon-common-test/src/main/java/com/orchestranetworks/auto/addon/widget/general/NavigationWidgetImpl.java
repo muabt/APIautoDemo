@@ -125,7 +125,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 
     @Override
     public boolean isDataspaceExist(String dataspace) {
-        dataspace = Encode.of(SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER));
+        dataspace = SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER);
         RequestSpecification httpRequest = RestAssured.given()
                 .spec(LoadConfig.requestSpecification())
                 .queryParam("includeClosed", "true")

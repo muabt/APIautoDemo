@@ -2,7 +2,6 @@ package com.orchestranetworks.auto.addon.defs;
 
 import java.util.List;
 
-import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 import com.orchestranetworks.auto.addon.steps.MetadataSteps;
 
 import cucumber.api.java.en.And;

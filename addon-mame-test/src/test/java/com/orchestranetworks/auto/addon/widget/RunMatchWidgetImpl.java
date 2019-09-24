@@ -1,12 +1,18 @@
 package com.orchestranetworks.auto.addon.widget;
 
+import org.junit.Assert;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 
 public class RunMatchWidgetImpl extends BaseWidgetImpl implements RunMatchWidget {
+	
+	private final static String MESSAGE_NO_MATCHING_IS_ACTIVED = "The run match service can't be executed: No matching process is actived. Please check your configuration.";
+	
+	private final static String MESSAGE_NO_DECISION_TREE_IS_CONFIGURED = "The decision tree has not been configured properly. Please check your configuration.";
 	
     public RunMatchWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
         super(page, locator, timeoutInMilliseconds);
@@ -31,4 +37,24 @@ public class RunMatchWidgetImpl extends BaseWidgetImpl implements RunMatchWidget
         String xPathValue = "//div[@class='ebx_ISS_Item' ]/div[.='" + value + "']";
         executeJS("arguments[0].click();", xPathValue);
     }
+    
+    public void verifyMessageNoMatchingProcessIsActived() {
+    	String xPath = "//pop-up//p";
+    	WebElementFacade element = getElement(xPath);
+    	String actualMessage = element.getText().trim();
+    	Assert.assertEquals(MESSAGE_NO_MATCHING_IS_ACTIVED, actualMessage);
+    	
+    }
+    
+    
+    public void verifyMessageNoDecisionTreeIsConfigured() {
+    	String xPath = "//pop-up//p";
+    	WebElementFacade element = getElement(xPath);
+    	String actualMessage = element.getText().trim();
+    	Assert.assertEquals(MESSAGE_NO_DECISION_TREE_IS_CONFIGURED, actualMessage);
+    	
+    }
+    
+    
+    
 }
