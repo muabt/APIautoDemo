@@ -300,4 +300,10 @@ public class ManualMergeSteps {
     public void apply_permission_on_merge_view(String applyPermission) {
         onManualMergePage.getItemCreationWidget().selectRadioBoxWithLabel("Apply permission on merge view", applyPermission);
     }
+    @Step
+    public void close_error_popup() {
+        onManualMergePage.switchOutDefaultIFrame();
+        onManualMergePage.getPopupWidget().clickBtnClose();
+        onManualMergePage.switchToIFrame(Constants.IFRAME_LEGACY);
+    }
 }

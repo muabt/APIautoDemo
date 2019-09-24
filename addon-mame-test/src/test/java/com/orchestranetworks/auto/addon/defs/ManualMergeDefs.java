@@ -305,4 +305,9 @@ public class ManualMergeDefs {
     public void i_click_button_save_and_close() {
         onManualMergeSteps.click_btn_save_and_close();
     }
+
+    @And("^I close the error popup$")
+    public void iCloseTheErrorPopup() {
+        onManualMergeSteps.close_error_popup();
+    }
 }

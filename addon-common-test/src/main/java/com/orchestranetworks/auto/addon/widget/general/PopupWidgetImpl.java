@@ -30,4 +30,12 @@ public class PopupWidgetImpl extends BaseWidgetImpl implements PopupWidget {
 		clickOnElement(xPath);
 		waitForInvisibilityOfElement(xPath);
 	}
+
+	@Override
+	public void clickBtnClose() {
+		String xPath = "//div[@id='ebx_DialogBox']//button[text()='Close']|//div[@class='_ebx-pop-up']//button[contains(.,'Close')]";
+		clickOnElement(xPath);
+		//getElement(xPath).click();
+		waitForInvisibilityOfElement(xPath);
+	}
 }

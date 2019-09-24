@@ -35,6 +35,14 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         }
     }
 
+
+    @Override
+    public void selectCheckboxWithText(String text) {
+        String xpath = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])" +
+                "[count(//div[@id='ebx_WorkspaceContent']//tr[td[text()='"+text+"']]/preceding-sibling::*)+1]";
+        clickByJS(xpath);
+    }
+
     @Override
     public void selectLastRecord() {
         String xPathSelectRecord = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])";
@@ -99,7 +107,6 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         switchToLastIFrame();
         clickBtn(Constants.BTN_SELECT_AND_SORT);
     }
-
 
     @Override
     public String get_text_data_cell(int rowInd, String colCode) {

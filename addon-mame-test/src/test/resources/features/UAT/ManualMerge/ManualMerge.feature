@@ -72,9 +72,6 @@ Feature: Manual Merge
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I select matching policy record of table "Person"
-    And the matching process is configured as the followings
-      | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
-      | RANDOM                |                | No     | Inline matching                | Inline matching              |              |                   |
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden    | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Last update                    | Last update            | Duplicates and singletons | Yes                   | Yes                            |
@@ -93,6 +90,7 @@ Feature: Manual Merge
       | Id               | First name | Last name | Gender | Residence | Age | Birth date | Birth place      |
       | [auto generated] | Cornelia   | Wagemaker |        |           | 0   | 10/28/1922 | Sint Philipsland |
     And I complete merging process
+    And I close the error popup
     And I delete the dataspace
     And I permit to access matching table
     And I select first "1" records in table
@@ -104,9 +102,6 @@ Feature: Manual Merge
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I select matching policy record of table "Person"
-    And the matching process is configured as the followings
-      | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
-      | RANDOM                |                | No     | Inline matching                | Inline matching              |              |                   |
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most complete                  | Longest                | Disabled               | Yes                   | Yes                            |
@@ -124,6 +119,65 @@ Feature: Manual Merge
     And preview table is displayed as below
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place      |
       | 0157a930-7725-41d0-b1c4-281b794d38aa | Cornelia   | Wagemaker |        |           | 0   | 10/21/1847 | Sint Philipsland |
+
+    And I complete merging process
+    And I delete the dataspace
+    And I permit to access matching table
+    And I select first "1" records in table
+    Then delete it
+
+  Scenario: UAT-MM03 Default merge function = Max
+    Given I permit to access matching table
+    And I create record with the followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
+    And I select matching policy record of table "Place"
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
+      | RANDOM            | Most recently acquired         | Max                    | Only duplicates        | Yes                   | Yes                            |
+    And I click button Save and close
+    And I create a child of dataspace "Master Data - Reference" with information as following
+      | Identifier     | Owner               | English Label |
+      | referenceChild | admin admin (admin) |               |
+    And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
+    When I select first "2" records in table
+    And I select table service "Match and Merge > Merge"
+    Then record view table will be displayed and highlighted as below
+      | Id | Name              |
+      | 1  | Poortvliet        |
+      | 2  | Brouwershaven {H} |
+    And preview table is displayed as below
+      | Id               | Name          |
+      | [auto generated] | Brouwershaven |
+    And I complete merging process
+    And I delete the dataspace
+    And I permit to access matching table
+    And I select first "1" records in table
+    Then delete it
+
+  Scenario: UAT-MM04 Default merge function = Min
+    Given I permit to access matching table
+    And I create record with the followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
+    And I select matching policy record of table "Place"
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Auto create new golden | Used for manual merge | Apply permission on merge view |
+      | RANDOM            | Most trust source              | Min                    | Only duplicates        | Yes                   | Yes                            |
+    And I click button Save and close
+    And I create a child of dataspace "Master Data - Reference" with information as following
+      | Identifier     | Owner               | English Label |
+      | referenceChild | admin admin (admin) |               |
+    And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
+    When I select first "2" records in table
+    And I select table service "Match and Merge > Merge"
+    Then record view table will be displayed and highlighted as below
+      | Id | Name              |
+      | 1  | Poortvliet    {H} |
+      | 2  | Brouwershaven     |
+    And preview table is displayed as below
+      | Id               | Name          |
+      | [auto generated] | Poortvliet |
     And I complete merging process
     And I delete the dataspace
     And I permit to access matching table
