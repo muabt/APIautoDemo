@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.pages;
 
+import com.orchestranetworks.auto.addon.widget.workspace.*;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.widget.PreviewWidget;
@@ -18,14 +19,9 @@ import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
 import com.orchestranetworks.auto.addon.widget.general.NavigationWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
 import com.orchestranetworks.auto.addon.widget.general.ToolbarWidgetImpl;
-import com.orchestranetworks.auto.addon.widget.workspace.DefaultViewImpl;
-import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
-import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidgetImpl;
-import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidget;
-import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidgetImpl;
 
 
-public class ManualMergePages extends BasePage {
+public class ManualMergePage extends BasePage {
     private NavigationWidget navPanel;
     private HeaderWidget header;
     private TableViewWidget tableViewWidget;
@@ -40,7 +36,7 @@ public class ManualMergePages extends BasePage {
     private ToolbarWidget toolbarWidget;
     private AdministrationWidget administrationWidget;
 
-    public ManualMergePages(WebDriver driver) {
+    public ManualMergePage(WebDriver driver) {
         super(driver);
         this.navPanel = new NavigationWidgetImpl(this, null, 100);
         this.header = new HeaderWidgetImpl(this, null, 100);

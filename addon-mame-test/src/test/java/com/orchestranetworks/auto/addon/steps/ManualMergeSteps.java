@@ -12,7 +12,7 @@ import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
-import com.orchestranetworks.auto.addon.pages.ManualMergePages;
+import com.orchestranetworks.auto.addon.pages.ManualMergePage;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -22,14 +22,14 @@ import org.junit.Assert;
 
 public class ManualMergeSteps {
 
-    ManualMergePages onManualMergePages;
+    ManualMergePage onManualMergePage;
     DefaultViewPage onDefaultViewPage;
     RecordDetailPage recordDetailPage;
     CommonPage onCommonPage;
 
     @Step
     public void verify_record_view_table(List<List<String>> expectedTbl) {
-        List<List<String>> actualTbl = onManualMergePages.getTableViewWidget().getDataRecordViewTable();
+        List<List<String>> actualTbl = onManualMergePage.getTableViewWidget().getDataRecordViewTable();
         compare_record_view_tbl(expectedTbl, actualTbl);
         verify_record_view_cell_highlighted(expectedTbl);
     }
@@ -39,7 +39,7 @@ public class ManualMergeSteps {
         for (int row = 1; row < expectedTbl.size(); row++) {
             for (int col = 0; col < expectedHeader.size(); col++) {
                 String expectedCell = expectedTbl.get(row).get(col);
-                boolean isHighlighted = onManualMergePages.getTableViewWidget().isCellHighlighted(row, col);
+                boolean isHighlighted = onManualMergePage.getTableViewWidget().isCellHighlighted(row, col);
                 if (expectedCell.contains("{H}")) {
                     assertTrue(isHighlighted);
                 } else {
@@ -75,24 +75,24 @@ public class ManualMergeSteps {
 
     @Step
     public void verify_table_preview(List<List<String>> expectedTablePreview) {
-        List<List<String>> actualTablePreview = onManualMergePages.getTableViewWidget().getDataPreviewTable();
+        List<List<String>> actualTablePreview = onManualMergePage.getTableViewWidget().getDataPreviewTable();
         assertEquals(expectedTablePreview, actualTablePreview);
 
     }
 
     @Step
     public void click_button_next() {
-        onManualMergePages.getPreviewWidget().clickBtnNext();
+        onManualMergePage.getPreviewWidget().clickBtnNext();
     }
 
     @Step
     public void click_button_merge() {
-        onManualMergePages.getPreviewWidget().clickBtnMerge();
+        onManualMergePage.getPreviewWidget().clickBtnMerge();
     }
 
     @Step
     public void input_merge_policy_code(String code) {
-        onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+        onManualMergePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
         Serenity.setSessionVariable(MAMEConstants.MERGE_POLICY_CODE).to(inputCode);
         recordDetailPage.getItemCreationWidget().inputTextWithLabel("Merge policy code", inputCode);
@@ -100,7 +100,7 @@ public class ManualMergeSteps {
 
     @Step
     public void input_matching_process_code(String code) {
-        onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+        onManualMergePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
         recordDetailPage.getItemCreationWidget().inputTextWithLabel("Matching process code", inputCode);
         SessionData.saveValueToSession(MAMEConstants.MATCHING_POLICY_CODE_KEY, inputCode);
@@ -108,22 +108,22 @@ public class ManualMergeSteps {
 
     @Step
     public void verify_status_of_buttons(String status) {
-        assertThat(status).isEqualTo(onManualMergePages.getTableViewWidget().isBtnCancelLastActionActive());
+        assertThat(status).isEqualTo(onManualMergePage.getTableViewWidget().isBtnCancelLastActionActive());
     }
 
     @Step
     public void verify_name_of_table(String tableName) {
-        Assert.assertEquals(tableName, onManualMergePages.getTableViewWidget().getMergeStepsSelection());
+        Assert.assertEquals(tableName, onManualMergePage.getTableViewWidget().getMergeStepsSelection());
     }
 
     @Step
     public void select_merge_policy_tab() {
-        onManualMergePages.getRecordDetailWidget().selectTab("Merge policy");
+        onManualMergePage.getRecordDetailWidget().selectTab("Merge policy");
     }
 
     @Step
     public void select_btn_create_record(int index) {
-        onManualMergePages.getToolbarWidget().clickBtnCreateRecordMatchAndMerge(index);
+        onManualMergePage.getToolbarWidget().clickBtnCreateRecordMatchAndMerge(index);
     }
 
     @Step
@@ -131,10 +131,10 @@ public class ManualMergeSteps {
         switch (name) {
             case "Reset":
             case "Apply merge policy":
-                assertEquals(name, onManualMergePages.getTableViewWidget().getTextOfRightBtn());
+                assertEquals(name, onManualMergePage.getTableViewWidget().getTextOfRightBtn());
                 break;
             case "Cancel last action":
-                assertEquals(name, onManualMergePages.getTableViewWidget().getTextOfCancelActionButton());
+                assertEquals(name, onManualMergePage.getTableViewWidget().getTextOfCancelActionButton());
                 break;
         }
     }
@@ -149,46 +149,46 @@ public class ManualMergeSteps {
     @Step
     public void
     select_survivor_record(String selectionMode) {
-        onManualMergePages.getItemCreationWidget().selectDDLByJS("Survivor record selection mode", selectionMode);
+        onManualMergePage.getItemCreationWidget().selectDDLByJS("Survivor record selection mode", selectionMode);
     }
 
     @Step
     public void select_default_merge_function(String defaultFunction) {
-        onManualMergePages.getItemCreationWidget().selectDDLByJS("Default merge function", defaultFunction);
+        onManualMergePage.getItemCreationWidget().selectDDLByJS("Default merge function", defaultFunction);
     }
 
     @Step
     public void use_for_merge_function(String useManualMerge) {
-        onManualMergePages.getItemCreationWidget().selectRadioBoxWithLabel("Used for manual merge", useManualMerge);
+        onManualMergePage.getItemCreationWidget().selectRadioBoxWithLabel("Used for manual merge", useManualMerge);
     }
 
     @Step
     public void click_btn_save() {
-        onManualMergePages.getFooterWidget().clickBtnSave();
+        onManualMergePage.getFooterWidget().clickBtnSave();
     }
 
     @Step
     public void click_btn_save_and_close_internal_popup(int numberOfPopup) {
         for (int i = 0; i < numberOfPopup; i++) {
-            onManualMergePages.getFooterWidget().clickBtnSaveAndCloseInInternalPopup();
-            onManualMergePages.switchOutDefaultIFrame();
-            onManualMergePages.switchToIFrame(Constants.IFRAME_LEGACY);
+            onManualMergePage.getFooterWidget().clickBtnSaveAndCloseInInternalPopup();
+            onManualMergePage.switchOutDefaultIFrame();
+            onManualMergePage.switchToIFrame(Constants.IFRAME_LEGACY);
             for (int j = 0; j < numberOfPopup - i; j++) {
-                onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+                onManualMergePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
             }
         }
     }
 
     @Step
     public void click_btn_save_and_close() {
-        onManualMergePages.switchToIFrame(Constants.IFRAME_LEGACY);
-        onManualMergePages.getFooterWidget().clickBtnSaveAndClose();
+        onManualMergePage.switchToIFrame(Constants.IFRAME_LEGACY);
+        onManualMergePage.getFooterWidget().clickBtnSaveAndClose();
     }
 
     @Step
     public void select_survivor_field_tab() {
-        onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
-        onManualMergePages.getRecordDetailWidget().selectTab("Survivor field");
+        onManualMergePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+        onManualMergePage.getRecordDetailWidget().selectTab("Survivor field");
     }
 
     @Step
@@ -220,27 +220,27 @@ public class ManualMergeSteps {
 
     @Step
     public void select_matching_process_tab() {
-        onManualMergePages.getRecordDetailWidget().selectTab("Matching process");
+        onManualMergePage.getRecordDetailWidget().selectTab("Matching process");
     }
 
     @Step
     public void selectActive(String active) {
-        onManualMergePages.getRecordDetailWidget().selectRadioButton("Active", active);
+        onManualMergePage.getRecordDetailWidget().selectRadioButton("Active", active);
     }
 
     @Step
     public void select_matching_execution_on_creation(String matchingExecutionOnCreation) {
-        onManualMergePages.getItemCreationWidget().selectDDLByJS("Matching execution on creation", matchingExecutionOnCreation);
+        onManualMergePage.getItemCreationWidget().selectDDLByJS("Matching execution on creation", matchingExecutionOnCreation);
     }
 
     @Step
     public void select_matching_excution_on_update(String matchingExecutionOnUpdate) {
-        onManualMergePages.getItemCreationWidget().selectDDLByJS("Matching execution on update", matchingExecutionOnUpdate);
+        onManualMergePage.getItemCreationWidget().selectDDLByJS("Matching execution on update", matchingExecutionOnUpdate);
     }
 
     @Step
     public void select_merge_policy_record(String record) {
-        onManualMergePages.getDefaultview().accessRecordWithText(record);
+        onManualMergePage.getDefaultview().accessRecordWithText(record);
     }
 
     @Step
@@ -281,23 +281,23 @@ public class ManualMergeSteps {
 
     @Step
     public void select_auto_create_new_golden_mode(String autoCreateNewGolden) {
-        onManualMergePages.getItemCreationWidget().selectDDLByJS("Mode", autoCreateNewGolden);
+        onManualMergePage.getItemCreationWidget().selectDDLByJS("Mode", autoCreateNewGolden);
     }
 
     @Step
     public void select_record_with_label(String mergePolicyCode) {
         Serenity.setSessionVariable(MAMEConstants.MERGE_POLICY_CODE).to(mergePolicyCode);
-        onManualMergePages.getDefaultview().accessRecordWithText(mergePolicyCode);
-        onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+        onManualMergePage.getDefaultview().accessRecordWithText(mergePolicyCode);
+        onManualMergePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
     }
 
     @Step
     public boolean verify_code_existed(String mergePolicyCode) {
-        return onManualMergePages.getAdministrationWidget().verifyCodeExisted(mergePolicyCode);
+        return onManualMergePage.getAdministrationWidget().verifyCodeExisted(mergePolicyCode);
     }
 
     @Step
     public void apply_permission_on_merge_view(String applyPermission) {
-        onManualMergePages.getItemCreationWidget().selectRadioBoxWithLabel("Apply permission on merge view", applyPermission);
+        onManualMergePage.getItemCreationWidget().selectRadioBoxWithLabel("Apply permission on merge view", applyPermission);
     }
 }
