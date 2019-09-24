@@ -615,20 +615,6 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         }
     }
 
-    /**
-     * =====================================POPUP/ALERT============================================================
-     */
-    public void confirmPopupOK() {
-        String xPath = "//div[@id='ebx_DialogBox']//button[text()='OK']|//div[@class='_ebx-pop-up']//button[contains(.,'OK')]";
-        waitElementToBePresent(xPath).waitUntilClickable().click();
-        waitForAllLoadingCompleted();
-    }
-
-    public void confirmPopupYES() {
-        String xPath = "//div[@id='ebx_DialogBox']//button[text()='Yes']";
-        waitElementToBePresent(xPath).waitUntilClickable().click();
-    }
-
     public void inputDateTime(String label, String datetime) {
         String[] date = datetime.split("/");
         // input month value
@@ -637,6 +623,5 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "day"), date[1]);
         // input year value
         waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "year"), date[2]);
-        waitAbit(1000);
     }
 }

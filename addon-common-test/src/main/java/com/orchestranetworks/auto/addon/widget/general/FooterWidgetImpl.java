@@ -47,7 +47,6 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
 
     @Override
     public void clickBtnSaveAndCloseInInternalPopup() {
-        waitAbit(1000);
         clickBtn("Save and close");
     }
 

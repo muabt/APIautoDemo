@@ -35,8 +35,5 @@ public class AdministrationWidgetImpl extends BaseWidgetImpl implements Administ
 			executeJS("arguments[0].style.visibility='hidden';","//div[@id='ebx_SelectorPanel_mask']");
 			waitForInvisibilityOfElement(XPATH_SELECTOR_PANEL);
 		}
-		waitAbit(1000);
 	}
-	
-
 }

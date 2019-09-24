@@ -104,6 +104,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         clickBtn(Constants.BTN_SELECT_AND_SORT);
     }
 
+
     @Override
     public String get_text_data_cell(int rowInd, String colCode) {
         int colIndex = getColumnIndexWithLabel(colCode);

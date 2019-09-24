@@ -66,20 +66,23 @@ public class ManualMergeDefs {
             if (!recordID.isEmpty()) {
                 onDatasetSteps.verify_record_value(i, "id", recordID);
             }
+
             if (!groupID.isEmpty()) {
                 onManualMergeSteps.verify_group_id(i);
             }
+
             if (!state.isEmpty()) {
                 onDatasetSteps.verify_record_value(i, "state", state);
             }
+
             if (!autoCreated.isEmpty()) {
                 onDatasetSteps.verify_record_value(i, "autoCreated", autoCreated);
             }
+
             if (!functionalID.isEmpty()) {
                 onDatasetSteps.verify_record_value(i, "functionalId", functionalID);
             }
         }
-
     }
 
 
@@ -259,6 +262,7 @@ public class ManualMergeDefs {
     public void the_field_trusted_source_with_the_followings(DataTable dt) {
         onAdministrationSteps.access_field_trusted_source();
         onAdministrationSteps.click_create_record();
+
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
             String matchingTable = row.get("Matching table");

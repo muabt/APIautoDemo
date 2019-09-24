@@ -96,10 +96,11 @@ public class DatasetSteps extends ScenarioSteps {
 			defaultViewPage.getDefaultViewWidget().selectAllRecord();
 			recordDetailPage.getToolbar().clickBtnByLabel("Action");
 			recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
-			recordDetailPage.getDefaultViewWidget().confirmPopupOK();
+			recordDetailPage.getPopupWidget().confirmOK();
 		}
 	}
 
+	@Step
     public void verify_record_value(int rowInd, String colName, String expected) {
         assertThat(defaultViewPage.getDefaultViewWidget().get_text_data_cell(rowInd, colName)).isEqualTo(expected);
     }

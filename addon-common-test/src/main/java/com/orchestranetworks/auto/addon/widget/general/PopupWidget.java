@@ -5,6 +5,7 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 @ImplementedBy (PopupWidgetImpl.class)
 public interface PopupWidget extends WidgetObject {
+
 	void confirmOK();
 	void confirmYES();
 }

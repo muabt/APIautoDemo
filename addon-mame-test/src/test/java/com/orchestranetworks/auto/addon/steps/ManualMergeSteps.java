@@ -138,6 +138,7 @@ public class ManualMergeSteps {
         }
     }
 
+    @Step
     public void verify_group_id(int rowInd) {
         String expected = onDefaultViewPage.getDefaultViewWidget().get_text_data_cell(1, "groupId");
         String actual = onDefaultViewPage.getDefaultViewWidget().get_text_data_cell(rowInd, "groupId");
