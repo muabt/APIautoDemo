@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.MAMEConstants;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
@@ -101,8 +102,9 @@ public class ManualMergeSteps {
     public void input_matching_process_code(String code) {
         onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
-        Serenity.setSessionVariable(Constants.MATCHING_PROCESS_CODE).to(inputCode);
         recordDetailPage.getItemCreationWidget().inputTextWithLabel("Matching process code", inputCode);
+        //
+        SessionData.saveValueToSession(MAMEConstants.MATCHING_POLICY_CODE_KEY, inputCode);
     }
 
     @Step

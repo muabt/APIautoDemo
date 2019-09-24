@@ -292,7 +292,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
      */
     public String xPathBtn(String parentXpath, String btnName, int index) {
         String xPath = "(" + parentXpath
-                + "//button[(@type='button' or @type='submit' or not(@type)) and not(@style='display: none;')][descendant-or-self::*[text()='"
+                + "//button[(@type='button' or @type='submit' or not(@type)) and not(@style='display: none;')][descendant-or-self::*[normalize-space(text())='"
                 + btnName + "' or @title='" + btnName + "' or @value='" + btnName + "']])[" + index + "]";
         System.out.println("xPath: " + xPath);
         return xPath;

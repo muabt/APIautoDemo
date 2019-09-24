@@ -5,6 +5,7 @@ public final class Constants {
     public static final String CHILD_DATASET = "Child Dataset";
     public static final String DATASPACE_IDENTIFIER = "Dataspace_identifier";
     public static final String IFRAME_LEGACY = "ebx-legacy-component";
+    public static final String IFRAME_SERVICE = "serviceIframe";
     public static final String IFRAME_INTERNAL_POPUP = "ebx_InternalPopup_frame";
     public static final String TEXT_SEARCH = "Text search";
     public static final String FUZZY_SEARCH = "Fuzzy search";

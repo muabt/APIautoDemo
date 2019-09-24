@@ -1,12 +1,15 @@
 package com.orchestranetworks.auto.addon.widget;
 
-import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
-import net.serenitybdd.core.pages.PageObject;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.pagefactory.ElementLocator;
+
+import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
+
+import net.serenitybdd.core.pages.PageObject;
 
 public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidget {
     private static final String XPATH_RCV_CELL = "(//record-view//div[@class='bottom']//tr[contains(@class,\"row\")][%r%]/td[contains(@class,'cell-container')]//span[@title])[%c%]";
