@@ -1,6 +1,7 @@
 package com.orchestranetworks.auto.addon.defs;
 
 import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DataspaceSteps;
@@ -8,6 +9,7 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 import java.util.ArrayList;
@@ -56,9 +58,11 @@ public class DataspaceDefs {
         String engLabel = row.get("English Label");
 
         onCommonSteps.access_menu(Constants.MENU_DATASPACE);
-//        if (onDataspaceSteps.is_dataspace_exist(identifier)) {
-//            onDataspaceSteps.delete_dataspace_by_service();
-//        }
+        if (!identifier.isEmpty()) {
+            SessionData.saveValueToSession(Constants.DATASPACE_IDENTIFIER, identifier);
+            if (onDataspaceSteps.is_dataspace_exist(identifier))
+                onDataspaceSteps.delete_dataspace_by_service();
+        }
         onCommonSteps.go_to_dataspace(parentDataspacePath);
         onDataspaceSteps.click_btn_create_dataspace();
 

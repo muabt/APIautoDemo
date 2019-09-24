@@ -29,5 +29,5 @@ public interface NavigationWidget extends WidgetObject {
 
 	NavigationWidget selectAdministrationFeature();
 
-	boolean isNavigationItemExist(String dataspace);
+	boolean isDataspaceExist(String dataspace);
 }

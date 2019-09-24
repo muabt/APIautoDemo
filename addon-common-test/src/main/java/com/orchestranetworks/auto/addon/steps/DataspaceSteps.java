@@ -2,11 +2,9 @@ package com.orchestranetworks.auto.addon.steps;
 
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.SessionData;
-import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DataspaceBriefInfoPage;
 import com.orchestranetworks.auto.addon.pages.DataspaceCreationPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -80,8 +78,7 @@ public class DataspaceSteps extends ScenarioSteps {
 
     @Step
     public boolean is_dataspace_exist(String dataspace) {
-        onDataspaceBriefInfoPage.getNavPanel().expandAllNavigationItems();
-        return onDataspaceBriefInfoPage.getNavPanel().isNavigationItemExist(dataspace);
+        return onDataspaceBriefInfoPage.getNavPanel().isDataspaceExist(dataspace);
 
     }
 

@@ -50,41 +50,16 @@ public class DataspaceBriefInfoWidgetImpl extends BaseWidgetImpl implements Data
     }
     @Override
     public void deleteDataspaceByService() {
-        RestAssured.baseURI = getBaseURL();
-        String token = getLoginToken();
         String dataspace = Encode.of(SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER));
         RequestSpecification httpRequest = RestAssured.given()
-                .contentType(ContentType.JSON)
-                .header("Authorization", token)
-                .urlEncodingEnabled(false)
+                .spec(LoadConfig.requestSpecification())
                 .queryParam("deleteDataOnClose", "true")
-                .accept("application/json").log().all();
+                .log().all();
 
         Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspace + ":close");
         response.then().assertThat().statusCode(204);
     }
 
 
-    private String getLoginToken() {
-        RestAssured.baseURI = getBaseURL();
-        JsonObject loginCredentials = new JsonObject();
-        loginCredentials.addProperty("login", LoadConfig.getUserName());
-        loginCredentials.addProperty("password", LoadConfig.getPassword());
 
-        RequestSpecification httpRequest = RestAssured.given().contentType("application/json")
-                .body(loginCredentials.toString());
-
-        Response response = httpRequest.post("/ebx-ui/rest/authentication/v1/token/create");
-        JsonPath jsonRes = new JsonPath(response.asString());
-
-        String token = jsonRes.getString("tokenType") + " " + jsonRes.getString("accessToken");
-        return token;
-    }
-
-    private String getBaseURL() {
-        String url = LoadConfig.getURL();
-        url = url.substring(0, url.indexOf(".com") + 4);
-        return url;
-
-    }
 }

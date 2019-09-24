@@ -2,6 +2,12 @@ package com.orchestranetworks.auto.addon.widget.general;
 
 
 import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.LoadConfig;
+import com.orchestranetworks.auto.addon.utils.Encode;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -121,7 +127,14 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     }
 
     @Override
-    public boolean isNavigationItemExist(String dataspace) {
-        return isElementExistNow(XPATH_NAVIGATION_ITEM);
+    public boolean isDataspaceExist(String dataspace) {
+        dataspace = Encode.of(SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER));
+        RequestSpecification httpRequest = RestAssured.given()
+                .spec(LoadConfig.requestSpecification())
+                .queryParam("includeClosed", "true")
+                .log().all();
+
+        Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspace + ":information");
+        return response.getStatusCode() == 200;
     }
 }
