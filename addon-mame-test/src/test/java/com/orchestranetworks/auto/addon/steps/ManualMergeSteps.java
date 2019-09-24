@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.MAMEConstants;
+import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
@@ -103,7 +103,6 @@ public class ManualMergeSteps {
         onManualMergePages.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
         recordDetailPage.getItemCreationWidget().inputTextWithLabel("Matching process code", inputCode);
-        //
         SessionData.saveValueToSession(MAMEConstants.MATCHING_POLICY_CODE_KEY, inputCode);
     }
 
@@ -193,8 +192,10 @@ public class ManualMergeSteps {
     }
 
     @Step
-    public void input_survivor_code() {
-        recordDetailPage.getItemCreationWidget().inputTextWithLabel("Survivorship field code", onCommonPage.getRandomString());
+    public void input_survivor_code(String code) {
+        String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
+        recordDetailPage.getItemCreationWidget().inputTextWithLabel("Survivorship field code", inputCode);
+        SessionData.saveValueToSession(MAMEConstants.MATCHING_POLICY_CODE_KEY, inputCode);
     }
 
     @Step
@@ -283,4 +284,8 @@ public class ManualMergeSteps {
         onManualMergePages.getItemCreationWidget().selectDDLByJS("Mode", autoCreateNewGolden);
     }
 
+    @Step
+    public void select_record_with_label(String mergePolicyCode) {
+        onManualMergePages.getDefaultview().accessRecordWithText(mergePolicyCode);
+    }
 }
