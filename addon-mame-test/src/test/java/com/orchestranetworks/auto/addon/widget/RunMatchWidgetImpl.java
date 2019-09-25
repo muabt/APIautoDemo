@@ -20,6 +20,7 @@ public class RunMatchWidgetImpl extends BaseWidgetImpl implements RunMatchWidget
     
     public void clickBtnRunMatch() {
     	clickBtn("Run match");
+    	waitAbit(1000);
     }
     
     

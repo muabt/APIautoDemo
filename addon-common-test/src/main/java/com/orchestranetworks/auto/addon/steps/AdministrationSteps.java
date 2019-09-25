@@ -86,4 +86,17 @@ public class AdministrationSteps extends ScenarioSteps {
     public void click_create_record() {
         administration.getToolbar().clickBtnCreateRecord();
     }
+
+
+    @Step
+	public void access_import_service_in_actions_in_left_panel() {
+		administration.getNavPanel().clickOnActionsAndImportService();
+		
+	}
+	
+    @Step
+	public void select_file_to_import(String fileName) {
+		administration.getImportWidget().selectFileThenImport(fileName);
+		
+	}
 }

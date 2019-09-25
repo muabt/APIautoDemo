@@ -134,4 +134,11 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspace + ":information");
         return response.getStatusCode() == 200;
     }
+    
+    @Override
+    public void clickOnActionsAndImportService() {
+    	clickOnElement("//div[@id='ebx_Navigation']//button[.='Actions']");
+    	clickOnElement("//li//a[.='Import']");
+    	
+    }
 }

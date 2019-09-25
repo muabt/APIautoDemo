@@ -10,7 +10,6 @@ public class RunMatchPage  extends BasePage {
 
 	public RunMatchPage(WebDriver driver) {
 		super(driver);
-		//this.runMatchWidget = new RunMatchWidgetImpl(this, null, 100);
 	}
 
 	public RunMatchWidget getRunMatchWidget() {

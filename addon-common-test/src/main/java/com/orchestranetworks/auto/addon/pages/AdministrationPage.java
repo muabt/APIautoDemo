@@ -10,6 +10,7 @@ import com.orchestranetworks.auto.addon.widget.general.FooterWidget;
 import com.orchestranetworks.auto.addon.widget.general.FooterWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.general.HeaderWidget;
 import com.orchestranetworks.auto.addon.widget.general.HeaderWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.general.ImportWidget;
 import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
 import com.orchestranetworks.auto.addon.widget.general.NavigationWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.general.PopupWidget;
@@ -28,6 +29,7 @@ public class AdministrationPage extends BasePage {
     private PopupWidget popup;
     private AdministrationWidget administration;
     private TableViewWidget defaultViewWidget;
+    private ImportWidget importWidget;
 
 
     public AdministrationPage(WebDriver driver) {
@@ -74,4 +76,8 @@ public class AdministrationPage extends BasePage {
     public SearchWidget getTextSearch() {
         return textSearch;
     }
+
+	public ImportWidget getImportWidget() {
+		return importWidget;
+	}
 }

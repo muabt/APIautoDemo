@@ -30,4 +30,6 @@ public interface NavigationWidget extends WidgetObject {
 	NavigationWidget selectAdministrationFeature();
 
 	boolean isDataspaceExist(String dataspace);
+	
+	void clickOnActionsAndImportService();
 }
