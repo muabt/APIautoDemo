@@ -46,6 +46,7 @@ public class CommonPage extends BasePage {
     }
 
     public NavigationWidget getNavPanel() {
+        switchOutDefaultIFrame();
         return navPanel;
     }
 

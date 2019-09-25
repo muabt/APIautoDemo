@@ -180,6 +180,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 
         wait.until(jQueryLoad);
     }
+
     public void waitUntiljQueryRequestCompletes(int timeoutInSeconds) {
         try {
             new FluentWait<WebDriver>(getDriver()).withTimeout(timeoutInSeconds, TimeUnit.SECONDS)
@@ -197,7 +198,6 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         } catch (Exception e) {
         }
     }
-
 
 
     public WebElementFacade waitElementToBePresent(String xPath) {
@@ -553,36 +553,31 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
      * @author hue
      */
     public int getColumnIndexWithLabel(String colName) {
-        System.out.println(colName);
         String xPathTable = "//div[@id='ebx_workspaceTable_headerContainer']";
-        String xPathHeader = xPathTable + "//th[contains(@id,'ebx_workspaceTable_tableField')]";
-        int colIndex = 0;
-        int listCol = findAllElements(xPathHeader).size();
-        for (int i = 1; i <= listCol; i++) {
-            String xPathColumn = "(" + xPathHeader + ")[" + i + "]//span[@class='ebx_RawLabel']";
-            if (isElementExistNow(xPathColumn)) {
-                if (getText(xPathColumn).equals(colName)) {
-                    colIndex = i;
-                    break;
-                }
-            }
-        }
+        String xPathHeader = xPathTable + "//th[contains(@id,'ebx_workspaceTable_tableField')][descendant::span[@class='ebx_RawLabel' and text()='" + colName + "']]/preceding::th[contains(@id,'ebx_workspaceTable_tableField')]";
+        int colIndex = findAllElements(xPathHeader).size() + 1;
         return colIndex;
+    }
+
+    public String getColumnNameWithIndex(int index) {
+        String xPathHeader = "(//th[contains(@id,'ebx_workspaceTable_tableField') or (@class='ebx_tvSortableColumn')][descendant::span[@class='ebx_RawLabel']])[" + index + "]";
+        return getTextValue(xPathHeader);
+    }
+
+    public int getNumberOfTableRow() {
+        String xPathRows = "//div[@id='ebx_workspaceTable_fixedScroller']//table[@class='ebx_tvFixed']/tbody/tr[child::td[not(@class) and not(contains(@style,'hidden'))]]";
+        return findAllElements(xPathRows).size();
+    }
+
+    public int getNumberOfTableCol() {
+        String xPathCol = "//div[@id='ebx_workspaceTable_headerContainer']//th[contains(@id,'ebx_workspaceTable_tableField')][descendant::span[@class='ebx_RawLabel']]";
+        return findAllElements(xPathCol).size();
     }
 
     public int getRowIndexWithLabel(String label) {
         String xPathTable = "//div[@id='ebx_workspaceTable_fixedScroller']//table[@class='ebx_tvFixed']";
-        String xPathRows = xPathTable + "/tbody/tr";
-        int rowIndex = 0;
-        int listCol = findAllElements(xPathRows).size();
-        for (int i = 1; i <= listCol; i++) {
-            String xPathRow = xPathTable + "/tbody/tr[" + i + "]/td[2]";
-            if (getTextValue(xPathRow).equals(label)) {
-                rowIndex = i;
-                break;
-            }
-
-        }
+        String xPathRows = xPathTable + "/tbody/tr[child::td[not(@class) and not(contains(@style,'hidden')) and .='" + label + "']]/preceding::tr[child::td[not(@class) and not(contains(@style,'hidden')) ]]";
+        int rowIndex = findAllElements(xPathRows).size() + 1;
         return rowIndex;
     }
 
@@ -595,6 +590,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         return getTextValue(xpathDataCell);
 
     }
+
 
     protected void waitAbit(long millisecond) {
         try {

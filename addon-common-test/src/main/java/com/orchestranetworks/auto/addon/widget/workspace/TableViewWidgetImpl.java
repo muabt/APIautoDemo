@@ -1,7 +1,10 @@
 package com.orchestranetworks.auto.addon.widget.workspace;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -87,8 +90,8 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
     @Override
-    public void accessRecordWithText(String label) {
-        String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + label + "'])[1]";
+    public void accessRecordWithText(String tableName) {
+        String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + tableName + "'])[1]";
         executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
     }
 
@@ -112,6 +115,33 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     public String get_text_data_cell(int rowInd, String colCode) {
         int colIndex = getColumnIndexWithLabel(colCode);
         return getTextDataCell(rowInd, colIndex);
+    }
+
+    @Override
+    public JsonObject getRecordWithPK(String pk, List<String> header) {
+        int rowind = getRowIndexWithLabel(pk);
+        JsonObject record = new JsonObject();
+        record.addProperty(header.get(0), pk);
+        header.remove(0);
+        for (String h : header)
+            record.addProperty(h, get_text_data_cell(rowind, h));
+        return record;
+    }
+
+    @Override
+    public JsonArray getDefaultViewTable() {
+        JsonArray tbl = new JsonArray();
+        JsonObject row = new JsonObject();
+        int numOfRow = getNumberOfTableRow();
+        int numOfCol = getNumberOfTableCol();
+        for (int i = 1; i <= numOfRow; i++) {
+            row = new JsonObject();
+            for (int j = 1; j <= numOfCol; j++) {
+                row.addProperty(getColumnNameWithIndex(j),getTextDataCell(i, j));
+            }
+            tbl.add(row);
+        }
+        return tbl;
     }
 
 }

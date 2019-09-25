@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.steps;
 
+import com.google.gson.JsonArray;
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
@@ -7,8 +8,10 @@ import com.orchestranetworks.auto.addon.pages.PermissionPage;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 import com.orchestranetworks.auto.addon.pages.*;
 
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.assertj.core.api.Assertions;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -23,7 +26,7 @@ public class DatasetSteps extends ScenarioSteps {
     public void select_first_record(String num) {
         defaultViewPage.getDefaultViewWidget().selectFirstRecords(Integer.parseInt(num));
     }
-    
+
     @Step
     public void select_last_record() {
         defaultViewPage.getDefaultViewWidget().selectLastRecord();
@@ -35,7 +38,7 @@ public class DatasetSteps extends ScenarioSteps {
     }
 
     @Step
-    public void select_table_service_administration(String service){
+    public void select_table_service_administration(String service) {
 
     }
 
@@ -83,26 +86,21 @@ public class DatasetSteps extends ScenarioSteps {
     public void input_record_field(String col, String cell, String dataType) {
         recordDetailPage.getItemCreationWidget().inputFieldContent(col, cell, dataType);
     }
-    
-    @Step
-	public void click_on_tab_label(String label) {
-    	recordDetailPage.getRecordDetailWidget().clickOnTabOfLabel(label);
-	}
-    
-    @Step
-	public void delete_all_data_in_table() {
-		if (defaultViewPage.getDefaultViewWidget().existRecordInTable()) {
-			defaultViewPage.getDefaultViewWidget().clickBtnSelectAndSort();
-			defaultViewPage.getDefaultViewWidget().selectAllRecord();
-			recordDetailPage.getToolbar().clickBtnByLabel("Action");
-			recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
-			recordDetailPage.getPopupWidget().confirmOK();
-		}
-	}
 
-	@Step
-    public void verify_record_value(int rowInd, String colName, String expected) {
-        assertThat(defaultViewPage.getDefaultViewWidget().get_text_data_cell(rowInd, colName)).isEqualTo(expected);
+    @Step
+    public void click_on_tab_label(String label) {
+        recordDetailPage.getRecordDetailWidget().clickOnTabOfLabel(label);
+    }
+
+    @Step
+    public void delete_all_data_in_table() {
+        if (defaultViewPage.getDefaultViewWidget().existRecordInTable()) {
+            defaultViewPage.getDefaultViewWidget().clickBtnSelectAndSort();
+            defaultViewPage.getDefaultViewWidget().selectAllRecord();
+            recordDetailPage.getToolbar().clickBtnByLabel("Action");
+            recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
+            recordDetailPage.getPopupWidget().confirmOK();
+        }
     }
 
     @Step
@@ -110,4 +108,10 @@ public class DatasetSteps extends ScenarioSteps {
         defaultViewPage.getPopupWidget().confirmOK();
     }
 
+
+    @Step
+    public void getDefaultViewTable(String tableKey) {
+        JsonArray tbl = defaultViewPage.getDefaultViewWidget().getDefaultViewTable();
+        Serenity.setSessionVariable(tableKey).to(tbl);
+    }
 }

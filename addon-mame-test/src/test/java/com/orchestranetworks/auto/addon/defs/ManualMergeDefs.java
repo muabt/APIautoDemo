@@ -1,14 +1,19 @@
 package com.orchestranetworks.auto.addon.defs;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.google.gson.JsonArray;
+import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
-
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
+import com.orchestranetworks.auto.addon.utils.DateTimeUtils;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
+import com.orchestranetworks.auto.addon.utils.TechnicalTable;
 import cucumber.api.DataTable;
 
 import cucumber.api.java.en.And;
@@ -25,6 +30,8 @@ public class ManualMergeDefs {
     DatasetSteps onDatasetSteps;
     @Steps
     AdministrationSteps onAdministrationSteps;
+    @Steps
+    CommonSteps onCommonSteps;
 
     @Then("^record view table will be displayed and highlighted as below$")
     public void user_will_see_the_data_as_below(List<List<String>> tableMerge) {
@@ -57,16 +64,25 @@ public class ManualMergeDefs {
     @Then("^I will see table RecordMetadata as below$")
     public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) {
         List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
-        for (int i = 1; i <= list.size(); i++) {
-            Map<String, String> row = list.get(i - 1);
-            String recordID = row.get("id");
-            String groupID = row.get("groupId");
-            String state = row.get("state");
-            String autoCreated = row.get("autoCreated");
-            String functionalID = row.get("functionalId");
+        onDatasetSteps.getDefaultViewTable(MAMEConstants.RECORD_METADATA_TBL);
+
+        String colRecordID = TechnicalTable.RecordMetadata.ID;
+        String colGroupID = TechnicalTable.RecordMetadata.GROUP_ID;
+        String colState = TechnicalTable.RecordMetadata.STATE;
+        String colAutoCreated = TechnicalTable.RecordMetadata.AUTO_CREATED;
+        String colFunctionalID = TechnicalTable.RecordMetadata.FUNCTIONAL_ID;
+
+        String actualValue = "";
+        for (int i = 0; i < list.size(); i++) {
+            Map<String, String> row = list.get(i);
+            String recordID = row.get(colRecordID);
+            String groupID = row.get(colGroupID);
+            String state = row.get(colState);
+            String autoCreated = row.get(colAutoCreated);
+            String functionalID = row.get(colFunctionalID);
 
             if (!recordID.isEmpty()) {
-                onDatasetSteps.verify_record_value(i, "id", recordID);
+
             }
 
             if (!groupID.isEmpty()) {
@@ -74,17 +90,22 @@ public class ManualMergeDefs {
             }
 
             if (!state.isEmpty()) {
-                onDatasetSteps.verify_record_value(i, "state", state);
+                actualValue = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL,i,colState);
+                assertThat(actualValue).isEqualTo(state);
             }
 
             if (!autoCreated.isEmpty()) {
-                onDatasetSteps.verify_record_value(i, "autoCreated", autoCreated);
+                actualValue = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL,i,colAutoCreated);
+                assertThat(actualValue).isEqualTo(autoCreated);
             }
 
             if (!functionalID.isEmpty()) {
-                onDatasetSteps.verify_record_value(i, "functionalId", functionalID);
+                actualValue = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL,i,colFunctionalID);
+                assertThat(actualValue).isEqualTo(functionalID);
             }
+
         }
+
     }
 
 
@@ -304,6 +325,60 @@ public class ManualMergeDefs {
     @And("^I click button Save and close$")
     public void i_click_button_save_and_close() {
         onManualMergeSteps.click_btn_save_and_close();
+    }
+
+
+    @Then("^I will see table MergingProcess as below$")
+    public void iWillSeeTableMergingProcessAsBelow(DataTable table) {
+        onCommonSteps.click_on_table_name("MergingProcess");
+        onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGEING_PROCESS_TBL);
+
+        List<Map<String, String>> list = table.asMaps(String.class, String.class);
+
+        String colId = TechnicalTable.MergingProcess.ID;
+        String colMergePolicyId = TechnicalTable.MergingProcess.MERGE_POLICY_ID;
+        String colMergeMode = TechnicalTable.MergingProcess.MERGE_MODE;
+        String colExecutionDate = TechnicalTable.MergingProcess.EXECUTION_DATE;
+        String colSnapshotId = TechnicalTable.MergingProcess.SNAPSHOT_ID;
+        String colGroupId = TechnicalTable.MergingProcess.GROUP_ID;
+        String colUser = TechnicalTable.MergingProcess.USER;
+        String colIsUnmerged = TechnicalTable.MergingProcess.IS_UNMERGED;
+
+        // get Merging process ID with groupID in RecordMetadata table
+        String groupID = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL, 0, TechnicalTable.RecordMetadata.GROUP_ID);
+
+        String actualValue = "";
+        for (int i = 0; i < list.size(); i++) {
+            Map<String, String> row = list.get(i);
+            String id = row.get(colId);
+            String mergePolicyId = row.get(colMergePolicyId);
+            String mergeMode = row.get(colMergeMode);
+            String executionDate = row.get(colExecutionDate);
+            String snapshotId = row.get(colSnapshotId);
+            String groupId = row.get(colGroupId);
+            String user = row.get(colUser);
+            String isUnmerged = row.get(colIsUnmerged);
+
+            if (!mergeMode.isEmpty()) {
+                 actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, colMergeMode);
+                assertThat(actualValue).isEqualTo(mergeMode);
+            }
+            if (!executionDate.isEmpty()) {
+                executionDate = DateTimeUtils.getCurrentDateTime();
+                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, colExecutionDate);
+                assertThat(actualValue).contains(executionDate);
+            }
+            if (!user.isEmpty()) {
+                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, colUser);
+                assertThat(actualValue).isEqualTo(user);
+            }
+            if (!isUnmerged.isEmpty()) {
+                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, colIsUnmerged);
+                assertThat(actualValue).isEqualTo(isUnmerged);
+            }
+
+        }
+
     }
 
     @And("^I close the error popup$")

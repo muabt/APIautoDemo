@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import com.orchestranetworks.auto.addon.SessionData;
@@ -14,6 +15,7 @@ import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.ManualMergePage;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
+import com.orchestranetworks.auto.addon.utils.TechnicalTable;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.assertj.core.api.SoftAssertions;
@@ -141,8 +143,8 @@ public class ManualMergeSteps {
 
     @Step
     public void verify_group_id(int rowInd) {
-        String expected = onDefaultViewPage.getDefaultViewWidget().get_text_data_cell(1, "groupId");
-        String actual = onDefaultViewPage.getDefaultViewWidget().get_text_data_cell(rowInd, "groupId");
+        String expected = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL,0, "groupId");
+        String actual = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL,rowInd, "groupId");
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -300,6 +302,16 @@ public class ManualMergeSteps {
     public void apply_permission_on_merge_view(String applyPermission) {
         onManualMergePage.getItemCreationWidget().selectRadioBoxWithLabel("Apply permission on merge view", applyPermission);
     }
+    @Step
+    public JsonObject getRecordTable(String recordID, List<String> headerList) {
+        return onDefaultViewPage.getDefaultViewWidget().getRecordWithPK(recordID, headerList);
+    }
+    @Step
+    public String getMergingProcessID(String groupID) {
+        return "";
+    }
+
+
     @Step
     public void close_error_popup() {
         onManualMergePage.switchOutDefaultIFrame();
