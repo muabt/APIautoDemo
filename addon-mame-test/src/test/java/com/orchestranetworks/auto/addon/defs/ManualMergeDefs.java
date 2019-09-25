@@ -109,8 +109,8 @@ public class ManualMergeDefs {
     }
 
 
-    @Given("^I select matching policy record of table \"([^\"]*)\"$")
-    public void i_select_matching_policy_record_of_table(String label) {
+    @Given("^I select matching table record of table \"([^\"]*)\"$")
+    public void i_select_matching_table_record_of_table(String label) {
         onAdministrationSteps.select_record_with_name(label);
     }
 

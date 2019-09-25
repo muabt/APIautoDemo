@@ -103,27 +103,29 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
 
     @Override
     public String getTextErrorDataModelField() {
-        String xPathValue = "(//div[@class='ebx_Error'])[1]";
+        String xPathValue = "//tr[descendant::*[text()='Data model']]//div[@class='ebx_Error']";
         String message = getText(xPathValue);
         return message;
     }
 
     @Override
     public String getTextErrorTableField() {
-        String xPathValue = "(//div[@class='ebx_Error'])[2]";
+        String xPathValue = "//tr[descendant::*[text()='Table']]//div[@class='ebx_Error']";
         return getText(xPathValue);
     }
 
     @Override
     public String getTextErrorDataModelInBlock() {
-        String xPathValue = "(//span[@class='ebx_WorkspaceFormHeaderValidationMessageItem'])[1]";
+        String xPathValue = "//li[descendant::*[text()='Data model']]//span";
         String message = getText(xPathValue);
         return message;
     }
 
     @Override
     public String getTextErrorTableInBlock() {
-        String xPathValue = "(//span[@class='ebx_WorkspaceFormHeaderValidationMessageItem'])[2]";
+       // String xPathValue = "//li[descendant::*[text()='Table']]";
+        String xPathValue = "//li[descendant::*[text()='Table']]//span";
+
         return getText(xPathValue);
     }
 

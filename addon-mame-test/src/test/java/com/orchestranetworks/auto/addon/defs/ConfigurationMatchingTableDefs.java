@@ -49,7 +49,11 @@ public class ConfigurationMatchingTableDefs {
         }
     }
 
-
+    @And("^I should see Matching record detailed as following$")
+    public void i_should_see_matching_record_detailed_as_following(List<List<String>> recordDetail) {
+        onConfigurationMatchingTableSteps.click_btn_expand();
+        onConfigurationMatchingTableSteps.verify_record_detail(recordDetail);
+    }
 }
 
 

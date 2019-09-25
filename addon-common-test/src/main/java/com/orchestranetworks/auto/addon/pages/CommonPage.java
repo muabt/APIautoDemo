@@ -3,6 +3,9 @@ package com.orchestranetworks.auto.addon.pages;
 import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.utils.Encode;
+import com.orchestranetworks.auto.addon.widget.filter.AdvancedSearchImpl;
+import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
+import com.orchestranetworks.auto.addon.widget.filter.SearchWidgetImpl;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -27,6 +30,7 @@ public class CommonPage extends BasePage {
     private LoginWidget login;
     private UserCardWidget userCard;
     private PopupWidget popup;
+    private SearchWidget advanceSearch;
 
     public CommonPage(WebDriver driver) {
         super(driver);
@@ -37,6 +41,7 @@ public class CommonPage extends BasePage {
         this.login = new LoginWidgetImpl(this, null, 100);
         this.userCard = new UserCardWidgetImpl(this, null, 100);
         this.popup = new PopupWidgetImpl(this, null, 100);
+        this.advanceSearch = new AdvancedSearchImpl(this,null,100);
     }
 
 
@@ -68,6 +73,10 @@ public class CommonPage extends BasePage {
 
     public PopupWidget getPopupWidget() {
         return popup;
+    }
+
+    public SearchWidget getAdvanceSearch(){
+        return  advanceSearch;
     }
 
     public void access_login_page() {

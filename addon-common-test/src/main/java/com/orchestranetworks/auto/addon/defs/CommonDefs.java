@@ -3,10 +3,14 @@ package com.orchestranetworks.auto.addon.defs;
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
+
+import java.util.List;
+import java.util.Map;
 
 public class CommonDefs {
 
@@ -204,5 +208,59 @@ public class CommonDefs {
         onCommonSteps.go_to_dataset(datasetPath);
         onCommonSteps.click_on_table_name(tableName);
 
+    }
+
+    @When("^I select filter by simple search with criterion$")
+    public void i_select_filter_by_simple_search_with_criterion(DataTable dt) {
+        onCommonSteps.click_btn_filter();
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String criterion = row.get("Criterion");
+            String oper = row.get("Operation");
+            String value = row.get("Value");
+            String type = row.get("Field type");
+
+            onCommonSteps.select_criteria_with_label(criterion);
+
+            if (!oper.isEmpty()) {
+                onCommonSteps.select_operator_of_field(oper, criterion);
+            }
+
+            if (!value.isEmpty()) {
+                String[] itemList = value.split(",");
+                for (int j = 0; j < itemList.length; j++) {
+                    onCommonSteps.input_search_value(itemList[j].trim(), type, criterion);
+                }
+            }
+        }
+        onCommonSteps.click_btn_apply_search();
+    }
+
+    @When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
+    public void i_select_filter_by_advanced_search_with_criterion_and_logical(DataTable dt, String logical) {
+        onCommonSteps.click_btn_filter();
+//        onCommonSteps.select_advanced_mode();
+//        onCommonSteps.select_logical_search(logical);
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String criterion = row.get("Criterion");
+            String oper = row.get("Operation");
+            String value = row.get("Value");
+            String type = row.get("Field type");
+
+            onCommonSteps.select_criteria_with_label(criterion);
+
+            if (!oper.isEmpty()) {
+                onCommonSteps.select_operator_of_field(oper, criterion);
+            }
+
+            if (!value.isEmpty()) {
+                String[] itemList = value.split(",");
+                for (int j = 0; j < itemList.length; j++) {
+                    onCommonSteps.input_search_value(itemList[j].trim(), type, criterion);
+                }
+            }
+        }
+        onCommonSteps.click_btn_apply_search();
     }
 }

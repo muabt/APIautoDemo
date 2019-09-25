@@ -43,6 +43,7 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
     @Override
     public void clickBtnSaveAndClose() {
         clickBtn("Save and close");
+        waitForAllLoadingCompleted();
     }
 
     @Override
