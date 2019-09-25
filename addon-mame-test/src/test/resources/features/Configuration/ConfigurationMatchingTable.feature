@@ -1,3 +1,4 @@
+@SYSTEM
 Feature: Matching table configuration
   I want to use this template for Matching table configuration
 

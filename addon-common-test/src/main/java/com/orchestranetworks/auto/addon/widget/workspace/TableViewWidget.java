@@ -28,7 +28,7 @@ public interface TableViewWidget extends WidgetObject {
 
     void clickBtnSelectAndSort();
 
-    String get_text_data_cell(int rowInd, String colName);
+    String getTextDataCell(int rowInd, String colName);
 
     JsonObject getRecordWithPK(String pk, List<String> header);
 

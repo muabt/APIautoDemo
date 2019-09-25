@@ -1,3 +1,4 @@
+@SYSTEM
 Feature: Survivor record selection mode is defined
 
   Background:

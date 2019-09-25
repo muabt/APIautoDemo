@@ -248,7 +248,7 @@ public class ManualMergeSteps {
     @Step
     public void input_name_of_source(String nameOfSource) {
         String inputCode = nameOfSource.equals("RANDOM") ? onCommonPage.getRandomString() : nameOfSource;
-        Serenity.setSessionVariable("name_of_source").to(inputCode);
+        Serenity.setSessionVariable(MAMEConstants.NAME_OF_SOURCE).to(inputCode);
         recordDetailPage.getItemCreationWidget().inputTextWithLabel("Name of source", inputCode);
     }
 
@@ -259,6 +259,7 @@ public class ManualMergeSteps {
 
     @Step
     public void select_matching_table(String matchingTable) {
+        Serenity.setSessionVariable(MAMEConstants.MATCHING_TABLE).to(matchingTable);
         recordDetailPage.getItemCreationWidget().selectDDLByJS("Matching table", matchingTable);
     }
 
@@ -317,5 +318,20 @@ public class ManualMergeSteps {
         onManualMergePage.switchOutDefaultIFrame();
         onManualMergePage.getPopupWidget().clickBtnClose();
         onManualMergePage.switchToIFrame(Constants.IFRAME_LEGACY);
+    }
+
+    @Step
+    public void select_checkbox_with_text(String label) {
+        onManualMergePage.getDefaultview().selectCheckboxWithText(label);
+    }
+
+    @Step
+    public void select_table_service(String service) {
+        onManualMergePage.getToolbarWidget().selectService(service);
+    }
+
+    @Step
+    public void confirm_popup() {
+        onManualMergePage.getPopupWidget().confirmOK();
     }
 }

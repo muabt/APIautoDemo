@@ -37,23 +37,12 @@ public class ManualMergeDefs {
     public void user_will_see_the_data_as_below(List<List<String>> tableMerge) {
         onManualMergeSteps.verify_record_view_table(tableMerge);
     }
-//
-//	@Then("^the table will be showed as below$")
-//    public void the_table_will_be_showed_as_below(List<List<String>> tableMerge) {
-//		onManualMergeSteps.verify_record_view_table(tableMerge);
-//    }
 
     @And("^preview table is displayed as below$")
     public void table_is_highlighted_and_display_on_preview_table_as_below(List<List<String>> tablePreview) {
         onManualMergeSteps.verify_table_preview(tablePreview);
     }
 
-    /*
-     * @And("^the screen displays buttons as below$") public void
-     * the_screen_displays_buttons_as_below() {
-     *
-     * }
-     */
     @When("^I complete merging process$")
     public void i_complete_merging_process() {
         onManualMergeSteps.click_button_next();
@@ -275,6 +264,18 @@ public class ManualMergeDefs {
             }
         }
         onManualMergeSteps.click_btn_save_and_close();
+    }
+
+    @And("^delete all of Trusted source configurations$")
+    public void delete_all_of_trusted_source_configurations(){
+        onAdministrationSteps.access_source_table();
+        if (onManualMergeSteps.verify_code_existed(Serenity.sessionVariableCalled(MAMEConstants.NAME_OF_SOURCE))){
+            onManualMergeSteps.select_checkbox_with_text(MAMEConstants.NAME_OF_SOURCE);
+            onManualMergeSteps.select_table_service("Actions > Delete");
+            onManualMergeSteps.confirm_popup();
+        }
+        onAdministrationSteps.access_table_trusted_source();
+
     }
 
     @And("^the Table trusted source with the followings$")

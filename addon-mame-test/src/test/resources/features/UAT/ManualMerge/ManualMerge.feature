@@ -65,6 +65,7 @@ Feature: Manual Merge
     And I select first "1" records in table
     Then delete it
     And I delete the dataspace
+    And delete all of Trusted source configurations
 
   Scenario: UAT-MM01 Default merge function = Last update
     Given I permit to access matching table
@@ -176,7 +177,7 @@ Feature: Manual Merge
       | 1  | Poortvliet    {H} |
       | 2  | Brouwershaven     |
     And preview table is displayed as below
-      | Id               | Name          |
+      | Id               | Name       |
       | [auto generated] | Poortvliet |
     And I complete merging process
     And I delete the dataspace
@@ -196,9 +197,9 @@ Feature: Manual Merge
     And I create Survivorship field with selections as followings
       | Survivorship field code | Field    | Merge function | Condition for field value survivorship | Execute only if empty |
       | survivorCodeMM06        | Category | Last update    |                                        | Yes                   |
-#    And I create a child of dataspace "Master Data - Reference" with information as following
-#      | Identifier      | Owner               | English Label |
-#      | referenceChild1 | admin admin (admin) |               |
+    And I create a child of dataspace "Master Data - Reference" with information as following
+      | Identifier      | Owner               | English Label |
+      | referenceChild1 | admin admin (admin) |               |
     And I access table "Items" of dataset "Metadatas" in dataspace "Master Data - Reference > referenceChild1"
     When I select first "2" records in table
     And I select table service "Match and Merge > Merge"
@@ -209,7 +210,17 @@ Feature: Manual Merge
     And preview table is displayed as below
       | Indentifiers     | Category  | Brand   | Name      | Available    | defaultPrice | Expire_date         | testSourceField | integer | Hidden_fied |
       | [auto generated] | name1 - 1 | Branh 1 | Minh Tran | [List] 20/24 | 120,000      | 04/09/2019 17:29:55 | 2010            |         |             |
-#    And I complete merging process
-#    And I permit to access matching table
-#    And I select first "1" records in table
-#    Then delete it
+    And I complete merging process
+    And I permit to access matching table
+    And I select first "1" records in table
+    Then delete it
+
+  Scenario: UAT-MM07 Run Merge with have a field is read-only in data model
+    Given I permit to access matching table
+    And I create record with the followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
+    And I select matching policy record of table "Items"
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
+      | mergeCodeMM06     | Last update                    | Last update            | Duplicates and singletons | Yes                   | Yes                            |

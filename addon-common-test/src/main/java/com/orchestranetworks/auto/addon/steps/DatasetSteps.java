@@ -103,6 +103,11 @@ public class DatasetSteps extends ScenarioSteps {
         }
     }
 
+	@Step
+    public void verify_record_value(int rowInd, String colName, String expected) {
+        assertThat(defaultViewPage.getDefaultViewWidget().getTextDataCell(rowInd, colName)).isEqualTo(expected);
+    }
+
     @Step
     public void confirmPopupOK() {
         defaultViewPage.getPopupWidget().confirmOK();

@@ -112,7 +112,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
     @Override
-    public String get_text_data_cell(int rowInd, String colCode) {
+    public String getTextDataCell(int rowInd, String colCode) {
         int colIndex = getColumnIndexWithLabel(colCode);
         return getTextDataCell(rowInd, colIndex);
     }

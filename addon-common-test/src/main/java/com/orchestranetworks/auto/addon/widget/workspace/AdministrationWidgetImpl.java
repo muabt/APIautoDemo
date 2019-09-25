@@ -20,13 +20,7 @@ public class AdministrationWidgetImpl extends BaseWidgetImpl implements Administ
 	public AdministrationWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
 		super(page, locator, timeoutInMilliseconds);
 	}
-
-	@Override
-	public void selectAnAdminFeature() {
-		remove_div_on_administration_workspace();
-		clickBtn(Constants.BTN_SELECT_ADMIN_FEATURE);
-	}
-
+	
 	private void remove_div_on_administration_workspace() {
 		switchToIFrame(Constants.IFRAME_LEGACY);
 		boolean isPresent = findAllElements(XPATH_SELECTOR_PANEL).size() > 0;

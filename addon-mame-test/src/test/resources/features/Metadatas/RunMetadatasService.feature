@@ -1,5 +1,5 @@
 #Author: onguyent@tibco.com
-@Metadatas-Service
+@SYSTEM
 Feature: Run Metadatas service
 
 

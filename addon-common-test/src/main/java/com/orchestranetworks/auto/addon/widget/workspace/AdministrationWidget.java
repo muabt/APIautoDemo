@@ -6,6 +6,5 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy (AdministrationWidgetImpl.class)
 public interface AdministrationWidget extends WidgetObject{
 
-	void selectAnAdminFeature();
 	boolean verifyCodeExisted(String mergePolicyCode);
 }
