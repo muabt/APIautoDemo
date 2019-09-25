@@ -1,6 +1,5 @@
 package com.orchestranetworks.auto.addon.widget.workspace;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonArray;
@@ -124,7 +123,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         record.addProperty(header.get(0), pk);
         header.remove(0);
         for (String h : header)
-            record.addProperty(h, get_text_data_cell(rowind, h));
+            record.addProperty(h, getTextDataCell(rowind, h));
         return record;
     }
 
