@@ -80,7 +80,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
     @Override
     public void viewRecordWithText(String label) {
         String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + label + "'])";
-        executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
+        doubleClickByJS(xPath);
     }
 
     @Override
@@ -92,8 +92,9 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
 
     @Override
     public void clickShowDetailTooltip(String field) {
-        clickByJS(XFormat.of(XPATH_LABEL_OF_FIELD, field));
-        waitAbit(2000);
+        clickOnElement(XFormat.of(XPATH_LABEL_OF_FIELD, field));
+        waitAbit(3000);
+        waitForVisibilityOfElement(XFormat.of(XPATH_LABEL_OF_FIELD, field));
         clickByJS(XFormat.of(XPATH_TOOLTIP, field));
     }
 
@@ -102,5 +103,4 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         waitAbit(500);
         clickOnElement("//div[@class='ebx_dcpDescription']");
     }
-
 }

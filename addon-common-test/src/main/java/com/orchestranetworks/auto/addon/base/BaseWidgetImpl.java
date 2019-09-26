@@ -14,6 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -619,5 +620,16 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "day"), date[1]);
         // input year value
         waitTypeAndTab(XFormat.of(XPATH_DATETIME, label, "year"), date[2]);
+    }
+
+    public void hoverElement(String xPath) {
+        WebElementFacade element = getElement(xPath);
+        Actions builder = new Actions(getDriver());
+        Actions hoverOverLocationSelector = builder.moveToElement(element);
+        hoverOverLocationSelector.perform();
+    }
+
+    public void doubleClickByJS(String xPath){
+        executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
     }
 }
