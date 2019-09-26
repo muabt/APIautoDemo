@@ -127,7 +127,7 @@ public class ManualMergeDefs {
             String matchingExecutionOnUpdate = row.get("Matching execution on update");
             String mergePolicy = row.get("Merge policy");
             String advancedSettings = row.get("Advanced settings");
-            
+
             //TODO Refer to RunMatch for Matching Process configuration.
 
             if (!matchingProcessCode.isEmpty()) {
@@ -272,14 +272,19 @@ public class ManualMergeDefs {
     @And("^delete all of Trusted source configurations$")
     public void delete_all_of_trusted_source_configurations() {
         onAdministrationSteps.access_source_table();
-        if (onManualMergeSteps.verify_code_existed(Serenity.sessionVariableCalled(MAMEConstants.NAME_OF_SOURCE))) {
-            onManualMergeSteps.select_checkbox_with_text(MAMEConstants.NAME_OF_SOURCE);
-            onManualMergeSteps.select_table_service("Actions > Delete");
-            onManualMergeSteps.confirm_popup();
-        }
-        onAdministrationSteps.access_table_trusted_source();
-
+        deleteTrustedSource(MAMEConstants.NAME_OF_SOURCE, MAMEConstants.MATCHING_TABLE);
     }
+
+    private void deleteTrustedSource(String... locations) {
+        for (String location: locations) {
+            if (onManualMergeSteps.verify_code_existed(Serenity.sessionVariableCalled(location))) {
+                onManualMergeSteps.select_checkbox_with_text(location);
+                onManualMergeSteps.select_table_service("Delete");
+                onManualMergeSteps.confirm_popup();
+            }
+        }
+    }
+
 
     @And("^the Table trusted source with the followings$")
     public void the_table_trusted_source_with_the_followings(DataTable dt) {

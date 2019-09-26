@@ -327,7 +327,7 @@ public class ManualMergeSteps {
 
     @Step
     public void select_table_service(String service) {
-        onManualMergePage.getToolbarWidget().selectService(service);
+        onManualMergePage.getToolbarWidget().clickBtnActions().selectService(service);
     }
 
     @Step

@@ -29,7 +29,7 @@ Feature: Manual Merge
       | Person         | Pieter              |
     And the Field trusted source with the followings
       | Matching table | Field     | Trusted source list |
-      | Person         | Last name | Huibregt            |
+      | Person         | Last name | Pieter              |
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
@@ -64,8 +64,8 @@ Feature: Manual Merge
     And I permit to access matching table
     And I select first "1" records in table
     Then delete it
-    And I delete the dataspace
     And delete all of Trusted source configurations
+    And I delete the dataspace
 
   Scenario: UAT-MM01 Default merge function = Last update
     Given I permit to access matching table
@@ -120,7 +120,6 @@ Feature: Manual Merge
     And preview table is displayed as below
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place      |
       | 0157a930-7725-41d0-b1c4-281b794d38aa | Cornelia   | Wagemaker |        |           | 0   | 10/21/1847 | Sint Philipsland |
-
     And I complete merging process
     And I delete the dataspace
     And I permit to access matching table
@@ -220,7 +219,7 @@ Feature: Manual Merge
     And I create record with the followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
-    And I select matching policy record of table "Items"
+    And I select matching table record of table "Items"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
       | mergeCodeMM06     | Last update                    | Last update            | Duplicates and singletons | Yes                   | Yes                            |

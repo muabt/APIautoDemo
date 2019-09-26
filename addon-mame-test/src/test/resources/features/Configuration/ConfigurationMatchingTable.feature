@@ -54,7 +54,7 @@ Feature: Matching table configuration
       | Table      | equals    | Person Relationship    | INPUT      |
     And I select matching table record of table "Person Relationship"
     And I should see Matching record detailed as following
-      | Data model             | Table               | Active | Advanced settings | Default matching process | Source field | Event listener | Disable trigger |
-      | Publication: Bulk_data | Person Relationship | Yes    |                   |                          |              |                | No              |
+      | Data model             | Table               | Active | Advanced settings | Default matching process | Source field  | Event listener | Disable trigger |
+      | Publication: Bulk_data | Person Relationship | true   |                   | [not defined]            | [not defined] |                | false           |
     And I select first "1" records in table
     Then delete it

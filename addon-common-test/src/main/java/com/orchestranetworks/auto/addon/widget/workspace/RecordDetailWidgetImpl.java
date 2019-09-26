@@ -14,10 +14,8 @@ import java.util.List;
 public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDetailWidget {
 
     private static final String MERGE_POLICY_TAB = "//ul[@id='ebx_WorkspaceFormTabviewTabs']//span[text()='%s']/ancestor::li";
-    private static final String XPATH_LABEL= "(//td[@class='ebx_Label'])";
-    private static final String XPATH_VALUE = "(//td[@class='ebx_Input'])";
-
-
+    private static final String XPATH_LABEL= "(//td[@class='ebx_Label' and not(contains(.,'Advanced'))])";
+    private static final String XPATH_VALUE = "(//td[@class='ebx_Input']//input[@value and @type='text' or @type='radio' and contains(@checked,'checked')])";
 
     public RecordDetailWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                   long timeoutInMilliseconds) {
@@ -66,7 +64,8 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         List<String> rowValue = new ArrayList<String>();
         System.out.println("Table: " + metadataRecordView);
         for (int j = 1; j <= numOfHeaders; j++) {
-            String cell = getText(XPATH_VALUE + "[" + j + "]").replaceAll("\\*", "").trim();
+            //String cell = getText(XPATH_VALUE + "[" + j + "]").replaceAll("\\*", "").trim();
+            String cell = getTextValue(XPATH_VALUE + "[" + j + "]").replaceAll("\\*", "").trim();
             rowValue.add(cell);
             System.out.println("cellValue: " + cell);
         }
