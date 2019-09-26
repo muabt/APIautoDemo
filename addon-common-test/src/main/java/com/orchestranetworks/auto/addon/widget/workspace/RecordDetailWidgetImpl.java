@@ -14,8 +14,11 @@ import java.util.List;
 public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDetailWidget {
 
     private static final String MERGE_POLICY_TAB = "//ul[@id='ebx_WorkspaceFormTabviewTabs']//span[text()='%s']/ancestor::li";
-    private static final String XPATH_LABEL= "(//td[@class='ebx_Label' and not(contains(.,'Advanced'))])";
+    private static final String XPATH_LABEL = "(//td[@class='ebx_Label' and not(contains(.,'Advanced'))])";
+    private static final String XPATH_LABEL_OF_FIELD = "//td[@class='ebx_Label' and not(contains(.,'Advanced'))]//label[text()='%s']";
     private static final String XPATH_VALUE = "(//td[@class='ebx_Input']//input[@value and @type='text' or @type='radio' and contains(@checked,'checked')])";
+    private static final String XPATH_TOOLTIP_CONTENT = "//div[@class='ebx_dcpTitle'and text()='%s']/following-sibling::div[@class='ebx_dcpDescription']";
+    private static final String XPATH_TOOLTIP = "//label[text()='%s']/ancestor::tr[@class='ebx_Field']//button[@title='Show details']";
 
     public RecordDetailWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                   long timeoutInMilliseconds) {
@@ -30,6 +33,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
     public void clickOnTabOfLabel(String label) {
         String xPath = "//ul[@id='ebx_WorkspaceFormTabviewTabs']//span[contains(text(),'" + label + "')]";
         clickOnElement(xPath);
+
     }
 
     @Override
@@ -72,11 +76,31 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         metadataRecordView.add(rowValue);
         return metadataRecordView;
     }
-    
+
     @Override
     public void viewRecordWithText(String label) {
-    	String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + label + "'])";
+        String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + label + "'])";
         executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
+    }
+
+    @Override
+    public String getTooltip(String field) {
+        getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field)).replaceAll("<br>", "").trim();
+        return getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field));
+    }
+
+
+    @Override
+    public void clickShowDetailTooltip(String field) {
+        clickByJS(XFormat.of(XPATH_LABEL_OF_FIELD, field));
+        waitAbit(2000);
+        clickByJS(XFormat.of(XPATH_TOOLTIP, field));
+    }
+
+    @Override
+    public void closeTooltipOfField(String field) {
+        waitAbit(500);
+        clickOnElement("//div[@class='ebx_dcpDescription']");
     }
 
 }

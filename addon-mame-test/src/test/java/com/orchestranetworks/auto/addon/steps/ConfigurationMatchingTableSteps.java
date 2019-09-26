@@ -20,14 +20,17 @@ public class ConfigurationMatchingTableSteps {
     public void verify_error_message_data_model_field(String message) {
         Assert.assertEquals(message, onRecordDetailPage.getItemCreationWidget().getTextErrorDataModelField());
     }
+
     @Step
     public void verify_error_message_table_field(String message) {
         Assert.assertEquals(message, onRecordDetailPage.getItemCreationWidget().getTextErrorTableField());
     }
+
     @Step
     public void verify_error_message_data_model_in_block(String message) {
         Assert.assertEquals(message, onRecordDetailPage.getItemCreationWidget().getTextErrorDataModelInBlock());
     }
+
     @Step
     public void verify_error_message_table_in_block(String message) {
         Assert.assertEquals(message, onRecordDetailPage.getItemCreationWidget().getTextErrorTableInBlock());
@@ -37,10 +40,19 @@ public class ConfigurationMatchingTableSteps {
     public void click_btn_expand() {
         onRecordDetailPage.getItemCreationWidget().clickBtnExpand();
     }
+
     @Step
     public void verify_record_detail(List<List<String>> getrecordDetail) {
         List<List<String>> recordDetails = onRecordDetailPage.getRecordDetailWidget().getRecordDetail();
         assertThat(recordDetails).isEqualTo(getrecordDetail);
+    }
+
+    @Step
+    public void verify_tooltip_of_field(String field, String tooltip) {
+        onRecordDetailPage.getRecordDetailWidget().clickShowDetailTooltip(field);
+        String tooltips = onRecordDetailPage.getRecordDetailWidget().getTooltip(field);
+        assertThat(tooltips).isEqualTo(tooltip);
+        onRecordDetailPage.getRecordDetailWidget().closeTooltipOfField(field);
     }
 }
 

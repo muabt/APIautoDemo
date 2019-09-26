@@ -19,4 +19,10 @@ public interface RecordDetailWidget extends WidgetObject {
     List<List<String>> getRecordDetail();
     
     void viewRecordWithText(String label);
+
+    String getTooltip(String field);
+
+    void clickShowDetailTooltip(String field);
+
+    void closeTooltipOfField(String field);
 }
