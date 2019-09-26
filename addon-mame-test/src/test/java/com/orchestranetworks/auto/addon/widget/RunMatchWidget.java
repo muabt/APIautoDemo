@@ -14,4 +14,7 @@ public interface RunMatchWidget extends WidgetObject {
 	
 	
 	void verifyMessageNoDecisionTreeIsConfigured();
+	
+	void expandMatchingProcessAdvancedSettings();
+	
 }

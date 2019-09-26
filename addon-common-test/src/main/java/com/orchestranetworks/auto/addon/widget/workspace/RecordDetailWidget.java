@@ -17,4 +17,6 @@ public interface RecordDetailWidget extends WidgetObject {
     void addAnOccurrence();
 
     List<List<String>> getRecordDetail();
+    
+    void viewRecordWithText(String label);
 }

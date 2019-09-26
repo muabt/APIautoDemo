@@ -2,7 +2,10 @@ package com.orchestranetworks.auto.addon.steps;
 
 import java.util.Map;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.pages.RunMatchPage;
+
+import net.thucydides.core.annotations.Step;
 
 public class RunMatchSteps {
 	
@@ -26,5 +29,34 @@ public class RunMatchSteps {
 	public void verify_message_run_match_service_can_not_executed_by_no_decision_tree_is_configured() {
 		onRunMatchPage.getRunMatchWidget().verifyMessageNoDecisionTreeIsConfigured();
 	}
+	
+	@Step
+    public void view_record_with_name(String tab, String label) {
+		
+		onRunMatchPage.getRecordDetailWidget().selectTab(tab);
+		onRunMatchPage.getRecordDetailWidget().viewRecordWithText(label);
+		onRunMatchPage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+		onRunMatchPage.getItemCreationWidget().clickBtnExpand();
+		//onRunMatchPage.getRunMatchWidget().expandMatchingProcessAdvancedSettings();
+    }
+	
+	
+	@Step
+    public void select_keep_not_matched_records_untouched(String keepNotMatchedRecordsUntouched) {
+		onRunMatchPage.getMatchingProcessWidget().selectRadioBoxWithLabel("Keep not matched records untouched", keepNotMatchedRecordsUntouched);
+    }
+    
+    @Step
+    public void select_merged_record_is_recycled(String mergedRecordIsRecycled) {
+    	onRunMatchPage.getMatchingProcessWidget().selectRadioBoxWithLabel("Merged record is recycled", mergedRecordIsRecycled);
+    }
+    
+    @Step
+    public void select_modify_merged_without_match(String modifyMergedWithoutMatch) {
+    	
+    	
+    	onRunMatchPage.getMatchingProcessWidget().selectRadioBoxWithLabel("Modify merged without match", modifyMergedWithoutMatch);
+    }
+	
 
 }

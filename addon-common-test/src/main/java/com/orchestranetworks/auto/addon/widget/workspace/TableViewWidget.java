@@ -19,8 +19,8 @@ public interface TableViewWidget extends WidgetObject {
     void selectRecordWithPK(String[] primaryKey);
 
     void selectRecordWithPK(String selectRecordWithPk);
-
-    void accessRecordWithText(String tableName);
+    
+    void accessRecordWithText(String label);
 
     boolean existRecordInTable();
 

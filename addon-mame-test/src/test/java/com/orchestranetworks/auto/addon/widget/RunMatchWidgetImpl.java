@@ -56,6 +56,12 @@ public class RunMatchWidgetImpl extends BaseWidgetImpl implements RunMatchWidget
     	
     }
     
+    @Override
+    public void expandMatchingProcessAdvancedSettings() {
+    	String xPath = "//td/label[text()='Advanced settings']/ancestor::tr//button/span";
+    	getElement(xPath).click();
+    }
+    
     
     
 }

@@ -127,6 +127,8 @@ public class ManualMergeDefs {
             String matchingExecutionOnUpdate = row.get("Matching execution on update");
             String mergePolicy = row.get("Merge policy");
             String advancedSettings = row.get("Advanced settings");
+            
+            //TODO Refer to RunMatch for Matching Process configuration.
 
             if (!matchingProcessCode.isEmpty()) {
                 if (onManualMergeSteps.verify_code_existed(matchingProcessCode)) {
