@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.assertj.core.api.SoftAssertions;
 
 import net.serenitybdd.core.Serenity;
@@ -187,7 +188,20 @@ public class SessionData {
 
     public static String getJsonTableValue(String tblKey, int rowInd, String colName) {
         JsonArray tbl = Serenity.sessionVariableCalled(tblKey);
-        return tbl.get(rowInd).getAsJsonObject().get(colName).toString().replaceAll("\"","");
+        return tbl.get(rowInd).getAsJsonObject().get(colName).toString().replaceAll("\"", "");
     }
 
+    public static String getJsonTableValueWithSourceValue(String tblKey, String sourceKey, String sourceValue, String targetKey) {
+        JsonArray tbl = Serenity.sessionVariableCalled(tblKey);
+        String targetValue = "";
+        for (int i = 0; i < tbl.size(); i++) {
+            JsonObject row = tbl.get(i).getAsJsonObject();
+            String cell = row.get(sourceKey).toString().replaceAll("\"", "");
+            if (cell.equals(sourceValue)) {
+                targetValue = row.get(targetKey).toString().replaceAll("\"", "");
+                break;
+            }
+        }
+        return targetValue;
+    }
 }
