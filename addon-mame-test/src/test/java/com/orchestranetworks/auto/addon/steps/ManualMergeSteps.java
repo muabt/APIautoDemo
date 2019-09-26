@@ -334,4 +334,8 @@ public class ManualMergeSteps {
     public void confirm_popup() {
         onManualMergePage.getPopupWidget().confirmOK();
     }
+
+    public void clear_default_merge_function() {
+        onManualMergePage.getItemCreationWidget().clearDDL("Default merge function");
+    }
 }

@@ -24,10 +24,12 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
 	public List<List<String>> getDataRecordViewTable() {
+	    waitForAllLoadingCompleted();
 		List<String> listHeader = new ArrayList<String>();
         List<List<String>> actualTable = new ArrayList<List<String>>();
 
         String xPathListHeader = "//record-view//div[@class='top ebx_tvHeaderContainer']//span[@class='ebx_RawLabel']";
+        waitForVisibilityOfElement(xPathListHeader);
         int numOfHeader = findAllElements(xPathListHeader).size();
         for (int i = 1; i <= numOfHeader; i++) {
             String xPathHeaderCell = "(" + xPathListHeader + ")[" + i + "]";

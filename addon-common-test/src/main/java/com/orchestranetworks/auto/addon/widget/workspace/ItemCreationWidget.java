@@ -30,6 +30,8 @@ public interface ItemCreationWidget extends WidgetObject {
 
     void clickBtnWithLabel(String label, String value);
 
+    void clearDDL(String label);
+
     String getTextErrorDataModelField();
 
 	String getTextErrorTableField();

@@ -154,4 +154,9 @@ public class DatasetDefs {
         onDatasetSteps.select_table_service("Delete");
         onDatasetSteps.confirmPopupOK();
     }
+
+    @And("^I select the record that contains \"([^\"]*)\"$")
+    public void select_record_with_text(String text)  {
+	    onDatasetSteps.select_record_with_text(text);
+    }
 }

@@ -188,6 +188,8 @@ public class ManualMergeDefs {
 
             if (!defaultFunction.isEmpty()) {
                 onManualMergeSteps.select_default_merge_function(defaultFunction);
+            } else {
+                onManualMergeSteps.clear_default_merge_function();
             }
 
             if (!useManualMerge.isEmpty()) {

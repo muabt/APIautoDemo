@@ -102,6 +102,12 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     }
 
     @Override
+    public void clearDDL(String label) {
+        String xpathClearBtn = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='Default merge function']]//button[@title='Clear field']";
+        clickOnElement(xpathClearBtn);
+    }
+
+    @Override
     public String getTextErrorDataModelField() {
         String xPathValue = "//tr[descendant::*[text()='Data model']]//div[@class='ebx_Error']";
         String message = getText(xPathValue);

@@ -119,4 +119,7 @@ public class DatasetSteps extends ScenarioSteps {
         JsonArray tbl = defaultViewPage.getDefaultViewWidget().getDefaultViewTable();
         Serenity.setSessionVariable(tableKey).to(tbl);
     }
+    public void select_record_with_text(String text) {
+        defaultViewPage.getDefaultViewWidget().selectCheckboxWithText(text);
+    }
 }
