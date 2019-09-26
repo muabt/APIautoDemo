@@ -88,7 +88,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field)).replaceAll("<br>", "").trim();
         return getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field));
     }
-    
+
     @Override
     public void viewRecordWithTextWithDecorator(String label) {
     	String xPath = "(//table[@class='ebx_tvMain']//td/div[text()='" + label + "'])";
@@ -108,5 +108,10 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
     public void closeTooltipOfField(String field) {
         waitAbit(500);
         clickOnElement("//div[@class='ebx_dcpDescription']");
+    }
+    @Override
+    public void clickBtnPreview() {
+        String xPath = "//span[@class='ebx_Icon']/ancestor::button[@title='Preview']";
+        clickOnElement(xPath);
     }
 }

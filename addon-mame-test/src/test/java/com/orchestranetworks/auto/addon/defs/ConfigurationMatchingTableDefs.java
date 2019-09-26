@@ -1,10 +1,14 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.google.inject.internal.cglib.core.$Constants;
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.steps.ConfigurationMatchingTableSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
+import com.orchestranetworks.auto.addon.steps.MetadataSteps;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
@@ -93,6 +97,15 @@ public class ConfigurationMatchingTableDefs {
                 onConfigurationMatchingTableSteps.verify_tooltip_of_field(field,tooltip);
             }
         }
+    }
+    @And("^I click to preview button$")
+    public void i_click_to_preview_button() throws Throwable {
+        onConfigurationMatchingTableSteps.click_btn_preview();
+    }
+
+    @And("^I should see matching process record details as following$")
+    public void i_should_see_matching_process_record_details_as_following(List<List<String>> recordDetail) {
+        onConfigurationMatchingTableSteps.verify_matching_process_detail(recordDetail);
     }
 }
 

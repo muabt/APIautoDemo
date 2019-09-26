@@ -1,11 +1,13 @@
 package com.orchestranetworks.auto.addon.steps;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.pages.MatchingTablePage;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,11 +50,23 @@ public class ConfigurationMatchingTableSteps {
     }
 
     @Step
+    public void verify_matching_process_detail(List<List<String>> getrecordDetail) {
+        onRecordDetailPage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+        List<List<String>> recordDetails = onRecordDetailPage.getRecordDetailWidget().getRecordDetail();
+        assertThat(recordDetails).isEqualTo(getrecordDetail);
+    }
+
+    @Step
     public void verify_tooltip_of_field(String field, String tooltip) {
         onRecordDetailPage.getRecordDetailWidget().clickShowDetailTooltip(field);
         String tooltips = onRecordDetailPage.getRecordDetailWidget().getTooltip(field);
         assertThat(tooltips).isEqualTo(tooltip);
         onRecordDetailPage.getRecordDetailWidget().closeTooltipOfField(field);
     }
+    @Step
+    public void click_btn_preview() {
+        onRecordDetailPage.getRecordDetailWidget().clickBtnPreview();
+    }
+
 }
 
