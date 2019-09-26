@@ -476,6 +476,28 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
             return "contains(.,'" + givenText + "') and string-length(normalize-space(.=" + givenText.length() + "))";
         }
     }
+    
+    /**
+     * It's handle the case when the givenText = "Won't".
+     * In sSpecialTextPredicates method can not handle this because it's build the statement xpath ~ 'Won't' => wrong.
+     * 
+     * @param givenText
+     * @return
+     */
+    public String specialTextPredicates(String givenText) {
+        String[] tokens = givenText.split(" ");
+        int numText = tokens.length;
+        String resultsPattern = "";
+        if (numText > 1) {
+            resultsPattern = "contains(.,\"" + tokens[0] + "\")";
+            for (int i = 1; i < numText; i++) {
+                resultsPattern += " and contains(.,\"" + tokens[i] + "\")";
+            }
+            return resultsPattern + "and string-length(normalize-space(.=" + givenText.length() + "))";
+        } else {
+            return "contains(.,'" + givenText + "') and string-length(normalize-space(.=" + givenText.length() + "))";
+        }
+    }
 
     public void inputDDLThenTab(String label, String value) {
         String xPathDDL = " //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"

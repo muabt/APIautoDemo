@@ -88,6 +88,12 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field)).replaceAll("<br>", "").trim();
         return getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field));
     }
+    
+    @Override
+    public void viewRecordWithTextWithDecorator(String label) {
+    	String xPath = "(//table[@class='ebx_tvMain']//td/div[text()='" + label + "'])";
+        executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
+    }
 
 
     @Override

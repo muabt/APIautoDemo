@@ -136,3 +136,29 @@ Feature: Run Match feature
     And I select last record in table
     Then delete it
     And I delete the dataspace
+    
+  #Scenario: UAT-RM-07 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Both null values Won't match.
+    #Given I permit to access matching table
+    #And I select last record in table
+    #Then delete it
+    #When I access Import service in Actions in left panel
+    #Then I select "MAME_Configuration_Inline.ebx" file to import
+    #And I select matching table record of table "Person"
+    #Then I select matching process record with label "MPC1" in "Matching process" tab
+    #And I select matching field record with label "Residence" in "Matching fields" tab
+    #And the matching field is updated as the followings
+      #| Field | Both values are null | One of the values is null |
+      #|       | Won't match          | Won't match               |
+    #And I create a child of dataspace "Master Data - Reference" with information as following
+    #| Identifier     | Owner               | English Label |
+    #| childDataspace | admin admin (admin) |               |
+    #And I access table "Person" of dataset "genealogy" in dataspace "Master Data - Reference > childDataspace"
+    #When I select table service "Match and Merge > Run match"
+    #Then I should see Run Match with information as following
+      #| Matching process | Records to match against |
+      #| SESSION          | Entire table             |
+    #When I click on Run Match button
+    #And I permit to access matching table
+    #And I select last record in table
+    #Then delete it
+    #And I delete the dataspace

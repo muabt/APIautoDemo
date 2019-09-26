@@ -69,6 +69,13 @@ public class RunMatchDefs {
     	
     }
     
+    @Given("^I select matching field record with label \"([^\"]*)\" in \"([^\"]*)\" tab$")
+    public void i_select_matching_field_record_of_table(String label, String tab) {
+    	
+    	onRunMatchSteps.view_matching_field_record_with_name(tab, label);
+    	
+    }
+    
     @And("^the matching process is updated as the followings$")
     public void the_matching_process_is_updated_as_the_followings(DataTable dt) {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
@@ -109,6 +116,27 @@ public class RunMatchDefs {
             
             if (!modifyMergedWithoutMatch.isEmpty()) {
             	onRunMatchSteps.select_modify_merged_without_match(modifyMergedWithoutMatch);
+            }
+
+        }
+        onManualMergeSteps.click_btn_save_and_close_internal_popup(1);
+    }
+    
+    @And("^the matching field is updated as the followings$")
+    public void the_matching_field_is_updated_as_the_followings(DataTable dt) {
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String field = row.get("Field");
+            String bothValuesAreNull = row.get("Both values are null");
+            String oneOfTheValuesIsNull = row.get("One of the values is null");
+                        
+
+            if (!bothValuesAreNull.isEmpty()) {
+            	onRunMatchSteps.select_both_values_are_null(bothValuesAreNull);
+            }
+
+            if (!oneOfTheValuesIsNull.isEmpty()) {
+            	onRunMatchSteps.select_one_of_the_values_is_null(oneOfTheValuesIsNull);
             }
 
         }

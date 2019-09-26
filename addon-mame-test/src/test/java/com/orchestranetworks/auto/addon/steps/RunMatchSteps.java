@@ -37,7 +37,15 @@ public class RunMatchSteps {
 		onRunMatchPage.getRecordDetailWidget().viewRecordWithText(label);
 		onRunMatchPage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
 		onRunMatchPage.getItemCreationWidget().clickBtnExpand();
-		//onRunMatchPage.getRunMatchWidget().expandMatchingProcessAdvancedSettings();
+    }
+	
+	@Step
+    public void view_matching_field_record_with_name(String tab, String label) {
+		
+		onRunMatchPage.getRecordDetailWidget().selectTab(tab);
+		onRunMatchPage.getRecordDetailWidget().viewRecordWithTextWithDecorator(label);
+		onRunMatchPage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+		onRunMatchPage.getItemCreationWidget().clickBtnExpand();
     }
 	
 	
@@ -57,6 +65,16 @@ public class RunMatchSteps {
     	
     	onRunMatchPage.getMatchingProcessWidget().selectRadioBoxWithLabel("Modify merged without match", modifyMergedWithoutMatch);
     }
+
+	public void select_one_of_the_values_is_null(String oneOfTheValuesIsNull) {
+		
+		onRunMatchPage.getMatchingFieldWidget().selectDDLByJS("One of the values is null", oneOfTheValuesIsNull);
+				
+	}
+
+	public void select_both_values_are_null(String bothValuesAreNull) {
+		onRunMatchPage.getMatchingFieldWidget().selectDDLByJS("Both values are null", bothValuesAreNull);
+	}
 	
 
 }

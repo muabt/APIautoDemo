@@ -25,4 +25,6 @@ public interface RecordDetailWidget extends WidgetObject {
     void clickShowDetailTooltip(String field);
 
     void closeTooltipOfField(String field);
+    
+    void viewRecordWithTextWithDecorator(String label);
 }
