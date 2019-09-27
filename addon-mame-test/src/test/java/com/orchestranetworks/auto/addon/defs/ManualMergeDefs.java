@@ -45,7 +45,7 @@ public class ManualMergeDefs {
     }
 
     @When("^I complete merging process$")
-    public void i_complete_merging_process() {
+    public void  i_complete_merging_process() {
         onManualMergeSteps.click_button_next();
         onManualMergeSteps.click_button_merge();
 

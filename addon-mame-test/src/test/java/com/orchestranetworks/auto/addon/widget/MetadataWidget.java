@@ -15,7 +15,6 @@ public interface MetadataWidget extends WidgetObject {
     void clickBtnPreviewGroup();
     void clickBtnClose();
     List<List<String>> getDataRecordDetail();
-    List<List<String>> getDataRecordDuplicatesTable();
-    List<List<String>> getDataRecordSuspectTable();
-	
+	String getHeaderManageGroup();
+	String getHeaderMetadata();
 }

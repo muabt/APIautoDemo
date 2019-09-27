@@ -1,21 +1,14 @@
 package com.orchestranetworks.auto.addon.widget;
 
-import java.time.Clock;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.orchestranetworks.auto.addon.Constants;
-import org.apache.xpath.res.XPATHMessages;
-import org.jruby.RubyProcess;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
-import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
-import com.orchestranetworks.auto.addon.pages.MetadataPage;
 
 import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.pages.WebElementFacade;
 
 public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget {
 
@@ -30,9 +23,10 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
     private static final String XPATH_VALUE_METADATA = "(//td[@class='ebx_Input'])";
     private static final String XPATH_PREVIEW_RECORD = "(//button[@class='ebx_FlatButton ebx_IconButton ebx_Open']/span)[1]";
     private static final String XPATH_PREVIEW_GROUP = "(//button[@class='ebx_FlatButton ebx_IconButton ebx_Open']/span)[2]";
-    private static final String XPATH_LABEL_RECORD = "//table[@class='ebx_FieldList']//td[@class='ebx_Label']";
-    private static final String XPATH_VALUE_RECORD = "(//*[@class='ebx_FieldDecorator'])";
-    private static final String XPATH_CLOSE = "(//div[@class='ebx_ActionsBack']/button)[5]";
+
+    private static final String XPATH_BTN_CLOSE = "(//div[@class='ebx_ActionsBack']/button)[5]";
+    private static final String XPATH_HEADER_GROUP = "//h2/span[contains(text(),'Manage group')]";
+    private static final String XPATH_HEADER_METADATA = "//h2/span[contains(text(),'Metadata')]";
 
     @Override
     public boolean isMainSelected() {
@@ -107,26 +101,27 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
 
     @Override
     public void clickBtnClose() {
-        clickOnElement(XPATH_CLOSE);
+        clickOnElement(XPATH_BTN_CLOSE);
 
     }
-
     @Override
     public void clickBtnPreviewGroup() {
+        switchOutDefaultIFrame();
+        switchToIFrame(Constants.IFRAME_LEGACY);
+        switchToIFrame(Constants.IFRAME_SERVICE);
         clickOnElement(XPATH_PREVIEW_GROUP);
     }
 
     @Override
-    public List<List<String>> getDataRecordDuplicatesTable() {
-
-
-        return null;
+    public String getHeaderManageGroup() {
+        switchOutDefaultIFrame();
+        return getText(XPATH_HEADER_GROUP);
     }
 
-
     @Override
-    public List<List<String>> getDataRecordSuspectTable() {
-        return null;
+    public String getHeaderMetadata() {
+        switchOutDefaultIFrame();
+        return getText(XPATH_HEADER_METADATA);
     }
 
 }

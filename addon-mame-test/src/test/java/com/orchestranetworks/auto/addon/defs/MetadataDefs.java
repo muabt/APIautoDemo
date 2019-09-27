@@ -27,11 +27,6 @@ public class MetadataDefs {
 	public void i_should_see_detailed_record_as_following(List<List<String>> getDataRecordDetail) throws Throwable {
 		onMetadataSteps.click_button_preview_record();
 		onMetadataSteps.verify_record_details(getDataRecordDetail);
-
-	}
-
-	@When("^I want to come back metadata screen$")
-	public void i_want_to_come_back_metadata_screen() throws Throwable {
 		onMetadataSteps.click_button_close();
 
 	}
@@ -39,20 +34,27 @@ public class MetadataDefs {
 	@When("^I want to see group of record$")
 	public void i_want_to_see_group_of_record() throws Throwable {
 		onMetadataSteps.click_button_preview_group();
-
 	}
 
 	@Then("^I should see manage group of table \"([^\"]*)\"$")
-	public void i_should_see_manage_group_of_table_something(String strArg1) throws Throwable {
-
+	public void i_should_see_manage_group_of_table(String header)  {
+		onMetadataSteps.verify_header(header);
 	}
 
 	@And("^I should see Duplicates table as following$")
-	public void i_should_see_duplicates_table_as_following() throws Throwable {
+	public void i_should_see_duplicates_table_as_following (List<List<String>> duplicatesTable)  {
+		onMetadataSteps.verify_duplicate_table(duplicatesTable);
+
 	}
 
 	@And("^I should see the Suspects table as following$")
-	public void i_should_see_the_suspects_table_as_following() throws Throwable {
+	public void i_should_see_the_suspects_table_as_following(List<String> getDataSuspectTable)  {
+		onMetadataSteps.verify_suspect_table(getDataSuspectTable);
 
 	}
+    @And("^I should see text \"([^\"]*)\"$")
+    public void i_should_see_text_something(String strArg1)  {
+
+    }
+
 }

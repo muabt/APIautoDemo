@@ -5,10 +5,9 @@ import java.util.List;
 import net.serenitybdd.core.annotations.ImplementedBy;
 import net.serenitybdd.core.pages.WidgetObject;
 
-//@ImplementedBy(ManageGroupImpl.class)
+@ImplementedBy(ManageGroupWidgetImpl.class)
 public interface ManageGroupWidget extends WidgetObject {
-	List<List<String>> getDataDuplicatesTable();
-	List<List<String>> getDataSuspectsTable();
-	 void clickBtnClose();
-
+    List<List<String>> getDataDuplicatesTable();
+    List<String> getDataSuspectsTable();
+    String getNoRecordFound();
 }
