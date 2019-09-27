@@ -60,4 +60,9 @@ public class MetadataSteps {
     public void verify_no_record (String suspectNoRecord) {
         Assert.assertEquals(suspectNoRecord+".", onManageGroupPage.getManageGroupWidget().getNoRecordFound());
     }
+
+    public void verify_record_having_auto_ctrated_is_yes(String autoCreated) {
+        Assert.assertEquals(autoCreated,onMetadataPage.getMetadata().getTextAutoCreatedRecord());
+
+    }
 }

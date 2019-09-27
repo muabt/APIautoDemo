@@ -17,4 +17,5 @@ public interface MetadataWidget extends WidgetObject {
     List<List<String>> getDataRecordDetail();
 	String getHeaderManageGroup();
 	String getHeaderMetadata();
+	String getTextAutoCreatedRecord();
 }

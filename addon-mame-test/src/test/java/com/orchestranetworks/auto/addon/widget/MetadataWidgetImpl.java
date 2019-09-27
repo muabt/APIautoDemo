@@ -27,6 +27,7 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
     private static final String XPATH_BTN_CLOSE = "(//div[@class='ebx_ActionsBack']/button)[5]";
     private static final String XPATH_HEADER_GROUP = "//h2/span[contains(text(),'Manage group')]";
     private static final String XPATH_HEADER_METADATA = "//h2/span[contains(text(),'Metadata')]";
+    private static final String XPATH_AUTOCREATED_RECORD = "//p[@class='information']";
 
     @Override
     public boolean isMainSelected() {
@@ -122,6 +123,11 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
     public String getHeaderMetadata() {
         switchOutDefaultIFrame();
         return getText(XPATH_HEADER_METADATA);
+    }
+
+    @Override
+    public String getTextAutoCreatedRecord() {
+        return getTextValue(XPATH_AUTOCREATED_RECORD);
     }
 
 }

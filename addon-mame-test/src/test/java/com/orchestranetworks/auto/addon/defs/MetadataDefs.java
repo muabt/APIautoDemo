@@ -56,4 +56,11 @@ public class MetadataDefs {
     public void i_should_see_text(String msg) {
         onMetadataSteps.verify_no_record(msg);
     }
+
+	@And("^Text \"([^\"]*)\" will be displayed under Record info$")
+	public void text_something_will_be_displayed_under_record_info(String label)  {
+    	onMetadataSteps.verify_record_having_auto_ctrated_is_yes(label);
+
+	}
+
 }
