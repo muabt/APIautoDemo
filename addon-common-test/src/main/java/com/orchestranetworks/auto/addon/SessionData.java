@@ -9,7 +9,7 @@ import com.google.gson.JsonObject;
 import org.assertj.core.api.SoftAssertions;
 
 import net.serenitybdd.core.Serenity;
-
+import static org.assertj.core.api.Assertions.assertThat;
 public class SessionData {
     private static final String TABLE_DATA_LIST = "#TableData#";
     private static final String SOFT_ASSERTION_LIST = "#SoftAssertions#";
@@ -186,9 +186,8 @@ public class SessionData {
         return softAssertions;
     }
 
-    public static String getJsonTableValue(String tblKey, int rowInd, String colName) {
-        JsonArray tbl = Serenity.sessionVariableCalled(tblKey);
-        return tbl.get(rowInd).getAsJsonObject().get(colName).toString().replaceAll("\"", "");
+    public static String getJsonTableValue(JsonObject row, String colName) {
+        return row.get(colName).toString().replaceAll("\"", "");
     }
 
     public static String getJsonTableValueWithSourceValue(String tblKey, String sourceKey, String sourceValue, String targetKey) {
@@ -204,4 +203,42 @@ public class SessionData {
         }
         return targetValue;
     }
+
+    public static JsonArray convertArrayListToJson(List<List<String>> tbl) {
+        List<String> listHeader = tbl.get(0);
+        JsonArray arr = new JsonArray();
+        for (int i = 1; i < tbl.size(); i++) {
+            List<String> row = tbl.get(i);
+            JsonObject e = new JsonObject();
+            for (int j = 0; j < row.size(); j++) {
+                e.addProperty(listHeader.get(j), row.get(j));
+            }
+            arr.add(e);
+        }
+        return arr;
+    }
+    public static void addPropertiesToExistJsonArray(String arrKey,String property, String value ) {
+        JsonArray arr = Serenity.sessionVariableCalled(arrKey);
+        for (int i = 0; i < arr.size(); i++) {
+            JsonObject jo = arr.get(i).getAsJsonObject();
+            jo.addProperty(property,value);
+        }
+
+    }
+
+    public static void compareJsonObjectValue(JsonObject actual, String actualHeader, JsonObject expected, String expectedHeader) {
+        String actualValue = actual.get(actualHeader).getAsString();
+        String expectedValue =expected.get(expectedHeader).getAsString();
+        assertThat(actualValue).isEqualTo(expectedValue);
+    }
+
+    public static void compareJsonObjectValue(JsonObject actual, String actualHeader,  String expectedValue) {
+        String actualValue = actual.get(actualHeader).getAsString();
+        assertThat(actualValue).isEqualTo(expectedValue);
+    }
+    public static void compareJsonObjectValueContains(JsonObject actual, String actualHeader,  String expectedValue) {
+        String actualValue = actual.get(actualHeader).getAsString();
+        assertThat(actualValue).contains(expectedValue);
+    }
+
 }

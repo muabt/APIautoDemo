@@ -51,4 +51,12 @@ public interface TechnicalTable {
         public final static String FIELD_PATH = "fieldPath";
         public final static String GOLDEN_INDEX = "goldenIndex";
     }
+    public interface MameRecord{
+
+        public final static String FUNCTIONAL_ID = "FUNCTIONAL_ID";
+        public final static String TECHNICAL_ID = "TECHNICAL_ID";
+        public final static String STATE = "STATE";
+        public final static String GROUP_ID = "GROUP_ID";
+        public final static String MERGING_PROCESS_ID = "MERGING_PROCESS_ID";
+    }
 }

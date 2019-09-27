@@ -1,5 +1,9 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
@@ -45,59 +49,33 @@ public class ManualMergeDefs {
     }
 
     @When("^I complete merging process$")
-    public void  i_complete_merging_process() {
+    public void i_complete_merging_process() {
         onManualMergeSteps.click_button_next();
         onManualMergeSteps.click_button_merge();
 
     }
 
     @Then("^I will see table RecordMetadata as below$")
-    public void i_will_see_table_recordmetadata_as_below(DataTable recordMetadataExpect) {
-        List<Map<String, String>> list = recordMetadataExpect.asMaps(String.class, String.class);
-        onDatasetSteps.getDefaultViewTable(MAMEConstants.RECORD_METADATA_TBL);
+    public void i_will_see_table_recordmetadata_as_below(List<List<String>> recordMetadataExpect) {
+        JsonArray actualTbl = onDatasetSteps.getDefaultViewTable();
+        Serenity.setSessionVariable(MAMEConstants.RECORD_METADATA_TBL).to(actualTbl);
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(recordMetadataExpect);
 
-        String colRecordID = TechnicalTable.RecordMetadata.ID;
-        String colGroupID = TechnicalTable.RecordMetadata.GROUP_ID;
-        String colState = TechnicalTable.RecordMetadata.STATE;
-        String colAutoCreated = TechnicalTable.RecordMetadata.AUTO_CREATED;
-        String colFunctionalID = TechnicalTable.RecordMetadata.FUNCTIONAL_ID;
+        // get Merging process ID with groupID in RecordMetadata table
+        JsonArray recordMetaDataTbl = Serenity.sessionVariableCalled(MAMEConstants.RECORD_METADATA_TBL);
+        String groupID = SessionData.getJsonTableValue(recordMetaDataTbl.get(0).getAsJsonObject(),TechnicalTable.RecordMetadata.GROUP_ID);
 
-        String actualValue = "";
-        for (int i = 0; i < list.size(); i++) {
-            Map<String, String> row = list.get(i);
-            String recordID = row.get(colRecordID);
-            String groupID = row.get(colGroupID);
-            String state = row.get(colState);
-            String autoCreated = row.get(colAutoCreated);
-            String functionalID = row.get(colFunctionalID);
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expected = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actual = actualTbl.get(i).getAsJsonObject();
 
-            if (!recordID.isEmpty()) {
-
-            }
-
-            if (!groupID.isEmpty()) {
-                onManualMergeSteps.verify_group_id(i);
-            }
-
-            if (!state.isEmpty()) {
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL, i, colState);
-                assertThat(actualValue).isEqualTo(state);
-            }
-
-            if (!autoCreated.isEmpty()) {
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL, i, colAutoCreated);
-                assertThat(actualValue).isEqualTo(autoCreated);
-            }
-
-            if (!functionalID.isEmpty()) {
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL, i, colFunctionalID);
-                assertThat(actualValue).isEqualTo(functionalID);
-            }
-
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.GROUP_ID, groupID);
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.STATE, expected, TechnicalTable.RecordMetadata.STATE);
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.AUTO_CREATED, expected, TechnicalTable.RecordMetadata.AUTO_CREATED);
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, expected, TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
         }
 
     }
-
 
     @Given("^I select matching table record of table \"([^\"]*)\"$")
     public void i_select_matching_table_record_of_table(String label) {
@@ -278,7 +256,7 @@ public class ManualMergeDefs {
     }
 
     private void deleteTrustedSource(String... locations) {
-        for (String location: locations) {
+        for (String location : locations) {
             if (onManualMergeSteps.verify_code_existed(Serenity.sessionVariableCalled(location))) {
                 onManualMergeSteps.select_checkbox_with_text(location);
                 onManualMergeSteps.select_table_service("Delete");
@@ -340,54 +318,44 @@ public class ManualMergeDefs {
 
 
     @Then("^I will see table MergingProcess as below$")
-    public void i_will_see_table_merging_process_below(DataTable table) {
+    public void i_will_see_table_merging_process_below(List<List<String>> table) {
         onCommonSteps.click_on_table_name("MergingProcess");
-        onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGEING_PROCESS_TBL);
+        JsonArray actualTbl = onDatasetSteps.getDefaultViewTable();
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
 
-        List<Map<String, String>> list = table.asMaps(String.class, String.class);
-
-        String colId = TechnicalTable.MergingProcess.ID;
-        String colMergePolicyId = TechnicalTable.MergingProcess.MERGE_POLICY_ID;
-        String colMergeMode = TechnicalTable.MergingProcess.MERGE_MODE;
-        String colExecutionDate = TechnicalTable.MergingProcess.EXECUTION_DATE;
-        String colSnapshotId = TechnicalTable.MergingProcess.SNAPSHOT_ID;
-        String colGroupId = TechnicalTable.MergingProcess.GROUP_ID;
-        String colUser = TechnicalTable.MergingProcess.USER;
-        String colIsUnmerged = TechnicalTable.MergingProcess.IS_UNMERGED;
+        Serenity.setSessionVariable(MAMEConstants.MERGEING_PROCESS_TBL)
+                .to(actualTbl);
 
         // get Merging process ID with groupID in RecordMetadata table
-        String groupID = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL, 0, TechnicalTable.RecordMetadata.GROUP_ID);
+        JsonArray recordMetaDataTbl = Serenity.sessionVariableCalled(MAMEConstants.RECORD_METADATA_TBL);
+        String groupID = SessionData.getJsonTableValue(recordMetaDataTbl.get(0).getAsJsonObject(),TechnicalTable.RecordMetadata.GROUP_ID);
 
         String actualValue = "";
-        for (int i = 0; i < list.size(); i++) {
-            Map<String, String> row = list.get(i);
-            String id = row.get(colId);
-            String mergePolicyId = row.get(colMergePolicyId);
-            String mergeMode = row.get(colMergeMode);
-            String executionDate = row.get(colExecutionDate);
-            String snapshotId = row.get(colSnapshotId);
-            String groupId = row.get(colGroupId);
-            String user = row.get(colUser);
-            String isUnmerged = row.get(colIsUnmerged);
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.get(i).getAsJsonObject();
+
+            String id = expectedRow.get(TechnicalTable.MergingProcess.ID).getAsString();
+            String mergePolicyId = expectedRow.get(TechnicalTable.MergingProcess.MERGE_POLICY_ID).getAsString();
+            String mergeMode = expectedRow.get(TechnicalTable.MergingProcess.MERGE_MODE).getAsString();
+            String executionDate = expectedRow.get(TechnicalTable.MergingProcess.EXECUTION_DATE).getAsString();
+            String snapshotId = expectedRow.get(TechnicalTable.MergingProcess.SNAPSHOT_ID).getAsString();
+            String groupId = expectedRow.get(TechnicalTable.MergingProcess.GROUP_ID).getAsString();
+            String user = expectedRow.get(TechnicalTable.MergingProcess.USER).getAsString();
+            String isUnmerged = expectedRow.get(TechnicalTable.MergingProcess.IS_UNMERGED).getAsString();
 
             if (!mergeMode.isEmpty()) {
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, colMergeMode);
-                assertThat(actualValue).isEqualTo(mergeMode);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.MERGE_MODE, mergeMode);
             }
             if (!executionDate.isEmpty()) {
                 executionDate = DateTimeUtils.getCurrentDateTime();
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, colExecutionDate);
-                System.out.println("Exx"+executionDate);
-                System.out.println(actualValue);
-                assertThat(actualValue).contains(executionDate);
+                SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.EXECUTION_DATE, executionDate);
             }
             if (!user.isEmpty()) {
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, colUser);
-                assertThat(actualValue).isEqualTo(user);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.USER, user);
             }
             if (!isUnmerged.isEmpty()) {
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, colIsUnmerged);
-                assertThat(actualValue).isEqualTo(isUnmerged);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.IS_UNMERGED, isUnmerged);
             }
 
         }
@@ -400,95 +368,97 @@ public class ManualMergeDefs {
     }
 
     @Then("^I will see table MergeResult as below$")
-    public void i_will_see_table_merge_result(DataTable table) {
+    public void i_will_see_table_merge_result(List<List<String>> table) {
         onCommonSteps.click_on_table_name(MAMEConstants.MERGE_RESULT_TBL);
-        onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGE_RESULT_TBL);
-        List<Map<String, String>> list = table.asMaps(String.class, String.class);
-        String actualValue = "";
-        for (int i = 0; i < list.size(); i++) {
-            Map<String, String> row = list.get(i);
-            String id = row.get(TechnicalTable.MergeResult.ID);
-            String recordId = row.get(TechnicalTable.MergeResult.RECORD_ID);
-            String goldenId = row.get(TechnicalTable.MergeResult.GOLDEN_ID);
-            String mergingProcessId = row.get(TechnicalTable.MergeResult.MERGING_PROCESS_ID);
-            String isInterpolation = row.get(TechnicalTable.MergeResult.IS_INTERPOLATION);
+        JsonArray actualTbl = onDatasetSteps.getDefaultViewTable();
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
+        Serenity.setSessionVariable(actualTbl).to(MAMEConstants.MERGE_RESULT_TBL);
+
+        // Get Merging process ID from MergingProcess table
+        JsonArray mergingProcessTbl = Serenity.sessionVariableCalled(MAMEConstants.MERGEING_PROCESS_TBL);
+        JsonObject mergingProcessRecord = mergingProcessTbl.get(0).getAsJsonObject();
+        String mergingProcessId = SessionData.getJsonTableValue(mergingProcessRecord, TechnicalTable.MergingProcess.ID);
+
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.get(i).getAsJsonObject();
+
+            String id = expectedRow.get(TechnicalTable.MergeResult.ID).getAsString();
+            String recordId = expectedRow.get(TechnicalTable.MergeResult.RECORD_ID).getAsString();
+            String goldenId = expectedRow.get(TechnicalTable.MergeResult.GOLDEN_ID).getAsString();
+            String mpID = expectedRow.get(TechnicalTable.MergeResult.MERGING_PROCESS_ID).getAsString();
+            String isInterpolation = expectedRow.get(TechnicalTable.MergeResult.IS_INTERPOLATION).getAsString();
 
             if (!id.isEmpty()) {
 
             }
             if (!recordId.isEmpty()) {
                 recordId = SessionData.getJsonTableValueWithSourceValue(MAMEConstants.RECORD_METADATA_TBL, TechnicalTable.RecordMetadata.STATE, "Merged", TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGE_RESULT_TBL, i, TechnicalTable.MergeResult.RECORD_ID);
-                assertThat(actualValue).isEqualTo(recordId);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.RECORD_ID, recordId);
             }
             if (!goldenId.isEmpty()) {
                 goldenId = SessionData.getJsonTableValueWithSourceValue(MAMEConstants.RECORD_METADATA_TBL, TechnicalTable.RecordMetadata.STATE, "Golden", TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGE_RESULT_TBL, i, TechnicalTable.MergeResult.GOLDEN_ID);
-                assertThat(actualValue).isEqualTo(goldenId);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.GOLDEN_ID, goldenId);
 
             }
-            if (!mergingProcessId.isEmpty()) {
-                mergingProcessId = SessionData.getJsonTableValue(MAMEConstants.MERGEING_PROCESS_TBL, i, TechnicalTable.MergingProcess.ID);
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGE_RESULT_TBL, i, TechnicalTable.MergeResult.MERGING_PROCESS_ID);
-                assertThat(actualValue).isEqualTo(mergingProcessId);
+            if (!mpID.isEmpty()) {
+                mpID = mergingProcessId;
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.MERGING_PROCESS_ID, mpID);
             }
             if (!isInterpolation.isEmpty()) {
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.MERGE_RESULT_TBL, i, TechnicalTable.MergeResult.IS_INTERPOLATION);
-                assertThat(actualValue).isEqualTo(isInterpolation);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.IS_INTERPOLATION, isInterpolation);
             }
 
         }
     }
 
     @Then("^I will see table Decision as below$")
-    public void i_will_see_table_decision_below(DataTable table) {
+    public void i_will_see_table_decision_below(List<List<String>> table) {
         onCommonSteps.click_on_table_name(MAMEConstants.DECISION);
-        onDatasetSteps.getDefaultViewTable(MAMEConstants.DECISION);
-        List<Map<String, String>> list = table.asMaps(String.class, String.class);
-        String actualValue = "";
-        for (int i = 0; i < list.size(); i++) {
-            Map<String, String> row = list.get(i);
-            String id = row.get(TechnicalTable.Decision.ID);
-            String sourceId = row.get(TechnicalTable.Decision.SOURCE_ID);
-            String targetId = row.get(TechnicalTable.Decision.TARGET_ID);
-            String lastDecision = row.get(TechnicalTable.Decision.LAST_DECISION);
-            String user = row.get(TechnicalTable.Decision.USER);
-            String decisionDate = row.get(TechnicalTable.Decision.DECISION_DATE);
-            String mergingProcessId = row.get(TechnicalTable.Decision.MERGING_PROCESS_ID);
+
+        JsonArray actualTbl = onDatasetSteps.getDefaultViewTable();
+        Serenity.setSessionVariable(MAMEConstants.DECISION).to(actualTbl);
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
+
+        // Get data from other table
+        JsonArray mergingProcessTbl = Serenity.sessionVariableCalled(MAMEConstants.MERGEING_PROCESS_TBL);
+        String mpID = SessionData.getJsonTableValue(mergingProcessTbl.get(0).getAsJsonObject(), TechnicalTable.MergingProcess.ID);
+        String mergedId = SessionData.getJsonTableValueWithSourceValue(MAMEConstants.RECORD_METADATA_TBL, TechnicalTable.RecordMetadata.STATE, "Merged", TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
+        String goldenId = SessionData.getJsonTableValueWithSourceValue(MAMEConstants.RECORD_METADATA_TBL, TechnicalTable.RecordMetadata.STATE, "Golden", TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.get(i).getAsJsonObject();
+            String id = expectedRow.get(TechnicalTable.Decision.ID).getAsString();
+            String sourceId = expectedRow.get(TechnicalTable.Decision.SOURCE_ID).getAsString();
+            String targetId = expectedRow.get(TechnicalTable.Decision.TARGET_ID).getAsString();
+            String lastDecision = expectedRow.get(TechnicalTable.Decision.LAST_DECISION).getAsString();
+            String user = expectedRow.get(TechnicalTable.Decision.USER).getAsString();
+            String decisionDate = expectedRow.get(TechnicalTable.Decision.DECISION_DATE).getAsString();
+            String mergingProcessId = expectedRow.get(TechnicalTable.Decision.MERGING_PROCESS_ID).getAsString();
 
             if (!id.isEmpty()) {
 
             }
             if (!sourceId.isEmpty()) {
-                sourceId = SessionData.getJsonTableValueWithSourceValue(MAMEConstants.RECORD_METADATA_TBL, TechnicalTable.RecordMetadata.STATE, "Merged", TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.DECISION, i, TechnicalTable.Decision.SOURCE_ID);
-                assertThat(actualValue).isEqualTo(sourceId);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.SOURCE_ID, mergedId);
             }
             if (!targetId.isEmpty()) {
-                targetId = SessionData.getJsonTableValueWithSourceValue(MAMEConstants.RECORD_METADATA_TBL, TechnicalTable.RecordMetadata.STATE, "Golden", TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.DECISION, i, TechnicalTable.Decision.TARGET_ID);
-                assertThat(actualValue).isEqualTo(targetId);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.TARGET_ID, goldenId);
 
             }
             if (!lastDecision.isEmpty()) {
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.DECISION, i, TechnicalTable.Decision.LAST_DECISION);
-                assertThat(actualValue).isEqualTo(lastDecision);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.LAST_DECISION, lastDecision);
             }
             if (!user.isEmpty()) {
                 user = LoadConfig.getUserName();
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.DECISION, i, TechnicalTable.Decision.USER);
-                assertThat(actualValue).isEqualTo(user);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.USER, user);
             }
             if (!decisionDate.isEmpty()) {
                 decisionDate = DateTimeUtils.getCurrentDateTime();
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.DECISION, i, TechnicalTable.Decision.DECISION_DATE);
-                assertThat(actualValue).contains(decisionDate);
+                SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.Decision.DECISION_DATE, decisionDate);
             }
             if (!mergingProcessId.isEmpty()) {
-                String groupID = SessionData.getJsonTableValueWithSourceValue(MAMEConstants.RECORD_METADATA_TBL, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, sourceId, TechnicalTable.RecordMetadata.GROUP_ID);
-                mergingProcessId = SessionData.getJsonTableValueWithSourceValue(MAMEConstants.MERGEING_PROCESS_TBL, TechnicalTable.RecordMetadata.GROUP_ID, groupID, TechnicalTable.MergingProcess.ID);
-                actualValue = SessionData.getJsonTableValue(MAMEConstants.DECISION, i, TechnicalTable.Decision.MERGING_PROCESS_ID);
-                assertThat(actualValue).contains(mergingProcessId);
+                SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.Decision.MERGING_PROCESS_ID, mpID);
             }
         }
     }
@@ -496,7 +466,7 @@ public class ManualMergeDefs {
     @Then("^I will see table MergeValueLineage as below$")
     public void iWillSeeTableMergeValueLineageAsBelow(DataTable table) {
         onCommonSteps.click_on_table_name(MAMEConstants.MERGEVALUELINEAGE);
-        onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGEVALUELINEAGE);
+        onDatasetSteps.getDefaultViewTable();
         List<Map<String, String>> list = table.asMaps(String.class, String.class);
         String actualValue = "";
         for (int i = 0; i < list.size(); i++) {

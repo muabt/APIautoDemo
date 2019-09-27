@@ -8,10 +8,8 @@ import com.orchestranetworks.auto.addon.pages.PermissionPage;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 import com.orchestranetworks.auto.addon.pages.*;
 
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.assertj.core.api.Assertions;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -115,9 +113,9 @@ public class DatasetSteps extends ScenarioSteps {
 
 
     @Step
-    public void getDefaultViewTable(String tableKey) {
-        JsonArray tbl = defaultViewPage.getDefaultViewWidget().getDefaultViewTable();
-        Serenity.setSessionVariable(tableKey).to(tbl);
+    public JsonArray getDefaultViewTable() {
+       return defaultViewPage.getDefaultViewWidget().getDefaultViewTable();
+
     }
     public void select_record_with_text(String text) {
         defaultViewPage.getDefaultViewWidget().selectCheckboxWithText(text);

@@ -142,13 +142,6 @@ public class ManualMergeSteps {
     }
 
     @Step
-    public void verify_group_id(int rowInd) {
-        String expected = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL,0, "groupId");
-        String actual = SessionData.getJsonTableValue(MAMEConstants.RECORD_METADATA_TBL,rowInd, "groupId");
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Step
     public void
     select_survivor_record(String selectionMode) {
         onManualMergePage.getItemCreationWidget().selectDDLByJS("Survivor record selection mode", selectionMode);
