@@ -13,4 +13,6 @@ public class MAMEConstants {
     public static final String MERGE_RESULT_TBL = "MergeResult";
     public static final String DECISION = "Decision";
     public static final String MERGEVALUELINEAGE ="MergeValueLineage" ;
+    public static final String IFRAME_INTERNAL_POPUP = "ebx_InternalPopup_frame";
+
 }

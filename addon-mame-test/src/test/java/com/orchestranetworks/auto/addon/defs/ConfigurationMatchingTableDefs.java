@@ -75,28 +75,9 @@ public class ConfigurationMatchingTableDefs {
             String field = row.get("Field");
             String tooltip = row.get("Tooltip");
 
-            if (field.equals("Data model")) {
-                onConfigurationMatchingTableSteps.verify_tooltip_of_field(field,tooltip);
-            }
-            if (field.equals("Table")) {
-                onConfigurationMatchingTableSteps.verify_tooltip_of_field(field,tooltip);
-            }
-            if (field.equals("Active")) {
-                onConfigurationMatchingTableSteps.verify_tooltip_of_field(field,tooltip);
-            }
-            if (field.equals("Default matching process")) {
-                onConfigurationMatchingTableSteps.verify_tooltip_of_field(field,tooltip);
-            }
-            if (field.equals("Source field")) {
-                onConfigurationMatchingTableSteps.verify_tooltip_of_field(field,tooltip);
-            }
-            if (field.equals("Event listener")) {
-                onConfigurationMatchingTableSteps.verify_tooltip_of_field(field,tooltip);
-            }
-            if (field.equals("Disable trigger")) {
-                onConfigurationMatchingTableSteps.verify_tooltip_of_field(field,tooltip);
-            }
+            onConfigurationMatchingTableSteps.verify_tooltip_of_field(field, tooltip);
         }
+
     }
     @And("^I click to preview button$")
     public void i_click_to_preview_button() throws Throwable {

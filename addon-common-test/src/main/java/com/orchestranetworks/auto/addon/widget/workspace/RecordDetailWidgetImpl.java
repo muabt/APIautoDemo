@@ -18,7 +18,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
     private static final String XPATH_LABEL_OF_FIELD = "//td[@class='ebx_Label' and not(contains(.,'Advanced'))]//label[text()='%s']";
     private static final String XPATH_VALUE = "(//td[@class='ebx_Input']//input[@value and @type='text' or @type='radio' and contains(@checked,'checked')])";
     private static final String XPATH_TOOLTIP_CONTENT = "//div[@class='ebx_dcpTitle'and text()='%s']/following-sibling::div[@class='ebx_dcpDescription']";
-    private static final String XPATH_TOOLTIP = "//label[text()='%s']/ancestor::tr[@class='ebx_Field']//button[@title='Show details']";
+    private static final String XPATH_TOOLTIP = "//label[text()='%s']//ancestor::tr[contains(@class,'ebx_Field')]";
 
     public RecordDetailWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                   long timeoutInMilliseconds) {
@@ -99,8 +99,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
     @Override
     public void clickShowDetailTooltip(String field) {
         clickOnElement(XFormat.of(XPATH_LABEL_OF_FIELD, field));
-        waitAbit(3000);
-        waitForVisibilityOfElement(XFormat.of(XPATH_LABEL_OF_FIELD, field));
+        waitElementToBePresent(XFormat.of(XPATH_LABEL_OF_FIELD, field));
         clickByJS(XFormat.of(XPATH_TOOLTIP, field));
     }
 
