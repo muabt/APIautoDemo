@@ -91,9 +91,9 @@ public class DatasetDefs {
             for (int j = 1; j < dataTable.size(); j++) {
                 List<String> row = dataTable.get(j);
                 String col = tmp[0];
-                String dataType = tmp[1];
-                String cell = row.get(i);
-
+                String dataType = tmp[1].trim();
+                String cell = row.get(i).trim();
+              //  if (onDatasetSteps.verify_record_existed())
                 if (!cell.isEmpty()) {
                     onDatasetSteps.input_record_field(col, cell, dataType);
                 }

@@ -14,9 +14,9 @@ import java.util.List;
 public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDetailWidget {
 
     private static final String MERGE_POLICY_TAB = "//ul[@id='ebx_WorkspaceFormTabviewTabs']//span[text()='%s']/ancestor::li";
-    private static final String XPATH_LABEL = "(//td[@class='ebx_Label' and not(contains(.,'Advanced'))])";
-    private static final String XPATH_LABEL_OF_FIELD = "//td[@class='ebx_Label' and not(contains(.,'Advanced'))]//label[text()='%s']";
-    private static final String XPATH_VALUE = "(//td[@class='ebx_Input']//input[@value and @type='text' or @type='radio' and contains(@checked,'checked')])";
+    private static final String XPATH_LABEL = "(//tr[not(td[@class='ebx_FieldExpandCollapse'])]/td[@class='ebx_Label'])";
+    private static final String XPATH_LABEL_OF_FIELD = "(//td[@class='ebx_Label' and not(contains(.,'FieldExpandCollapse'))]//label[text()='%s'])";
+    private static final String XPATH_VALUE = "(//td[@class='ebx_Input']//input[(@value and @type='text')]|//td[@class='ebx_Input']//input[(@type='radio' and @checked='checked')]/parent::*)";
     private static final String XPATH_TOOLTIP_CONTENT = "//div[@class='ebx_dcpTitle'and text()='%s']/following-sibling::div[@class='ebx_dcpDescription']";
     private static final String XPATH_TOOLTIP = "//label[text()='%s']//ancestor::tr[contains(@class,'ebx_Field')]";
 
@@ -53,7 +53,6 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         clickBtn("Add an occurrence");
     }
 
-    @Override
     public List<List<String>> getRecordDetail() {
         List<List<String>> metadataRecordView = new ArrayList<List<String>>();
         int numOfHeaders = findAllElements(XPATH_LABEL).size();
@@ -68,14 +67,17 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         List<String> rowValue = new ArrayList<String>();
         System.out.println("Table: " + metadataRecordView);
         for (int j = 1; j <= numOfHeaders; j++) {
-            //String cell = getText(XPATH_VALUE + "[" + j + "]").replaceAll("\\*", "").trim();
-            String cell = getTextValue(XPATH_VALUE + "[" + j + "]").replaceAll("\\*", "").trim();
-            rowValue.add(cell);
-            System.out.println("cellValue: " + cell);
+            String cell = "";
+            if (isElementExistNow(XPATH_VALUE + "[" + j + "]")) {
+                cell = getElement(XPATH_VALUE + "[" + j + "]").getTextValue().trim();
+                rowValue.add(cell);
+                System.out.println("cellValue: " + cell);
+            }
         }
         metadataRecordView.add(rowValue);
         return metadataRecordView;
     }
+
 
     @Override
     public void viewRecordWithText(String label) {
@@ -91,7 +93,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
 
     @Override
     public void viewRecordWithTextWithDecorator(String label) {
-    	String xPath = "(//table[@class='ebx_tvMain']//td/div[text()='" + label + "'])";
+        String xPath = "(//table[@class='ebx_tvMain']//td/div[text()='" + label + "'])";
         executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
     }
 
@@ -108,6 +110,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         waitAbit(500);
         clickOnElement("//div[@class='ebx_dcpDescription']");
     }
+
     @Override
     public void clickBtnPreview() {
         String xPath = "//span[@class='ebx_Icon']/ancestor::button[@title='Preview']";

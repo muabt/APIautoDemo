@@ -1,4 +1,4 @@
-Feature: Manual Merge
+Feature: Manual Merge For UAT
   In order to use Manual Merge
   As a user
   I want to specify the feature flow
@@ -8,6 +8,9 @@ Feature: Manual Merge
 
   Scenario: UAT-00 General all configurations
     Given I permit to access matching table
+    And I create record with PK "" and the content followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: genealogy | Person    | Yes          |                              | First name       |                    |                       |
     And I create record with the followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              | First name       |                    |                       |
