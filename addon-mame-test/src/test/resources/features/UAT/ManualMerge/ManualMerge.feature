@@ -215,9 +215,9 @@ Feature: Manual Merge
 
   Scenario: UAT-MM06 Apply permission on merge view = No (Have a field is hidden in data model)
     Given I permit to access matching table
-#    And I create record with the followings
-#      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-#      | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
+    And I create record with the followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
     And I select matching table record of table "Items"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
@@ -239,24 +239,10 @@ Feature: Manual Merge
       | Indentifiers     | Category  | Brand   | Name      | Available    | defaultPrice | Expire_date         | testSourceField | integer | Hidden_fied |
       | [auto generated] | name1 - 1 | Branh 1 | Minh Tran | [List] 20/24 | 120,000      | 04/09/2019 17:29:55 | 2010            |         |             |
     And I complete merging process
+    And I close the error popup
     And I permit to access matching table
     And I select first "1" records in table
     Then delete it
-
-  Scenario: UAT-MM07 Run Merge with have a field is read-only in data model
-    Given I permit to access matching table
-    And I create record with the followings
-      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Items"
-    When I set Merge policy configuration as belows
-      | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
-      | mergeCodeMM06     | Last update                    | Last update            | Duplicates and singletons | Yes                   | Yes                            |
-
-#    And I complete merging process
-#    And I permit to access matching table
-#    And I select first "1" records in table
-#    Then delete it
 
   Scenario: UAT-MM07
     Given I permit to access matching table
@@ -283,7 +269,7 @@ Feature: Manual Merge
 #    And preview table is displayed as below
 #      | Id | Name          |
 #      | 2  | Brouwershaven |
-    And I complete merging process
+#    And I complete merging process
     And I delete the dataspace
     And I permit to access matching table
     And I select the record that contains "Place"
