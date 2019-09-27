@@ -58,6 +58,6 @@ public class MetadataSteps {
         assertThat(actual).isEqualTo(suspectTable);
     }
     public void verify_no_record (String suspectNoRecord) {
-        Assert.assertEquals("Manage group ("+suspectNoRecord+")", onManageGroupPage.getManageGroupWidget().getNoRecordFound());
+        Assert.assertEquals(suspectNoRecord+".", onManageGroupPage.getManageGroupWidget().getNoRecordFound());
     }
 }
