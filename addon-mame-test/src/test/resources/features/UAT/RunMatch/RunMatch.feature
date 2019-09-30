@@ -1,5 +1,6 @@
+@UAT
 #MAME Test Design: https://docs.google.com/spreadsheets/d/1r_xok0EpPQXFJr23HEAfsY0fW3usrg06wuJ_e6V-Ai8/edit#gid=1172924389
-@Run_Match
+#@Run_Match
 Feature: Run Match feature
   As user
   I want to use this Run Match to know the duplicate record in the table.
