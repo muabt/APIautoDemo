@@ -126,10 +126,6 @@ public class DatasetDefs {
         }
 
     }
-    @When("^I select filter by text with keyword and field below$")
-    public void i_select_filter_by_text_with_keyword_and_field_below(DataTable arg1) throws Exception {
-    }
-
 
 	@And("^I access to \"([^\"]*)\" tab$")
 	public void i_access_to_tab(String label) {

@@ -239,8 +239,8 @@ public class CommonDefs {
     @When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
     public void i_select_filter_by_advanced_search_with_criterion_and_logical(DataTable dt, String logical) {
         onCommonSteps.click_btn_filter();
-//        onCommonSteps.select_advanced_mode();
-//        onCommonSteps.select_logical_search(logical);
+        onCommonSteps.select_advanced_mode();
+        onCommonSteps.select_logical_search(logical);
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
             String criterion = row.get("Criterion");
@@ -262,5 +262,83 @@ public class CommonDefs {
             }
         }
         onCommonSteps.click_btn_apply_search();
+    }
+
+    @When("^I select filter by text with keyword and field below$")
+    public void iSelectFilterByTextWithKeywordAndFieldBelow(DataTable dt) {
+        onCommonSteps.click_btn_filter();
+        onCommonSteps.click_btn_expand_with_label(Constants.TEXT_SEARCH);
+        onCommonSteps.unselect_field_with_label("Select all");
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+		Map<String, String> row = list.get(0);
+
+		String fieldContains = row.get("Field contains:");
+		String inField = row.get("In fields");
+
+		if (!fieldContains.isEmpty()) {
+            onCommonSteps.input_text_keyword(fieldContains);
+		}
+
+		if (!inField.isEmpty()) {
+			String[] item = inField.split(",");
+			for (int i = 0; i < item.length; i++) {
+                onCommonSteps.select_search_item(Constants.TEXT_SEARCH, item[i].trim());
+			}
+		} else {
+            onCommonSteps.select_search_item(Constants.TEXT_SEARCH, "Select all");
+
+		}
+        onCommonSteps.click_btn_apply_text_search();
+    }
+
+    @When("^I select filter by validation with keyword and field below$")
+    public void i_select_filter_by_validation_with_keyword_and_field_below(DataTable dt) {
+        onCommonSteps.click_btn_filter();
+        onCommonSteps.click_btn_expand_with_label(Constants.VALIDATION_SEARCH);
+        onCommonSteps.unselect_field_with_label("Errors");
+
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        Map<String, String> row = list.get(0);
+
+        String msgContains = row.get("Message contains:");
+        String severity = row.get("Severity");
+
+        if (!msgContains.isEmpty()) {
+            onCommonSteps.input_validation_keyword(msgContains);
+
+        }
+
+        if (!severity.isEmpty()) {
+            String[] itemList = severity.split(",");
+            for (int i = 0; i < itemList.length; i++) {
+                onCommonSteps.select_search_item(Constants.VALIDATION_SEARCH, itemList[i].trim());
+            }
+        }
+        onCommonSteps.click_btn_apply_validation_search();
+    }
+
+    @When("^I select filter by fuzzy search with keyword and field below$")
+    public void i_select_filter_by_fuzzy_search_with_keyword_and_field_below(DataTable dt) {
+        onCommonSteps.click_btn_filter();
+        onCommonSteps.click_btn_expand_with_label(Constants.FUZZY_SEARCH);
+        onCommonSteps.unselect_field_with_label("Select all");
+
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        Map<String, String> row = list.get(0);
+
+        String recordContains = row.get("Record contains:");
+        String fields = row.get("Fields");
+
+        if (!fields.isEmpty()) {
+            String[] item = fields.split(",");
+            for (int i = 0; i < item.length; i++) {
+                onCommonSteps.select_search_item(Constants.FUZZY_SEARCH, item[i].trim());
+            }
+        }
+
+        if (!recordContains.isEmpty()) {
+            onCommonSteps.input_fuzzy_keyword(recordContains);
+        }
+        onCommonSteps.click_btn_apply_fuzzy_search();
     }
 }

@@ -73,6 +73,9 @@ public class ManualMergeDefs {
             SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.STATE, expected, TechnicalTable.RecordMetadata.STATE);
             SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.AUTO_CREATED, expected, TechnicalTable.RecordMetadata.AUTO_CREATED);
             SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, expected, TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
+            System.out.println("==== Actual " + actual.toString());
+            System.out.println("==== Expected " + expected.toString());
+
         }
 
     }

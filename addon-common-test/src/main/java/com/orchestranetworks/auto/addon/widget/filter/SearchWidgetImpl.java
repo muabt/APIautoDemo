@@ -25,8 +25,8 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     }
 
     @Override
-    public void clickApply() {
-        clickBtn(Constants.BTN_APPLY, 1);
+    public void clickApply(int index) {
+        clickBtn(Constants.BTN_APPLY, index);
         waitForAllLoadingCompleted();
     }
 

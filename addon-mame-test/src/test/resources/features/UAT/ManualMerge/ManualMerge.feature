@@ -170,6 +170,23 @@ Feature: Manual Merge For UAT
       | Id               | Name          |
       | [auto generated] | Brouwershaven |
     And I complete merging process
+    And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild"
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId |
+      | KEY1 | GROUP_ID | Merged | No          | 1            |
+      | KEY2 | GROUP_ID | Merged | No          | 2            |
+#      | KEY3 | GROUP_ID | Golden | Yes         | 50027        |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+#    Then I will see table MergeResult as below
+#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+#      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+    Then I will see table Decision as below
+      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+    Then I will see table MergeValueLineage as below
+      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
     And I delete the dataspace
     And I permit to access matching table
     And I select the record that contains "Place"
@@ -199,6 +216,21 @@ Feature: Manual Merge For UAT
       | Id               | Name       |
       | [auto generated] | Poortvliet |
     And I complete merging process
+    And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild"
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId |
+      | KEY1 | GROUP_ID | Merged | No          | 1            |
+      | KEY2 | GROUP_ID | Merged | No          | 2            |
+#      | KEY3 | GROUP_ID | Golden | Yes         | 50027        |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+#    Then I will see table MergeResult as below
+#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+#      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+    Then I will see table Decision as below
+      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
     And I delete the dataspace
     And I permit to access matching table
     And I select the record that contains "Place"
@@ -290,6 +322,23 @@ Feature: Manual Merge For UAT
       | Identifier | Category | Brand | Name         | Available | Default price |
       | 2          | Phones   | Sunny | Pocket Handy | true      | 240           |
     And I complete merging process
+    And I access table "RecordMetadata" of dataset "StoreModel_Item_MDS" in dataspace "Master Data - Reference > referenceChild"
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId |
+      | KEY1 | GROUP_ID | Merged | No          | 1            |
+      | KEY2 | GROUP_ID | Golden | No          | 2            |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+    Then I will see table MergeResult as below
+      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+    Then I will see table Decision as below
+      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+    Then I will see table MergeValueLineage as below
+      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
+      |    |                  |          |             |           |             |  |
     And I delete the dataspace
     And I permit to access matching table
     And I select the record that contains "Place"
@@ -321,6 +370,23 @@ Feature: Manual Merge For UAT
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place      |
       | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | Cornelia   | Wagemaker |        |           | 0   | 10/28/1922 | Sint Philipsland |
     And I complete merging process
+    And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild"
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId                         | isolated |
+      | KEY1 | GROUP_ID | Merged | No          | 0157a930-7725-41d0-b1c4-281b794d38aa | No       |
+      | KEY2 | GROUP_ID | Golden | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | No       |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+    Then I will see table MergeResult as below
+      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+    Then I will see table Decision as below
+      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+    Then I will see table MergeValueLineage as below
+      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
+      |    |                  |          |             |           |             |  |
     And I delete the dataspace
     And I permit to access matching table
     And I select the record that contains "Place"
@@ -352,6 +418,23 @@ Feature: Manual Merge For UAT
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place |
       | 0157a930-7725-41d0-b1c4-281b794d38aa | Huibregt   | Heijboer  |        |           | 0   | 10/21/1847 | Poortvliet  |
     And I complete merging process
+    And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild"
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId                         | isolated |
+      | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa | No       |
+      | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | No       |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+    Then I will see table MergeResult as below
+      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+    Then I will see table Decision as below
+      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+    Then I will see table MergeValueLineage as below
+      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
+      |    |                  |          |             |           |             |  |
     And I delete the dataspace
     And I permit to access matching table
     And I select the record that contains "Person"

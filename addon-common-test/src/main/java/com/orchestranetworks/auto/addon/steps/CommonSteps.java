@@ -118,8 +118,62 @@ public class CommonSteps extends ScenarioSteps {
     public void input_search_value(String value, String type, String field) {
         onCommonPage.getAdvanceSearch().inputSearchValue(value, type, field);
     }
-	@Step
-	public void click_btn_apply_search() {
-    	onCommonPage.getAdvanceSearch().clickApply();
-	}
+
+    @Step
+    public void click_btn_apply_search() {
+        onCommonPage.getAdvanceSearch().clickApply(1);
+    }
+
+    @Step
+    public void click_btn_expand_with_label(String textSearch) {
+        onCommonPage.getAdvanceSearch().clickBtnExpand(textSearch);
+    }
+
+    @Step
+    public void unselect_field_with_label(String field) {
+        onCommonPage.getAdvanceSearch().unselectField(field);
+    }
+
+    @Step
+    public void click_btn_apply_text_search() {
+        onCommonPage.getAdvanceSearch().clickApply(1);
+    }
+
+    @Step
+    public void input_text_keyword(String fieldContains) {
+        onCommonPage.getAdvanceSearch().inputTextKeyword(fieldContains);
+    }
+
+    @Step
+    public void select_search_item(String textSearch, String item) {
+        onCommonPage.getAdvanceSearch().selectField(textSearch, item);
+    }
+
+    @Step
+    public void input_validation_keyword(String msgContains) {
+        onCommonPage.getAdvanceSearch().inputValidationKeyword(msgContains);
+    }
+
+    @Step
+    public void click_btn_apply_validation_search() {
+        onCommonPage.getAdvanceSearch().clickApply(3);
+    }
+
+    @Step
+    public void select_advanced_mode() {
+        onCommonPage.getAdvanceSearch().selectAdvancedMode();
+    }
+
+    @Step
+    public void select_logical_search(String logical) {
+        onCommonPage.getAdvanceSearch().selectLogicalSearch(logical);
+    }
+
+    public void input_fuzzy_keyword(String recordContains) {
+        onCommonPage.getAdvanceSearch().inputFuzzyKeyword(recordContains);
+    }
+
+    public void click_btn_apply_fuzzy_search() {
+        onCommonPage.getAdvanceSearch().clickApply(4);
+    }
 }
