@@ -3,6 +3,7 @@ package com.orchestranetworks.auto.addon.steps;
 import static com.orchestranetworks.auto.addon.Constants.IFRAME_LEGACY;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 
 import net.thucydides.core.annotations.Step;
@@ -95,13 +96,18 @@ public class CommonSteps extends ScenarioSteps {
     }
 
     @Step
-    public void confirmPopupOk() {
+    public void confirm_popup_OK() {
         onCommonPage.getPopupWidget().confirmOK();
     }
 
     @Step
     public void click_btn_filter() {
         onCommonPage.getToolbar().clickBtnFilter();
+    }
+
+    @Step
+    public void click_btn_expand_of_search_type(String searchType) {
+        onCommonPage.getTextSearch().clickBtnExpandWithLabel(searchType);
     }
 
     @Step
@@ -120,13 +126,24 @@ public class CommonSteps extends ScenarioSteps {
     }
 
     @Step
-    public void click_btn_apply_search() {
-        onCommonPage.getAdvanceSearch().clickApply(1);
+    public void click_btn_apply_advanced_search() {
+        onCommonPage.getAdvanceSearch().clickApplyAdvancedSearch();
     }
 
     @Step
-    public void click_btn_expand_with_label(String textSearch) {
-        onCommonPage.getAdvanceSearch().clickBtnExpand(textSearch);
+    public void text_search_with_field(String text) {
+        onCommonPage.getTextSearch().inputTextKeyword(text);
+        onCommonPage.getTextSearch().unselectField("Select all");
+        String[] pkList = {"Data model", "Table"};
+        for (int i = 0; i < pkList.length; i++) {
+            onCommonPage.getTextSearch().selectField(Constants.TEXT_SEARCH, pkList[i]);
+        }
+        onCommonPage.getTextSearch().clickApplyTextSearch();
+    }
+
+    @Step
+    public void click_btn_expand_with_label(String searchType) {
+        onCommonPage.getAdvanceSearch().clickBtnExpandWithLabel(searchType);
     }
 
     @Step

@@ -25,6 +25,16 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     }
 
     @Override
+    public void clickApplyTextSearch() {
+        clickBtn(Constants.BTN_APPLY, 2);
+        waitForAllLoadingCompleted();
+    }
+
+    @Override
+    public void clickApplyAdvancedSearch() {
+        clickBtn(Constants.BTN_APPLY, 1);
+    }
+
     public void clickApply(int index) {
         clickBtn(Constants.BTN_APPLY, index);
         waitForAllLoadingCompleted();
@@ -46,7 +56,7 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     }
 
     @Override
-    public void clickBtnExpand(String label) {
+    public void clickBtnExpandWithLabel(String label) {
         clickOnElement(XFormat.of(XPATH_EXPAND_BUTTON, label));
         waitForAllLoadingCompleted();
     }
@@ -144,6 +154,17 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     public void clickBtnAddBlock() {
         clickBtn(Constants.BTN_ADD);
         switchToIFrame(Constants.IFRAME_LEGACY);
+    }
+
+    @Override
+    public void selectSearchItem(String searchType, String fieldName) {
+        if (searchType.equals(Constants.FUZZY_SEARCH)) {
+            checkCheckbox("//form[@id='FILTER_4_filterForm']", fieldName, 1);
+            waitForAllLoadingCompleted();
+        } else {
+            checkCheckbox(fieldName);
+            waitForAllLoadingCompleted();
+        }
     }
 
 }

@@ -34,4 +34,5 @@ public interface TableViewWidget extends WidgetObject {
 
     JsonArray getDefaultViewTable();
 
+    boolean verifyMAMEConfigRecordExisted(String dataModel, String table);
 }

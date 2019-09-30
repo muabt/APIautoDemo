@@ -360,10 +360,9 @@ public class ManualMergeDefs {
             if (!isUnmerged.isEmpty()) {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.IS_UNMERGED, isUnmerged);
             }
-
         }
-
     }
+
 
     @And("^I close the error popup$")
     public void i_close_the_error_popup() {
@@ -467,7 +466,7 @@ public class ManualMergeDefs {
     }
 
     @Then("^I will see table MergeValueLineage as below$")
-    public void iWillSeeTableMergeValueLineageAsBelow(DataTable table) {
+    public void i_will_see_table_MergeValueLineage_as_below(DataTable table) {
         onCommonSteps.click_on_table_name(MAMEConstants.MERGEVALUELINEAGE);
         onDatasetSteps.getDefaultViewTable();
         List<Map<String, String>> list = table.asMaps(String.class, String.class);
@@ -485,4 +484,5 @@ public class ManualMergeDefs {
             }
         }
     }
+
 }

@@ -31,6 +31,7 @@ public class CommonPage extends BasePage {
     private UserCardWidget userCard;
     private PopupWidget popup;
     private SearchWidget advanceSearch;
+    private SearchWidget textSearch;
 
     public CommonPage(WebDriver driver) {
         super(driver);
@@ -77,6 +78,10 @@ public class CommonPage extends BasePage {
 
     public SearchWidget getAdvanceSearch(){
         return  advanceSearch;
+    }
+
+    public SearchWidget getTextSearch(){
+        return textSearch;
     }
 
     public void access_login_page() {

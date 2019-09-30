@@ -41,7 +41,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     @Override
     public void selectCheckboxWithText(String text) {
         String xpath = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])" +
-                "[count(//div[@id='ebx_WorkspaceContent']//tr[td[text()='"+text+"']]/preceding-sibling::*)+1]";
+                "[count(//div[@id='ebx_WorkspaceContent']//tr[td[text()='" + text + "']]/preceding-sibling::*)+1]";
         clickByJS(xpath);
     }
 
@@ -136,11 +136,20 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         for (int i = 1; i <= numOfRow; i++) {
             row = new JsonObject();
             for (int j = 1; j <= numOfCol; j++) {
-                row.addProperty(getColumnNameWithIndex(j),getTextDataCell(i, j));
+                row.addProperty(getColumnNameWithIndex(j), getTextDataCell(i, j));
             }
             tbl.add(row);
         }
         return tbl;
     }
+
+    @Override
+    public boolean verifyMAMEConfigRecordExisted(String dataModel, String table) {
+        String XPATH_MAME_RECORD_CONFIG = "//table[@class='ebx_tvMain']//tr[td[" + specialTextPredicates(dataModel) + "]][td[" + sSpecialTextPredicates(table) + "]]";
+        boolean isExist = isElementExistNow(XPATH_MAME_RECORD_CONFIG);
+        System.out.println("isExistxPath: " + XPATH_MAME_RECORD_CONFIG);
+        return isExist;
+    }
+
 
 }

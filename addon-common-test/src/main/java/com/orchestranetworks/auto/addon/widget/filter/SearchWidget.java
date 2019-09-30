@@ -7,6 +7,10 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy(SearchWidgetImpl.class)
 public interface SearchWidget extends WidgetObject {
 
+    void clickApplyTextSearch();
+
+    void clickApplyAdvancedSearch();
+
     void clickApply(int index);
 
     void inputTextKeyword(String keyword);
@@ -15,7 +19,7 @@ public interface SearchWidget extends WidgetObject {
 
     void inputFuzzyKeyword(String keyword);
 
-    void clickBtnExpand(String label);
+    void clickBtnExpandWithLabel(String label);
 
     void switchToFilterPanel();
 
@@ -36,4 +40,6 @@ public interface SearchWidget extends WidgetObject {
     void addLogicalBlock();
 
     void clickBtnAddBlock();
+
+    void selectSearchItem(String searchType, String fieldName);
 }

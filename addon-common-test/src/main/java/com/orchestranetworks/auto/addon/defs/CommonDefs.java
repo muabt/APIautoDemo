@@ -233,7 +233,7 @@ public class CommonDefs {
                 }
             }
         }
-        onCommonSteps.click_btn_apply_search();
+        onCommonSteps.click_btn_apply_advanced_search();
     }
 
     @When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
@@ -261,11 +261,11 @@ public class CommonDefs {
                 }
             }
         }
-        onCommonSteps.click_btn_apply_search();
+        onCommonSteps.click_btn_apply_advanced_search();
     }
 
     @When("^I select filter by text with keyword and field below$")
-    public void iSelectFilterByTextWithKeywordAndFieldBelow(DataTable dt) {
+    public void i_select_filter_by_text_with_keyword_and_field_below(DataTable dt) {
         onCommonSteps.click_btn_filter();
         onCommonSteps.click_btn_expand_with_label(Constants.TEXT_SEARCH);
         onCommonSteps.unselect_field_with_label("Select all");

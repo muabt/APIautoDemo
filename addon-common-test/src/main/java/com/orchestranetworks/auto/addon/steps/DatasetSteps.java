@@ -117,7 +117,13 @@ public class DatasetSteps extends ScenarioSteps {
        return defaultViewPage.getDefaultViewWidget().getDefaultViewTable();
 
     }
+    @Step
     public void select_record_with_text(String text) {
         defaultViewPage.getDefaultViewWidget().selectCheckboxWithText(text);
+    }
+
+    @Step
+    public boolean verify_record_existed(String fieldName, String keyword) {
+      return  defaultViewPage.getDefaultViewWidget().verifyMAMEConfigRecordExisted(fieldName, keyword);
     }
 }

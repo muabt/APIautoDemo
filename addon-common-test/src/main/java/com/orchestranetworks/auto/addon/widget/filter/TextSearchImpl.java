@@ -17,7 +17,6 @@ public class TextSearchImpl extends SearchWidgetImpl {
 
 	public void searchWithKeyWord(String dataspace){
 		inputTextKeyword(dataspace);
-		clickApply(1);
-	};
-
+		clickApplyTextSearch();
+	}
 }
