@@ -2,11 +2,11 @@ package com.orchestranetworks.auto.addon.pages;
 
 import org.openqa.selenium.WebDriver;
 
-import com.orchestranetworks.auto.addon.widget.MetadataWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.metadata.MetadataWidgetImpl;
 
 
 import com.orchestranetworks.auto.addon.utils.Constants;
-import com.orchestranetworks.auto.addon.widget.MetadataWidget;
+import com.orchestranetworks.auto.addon.widget.metadata.MetadataWidget;
 
 public class MetadataPage extends BasePage {
     private MetadataWidget metadataWidget;

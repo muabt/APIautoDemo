@@ -1,4 +1,4 @@
-package com.orchestranetworks.auto.addon.widget;
+package com.orchestranetworks.auto.addon.widget.managegroup;
 
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
@@ -64,7 +64,6 @@ public class ManageGroupWidgetImpl extends BaseWidgetImpl implements ManageGroup
             }
             tbl.add(row);
         }
-        System.out.println("tbl=" + tbl);
         return tbl;
     }
 

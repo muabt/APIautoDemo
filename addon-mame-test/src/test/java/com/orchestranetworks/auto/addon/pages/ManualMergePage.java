@@ -1,11 +1,9 @@
 package com.orchestranetworks.auto.addon.pages;
 
+import com.orchestranetworks.auto.addon.widget.merge.*;
 import com.orchestranetworks.auto.addon.widget.workspace.*;
 import org.openqa.selenium.WebDriver;
 
-import com.orchestranetworks.auto.addon.widget.*;
-import com.orchestranetworks.auto.addon.widget.ManualMergeViewWidget;
-import com.orchestranetworks.auto.addon.widget.ManualMergeViewWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.general.*;
 
 public class ManualMergePage extends BasePage {

@@ -1,4 +1,4 @@
-package com.orchestranetworks.auto.addon.widget;
+package com.orchestranetworks.auto.addon.widget.metadata;
 
 import java.util.ArrayList;
 import java.util.List;

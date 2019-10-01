@@ -1,8 +1,8 @@
 package com.orchestranetworks.auto.addon.pages;
 
 import com.orchestranetworks.auto.addon.utils.Constants;
-import com.orchestranetworks.auto.addon.widget.ManageGroupWidget;
-import com.orchestranetworks.auto.addon.widget.ManageGroupWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.managegroup.ManageGroupWidget;
+import com.orchestranetworks.auto.addon.widget.managegroup.ManageGroupWidgetImpl;
 import org.openqa.selenium.WebDriver;
 
 public class ManageGroupPage extends BasePage {

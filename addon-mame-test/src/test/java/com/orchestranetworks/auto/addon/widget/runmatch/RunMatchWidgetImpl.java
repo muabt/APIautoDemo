@@ -1,4 +1,4 @@
-package com.orchestranetworks.auto.addon.widget;
+package com.orchestranetworks.auto.addon.widget.runmatch;
 
 import org.junit.Assert;
 import org.openqa.selenium.support.pagefactory.ElementLocator;

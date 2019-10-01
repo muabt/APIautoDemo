@@ -1,4 +1,4 @@
-package com.orchestranetworks.auto.addon.widget;
+package com.orchestranetworks.auto.addon.widget.merge;
 
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import net.serenitybdd.core.pages.PageObject;

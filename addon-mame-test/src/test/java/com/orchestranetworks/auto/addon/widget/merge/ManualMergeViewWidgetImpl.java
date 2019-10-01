@@ -1,10 +1,9 @@
-package com.orchestranetworks.auto.addon.widget;
+package com.orchestranetworks.auto.addon.widget.merge;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;

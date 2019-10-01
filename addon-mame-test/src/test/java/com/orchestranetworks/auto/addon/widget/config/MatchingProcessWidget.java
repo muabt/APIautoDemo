@@ -1,4 +1,4 @@
-package com.orchestranetworks.auto.addon.widget;
+package com.orchestranetworks.auto.addon.widget.config;
 
 import net.serenitybdd.core.pages.WidgetObject;
 import net.serenitybdd.core.annotations.ImplementedBy;

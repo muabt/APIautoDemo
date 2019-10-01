@@ -3,9 +3,9 @@ package com.orchestranetworks.auto.addon.pages;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.utils.Constants;
-import com.orchestranetworks.auto.addon.widget.MatchingFieldWidget;
-import com.orchestranetworks.auto.addon.widget.MatchingProcessWidget;
-import com.orchestranetworks.auto.addon.widget.RunMatchWidget;
+import com.orchestranetworks.auto.addon.widget.config.MatchingFieldWidget;
+import com.orchestranetworks.auto.addon.widget.config.MatchingProcessWidget;
+import com.orchestranetworks.auto.addon.widget.runmatch.RunMatchWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidget;
 
