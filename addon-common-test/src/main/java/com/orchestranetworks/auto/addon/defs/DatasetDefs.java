@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import cucumber.api.DataTable;
@@ -89,10 +90,10 @@ public class DatasetDefs {
     @And("^I create record with PK \"([^\"]*)\" is \"([^\\\"]*)\" and the content followings$")
     public void i_create_record_with_pk_and_the_content_followings(String fieldName, String keyword, DataTable dt) {
         onCommonSteps.click_btn_filter();
-        filter_record_existed(fieldName, "INPUT", keyword, new String[]{"Data model", "Table"}, dt);
+        filter_record_existed(fieldName, Constants.INPUT_TYPE, keyword, new String[]{Constants.DATA_MODEL_FIELD, Constants.TABLE_FIELD}, dt);
         if (onDatasetSteps.verify_record_existed(fieldName, keyword)) {
             onDatasetSteps.select_first_record("1");
-            onDatasetSteps.select_table_service("Delete");
+            onDatasetSteps.select_table_service(Constants.DELETE_SERVICE);
             onCommonSteps.confirm_popup_OK();
             create_record_with_content(dt);
         } else {

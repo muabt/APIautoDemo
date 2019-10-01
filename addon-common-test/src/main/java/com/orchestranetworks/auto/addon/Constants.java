@@ -37,7 +37,8 @@ public final class Constants {
     public static final String BTN_EXPORT = "Export";
     public static final String BTN_CREATE_A_RECORD = "Create a record";
 
-
+    public static final String DATA_MODEL_FIELD = "Data model";
+    public static final String TABLE_FIELD = "Table";
     public static final String LBL_UNIQUE_NAME = "Unique name";
     public static final String LBL_LABEL = "Label";
     public static final String LBL_IDENTIFIER = "Identifier";
@@ -46,5 +47,9 @@ public final class Constants {
     public static final String MENU_ADMINISTRATION = "Administration";
     public static final String MENU_DATASET = "dataset";
     public static final String MENU_DATASPACE = "dataspace";
+
+    public static final String INPUT_TYPE = "INPUT";
+
+    public static final String DELETE_SERVICE = "Delete";
 
 }

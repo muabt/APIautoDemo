@@ -1,9 +1,7 @@
 package com.orchestranetworks.auto.addon.defs;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
 import com.orchestranetworks.auto.addon.SessionData;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
@@ -102,12 +100,12 @@ public class ManualMergeDefs {
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
-            String matchingProcessCode = row.get("Matching process code");
-            String active = row.get("Active");
-            String matchingExecutionOnCreation = row.get("Matching execution on creation");
-            String matchingExecutionOnUpdate = row.get("Matching execution on update");
-            String mergePolicy = row.get("Merge policy");
-            String advancedSettings = row.get("Advanced settings");
+            String matchingProcessCode = row.get(MAMEConstants.MATCHING_PROCESS_CODE);
+            String active = row.get(MAMEConstants.ACTIVE);
+            String matchingExecutionOnCreation = row.get(MAMEConstants.MATCHING_EXECUTION_ON_CREATION);
+            String matchingExecutionOnUpdate = row.get(MAMEConstants.MATCHING_EXECUTION_ON_UPDATE);
+            String mergePolicy = row.get(MAMEConstants.MERGE_POLICY_TAB);
+            String advancedSettings = row.get(MAMEConstants.ADVANCED_SETTINGS);
 
             //TODO Refer to RunMatch for Matching Process configuration.
 
@@ -147,12 +145,12 @@ public class ManualMergeDefs {
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
-            String mergePolicyCode = row.get("Merge policy code");
-            String selectionMode = row.get("Survivor record selection mode");
-            String defaultFunction = row.get("Default merge function");
-            String useManualMerge = row.get("Used for manual merge");
-            String mode = row.get("Mode");
-            String applyPermission = row.get("Apply permission on merge view");
+            String mergePolicyCode = row.get(MAMEConstants.MERGE_POLICY_CODE_FIELD);
+            String selectionMode = row.get(MAMEConstants.SURVIVOR_RECORD_SELECTION_MODE);
+            String defaultFunction = row.get(MAMEConstants.DEFAULT_MERGE_FUNCTION);
+            String useManualMerge = row.get(MAMEConstants.USE_MANUAL_MERGE);
+            String mode = row.get(MAMEConstants.MODE);
+            String applyPermission = row.get(MAMEConstants.APPLY_PERMISSION_ON_MERGE_VIEW);
 
             if (!mergePolicyCode.isEmpty()) {
                 if (onManualMergeSteps.verify_code_existed(mergePolicyCode)) {
