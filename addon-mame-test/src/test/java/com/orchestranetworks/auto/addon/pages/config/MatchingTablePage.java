@@ -1,5 +1,6 @@
-package com.orchestranetworks.auto.addon.pages;
+package com.orchestranetworks.auto.addon.pages.config;
 
+import com.orchestranetworks.auto.addon.pages.BasePage;
 import com.orchestranetworks.auto.addon.widget.filter.AdvancedSearchImpl;
 import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
 import org.openqa.selenium.WebDriver;

@@ -1,6 +1,6 @@
 package com.orchestranetworks.auto.addon.pages;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.widget.ChangeStateWidgetImpl;
 import com.orchestranetworks.auto.addon.widget.ChangeStateWidget;
 import com.orchestranetworks.auto.addon.widget.ChangeStateWidgetImpl;

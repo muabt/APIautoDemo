@@ -1,20 +1,17 @@
-package com.orchestranetworks.auto.addon.steps;
+package com.orchestranetworks.auto.addon.steps.config;
 
 import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.pages.MatchingTablePage;
+import com.orchestranetworks.auto.addon.pages.config.MatchingTablePage;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
-import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class ConfigurationMatchingTableSteps {
+public class MatchingTableSteps {
 
     RecordDetailPage onRecordDetailPage;
     MatchingTablePage onMatchingTablePage;
