@@ -1,4 +1,4 @@
-package com.orchestranetworks.auto.addon.defs;
+package com.orchestranetworks.auto.addon.defs.config;
 
 import com.google.inject.internal.cglib.core.$Constants;
 import com.orchestranetworks.auto.addon.Constants;
@@ -14,7 +14,7 @@ import net.thucydides.core.annotations.Steps;
 import java.util.List;
 import java.util.Map;
 
-public class ConfigurationMatchingTableDefs {
+public class MatchingTableDefs {
     @Steps
     ConfigurationMatchingTableSteps onConfigurationMatchingTableSteps;
     @Steps
