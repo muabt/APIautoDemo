@@ -18,4 +18,7 @@ public interface MetadataWidget extends WidgetObject {
 	String getHeaderManageGroup();
 	String getHeaderMetadata();
 	String getTextAutoCreatedRecord();
+	void doubleClick();
+//	MetadataWidgetImpl clickBtnAction();
+//	void clickBtnMetadata();
 }

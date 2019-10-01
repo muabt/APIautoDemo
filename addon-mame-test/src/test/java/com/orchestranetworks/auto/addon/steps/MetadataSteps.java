@@ -65,4 +65,11 @@ public class MetadataSteps {
         Assert.assertEquals(autoCreated,onMetadataPage.getMetadata().getTextAutoCreatedRecord());
 
     }
+    public void double_click_on_a_record() {
+        onMetadataPage.getMetadata().doubleClick();
+
+    }
+    public void select_record_service(String service) {
+    }
+
 }

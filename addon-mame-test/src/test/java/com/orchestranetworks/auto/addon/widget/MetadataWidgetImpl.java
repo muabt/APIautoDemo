@@ -28,6 +28,7 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
     private static final String XPATH_HEADER_GROUP = "//h2/span[contains(text(),'Manage group')]";
     private static final String XPATH_HEADER_METADATA = "//h2/span[contains(text(),'Metadata')]";
     private static final String XPATH_AUTOCREATED_RECORD = "//p[@class='information']";
+    private static final String XPATH_RECORD = "//div[@id='ebx_WorkspaceContent']//tr/td/div[contains(text(),'8')]";
 
     @Override
     public boolean isMainSelected() {
@@ -63,7 +64,10 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
         List<String> rowValue = new ArrayList<String>();
         System.out.println("Table: " + metadataRecordView);
         for (int j = 1; j <= numOfHeaders; j++) {
-            String cell = getText(XPATH_VALUE_METADATA + "[" + j + "]").replaceAll("\\*", "").trim();
+            String cell = getText(XPATH_VALUE_METADATA + "[" + j + "]")
+                    .replaceAll("\\*", "")
+                    .replaceAll("\n", "")
+                    .trim();
             rowValue.add(cell);
         }
         metadataRecordView.add(rowValue);
@@ -79,6 +83,7 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
         switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
 
     }
+
     @Override
     public List<List<String>> getDataRecordDetail() {
         List<List<String>> dataRecordDetail = new ArrayList<List<String>>();
@@ -105,6 +110,7 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
         clickOnElement(XPATH_BTN_CLOSE);
 
     }
+
     @Override
     public void clickBtnPreviewGroup() {
         switchOutDefaultIFrame();
@@ -130,4 +136,9 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
         return getTextValue(XPATH_AUTOCREATED_RECORD);
     }
 
+    @Override
+    public void doubleClick() {
+        doubleClickByJS(XPATH_RECORD);
+        waitForAllLoadingCompleted();
+    }
 }

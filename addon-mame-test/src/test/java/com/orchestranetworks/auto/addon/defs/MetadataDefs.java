@@ -63,4 +63,10 @@ public class MetadataDefs {
 
 	}
 
+    @When("^I double click a record$")
+    public void i_double_click_a_record() {
+    onMetadataSteps.double_click_on_a_record();
+    }
+
+
 }

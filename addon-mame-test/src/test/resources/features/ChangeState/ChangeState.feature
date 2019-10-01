@@ -1,110 +1,98 @@
 #Author: onguyent@tibco.com
 @SYSTEM
-Feature: As a datasteward
-  I want to launch the Change state service
-  so I set state value of records to a specific state & reset the list of suspect.
+Feature: Change state
 
   Background: 
     Given I login to EBX successfully
 
   #Change state for bulk table
-  Scenario Outline: SC-CS08 Check results when user changes state to "Golden" with no selection record & there are auto-created records in table
-    When I access "Dataspaces" menu
-    And I access dataspace "ChangeState"
-    And I create child Dataspace with information as following
+#  Scenario: SC-CS08 Check results when user changes state to "Golden" with no selection record & there are auto-created records in table
+#    And I create a child of dataspace "ChangeState" with information as following
+#      | Identifier | Owner              | English Label |
+#      |            | admin admin(admin) |               |
+#    Then I should see dataspace with information as following
+#      | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
+#      |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
+#    And I select dataspace service "View or edit datasets"
+#    And I access table "Change_state" of dataset "Metadatas"
+#    #And I access table "Categories" of dataset "Store Item"
+#    And I select table service "Match and Merge > Change state"
+#    Then Change state screen will be displayed
+#    When I select target state
+#    And I complete change state process
+#    And I access table "RecordMetadata" of dataset "Metadatas_Change_state_MDS_" in dataspace ""
+#    Then I will see table RecordMetadata as below
+#      | id | groupId  | state  | autoCreated | functionalId |isolated|
+#      |    | GROUP_ID | Golden | No          | 14          |     Yes   |
+#    Then I will see table MergingProcess as below
+#      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+#      | KEY1 | 15            | Manual    | executionDate |            | GROUP_ID | admin | No         |
+#    Then I will see table MergeResult as below
+#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+#      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+#    Then I will see table Decision as below
+#      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+#      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+#    Then I will see table MergeValueLineage as below
+#      | id   | mergingProcessId | recordId      | sourceIndex | fieldPath | goldenIndex |   |
+#      | KEY1 | mergingProcessId | Golden_record | 0           | admin     | /email      | 0 |
+#
+#    And I delete the dataspace
+
+  Scenario: SC-CS09 Check results when user changes state to "<Unset>"  with no selection record &  there are no auto-created records in table
+    And I create a child of dataspace "ChangeState" with information as following
       | Identifier | Owner              | English Label |
-      | $ID$       | admin admin(admin) |               |
-    Then I should see Dataspace with information as following
+      |            | admin admin(admin) |               |
+    Then I should see dataspace with information as following
       | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
       |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
-    And I access metadata set "Metadatas_Change_state_MDS"
-    And I access table as following "<KEY>"
-      | KEY | Table             |
-      |  01 | RecordMetadata    |
-      |  02 | MatchingResult    |
-      |  03 | MergeResult       |
-      |  04 | Decision          |
-      |  05 | MergeValueLineage |
-      |  06 | MergeValueLineage |
-    Then I want to verify default metadatas of RecordMetadata table as following "<KEY>"
-      | KEY | id  | groupId               | state            | autoCreated | functionalId |
-      |  01 |  92 | 1,602,893,970,142,208 | Pending approval | No          |            2 |
-      |  01 |  93 | 1,602,893,970,142,208 | Pending approval | No          |            3 |
-      |  01 |  94 |                       | Deleted          | Yes         |           16 |
-      |  01 |  95 | 1,602,894,007,854,080 | Merged           | No          |           11 |
-      |  01 |  96 | 1,602,894,007,854,080 | Merged           | No          |           12 |
-      |  01 |  97 | 1,602,894,011,879,424 | Golden           | Yes         |           17 |
-      |  01 |  98 | 1,602,895,161,896,960 | Golden           | No          |           13 |
-      |  01 |  99 |                       | Unset            | No          |           14 |
-      |  01 | 100 |                       | Unset            | No          |           15 |
-      |  01 | 347 | 1,603,177,938,232,320 | Golden           | No          |           18 |
-      |  01 | 350 | 1,603,178,266,835,968 | Deleted          | No          |           19 |
-    And I want to verify default metadatas of MatchingResult table as following "<KEY>"
-      | KEY | id | sourceId | targetId | lastResult | matchingProcessId | executionDate       |
-      |  02 | 30 |       98 |       99 | Suspect    |                 1 | 08/09/2019 12:09:46 |
-      |  02 | 31 |       98 |      100 | Suspect    |                 1 | 08/09/2019 12:09:58 |
-    And I want to verify default metadatas of MergeResult table as following "<KEY>"
-      | KEY | id | recordId | goldenId | matchingProcessId | isInterpolation |
-      |  03 | 96 |       97 |        8 |                   |                 |
-      |  03 | 95 |       97 |        8 |                   |                 |
-    And I want to verify default metadatas of Decision table as following "<KEY>"
-      | KEY | id | sourceId | targetId | lastDecision        | user  | decisionDate        | mergingProcessId |
-      |  04 | 26 |       96 |       97 | Identified as match | admin | 08/09/2019 11:49:39 |                8 |
-      |  04 | 27 |       95 |       97 | Identified as match | admin | 08/09/2019 11:49:39 |                8 |
-    And I want to verify default metadatas of MergeValueLineage table as following "<KEY>"
-      | KEY | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIdex |
-      |  05 | 13 |                8 |       95 |             | /PK       |            |
-      |  05 | 14 |                8 |       96 |             | /Name     |            |
-    And I want to verify default metadatas of MergingProcess table as following "<KEY>"
-      | KEY | id | mergePolicyId | mergeMode | executionDate       | snapshotId                  | groupId               | user  | isUnmerged |
-      |  06 |  7 |           155 | Manual    | 08/09/2019 11:49:03 | VBChangeState_1565326142717 | 1,602,893,970,142,208 | admin | Yes        |
-      |  06 |  8 |           155 | Manual    | 08/09/2019 11:49:03 | VBChangeState_1565326142717 | 1,602,893,970,142,208 | admin | No         |
-    When I access dataset "Metadatas"
-    And I access table "Change_state"
+#    And I access table "RecordMetadata" of dataset "Metadatas_Hidden_pk_MDS"
+#    Then I will see table RecordMetadata as below
+#      | id | groupId  | state            | autoCreated | functionalId |isolated|
+#      |    | GROUP_ID | Golden           | No          | 1            |        |
+#      |    | GROUP_ID | Merged           | No          | 2            |        |
+#      |    | GROUP_ID | Pending approval | No          | 3            |        |
+#      |    | GROUP_ID | Pending approval | No          | 4            |        |
+#      |    |          | Deleted          | No          | 5            |        |
+#      |    |          |                  | No          | 6            |        |
+#      |    |          | Unset            | No          | 7            |        |
+#    Then I will see table MergingProcess as below
+#      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+#      | KEY1 |               | Manual    | executionDate |            | GROUP_ID | admin | No         |
+#      | KEY2 |               | Manual    | executionDate |            | GROUP_ID | admin | Yes         |
+#    Then I will see table MergeResult as below
+#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+#      | KEY1 | Merge_record | Golden_record | mergingProcessId |               |
+#    Then I will see table Decision as below
+#      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+#      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+#    Then I will see table MergeValueLineage as below
+    And I access table "Hidden_pk" of dataset "Metadatas"
     And I select table service "Match and Merge > Change state"
-    Then I should see the Change state screen
-    When I select "Golden" target state
-    And I click "Launch service" button
-    Then Ican execute the change state operation successfully and should back to the table view screen
-    When I access metadata set "Metadatas_Change_state_MDS"
-    And I access table as following "<KEY>"
-      | KEY | Table             |
-      |  01 | RecordMetadata    |
-      |  02 | MatchingResult    |
-      |  03 | MergeResult       |
-      |  04 | Decision          |
-      |  05 | MergeValueLineage |
-      |  06 | MergeValueLineage |
-    Then I want to verify default metadatas of RecordMetadata table as following "<KEY>"
-      | KEY | id  | groupId               | state            | autoCreated | functionalId |
-      |  01 |  92 | 1,602,893,970,142,208 | Pending approval | No          |            2 |
-      |  01 |  93 | 1,602,893,970,142,208 | Pending approval | No          |            3 |
-      |  01 |  94 |                       | Deleted          | Yes         |           16 |
-      |  01 |  95 | 1,602,894,007,854,080 | Merged           | No          |           11 |
-      |  01 |  96 | 1,602,894,007,854,080 | Merged           | No          |           12 |
-      |  01 |  97 | 1,602,894,011,879,424 | Golden           | Yes         |           17 |
-      |  01 |  98 | 1,602,895,161,896,960 | Golden           | No          |           13 |
-      |  01 |  99 |                       | Unset            | No          |           14 |
-      |  01 | 100 |                       | Unset            | No          |           15 |
-      |  01 | 347 | 1,603,177,938,232,320 | Golden           | No          |           18 |
-      |  01 | 350 | 1,603,178,266,835,968 | Deleted          | No          |           19 |
-    And I want to verify metadatas of MatchingResult table as following "<KEY>"
-      | KEY | id | sourceId | targetId | lastResult | matchingProcessId | executionDate  |
-      
-    And I want to verify metadatas of MergeResult table as following "<KEY>"
-      | KEY | id | recordId | goldenId | matchingProcessId | isInterpolation |
-      
-    And I want to verify metadatas of Decision table as following "<KEY>"
-      | KEY | id | sourceId | targetId | lastDecision | user  | decisionDate | mergingProcessId |
-      
-    And I want to verify metadatas of MergeValueLineage table as following "<KEY>"
-      | KEY | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIdex |
-     
-    And I want to verify metadatas of MergingProcess table as following "<KEY>"
-      | KEY | id | mergePolicyId | mergeMode | executionDate       | snapshotId  | groupId  | user  | isUnmerged |
-      
+    Then Change state screen will be displayed
+    When I select target state
+    And I complete change state process
+#    And I access table "RecordMetadata" of dataset "Metadatas_Hidden_pk_MDS"
+#    Then I will see table RecordMetadata as below
+#      | id | groupId  | state            | autoCreated | functionalId |isolated|
+#      |    | GROUP_ID | Golden           | No          | 1          |        |
+#      |    | GROUP_ID | Merged           | No          | 2          |        |
+#      |    | GROUP_ID | Pending approval | No          | 3          |        |
+#      |    | GROUP_ID | Pending approval | No          | 4          |        |
+#      |    | GROUP_ID | Deleted          | No          | 5          |        |
+#      |    | GROUP_ID |                  | No          | 6          |        |
+#      |    | GROUP_ID | Unset             | No          | 7         |        |
+#    Then I will see table MergingProcess as below
+#      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+#
+#    Then I will see table MergeResult as below
+#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+#    Then I will see table Decision as below
+#      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+#    Then I will see table MergeValueLineage as below
+#      | id   | mergingProcessId | recordId      | sourceIndex | fieldPath | goldenIndex |   |
+    And I delete the dataspace
 
-    Examples: 
-      | KEY |
-      |  01 |
+
+
