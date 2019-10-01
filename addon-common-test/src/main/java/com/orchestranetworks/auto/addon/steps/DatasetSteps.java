@@ -1,7 +1,7 @@
 package com.orchestranetworks.auto.addon.steps;
 
 import com.google.gson.JsonArray;
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.PermissionPage;

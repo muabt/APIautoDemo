@@ -1,9 +1,9 @@
 package com.orchestranetworks.auto.addon.steps;
 
-import static com.orchestranetworks.auto.addon.Constants.IFRAME_LEGACY;
+import static com.orchestranetworks.auto.addon.utils.Constants.IFRAME_LEGACY;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 
 import net.thucydides.core.annotations.Step;

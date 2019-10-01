@@ -8,9 +8,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import com.google.gson.JsonObject;
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
-import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.ManualMergePage;

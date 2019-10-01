@@ -1,8 +1,8 @@
 package com.orchestranetworks.auto.addon.base;
 
-import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.LogWork;
-import com.orchestranetworks.auto.addon.XFormat;
+import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.utils.LogWork;
+import com.orchestranetworks.auto.addon.utils.XFormat;
 import io.appium.java_client.functions.ExpectedCondition;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;

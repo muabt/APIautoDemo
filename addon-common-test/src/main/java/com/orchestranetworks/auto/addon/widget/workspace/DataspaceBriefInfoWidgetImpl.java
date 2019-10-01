@@ -2,9 +2,9 @@ package com.orchestranetworks.auto.addon.widget.workspace;
 
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
-import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.LoadConfig;
-import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.utils.LoadConfig;
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import com.orchestranetworks.auto.addon.utils.Encode;
 

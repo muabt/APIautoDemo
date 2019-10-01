@@ -1,6 +1,6 @@
 package com.orchestranetworks.auto.addon.widget.general;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 

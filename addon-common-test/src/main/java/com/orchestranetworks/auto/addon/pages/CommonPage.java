@@ -1,23 +1,14 @@
 package com.orchestranetworks.auto.addon.pages;
 
-import com.google.gson.JsonObject;
-import com.orchestranetworks.auto.addon.SessionData;
-import com.orchestranetworks.auto.addon.utils.Encode;
 import com.orchestranetworks.auto.addon.widget.filter.AdvancedSearchImpl;
 import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
-import com.orchestranetworks.auto.addon.widget.filter.SearchWidgetImpl;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import com.orchestranetworks.auto.addon.widget.general.*;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
-import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.LoadConfig;
+import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.utils.LoadConfig;
 
 import java.util.concurrent.TimeUnit;
 

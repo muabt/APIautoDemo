@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import com.orchestranetworks.auto.addon.widget.MetadataWidgetImpl;
 
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.widget.MetadataWidget;
 
 public class MetadataPage extends BasePage {

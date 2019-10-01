@@ -2,7 +2,7 @@ package com.orchestranetworks.auto.addon.pages;
 
 import org.openqa.selenium.WebDriver;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.widget.MatchingFieldWidget;
 import com.orchestranetworks.auto.addon.widget.MatchingProcessWidget;
 import com.orchestranetworks.auto.addon.widget.RunMatchWidget;

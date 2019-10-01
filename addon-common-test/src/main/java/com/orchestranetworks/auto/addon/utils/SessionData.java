@@ -1,4 +1,4 @@
-package com.orchestranetworks.auto.addon;
+package com.orchestranetworks.auto.addon.utils;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

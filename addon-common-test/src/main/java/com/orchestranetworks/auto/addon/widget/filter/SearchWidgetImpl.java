@@ -1,10 +1,10 @@
 package com.orchestranetworks.auto.addon.widget.filter;
 
-import com.orchestranetworks.auto.addon.XFormat;
+import com.orchestranetworks.auto.addon.utils.XFormat;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
 import net.serenitybdd.core.pages.PageObject;

@@ -3,7 +3,7 @@ package com.orchestranetworks.auto.addon.widget;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;

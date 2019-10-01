@@ -1,7 +1,7 @@
 package com.orchestranetworks.auto.addon.steps;
 
-import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.pages.DataspaceBriefInfoPage;
 import com.orchestranetworks.auto.addon.pages.DataspaceCreationPage;
 import net.thucydides.core.annotations.Step;

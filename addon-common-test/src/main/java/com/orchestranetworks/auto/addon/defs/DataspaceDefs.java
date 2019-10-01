@@ -1,7 +1,7 @@
 package com.orchestranetworks.auto.addon.defs;
 
-import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DataspaceSteps;
@@ -9,7 +9,6 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 import java.util.ArrayList;

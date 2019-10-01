@@ -1,6 +1,6 @@
 package com.orchestranetworks.auto.addon.pages;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
 import com.orchestranetworks.auto.addon.widget.filter.TextSearchImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.DefaultViewImpl;

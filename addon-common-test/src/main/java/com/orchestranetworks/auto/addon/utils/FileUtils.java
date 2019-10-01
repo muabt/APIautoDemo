@@ -1,4 +1,4 @@
-package com.orchestranetworks.auto.addon;
+package com.orchestranetworks.auto.addon.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

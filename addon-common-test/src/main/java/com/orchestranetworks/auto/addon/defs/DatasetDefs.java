@@ -1,6 +1,6 @@
 package com.orchestranetworks.auto.addon.defs;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import cucumber.api.DataTable;

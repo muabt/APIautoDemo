@@ -2,8 +2,8 @@ package com.orchestranetworks.auto.addon.defs;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.orchestranetworks.auto.addon.LoadConfig;
-import com.orchestranetworks.auto.addon.SessionData;
+import com.orchestranetworks.auto.addon.utils.LoadConfig;
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;

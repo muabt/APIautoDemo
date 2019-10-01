@@ -1,7 +1,7 @@
 package com.orchestranetworks.auto.addon.defs;
 
-import com.orchestranetworks.auto.addon.Constants;
-import com.orchestranetworks.auto.addon.LoadConfig;
+import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.utils.LoadConfig;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;

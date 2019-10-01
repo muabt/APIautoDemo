@@ -2,7 +2,7 @@ package com.orchestranetworks.auto.addon.steps;
 
 import java.util.Map;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.RunMatchPage;
 
 import net.thucydides.core.annotations.Step;

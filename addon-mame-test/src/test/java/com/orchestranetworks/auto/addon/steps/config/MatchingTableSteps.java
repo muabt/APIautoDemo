@@ -1,6 +1,6 @@
 package com.orchestranetworks.auto.addon.steps.config;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.config.MatchingTablePage;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 import net.thucydides.core.annotations.Step;

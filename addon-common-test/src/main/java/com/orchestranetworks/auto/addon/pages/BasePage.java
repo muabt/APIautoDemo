@@ -1,6 +1,6 @@
 package com.orchestranetworks.auto.addon.pages;
 
-import com.orchestranetworks.auto.addon.LogWork;
+import com.orchestranetworks.auto.addon.utils.LogWork;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;

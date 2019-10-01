@@ -1,12 +1,10 @@
 package com.orchestranetworks.auto.addon.steps;
 
-import com.orchestranetworks.auto.addon.Constants;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.AdministrationPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-
-import static com.orchestranetworks.auto.addon.Constants.IFRAME_LEGACY;
 
 public class AdministrationSteps extends ScenarioSteps {
 
