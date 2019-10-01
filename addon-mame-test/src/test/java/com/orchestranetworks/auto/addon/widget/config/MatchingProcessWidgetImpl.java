@@ -8,15 +8,27 @@ import net.serenitybdd.core.pages.PageObject;
 
 public class MatchingProcessWidgetImpl extends BaseWidgetImpl implements MatchingProcessWidget {
 
-	public MatchingProcessWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
+    public MatchingProcessWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
         super(page, locator, timeoutInMilliseconds);
     }
 
-	@Override
-	public void selectRadioBoxWithLabel(String label, String value) {
-	   String xPath = "//td[@class='ebx_Label']/label[.='" + label + "']/ancestor::tr//div[@class='ebx_RadioButtonGroup']//label[text()='" + value + "']";
-	   clickOnElement(xPath);
-	}
-	
-	
+    @Override
+    public void selectRadioBoxWithLabel(String label, String value) {
+        String xPath = "//td[@class='ebx_Label']/label[.='" + label + "']/ancestor::tr//div[@class='ebx_RadioButtonGroup']//label[text()='" + value + "']";
+        clickOnElement(xPath);
+    }
+
+    @Override
+    public void selectDDLByJS(String label, String value) {
+        String xPathDDL = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
+                + label + "']]//button[@title='Open drop-down list']";
+
+        String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + specialTextPredicates(value)
+                + " and string-length(normalize-space(text())=" + value.length()
+                + ")) and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
+        clickOnElement(xPathDDL);
+
+        executeJS("arguments[0].click();", xPathValue);
+    }
+
 }

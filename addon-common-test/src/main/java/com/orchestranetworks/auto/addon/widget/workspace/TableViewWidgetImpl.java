@@ -151,5 +151,11 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         return isExist;
     }
 
+    @Override
+    public boolean isRecordWithPKExisted(String pk) {
+        String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + pk + "'])[1]";
+        return isElementExistNow(xPath);
+    }
+
 
 }

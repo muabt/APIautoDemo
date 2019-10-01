@@ -32,9 +32,5 @@ public class AdministrationWidgetImpl extends BaseWidgetImpl implements Administ
 	}
 
 
-	@Override
-	public boolean verifyCodeExisted(String label) {
-		String xPath = "(//table[@class='ebx_tvMain']//td[text()='" + label + "'])[1]";
-		return isElementExistNow(xPath);
-	}
+
 }

@@ -18,21 +18,6 @@ public class AdministrationSteps extends ScenarioSteps {
     }
 
     @Step
-    public void access_source_table() {
-        administration.getNavPanel().goToPath("Reference data > Trusted source > Source");
-    }
-
-    @Step
-    public void access_table_trusted_source() {
-        administration.getNavPanel().goToPath("Reference data > Trusted source > Table trusted source");
-    }
-
-    @Step
-    public void access_field_trusted_source() {
-        administration.getNavPanel().goToPath("Reference data > Trusted source > Field trusted source");
-    }
-
-    @Step
     public void delete_dataspace(String dataspace) {
         administration.getDefaultViewWidget().selectRecordWithPK(dataspace);
         administration.getToolbar().clickBtnActions().selectService("Delete dataspaces and snapshots recursively");
@@ -58,10 +43,6 @@ public class AdministrationSteps extends ScenarioSteps {
         administration.getToolbar().clickBtnFilter();
     }
 
-    @Step
-    public void click_create_record() {
-        administration.getToolbar().clickBtnCreateRecord();
-    }
 
 
     @Step

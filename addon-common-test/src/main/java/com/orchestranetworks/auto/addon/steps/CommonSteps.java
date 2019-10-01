@@ -193,4 +193,8 @@ public class CommonSteps extends ScenarioSteps {
     public void click_btn_apply_fuzzy_search() {
         onCommonPage.getAdvanceSearch().clickApply(4);
     }
+
+    public void click_btn_save_and_close() {
+        onCommonPage.getFooter().clickBtnSaveAndClose();
+    }
 }

@@ -49,32 +49,6 @@ public class RunMatchSteps {
     }
 	
 	
-	@Step
-    public void select_keep_not_matched_records_untouched(String keepNotMatchedRecordsUntouched) {
-		onRunMatchPage.getMatchingProcessWidget().selectRadioBoxWithLabel("Keep not matched records untouched", keepNotMatchedRecordsUntouched);
-    }
-    
-    @Step
-    public void select_merged_record_is_recycled(String mergedRecordIsRecycled) {
-    	onRunMatchPage.getMatchingProcessWidget().selectRadioBoxWithLabel("Merged record is recycled", mergedRecordIsRecycled);
-    }
-    
-    @Step
-    public void select_modify_merged_without_match(String modifyMergedWithoutMatch) {
-    	
-    	
-    	onRunMatchPage.getMatchingProcessWidget().selectRadioBoxWithLabel("Modify merged without match", modifyMergedWithoutMatch);
-    }
 
-	public void select_one_of_the_values_is_null(String oneOfTheValuesIsNull) {
-		
-		onRunMatchPage.getMatchingFieldWidget().selectDDLByJS("One of the values is null", oneOfTheValuesIsNull);
-				
-	}
-
-	public void select_both_values_are_null(String bothValuesAreNull) {
-		onRunMatchPage.getMatchingFieldWidget().selectDDLByJS("Both values are null", bothValuesAreNull);
-	}
-	
 
 }

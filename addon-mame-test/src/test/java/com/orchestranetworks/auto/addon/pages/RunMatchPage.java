@@ -3,7 +3,6 @@ package com.orchestranetworks.auto.addon.pages;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.utils.Constants;
-import com.orchestranetworks.auto.addon.widget.config.MatchingFieldWidget;
 import com.orchestranetworks.auto.addon.widget.config.MatchingProcessWidget;
 import com.orchestranetworks.auto.addon.widget.runmatch.RunMatchWidget;
 import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
@@ -15,7 +14,6 @@ public class RunMatchPage extends BasePage {
 	private RunMatchWidget runMatchWidget;
 	private RecordDetailWidget recordDetailWidget;
 	private ItemCreationWidget itemCreationWidget;
-	private MatchingFieldWidget matchingFieldWidget;
 
 	public RunMatchPage(WebDriver driver) {
 		super(driver);
@@ -38,8 +36,5 @@ public class RunMatchPage extends BasePage {
 		return matchingProcessWidget;
 	}
 
-	public MatchingFieldWidget getMatchingFieldWidget() {
-		return matchingFieldWidget;
-	}
 
 }

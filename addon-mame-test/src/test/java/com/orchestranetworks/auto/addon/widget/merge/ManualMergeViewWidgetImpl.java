@@ -16,7 +16,7 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
     public ManualMergeViewWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
         super(page, locator, timeoutInMilliseconds);
     }
-
+    @Override
     public List<List<String>> getDataRecordViewTable() {
         waitForAllLoadingCompleted();
         List<String> row = new ArrayList<String>();
@@ -43,7 +43,7 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
 
         return actualTable;
     }
-
+    @Override
     public List<List<String>> getDataPreviewTable() {
         String xPathListHeader = "(//preview-record-view//div[@class='top ebx_tvHeaderContainer']//span[@class='ebx_RawLabel'])";
         List<String> listHeader = new ArrayList<String>();
@@ -71,7 +71,7 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
             return "";
         }
     }
-
+    @Override
     public boolean isCellHighlighted(int row, int col) {
         String xPathCell =  String.format(XPATH_RCV_CELL, row,col+1);
         xPathCell = xPathCell + "//ancestor::*[local-name()='td' or local-name()='th']";
@@ -80,11 +80,6 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
         return color.equals(highlightedColor);
     }
 
-    public String get_value_table(int rowInd, String colName) {
-        int rowIndex = rowInd + 1;
-        int colIndex = getColumnIndexWithLabel(colName);
-        return getTextDataCell(rowIndex, colIndex);
-    }
 
     @Override
     public void clickBtnNext() {
@@ -112,12 +107,12 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
     public void changeMergeStep(String step) {
 
     }
-
+    @Override
     public String getTextOfResetBtn() {
         String xPath = "(//div[@class='resetSection']/button)[1]";
         return getElement(xPath).getAttribute("title");
     }
-
+    @Override
     public String getTextOfRightBtn() {
         String xPath = "(//div[@class='resetSection']/button)[1]";
         return getElement(xPath).getAttribute("title");

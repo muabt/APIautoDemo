@@ -88,11 +88,12 @@ public class ManualMergePage extends BasePage {
         return toolbarWidget;
     }
 
-    public com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget getDefaultview() {
+    public TableViewWidget getDefaultViewWidget() {
         return defaultViewWidget;
     }
 
     public AdministrationWidget getAdministrationWidget(){
         return administrationWidget;
     }
+
 }

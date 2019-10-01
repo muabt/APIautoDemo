@@ -52,14 +52,12 @@ public class ManageGroupWidgetImpl extends BaseWidgetImpl implements ManageGroup
             String h = getElement(XPATH_HEADER + "[" + i + "]").getTextValue().replace("\n", "").trim();
             row.add(h);
         }
-        System.out.println(row);
         tbl.add(row);
 
         for (int i = 1; i <= numOfRow; i++) {
             row = new ArrayList<String>();
             for (int j = 1; j <= numOfHeader; j++) {
                 String cell = getElement(String.format(XPATH_CELL, i, j)).getTextValue().replace("\n", "").trim();
-                System.out.println(cell);
                 row.add(cell);
             }
             tbl.add(row);
