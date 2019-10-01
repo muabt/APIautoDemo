@@ -196,6 +196,7 @@ public class MatchingTableDefs {
         onMatchingTableSteps.click_btn_save_and_close_internal_popup(1);
     }
 
+
     @And("^I create Survivorship field with selections as followings$")
     public void i_create_survivorship_field_with_selections_as_followings(DataTable dt) throws Exception {
         onMatchingTableSteps.select_merge_policy_record(Serenity.sessionVariableCalled(MAMEConstants.MERGE_POLICY_CODE));
@@ -238,6 +239,7 @@ public class MatchingTableDefs {
         onMatchingTableSteps.click_btn_save_and_close_internal_popup(2);
         onMatchingTableSteps.click_btn_save_and_close();
     }
+
     @And("^the matching process is updated as the followings$")
     public void the_matching_process_is_updated_as_the_followings(DataTable dt) {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
@@ -303,7 +305,6 @@ public class MatchingTableDefs {
         }
         onMatchingTableSteps.click_btn_save_and_close_internal_popup(1);
     }
-
 
 }
 

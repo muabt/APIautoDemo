@@ -3,6 +3,7 @@ package com.orchestranetworks.auto.addon.defs.config;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 
 import com.orchestranetworks.auto.addon.steps.config.FieldTrustedSourceSteps;
+import com.orchestranetworks.auto.addon.steps.config.MatchingTableSteps;
 import com.orchestranetworks.auto.addon.steps.config.SourceSteps;
 import com.orchestranetworks.auto.addon.steps.config.TableTrustedSourceSteps;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
@@ -28,7 +29,6 @@ public class TrustedSourceDefs {
     @And("^the Source in Trusted source are$")
     public void the_source_in_trusted_source_are(DataTable dt) {
         onSourceSteps.access_source_table();
-        onSourceSteps.click_create_record();
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
@@ -36,7 +36,12 @@ public class TrustedSourceDefs {
             String description = row.get("Description");
 
             if (!nameOfSource.isEmpty()) {
-                onSourceSteps.input_name_of_source(nameOfSource);
+                if (!onSourceSteps.is_code_existed(nameOfSource)) {
+                    onSourceSteps.click_create_record();
+                    onSourceSteps.input_name_of_source(nameOfSource);
+                }else {
+                    onSourceSteps.select_source_with_name(nameOfSource);
+                }
             }
 
             if (!description.isEmpty()) {

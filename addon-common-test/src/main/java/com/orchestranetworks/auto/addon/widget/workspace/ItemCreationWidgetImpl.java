@@ -86,7 +86,7 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
         String xPathDDL = " //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
                 + label + "']]//button[@title='Open drop-down list']";
 
-        String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + sSpecialTextPredicates(value)
+        String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + specialTextPredicates(value)
                 + " and string-length(normalize-space(text())=" + value.length()
                 + ")) and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
         clickOnElement(xPathDDL);
@@ -97,13 +97,13 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     @Override
     public void clickBtnWithLabel(String label, String value) {
         String xpathBtnExpand = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')]" +
-                "[descendant::*[.='"+ label +"']]//button[@title='"+value+"']";
+                "[descendant::*[.='" + label + "']]//button[@title='" + value + "']";
         clickOnElement(xpathBtnExpand);
     }
 
     @Override
     public void clearDDL(String label) {
-        String xpathClearBtn = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='Default merge function']]//button[@title='Clear field']";
+        String xpathClearBtn = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='" + label + "']]//button[@title='Clear field']";
         clickOnElement(xpathClearBtn);
     }
 
@@ -129,7 +129,7 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
 
     @Override
     public String getTextErrorTableInBlock() {
-       // String xPathValue = "//li[descendant::*[text()='Table']]";
+        // String xPathValue = "//li[descendant::*[text()='Table']]";
         String xPathValue = "//li[descendant::*[text()='Table']]//span";
 
         return getText(xPathValue);

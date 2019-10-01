@@ -145,5 +145,4 @@ public class ManualMergeSteps {
     public void confirm_popup() {
         onManualMergePage.getPopupWidget().confirmOK();
     }
-
 }

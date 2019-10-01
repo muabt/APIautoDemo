@@ -454,27 +454,12 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     public void selectDDLInput(String label, String value) {
         String xPathDDL = " //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
                 + label + "']]//button[@title='Open drop-down list']";
-        String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + sSpecialTextPredicates(value)
+        String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + specialTextPredicates(value)
                 + " and string-length(normalize-space(text())=" + value.length()
                 + ")) and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
 
         clickOnElement(xPathDDL);
         waitElementToBePresent(xPathValue).waitUntilClickable().click();
-    }
-
-    public String sSpecialTextPredicates(String givenText) {
-        String[] tokens = givenText.split(" ");
-        int numText = tokens.length;
-        String resultsPattern = "";
-        if (numText > 1) {
-            resultsPattern = "contains(.,'" + tokens[0] + "')";
-            for (int i = 1; i < numText; i++) {
-                resultsPattern += " and contains(.,'" + tokens[i] + "')";
-            }
-            return resultsPattern + "and string-length(normalize-space(.=" + givenText.length() + "))";
-        } else {
-            return "contains(.,'" + givenText + "') and string-length(normalize-space(.=" + givenText.length() + "))";
-        }
     }
     
     /**

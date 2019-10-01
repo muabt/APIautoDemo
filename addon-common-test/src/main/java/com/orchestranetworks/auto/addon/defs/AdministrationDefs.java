@@ -19,13 +19,9 @@ public class AdministrationDefs {
         onAdministrationSteps.access_matching_table();
     }
 
-    @When("^I access Import service in Actions in left panel$")
-    public void i_access_import_service_in_actions_in_left_panel() {
-        onAdministrationSteps.access_import_service_in_actions_in_left_panel();
-    }
-
-    @Then("^I select \"([^\"]*)\" file to import$")
+    @When("^I select \"([^\"]*)\" file to import$")
     public void i_select_file_to_import(String fileName) {
+        onAdministrationSteps.access_import_service_in_actions_in_left_panel();
         onAdministrationSteps.select_file_to_import(fileName);
     }
 

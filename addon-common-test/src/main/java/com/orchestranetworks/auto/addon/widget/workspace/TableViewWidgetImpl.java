@@ -69,10 +69,10 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     @Override
     public void selectRecordWithPK(String[] primaryKey) {
         String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[(td[%s])";
-        primaryKey[0] = sSpecialTextPredicates(primaryKey[0]);
+        primaryKey[0] = specialTextPredicates(primaryKey[0]);
         if (primaryKey.length >= 2) {
             for (int i = 1; i < primaryKey.length; i++) {
-                primaryKey[i] = sSpecialTextPredicates(primaryKey[i]);
+                primaryKey[i] = specialTextPredicates(primaryKey[i]);
                 xPathRow += " and (td[%s])";
             }
         }
@@ -85,12 +85,12 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     @Override
     public void selectRecordWithPK(String recordPK) {
         waitForPresenceOfElement(XPATH_TABLE);
-        clickByJS(XFormat.of(XPATH_CHECKBOX_RECORD, sSpecialTextPredicates(recordPK)));
+        clickByJS(XFormat.of(XPATH_CHECKBOX_RECORD, specialTextPredicates(recordPK)));
     }
 
     @Override
     public void accessRecordWithText(String label) {
-        String xPath = "(//table[@class='ebx_tvMain']//td[" + sSpecialTextPredicates(label) + "])[1]";
+        String xPath = "(//table[@class='ebx_tvMain']//td[" + specialTextPredicates(label) + "])[1]";
         executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
     }
 
@@ -145,7 +145,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
     @Override
     public boolean verifyMAMEConfigRecordExisted(String dataModel, String table) {
-        String XPATH_MAME_RECORD_CONFIG = "//table[@class='ebx_tvMain']//tr[td[" + specialTextPredicates(dataModel) + "]][td[" + sSpecialTextPredicates(table) + "]]";
+        String XPATH_MAME_RECORD_CONFIG = "//table[@class='ebx_tvMain']//tr[td[" + specialTextPredicates(dataModel) + "]][td[" + specialTextPredicates(table) + "]]";
         boolean isExist = isElementExistNow(XPATH_MAME_RECORD_CONFIG);
         System.out.println("isExistxPath: " + XPATH_MAME_RECORD_CONFIG);
         return isExist;

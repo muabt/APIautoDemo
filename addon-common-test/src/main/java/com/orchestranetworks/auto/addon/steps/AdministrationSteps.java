@@ -48,7 +48,6 @@ public class AdministrationSteps extends ScenarioSteps {
     @Step
 	public void access_import_service_in_actions_in_left_panel() {
 		administration.getNavPanel().clickBtnActions().selectService(Constants.LBL_IMPORT);
-		
 	}
 	
     @Step

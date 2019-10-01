@@ -22,8 +22,6 @@ public class RunMatchWidgetImpl extends BaseWidgetImpl implements RunMatchWidget
     	clickBtn("Run match");
     	waitAbit(1000);
     }
-    
-    
 
     @Override
     public void selectRecordToMatchAgainst(String label, String matchAgainst) {

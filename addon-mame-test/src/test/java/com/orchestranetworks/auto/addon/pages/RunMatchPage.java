@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.pages;
 
+import com.orchestranetworks.auto.addon.widget.general.PopupWidget;
 import org.openqa.selenium.WebDriver;
 
 import com.orchestranetworks.auto.addon.utils.Constants;
@@ -10,31 +11,35 @@ import com.orchestranetworks.auto.addon.widget.workspace.RecordDetailWidget;
 
 public class RunMatchPage extends BasePage {
 	private MatchingProcessWidget matchingProcessWidget;
-	
-	private RunMatchWidget runMatchWidget;
-	private RecordDetailWidget recordDetailWidget;
-	private ItemCreationWidget itemCreationWidget;
 
-	public RunMatchPage(WebDriver driver) {
-		super(driver);
-	}
+    private RunMatchWidget runMatchWidget;
+    private RecordDetailWidget recordDetailWidget;
+    private ItemCreationWidget itemCreationWidget;
+    private PopupWidget popupWidget;
 
-	public RunMatchWidget getRunMatchWidget() {
-		switchToIFrame(Constants.IFRAME_SERVICE);
-		return this.runMatchWidget;
-	}
+    public RunMatchPage(WebDriver driver) {
+        super(driver);
+    }
 
-	public RecordDetailWidget getRecordDetailWidget() {
-		return recordDetailWidget;
-	}
+    public RunMatchWidget getRunMatchWidget() {
+        switchToIFrame(Constants.IFRAME_SERVICE);
+        return this.runMatchWidget;
+    }
 
-	public ItemCreationWidget getItemCreationWidget() {
-		return itemCreationWidget;
-	}
+    public RecordDetailWidget getRecordDetailWidget() {
+        return recordDetailWidget;
+    }
 
-	public MatchingProcessWidget getMatchingProcessWidget() {
-		return matchingProcessWidget;
-	}
+    public ItemCreationWidget getItemCreationWidget() {
+        return itemCreationWidget;
+    }
 
+    public MatchingProcessWidget getMatchingProcessWidget() {
+        return matchingProcessWidget;
+    }
+
+    public PopupWidget getPopupWidget() {
+        return popupWidget;
+    }
 
 }

@@ -52,5 +52,8 @@ public class SourceSteps {
         onSourcePage.getPopupWidget().confirmOK();
     }
 
-
+    @Step
+    public void select_source_with_name(String nameOfSource) {
+        onSourcePage.getDefaultViewWidget().accessRecordWithText(nameOfSource);
+    }
 }

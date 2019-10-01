@@ -1,6 +1,8 @@
 package com.orchestranetworks.auto.addon.pages.config;
 
 import com.orchestranetworks.auto.addon.pages.BasePage;
+import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.widget.config.SourceWidget;
 import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
 import com.orchestranetworks.auto.addon.widget.general.PopupWidget;
 import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
@@ -12,9 +14,14 @@ import org.openqa.selenium.WebDriver;
 public class SourcePage extends BasePage {
     public SourcePage(WebDriver driver) {
         super(driver);
-        this.defaultViewWidget = new DefaultViewImpl(this, null, 100);
     }
 
+    public SourceWidget getSourceWidget() {
+        switchToIFrame(Constants.IFRAME_LEGACY);
+        return this.sourceWidget;
+    }
+
+    private SourceWidget sourceWidget;
     private NavigationWidget navigationWidget;
     private ToolbarWidget toolbarWidget;
     private ItemCreationWidget itemCreationWidget;

@@ -72,7 +72,6 @@ public class ManualMergeDefs {
             SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.AUTO_CREATED, expected, TechnicalTable.RecordMetadata.AUTO_CREATED);
             SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, expected, TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
         }
-
     }
 
     @And("^I click button Save and close$")
@@ -266,5 +265,4 @@ public class ManualMergeDefs {
     public void i_see_the_table_name_something_in_dropdown_list(String tableName) {
         onManualMergeSteps.verify_name_of_table(tableName);
     }
-
 }

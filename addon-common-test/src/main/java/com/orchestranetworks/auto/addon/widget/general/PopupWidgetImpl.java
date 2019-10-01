@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.widget.general;
 
+import com.orchestranetworks.auto.addon.utils.Constants;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -9,33 +10,43 @@ import net.serenitybdd.core.pages.PageObject;
 
 public class PopupWidgetImpl extends BaseWidgetImpl implements PopupWidget {
 
-	public PopupWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
-			long timeoutInMilliseconds) {
-		super(page, locator, webElement, timeoutInMilliseconds);
-	}
+    public PopupWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
+                           long timeoutInMilliseconds) {
+        super(page, locator, webElement, timeoutInMilliseconds);
+    }
 
-	public PopupWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
-		super(page, locator, timeoutInMilliseconds);
-	}
+    public PopupWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
+        super(page, locator, timeoutInMilliseconds);
+    }
 
-	@Override
-	public void confirmOK() {
-		String xPath = "//div[@id='ebx_DialogBox']//button[text()='OK']|//div[@class='_ebx-pop-up']//button[contains(.,'OK')]";
-		clickOnElement(xPath);
-		waitForInvisibilityOfElement(xPath);
-	}
-	@Override
-	public void confirmYES() {
-		String xPath = "//div[@id='ebx_DialogBox']//button[text()='Yes']";
-		clickOnElement(xPath);
-		waitForInvisibilityOfElement(xPath);
-	}
+    public static final String XPATH_POPUP = "//div[@id='ebx_DialogBox']";
 
-	@Override
-	public void clickBtnClose() {
-		String xPath = "//div[@id='ebx_DialogBox']//button[text()='Close']|//div[@class='_ebx-pop-up']//button[contains(.,'Close')]";
-		clickOnElement(xPath);
-		//getElement(xPath).click();
-		waitForInvisibilityOfElement(xPath);
-	}
+    @Override
+    public void confirmOK() {
+        String xPath = XPATH_POPUP + "//button[text()='OK']|//div[@class='_ebx-pop-up']//button[contains(.,'OK')]|//div[contains(@class,'ebx_DialogBoxFooterToolbar')]//button[contains(.,'OK')]";
+        clickOnElement(xPath);
+        waitForInvisibilityOfElement(xPath);
+    }
+
+    @Override
+    public void confirmYES() {
+        String xPath = XPATH_POPUP + "//button[text()='Yes']";
+        clickOnElement(xPath);
+        waitForInvisibilityOfElement(xPath);
+    }
+
+    @Override
+    public void clickBtnClose() {
+        String xPath = XPATH_POPUP + "//button[text()='Close']|//div[@class='_ebx-pop-up']//button[contains(.,'Close')]";
+        clickOnElement(xPath);
+        waitForInvisibilityOfElement(xPath);
+    }
+
+    @Override
+    public String getTextPopupRunMatch() {
+        switchOutDefaultIFrame();
+        switchToIFrame(Constants.IFRAME_LEGACY);
+        switchToLastIFrame();
+        return getTextValue(XPATH_POPUP + "//p").trim();
+    }
 }
