@@ -1,8 +1,6 @@
 package com.orchestranetworks.auto.addon.utils;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -27,13 +25,13 @@ public class DateTimeUtils {
 
     public static String getCurrentDateTime() {
         Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
-
+        NumberFormat formatter = new DecimalFormat("00");
         Date currentTime = localCalendar.getTime();
         int currentDay = localCalendar.get(Calendar.DATE);
         int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
         int currentYear = localCalendar.get(Calendar.YEAR);
 
-        String datevalue = currentMonth + "/" + currentDay + "/" + currentYear;
+        String datevalue = formatter.format(currentMonth) + "/" + formatter.format(currentDay) + "/" + currentYear;
         return datevalue;
     }
 
