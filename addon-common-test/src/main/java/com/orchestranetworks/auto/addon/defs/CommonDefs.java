@@ -193,7 +193,6 @@ public class CommonDefs {
      * @param datasetPath   path to access dataset
      * @param dataspacePath path to dataspace
      */
-
     @And("^I access table \"([^\"]*)\" of dataset \"([^\"]*)\" in dataspace \"([^\"]*)\"$")
     public void i_access_table_of_dataset_in_dataspace(String tableName, String datasetPath,
                                                        String dataspacePath) {
@@ -203,6 +202,19 @@ public class CommonDefs {
         onCommonSteps.click_on_table_name(tableName);
     }
 
+    /**
+     * Access to a table of a dataset
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I access table "Employee" of dataset "Human_Resource"
+     * "<font color="green">Employee</font>"
+     * </ul>
+     * </p>
+     *
+     * @param tableName     table name that user want to access
+     * @param datasetPath   path to access dataset
+     */
     @When("^I access table \"([^\"]*)\" of dataset \"([^\"]*)\"$")
     public void i_access_table_of_dataset(String tableName, String datasetPath) {
         onCommonSteps.go_to_dataset(datasetPath);
@@ -210,6 +222,26 @@ public class CommonDefs {
 
     }
 
+    /**
+     * Select filter by simple search using given criterion and logical
+     *
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">When</font> I select filter by simple search with criterion
+     *     <ul>
+     *			     <font color="green">| Criterion | Operation  | Value  | Field type |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">| Identifier | =  | 23 | ENUM |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">| Email | startsWith  | a | INPUT |</font>
+     *     </ul>
+     * </ul>
+     * </p>
+     * @param dt the criterion and logical used for search
+     */
     @When("^I select filter by simple search with criterion$")
     public void i_select_filter_by_simple_search_with_criterion(DataTable dt) {
         onCommonSteps.click_btn_filter();
@@ -236,6 +268,25 @@ public class CommonDefs {
         onCommonSteps.click_btn_apply_advanced_search();
     }
 
+    /**
+     * Select filter by advanced search using given criterion and logical
+     * <p>
+     * <b>Example</b>:
+     * <font color="blue">When</font> I select filter by simple search with criterion "<font color="green">All criteria match</font>"
+     *     <ul>
+     *			     <font color="green">| Criterion | Operation  | Value  | Field type |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">| Identifier | =  | 23 | ENUM |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">| Email | startsWith  | a | INPUT |</font>
+     *     </ul>
+     * </ul>
+     * </p>
+     * @param logical logical mode of advanced search
+     * @param dt List of criterion that user want to use
+     */
     @When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
     public void i_select_filter_by_advanced_search_with_criterion_and_logical(DataTable dt, String logical) {
         onCommonSteps.click_btn_filter();
@@ -264,6 +315,22 @@ public class CommonDefs {
         onCommonSteps.click_btn_apply_advanced_search();
     }
 
+    /**
+     * Select the filter by using given text and field
+     *
+     * <p>
+     * <b>Example</b>:
+     * <font color="blue">When</font> I select filter by text with keyword and field below
+     *     <ul>
+     *			     <font color="green">| Field contains: | In fields             |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">| Big Mac         | ID, Name, Description |</font>
+     *     </ul>
+     * </ul>
+     * </p>
+     * @param dt data to used to select filter
+     */
     @When("^I select filter by text with keyword and field below$")
     public void i_select_filter_by_text_with_keyword_and_field_below(DataTable dt) {
         onCommonSteps.click_btn_filter();
@@ -291,6 +358,22 @@ public class CommonDefs {
         onCommonSteps.click_btn_apply_text_search();
     }
 
+    /**
+     * Select filter by validation using the given keyword and field
+     * <p>
+     * <b>Example</b>:
+     * <font color="blue">When</font> I select filter by validation with keyword and field below
+     *     <ul>
+     *			     <font color="green">| Message contains: | Severity         |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">| start with 'a'    | Errors, Warnings |</font>
+     *     </ul>
+     * </ul>
+     * </p>
+     * @param dt keyword and field use for search
+     * @throws Throwable
+     */
     @When("^I select filter by validation with keyword and field below$")
     public void i_select_filter_by_validation_with_keyword_and_field_below(DataTable dt) {
         onCommonSteps.click_btn_filter();
@@ -317,6 +400,22 @@ public class CommonDefs {
         onCommonSteps.click_btn_apply_validation_search();
     }
 
+    /**
+     * Select the filter in fuzzy search using given keyword
+     *
+     * <p>
+     * <b>Example</b>:
+     * <font color="blue">When</font> I select filter by fuzzy search with keyword and field below
+     *     <ul>
+     *			     <font color="green">| Record contains: | Fields        |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">|                  | Email, Person |</font>
+     *     </ul>
+     * </ul>
+     * </p>
+     * @param dt Datatable that contain information to fill in
+     */
     @When("^I select filter by fuzzy search with keyword and field below$")
     public void i_select_filter_by_fuzzy_search_with_keyword_and_field_below(DataTable dt) {
         onCommonSteps.click_btn_filter();

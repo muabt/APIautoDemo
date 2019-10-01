@@ -21,12 +21,6 @@ public class PermissionPage extends BasePage {
 
 	public PermissionPage(WebDriver driver) {
 		super(driver);
-		this.toolbar = toolbar;
-		this.navPanel = navPanel;
-		this.headerWidget = headerWidget;
-		this.footerWidget = footerWidget;
-		this.defaultViewWidget = defaultViewWidget;
-		this.fieldCreationWidget = fieldCreationWidget;
 	}
 
 	public ToolbarWidget getToolbar() {

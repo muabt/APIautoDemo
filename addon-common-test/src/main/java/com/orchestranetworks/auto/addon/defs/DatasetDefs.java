@@ -87,6 +87,23 @@ public class DatasetDefs {
         create_record_with_content(dt);
     }
 
+    /**
+     * Create record with given information and PK
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I create record with PK "TXT" and the content followings
+     *      <ul>
+     * 			     <font color="green">| Identifer:TXT | Civil status:DDL | First name:TXT | Last name:TXT | Maiden name:TXT | Birth date:DATE | Gender:RADIO | Marital status:DDL | GDPR type:DDL |</font>
+     *     </ul>
+     *     <ul>
+     * 			     <font color="green">|               | Dr.              | Jenifer        | Pham          |                 | 7/29/1988       | Female       | (C) Single         | Child         |</font>
+     *     </ul>
+     * </ul>
+     * </p>
+     *
+     * @param dt information of the record
+     */
     @And("^I create record with PK \"([^\"]*)\" is \"([^\\\"]*)\" and the content followings$")
     public void i_create_record_with_pk_and_the_content_followings(String fieldName, String keyword, DataTable dt) {
         onCommonSteps.click_btn_filter();
@@ -160,12 +177,22 @@ public class DatasetDefs {
         onDatasetSteps.delete_all_data_in_table();
     }
 
+    /**
+     * Select the "Delete" data service
+     * <p>
+     * <b>Example</b>:
+     * <font color="blue">And</font> I want to delete all of record in the current table</font>>"
+     * </p>     */
     @Then("^delete it$")
     public void delete_it() {
         onDatasetSteps.select_table_service("Delete");
         onDatasetSteps.confirmPopupOK();
     }
 
+    /**
+     * Select the record that contains the text
+     * @param text text included in the record
+     */
     @And("^I select the record that contains \"([^\"]*)\"$")
     public void select_record_with_text(String text) {
         onDatasetSteps.select_record_with_text(text);

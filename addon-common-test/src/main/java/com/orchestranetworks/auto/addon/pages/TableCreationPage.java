@@ -19,11 +19,6 @@ public class TableCreationPage extends BasePage {
 
 	public TableCreationPage(WebDriver driver) {
 		super(driver);
-		this.toolbar = toolbar;
-		this.navPanel = navPanel;
-		this.headerWidget = headerWidget;
-		this.footerWidget = footerWidget;
-		this.newDataSet = newDataSet;
 	}
 
 	public ToolbarWidget getToolbar() {

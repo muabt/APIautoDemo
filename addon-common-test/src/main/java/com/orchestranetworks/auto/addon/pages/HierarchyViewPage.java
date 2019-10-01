@@ -19,11 +19,6 @@ public class HierarchyViewPage extends BasePage {
 
 	public HierarchyViewPage(WebDriver driver) {
 		super(driver);
-		this.toolbar = toolbar;
-		this.navPanel = navPanel;
-		this.headerWidget = headerWidget;
-		this.footerWidget = footerWidget;
-		this.newDataSet = newDataSet;
 	}
 
 	public ToolbarWidget getToolbar() {

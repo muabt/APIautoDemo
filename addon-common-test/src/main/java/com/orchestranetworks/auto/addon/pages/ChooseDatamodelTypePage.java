@@ -19,14 +19,11 @@ public class ChooseDatamodelTypePage extends BasePage {
 
 	public ChooseDatamodelTypePage(WebDriver driver) {
 		super(driver);
-		this.toolbar = toolbar;
-		this.navPanel = navPanel;
-		this.headerWidget = headerWidget;
-		this.footerWidget = footerWidget;
-		this.defaultViewWidget = defaultViewWidget;
 	}
 
 	public ToolbarWidget getToolbar() {
+		String a = "abasdf";
+
 		return toolbar;
 	}
 

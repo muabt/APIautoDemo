@@ -29,5 +29,4 @@ public class AdministrationDefs {
         onAdministrationSteps.select_file_to_import(fileName);
     }
 
-
 }

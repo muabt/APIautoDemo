@@ -55,6 +55,10 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         waitTypeAndTab(XFormat.of(XPATH_SEARCH_TEXTBOX, "TESE_AUTO_searchValue"), keyword);
     }
 
+    /**
+     * Click to button expand
+     * @param label label of the button that need to expand
+     */
     @Override
     public void clickBtnExpandWithLabel(String label) {
         clickOnElement(XFormat.of(XPATH_EXPAND_BUTTON, label));
@@ -66,6 +70,10 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         switchToIFrame(Constants.IFRAME_LEGACY);
     }
 
+    /**
+     * Select logical search value
+     * @param logical logical value
+     */
     @Override
     public void selectLogicalSearch(String logical) {
         String xPathLogical = "//option[.='All criteria match']/parent::select";
@@ -86,6 +94,11 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     }
 
+    /**
+     * Select operator for individual field
+     * @param operator operator to select
+     * @param field field to select
+     */
     @Override
     public void selectOperatorOfField(String operator, String field) {
         String xPathDDLOfField = XFormat.of(XPATH_SEARCH_FIELD, field) + "//select";
@@ -94,6 +107,12 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         waitElementToBePresent(xPathOper).waitUntilClickable().click();
     }
 
+    /**
+     * Input search value into a criterion
+     * @param value input search value
+     * @param type type of input value
+     * @param fieldName field name to input value
+     */
     @Override
     public void inputSearchValue(String value, String type, String fieldName) {
         String xPathTxtOfField = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input";
@@ -118,6 +137,9 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         }
     }
 
+    /**
+     * Switch to advanced mode
+     */
     @Override
     public void selectAdvancedMode() {
         String xPathParent = "//div[@id='ebx_FilterBlockList']";
@@ -125,11 +147,20 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         clickOnElement(XFormat.of(NAVIGATION_ITEM, Constants.ADVANCED_MODE));
     }
 
+    /**
+     * Unselect a field in search window
+     * @param field field to unselect
+     */
     @Override
     public void unselectField(String field) {
         uncheckCheckbox(field);
     }
 
+    /**
+     * Select the checkbox field
+     * @param searchType type of search. Eg: Text search, Validation search
+     * @param label check box label. Eg: Id, First Name...
+     */
     @Override
     public void selectField(String searchType, String label) {
         if (searchType.equals(Constants.FUZZY_SEARCH)) {
@@ -141,6 +172,9 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         }
     }
 
+    /**
+     * Click to button Add logical block
+     */
     @Override
     public void addLogicalBlock() {
         String xPathParent = "//div[@id='ebx_FilterBlockList']";
@@ -150,12 +184,20 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
         switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
     }
 
+    /**
+     * Click to button add
+     */
     @Override
     public void clickBtnAddBlock() {
         clickBtn(Constants.BTN_ADD);
         switchToIFrame(Constants.IFRAME_LEGACY);
     }
 
+    /**
+     * Select checkbox for search item
+     * @param searchType search type, eg Validation search, Text search
+     * @param fieldName field need to check
+     */
     @Override
     public void selectSearchItem(String searchType, String fieldName) {
         if (searchType.equals(Constants.FUZZY_SEARCH)) {

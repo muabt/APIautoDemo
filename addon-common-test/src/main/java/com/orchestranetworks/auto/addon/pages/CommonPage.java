@@ -26,14 +26,6 @@ public class CommonPage extends BasePage {
 
     public CommonPage(WebDriver driver) {
         super(driver);
-        this.toolbar = new ToolbarWidgetImpl(this, null, 100);
-        this.navPanel = new NavigationWidgetImpl(this, null, 100);
-        this.header = new HeaderWidgetImpl(this, null, 100);
-        this.footer = new FooterWidgetImpl(this, null, 100);
-        this.login = new LoginWidgetImpl(this, null, 100);
-        this.userCard = new UserCardWidgetImpl(this, null, 100);
-        this.popup = new PopupWidgetImpl(this, null, 100);
-        this.advanceSearch = new AdvancedSearchImpl(this,null,100);
     }
 
 

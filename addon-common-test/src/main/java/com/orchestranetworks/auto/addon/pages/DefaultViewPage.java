@@ -25,15 +25,6 @@ public class DefaultViewPage extends BasePage {
 
     public DefaultViewPage(WebDriver driver) {
         super(driver);
-        this.toolbar = new ToolbarWidgetImpl(this, null, 100);
-        this.textSearch = new SearchWidgetImpl(this, null, 100);
-        this.validationSearch = new SearchWidgetImpl(this, null, 100);
-        this.navPanel = new NavigationWidgetImpl(this, null, 100);
-        this.headerWidget = new HeaderWidgetImpl(this, null, 100);
-        this.footerWidget = new FooterWidgetImpl(this, null, 100);
-        this.defaultViewWidget = new DefaultViewImpl(this, null, 100);
-        this.popupWidget = new PopupWidgetImpl(this, null, 100);
-        this.searchWidget = new SearchWidgetImpl(this, null, 100);
     }
 
     public ToolbarWidget getToolbar() {

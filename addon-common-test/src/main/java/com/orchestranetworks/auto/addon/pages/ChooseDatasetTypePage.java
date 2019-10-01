@@ -17,11 +17,6 @@ public class ChooseDatasetTypePage extends PageObject {
 	private TableViewWidget defaultViewWidget;
 
 	public ChooseDatasetTypePage() {
-		this.toolbar = toolbar;
-		this.navPanel = navPanel;
-		this.headerWidget = headerWidget;
-		this.footerWidget = footerWidget;
-		this.defaultViewWidget = defaultViewWidget;
 	}
 
 	public ToolbarWidget getToolbar() {

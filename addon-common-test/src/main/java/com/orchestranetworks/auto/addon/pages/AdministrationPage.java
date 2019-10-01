@@ -35,14 +35,6 @@ public class AdministrationPage extends BasePage {
 
     public AdministrationPage(WebDriver driver) {
         super(driver);
-        this.toolbar = new ToolbarWidgetImpl(this, null, 100);
-        this.navPanel = new NavigationWidgetImpl(this, null, 100);
-        this.header = new HeaderWidgetImpl(this, null, 100);
-        this.footer = new FooterWidgetImpl(this, null, 100);
-        this.popup = new PopupWidgetImpl(this, null, 100);
-        this.administration = new AdministrationWidgetImpl(this, null, 100);
-        this.defaultViewWidget = new DefaultViewImpl(this, null, 100);
-        this.textSearch = new TextSearchImpl(this, null, 100);
     }
 
     public ToolbarWidget getToolbar() {

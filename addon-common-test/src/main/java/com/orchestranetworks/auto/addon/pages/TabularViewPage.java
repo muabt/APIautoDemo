@@ -18,12 +18,8 @@ public class TabularViewPage extends BasePage {
 	private ItemCreationWidget newDataSet;
 
 	public TabularViewPage(WebDriver driver) {
+
 		super(driver);
-		this.toolbar = toolbar;
-		this.navPanel = navPanel;
-		this.headerWidget = headerWidget;
-		this.footerWidget = footerWidget;
-		this.newDataSet = newDataSet;
 	}
 
 	public ToolbarWidget getToolbar() {

@@ -16,12 +16,6 @@ public class DataspaceBriefInfoPage extends BasePage {
 
     public DataspaceBriefInfoPage(WebDriver driver) {
         super(driver);
-        this.toolbar = new ToolbarWidgetImpl(this, null, 100);
-        this.navPanel = new NavigationWidgetImpl(this, null, 100);
-        this.header = new HeaderWidgetImpl(this, null, 100);
-        this.footer = new FooterWidgetImpl(this, null, 100);
-        this.dataspaceBriefInfoWidget = new DataspaceBriefInfoWidgetImpl(this, null, 100);
-        this.popupWidget = new PopupWidgetImpl(this, null, 100);
     }
 
     public DataspaceBriefInfoWidget getDataspaceBriefInforWidget() {

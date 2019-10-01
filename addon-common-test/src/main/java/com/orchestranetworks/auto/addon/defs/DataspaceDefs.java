@@ -117,6 +117,9 @@ public class DataspaceDefs {
         onDataspaceSteps.verify_dataspace(info);
     }
 
+    /**
+     * Delete the data space that was saved in Serenity session
+     */
     @And("^I delete the dataspace$")
     public void i_delete_the_dataspace() {
         onDataspaceSteps.delete_dataspace_by_service();

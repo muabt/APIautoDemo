@@ -20,11 +20,6 @@ public class DataspaceCreationPage extends BasePage {
 
     public DataspaceCreationPage(WebDriver driver) {
         super(driver);
-        this.toolbar = new ToolbarWidgetImpl(this, null, 100);
-        this.navPanel = new NavigationWidgetImpl(this, null, 100);
-        this.headerWidget = new HeaderWidgetImpl(this, null, 100);
-        this.footerWidget = new FooterWidgetImpl(this, null, 100);
-        this.dataspaceCreation = new DataspaceCreationImpl(this, null, 100);
     }
 
     public ToolbarWidget getToolbar() {

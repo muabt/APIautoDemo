@@ -23,12 +23,6 @@ public class RecordDetailPage extends BasePage {
 
     public RecordDetailPage(WebDriver driver) {
         super(driver);
-		/*this.toolbar = toolbar;
-		this.navPanel = navPanel;
-		this.headerWidget = headerWidget;
-		this.footerWidget = footerWidget;
-		this.defaultViewWidget = defaultViewWidget;
-		this.itemCreationWidget = itemCreationWidget;*/
     }
 
     public ToolbarWidget getToolbar() {
