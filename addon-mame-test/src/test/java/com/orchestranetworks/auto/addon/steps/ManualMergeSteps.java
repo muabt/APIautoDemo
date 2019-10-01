@@ -15,7 +15,6 @@ import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
 import com.orchestranetworks.auto.addon.pages.ManualMergePage;
 import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
-import com.orchestranetworks.auto.addon.utils.TechnicalTable;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.assertj.core.api.SoftAssertions;
@@ -31,7 +30,7 @@ public class ManualMergeSteps {
 
     @Step
     public void verify_record_view_table(List<List<String>> expectedTbl) {
-        List<List<String>> actualTbl = onManualMergePage.getTableViewWidget().getDataRecordViewTable();
+        List<List<String>> actualTbl = onManualMergePage.getManualMergeViewWidget().getDataRecordViewTable();
         compare_record_view_tbl(expectedTbl, actualTbl);
         verify_record_view_cell_highlighted(expectedTbl);
     }
@@ -41,7 +40,7 @@ public class ManualMergeSteps {
         for (int row = 1; row < expectedTbl.size(); row++) {
             for (int col = 0; col < expectedHeader.size(); col++) {
                 String expectedCell = expectedTbl.get(row).get(col);
-                boolean isHighlighted = onManualMergePage.getTableViewWidget().isCellHighlighted(row, col);
+                boolean isHighlighted = onManualMergePage.getManualMergeViewWidget().isCellHighlighted(row, col);
                 if (expectedCell.contains("{H}")) {
                     assertTrue(isHighlighted);
                 } else {
@@ -77,7 +76,7 @@ public class ManualMergeSteps {
 
     @Step
     public void verify_table_preview(List<List<String>> expectedTablePreview) {
-        List<List<String>> actualTablePreview = onManualMergePage.getTableViewWidget().getDataPreviewTable();
+        List<List<String>> actualTablePreview = onManualMergePage.getManualMergeViewWidget().getDataPreviewTable();
         assertEquals(expectedTablePreview, actualTablePreview);
 
     }
@@ -110,12 +109,12 @@ public class ManualMergeSteps {
 
     @Step
     public void verify_status_of_buttons(String status) {
-        assertThat(status).isEqualTo(onManualMergePage.getTableViewWidget().isBtnCancelLastActionActive());
+        assertThat(status).isEqualTo(onManualMergePage.getManualMergeViewWidget().isBtnCancelLastActionActive());
     }
 
     @Step
     public void verify_name_of_table(String tableName) {
-        Assert.assertEquals(tableName, onManualMergePage.getTableViewWidget().getMergeStepsSelection());
+        Assert.assertEquals(tableName, onManualMergePage.getManualMergeViewWidget().getMergeStepsSelection());
     }
 
     @Step
@@ -133,10 +132,10 @@ public class ManualMergeSteps {
         switch (name) {
             case "Reset":
             case "Apply merge policy":
-                assertEquals(name, onManualMergePage.getTableViewWidget().getTextOfRightBtn());
+                assertEquals(name, onManualMergePage.getManualMergeViewWidget().getTextOfRightBtn());
                 break;
             case "Cancel last action":
-                assertEquals(name, onManualMergePage.getTableViewWidget().getTextOfCancelActionButton());
+                assertEquals(name, onManualMergePage.getManualMergeViewWidget().getTextOfCancelActionButton());
                 break;
         }
     }

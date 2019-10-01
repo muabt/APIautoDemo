@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.pages;
 
+import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
 import com.orchestranetworks.auto.addon.widget.filter.TextSearchImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.DefaultViewImpl;
@@ -49,6 +50,7 @@ public class AdministrationPage extends BasePage {
     }
 
     public NavigationWidget getNavPanel() {
+        switchToIFrame(Constants.IFRAME_LEGACY);
         return navPanel;
     }
 

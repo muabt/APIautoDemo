@@ -1,9 +1,10 @@
 package com.orchestranetworks.auto.addon.pages;
 
-import com.orchestranetworks.auto.addon.widget.general.FooterWidget;
-import com.orchestranetworks.auto.addon.widget.general.HeaderWidget;
-import com.orchestranetworks.auto.addon.widget.general.NavigationWidget;
-import com.orchestranetworks.auto.addon.widget.general.ToolbarWidget;
+import com.orchestranetworks.auto.addon.widget.filter.TextSearchImpl;
+import com.orchestranetworks.auto.addon.widget.general.*;
+import com.orchestranetworks.auto.addon.widget.workspace.AdministrationWidgetImpl;
+import com.orchestranetworks.auto.addon.widget.workspace.DataspaceCreationImpl;
+import com.orchestranetworks.auto.addon.widget.workspace.DefaultViewImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.ItemCreationWidget;
 
 import net.serenitybdd.core.pages.PageObject;
@@ -19,11 +20,11 @@ public class DataspaceCreationPage extends BasePage {
 
     public DataspaceCreationPage(WebDriver driver) {
         super(driver);
-        this.toolbar = toolbar;
-        this.navPanel = navPanel;
-        this.headerWidget = headerWidget;
-        this.footerWidget = footerWidget;
-        this.dataspaceCreation = dataspaceCreation;
+        this.toolbar = new ToolbarWidgetImpl(this, null, 100);
+        this.navPanel = new NavigationWidgetImpl(this, null, 100);
+        this.headerWidget = new HeaderWidgetImpl(this, null, 100);
+        this.footerWidget = new FooterWidgetImpl(this, null, 100);
+        this.dataspaceCreation = new DataspaceCreationImpl(this, null, 100);
     }
 
     public ToolbarWidget getToolbar() {

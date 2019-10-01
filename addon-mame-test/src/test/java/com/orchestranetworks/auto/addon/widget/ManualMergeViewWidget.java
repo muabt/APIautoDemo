@@ -5,8 +5,8 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 import java.util.List;
 
-@ImplementedBy(TableViewWidgetImpl.class)
-public interface TableViewWidget extends WidgetObject {
+@ImplementedBy(ManualMergeViewWidgetImpl.class)
+public interface ManualMergeViewWidget extends WidgetObject {
     void clickBtnNext();
     void clickBtnCancel();
     void clickBtnApplyMergePolicy();

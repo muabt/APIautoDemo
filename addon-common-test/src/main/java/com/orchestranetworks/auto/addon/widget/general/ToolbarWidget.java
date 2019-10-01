@@ -11,8 +11,6 @@ public interface ToolbarWidget extends WidgetObject {
 
     ToolbarWidget clickBtnActions();
 
-    ToolbarWidget clickBtnByLabel(String label);
-
     void selectService(String service);
 
     void clickNextPage();

@@ -36,11 +36,6 @@ public class DatasetSteps extends ScenarioSteps {
     }
 
     @Step
-    public void select_table_service_administration(String service) {
-
-    }
-
-    @Step
     public void select_record_with_PK(String[] recordPKs) {
         defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordPKs);
     }
@@ -53,11 +48,6 @@ public class DatasetSteps extends ScenarioSteps {
         } else {
             defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordID);
         }
-    }
-
-    @Step
-    public void select_dataset_service(String service) {
-        commonPage.getNavPanel().selectDatasetService(service);
     }
 
     @Step
@@ -95,7 +85,7 @@ public class DatasetSteps extends ScenarioSteps {
         if (defaultViewPage.getDefaultViewWidget().existRecordInTable()) {
             defaultViewPage.getDefaultViewWidget().clickBtnSelectAndSort();
             defaultViewPage.getDefaultViewWidget().selectAllRecord();
-            recordDetailPage.getToolbar().clickBtnByLabel("Action");
+            recordDetailPage.getToolbar().clickBtnActions();
             recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
             recordDetailPage.getPopupWidget().confirmOK();
         }

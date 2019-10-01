@@ -8,6 +8,6 @@ public interface ImportWidget extends WidgetObject {
 	
 	void selectFileThenImport(String fileName);
 	
-	void clickBntImport();
+	void clickBtnImport();
 
 }

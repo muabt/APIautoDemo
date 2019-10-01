@@ -3,9 +3,7 @@ package com.orchestranetworks.auto.addon.widget.general;
 
 import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.LoadConfig;
-import com.orchestranetworks.auto.addon.utils.Encode;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.WebElement;
@@ -22,6 +20,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     public static final String XPATH_BTN_COLLAPSED = "//li[descendant-or-self::*[contains(text(),'%1$s')]]//button[@title='Collapsed'] | //table[contains(@class,'collapsed')][descendant::*[text()='%1$s']]//a";
     public static final String MENU_SELECTOR_PANE = "//div[contains(@class,'navigation-menu-selector_modeless') and not(contains(@style,'hidden'))]";
 
+
     public NavigationWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                 long timeoutInMilliseconds) {
         super(page, locator, webElement, timeoutInMilliseconds);
@@ -34,8 +33,8 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     @Override
     public NavigationWidget changeDataspace() {
         switchOutDefaultIFrame();
-        if (!isElementExistNow(MENU_SELECTOR_PANE) && isElementExistNow(xPathBtn("Change dataspace"))) {
-            clickBtn("Change dataspace");
+        if (!isElementExistNow(MENU_SELECTOR_PANE) && isElementExistNow(xPathBtn(Constants.BTN_CHANGE_DATASPACE))) {
+            clickBtn(Constants.BTN_CHANGE_DATASPACE);
         }
         return this;
     }
@@ -44,7 +43,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     public NavigationWidget changeDataset() {
         switchOutDefaultIFrame();
         if (!isElementExistNow(MENU_SELECTOR_PANE)) {
-            clickBtn("Select dataset");
+            clickBtn(Constants.BTN_SELECT_DATASET);
         }
         return this;
     }
@@ -54,7 +53,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         String xPathCollapseBtn = "//button[@title='Collapsed']";
         int numOfExpandedBtn = findAllElements(xPathCollapseBtn).size();
         for (int i = numOfExpandedBtn; i > 0; i--) {
-            clickBtn("Collapsed", i);
+            clickBtn(Constants.BTN_COLLAPSED, i);
         }
     }
 
@@ -73,7 +72,7 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         String xPathExpandedBtn = "//button[@title='Expanded']";
         int numOfExpandedBtn = findAllElements(xPathExpandedBtn).size();
         for (int i = numOfExpandedBtn; i > 0; i--) {
-            clickBtn("Expanded", i);
+            clickBtn(Constants.BTN_EXPANDED, i);
         }
     }
 
@@ -99,26 +98,20 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     }
 
     @Override
-    public void selectDatasetService(String service) {
-        clickBtn("Actions");
+    public NavigationWidget clickBtnActions() {
+        clickBtn("//div[@id='ebx_Navigation']",Constants.BTN_ACTIONS);
+        return this;
     }
-
     @Override
-    public void goToGroupAdministration(String item) {
-        switchToIFrame(Constants.IFRAME_LEGACY);
-        clickOnElement("//span/a[contains(text(),'" + item + "')]");
-        clickOnElement("//div[@id='ebx_NavigationTree']//a");
-    }
+    public void selectService(String service) {
+        clickOnElement("//li//a[.='"+service+"']");
 
-    @Override
-    public void goToAdministrationItem(String item) {
-        clickOnElement("//span/a/span/span[contains(text(),'" + item + "')]");
     }
 
     @Override
     public NavigationWidget selectAdministrationFeature() {
         if (getElement("//div[@id='ebx_SelectorPanel_c' or @id='ebx_Navigation']").getAttribute("style").contains("hidden"))
-            clickBtn("Select an administration feature");
+            clickBtn(Constants.BTN_SELECT_ADMIN_FEATURE);
         switchToIFrame(Constants.IFRAME_LEGACY);
         return this;
     }
@@ -135,10 +128,4 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         return response.getStatusCode() == 200;
     }
     
-    @Override
-    public void clickOnActionsAndImportService() {
-    	clickOnElement("//div[@id='ebx_Navigation']//button[.='Actions']");
-    	clickOnElement("//li//a[.='Import']");
-    	
-    }
 }

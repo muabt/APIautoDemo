@@ -21,15 +21,11 @@ public interface NavigationWidget extends WidgetObject {
 
     void goToPath(String path);
 
-    void selectDatasetService(String service);
-
-    void goToGroupAdministration(String path);
-
-    void goToAdministrationItem(String path);
-
 	NavigationWidget selectAdministrationFeature();
 
 	boolean isDataspaceExist(String dataspace);
-	
-	void clickOnActionsAndImportService();
+
+	NavigationWidget clickBtnActions();
+
+	void selectService(String service);
 }

@@ -34,16 +34,9 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
 
     @Override
     public ToolbarWidget clickBtnActions() {
-        clickBtn("Actions");
+        clickBtn(Constants.BTN_ACTIONS);
         return this;
     }
-
-    @Override
-    public ToolbarWidget clickBtnByLabel(String label) {
-        clickBtn(label);
-        return this;
-    }
-
 
     @Override
     public void selectService(String service) {
@@ -84,7 +77,7 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
 
     @Override
     public void clickBtnCreateDataspace() {
-        clickBtn("Create a dataspace");
+        clickBtn(Constants.BTN_CREATE_A_DATASPACE);
     }
 
     @Override

@@ -52,4 +52,12 @@ public final class Constants {
 
     public static final String DELETE_SERVICE = "Delete";
 
+    public static final String BTN_CHANGE_DATASPACE = "Change dataspace";
+    public static final String BTN_COLLAPSED = "Collapsed";
+    public static final String BTN_EXPANDED = "Expanded";
+
+    public static final String LBL_IMPORT = "Import";
+    public static final String BTN_IMPORT = "Import";
+    public static final String LBL_ARCHIVE_TO_IMPORT = "Archive to import";
+    public static final String BTN_CREATE_A_DATASPACE = "Create a dataspace";
 }
