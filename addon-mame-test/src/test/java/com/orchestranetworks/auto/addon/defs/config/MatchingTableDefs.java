@@ -438,7 +438,7 @@ public class MatchingTableDefs {
     public void the_matching_process_is_updated_as_the_followings(DataTable dt) {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
-            String matchingProcessCode = row.get(MAMEConstants.MATCHING_PROCESS_CODE);
+            //String matchingProcessCode = row.get(MAMEConstants.MATCHING_PROCESS_CODE);
             String active = row.get(MAMEConstants.ACTIVE);
             String matchingExecutionOnCreation = row.get(MAMEConstants.MATCHING_EXECUTION_ON_CREATION);
             String matchingExecutionOnUpdate = row.get(MAMEConstants.MATCHING_EXECUTION_ON_UPDATE);
@@ -447,15 +447,6 @@ public class MatchingTableDefs {
             String mergedRecordIsRecycled = row.get(MAMEConstants.RECORD_RECYCLED);
             String modifyMergedWithoutMatch = row.get(MAMEConstants.MODIFY_MERGE);
 
-
-            if (!matchingProcessCode.isEmpty()) {
-                if (onMatchingTableSteps.verify_code_existed(matchingProcessCode)) {
-                    onMatchingTableSteps.select_record_with_label(matchingProcessCode);
-                } else {
-                    onMatchingTableSteps.select_btn_create_record(1);
-                    onMatchingTableSteps.input_matching_process_code(matchingProcessCode);
-                }
-            }
             if (!active.isEmpty()) {
                 onMatchingTableSteps.selectActive(active);
             }

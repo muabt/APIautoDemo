@@ -150,32 +150,32 @@ public class MatchingTableSteps extends ScenarioSteps {
     @Step
     public void
     select_survivor_record(String selectionMode) {
-        onMatchingTablePage.getItemCreationWidget().selectDDLByJS("Survivor record selection mode", selectionMode);
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.SURVIVOR_RECORD_SELECTION_MODE, selectionMode);
     }
 
     @Step
     public void select_default_merge_function(String defaultFunction) {
-        onMatchingTablePage.getItemCreationWidget().selectDDLByJS("Default merge function", defaultFunction);
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.DEFAULT_MERGE_FUNCTION, defaultFunction);
     }
 
     @Step
     public void use_for_merge_function(String useManualMerge) {
-        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel("Used for manual merge", useManualMerge);
+        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel(MAMEConstants.USE_MANUAL_MERGE, useManualMerge);
     }
 
     @Step
     public void clear_default_merge_function() {
-        onMatchingTablePage.getItemCreationWidget().clearDDL("Default merge function");
+        onMatchingTablePage.getItemCreationWidget().clearDDL(MAMEConstants.DEFAULT_MERGE_FUNCTION);
     }
 
     @Step
     public void select_auto_create_new_golden_mode(String autoCreateNewGolden) {
-        onMatchingTablePage.getItemCreationWidget().selectDDLByJS("Mode", autoCreateNewGolden);
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.MODE, autoCreateNewGolden);
     }
 
     @Step
     public void apply_permission_on_merge_view(String applyPermission) {
-        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel("Apply permission on merge view", applyPermission);
+        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel(MAMEConstants.APPLY_PERMISSION_ON_MERGE_VIEW, applyPermission);
     }
 
     @Step
@@ -186,19 +186,19 @@ public class MatchingTableSteps extends ScenarioSteps {
     @Step
     public void select_survivor_field_tab() {
         onMatchingTablePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
-        onMatchingTablePage.getRecordDetailWidget().selectTab("Survivor field");
+        onMatchingTablePage.getRecordDetailWidget().selectTab(MAMEConstants.SURVIVOR_FIELD);
     }
 
     @Step
     public void input_survivor_code(String code) {
         String inputCode = code.equals(Constants.RANDOM) ? onCommonPage.getRandomString() : code;
-        onMatchingTablePage.getItemCreationWidget().inputTextWithLabel("Survivorship field code", inputCode);
+        onMatchingTablePage.getItemCreationWidget().inputTextWithLabel(MAMEConstants.SURVIVORSHIP_FIELD_CODE, inputCode);
         SessionData.saveValueToSession(MAMEConstants.MATCHING_POLICY_CODE_KEY, inputCode);
     }
 
     @Step
     public void select_field_survivor(String field) {
-        onMatchingTablePage.getItemCreationWidget().selectDDLByJS("Field", field);
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.FIELD, field);
     }
 
     @Step

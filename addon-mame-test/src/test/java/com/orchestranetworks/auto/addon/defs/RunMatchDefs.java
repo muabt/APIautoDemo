@@ -7,25 +7,27 @@ import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 import com.orchestranetworks.auto.addon.steps.RunMatchSteps;
 
+import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class RunMatchDefs {
-	
-	@Steps
-	RunMatchSteps onRunMatchSteps;
-	
-	@Steps
-	ManualMergeSteps onManualMergeSteps;
 
-	@Steps
+    @Steps
+    RunMatchSteps onRunMatchSteps;
+
+    @Steps
+    ManualMergeSteps onManualMergeSteps;
+
+    @Steps
     DatasetSteps onDatasetSteps;
 
-	/**
+    /**
      * Verify the Run match information
      * <p>
      * <b>Example</b>:
@@ -47,8 +49,18 @@ public class RunMatchDefs {
     public void the_run_match_service_is_executed_with_the_information_as_belows(DataTable dt) {
         onDatasetSteps.select_table_service("Match and Merge > Run match");
         List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
-        Map<String, String> row = dataTable.get(0);
-        onRunMatchSteps.input_run_match(row);
+        for (Map<String, String> row : dataTable) {
+            String matchingProcess = row.get(MAMEConstants.MATCHING_PROCESS);
+            String recordToMatch = row.get(MAMEConstants.RECORD_TO_MATCH_AGAINST);
+
+            if (!matchingProcess.isEmpty()) {
+
+            }
+
+            if (!recordToMatch.isEmpty()) {
+                onRunMatchSteps.input_run_match(MAMEConstants.RECORD_TO_MATCH_AGAINST, recordToMatch);
+            }
+        }
     }
 
     /**
@@ -59,7 +71,6 @@ public class RunMatchDefs {
      * <font color="blue">When</font> I click on Run Match button
      * </ul>
      * </p>
-     *
      */
 
     @When("^I complete Run Match process$")
@@ -76,10 +87,11 @@ public class RunMatchDefs {
      * "The run match service can't be executed: No matching process is actived. Please check your configuration."</font>
      * </ul>
      * </p>
+     *
      * @param message message to be verified
      */
     @Then("^the popup message should be shown \"([^\"]*)\"$")
-    public void the_popup_message_should_be_shown(String message){
+    public void the_popup_message_should_be_shown(String message) {
         onRunMatchSteps.verify_message_run_match_service_popup(message);
     }
 
@@ -92,12 +104,13 @@ public class RunMatchDefs {
      * in "<color font="green">Matching process</color>" tab
      * </ul>
      * </p>
+     *
      * @param label label of matching process
-     * @param tab Tab name in matching process
+     * @param tab   Tab name in matching process
      */
     @Given("^I select matching process record with label \"([^\"]*)\" in \"([^\"]*)\" tab$")
     public void i_select_matching_process_record_of_table(String label, String tab) {
-    	onRunMatchSteps.view_record_with_name(tab, label);
+        onRunMatchSteps.view_record_with_name(tab, label);
     }
 
     /**
@@ -109,14 +122,15 @@ public class RunMatchDefs {
      * in "<color font="green">Matching fields</color>" tab
      * </ul>
      * </p>
+     *
      * @param label label of matching process
-     * @param tab Tab name in matching process
+     * @param tab   Tab name in matching process
      */
     @Given("^I select matching field record with label \"([^\"]*)\" in \"([^\"]*)\" tab$")
     public void i_select_matching_field_record_of_table(String label, String tab) {
-    	onRunMatchSteps.view_matching_field_record_with_name(tab, label);
-    	
+        onRunMatchSteps.view_matching_field_record_with_name(tab, label);
+
     }
-    
+
 
 }

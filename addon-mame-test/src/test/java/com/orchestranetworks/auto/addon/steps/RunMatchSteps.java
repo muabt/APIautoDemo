@@ -16,9 +16,11 @@ public class RunMatchSteps {
     private RunMatchPage onRunMatchPage;
 
     @Step
-    public void input_run_match(Map<String, String> runMatchInfo) {
-        String matchAgainst = runMatchInfo.get(MATCH_AGAINST);
-        onRunMatchPage.getRunMatchWidget().selectRecordToMatchAgainst(MATCH_AGAINST, matchAgainst);
+    public void input_run_match(String label, String option) {
+        onRunMatchPage.switchOutDefaultIFrame();
+        onRunMatchPage.switchToIFrame(Constants.IFRAME_LEGACY);
+        onRunMatchPage.switchToLastIFrame();
+        onRunMatchPage.getRunMatchWidget().selectRecordToMatchAgainst(label, option);
     }
 
     @Step
