@@ -82,7 +82,7 @@ public class ManualMergeDefs {
 
     @Then("^I will see table MergingProcess as below$")
     public void i_will_see_table_merging_process_below(List<List<String>> table) {
-        onCommonSteps.click_on_table_name("MergingProcess");
+        onCommonSteps.click_on_table_name(MAMEConstants.MERGING_PROCESS_METADATA);
         JsonArray actualTbl = onDatasetSteps.getDefaultViewTable();
         JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
 
@@ -249,7 +249,7 @@ public class ManualMergeDefs {
         List<Map<String, String>> list = tableButtons.asMaps(String.class, String.class);
         for (int i = 0; i < list.size(); i++) {
             Map<String, String> row = list.get(i);
-            String name = row.get("Name");
+            String name = row.get(MAMEConstants.NAME_FIELD);
             String status = row.get("Status");
 
             if (!name.isEmpty()) {

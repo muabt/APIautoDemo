@@ -47,4 +47,15 @@ public class MAMEConstants {
 
     public static final String MATCHING_TABLE_FIELD = "Matching table";
     public static final String NAME_OF_SOURCE_FIELD = "Name of source";
+    public static final String MERGING_PROCESS_METADATA = "MergingProcess";
+    public static final String NAME_FIELD = "Name";
+    public static final String SURVIVORSHIP_FIELD_CODE = "Survivorship field code";
+    public static final String MERGE_FUNCTION = "Merge function";
+    public static final String CONDITION_FOR_FIELD = "Condition for field value survivorship";
+    public static final String EXECUTE_EMPTY = "Execute only if empty";
+    public static final String KEEP_NOT_MATCH = "Keep not matched records untouched";
+    public static final String RECORD_RECYCLED = "Merged record is recycled";
+    public static final String MODIFY_MERGE = "Modify merged without match";
+    public static final String BOTH_VALUE_ARE_NULL = "Both values are null";
+    public static final String ONE_VALUE_NULL = "One of the values is null";
 }

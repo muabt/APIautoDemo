@@ -204,11 +204,11 @@ public class MatchingTableDefs {
 
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
-            String survivorCode = row.get("Survivorship field code");
-            String field = row.get("Field");
-            String mergeFunction = row.get("Merge function");
-            String condition = row.get("Condition for field value survivorship");
-            String executeEmpty = row.get("Execute only if empty");
+            String survivorCode = row.get(MAMEConstants.SURVIVORSHIP_FIELD_CODE);
+            String field = row.get(MAMEConstants.FIELD);
+            String mergeFunction = row.get(MAMEConstants.MERGE_FUNCTION);
+            String condition = row.get(MAMEConstants.CONDITION_FOR_FIELD);
+            String executeEmpty = row.get(MAMEConstants.EXECUTE_EMPTY);
 
             if (!survivorCode.isEmpty()) {
                 if (onMatchingTableSteps.verify_code_existed(survivorCode)) {
@@ -245,13 +245,13 @@ public class MatchingTableDefs {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
             //String matchingProcessCode = row.get("Matching process code");
-            String active = row.get("Active");
-            String matchingExecutionOnCreation = row.get("Matching execution on creation");
-            String matchingExecutionOnUpdate = row.get("Matching execution on update");
-            String mergePolicy = row.get("Merge policy");
-            String keepNotMatchedRecordsUntouched = row.get("Keep not matched records untouched");
-            String mergedRecordIsRecycled = row.get("Merged record is recycled");
-            String modifyMergedWithoutMatch = row.get("Modify merged without match");
+            String active = row.get(MAMEConstants.ACTIVE);
+            String matchingExecutionOnCreation = row.get(MAMEConstants.MATCHING_EXECUTION_ON_CREATION);
+            String matchingExecutionOnUpdate = row.get(MAMEConstants.MATCHING_EXECUTION_ON_UPDATE);
+            String mergePolicy = row.get(MAMEConstants.MERGE_POLICY_TAB);
+            String keepNotMatchedRecordsUntouched = row.get(MAMEConstants.KEEP_NOT_MATCH);
+            String mergedRecordIsRecycled = row.get(MAMEConstants.RECORD_RECYCLED);
+            String modifyMergedWithoutMatch = row.get(MAMEConstants.MODIFY_MERGE);
 
 
             if (!active.isEmpty()) {
@@ -290,9 +290,9 @@ public class MatchingTableDefs {
     public void the_matching_field_is_updated_as_the_followings(DataTable dt) {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
-            String field = row.get("Field");
-            String bothValuesAreNull = row.get("Both values are null");
-            String oneOfTheValuesIsNull = row.get("One of the values is null");
+            String field = row.get(MAMEConstants.FIELD);
+            String bothValuesAreNull = row.get(MAMEConstants.BOTH_VALUE_ARE_NULL);
+            String oneOfTheValuesIsNull = row.get(MAMEConstants.ONE_VALUE_NULL);
 
             if (!bothValuesAreNull.isEmpty()) {
                 onMatchingTableSteps.select_both_values_are_null(bothValuesAreNull);
