@@ -162,7 +162,6 @@
 				    <includes>
 						<include>**/*TestSuite.java</include>
 					</includes>
-                                        <testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
 			<!--  plugin>
