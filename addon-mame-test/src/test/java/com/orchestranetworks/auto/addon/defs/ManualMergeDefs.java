@@ -36,16 +36,63 @@ public class ManualMergeDefs {
     @Steps
     CommonSteps onCommonSteps;
 
+
+    /**
+     * Verify the preview table when merging
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> preview table is displayed as below
+     * <ul>
+     * <font color="green">| Id {H} | Name {H}      |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| 1      | Poortvliet    |</font>
+     * </ul>
+
+     * </ul>
+     * </p>
+     *
+     * @param tableMerge record view table information
+     */
     @Then("^record view table will be displayed and highlighted as below$")
     public void user_will_see_the_data_as_below(List<List<String>> tableMerge) {
         onManualMergeSteps.verify_record_view_table(tableMerge);
     }
 
+    /**
+     * Verify the preview table when merging
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> preview table is displayed as below
+     * <ul>
+     * <font color="green">| Id | Name       |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| 1  | Poortvliet |</font>
+     * </ul>
+
+     * </ul>
+     * </p>
+     *
+     * @param tablePreview preview table information
+     */
     @And("^preview table is displayed as below$")
     public void table_is_highlighted_and_display_on_preview_table_as_below(List<List<String>> tablePreview) {
         onManualMergeSteps.verify_table_preview(tablePreview);
     }
 
+    /**
+     * Complete the merging process (Click button Next then Merge)
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I complete merging process
+     * </ul>
+     * </p>
+     *
+     */
     @When("^I complete merging process$")
     public void i_complete_merging_process() {
         onManualMergeSteps.click_button_next();
@@ -53,6 +100,26 @@ public class ManualMergeDefs {
 
     }
 
+    /**
+     * Verify the MergeResult table
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> I will see table RecordMetadata as below
+     * <ul>
+     * <font color="green">| id   | groupId  | state  | autoCreated | functionalId |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| KEY1 | GROUP_ID | Golden | No          | 3            |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| KEY2 | GROUP_ID | Merged | No          | 4            |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param recordMetadataExpect RecordMetadata table information
+     */
     @Then("^I will see table RecordMetadata as below$")
     public void i_will_see_table_recordmetadata_as_below(List<List<String>> recordMetadataExpect) {
         JsonArray actualTbl = onDatasetSteps.getDefaultViewTable();
@@ -80,6 +147,23 @@ public class ManualMergeDefs {
     }
 
 
+    /**
+     * Verify the MergingProcess table
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> I will see table MergingProcess as below
+     * <ul>
+     * <font color="green">| id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param table MergeResult table information
+     */
     @Then("^I will see table MergingProcess as below$")
     public void i_will_see_table_merging_process_below(List<List<String>> table) {
         onCommonSteps.click_on_table_name(MAMEConstants.MERGING_PROCESS_METADATA);
@@ -122,12 +206,37 @@ public class ManualMergeDefs {
         }
     }
 
-
+    /**
+     * Close the error popup displayed while merging
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font>I close the error popup
+     * </ul>
+     * </p>
+     */
     @And("^I close the error popup$")
     public void i_close_the_error_popup() {
         onManualMergeSteps.close_error_popup();
     }
 
+    /**
+     * Verify the MergeResult table
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> I will see table MergeResult as below
+     * <ul>
+     * <font color="green">| id   | recordId     | goldenId      | mergingProcessId | isInterpolation |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| KEY1 | Merge_record | Golden_record | mergingProcessId | No              |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param table MergeResult table information
+     */
     @Then("^I will see table MergeResult as below$")
     public void i_will_see_table_merge_result(List<List<String>> table) {
         onCommonSteps.click_on_table_name(MAMEConstants.MERGE_RESULT_TBL);
@@ -173,6 +282,23 @@ public class ManualMergeDefs {
         }
     }
 
+    /**
+     * Verify the decision table
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> I will see table Decision as below
+     * <ul>
+     * <font color="green">| id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param table Decision table information
+     */
     @Then("^I will see table Decision as below$")
     public void i_will_see_table_decision_below(List<List<String>> table) {
         onCommonSteps.click_on_table_name(MAMEConstants.DECISION);
@@ -224,6 +350,23 @@ public class ManualMergeDefs {
         }
     }
 
+    /**
+     * Verify the Merge Value Lineage table
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> I will see table MergeValueLineage as below
+     * <ul>
+     * <font color="green">| id   | mergingProcessId | recordId      | sourceIndex | fieldPath | goldenIndex |   |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| KEY1 | mergingProcessId | Golden_record | 0           | admin     | /email      | 0 |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param table mergeValueLineage table information
+     */
     @Then("^I will see table MergeValueLineage as below$")
     public void i_will_see_table_MergeValueLineage_as_below(DataTable table) {
         onCommonSteps.click_on_table_name(MAMEConstants.MERGEVALUELINEAGE);
@@ -244,6 +387,26 @@ public class ManualMergeDefs {
         }
     }
 
+    /**
+     * Verify the button display in the screen
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> the screen displays buttons as below
+     * <ul>
+     * <font color="green">| Name | Status |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| Apply merge policy |  |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| Cancel last action| inactive |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param tableButtons List of buttons displayed
+     */
     @And("^the screen displays buttons as below$")
     public void the_screen_displays_buttons_as_below(DataTable tableButtons) {
         List<Map<String, String>> list = tableButtons.asMaps(String.class, String.class);
@@ -261,6 +424,17 @@ public class ManualMergeDefs {
         }
     }
 
+    /**
+     * Verify the table name existed in dropdown list
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> And I see the table name <font color="green">"1. NewEmployee"</font> in dropdown list
+     * </ul>
+     * </p>
+     *
+     * @param tableName table name that user want to check
+     */
     @And("^I see the table name \"([^\"]*)\" in dropdown list$")
     public void i_see_the_table_name_something_in_dropdown_list(String tableName) {
         onManualMergeSteps.verify_name_of_table(tableName);

@@ -24,7 +24,22 @@ public class TrustedSourceDefs {
     @Steps
     CommonSteps onCommonSteps;
 
-
+     /**
+     * Input data to table "Source"
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> the Field trusted source with the followings
+     * <ul>
+     * <font color="green">| Name of source | Description     |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| Pieter         | In Person table |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     * @param dt table information of trusted source
+     */
     @And("^the Source in Trusted source are$")
     public void the_source_in_trusted_source_are(DataTable dt) {
         onSourceSteps.access_source_table();
@@ -53,6 +68,24 @@ public class TrustedSourceDefs {
         onCommonSteps.click_btn_save_and_close();
     }
 
+    /**
+     /**
+     * Input data to table "Field Trusted Source"
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> the Field trusted source with the followings
+     * <ul>
+     * <font color="green">| Matching table | Trusted source list |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| Person         | Pieter              |</font>
+     * </ul>
+
+     * </ul>
+     * </p>
+     * @param dt table information of trusted source
+     */
     @And("^the Table trusted source with the followings$")
     public void the_table_trusted_source_with_the_followings(DataTable dt) {
         onTableTrustedSourceSteps.access_table_trusted_source();
@@ -81,6 +114,24 @@ public class TrustedSourceDefs {
         }
     }
 
+    /**
+     /**
+     * Input data to table "Field Trusted Source"
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> the Field trusted source with the followings
+     * <ul>
+     * <font color="green">| Matching table | Trusted source list |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| Person         | Pieter              |</font>
+     * </ul>
+
+     * </ul>
+     * </p>
+     * @param dt table information of trusted source
+     */
     @And("^the Field trusted source with the followings$")
     public void the_field_trusted_source_with_the_followings(DataTable dt) {
         onFieldTrustedSourceSteps.access_field_trusted_source();

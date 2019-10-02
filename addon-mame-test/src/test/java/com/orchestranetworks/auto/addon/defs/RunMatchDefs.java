@@ -26,22 +26,21 @@ public class RunMatchDefs {
     DatasetSteps onDatasetSteps;
 
 	/**
-     * Check the Run Match information
+     * Verify the Run match information
      * <p>
      * <b>Example</b>:
      * <ul>
-     * <font color="blue">Then</font> I should see run match with information as following
+     * <font color="blue">Then</font> the Run Match service is executed with the information as belows
      *      <ul>
-     * 			     <font color="green"></font>
+     * 			     <font color="green">| Matching process | Records to match against |</font>
      *     </ul>
      *     <ul>
-     * 			     <font color="green"></font>
+     * 			     <font color="green">| SESSION          | Entire table             |</font>
      *     </ul>
      * </ul>
      * </p>
      *
-     * @param dt
-     * @throws Throwable
+     * @param dt data table information
      */
 
     @Then("^the Run Match service is executed with the information as belows$")
@@ -51,22 +50,67 @@ public class RunMatchDefs {
         Map<String, String> row = dataTable.get(0);
         onRunMatchSteps.input_run_match(row);
     }
-    
+
+    /**
+     * Click to Run Match button
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">When</font> I click on Run Match button
+     * </ul>
+     * </p>
+     *
+     */
     @When("^I click on Run Match button$")
     public void click_on_run_match_button() {
         onRunMatchSteps.click_on_run_match();
     }
 
+    /**
+     * Verify the popup message
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> the popup message should be shown <font color="green">
+     * "The run match service can't be executed: No matching process is actived. Please check your configuration."</font>
+     * </ul>
+     * </p>
+     * @param message message to be verified
+     */
     @Then("^the popup message should be shown \"([^\"]*)\"$")
     public void the_popup_message_should_be_shown(String message){
         onRunMatchSteps.verify_message_run_match_service_popup(message);
     }
-    
+
+    /**
+     * Select matching process record with label
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> I select matching process record with label "<color font="green">MPC1</color>"
+     * in "<color font="green">Matching process</color>" tab
+     * </ul>
+     * </p>
+     * @param label label of matching process
+     * @param tab Tab name in matching process
+     */
     @Given("^I select matching process record with label \"([^\"]*)\" in \"([^\"]*)\" tab$")
     public void i_select_matching_process_record_of_table(String label, String tab) {
     	onRunMatchSteps.view_record_with_name(tab, label);
     }
-    
+
+    /**
+     * Select matching field record with label
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> I select matching field record with label "<color font="green">Residence</color>"
+     * in "<color font="green">Matching fields</color>" tab
+     * </ul>
+     * </p>
+     * @param label label of matching process
+     * @param tab Tab name in matching process
+     */
     @Given("^I select matching field record with label \"([^\"]*)\" in \"([^\"]*)\" tab$")
     public void i_select_matching_field_record_of_table(String label, String tab) {
     	onRunMatchSteps.view_matching_field_record_with_name(tab, label);
