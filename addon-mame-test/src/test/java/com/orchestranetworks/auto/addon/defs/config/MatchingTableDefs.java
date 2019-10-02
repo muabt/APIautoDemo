@@ -23,6 +23,24 @@ public class MatchingTableDefs {
     @Steps
     AdministrationSteps onAdministrationSteps;
 
+    /**
+     * Verify the error message in fields
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Then</font> errors message are raised with the followings
+     * <ul>
+     * <font color="green">| Field | Message|</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| Table | More than one table configuration is defined for this table</font>
+     * </ul>
+
+     * </ul>
+     * </p>
+     *
+     * @param dt table information
+     */
     @Then("^errors message are raised with the followings$")
     public void errors_message_are_raised_with_the_followings(DataTable dt) throws Throwable {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
@@ -41,6 +59,24 @@ public class MatchingTableDefs {
         }
     }
 
+    /**
+     * Verify the error message in block
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> block of error messages are displayed like below
+     * <ul>
+     * <font color="green">| Block | Message                     |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| Table | Field 'Table' is mandatory. |</font>
+     * </ul>
+
+     * </ul>
+     * </p>
+     *
+     * @param dt table information
+     */
     @And("^block of error messages are displayed like below$")
     public void block_of_error_messages_are_displayed_like_below(DataTable dt) throws Throwable {
         onMatchingTableSteps.click_btn_expand();
@@ -59,17 +95,55 @@ public class MatchingTableDefs {
         }
     }
 
+    /**
+     * Verify the Matching record detailed
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I should see Matching record detailed as following
+     * <ul>
+     * <font color="green">| Data model             | Table               | Active | Default matching process | Source field  | Event listener | Disable trigger |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| Publication: Bulk_data | Person Relationship | Yes    | [not defined]            | [not defined] |                | No              |</font>
+     * </ul>
+
+     * </ul>
+     * </p>
+     *
+     * @param recordDetail table information
+     */
     @And("^I should see Matching record detailed as following$")
     public void i_should_see_matching_record_detailed_as_following(List<List<String>> recordDetail) {
         onMatchingTableSteps.click_btn_expand();
         onMatchingTableSteps.verify_record_detail(recordDetail);
     }
 
+    /**
+     * Click to create a record button
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I click to create a record button
+     * </ul>
+     * </p>
+     *
+     */
     @And("^I click to create a record button$")
     public void i_click_to_create_a_record_button() {
         onDatasetSteps.click_btn_create_record();
     }
 
+    /**
+     * Verify tooltips
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I should see tooltip of all fields as following
+     * </ul>
+     * </p>
+     *
+     */
     @And("^I should see tooltip of all fields as following$")
     public void i_should_see_tooltip_of_all_fields_as_following(DataTable dt) throws Throwable {
         onMatchingTableSteps.click_btn_expand();
@@ -83,27 +157,84 @@ public class MatchingTableDefs {
 
     }
 
+    /**
+     * Click to create a preview button
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I click to preview button
+     * </ul>
+     * </p>
+     *
+     */
     @And("^I click to preview button$")
     public void i_click_to_preview_button() throws Throwable {
         onMatchingTableSteps.click_btn_preview();
     }
 
+    /**
+     * Click to create a preview button
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I should see matching process record details as following
+     * </ul>
+     * </p>
+     *
+     */
     @And("^I should see matching process record details as following$")
     public void i_should_see_matching_process_record_details_as_following(List<List<String>> recordDetail) {
         onMatchingTableSteps.verify_matching_process_detail(recordDetail);
     }
 
+    /**
+     * Select matching table configuration record
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Given</font> I select matching table record of table "<font color="green">Person</font>"
+     * </ul>
+     * </p>
+     *
+     */
     @Given("^I select matching table record of table \"([^\"]*)\"$")
     public void i_select_matching_table_record_of_table(String label) {
         onAdministrationSteps.select_record_with_name(label);
     }
 
+    /**
+     * Select matching record configuration of given table
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">Given</font> I select matching table record of table "<font color="green">Person</font>"
+     * </ul>
+     * </p>
+     *
+     */
     @Given("^I want to access the Matching record of table \"([^\"]*)\"$")
     public void i_want_to_access_the_matching_record_of_table(String tblName) {
         onAdministrationSteps.access_matching_table();
         onAdministrationSteps.select_record_with_name(tblName);
     }
 
+    /**
+     * Create a Matching process configuration
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> the matching process is configured as the followings
+     * <ul>
+     * <font color="green">| Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| RANDOM                |                | Yes    | Inline matching                | Inline matching              |              |                   |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param dt table information
+     */
     @And("^the matching process is configured as the followings$")
     public void the_matching_process_is_configured_as_the_followings(DataTable dt) {
         onMatchingTableSteps.select_matching_process_tab();
@@ -161,6 +292,23 @@ public class MatchingTableDefs {
         onMatchingTableSteps.click_btn_save_and_close_internal_popup(1);
     }
 
+    /**
+     * Create a Merge policy configuration
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">When</font> I set Merge policy configuration as belows
+     * <ul>
+     * <font color="green">| Merge policy code | Survivor record selection mode | Default merge function | Mode | Used for manual merge | Apply permission on merge view |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| RANDOM            | Was golden                     |                        |      | Yes                   | No                             |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param dt table information
+     */
     @When("^I set Merge policy configuration as belows$")
     public void i_set_merge_policy_configuration_as_belows(DataTable dt) {
 
@@ -210,6 +358,23 @@ public class MatchingTableDefs {
     }
 
 
+    /**
+     * Create a Survivorship fields
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I create Survivorship field with selections as followings
+     * <ul>
+     * <font color="green">| Survivorship field code | Field | Merge function      | Condition for field value survivorship | Execute only if empty |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| RANDOM                  | Name  | Most trusted source |                                        | Yes                   |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     *
+     * @param dt table information
+     */
     @And("^I create Survivorship field with selections as followings$")
     public void i_create_survivorship_field_with_selections_as_followings(DataTable dt) throws Exception {
         onMatchingTableSteps.select_merge_policy_record(Serenity.sessionVariableCalled(MAMEConstants.MERGE_POLICY_CODE));
@@ -253,6 +418,22 @@ public class MatchingTableDefs {
         onMatchingTableSteps.click_btn_save_and_close();
     }
 
+    /**
+     * Update the matching process configuration
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> the matching process is updated as the followings
+     * <ul>
+     * <font color="green">| Matching process code | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">| MPC1                  | Yes    | Inline matching                | Inline matching              |              | Yes                                | Yes                       | Yes                         |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     * @param dt
+     */
     @And("^the matching process is updated as the followings$")
     public void the_matching_process_is_updated_as_the_followings(DataTable dt) {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
@@ -307,6 +488,22 @@ public class MatchingTableDefs {
         onMatchingTableSteps.click_btn_save_and_close_internal_popup(1);
     }
 
+    /**
+     * Update the matching fields configuration
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> the matching field is updated as the followings
+     * <ul>
+     * <font color="green">| Field | Both values are null | One of the values is null |</font>
+     * </ul>
+     * <ul>
+     * <font color="green">|       | Won't match          | Won't match               |</font>
+     * </ul>
+     * </ul>
+     * </p>
+     * @param dt
+     */
     @And("^the matching field is updated as the followings$")
     public void the_matching_field_is_updated_as_the_followings(DataTable dt) {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
