@@ -3,6 +3,7 @@ package com.orchestranetworks.auto.addon.steps.config;
 import com.orchestranetworks.auto.addon.pages.BasePage;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.config.SourcePage;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -12,7 +13,7 @@ public class SourceSteps {
     CommonPage onCommonPage;
     @Step
     public void access_source_table() {
-        onSourcePage.getNavPanel().goToPath("Reference data > Trusted source > Source");
+        onSourcePage.getNavPanel().goToPath(MAMEConstants.PATH_TO_SOURCE);
     }
 
 
@@ -23,14 +24,14 @@ public class SourceSteps {
 
     @Step
     public void input_name_of_source(String nameOfSource) {
-        String inputCode = nameOfSource.equals("RANDOM") ? onCommonPage.getRandomString() : nameOfSource;
+        String inputCode = nameOfSource.equals(Constants.RANDOM) ? onCommonPage.getRandomString() : nameOfSource;
         Serenity.setSessionVariable(MAMEConstants.NAME_OF_SOURCE).to(inputCode);
-        onSourcePage.getItemCreationWidget().inputTextWithLabel("Name of source", inputCode);
+        onSourcePage.getItemCreationWidget().inputTextWithLabel(MAMEConstants.NAME_OF_SOURCE, inputCode);
     }
 
     @Step
     public void input_description(String description) {
-        onSourcePage.getItemCreationWidget().inputTextWithLabel("Description", description);
+        onSourcePage.getItemCreationWidget().inputTextWithLabel(MAMEConstants.DESCRIPTION, description);
     }
 
     @Step

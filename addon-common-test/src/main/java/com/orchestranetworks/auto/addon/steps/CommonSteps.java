@@ -133,7 +133,7 @@ public class CommonSteps extends ScenarioSteps {
     @Step
     public void text_search_with_field(String text) {
         onCommonPage.getTextSearch().inputTextKeyword(text);
-        onCommonPage.getTextSearch().unselectField("Select all");
+        onCommonPage.getTextSearch().unselectField(Constants.SELECT_ALL);
         String[] pkList = {"Data model", "Table"};
         for (int i = 0; i < pkList.length; i++) {
             onCommonPage.getTextSearch().selectField(Constants.TEXT_SEARCH, pkList[i]);

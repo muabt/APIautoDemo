@@ -74,7 +74,7 @@ public class MatchingTableSteps {
 
     @Step
     public void select_matching_process_tab() {
-        onMatchingTablePage.getRecordDetailWidget().selectTab("Matching process");
+        onMatchingTablePage.getRecordDetailWidget().selectTab(MAMEConstants.MATCHING_PROCESS);
     }
 
     @Step
@@ -97,7 +97,7 @@ public class MatchingTableSteps {
     @Step
     public void input_matching_process_code(String code) {
         onMatchingTablePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
-        String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
+        String inputCode = code.equals(Constants.RANDOM) ? onCommonPage.getRandomString() : code;
         onMatchingTablePage.getItemCreationWidget().inputTextWithLabel("Matching process code", inputCode);
         SessionData.saveValueToSession(MAMEConstants.MATCHING_POLICY_CODE_KEY, inputCode);
     }
@@ -142,7 +142,7 @@ public class MatchingTableSteps {
     @Step
     public void input_merge_policy_code(String code) {
         onMatchingTablePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
-        String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
+        String inputCode = code.equals(Constants.RANDOM) ? onCommonPage.getRandomString() : code;
         Serenity.setSessionVariable(MAMEConstants.MERGE_POLICY_CODE).to(inputCode);
         onMatchingTablePage.getItemCreationWidget().inputTextWithLabel("Merge policy code", inputCode);
     }
@@ -191,7 +191,7 @@ public class MatchingTableSteps {
 
     @Step
     public void input_survivor_code(String code) {
-        String inputCode = code.equals("RANDOM") ? onCommonPage.getRandomString() : code;
+        String inputCode = code.equals(Constants.RANDOM) ? onCommonPage.getRandomString() : code;
         onMatchingTablePage.getItemCreationWidget().inputTextWithLabel("Survivorship field code", inputCode);
         SessionData.saveValueToSession(MAMEConstants.MATCHING_POLICY_CODE_KEY, inputCode);
     }

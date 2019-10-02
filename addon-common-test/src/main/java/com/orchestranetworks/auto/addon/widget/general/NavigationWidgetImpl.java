@@ -61,7 +61,6 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
     public void expandNavigationItem(String[] itemList) {
         for (int i = 0; i < itemList.length - 1; i++) {
             String xPathCollapsed = String.format(XPATH_BTN_COLLAPSED, itemList[i].trim());
-            System.out.println(xPathCollapsed);
             if (isElementExistNow(xPathCollapsed))
                 clickOnElement(xPathCollapsed);
         }

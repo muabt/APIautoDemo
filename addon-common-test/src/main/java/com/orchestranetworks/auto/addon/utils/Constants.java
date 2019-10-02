@@ -60,4 +60,7 @@ public final class Constants {
     public static final String BTN_IMPORT = "Import";
     public static final String LBL_ARCHIVE_TO_IMPORT = "Archive to import";
     public static final String BTN_CREATE_A_DATASPACE = "Create a dataspace";
+    public static final String SELECT_ALL = "Select all";
+
+    public static final String RANDOM = "RANDOM";
 }

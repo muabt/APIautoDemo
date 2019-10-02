@@ -295,7 +295,6 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         String xPath = "(" + parentXpath
                 + "//button[(@type='button' or @type='submit' or not(@type)) and not(@style='display: none;')][descendant-or-self::*[normalize-space(text())='"
                 + btnName + "' or @title='" + btnName + "' or @value='" + btnName + "']])[" + index + "]";
-        System.out.println("xPath: " + xPath);
         return xPath;
     }
 

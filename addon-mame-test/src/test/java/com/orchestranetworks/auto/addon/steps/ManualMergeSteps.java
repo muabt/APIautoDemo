@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.pages.ManualMergePage;
 import net.thucydides.core.annotations.Step;
@@ -57,8 +58,8 @@ public class ManualMergeSteps {
             for (int col = 0; col < expectedHeader.size(); col++) {
                 String expectedCell = expectedTb.get(row).get(col);
                 String actualCell = actualTb.get(row).get(col);
-                if (expectedCell.contains("- {H}")) {
-                    expectedCell.replace("- {H}", "").trim();
+                if (expectedCell.contains(MAMEConstants.HIGHLIGHT_SYNTAX)) {
+                    expectedCell.replace(MAMEConstants.HIGHLIGHT_SYNTAX, "").trim();
                 }
                 softAssertions.assertThat(expectedCell).isEqualTo(expectedCell);
             }
@@ -97,11 +98,11 @@ public class ManualMergeSteps {
     @Step
     public void verify_name_of_buttons(String name) {
         switch (name) {
-            case "Reset":
-            case "Apply merge policy":
+            case MAMEConstants.RESET:
+            case MAMEConstants.APPLY_MERGE_POLICY:
                 assertEquals(name, onManualMergePage.getManualMergeViewWidget().getTextOfRightBtn());
                 break;
-            case "Cancel last action":
+            case MAMEConstants.CANCEL_LAST_ACTION:
                 assertEquals(name, onManualMergePage.getManualMergeViewWidget().getTextOfCancelActionButton());
                 break;
         }

@@ -11,7 +11,7 @@ public class TableTrustedSourceSteps {
 
     @Step
     public void access_table_trusted_source() {
-        onTableTrustedSourcePage.getNavPanel().goToPath("Reference data > Trusted source > Table trusted source");
+        onTableTrustedSourcePage.getNavPanel().goToPath(MAMEConstants.PATH_TO_TABLE_TRUSTED_SOURCE);
     }
 
 
@@ -24,7 +24,7 @@ public class TableTrustedSourceSteps {
     @Step
     public void select_matching_table(String matchingTable) {
         Serenity.setSessionVariable(MAMEConstants.MATCHING_TABLE).to(matchingTable);
-        onTableTrustedSourcePage.getItemCreationWidget().selectDDLByJS("Matching table", matchingTable);
+        onTableTrustedSourcePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.MATCHING_TABLE, matchingTable);
     }
 
     @Step
@@ -32,7 +32,7 @@ public class TableTrustedSourceSteps {
         String[] sourceList = trustedSourceList.split(",");
         for (int i = 0; i < sourceList.length; i++) {
             onTableTrustedSourcePage.getRecordDetailWidget().addAnOccurrence();
-            onTableTrustedSourcePage.getItemCreationWidget().selectDDLByJS("Trusted source list", sourceList[i].trim());
+            onTableTrustedSourcePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.TRUSTED_SOURCE_LIST, sourceList[i].trim());
         }
     }
 

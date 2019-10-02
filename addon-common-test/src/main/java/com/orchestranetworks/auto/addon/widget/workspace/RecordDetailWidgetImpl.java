@@ -60,18 +60,15 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
         for (int i = 1; i <= numOfHeaders; i++) {
             String cell = getText(XPATH_LABEL + "[" + i + "]").trim();
             rowLabel.add(cell);
-            System.out.println("Cell: " + cell);
         }
         metadataRecordView.add(rowLabel);
 
         List<String> rowValue = new ArrayList<String>();
-        System.out.println("Table: " + metadataRecordView);
         for (int j = 1; j <= numOfHeaders; j++) {
             String cell = "";
             if (isElementExistNow(XPATH_VALUE + "[" + j + "]")) {
                 cell = getElement(XPATH_VALUE + "[" + j + "]").getTextValue().trim();
                 rowValue.add(cell);
-                System.out.println("cellValue: " + cell);
             }
         }
         metadataRecordView.add(rowValue);

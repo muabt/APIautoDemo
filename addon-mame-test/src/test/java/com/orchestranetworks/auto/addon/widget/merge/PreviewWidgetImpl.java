@@ -9,16 +9,19 @@ public class PreviewWidgetImpl extends BaseWidgetImpl implements PreviewWidget {
         super(page, locator, timeoutInMilliseconds);
     }
 
+    private static final String XPATH_MERGE_BUTTON = "//button[@class='ebx_Button ebx_DefaultButton right' or @class='ebx_Button ebx_DefaultButton mergeBtn']";
+    private static final String XPATH_NEXT_BUTTON = "//button[contains(text(),'Next')]";
+
     @Override
     public void clickBtnMerge() {
-        String xPath = "//button[@class='ebx_Button ebx_DefaultButton right' or @class='ebx_Button ebx_DefaultButton mergeBtn']";
-        waitForVisibilityOfElement(xPath);
-        clickOnElement(xPath);
+
+        waitForVisibilityOfElement(XPATH_MERGE_BUTTON);
+        clickOnElement(XPATH_MERGE_BUTTON);
         waitForAllLoadingCompleted();
     }
 
     @Override
     public void clickBtnNext() {
-        clickOnElement("//button[contains(text(),'Next')]");
+        clickOnElement(XPATH_NEXT_BUTTON);
     }
 }

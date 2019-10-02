@@ -42,7 +42,6 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
     public List<String> getListTab() {
         int numOfTabs = findAllElements(XPATH_TABs).size();
         List<String> listTab = new ArrayList<String>();
-        System.out.println("list" + listTab);
         for (int i = 1; i <= numOfTabs; i++) {
             listTab.add(getText(XPATH_TABs + "[" + i + "]"));
         }
@@ -57,12 +56,10 @@ public class MetadataWidgetImpl extends BaseWidgetImpl implements MetadataWidget
         for (int i = 1; i <= numOfHeaders; i++) {
             String cell = getText(XPATH_LABEL_METADATA + "[" + i + "]").trim();
             rowLabel.add(cell);
-            System.out.println("Cell: " + cell);
         }
         metadataRecordView.add(rowLabel);
 
         List<String> rowValue = new ArrayList<String>();
-        System.out.println("Table: " + metadataRecordView);
         for (int j = 1; j <= numOfHeaders; j++) {
             String cell = getText(XPATH_VALUE_METADATA + "[" + j + "]")
                     .replaceAll("\\*", "")

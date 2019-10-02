@@ -2,6 +2,7 @@ package com.orchestranetworks.auto.addon.steps.config;
 
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.config.FieldTrustedSourcePage;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -12,7 +13,7 @@ public class FieldTrustedSourceSteps {
 
     @Step
     public void access_field_trusted_source() {
-        onFieldTrustedSourcePage.getNavPanel().goToPath("Reference data > Trusted source > Field trusted source");
+        onFieldTrustedSourcePage.getNavPanel().goToPath(MAMEConstants.PATH_TO_FIELD_TRUSTED_SOURCE);
     }
 
     @Step
@@ -24,7 +25,7 @@ public class FieldTrustedSourceSteps {
     @Step
     public void select_matching_table(String matchingTable) {
         Serenity.setSessionVariable(MAMEConstants.MATCHING_TABLE).to(matchingTable);
-        onFieldTrustedSourcePage.getItemCreationWidget().selectDDLByJS("Matching table", matchingTable);
+        onFieldTrustedSourcePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.MATCHING_TABLE, matchingTable);
     }
 
     @Step
@@ -32,13 +33,13 @@ public class FieldTrustedSourceSteps {
         String[] sourceList = trustedSourceList.split(",");
         for (int i = 0; i < sourceList.length; i++) {
             onFieldTrustedSourcePage.getRecordDetailWidget().addAnOccurrence();
-            onFieldTrustedSourcePage.getItemCreationWidget().selectDDLByJS("Trusted source list", sourceList[i].trim());
+            onFieldTrustedSourcePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.TRUSTED_SOURCE_LIST, sourceList[i].trim());
         }
     }
 
     @Step
     public void select_field_trusted_source(String field) {
-        onFieldTrustedSourcePage.getItemCreationWidget().selectDDLByJS("Field", field);
+        onFieldTrustedSourcePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.FIELD, field);
     }
 
 }
