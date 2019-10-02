@@ -118,13 +118,6 @@ public class ManualMergeSteps {
         return onManualMergePage.getDefaultViewWidget().getRecordWithPK(recordID, headerList);
     }
 
-    //TODO: Method implemented later
-    @Step
-    public String getMergingProcessID(String groupID) {
-        return "";
-    }
-
-
     @Step
     public void close_error_popup() {
         onManualMergePage.switchOutDefaultIFrame();

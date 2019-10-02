@@ -8,6 +8,7 @@ import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import com.orchestranetworks.auto.addon.utils.SessionData;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.steps.ScenarioSteps;
 import org.junit.Assert;
 
 import java.util.List;
@@ -15,14 +16,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class MatchingTableSteps {
+public class MatchingTableSteps extends ScenarioSteps {
 
     MatchingTablePage onMatchingTablePage;
     CommonPage onCommonPage;
 
     @Step
     public void verify_error_message_data_model_field(String message) {
-
         Assert.assertEquals(message, onMatchingTablePage.getItemCreationWidget().getTextErrorDataModelField());
     }
 
@@ -98,28 +98,28 @@ public class MatchingTableSteps {
     public void input_matching_process_code(String code) {
         onMatchingTablePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals(Constants.RANDOM) ? onCommonPage.getRandomString() : code;
-        onMatchingTablePage.getItemCreationWidget().inputTextWithLabel("Matching process code", inputCode);
+        onMatchingTablePage.getItemCreationWidget().inputTextWithLabel(MAMEConstants.MATCHING_PROCESS_CODE, inputCode);
         SessionData.saveValueToSession(MAMEConstants.MATCHING_POLICY_CODE_KEY, inputCode);
     }
 
     @Step
     public void selectActive(String active) {
-        onMatchingTablePage.getRecordDetailWidget().selectRadioButton("Active", active);
+        onMatchingTablePage.getRecordDetailWidget().selectRadioButton(MAMEConstants.ACTIVE, active);
     }
 
     @Step
     public void select_matching_execution_on_creation(String matchingExecutionOnCreation) {
-        onMatchingTablePage.getItemCreationWidget().selectDDLByJS("Matching execution on creation", matchingExecutionOnCreation);
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.MATCHING_EXECUTION_ON_CREATION, matchingExecutionOnCreation);
     }
 
     @Step
     public void select_matching_excution_on_update(String matchingExecutionOnUpdate) {
-        onMatchingTablePage.getItemCreationWidget().selectDDLByJS("Matching execution on update", matchingExecutionOnUpdate);
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.MATCHING_EXECUTION_ON_UPDATE, matchingExecutionOnUpdate);
     }
 
     @Step
     public void select_merge_policy(String mergePolicy) {
-        onMatchingTablePage.getItemCreationWidget().selectDDLByJS("Merge policy", mergePolicy);
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.MERGE_POLICY_TAB, mergePolicy);
     }
 
     @Step
@@ -136,7 +136,7 @@ public class MatchingTableSteps {
 
     @Step
     public void select_merge_policy_tab() {
-        onMatchingTablePage.getRecordDetailWidget().selectTab("Merge policy");
+        onMatchingTablePage.getRecordDetailWidget().selectTab(MAMEConstants.MERGE_POLICY_TAB);
     }
 
     @Step
@@ -144,7 +144,7 @@ public class MatchingTableSteps {
         onMatchingTablePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
         String inputCode = code.equals(Constants.RANDOM) ? onCommonPage.getRandomString() : code;
         Serenity.setSessionVariable(MAMEConstants.MERGE_POLICY_CODE).to(inputCode);
-        onMatchingTablePage.getItemCreationWidget().inputTextWithLabel("Merge policy code", inputCode);
+        onMatchingTablePage.getItemCreationWidget().inputTextWithLabel(MAMEConstants.MERGE_POLICY_CODE_FIELD, inputCode);
     }
 
     @Step
@@ -203,7 +203,7 @@ public class MatchingTableSteps {
 
     @Step
     public void select_merge_function_for_field(String mergeFunction) {
-        onMatchingTablePage.getItemCreationWidget().selectDDLByJS("Merge function", mergeFunction);
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.MERGE_FUNCTION, mergeFunction);
     }
 
     //TODO: Method implement later
@@ -214,7 +214,7 @@ public class MatchingTableSteps {
 
     @Step
     public void select_execute_option(String executeEmpty) {
-        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel("Execute only if empty", executeEmpty);
+        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel(MAMEConstants.EXECUTE_EMPTY, executeEmpty);
     }
 
     @Step
@@ -225,26 +225,26 @@ public class MatchingTableSteps {
 
     @Step
     public void select_keep_not_matched_records_untouched(String keepNotMatchedRecordsUntouched) {
-        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel("Keep not matched records untouched", keepNotMatchedRecordsUntouched);
+        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel(MAMEConstants.KEEP_NOT_MATCH, keepNotMatchedRecordsUntouched);
     }
 
     @Step
     public void select_merged_record_is_recycled(String mergedRecordIsRecycled) {
-        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel("Merged record is recycled", mergedRecordIsRecycled);
+        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel(MAMEConstants.RECORD_RECYCLED, mergedRecordIsRecycled);
     }
 
     @Step
     public void select_modify_merged_without_match(String modifyMergedWithoutMatch) {
-        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel("Modify merged without match", modifyMergedWithoutMatch);
+        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel(MAMEConstants.MODIFY_MERGE, modifyMergedWithoutMatch);
     }
 
     public void select_one_of_the_values_is_null(String oneOfTheValuesIsNull) {
-        onMatchingTablePage.getMatchingProcessWidget().selectDDLByJS("One of the values is null", oneOfTheValuesIsNull);
+        onMatchingTablePage.getMatchingProcessWidget().selectDDLByJS(MAMEConstants.ONE_VALUE_NULL, oneOfTheValuesIsNull);
 
     }
 
     public void select_both_values_are_null(String bothValuesAreNull) {
-        onMatchingTablePage.getMatchingProcessWidget().selectDDLByJS("Both values are null", bothValuesAreNull);
+        onMatchingTablePage.getMatchingProcessWidget().selectDDLByJS(MAMEConstants.BOTH_VALUE_ARE_NULL, bothValuesAreNull);
     }
 
 }

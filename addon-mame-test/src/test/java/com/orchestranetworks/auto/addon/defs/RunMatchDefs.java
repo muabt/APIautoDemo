@@ -61,8 +61,9 @@ public class RunMatchDefs {
      * </p>
      *
      */
-    @When("^I click on Run Match button$")
-    public void click_on_run_match_button() {
+
+    @When("^I complete Run Match process$")
+    public void i_complete_run_match_process() {
         onRunMatchSteps.click_on_run_match();
     }
 

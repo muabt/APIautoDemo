@@ -9,12 +9,7 @@ public interface RunMatchWidget extends WidgetObject {
 	void clickBtnRunMatch();
 
 	void selectRecordToMatchAgainst(String label, String matchAgainst);
-	
-	void verifyMessageNoMatchingProcessIsActived();
-	
-	
-	void verifyMessageNoDecisionTreeIsConfigured();
-	
+
 	void expandMatchingProcessAdvancedSettings();
 	
 }

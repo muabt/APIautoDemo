@@ -15,8 +15,8 @@ Feature: Run Match feature
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I select matching table record of table "Person"
     And the matching process is configured as the followings
-      | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
-      | RANDOM                |                | Yes    | Inline matching                | Inline matching              |              |                   |
+      | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
+      | RANDOM                |                | Yes    | Inline matching                | Inline matching              |              | Yes                                | Yes                       | Yes                         |
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | childDataspace | admin admin (admin) |               |
@@ -24,7 +24,7 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
-    When I click on Run Match button
+    When I complete Run Match process
     Then the popup message should be shown "The decision tree has not been configured properly. Please check your configuration."
     And I permit to access matching table
     And I select last record in table
@@ -33,15 +33,13 @@ Feature: Run Match feature
 
   Scenario: UAT-RM02 Run Match with MAME configuration with MatchingTable and Matching Policy Active = No.
     Given I permit to access matching table
-    And I select last record in table
-    Then delete it
     And I create record with PK "Publication: Genealogy" is "Person" and the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
     And I select matching table record of table "Person"
     And the matching process is configured as the followings
-      | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Advanced settings |
-      | RANDOM                |                | No     | Inline matching                | Inline matching              |              |                   |
+      | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
+      | RANDOM                |                | No     | Inline matching                | Inline matching              |              | Yes                                | Yes                       | Yes                         |
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | childDataspace | admin admin (admin) |               |
@@ -63,7 +61,7 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
-    When I click on Run Match button
+    When I complete Run Match process
     And I permit to access matching table
     And I select last record in table
     Then delete it
@@ -79,7 +77,7 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
-    When I click on Run Match button
+    When I complete Run Match process
     And I permit to access matching table
     And I select last record in table
     Then delete it
@@ -95,7 +93,7 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Active selection         |
-    When I click on Run Match button
+    When I complete Run Match process
     And I permit to access matching table
     And I select last record in table
     Then delete it
@@ -116,7 +114,7 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Active selection         |
-    When I click on Run Match button
+    When I complete Run Match process
     And I permit to access matching table
     And I select last record in table
     Then delete it
@@ -138,7 +136,7 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
-    When I click on Run Match button
+    When I complete Run Match process
     And I permit to access matching table
     And I select last record in table
     Then delete it
