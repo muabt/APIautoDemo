@@ -4,8 +4,9 @@ import com.orchestranetworks.auto.addon.pages.config.TableTrustedSourcePage;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.steps.ScenarioSteps;
 
-public class TableTrustedSourceSteps {
+public class TableTrustedSourceSteps extends ScenarioSteps {
     TableTrustedSourcePage onTableTrustedSourcePage;
 
 

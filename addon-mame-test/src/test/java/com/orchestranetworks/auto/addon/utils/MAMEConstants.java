@@ -45,4 +45,6 @@ public class MAMEConstants {
     public static final String NEXT = "Next";
     public static final String CANCEL_THE_MERGE_PROCESS = "Cancel the merge process";
 
+    public static final String MATCHING_TABLE_FIELD = "Matching table";
+    public static final String NAME_OF_SOURCE_FIELD = "Name of source";
 }

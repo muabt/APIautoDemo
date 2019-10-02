@@ -6,8 +6,9 @@ import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.steps.ScenarioSteps;
 
-public class FieldTrustedSourceSteps {
+public class FieldTrustedSourceSteps extends ScenarioSteps {
     FieldTrustedSourcePage onFieldTrustedSourcePage;
     CommonPage onCommonPage;
 
@@ -42,4 +43,8 @@ public class FieldTrustedSourceSteps {
         onFieldTrustedSourcePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.FIELD, field);
     }
 
+    @Step
+    public void select_record(String matchingTable, String field) {
+        onFieldTrustedSourcePage.getSourceWidget().selectCheckboxWithPK(new String[]{matchingTable, field});
+    }
 }

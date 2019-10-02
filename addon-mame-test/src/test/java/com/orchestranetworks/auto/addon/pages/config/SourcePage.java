@@ -16,12 +16,7 @@ public class SourcePage extends BasePage {
         super(driver);
     }
 
-    public SourceWidget getSourceWidget() {
-        switchToIFrame(Constants.IFRAME_LEGACY);
-        return this.sourceWidget;
-    }
 
-    private SourceWidget sourceWidget;
     private NavigationWidget navigationWidget;
     private ToolbarWidget toolbarWidget;
     private ItemCreationWidget itemCreationWidget;

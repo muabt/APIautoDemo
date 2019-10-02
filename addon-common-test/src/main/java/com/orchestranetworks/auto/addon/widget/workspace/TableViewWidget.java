@@ -38,4 +38,6 @@ public interface TableViewWidget extends WidgetObject {
 
     boolean isRecordWithPKExisted(String pk);
 
+    boolean isRecordExistedWithPK(String[] pks);
+
 }

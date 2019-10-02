@@ -8,7 +8,7 @@ Feature: Run Match feature
   Background:
     Given I login to EBX successfully
 
-  Scenario: UAT-RM-01 Run Match with MAME configuration with MatchingTable and Matching Policy Active = true and Without Decision Tree.
+  Scenario: UAT-RM01 Run Match with MAME configuration with MatchingTable and Matching Policy Active = true and Without Decision Tree.
     Given I permit to access matching table
     And I create record with PK "Publication: Genealogy" is "Person" and the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
@@ -31,7 +31,7 @@ Feature: Run Match feature
     Then delete it
     And I delete the dataspace
 
-  Scenario: UAT-RM-02 Run Match with MAME configuration with MatchingTable and Matching Policy Active = No.
+  Scenario: UAT-RM02 Run Match with MAME configuration with MatchingTable and Matching Policy Active = No.
     Given I permit to access matching table
     And I select last record in table
     Then delete it
@@ -53,7 +53,7 @@ Feature: Run Match feature
     Then delete it
     And I delete the dataspace
 
-  Scenario: UAT-RM-03 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
+  Scenario: UAT-RM03 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
     And I permit to access matching table
     When I select "MAME_Configuration.ebx" file to import
     And I create a child of dataspace "Master Data - Reference" with information as following
@@ -69,7 +69,7 @@ Feature: Run Match feature
     Then delete it
     And I delete the dataspace
 
-  Scenario: UAT-RM-04 Run Match with Import MAME_Configuration_Inline.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
+  Scenario: UAT-RM04 Run Match with Import MAME_Configuration_Inline.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline.ebx" file to import
     And I create a child of dataspace "Master Data - Reference" with information as following
@@ -85,7 +85,7 @@ Feature: Run Match feature
     Then delete it
     And I delete the dataspace
 
-  Scenario: UAT-RM-05 Run Match(Active selection) with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
+  Scenario: UAT-RM05 Run Match(Active selection) with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline.ebx" file to import
     And I create a child of dataspace "Master Data - Reference" with information as following
@@ -101,7 +101,7 @@ Feature: Run Match feature
     Then delete it
     And I delete the dataspace
 
-  Scenario: UAT-RM-06 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Advanced Setting.
+  Scenario: UAT-RM06 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Advanced Setting.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline.ebx" file to import
     And I select matching table record of table "Person"
@@ -122,7 +122,7 @@ Feature: Run Match feature
     Then delete it
     And I delete the dataspace
 
-  Scenario: UAT-RM-07 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Both null values Won't match.
+  Scenario: UAT-RM07 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Both null values Won't match.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline.ebx" file to import
     And I select matching table record of table "Person"
