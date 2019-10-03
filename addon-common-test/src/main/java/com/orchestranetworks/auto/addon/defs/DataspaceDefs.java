@@ -61,18 +61,14 @@ public class DataspaceDefs {
         if (!identifier.isEmpty()) {
             SessionData.saveValueToSession(Constants.DATASPACE_IDENTIFIER, identifier);
             if (onDataspaceSteps.is_dataspace_exist(identifier))
-                onDataspaceSteps.delete_dataspace_by_service();
+                onDataspaceSteps.delete_dataspace_by_service(identifier);
         }
         onCommonSteps.go_to_dataspace(parentDataspacePath);
         onDataspaceSteps.click_btn_create_dataspace();
-
         onDataspaceSteps.enter_dataspace_info(identifier, owner, engLabel);
 
         onDataspaceSteps.click_btn_create();
-
-
     }
-
 
     /**
      * Access to the dataspace service
@@ -125,6 +121,13 @@ public class DataspaceDefs {
     public void i_delete_the_dataspace() {
         onDataspaceSteps.delete_dataspace_by_service();
     }
+
+    @And("^I delete the \"([^\"]*)\" dataspace$")
+    public void i_delete_the_dataspace(String dataspaceName) {
+        onDataspaceSteps.delete_dataspace_by_service(dataspaceName);
+
+    }
+
 
 }
 

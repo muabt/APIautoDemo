@@ -237,15 +237,18 @@ public class MatchingTableSteps extends ScenarioSteps {
     public void select_modify_merged_without_match(String modifyMergedWithoutMatch) {
         onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel(MAMEConstants.MODIFY_MERGE, modifyMergedWithoutMatch);
     }
-
+    @Step
     public void select_one_of_the_values_is_null(String oneOfTheValuesIsNull) {
         onMatchingTablePage.getMatchingProcessWidget().selectDDLByJS(MAMEConstants.ONE_VALUE_NULL, oneOfTheValuesIsNull);
 
     }
-
+    @Step
     public void select_both_values_are_null(String bothValuesAreNull) {
         onMatchingTablePage.getMatchingProcessWidget().selectDDLByJS(MAMEConstants.BOTH_VALUE_ARE_NULL, bothValuesAreNull);
     }
-
+    @Step
+    public void select_record_with_pk(String[] col) {
+        onMatchingTablePage.getSourceWidget().selectCheckboxWithPK(col);
+    }
 }
 

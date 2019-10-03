@@ -47,15 +47,28 @@ public class DataspaceBriefInfoWidgetImpl extends BaseWidgetImpl implements Data
     public String getTextChildMergePolicy() {
         return getTextWithLabel("Child merge policy");
     }
+
     @Override
-    public void deleteDataspaceByService() {
-        String dataspace = Encode.of(SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER));
+    public void deleteDataspaceByService(String dataspaceName) {
+        dataspaceName = Encode.of(dataspaceName);
         RequestSpecification httpRequest = RestAssured.given()
                 .spec(LoadConfig.requestSpecification())
                 .queryParam("deleteDataOnClose", "true")
                 .log().all();
 
-        Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspace + ":close");
+        Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspaceName + ":close");
+        response.then().assertThat().statusCode(204);
+    }
+
+    @Override
+    public void deleteDataspaceByService() {
+       String dataspaceName = Encode.of(SessionData.getValueFromSession(Constants.DATASPACE_IDENTIFIER));
+        RequestSpecification httpRequest = RestAssured.given()
+                .spec(LoadConfig.requestSpecification())
+                .queryParam("deleteDataOnClose", "true")
+                .log().all();
+
+        Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspaceName + ":close");
         response.then().assertThat().statusCode(204);
     }
 }

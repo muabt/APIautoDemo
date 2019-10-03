@@ -83,7 +83,13 @@ public class DataspaceSteps extends ScenarioSteps {
     }
 
     @Step
+    public void delete_dataspace_by_service(String dataspaceName) {
+        onDataspaceBriefInfoPage.getDataspaceBriefInforWidget().deleteDataspaceByService(dataspaceName);
+    }
+
+    @Step
     public void delete_dataspace_by_service() {
         onDataspaceBriefInfoPage.getDataspaceBriefInforWidget().deleteDataspaceByService();
     }
+
 }

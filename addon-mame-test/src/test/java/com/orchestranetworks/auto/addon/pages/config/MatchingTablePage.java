@@ -3,6 +3,7 @@ package com.orchestranetworks.auto.addon.pages.config;
 import com.orchestranetworks.auto.addon.pages.BasePage;
 import com.orchestranetworks.auto.addon.widget.config.MatchingProcessWidget;
 import com.orchestranetworks.auto.addon.widget.config.MergingProcessWidget;
+import com.orchestranetworks.auto.addon.widget.config.SourceWidget;
 import com.orchestranetworks.auto.addon.widget.filter.AdvancedSearchImpl;
 import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
 import com.orchestranetworks.auto.addon.widget.general.FooterWidget;
@@ -23,6 +24,7 @@ public class MatchingTablePage extends BasePage {
     private ToolbarWidget toolbarWidget;
     private MergingProcessWidget mergingProcessWidget;
     private MatchingProcessWidget matchingProcessWidget;
+    private SourceWidget sourceWidget;
 
     public MatchingTablePage(WebDriver driver) {
         super(driver);
@@ -60,6 +62,10 @@ public class MatchingTablePage extends BasePage {
 
     public MatchingProcessWidget getMatchingProcessWidget() {
         return matchingProcessWidget;
+    }
+
+    public SourceWidget getSourceWidget(){
+        return sourceWidget;
     }
 }
 

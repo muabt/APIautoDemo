@@ -11,5 +11,6 @@ public interface DataspaceBriefInfoWidget extends WidgetObject {
     String getTextStatus();
     String getTextLoadingStrategy();
     String getTextChildMergePolicy();
+    void deleteDataspaceByService(String dataspaceName);
     void deleteDataspaceByService();
 }
