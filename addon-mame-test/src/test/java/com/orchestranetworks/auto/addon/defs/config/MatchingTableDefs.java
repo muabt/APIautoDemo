@@ -518,6 +518,7 @@ public class MatchingTableDefs {
 
     @When("^I delete some MAME config records with primary key as following$")
     public void i_delete_some_records_with_primary_key_as_following(List<List<String>> dt) {
+        onAdministrationSteps.access_matching_table();
         for (int i = 1; i < dt.size(); i++) {
             String[] col = dt.get(i).toArray(new String[0]);
             onMatchingTableSteps.select_record_with_pk(col);

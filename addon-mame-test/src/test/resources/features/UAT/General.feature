@@ -60,6 +60,4 @@ Feature: General
       | Data model             | Table    |
       | Publication: Genealogy | Person   |
       | Publication: Metadatas | Customer |
-    And I select the record that contains "Person"
-    Then delete it
     And I delete the "referenceChild" dataspace

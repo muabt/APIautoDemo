@@ -34,9 +34,9 @@ Feature: Manual Merge
     And I complete merging process
     And I close the error popup
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Person"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
 
   Scenario: UAT-MM02 Default merge function = Longest
     Given I permit to access matching table
@@ -62,27 +62,27 @@ Feature: Manual Merge
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place      |
       | 0157a930-7725-41d0-b1c4-281b794d38aa | Cornelia   | Wagemaker |        |           | 0   | 10/21/1847 | Sint Philipsland |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild"
-    Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId                         |
-      | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa |
-      | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
-    Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
-    Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-    Then I will see table MergeValueLineage as below
-      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
-      |    |                  |          |             |           |             |  |
+#    And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild"
+#    Then I will see table RecordMetadata as below
+#      | id   | groupId  | state  | autoCreated | functionalId                         |
+#      | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa |
+#      | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |
+#    Then I will see table MergingProcess as below
+#      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+#      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+#    Then I will see table MergeResult as below
+#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
+#      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+#    Then I will see table Decision as below
+#      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+#      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+#    Then I will see table MergeValueLineage as below
+#      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
+#      |    |                  |          |             |           |             |  |
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Person"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
 
   Scenario: UAT-MM03 Default merge function = Max
     Given I permit to access matching table
@@ -126,9 +126,9 @@ Feature: Manual Merge
     Then I will see table MergeValueLineage as below
       | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Place"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table |
+      | Publication: Genealogy | Place |
 
   Scenario: UAT-MM04 Default merge function = Min
     Given I permit to access matching table
@@ -170,9 +170,9 @@ Feature: Manual Merge
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Place"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table |
+      | Publication: Genealogy | Place |
 
   Scenario: UAT-MM05 Default merge function = Min
     Given I permit to access matching table
@@ -199,9 +199,9 @@ Feature: Manual Merge
       | 1  | Poortvliet |
     And I complete merging process
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Place"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table |
+      | Publication: Genealogy | Place |
 
   Scenario: UAT-MM06 Apply permission on merge view = No (Have a field is hidden in data model)
     Given I permit to access matching table
@@ -230,9 +230,10 @@ Feature: Manual Merge
       | [auto generated] | name1 - 1 | Branh 1 | Minh Tran | [List] 20/24 | 120,000      | 04/09/2019 17:29:55 | 2010            |         |             |
     And I complete merging process
     And I close the error popup
-    And I permit to access matching table
-    And I select first "1" records in table
-    Then delete it
+    And I delete the dataspace
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table |
+      | Publication: Metadatas | Items |
 
   Scenario: UAT-MM07
     Given I permit to access matching table
@@ -278,9 +279,9 @@ Feature: Manual Merge
       | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
       |    |                  |          |             |           |             |  |
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Place"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model              | Table |
+      | Publication: StoreModel | Items |
 
   Scenario: UAT-MM08
     Given I permit to access matching table
@@ -326,9 +327,9 @@ Feature: Manual Merge
       | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
       |    |                  |          |             |           |             |  |
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Place"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
 
   Scenario: UAT-MM09
     Given I permit to access matching table
@@ -374,9 +375,9 @@ Feature: Manual Merge
       | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
       |    |                  |          |             |           |             |  |
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Person"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
 
   Scenario: UAT-MM10
     Given I permit to access matching table
@@ -405,6 +406,6 @@ Feature: Manual Merge
       | 1  | Poortvliet |
     And I complete merging process
     And I delete the dataspace
-    And I permit to access matching table
-    And I select the record that contains "Place"
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table |
+      | Publication: Genealogy | Place |
