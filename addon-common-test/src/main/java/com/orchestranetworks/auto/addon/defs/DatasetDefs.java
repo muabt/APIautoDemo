@@ -1,5 +1,7 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.orchestranetworks.auto.addon.common.DataObject;
+import com.orchestranetworks.auto.addon.common.KeyObject;
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
@@ -7,9 +9,13 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 
 public class DatasetDefs {
 
@@ -152,11 +158,39 @@ public class DatasetDefs {
      */
     @When("^I select some records with primary key as following$")
     public void i_select_records_as_following(List<List<String>> dt) {
+        List<String> headers = dt.get(0);
+        DataObject dataObject = new DataObject();
+        KeyObject keyObject = null;
         for (int i = 1; i < dt.size(); i++) {
-            String[] col = dt.get(i).toArray(new String[0]);
-            onDatasetSteps.select_record_with_PK(col);
+            List<String> row = dt.get(i);
+            keyObject = new KeyObject();
+            for (int j = 0; j < headers.size(); j++) {
+                keyObject.addPK(headers.get(j), row.get(j));
+            }
+            dataObject.addPK(keyObject);
+            onDatasetSteps.select_record_with_PK(row);
         }
+        Serenity.setSessionVariable(Constants.DATA_OBJECT).to(dataObject);
+    }
 
+    public void test(List<List<String>> dt) {
+        List<String> headers = dt.get(0);
+        DataObject dataObject = new DataObject();
+        KeyObject keyObject = null;
+        for (int i = 1; i < dt.size(); i++) {
+            ListIterator<List<String>> valueLists = dt.listIterator(i);
+            for (valueLists.hasNext(); ; ) {
+                keyObject = new KeyObject();
+                Iterator<String> values = valueLists.next().iterator();
+                Iterator<String> keys = headers.iterator();
+                keyObject.addPK(keys.next(), values.next());
+                System.out.println("Key=" + keyObject);
+
+                dataObject.addPK(keyObject);
+                System.out.println("Data=" + dataObject.toString());
+                onDatasetSteps.select_record_with_PK(valueLists.next());
+            }
+        }
     }
 
     @And("^I access to \"([^\"]*)\" tab$")
@@ -182,7 +216,8 @@ public class DatasetDefs {
      * <p>
      * <b>Example</b>:
      * <font color="blue">And</font> I want to delete all of record in the current table</font>>"
-     * </p>     */
+     * </p>
+     */
     @Then("^delete it$")
     public void delete_it() {
         onDatasetSteps.select_table_service("Delete");
@@ -191,6 +226,7 @@ public class DatasetDefs {
 
     /**
      * Select the record that contains the text
+     *
      * @param text text included in the record
      */
     @And("^I select the record that contains \"([^\"]*)\"$")

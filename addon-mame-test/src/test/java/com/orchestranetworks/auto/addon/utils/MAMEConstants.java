@@ -4,8 +4,7 @@ public class MAMEConstants {
 
     public static final String MATCHING_POLICY_CODE_KEY = "MATCHING_POLICY_CODE_KEY";
     public static final String MERGE_POLICY_CODE = "merge_policy_code";
-    public static final String RECORD_METADATA_TBL = "RECORD_METADATA_TBL";
-    public static final String MERGEING_PROCESS_TBL = "MERGEING_PROCESS_TBL";
+    public static final String RECORD_METADATA_TBL = "RecordMetadata";
     public static final String NAME_OF_SOURCE = "Name of source";
     public static final String MATCHING_TABLE = "Matching table";
     public static final String IFRAME_DUPLICATE = "Duplicate";
@@ -47,7 +46,7 @@ public class MAMEConstants {
 
     public static final String MATCHING_TABLE_FIELD = "Matching table";
     public static final String NAME_OF_SOURCE_FIELD = "Name of source";
-    public static final String MERGING_PROCESS_METADATA = "MergingProcess";
+    public static final String MERGING_PROCESS_TBL = "MergingProcess";
     public static final String NAME_FIELD = "Name";
     public static final String SURVIVORSHIP_FIELD_CODE = "Survivorship field code";
     public static final String MERGE_FUNCTION = "Merge function";

@@ -1,9 +1,11 @@
 package com.orchestranetworks.auto.addon.widget.workspace;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.orchestranetworks.auto.addon.common.TableObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -45,17 +47,17 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
     @Override
-    public void selectRecordWithPK(String[] primaryKey) {
-        String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[(td[%s])";
-        primaryKey[0] = specialTextPredicates(primaryKey[0]);
-        if (primaryKey.length >= 2) {
-            for (int i = 1; i < primaryKey.length; i++) {
-                primaryKey[i] = specialTextPredicates(primaryKey[i]);
+    public void selectRecordWithPK(List<String> primaryKey) {
+        List<String> newPKs = new ArrayList<String>();
+        String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[(td[%1$s])";
+        xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(0)));
+        if (primaryKey.size() >= 2) {
+            for (int i = 1; i < primaryKey.size(); i++) {
                 xPathRow += " and (td[%s])";
+                xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(i)));
             }
         }
         xPathRow += "]";
-        xPathRow = XFormat.of(xPathRow, primaryKey);
         switchToLastIFrame();
         clickByJS(xPathRow + "//input[@type='checkbox']");
     }
@@ -111,7 +113,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
 
-    public boolean existRecordInTable() {
+    public boolean isRecordInTableExisted() {
         switchToLastIFrame();
         return !isElementExistNow(XPATH_NO_RECORDS_FOUND);
     }
@@ -144,8 +146,8 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
     @Override
-    public JsonArray getDefaultViewTable() {
-        JsonArray tbl = new JsonArray();
+    public TableObject getDefaultViewTable(String tblName) {
+        TableObject tbl =TableObject.newTable(tblName);
         JsonObject row = new JsonObject();
         int numOfRow = getNumberOfTableRow();
         int numOfCol = getNumberOfTableCol();
@@ -154,7 +156,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
             for (int j = 1; j <= numOfCol; j++) {
                 row.addProperty(getColumnNameWithIndex(j), getTextDataCell(i, j));
             }
-            tbl.add(row);
+            tbl.addRecord(row);
         }
         return tbl;
     }

@@ -6,6 +6,7 @@ import java.util.Map;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.orchestranetworks.auto.addon.utils.LogWork;
 
 public class TableObject {
 
@@ -43,11 +44,13 @@ public class TableObject {
 	 * @return
 	 */
 	public static TableObject takeTable(DataObject data, String tableName) {
-		if (data != null) {
+		try {
 			JsonObject gotTable = data.get(tableName).getAsJsonObject();
 			return new TableObject(gotTable);
+		}catch (Exception e){
+			LogWork.error("DataObject is null or not contains table "+tableName+":"+e);
+			throw new RuntimeException();
 		}
-		return new TableObject(tableName);
 	}
 
 
@@ -65,6 +68,10 @@ public class TableObject {
 	public JsonArray getRecords() {
 		return this.table.get(RECORD_KEY).getAsJsonArray();
 		
+	}
+	public JsonObject getRecord(int i) {
+		return this.table.get(RECORD_KEY).getAsJsonArray().get(i).getAsJsonObject();
+
 	}
 
 	public int size() {

@@ -1,8 +1,9 @@
 package com.orchestranetworks.auto.addon.pages;
 
-import com.orchestranetworks.auto.addon.widget.filter.AdvancedSearchImpl;
 import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
 import com.orchestranetworks.auto.addon.widget.general.*;
+import com.orchestranetworks.auto.addon.widget.workspace.DefaultViewImpl;
+import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -23,14 +24,16 @@ public class CommonPage extends BasePage {
     private PopupWidget popup;
     private SearchWidget advanceSearch;
     private SearchWidget textSearch;
+    private TableViewWidget defaultViewWidget;
 
     public CommonPage(WebDriver driver) {
         super(driver);
+        this.defaultViewWidget = new DefaultViewImpl(this, null, 100);
     }
 
 
     public ToolbarWidget getToolbar() {
-       switchToIFrame(Constants.IFRAME_LEGACY);
+        switchToIFrame(Constants.IFRAME_LEGACY);
         return toolbar;
     }
 
@@ -59,11 +62,11 @@ public class CommonPage extends BasePage {
         return popup;
     }
 
-    public SearchWidget getAdvanceSearch(){
-        return  advanceSearch;
+    public SearchWidget getAdvanceSearch() {
+        return advanceSearch;
     }
 
-    public SearchWidget getTextSearch(){
+    public SearchWidget getTextSearch() {
         return textSearch;
     }
 
@@ -83,6 +86,7 @@ public class CommonPage extends BasePage {
     }
 
 
-
-
+    public TableViewWidget getDefaultViewWidget() {
+        return defaultViewWidget;
+    }
 }

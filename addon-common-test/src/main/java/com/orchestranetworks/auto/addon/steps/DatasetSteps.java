@@ -1,6 +1,6 @@
 package com.orchestranetworks.auto.addon.steps;
 
-import com.google.gson.JsonArray;
+import com.orchestranetworks.auto.addon.common.TableObject;
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.pages.DefaultViewPage;
@@ -10,6 +10,9 @@ import com.orchestranetworks.auto.addon.pages.*;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -36,14 +39,14 @@ public class DatasetSteps extends ScenarioSteps {
     }
 
     @Step
-    public void select_record_with_PK(String[] recordPKs) {
+    public void select_record_with_PK(List<String> recordPKs) {
         defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordPKs);
     }
 
     @Step
     public void select_record_with_PK(String recordID) {
         if (recordID.contains("|")) {
-            String[] ids = recordID.split("\\|");
+            List<String> ids = Arrays.asList(recordID.split("\\|"));
             defaultViewPage.getDefaultViewWidget().selectRecordWithPK(ids);
         } else {
             defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordID);
@@ -82,7 +85,7 @@ public class DatasetSteps extends ScenarioSteps {
 
     @Step
     public void delete_all_data_in_table() {
-        if (defaultViewPage.getDefaultViewWidget().existRecordInTable()) {
+        if (defaultViewPage.getDefaultViewWidget().isRecordInTableExisted()) {
             defaultViewPage.getDefaultViewWidget().clickBtnSelectAndSort();
             defaultViewPage.getDefaultViewWidget().selectAllRecord();
             recordDetailPage.getToolbar().clickBtnActions();
@@ -91,7 +94,7 @@ public class DatasetSteps extends ScenarioSteps {
         }
     }
 
-	@Step
+    @Step
     public void verify_record_value(int rowInd, String colName, String expected) {
         assertThat(defaultViewPage.getDefaultViewWidget().getTextDataCell(rowInd, colName)).isEqualTo(expected);
     }
@@ -103,10 +106,11 @@ public class DatasetSteps extends ScenarioSteps {
 
 
     @Step
-    public JsonArray getDefaultViewTable() {
-       return defaultViewPage.getDefaultViewWidget().getDefaultViewTable();
+    public TableObject getDefaultViewTable(String tblName) {
+        return defaultViewPage.getDefaultViewWidget().getDefaultViewTable(tblName);
 
     }
+
     @Step
     public void select_record_with_text(String text) {
         defaultViewPage.getDefaultViewWidget().selectCheckboxWithText(text);
@@ -114,6 +118,6 @@ public class DatasetSteps extends ScenarioSteps {
 
     @Step
     public boolean verify_record_existed(String fieldName, String keyword) {
-      return  defaultViewPage.getDefaultViewWidget().verifyMAMEConfigRecordExisted(fieldName, keyword);
+        return defaultViewPage.getDefaultViewWidget().verifyMAMEConfigRecordExisted(fieldName, keyword);
     }
 }

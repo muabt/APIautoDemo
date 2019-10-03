@@ -2,6 +2,7 @@ package com.orchestranetworks.auto.addon.widget.workspace;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.orchestranetworks.auto.addon.common.TableObject;
 import net.serenitybdd.core.annotations.ImplementedBy;
 import net.serenitybdd.core.pages.WidgetObject;
 
@@ -16,13 +17,13 @@ public interface TableViewWidget extends WidgetObject {
 
     void selectLastRecord();
 
-    void selectRecordWithPK(String[] primaryKey);
+    void selectRecordWithPK(List<String> primaryKey);
 
     void selectRecordWithPK(String selectRecordWithPk);
     
     void accessRecordWithText(String label);
 
-    boolean existRecordInTable();
+    boolean isRecordInTableExisted();
 
     void selectAllRecord();
 
@@ -32,7 +33,7 @@ public interface TableViewWidget extends WidgetObject {
 
     JsonObject getRecordWithPK(String pk, List<String> header);
 
-    JsonArray getDefaultViewTable();
+    TableObject getDefaultViewTable(String tblName);
 
     boolean verifyMAMEConfigRecordExisted(String dataModel, String table);
 

@@ -57,6 +57,7 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     /**
      * Click to button expand
+     *
      * @param label label of the button that need to expand
      */
     @Override
@@ -72,6 +73,7 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     /**
      * Select logical search value
+     *
      * @param logical logical value
      */
     @Override
@@ -96,8 +98,9 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     /**
      * Select operator for individual field
+     *
      * @param operator operator to select
-     * @param field field to select
+     * @param field    field to select
      */
     @Override
     public void selectOperatorOfField(String operator, String field) {
@@ -109,13 +112,14 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     /**
      * Input search value into a criterion
-     * @param value input search value
-     * @param type type of input value
+     *
+     * @param value     input search value
+     * @param type      type of input value
      * @param fieldName field name to input value
      */
     @Override
     public void inputSearchValue(String value, String type, String fieldName) {
-        String xPathTxtOfField = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input";
+        String xPathTxtOfField = "(" + XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input)[last()]";
         String xPathEnum = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//button[@title='Open drop-down list']";
         String xPathCheckbox = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//tr//label[text()='" + value + "']";
 
@@ -123,7 +127,7 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
             case "INPUT":
                 waitTypeAndTab(xPathTxtOfField, value);
                 break;
-            case "ENUM":
+            case "ENUMERATION":
                 System.out.println(xPathEnum);
                 selectDDLbyJS(xPathEnum, value);
                 waitAbit(500);
@@ -150,6 +154,7 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     /**
      * Unselect a field in search window
+     *
      * @param field field to unselect
      */
     @Override
@@ -159,8 +164,9 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     /**
      * Select the checkbox field
+     *
      * @param searchType type of search. Eg: Text search, Validation search
-     * @param label check box label. Eg: Id, First Name...
+     * @param label      check box label. Eg: Id, First Name...
      */
     @Override
     public void selectField(String searchType, String label) {
@@ -196,8 +202,9 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     /**
      * Select checkbox for search item
+     *
      * @param searchType search type, eg Validation search, Text search
-     * @param fieldName field need to check
+     * @param fieldName  field need to check
      */
     @Override
     public void selectSearchItem(String searchType, String fieldName) {

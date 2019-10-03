@@ -9,6 +9,9 @@ import com.orchestranetworks.auto.addon.pages.CommonPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import java.util.List;
+import java.util.Map;
+
 public class CommonSteps extends ScenarioSteps {
 
     CommonPage onCommonPage;
@@ -203,5 +206,35 @@ public class CommonSteps extends ScenarioSteps {
     }
     public void click_btn_add_logical_block() {
         onCommonPage.getAdvanceSearch().clickBtnAddBlock();
+    }
+
+    public void verify_table_noRecordsFound() {
+      assertThat(onCommonPage.getDefaultViewWidget().isRecordInTableExisted()).isEqualTo(false);
+    }
+    public void search_with_advance_search(String logical, List<Map<String, String>> condition){
+        click_btn_filter();
+        select_advanced_mode();
+        select_logical_search(logical);
+
+        for (Map<String, String> row : condition) {
+            String criterion = row.get("Criterion");
+            String oper = row.get("Operation");
+            String value = row.get("Value");
+            String type = row.get("Field type");
+
+            select_criteria_with_label(criterion);
+
+            if (!oper.isEmpty()) {
+                select_operator_of_field(oper, criterion);
+            }
+
+            if (!value.isEmpty()) {
+                String[] itemList = value.split(",");
+                for (int j = 0; j < itemList.length; j++) {
+                    input_search_value(itemList[j].trim(), type, criterion);
+                }
+            }
+        }
+        click_btn_apply_advanced_search();
     }
 }

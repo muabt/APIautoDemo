@@ -3,7 +3,7 @@ package com.orchestranetworks.auto.addon.utils;
 public final class Constants {
 
     public static final String CHILD_DATASET = "Child Dataset";
-    public static final String DATASPACE_IDENTIFIER = "Dataspace_identifier";
+    public static final String DATASPACE_IDENTIFIER = "DATASPACE_IDENTIFIER";
     public static final String IFRAME_LEGACY = "ebx-legacy-component";
     public static final String IFRAME_SERVICE = "serviceIframe";
     public static final String IFRAME_INTERNAL_POPUP = "ebx_InternalPopup_frame";
@@ -63,4 +63,11 @@ public final class Constants {
     public static final String SELECT_ALL = "Select all";
 
     public static final String RANDOM = "RANDOM";
+    public static final String DATA_OBJECT = "DATA_OBJECT";
+    public static final String AT_LEAST_ONE_MATCHES = "At least one criterion matches";
+    public static final String CRITERION = "Criterion";
+    public static final String OPERATION = "Operation";
+    public static final String VALUE = "Value";
+    public static final String FIELD_TYPE = "Field type";
+    public static final String ENUMERATION = "ENUMERATION";
 }
