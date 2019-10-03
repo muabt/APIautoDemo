@@ -33,6 +33,8 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     @Override
     public void clickApplyAdvancedSearch() {
         clickBtn(Constants.BTN_APPLY, 1);
+        waitForAllLoadingCompleted();
+
     }
 
     public void clickApply(int index) {
@@ -128,9 +130,11 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
                 waitTypeAndTab(xPathTxtOfField, value);
                 break;
             case "ENUMERATION":
-                System.out.println(xPathEnum);
-                selectDDLbyJS(xPathEnum, value);
-                waitAbit(500);
+                String[] itemList = value.split(",");
+                for (int j = 0; j < itemList.length; j++) {
+                    selectDDLbyJS(xPathEnum, value);
+                    waitAbit(500);
+                }
                 break;
             case "DATE":
                 inputDateTime(fieldName, value);

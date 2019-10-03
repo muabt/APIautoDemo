@@ -4,6 +4,23 @@ Feature: Survivor record selection mode is defined
   Background:
     Given I login to EBX successfully
 
+  Scenario: SC-MPMM01 Check pre-selected records at merge view screen when Used for manual merge is No
+    And I access table "TableNotUsedforManualMerge" of dataset "Human_Resource" in dataspace "Master Data - Reference>Reference-child"
+    When I select first "2" records in table
+    And I select table service "Match and Merge>Merge"
+    Then record view table will be displayed and highlighted as below
+      | id | Owner | Employee |
+      | 1  | Luna  | Davied   |
+      | 2  | Alex  | Davied   |
+    And preview table is displayed as below
+      | id | Owner | Employee |
+      |    |       |          |
+    And the screen displays buttons as below
+      | Name               | Status   |
+      | Reset              |          |
+      | Cancel last action | inactive |
+    And I see the table name "1. TableNotUsedforManualMerge" in dropdown list
+
   Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
@@ -28,7 +45,7 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>Dataspace_identifier"
+    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>DATASPACE_IDENTIFIER"
     Then I will see table RecordMetadata as below
       | id | groupId  | state  | autoCreated | functionalId |
       |    | GROUP_ID | Golden | No          | 1            |
@@ -47,23 +64,6 @@ Feature: Survivor record selection mode is defined
       | KEY1 | mergingProcessId | Golden_record | 0           | admin     | /email      | 0 |
 
     And I delete the dataspace
-
-  Scenario: SC-MPMM01 Check pre-selected records at merge view screen when Used for manual merge is No
-    And I access table "TableNotUsedforManualMerge" of dataset "Human_Resource" in dataspace "Master Data - Reference>Reference-child"
-    When I select first "2" records in table
-    And I select table service "Match and Merge>Merge"
-    Then record view table will be displayed and highlighted as below
-      | id | Owner | Employee |
-      | 1  | Luna  | Davied   |
-      | 2  | Alex  | Davied   |
-    And preview table is displayed as below
-      | id | Owner | Employee |
-      |    |       |          |
-    And the screen displays buttons as below
-      | Name               | Status   |
-      | Reset              |          |
-      | Cancel last action | inactive |
-    And I see the table name "1. TableNotUsedforManualMerge" in dropdown list
 
   Scenario: SC-MPMM03 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and some records come from the same source
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
@@ -89,7 +89,7 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>Dataspace_identifier"
+    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>DATASPACE_IDENTIFIER"
     Then I will see table RecordMetadata as below
       | id   | groupId  | state  | autoCreated | functionalId |
       | KEY1 | GROUP_ID | Golden | No          | 3            |
@@ -103,9 +103,7 @@ Feature: Survivor record selection mode is defined
     Then I will see table Decision as below
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-    Then I will see table MergeValueLineage as below
-      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
-      |    |                  |          |             |           |             |  |
+    Then no records found in table "MergeValueLineage"
     And I delete the dataspace
 
   Scenario: SC-MPMM05 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and Value of source field (of selected merged records)do not map with the code defined in Table trusted source
@@ -128,7 +126,7 @@ Feature: Survivor record selection mode is defined
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
-    And I see an exception error
+#    And I see an exception error
 
   Scenario: SC-MPMM06 Check merging records if Survivor record selection mode is Most trusted source and all values of source field (of selected merged records) are null
     Given I login to EBX successfully

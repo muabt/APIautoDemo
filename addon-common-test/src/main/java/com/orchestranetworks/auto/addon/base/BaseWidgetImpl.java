@@ -69,6 +69,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 
     public String getTextValue(String xPath) {
         highlightElement(xPath);
+        WebElementFacade e = getElement(xPath);
         return getElement(xPath).getTextValue().trim();
     }
 
@@ -603,6 +604,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
                 + rowInd
                 + "]//td[child::div[not(*) and not(@class='ebx_tvInheritanceCell'  or @class='ebx_tvSelectCell') ]]))["
                 + colInd + "]";
+
         return getTextValue(xpathDataCell);
 
     }

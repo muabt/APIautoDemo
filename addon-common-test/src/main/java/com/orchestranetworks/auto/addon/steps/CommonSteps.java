@@ -131,6 +131,7 @@ public class CommonSteps extends ScenarioSteps {
     @Step
     public void click_btn_apply_advanced_search() {
         onCommonPage.getAdvanceSearch().clickApplyAdvancedSearch();
+        onCommonPage.getToolbar().clickBtnFilter();
     }
 
     @Step
@@ -204,14 +205,16 @@ public class CommonSteps extends ScenarioSteps {
     public void select_service_add_logical_block() {
         onCommonPage.getAdvanceSearch().addLogicalBlock();
     }
+
     public void click_btn_add_logical_block() {
         onCommonPage.getAdvanceSearch().clickBtnAddBlock();
     }
 
     public void verify_table_noRecordsFound() {
-      assertThat(onCommonPage.getDefaultViewWidget().isRecordInTableExisted()).isEqualTo(false);
+        assertThat(onCommonPage.getDefaultViewWidget().isRecordInTableExisted()).isEqualTo(false);
     }
-    public void search_with_advance_search(String logical, List<Map<String, String>> condition){
+
+    public void search_with_advance_search(String logical, List<Map<String, String>> condition) {
         click_btn_filter();
         select_advanced_mode();
         select_logical_search(logical);
@@ -229,10 +232,7 @@ public class CommonSteps extends ScenarioSteps {
             }
 
             if (!value.isEmpty()) {
-                String[] itemList = value.split(",");
-                for (int j = 0; j < itemList.length; j++) {
-                    input_search_value(itemList[j].trim(), type, criterion);
-                }
+                input_search_value(value, type, criterion);
             }
         }
         click_btn_apply_advanced_search();

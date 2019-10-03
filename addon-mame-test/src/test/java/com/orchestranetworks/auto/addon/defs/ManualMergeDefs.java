@@ -280,7 +280,7 @@ public class ManualMergeDefs {
             Map<String, String> condition = new HashMap<String, String>();
             JsonObject record = expectedTbl.get(i).getAsJsonObject();
             condition.put(Constants.CRITERION, TechnicalTable.MergeResult.MERGING_PROCESS_ID);
-            condition.put(Constants.OPERATION, "Direct selection");
+            condition.put(Constants.OPERATION, "");
             condition.put(Constants.VALUE, mergingProcessId);
             condition.put(Constants.FIELD_TYPE, Constants.ENUMERATION);
             filterConditions.add(condition);
@@ -362,7 +362,7 @@ public class ManualMergeDefs {
             Map<String, String> condition = new HashMap<String, String>();
             JsonObject record = expectedTbl.get(i).getAsJsonObject();
             condition.put(Constants.CRITERION, TechnicalTable.MergeResult.MERGING_PROCESS_ID);
-            condition.put(Constants.OPERATION, "Direct selection");
+            condition.put(Constants.OPERATION, "");
             condition.put(Constants.VALUE, mpID);
             condition.put(Constants.FIELD_TYPE, Constants.ENUMERATION);
             filterConditions.add(condition);
@@ -452,7 +452,7 @@ public class ManualMergeDefs {
             Map<String, String> condition = new HashMap<String, String>();
             JsonObject record = expectedTbl.get(i).getAsJsonObject();
             condition.put(Constants.CRITERION, TechnicalTable.MergeResult.MERGING_PROCESS_ID);
-            condition.put(Constants.OPERATION, "Direct selection");
+            condition.put(Constants.OPERATION, "");
             condition.put(Constants.VALUE, mpID);
             condition.put(Constants.FIELD_TYPE, Constants.ENUMERATION);
             filterConditions.add(condition);
