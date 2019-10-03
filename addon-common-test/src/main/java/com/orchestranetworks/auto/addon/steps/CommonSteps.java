@@ -197,4 +197,11 @@ public class CommonSteps extends ScenarioSteps {
     public void click_btn_save_and_close() {
         onCommonPage.getFooter().clickBtnSaveAndClose();
     }
+
+    public void select_service_add_logical_block() {
+        onCommonPage.getAdvanceSearch().addLogicalBlock();
+    }
+    public void click_btn_add_logical_block() {
+        onCommonPage.getAdvanceSearch().clickBtnAddBlock();
+    }
 }

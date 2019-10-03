@@ -440,6 +440,15 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
      * =====================================DROPDOWN-LIST============================================================
      */
 
+    public void selectDDLbyJS(String xpathDDLButton, String value) {
+        String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + specialTextPredicates(value)
+                + " and string-length(normalize-space(text())=" + value.length()
+                + ")) and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
+        clickOnElement(xpathDDLButton);
+
+        executeJS("arguments[0].click();", xPathValue);
+    }
+
     public void selectDDLBox(String label, String value) {
         String xPathDDL = " //div[label[ .='" + label
                 + "'] and not(@style='display: none;')]//select | //tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
@@ -460,11 +469,11 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         clickOnElement(xPathDDL);
         waitElementToBePresent(xPathValue).waitUntilClickable().click();
     }
-    
+
     /**
      * It's handle the case when the givenText = "Won't".
      * In sSpecialTextPredicates method can not handle this because it's build the statement xpath ~ 'Won't' => wrong.
-     * 
+     *
      * @param givenText
      * @return
      */
@@ -635,7 +644,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         hoverOverLocationSelector.perform();
     }
 
-    public void doubleClickByJS(String xPath){
+    public void doubleClickByJS(String xPath) {
         executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPath);
     }
 }

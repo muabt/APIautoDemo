@@ -116,7 +116,7 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     @Override
     public void inputSearchValue(String value, String type, String fieldName) {
         String xPathTxtOfField = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input";
-        String xPathEnum = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//input[@value='Select an item to add']";
+        String xPathEnum = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//div//button[@title='Open drop-down list']";
         String xPathCheckbox = XFormat.of(XPATH_SEARCH_FIELD, fieldName) + "//tr//label[text()='" + value + "']";
 
         switch (type) {
@@ -124,7 +124,8 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
                 waitTypeAndTab(xPathTxtOfField, value);
                 break;
             case "ENUM":
-                inputDDLThenEnter(xPathEnum, value);
+                System.out.println(xPathEnum);
+                selectDDLbyJS(xPathEnum, value);
                 waitAbit(500);
                 break;
             case "DATE":

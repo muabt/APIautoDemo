@@ -4,9 +4,12 @@ import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.LoadConfig;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.es.E;
 import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
@@ -288,7 +291,8 @@ public class CommonDefs {
      * @param dt List of criterion that user want to use
      */
     @When("^I select filter by advanced search with criterion and logical \"([^\"]*)\"$")
-    public void i_select_filter_by_advanced_search_with_criterion_and_logical(DataTable dt, String logical) {
+    public void i_select_filter_by_advanced_search_with_criterion_and_logical(String logical, DataTable dt) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
         onCommonSteps.click_btn_filter();
         onCommonSteps.select_advanced_mode();
         onCommonSteps.select_logical_search(logical);
@@ -312,9 +316,53 @@ public class CommonDefs {
                 }
             }
         }
-        onCommonSteps.click_btn_apply_advanced_search();
     }
 
+
+    /**
+     * Add a logical block with criterion and logical
+     * <p>
+     * <b>Example</b>:
+     * <font color="blue">And</font> I add a logical block with criterion and logical "<font color="green">All criteria match</font>"
+     *     <ul>
+     *			     <font color="green">| Criterion | Operation  | Value  | Field type |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">| Identifier | =  | 23 | ENUM |</font>
+     *     </ul>
+     *     <ul>
+     *			     <font color="green">| Email | startsWith  | a | INPUT |</font>
+     *     </ul>
+     * </ul>
+     * </p>
+     * @param logical logical mode of advanced search
+     * @param dt List of criterion that user want to use
+     */
+    @And("^I add a logical block with criterion and logical \"([^\"]*)\"$")
+    public void i_add_logical_block_with_criterion_and_logical(String logical, DataTable dt) throws Throwable {
+        onCommonSteps.select_service_add_logical_block();
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String criterion = row.get("Criterion");
+            String oper = row.get("Operation");
+            String value = row.get("Value");
+            String type = row.get("Field type");
+
+            onCommonSteps.select_criteria_with_label(criterion);
+
+            if (!oper.isEmpty()) {
+                onCommonSteps.select_operator_of_field(oper, criterion);
+            }
+
+            if (!value.isEmpty()) {
+                String[] itemList = value.split(",");
+                for (int j = 0; j < itemList.length; j++) {
+                    onCommonSteps.input_search_value(itemList[j].trim(), type, criterion);
+                }
+            }
+        }
+        onCommonSteps.click_btn_add_logical_block();
+    }
     /**
      * Select the filter by using given text and field
      *
@@ -439,5 +487,17 @@ public class CommonDefs {
             onCommonSteps.input_fuzzy_keyword(recordContains);
         }
         onCommonSteps.click_btn_apply_fuzzy_search();
+    }
+
+    /**
+     * Click to button Apply in advance search
+     * <p>
+     * <b>Example</b>: <font color="blue">Then</font> I click to button Apply in Advanced search
+     * </p>
+     */
+    @Then("^I click to button Apply in Advanced search")
+    public void i_click_to_button_apply_advanced_search() throws Exception {
+        onCommonSteps.click_btn_apply_advanced_search();
+        Thread.sleep(10000);
     }
 }
