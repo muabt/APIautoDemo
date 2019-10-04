@@ -27,6 +27,7 @@
 		<jackson.version>2.9.7</jackson.version>
 		<webdriver.driver>chrome</webdriver.driver>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                <skip-maven-surefire-plugin>true</skip-maven-surefire-plugin>
 	</properties>
 
 	<dependencyManagement>
@@ -147,7 +148,8 @@
             </activation>
 
             <properties>
-                <maven.surefire.debug>-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y</maven.surefire.debug>
+                <skip-maven-surefire-plugin>false</skip-maven-surefire-plugin>
+                <maven.surefire.debug>-Xdebug -Xnoagent -DskipITs -Djava.compiler=NONE -Dskip-maven-surefire-plugin=false -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y</maven.surefire.debug>
             </properties>
         </profile>
     </profiles>
@@ -159,12 +161,13 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.19.1</version>
 				<configuration>
+                                    <skip>${skip-maven-surefire-plugin}</skip>
 				    <includes>
 						<include>**/*TestSuite.java</include>
 					</includes>
 				</configuration>
 			</plugin>
-			<!--  plugin>
+			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.19.1</version>
 				<configuration>
@@ -184,7 +187,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin-->
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
