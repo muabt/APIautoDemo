@@ -59,6 +59,7 @@ public class DatasetDefs {
      * @param service table service that user want to execute
      */
     @And("^I select table service \"([^\"]*)\"$")
+    @When("^I select record service \"([^\"]*)\"$")
     public void I_select_table_service(String service) {
         onDatasetSteps.select_table_service(service);
     }
