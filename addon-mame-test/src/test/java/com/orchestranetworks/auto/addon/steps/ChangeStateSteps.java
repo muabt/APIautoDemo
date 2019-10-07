@@ -5,14 +5,14 @@ import org.junit.Assert;
 
 public class ChangeStateSteps {
 
-    ChangeStatePage onChangeStatepage;
+    ChangeStatePage onChangeStatePage;
 
     public void verify_state_descriptions (String stateDes){
-        Assert.assertEquals(stateDes,onChangeStatepage.getChangeStateWidget().getStateDes());
+        Assert.assertEquals(stateDes, onChangeStatePage.getChangeStateWidget().getStateDes());
     }
 
     public void click_button_launch_service() {
-        onChangeStatepage.getChangeStateWidget().clickBtnLaunchService();
+        onChangeStatePage.getChangeStateWidget().clickBtnLaunchService();
     }
 
     public void select_target_state() {
