@@ -58,7 +58,4 @@ public class DataspaceBriefInfoWidgetImpl extends BaseWidgetImpl implements Data
         Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspace + ":close");
         response.then().assertThat().statusCode(204);
     }
-
-
-
 }

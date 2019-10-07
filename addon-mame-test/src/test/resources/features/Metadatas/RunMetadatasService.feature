@@ -6,7 +6,7 @@ Feature: Run Metadatas service
     Given I login to EBX successfully
 
   Scenario: SC-MTD013 Check the correctness of displayed data after launching the Metadata service
-            SC-MTD007 Check the correctness of information which displays in Main tab when lauching metadata on a record which is Golden and auto-created is No
+  SC-MTD007 Check the correctness of information which displays in Main tab when lauching metadata on a record which is Golden and auto-created is No
     And I create a child of dataspace "Reference-child" with information as following
       | Identifier | Owner              | English Label |
       |            | admin admin(admin) |               |
@@ -15,7 +15,7 @@ Feature: Run Metadatas service
       |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "Categories" of dataset "Store Item"
-    #And I access table "Categories" of dataset "Store Item" in dataspace "Reference-child"
+#    And I access table "Categories" of dataset "Store Item" in dataspace "Reference-child"
     When I select some records with primary key as following
       | Identifier |
       | 1          |
@@ -54,11 +54,11 @@ Feature: Run Metadatas service
       | Record  | State  | Group     | Target Record |
       | Hoolong | Merged | Hoolong 1 | Hoolong 1     |
 
-    Then I verify metadata of list record
-#      | Identifier | Record  | State  | Group     | Target Record |
-#      | 6          | Hoolong | Merged | Hoolong 1 | [not defined]     |
-#      | 7          | Hoolong | Merged | Hoolong 1 | [not defined] |
-  #    | 8          | Hoolong 1 | Merged | Hoolong 1 | [not defined] |
+#    Then I verify metadata of list record
+#      | Identifier | Record    | State  | Group     | Target Record |
+#      | 6          | Hoolong   | Merged | Hoolong 1 | [not defined] |
+#      | 7          | Hoolong   | Merged | Hoolong 1 | [not defined] |
+#      | 8          | Hoolong 1 | Merged | Hoolong 1 | [not defined] |
 
 
     And I delete the dataspace
@@ -151,8 +151,9 @@ Feature: Run Metadatas service
     And I access table "Stores" of dataset "Store Item"
     #And I access table "Stores" of dataset "Store Item" in dataspace "Reference-child"
     When I double click a record
-    And I select record service "Match and Merge > Metadatas"
+    And I select table service "Match and Merge > Metadatas"
+#    And I select record service "Match and Merge > Metadatas"
     When I want to verify data displayed in main tab
-      | Record   | State  | Group   |
-      | Texo US  | Golden | Texo US |
+      | Record  | State  | Group   |
+      | Texo US | Golden | Texo US |
     And I delete the dataspace

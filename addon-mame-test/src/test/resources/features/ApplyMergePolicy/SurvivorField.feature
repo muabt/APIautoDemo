@@ -2,7 +2,6 @@
 Feature: Merge function for survivor field
   I want to use this template for Merge function for survivor field
 
-  @Survivor_Field_Longest
   Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -24,7 +23,6 @@ Feature: Merge function for survivor field
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Longest
   Scenario: SC-MPMM81 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest the sources of survivor field are same lenght
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -46,7 +44,6 @@ Feature: Merge function for survivor field
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Longest
   Scenario: SC-MPMM82 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest survivor field type is Email
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -90,7 +87,6 @@ Feature: Merge function for survivor field
 #      | Apply merge policy |          |
 #      | Cancel last action | inactive |
 
-  @Survivor_Field_Longest
   Scenario: SC-MPMM84 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest survivor field type is FK
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -112,7 +108,6 @@ Feature: Merge function for survivor field
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Min
   Scenario: SC-MPMM85 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Min and the sources of survivor field are different lenght
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -121,11 +116,11 @@ Feature: Merge function for survivor field
     When I select first "4" records in table
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
-      | identifier | Name      | Phone   | National | Date       |
-      | 1          | Sushi     | 123,456 | {H} 1    | 04/01/2019 |
-      | 2          | Chloe     | {H} 123 | 4        | 06/06/2019 |
-      | 3          | Kenny     | 789,456 | 4        | 06/06/2019 |
-      | {H} 4      | {H} Sammy | 123,456 | 3        | 06/23/2019 |
+      | identifier | Name      | Phone   | National | Date           |
+      | 1          | Sushi     | 123,456 | 1        | 04/01/2019     |
+      | 2          | Chloe     | {H} 123 | 4        | 06/06/2019     |
+      | 3          | Kenny     | 789,456 | 4        | 06/06/2019     |
+      | {H} 4      | {H} Sammy | 123,456 | {H} 3    | {H} 06/23/2019 |
     And preview table is displayed as below
       | identifier | Name  | Phone | National | Date       |
       | 4          | Sammy | 123   | 3        | 06/23/2019 |
@@ -134,7 +129,6 @@ Feature: Merge function for survivor field
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Min
   Scenario: SC-MPMM86 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Min and the sources of survivor field are same lenght
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -156,7 +150,6 @@ Feature: Merge function for survivor field
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Min
   Scenario: SC-MPMM87 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Min and survivor field type is Date
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -178,7 +171,6 @@ Feature: Merge function for survivor field
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Min
   Scenario: SC-MPMM88 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Min and survivor field type is Date and time
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -193,14 +185,13 @@ Feature: Merge function for survivor field
       | 3     | VN      | VN                | 100.2        | 06/24/2019 14:35:27     |
       | {H} 4 | {H} TB  | {H} US            | {H}     10.2 | 06/25/2019 14:36:02     |
     And preview table is displayed as below
-      | ID    | Company | Country/Territory | Sales | Date and time       |
-      | {H} 4 | {H} TB  | {H} US            | 10.2  | 06/24/2019 12:35:07 |
+      | ID | Company | Country/Territory | Sales | Date and time       |
+      | 4  | TB      | US                | 10.2  | 06/24/2019 12:35:07 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Min
   Scenario: SC-MPMM89 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Min and survivor field type is Time
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -209,25 +200,25 @@ Feature: Merge function for survivor field
     When I select first "4" records in table
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
-      | identifier | Name              | Phone      | National | Date         |
+      | identifier | Name              | Phone      | National | Time         |
       | 1          | ACS               | 123        | 1        | 14:42:35     |
       | 2          | Banco Santander   | 46,789     | 2        | 10:42:53     |
       | 3          | Barclays          | 45,789     | 3        | {H} 01:43:10 |
       | {H} 4      | {H} Computershare | {H} 78,945 | {H}  4   | 14:20:32     |
     And preview table is displayed as below
-      | identifier | Name              | Phone      | National | Date     |
-      | {H} 4      | {H} Computershare | {H} 78,945 | {H}  4   | 01:43:10 |
+      | identifier | Name          | Phone  | National | Time     |
+      | 4          | Computershare | 78,945 | 4        | 01:43:10 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Max
   Scenario: SC-MPMM90 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and the sources of survivor field are different lenght
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 44"
+
     When I select first "4" records in table
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
@@ -237,14 +228,13 @@ Feature: Merge function for survivor field
       | 3     | 2     | Big C     | Singapore         | [List] 0/4         |
       | {H} 4 | 1     | {H} L&L   | {H} VN            | {H}     [List] 4/4 |
     And preview table is displayed as below
-      | ID    | Rank | Company | Country/Territory | Catalog            |
-      | {H} 4 | 3    | {H} L&L | {H} VN            | {H}     [List] 4/4 |
+      | ID | Rank | Company | Country/Territory | Catalog    |
+      | 4  | 3    | L&L     | VN                | [List] 4/4 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Max
   Scenario: SC-MPMM91 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and the sources of survivor field are same lenght
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -259,14 +249,13 @@ Feature: Merge function for survivor field
       | 3     | 2     | Big C     | Singapore         | [List] 0/4         |
       | {H} 4 | 1     | {H} L&L   | {H} VN            | {H}     [List] 4/4 |
     And preview table is displayed as below
-      | ID    | Rank | Company | Country/Territory | Catalog            |
-      | {H} 4 | 3    | {H} L&L | {H} VN            | {H}     [List] 4/4 |
+      | ID | Rank | Company | Country/Territory | Catalog    |
+      | 4  | 3    | L&L     | VN                | [List] 4/4 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Max
   Scenario: SC-MPMM92 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -281,14 +270,13 @@ Feature: Merge function for survivor field
       | 3          | Iberdrola         | 897,564    | 3        | 06/04/2019     |
       | {H} 4      | {H} National Grid | {H} 21,456 | {H}  4   | {H} 06/24/2019 |
     And preview table is displayed as below
-      | identifier | Name              | Phone      | National | Date           |
-      | {H} 4      | {H} National Grid | {H} 21,456 | {H}  4   | {H} 06/24/2019 |
+      | identifier | Name          | Phone  | National | Date       |
+      | 4          | National Grid | 21,456 | 4        | 06/24/2019 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Max
   Scenario: SC-MPMM93 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -303,14 +291,13 @@ Feature: Merge function for survivor field
       | 3     | Rolls Royce              | 15789             | 1000        | {H} 06/24/2019 22:22:20 |
       | {H} 4 | {H} Southside Bancshares | {H} 7894          | {H}     200 | 06/24/2019 10:22:38     |
     And preview table is displayed as below
-      | ID    | Company                  | Country/Territory | Sales       | Date and time       |
-      | {H} 4 | {H} Southside Bancshares | {H} 7894          | {H}     200 | 06/24/2019 22:22:20 |
+      | ID | Company              | Country/Territory | Sales | Date and time       |
+      | 4  | Southside Bancshares | 7894              | 200   | 06/24/2019 22:22:20 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Max
   Scenario: SC-MPMM94 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -325,14 +312,13 @@ Feature: Merge function for survivor field
       | 3          | National Grid     | 21,456     | 3        | 10:27:00     |
       | {H} 4      | {H} Repsol        | {H} 23,456 | {H}  5   | 15:27:26     |
     And preview table is displayed as below
-      | identifier | Name       | Phone      | National | Time         |
-      | {H} 4      | {H} Repsol | {H} 23,456 | {H}  5   | {H} 23:26:32 |
+      | identifier | Name   | Phone  | National | Time     |
+      | 4          | Repsol | 23,456 | 5        | 23:26:32 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Last_Update
   Scenario: SC-MPMM76 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Last update and the updated date of survivor field are different
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -347,14 +333,13 @@ Feature: Merge function for survivor field
       | 3          | {H} Sarah | 23,306,656  | 3        |
       | {H} 4      | Bella     | {H} 231,456 | {H}  4   |
     And preview table is displayed as below
-      | identifier | Name  | Phone       | National |
-      | {H} 4      | Sarah | {H} 231,456 | {H}  4   |
+      | identifier | Name  | Phone   | National |
+      | 4          | Sarah | 231,456 | 4        |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Last_Update
   Scenario: SC-MPMM77 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Last update and the updated date of survivor field are the same
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -369,14 +354,13 @@ Feature: Merge function for survivor field
       | 3          | Ruby      | 1,245,612  | 3        |
       | {H} 4      | Kenny     | {H} 87,456 | {H}  5   |
     And preview table is displayed as below
-      | identifier | Name  | Phone      | National |
-      | {H} 4      | Chloe | {H} 87,456 | {H}  5   |
+      | identifier | Name  | Phone  | National |
+      | 4          | Chloe | 87,456 | 5        |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Last_Update
   Scenario: SC-MPMM78 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Last update and Default merge function is defined also
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -391,14 +375,13 @@ Feature: Merge function for survivor field
       | 3          | Neon        | 123,456    | 3         |
       | {H} 4      | Jonhny      | {H} 12,546 | 4         |
     And preview table is displayed as below
-      | identifier | Name    | Phone      | National |
-      | {H} 4      | Vinniee | {H} 12,546 | {H}  1   |
+      | identifier | Name    | Phone  | National |
+      | 4          | Vinniee | 12,546 | 1        |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Last_Update
   Scenario: SC-MPMM79 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Last update and survivor field type is multi value
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -413,14 +396,13 @@ Feature: Merge function for survivor field
       | 3     | 3       | Linked in    | US                | [List] 0/3     |
       | {H} 4 | {H}   4 | {H} Facebook | {H} UK            | [List] 0/4     |
     And preview table is displayed as below
-      | ID    | Rank    | Company      | Country/Territory | Catalog    |
-      | {H} 4 | {H}   4 | {H} Facebook | {H} UK            | [List] 3/3 |
+      | ID | Rank | Company  | Country/Territory | Catalog    |
+      | 4  | 4    | Facebook | UK                | [List] 3/3 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Most_frequent
   Scenario: SC-MPMM73 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Most frequent and the the source of survivor field are different appearance
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -435,14 +417,14 @@ Feature: Merge function for survivor field
       | 3          | Itstu    | 45        | 4           |
       | {H} 4      | {H} Luna | {H} 4,698 | {H}       5 |
     And preview table is displayed as below
-      | identifier | Name     | Phone     | National    |
-      | {H} 4      | {H} Luna | {H} 4,698 | {H}       5 |
+      | identifier | Name | Phone | National |
+      | 4          | Luna | 4,698 | 5        |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Most_frequent
+
   Scenario: SC-MPMM74 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Most frequent and the the source of survivor field are same appearance
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -458,8 +440,8 @@ Feature: Merge function for survivor field
       | 4          | Luna     | 78,456     | 4           |
       | {H} 5      | {H} Luna | {H} 75,663 | {H}       5 |
     And preview table is displayed as below
-      | identifier | Name     | Phone      | National    |
-      | {H} 5      | {H} Luna | {H} 75,663 | {H}       5 |
+      | identifier | Name | Phone  | National |
+      | 5          | Luna | 75,663 | 5        |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -479,14 +461,13 @@ Feature: Merge function for survivor field
       | 3          | Jessie   | 15,346     | 2        |
       | {H}  4     | {H} Alan | {H} 78,456 | {H} 4    |
     And preview table is displayed as below
-      | identifier | Name     | Phone      | National |
-      | {H}  4     | {H} Alan | {H} 78,456 | {H} 4    |
+      | identifier | Name | Phone  | National |
+      | 4          | Alan | 78,456 | 4        |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_No_Merge
   Scenario: SC-MPMM95 Validate the pre-selected records at merge view screen when the Merge function of survivor field is No merge
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -500,14 +481,14 @@ Feature: Merge function for survivor field
       | 2     | 2       | B       | UK                | [List] 0/1     |
       | 3     | 3       | C       | FR                | [List] 0/1     |
       | {H} 4 | {H}   1 | {H} D   | {H} VN            | {H} [List] 1/1 |
-      | ID    | Rank    | Company | Country/Territory | Catalog        |
-      | {H} 4 | {H}   1 | {H} D   | {H} VN            | {H} [List] 1/1 |
+    And preview table is displayed as below
+      | ID | Rank | Company | Country/Territory | Catalog    |
+      | 4  | 1    | D       | VN                | [List] 1/1 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-  @Survivor_Field_Execute_only_if_empty
   Scenario: SC-MPMM96 Validate the pre-selected records at merge view screen when Condition for field value survivorship is defined and Execute if empty is Yes and the value of the survivor record is null
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
@@ -521,8 +502,9 @@ Feature: Merge function for survivor field
       | 2     | 2       | B       | UK                | [List] 0/1     |
       | 3     | 3       | C       | FR                | [List] 0/1     |
       | {H} 4 | {H}   1 | {H} D   | {H} VN            | {H} [List] 1/1 |
-      | ID    | Rank    | Company | Country/Territory | Catalog        |
-      | {H} 4 | {H}   1 | {H} D   | {H} VN            | {H} [List] 1/1 |
+    And preview table is displayed as below
+      | ID | Rank | Company | Country/Territory | Catalog    |
+      | 4  | 1    | D       | VN                | [List] 1/1 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |

@@ -52,8 +52,12 @@ public class ConfigurationMatchingTableSteps {
 
     @Step
     public void verify_matching_process_detail(List<List<String>> getrecordDetail) {
+        onRecordDetailPage.switchOutDefaultIFrame();
+        onRecordDetailPage.switchToIFrame(Constants.IFRAME_LEGACY);
         onRecordDetailPage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+        onRecordDetailPage.getItemCreationWidget().clickBtnExpand();
         List<List<String>> recordDetails = onRecordDetailPage.getRecordDetailWidget().getRecordDetail();
+        System.out.println("record detail: " +recordDetails);
         assertThat(recordDetails).isEqualTo(getrecordDetail);
     }
 
