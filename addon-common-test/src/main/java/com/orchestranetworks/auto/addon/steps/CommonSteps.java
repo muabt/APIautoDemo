@@ -131,7 +131,6 @@ public class CommonSteps extends ScenarioSteps {
     @Step
     public void click_btn_apply_advanced_search() {
         onCommonPage.getAdvanceSearch().clickApplyAdvancedSearch();
-        onCommonPage.getToolbar().clickBtnFilter();
     }
 
     @Step

@@ -5,6 +5,7 @@ import com.orchestranetworks.auto.addon.common.KeyObject;
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -171,7 +172,7 @@ public class DatasetDefs {
             dataObject.addPK(keyObject);
             onDatasetSteps.select_record_with_PK(row);
         }
-        Serenity.setSessionVariable(Constants.DATA_OBJECT).to(dataObject);
+        SessionData.saveDataObjectToSession(Constants.DATA_OBJECT,dataObject);
     }
 
     public void test(List<List<String>> dt) {

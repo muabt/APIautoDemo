@@ -578,7 +578,13 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
 
     public String getColumnNameWithIndex(int index) {
         String xPathHeader = "(//th[contains(@id,'ebx_workspaceTable_tableField') or (@class='ebx_tvSortableColumn')][descendant::span[@class='ebx_RawLabel']])[" + index + "]";
-        return getTextValue(xPathHeader);
+        WebElementFacade header = getElement(xPathHeader);
+        if (!header.isDisplayed()) {
+            highlightElement(xPathHeader);
+            return header.getAttribute("textContent").replaceAll(String.valueOf((char) 160),"");
+        } else
+            return header.getText().trim();
+
     }
 
     public int getNumberOfTableRow() {
@@ -605,8 +611,12 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
                 + "]//td[child::div[not(*) and not(@class='ebx_tvInheritanceCell'  or @class='ebx_tvSelectCell') ]]))["
                 + colInd + "]";
 
-        return getTextValue(xpathDataCell);
-
+        WebElementFacade cell = getElement(xpathDataCell);
+        if (!cell.isDisplayed()) {
+            highlightElement(xpathDataCell);
+            return cell.getAttribute("textContent").trim();
+        } else
+            return cell.getText().trim();
     }
 
 
