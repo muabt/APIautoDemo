@@ -122,7 +122,6 @@ public class ManualMergeDefs {
     @Then("^I will see table RecordMetadata as below$")
     public void i_will_see_table_recordmetadata_as_below(List<List<String>> recordMetadataExpect) {
         JsonArray expectedTbl = SessionData.convertArrayListToJson(recordMetadataExpect);
-        //mergedRecord = Serenity.sessionVariableCalled(Constants.DATA_OBJECT);
         // Filter selected record by Functional ID
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
         for (int i = 0; i < expectedTbl.size(); i++) {
@@ -137,9 +136,7 @@ public class ManualMergeDefs {
         onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
 
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.RECORD_METADATA_TBL);
-        System.out.println("actualTBL: " + actualTbl);
         mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
-        System.out.println("mergeRecord: " + mergedRecord);
 
         //Get Group ID
         String groupID = actualTbl.getRecord(0).getAsJsonObject()

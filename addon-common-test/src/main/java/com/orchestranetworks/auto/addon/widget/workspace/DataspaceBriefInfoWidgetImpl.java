@@ -57,7 +57,6 @@ public class DataspaceBriefInfoWidgetImpl extends BaseWidgetImpl implements Data
                 .log().all();
 
         Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspaceName + ":close");
-        System.out.println("Status code : " + response.statusCode());
         response.then().assertThat().statusCode(204);
     }
 

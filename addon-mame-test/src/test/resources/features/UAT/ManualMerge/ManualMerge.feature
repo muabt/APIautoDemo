@@ -22,7 +22,10 @@ Feature: Manual Merge
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
     And I access table "Person" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | Id                                   |
+      | 0157a930-7725-41d0-b1c4-281b794d38aa |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Id                                   | First name   | Last name     | Gender | Residence | Age   | Birth date     | Birth place          |
@@ -49,10 +52,13 @@ Feature: Manual Merge
       | RANDOM            | Most complete                  | Longest                | Disabled | Yes                   | Yes                            |
     And I click button Save and close
     And I create a child of dataspace "Master Data - Reference" with information as following
-      | Identifier     | Owner               | English Label |
-      | referenceChild | admin admin (admin) |               |
-    And I access table "Person" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
-    When I select first "2" records in table
+      | Identifier      | Owner               | English Label |
+      | referenceChild1 | admin admin (admin) |               |
+    And I access table "Person" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild1"
+    When I select some records with primary key as following
+      | Id                                   |
+      | 0157a930-7725-41d0-b1c4-281b794d38aa |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Id                                       | First name   | Last name     | Gender | Residence | Age   | Birth date     | Birth place          |
@@ -62,7 +68,7 @@ Feature: Manual Merge
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place      |
       | 0157a930-7725-41d0-b1c4-281b794d38aa | Cornelia   | Wagemaker |        |           | 0   | 10/21/1847 | Sint Philipsland |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild"
+    And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild1"
     Then I will see table RecordMetadata as below
       | id   | groupId  | state  | autoCreated | functionalId                         |
       | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa |
@@ -76,9 +82,7 @@ Feature: Manual Merge
     Then I will see table Decision as below
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-    Then I will see table MergeValueLineage as below
-      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
-      |    |                  |          |             |           |             |
+    Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
       | Data model             | Table  |
@@ -98,7 +102,10 @@ Feature: Manual Merge
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
     And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | Id |
+      | 1  |
+      | 2  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Id | Name              |
@@ -113,13 +120,9 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId |
       | KEY1 | GROUP_ID | Merged | No          | 1            |
       | KEY2 | GROUP_ID | Merged | No          | 2            |
-#      | KEY3 | GROUP_ID | Golden | Yes         | 50027        |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
-#    Then I will see table MergeResult as below
-#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-#      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
@@ -145,7 +148,10 @@ Feature: Manual Merge
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
     And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | Id |
+      | 1  |
+      | 2  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Id | Name              |
@@ -160,13 +166,9 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId |
       | KEY1 | GROUP_ID | Merged | No          | 1            |
       | KEY2 | GROUP_ID | Merged | No          | 2            |
-#      | KEY3 | GROUP_ID | Golden | Yes         | 50027        |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
-#    Then I will see table MergeResult as below
-#      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-#      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
@@ -189,7 +191,10 @@ Feature: Manual Merge
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
     And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | Id |
+      | 1  |
+      | 2  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Id    | Name              |
@@ -220,7 +225,10 @@ Feature: Manual Merge
       | Identifier      | Owner               | English Label |
       | referenceChild1 | admin admin (admin) |               |
     And I access table "Items" of dataset "Metadatas" in dataspace "Master Data - Reference > referenceChild1"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | Indentifiers |
+      | 1            |
+      | 2            |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Indentifiers | Category      | Brand       | Name             | Available         | defaultPrice | Expire_date             | testSourceField | integer | Hidden_fied |
@@ -252,7 +260,10 @@ Feature: Manual Merge
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
     And I access table "Items" of dataset "Stores" in dataspace "Master Data - Reference > referenceChild"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | Indentifiers |
+      | 1            |
+      | 2            |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Identifier | Category      | Brand       | Name           | Available | Default price |
@@ -403,7 +414,7 @@ Feature: Manual Merge
       | referenceChild | admin admin (admin) |               |
     And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
     When I select some records with primary key as following
-      | ID |
+      | Id |
       | 1  |
       | 2  |
     And I select table service "Match and Merge > Merge"
@@ -419,3 +430,13 @@ Feature: Manual Merge
     When I delete some MAME config records with primary key as following
       | Data model             | Table |
       | Publication: Genealogy | Place |
+
+  Scenario: UAT-MM11
+    Given I permit to access matching table
+    And I create record with PK "Publication: Genealogy" is "Place" and the content followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
+    And I select matching table record of table "Place"
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode | Used for manual merge | Apply permission on merge view |
+      | RANDOM            | Most complete                  |                        |      | Yes                   | Yes                            |

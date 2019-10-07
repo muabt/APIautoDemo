@@ -59,10 +59,7 @@ Feature: Survivor record selection mode is defined
     Then I will see table Decision as below
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-    Then I will see table MergeValueLineage as below
-      | id   | mergingProcessId | recordId      | sourceIndex | fieldPath | goldenIndex |   |
-      | KEY1 | mergingProcessId | Golden_record | 0           | admin     | /email      | 0 |
-
+    Then no records found in table "MergeValueLineage"
     And I delete the dataspace
 
   Scenario: SC-MPMM03 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and some records come from the same source
