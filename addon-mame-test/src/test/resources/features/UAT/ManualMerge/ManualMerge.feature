@@ -77,8 +77,8 @@ Feature: Manual Merge
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
     Then I will see table MergeValueLineage as below
-      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
-      |    |                  |          |             |           |             |  |
+      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
+      |    |                  |          |             |           |             |
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
       | Data model             | Table  |
@@ -124,7 +124,8 @@ Feature: Manual Merge
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
     Then I will see table MergeValueLineage as below
-      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
+      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
+      |    |                  |          |             |           |             |
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
       | Data model             | Table |
@@ -276,30 +277,29 @@ Feature: Manual Merge
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
     Then I will see table MergeValueLineage as below
-      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
-      |    |                  |          |             |           |             |  |
+      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
+      |    |                  |          |             |           |             |
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
       | Data model              | Table |
       | Publication: StoreModel | Items |
 
   Scenario: UAT-MM08
-#    Given I permit to access matching table
-#    And I create record with PK "Publication: Genealogy" is "Person" and the content followings
-#      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-#      | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
-#    And I select matching table record of table "Person"
-#    When I set Merge policy configuration as belows
-#      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
-#      | RANDOM            | Most recently acquired         |                        | Disabled | Yes                   | Yes                            |
-#    And I create Survivorship field with selections as followings
-#      | Survivorship field code | Field | Merge function | Condition for field value survivorship | Execute only if empty |
-#      | RANDOM                  | Age   | Min            |                                        | Yes                   |
+    Given I permit to access matching table
+    And I create record with PK "Publication: Genealogy" is "Person" and the content followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
+    And I select matching table record of table "Person"
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | RANDOM            | Most recently acquired         |                        | Disabled | Yes                   | Yes                            |
+    And I create Survivorship field with selections as followings
+      | Survivorship field code | Field | Merge function | Condition for field value survivorship | Execute only if empty |
+      | RANDOM                  | Age   | Min            |                                        | Yes                   |
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
     And I access table "Person" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
-#    When I select first "2" records in table
     When I select some records with primary key as following
       | ID                                   |
       | 0157a930-7725-41d0-b1c4-281b794d38aa |
@@ -328,8 +328,8 @@ Feature: Manual Merge
       | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
     Then I will see table MergeValueLineage as below
-      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |  |
-      |    |                  |          |             |           |             |  |
+      | id | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
+      |    |                  |          |             |           |             |
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
       | Data model             | Table  |
@@ -402,7 +402,10 @@ Feature: Manual Merge
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
     And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Id    | Name              |
