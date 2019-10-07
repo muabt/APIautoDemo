@@ -295,7 +295,7 @@ Feature: Manual Merge
       | Data model              | Table |
       | Publication: StoreModel | Items |
 
-  Scenario: UAT-MM08
+  Scenario: UAT-MM08 Survivor record selection mode = "Most recently acquired"
     Given I permit to access matching table
     And I create record with PK "Publication: Genealogy" is "Person" and the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
@@ -346,7 +346,7 @@ Feature: Manual Merge
       | Data model             | Table  |
       | Publication: Genealogy | Person |
 
-  Scenario: UAT-MM09
+  Scenario: UAT-MM09 Survivor record selection mode = "Most trust source"
     Given I permit to access matching table
     And I create record with PK "Publication: Genealogy" is "Person" and the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
@@ -397,7 +397,7 @@ Feature: Manual Merge
       | Data model             | Table  |
       | Publication: Genealogy | Person |
 
-  Scenario: UAT-MM10
+  Scenario: UAT-MM10 Survivor record selection mode = "Was golden"
     Given I permit to access matching table
     And I create record with PK "Publication: Genealogy" is "Place" and the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |

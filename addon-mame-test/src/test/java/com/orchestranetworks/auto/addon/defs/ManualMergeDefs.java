@@ -9,22 +9,20 @@ import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
 
+import static com.orchestranetworks.auto.addon.utils.MAMEConstants.RECORDMETADATA_TABLE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 import cucumber.api.DataTable;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
+import org.junit.Assert;
 
 public class ManualMergeDefs {
     @Steps
@@ -559,5 +557,61 @@ public class ManualMergeDefs {
     public void no_records_found_in_table(String tableName) {
         onCommonSteps.click_on_table_name(tableName);
         onCommonSteps.verify_table_noRecordsFound();
+    }
+
+    @Then("^I will verify the group id of table Recordmetadata as below$")
+    public void i_will_verify_the_groupid_of_table_recordmetadata_as_below(List<Map<String, String>> table) {
+        List<List<String>> expectList = new ArrayList<>();
+        table.forEach(row -> {
+            expectList.add(Arrays.asList(row.get
+                    (TechnicalTable.RecordMetadata.FUNCTIONAL_ID).split("\\s*,\\s*")));
+        });
+
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.RECORD_METADATA_TBL);
+        // Get actual table and add the list of same group ID in the hashmap, using groupId as key
+        HashMap<String, List<String>> hashMapGroupId = new HashMap<>();
+        HashMap<String, List<String>> actualTblData = new HashMap<>();
+        for (int i = 0; i < actualTbl.getRecords().size(); i++) {
+            String groupId = actualTbl.getRecord(i).getAsJsonObject()
+                    .get(TechnicalTable.RecordMetadata.GROUP_ID).getAsString();
+            String functionalId = actualTbl.getRecord(i).getAsJsonObject()
+                    .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
+            String state = actualTbl.getRecord(i).getAsJsonObject()
+                    .get(TechnicalTable.RecordMetadata.STATE).getAsString();
+            String autoCreated = actualTbl.getRecord(i).getAsJsonObject()
+                    .get(TechnicalTable.RecordMetadata.AUTO_CREATED).getAsString();
+            String isolated = actualTbl.getRecord(i).getAsJsonObject()
+                    .get(TechnicalTable.RecordMetadata.ISOLATED).getAsString();
+
+            actualTblData.put(functionalId, Arrays.asList(functionalId, state, autoCreated, isolated));
+            if (!hashMapGroupId.containsKey(groupId)) {
+                List<String> list = new ArrayList<>();
+                list.add(functionalId);
+                hashMapGroupId.put(groupId, list);
+            } else {
+                hashMapGroupId.get(groupId).add(functionalId);
+            }
+        }
+        System.out.println("");
+        Serenity.setSessionVariable(RECORDMETADATA_TABLE).to(actualTblData);
+
+        List<List<String>> actualList = new ArrayList<>(hashMapGroupId.values());
+        Assert.assertTrue(actualList.containsAll(expectList)
+                && actualList.size() == expectList.size());
+    }
+
+    @And("^I will verify other data of the table Recordmetadata as below$")
+    public void i_will_verify_the_data_of_table_recordmetadata_as_below(List<Map<String, String>> table) {
+        HashMap<String, List<String>> actualTable = Serenity.sessionVariableCalled(RECORDMETADATA_TABLE);
+        table.forEach(row -> {
+            String expectedFunctionalId = row.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
+            String expectedState = row.get(TechnicalTable.RecordMetadata.STATE);
+            String expectedAutoCreated = row.get(TechnicalTable.RecordMetadata.AUTO_CREATED);
+            String expectedIsolated = row.get(TechnicalTable.RecordMetadata.ISOLATED);
+            assertThat(expectedFunctionalId).isEqualTo(actualTable.get(expectedFunctionalId).get(0));
+            assertThat(expectedState).isEqualTo(actualTable.get(expectedFunctionalId).get(1));
+            assertThat(expectedAutoCreated).isEqualTo(actualTable.get(expectedFunctionalId).get(2));
+            assertThat(expectedIsolated).isEqualTo(actualTable.get(expectedFunctionalId).get(3));
+        });
     }
 }
