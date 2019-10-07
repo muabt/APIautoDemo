@@ -1,0 +1,5 @@
+[submodule "testsuite/testsuite"]
+	path = tools/testsuite
+	url = https://forge-partners.orchestranetworks.com/benchmarking/testsuite.git
+[submodule "tools/testsuite"]
+	branch = addon-tests-web/mame-uat-6.x.x
