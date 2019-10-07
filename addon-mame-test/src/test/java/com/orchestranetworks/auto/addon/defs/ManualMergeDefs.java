@@ -544,7 +544,17 @@ public class ManualMergeDefs {
     public void i_see_the_table_name_something_in_dropdown_list(String tableName) {
         onManualMergeSteps.verify_name_of_table(tableName);
     }
-
+    /**
+     * Verify the table name shows no record founds
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> no records found in table <font color="green">"NewEmployee"</font>
+     * </ul>
+     * </p>
+     *
+     * @param tableName table name that user want to check
+     */
     @Then("^no records found in table \"([^\"]*)\"$")
     public void no_records_found_in_table(String tableName) {
         onCommonSteps.click_on_table_name(tableName);
