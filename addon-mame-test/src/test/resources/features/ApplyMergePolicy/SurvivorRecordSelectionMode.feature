@@ -1,4 +1,4 @@
-@SYSTEM
+@SYSTEM_TEST
 Feature: Survivor record selection mode is defined
 
   Background:

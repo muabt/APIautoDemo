@@ -1,5 +1,5 @@
 #Author: onguyent@tibco.com
-@SYSTEM
+@SYSTEM_TEST
 Feature: Change state
 
   Background: 

@@ -1,4 +1,4 @@
-@SYSTEM
+@SYSTEM_TEST
 Feature: Manual Merge
   I want to use this template for Manual merge feature
 

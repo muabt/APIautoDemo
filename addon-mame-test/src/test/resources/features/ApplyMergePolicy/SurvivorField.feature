@@ -1,4 +1,4 @@
-@SYSTEM
+@SYSTEM_TEST
 Feature: Merge function for survivor field
   I want to use this template for Merge function for survivor field
 
