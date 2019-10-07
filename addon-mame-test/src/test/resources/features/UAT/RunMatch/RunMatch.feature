@@ -26,9 +26,9 @@ Feature: Run Match feature
       | SESSION          | Entire table             |
     When I complete Run Match process
     Then the popup message should be shown "The decision tree has not been configured properly. Please check your configuration."
-    And I permit to access matching table
-    And I select last record in table
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
     And I delete the dataspace
 
   Scenario: UAT-RM02 Run Match with MAME configuration with MatchingTable and Matching Policy Active = No.
@@ -46,9 +46,9 @@ Feature: Run Match feature
     And I access table "Person" of dataset "genealogy" in dataspace "Master Data - Reference > childDataspace"
     When I select table service "Match and Merge > Run match"
     Then the popup message should be shown "The run match service can't be executed: No matching process is actived. Please check your configuration."
-    And I permit to access matching table
-    And I select last record in table
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
     And I delete the dataspace
 
   Scenario: UAT-RM03 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
@@ -61,10 +61,14 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId                         |
+      | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa |
+      | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |
     When I complete Run Match process
-    And I permit to access matching table
-    And I select last record in table
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
     And I delete the dataspace
 
   Scenario: UAT-RM04 Run Match with Import MAME_Configuration_Inline.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
@@ -78,9 +82,9 @@ Feature: Run Match feature
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
     When I complete Run Match process
-    And I permit to access matching table
-    And I select last record in table
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
     And I delete the dataspace
 
   Scenario: UAT-RM05 Run Match(Active selection) with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
@@ -94,9 +98,9 @@ Feature: Run Match feature
       | Matching process | Records to match against |
       | SESSION          | Active selection         |
     When I complete Run Match process
-    And I permit to access matching table
-    And I select last record in table
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
     And I delete the dataspace
 
   Scenario: UAT-RM06 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Advanced Setting.
@@ -115,9 +119,9 @@ Feature: Run Match feature
       | Matching process | Records to match against |
       | SESSION          | Active selection         |
     When I complete Run Match process
-    And I permit to access matching table
-    And I select last record in table
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
     And I delete the dataspace
 
   Scenario: UAT-RM07 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Both null values Won't match.
@@ -137,7 +141,7 @@ Feature: Run Match feature
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
     When I complete Run Match process
-    And I permit to access matching table
-    And I select last record in table
-    Then delete it
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table  |
+      | Publication: Genealogy | Person |
     And I delete the dataspace
