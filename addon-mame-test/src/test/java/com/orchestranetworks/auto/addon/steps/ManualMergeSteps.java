@@ -59,9 +59,9 @@ public class ManualMergeSteps {
                 String expectedCell = expectedTb.get(row).get(col);
                 String actualCell = actualTb.get(row).get(col);
                 if (expectedCell.contains(MAMEConstants.HIGHLIGHT_SYNTAX)) {
-                    expectedCell.replace(MAMEConstants.HIGHLIGHT_SYNTAX, "").trim();
+                    expectedCell = expectedCell.replace(MAMEConstants.HIGHLIGHT_SYNTAX, "").trim();
                 }
-                softAssertions.assertThat(expectedCell).isEqualTo(expectedCell);
+                softAssertions.assertThat(expectedCell).isEqualTo(actualCell);
             }
         }
         softAssertions.assertAll();

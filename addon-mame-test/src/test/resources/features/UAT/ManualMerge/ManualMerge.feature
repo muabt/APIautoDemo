@@ -7,7 +7,7 @@ Feature: Manual Merge
   Background:
     Given I login to EBX successfully
 
-  Scenario: UAT-MM01 Default merge function = Last update
+  Scenario: UAT-MM01 Default merge function = Last update and PK isn't auto incremented value
     Given I permit to access matching table
     And I create record with PK "Publication: Genealogy" is "Person" and the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
@@ -263,52 +263,38 @@ Feature: Manual Merge
 
   Scenario: UAT-MM07 Verify merge result with field in datamodel is read-only
     Given I permit to access matching table
-    And I create record with PK "Publication: StoreModel" is "Items" and the content followings
-      | Data model:DDL          | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: StoreModel | Items     | Yes          |                              |                  |                    |                       |
+    And I create record with PK "Publication: Metadatas" is "Items" and the content followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
     And I select matching table record of table "Items"
     When I set Merge policy configuration as belows
-      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
-      | RANDOM            | Last update                    |                        | Disabled | Yes                   | Yes                            |
+  | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+  | RANDOM            | Last update                    |                        | Duplicates and singletons | Yes                   | Yes                            |
     And I create Survivorship field with selections as followings
-      | Survivorship field code | Field         | Merge function | Condition for field value survivorship | Execute only if empty |
-      | RANDOM                  | Default price | Max            |                                        | Yes                   |
+      | Survivorship field code | Field    | Merge function | Condition for field value survivorship | Execute only if empty |
+      | RANDOM                  | Category | Most frequent  |                                        | Yes                   |
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
-    And I access table "Items" of dataset "Stores" in dataspace "Master Data - Reference > referenceChild"
+    And I access table "Items" of dataset "Metadatas" in dataspace "Master Data - Reference > referenceChild"
     When I select some records with primary key as following
       | Indentifiers |
       | 1            |
       | 2            |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
-      | Identifier | Category      | Brand       | Name           | Available | Default price |
-      | 2          | Phones        | Sunny       | Pocket Handy   | true      | 240           |
-      | 1 {H}      | Computers {H} | Apricot {H} | Laptop Pro {H} | true {H}  | 720 {H}       |
+      | Indentifiers | Category      | Brand       | Name             | Available        | defaultPrice | Expire_date             | testSourceField | integer |
+      | 1            | name1 - 1 {H} | Branh 1 {H} | Minh Tran {H}    | [List] 20/20 {H} | 120,000 {H}  | 04/09/2019 17:29:55 {H} | 2010 {H}        | {H}     |
+      | 2            | name1 - 1     | Branh 1     | Minh Tran Tranhg | [List] 0/4       | 120          | 04/09/2019 17:04:24     | 2010            |         |
     And preview table is displayed as below
-      | Identifier | Category | Brand | Name         | Available | Default price |
-      | 2          | Phones   | Sunny | Pocket Handy | true      | 240           |
+      | Indentifiers     | Category  | Brand   | Name      | Available    | defaultPrice | Expire_date         | testSourceField | integer |
+      | [auto generated] | name1 - 1 | Branh 1 | Minh Tran | [List] 20/24 | 120,000      | 04/09/2019 17:29:55 | 2010            |         |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "StoreModel_Item_MDS" in dataspace "Master Data - Reference > referenceChild"
-    Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId | isolated |
-      | KEY1 | GROUP_ID | Merged | No          | 1            | No       |
-      | KEY2 | GROUP_ID | Golden | No          | 2            | No       |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
-    Then I will see table MergeResult as below
-      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
-      | KEY1 | 1        | 2        | mergingProcessId | No              |
-    Then I will see table Decision as below
-      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 1        | 2        | Identified as match | admin | decisionDate | mergingProcessId |
-    Then no records found in table "MergeValueLineage"
+    And I close the error popup
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
-      | Data model              | Table |
-      | Publication: StoreModel | Items |
+      | Data model             | Table |
+      | Publication: Metadatas | Items |
 
   Scenario: UAT-MM08 Survivor record selection mode = "Most recently acquired"
     Given I permit to access matching table

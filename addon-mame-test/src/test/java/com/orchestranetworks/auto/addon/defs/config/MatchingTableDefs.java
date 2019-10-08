@@ -514,8 +514,6 @@ public class MatchingTableDefs {
         onMatchingTableSteps.click_btn_save_and_close_internal_popup(1);
     }
 
-
-
     @When("^I delete some MAME config records with primary key as following$")
     public void i_delete_some_records_with_primary_key_as_following(List<List<String>> dt) {
         onAdministrationSteps.access_matching_table();

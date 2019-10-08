@@ -38,7 +38,7 @@ public class MAMEConstants {
     public static final String RESET = "Reset";
     public static final String APPLY_MERGE_POLICY = "Apply merge policy";
     public static final String CANCEL_LAST_ACTION = "Cancel last action";
-    public static final String HIGHLIGHT_SYNTAX = "- {H}";
+    public static final String HIGHLIGHT_SYNTAX = "{H}";
     public static final String TITLE = "title";
     public static final String RUN_MATCH = "Run match";
     public static final String NEXT = "Next";

@@ -5,6 +5,7 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 import java.util.List;
 
+
 @ImplementedBy(ManualMergeViewWidgetImpl.class)
 public interface ManualMergeViewWidget extends WidgetObject {
     void clickBtnNext();
@@ -16,7 +17,7 @@ public interface ManualMergeViewWidget extends WidgetObject {
     boolean isCellHighlighted(int row, int col);
     List<List<String>> getDataPreviewTable();
     String getTextOfResetBtn();
-  	String getActualTableName();
+    String getActualTableName();
     String getTextOfRightBtn();
     String isBtnCancelLastActionActive();
     String getTextOfCancelActionButton();

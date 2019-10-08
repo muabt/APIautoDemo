@@ -175,26 +175,6 @@ public class DatasetDefs {
         SessionData.saveDataObjectToSession(Constants.DATA_OBJECT,dataObject);
     }
 
-    public void test(List<List<String>> dt) {
-        List<String> headers = dt.get(0);
-        DataObject dataObject = new DataObject();
-        KeyObject keyObject = null;
-        for (int i = 1; i < dt.size(); i++) {
-            ListIterator<List<String>> valueLists = dt.listIterator(i);
-            for (valueLists.hasNext(); ; ) {
-                keyObject = new KeyObject();
-                Iterator<String> values = valueLists.next().iterator();
-                Iterator<String> keys = headers.iterator();
-                keyObject.addPK(keys.next(), values.next());
-                System.out.println("Key=" + keyObject);
-
-                dataObject.addPK(keyObject);
-                System.out.println("Data=" + dataObject.toString());
-                onDatasetSteps.select_record_with_PK(valueLists.next());
-            }
-        }
-    }
-
     @And("^I access to \"([^\"]*)\" tab$")
     public void i_access_to_tab(String label) {
         onDatasetSteps.click_on_tab_label(label);
