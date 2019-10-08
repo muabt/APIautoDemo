@@ -59,4 +59,5 @@ public class MAMEConstants {
     public static final String ONE_VALUE_NULL = "One of the values is null";
     public static final String RECORD_TO_MATCH_AGAINST = "Records to match against";
     public static final String SURVIVOR_FIELD = "Survivor field";
+    public static final String RECORDMETADATA_TABLE = "table_Recordmetadata_data";
 }

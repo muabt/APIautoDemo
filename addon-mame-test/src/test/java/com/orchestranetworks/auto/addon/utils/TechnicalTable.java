@@ -8,6 +8,7 @@ public interface TechnicalTable {
         public final static String STATE = "state";
         public final static String AUTO_CREATED = "autoCreated";
         public final static String FUNCTIONAL_ID = "functionalId";
+        public final static String ISOLATED = "isolated";
 
     }
 
