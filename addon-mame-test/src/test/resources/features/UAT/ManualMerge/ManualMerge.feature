@@ -77,11 +77,11 @@ Feature: Manual Merge
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+      | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
+      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | decisionDate | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -126,8 +126,9 @@ Feature: Manual Merge
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 1        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 2        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -216,11 +217,11 @@ Feature: Manual Merge
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 2        | 1        | mergingProcessId | No              |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 2        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
       | Data model             | Table |
@@ -261,7 +262,7 @@ Feature: Manual Merge
       | Data model             | Table |
       | Publication: Metadatas | Items |
 
-  Scenario: UAT-MM07
+  Scenario: UAT-MM07 Verify merge result with field in datamodel is read-only
     Given I permit to access matching table
     And I create record with PK "Publication: StoreModel" is "Items" and the content followings
       | Data model:DDL          | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
@@ -299,11 +300,11 @@ Feature: Manual Merge
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 1        | 2        | mergingProcessId | No              |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 1        | 2        | Identified as match | admin | decisionDate | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -348,11 +349,11 @@ Feature: Manual Merge
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+      | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
+      | KEY1 | 0157a930-7725-41d0-b1c4-281b794d38aa | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | mergingProcessId | No              |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 0157a930-7725-41d0-b1c4-281b794d38aa | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | Identified as match | admin | decisionDate | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -397,11 +398,11 @@ Feature: Manual Merge
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+      | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
+      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | decisionDate | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -446,52 +447,72 @@ Feature: Manual Merge
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 2        | 1        | mergingProcessId | No              |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 2        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
       | Data model             | Table |
       | Publication: Genealogy | Place |
 
-#  Scenario: UAT-MM11 Apply Merge with Field have Merge function = No merge and Survivor record selection mode = Most complete
-#    Given I permit to access matching table
-#    And I create record with PK "Publication: Genealogy" is "Place" and the content followings
-#      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-#      | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
-#    And I select matching table record of table "Place"
-#    When I set Merge policy configuration as belows
-#      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
-#      | RANDOM            | Most complete                  | Longest                | Disabled | Yes                   | Yes                            |
-#    And I create Survivorship field with selections as followings
-#      | Survivorship field code | Field | Merge function | Condition for field value survivorship | Execute only if empty |
-#      | RANDOM                  | Name  | No merge       |                                        |                       |
-#    And I create a child of dataspace "Master Data - Reference" with information as following
-#      | Identifier      | Owner               | English Label |
-#      | referenceChild2 | admin admin (admin) |               |
-#    And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild2"
-#    When I select some records with primary key as following
-#      | Id |
-#      | 1  |
-#      | 2  |
-#      | 3  |
-#      | 4  |
-#    And I select table service "Match and Merge > Merge"
-#    Then record view table will be displayed and highlighted as below
-#      | Id    | Name              |
-#      | 1 {H} | Poortvliet    {H} |
-#      | 2     | Brouwershaven     |
-#      | 3     | Sint Philipsland  |
-#      | 4     | Bruinisse         |
-#    And preview table is displayed as below
-#      | Id | Name       |
-#      | 1  | Poortvliet |
-#    And I complete merging process
-#
-#    And I delete the dataspace
-#    When I delete some MAME config records with primary key as following
-#      | Data model             | Table |
-#      | Publication: Genealogy | Place |
+  Scenario: UAT-MM11 Apply Merge with Field have Merge function = No merge and Survivor record selection mode = Most complete
+    Given I permit to access matching table
+    And I create record with PK "Publication: Genealogy" is "Place" and the content followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
+    And I select matching table record of table "Place"
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | RANDOM            | Most complete                  | Longest                | Disabled | Yes                   | Yes                            |
+    And I create Survivorship field with selections as followings
+      | Survivorship field code | Field | Merge function | Condition for field value survivorship | Execute only if empty |
+      | RANDOM                  | Name  | No merge       |                                        |                       |
+    And I create a child of dataspace "Master Data - Reference" with information as following
+      | Identifier      | Owner               | English Label |
+      | referenceChild2 | admin admin (admin) |               |
+    And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild2"
+    When I select some records with primary key as following
+      | Id |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
+    And I select table service "Match and Merge > Merge"
+    Then record view table will be displayed and highlighted as below
+      | Id    | Name              |
+      | 1 {H} | Poortvliet    {H} |
+      | 2     | Brouwershaven     |
+      | 3     | Sint Philipsland  |
+      | 4     | Bruinisse         |
+    And preview table is displayed as below
+      | Id | Name       |
+      | 1  | Poortvliet |
+    And I complete merging process
+    And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild2"
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId | isolated |
+      | KEY1 | GROUP_ID | Golden | No          | 1            | No       |
+      | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
+      | KEY3 | GROUP_ID | Merged | No          | 3            | No       |
+      | KEY4 | GROUP_ID | Merged | No          | 4            | No       |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+    Then I will see table MergeResult as below
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 2        | 1        | mergingProcessId | No              |
+      | KEY2 | 3        | 1        | mergingProcessId | No              |
+      | KEY3 | 4        | 1        | mergingProcessId | No              |
+    Then I will see table Decision as below
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 2        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY2 | 3        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY3 | 4        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
+    Then no records found in table "MergeValueLineage"
+    And I delete the dataspace
+    When I delete some MAME config records with primary key as following
+      | Data model             | Table |
+      | Publication: Genealogy | Place |

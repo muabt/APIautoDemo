@@ -303,17 +303,9 @@ public class ManualMergeDefs {
 
             }
             if (!recordId.isEmpty()) {
-                recordId = TableObject.takeTable(mergedRecord, MAMEConstants.RECORD_METADATA_TBL)
-                        .filter(TechnicalTable.RecordMetadata.STATE, "Merged")
-                        .get(0).getAsJsonObject()
-                        .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.RECORD_ID, recordId);
             }
             if (!goldenId.isEmpty()) {
-                goldenId = TableObject.takeTable(mergedRecord, MAMEConstants.RECORD_METADATA_TBL)
-                        .filter(TechnicalTable.RecordMetadata.STATE, "Golden")
-                        .get(0).getAsJsonObject()
-                        .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.GOLDEN_ID, goldenId);
 
             }
@@ -370,7 +362,7 @@ public class ManualMergeDefs {
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.DECISION);
         mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
 
-        String mergedId = TableObject.takeTable(mergedRecord, MAMEConstants.RECORD_METADATA_TBL)
+      /*  String mergedId = TableObject.takeTable(mergedRecord, MAMEConstants.RECORD_METADATA_TBL)
                 .filter(TechnicalTable.RecordMetadata.STATE, "Merged")
                 .get(0).getAsJsonObject()
                 .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
@@ -378,7 +370,7 @@ public class ManualMergeDefs {
         String goldenId = TableObject.takeTable(mergedRecord, MAMEConstants.RECORD_METADATA_TBL)
                 .filter(TechnicalTable.RecordMetadata.STATE, "Golden")
                 .get(0).getAsJsonObject()
-                .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
+                .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();*/
 
         for (int i = 0; i < expectedTbl.size(); i++) {
             JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
@@ -395,10 +387,10 @@ public class ManualMergeDefs {
 
             }
             if (!sourceId.isEmpty()) {
-                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.SOURCE_ID, mergedId);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.SOURCE_ID, sourceId);
             }
             if (!targetId.isEmpty()) {
-                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.TARGET_ID, goldenId);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.TARGET_ID, targetId);
 
             }
             if (!lastDecision.isEmpty()) {
