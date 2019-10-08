@@ -579,10 +579,10 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     public String getColumnNameWithIndex(int index) {
         String xPathHeader = "(//th[contains(@id,'ebx_workspaceTable_tableField') or (@class='ebx_tvSortableColumn')][descendant::span[@class='ebx_RawLabel']])[" + index + "]";
         WebElementFacade header = getElement(xPathHeader);
-        if (!header.isDisplayed()) {
-            highlightElement(xPathHeader);
-            return header.getAttribute("textContent").replaceAll(String.valueOf((char) 160),"");
-        } else
+        highlightElement(xPathHeader);
+        if (!header.isDisplayed())
+            return header.getAttribute("textContent").replaceAll(String.valueOf((char) 160), "");
+        else
             return header.getText().trim();
 
     }
@@ -612,10 +612,10 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
                 + colInd + "]";
 
         WebElementFacade cell = getElement(xpathDataCell);
-        if (!cell.isDisplayed()) {
-            highlightElement(xpathDataCell);
+        highlightElement(xpathDataCell);
+        if (!cell.isDisplayed())
             return cell.getAttribute("textContent").trim();
-        } else
+        else
             return cell.getText().trim();
     }
 
