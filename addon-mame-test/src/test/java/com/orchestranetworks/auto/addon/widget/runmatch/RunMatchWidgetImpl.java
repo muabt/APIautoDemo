@@ -41,6 +41,4 @@ public class RunMatchWidgetImpl extends BaseWidgetImpl implements RunMatchWidget
     public void expandMatchingProcessAdvancedSettings() {
         getElement(XPATH_EXPAND_ADVANCE_SETTING).click();
     }
-
-
 }
