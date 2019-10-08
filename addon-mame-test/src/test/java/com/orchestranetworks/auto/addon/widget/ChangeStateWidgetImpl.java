@@ -1,8 +1,8 @@
 package com.orchestranetworks.auto.addon.widget;
 
-import com.orchestranetworks.auto.addon.Constants;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 import com.orchestranetworks.auto.addon.pages.ChangeStatePage;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
