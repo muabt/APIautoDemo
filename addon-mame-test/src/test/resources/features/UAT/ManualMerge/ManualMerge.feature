@@ -123,8 +123,7 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId |
       | KEY1 | GROUP_ID | Merged | No          | 1            |
       | KEY2 | GROUP_ID | Merged | No          | 2            |
-#      Need to update below
-      | KEY3 | GROUP_ID | Golden | Yes         | 50046        |
+      | KEY3 | GROUP_ID | Golden | Yes         |              |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
@@ -170,14 +169,14 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId |
       | KEY1 | GROUP_ID | Merged | No          | 1            |
       | KEY2 | GROUP_ID | Merged | No          | 2            |
-    #      Need to update below
-      | KEY3 | GROUP_ID | Golden | Yes         | 50046        |
+      | KEY3 | GROUP_ID | Golden | Yes         |              |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 1        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY2 | 2        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following

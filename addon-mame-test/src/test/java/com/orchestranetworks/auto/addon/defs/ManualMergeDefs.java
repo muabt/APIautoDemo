@@ -138,7 +138,7 @@ public class ManualMergeDefs {
         String actualGroupID = onManualMergeSteps.get_groupID();
 
         // Filter by group id if golden record is auto generated
-        if (expectedTbl.size()>mergedRecord.getPKs().size()) {
+        if (expectedTbl.size() > mergedRecord.getPKs().size()) {
             onCommonSteps.delete_all_occurrence();
             filterConditions = new ArrayList<Map<String, String>>();
             condition = new HashMap<String, String>();
@@ -167,17 +167,17 @@ public class ManualMergeDefs {
             if (!groupID.isEmpty()) {
                 SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.GROUP_ID, actualGroupID);
             }
-            if (!state.isEmpty()){
+            if (!state.isEmpty()) {
                 SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.STATE, state);
             }
-            if (!autoCreated.isEmpty()){
+            if (!autoCreated.isEmpty()) {
                 SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.AUTO_CREATED, autoCreated);
             }
-            if (!functionalID.isEmpty()){
+            if (!functionalID.isEmpty()) {
                 SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
-            }else{
-                String autoGeneratePK = actualTbl.getRecord(actualTbl.getRecords().size()-1).get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
-                mergedRecord.addPK(TechnicalTable.RecordMetadata.FUNCTIONAL_ID,autoGeneratePK );
+            } else {
+                String autoGeneratePK = actualTbl.getRecord(actualTbl.getRecords().size() - 1).get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
+                mergedRecord.addPK(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, autoGeneratePK);
             }
 
 
@@ -397,12 +397,12 @@ public class ManualMergeDefs {
       /*  String mergedId = TableObject.takeTable(mergedRecord, MAMEConstants.RECORD_METADATA_TBL)
                 .filter(TechnicalTable.RecordMetadata.STATE, "Merged")
                 .get(0).getAsJsonObject()
-                .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
+                .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();*/
 
         String goldenId = TableObject.takeTable(mergedRecord, MAMEConstants.RECORD_METADATA_TBL)
                 .filter(TechnicalTable.RecordMetadata.STATE, "Golden")
                 .get(0).getAsJsonObject()
-                .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();*/
+                .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
 
         for (int i = 0; i < expectedTbl.size(); i++) {
             JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
@@ -422,7 +422,7 @@ public class ManualMergeDefs {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.SOURCE_ID, sourceId);
             }
             if (!targetId.isEmpty()) {
-                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.TARGET_ID, targetId);
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.TARGET_ID, goldenId);
 
             }
             if (!lastDecision.isEmpty()) {
@@ -566,6 +566,7 @@ public class ManualMergeDefs {
     public void i_see_the_table_name_something_in_dropdown_list(String tableName) {
         onManualMergeSteps.verify_name_of_table(tableName);
     }
+
     /**
      * Verify the table name shows no record founds
      * <p>
