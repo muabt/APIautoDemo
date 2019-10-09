@@ -484,7 +484,7 @@ public class ManualMergeDefs {
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGEVALUELINEAGE);
         mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
 
-        for (int i = 0; i < table.size(); i++) {
+        for (int i = 0; i < expectedTbl.size(); i++) {
             JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
             JsonObject actualRow = actualTbl.getRecord(i);
 

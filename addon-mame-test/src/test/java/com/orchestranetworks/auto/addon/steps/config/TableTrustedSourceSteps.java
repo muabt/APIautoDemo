@@ -33,9 +33,7 @@ public class TableTrustedSourceSteps extends ScenarioSteps {
         String[] sourceList = trustedSourceList.split(",");
         for (int i = 0; i < sourceList.length; i++) {
             onTableTrustedSourcePage.getRecordDetailWidget().addAnOccurrence();
-            onTableTrustedSourcePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.TRUSTED_SOURCE_LIST, sourceList[i].trim());
+            onTableTrustedSourcePage.getItemCreationWidget().selectDDLByJSWithIndex(MAMEConstants.TRUSTED_SOURCE_LIST, (i + 1), sourceList[i].trim());
         }
     }
-
-
 }

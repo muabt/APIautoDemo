@@ -62,7 +62,7 @@ Feature: Manual Merge
     Then record view table will be displayed and highlighted as below
       | Id                                       | First name   | Last name     | Gender | Residence | Age   | Birth date     | Birth place          |
       | 0157a930-7725-41d0-b1c4-281b794d38aa {H} | Huibregt     | Heijboer      | {H}    | {H}       | 0 {H} | 10/21/1847 {H} | Poortvliet           |
-      | 06127a07-3d23-4fb1-bd55-f5044873b0f1     | Cornelia {H} | Wagemaker {H} |        |           |       | 10/28/1922     | Sint Philipsland {H} |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1     | Cornelia {H} | Wagemaker {H} |        |           | 0     | 10/28/1922     | Sint Philipsland {H} |
     And preview table is displayed as below
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place      |
       | 0157a930-7725-41d0-b1c4-281b794d38aa | Cornelia   | Wagemaker |        |           | 0   | 10/21/1847 | Sint Philipsland |
@@ -81,7 +81,11 @@ Feature: Manual Merge
     Then I will see table Decision as below
       | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | decisionDate | mergingProcessId |
-    Then no records found in table "MergeValueLineage"
+    Then I will see table MergeValueLineage as below
+      | id   | mergingProcessId | recordId                             | sourceIndex | fieldPath   | goldenIndex |
+      | KEY1 | MERGE_PROCESS_ID | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |             | /lastName   |             |
+      | KEY2 | MERGE_PROCESS_ID | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |             | /firstName  |             |
+      | KEY3 | MERGE_PROCESS_ID | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |             | /birthPlace |             |
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
       | Data model             | Table  |
@@ -268,8 +272,8 @@ Feature: Manual Merge
       | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
     And I select matching table record of table "Items"
     When I set Merge policy configuration as belows
-  | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
-  | RANDOM            | Last update                    |                        | Duplicates and singletons | Yes                   | Yes                            |
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode            | Used for manual merge | Apply permission on merge view |
+      | RANDOM            | Most complete                  |                        | Only duplicates | Yes                   | Yes                            |
     And I create Survivorship field with selections as followings
       | Survivorship field code | Field    | Merge function | Condition for field value survivorship | Execute only if empty |
       | RANDOM                  | Category | Most frequent  |                                        | Yes                   |
@@ -318,9 +322,9 @@ Feature: Manual Merge
       | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
-      | Id                                        | First name     | Last name     | Gender | Residence | Age | Birth date     | Birth place          |
-      | 0157a930-7725-41d0-b1c4-281b794d38aa      | Huibregt       | Heijboer      |        |           | 0   | 10/21/1847     | Poortvliet           |
-      | 06127a07-3d23-4fb1-bd55-f5044873b0f1  {H} | Cornelia   {H} | Wagemaker {H} | {H}    | {H}       | {H} | 10/28/1922 {H} | Sint Philipsland {H} |
+      | Id                                        | First name     | Last name     | Gender | Residence | Age   | Birth date     | Birth place          |
+      | 0157a930-7725-41d0-b1c4-281b794d38aa      | Huibregt       | Heijboer      |        |           | 0     | 10/21/1847     | Poortvliet           |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1  {H} | Cornelia   {H} | Wagemaker {H} | {H}    | {H}       | 0 {H} | 10/28/1922 {H} | Sint Philipsland {H} |
     And preview table is displayed as below
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place      |
       | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | Cornelia   | Wagemaker |        |           | 0   | 10/28/1922 | Sint Philipsland |
@@ -369,7 +373,7 @@ Feature: Manual Merge
     Then record view table will be displayed and highlighted as below
       | Id                                         | First name   | Last name    | Gender | Residence | Age   | Birth date     | Birth place        |
       | 0157a930-7725-41d0-b1c4-281b794d38aa   {H} | Huibregt {H} | Heijboer {H} | {H}    | {H}       | 0 {H} | 10/21/1847 {H} | Poortvliet     {H} |
-      | 06127a07-3d23-4fb1-bd55-f5044873b0f1       | Cornelia     | Wagemaker    |        |           |       | 10/28/1922     | Sint Philipsland   |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1       | Cornelia     | Wagemaker    |        |           | 0     | 10/28/1922     | Sint Philipsland   |
     And preview table is displayed as below
       | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place |
       | 0157a930-7725-41d0-b1c4-281b794d38aa | Huibregt   | Heijboer  |        |           | 0   | 10/21/1847 | Poortvliet  |
@@ -501,3 +505,69 @@ Feature: Manual Merge
     When I delete some MAME config records with primary key as following
       | Data model             | Table |
       | Publication: Genealogy | Place |
+
+  Scenario: UAT-MM12 Apply Most trusted source with Table trusted source config
+    Given I permit to access matching table
+    And I create record with PK "Publication: Human_Resource" is "NewEmployee" and the content followings
+      | Data model:DDL              | Table:DDL   | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | NewEmployee | Yes          |                              | Supervisor       |                    |                       |
+    And I select matching table record of table "NewEmployee"
+    And the matching process is configured as the followings
+      | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
+      | RANDOM                |                | Yes    |                                |                              |              |                                    |                           |                             |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | RANDOM            | Most trusted source            | [not defined]          | Disabled | Yes                   | Yes                            |
+    And the Source in Trusted source are
+      | Name of source | Description |
+      | Vien Pham      |             |
+    And the Table trusted source with the followings
+      | Matching table | Trusted source list |
+      | NewEmployee    | Vien Pham           |
+    And I create a child of dataspace "Master Data - Reference" with information as following
+      | Identifier      | Owner               | English Label |
+      | referenceChild2 | admin admin (admin) |               |
+    And I access table "NewEmployee" of dataset "Human_Resource" in dataspace "Master Data - Reference > referenceChild2"
+    When I select some records with primary key as following
+      | Identifier |
+      | 1          |
+      | 2          |
+      | 3          |
+      | 4          |
+    And I select table service "Match and Merge > Merge"
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Supervisor    | Date of birth | National | Phone Number | Email      | Date and time created | Name     |
+      | 1          | Dava          | 04/02/2019    | FR       | 123456       | [List] 0/1 | 04/25/2019 16:35:52   | Nguyen   |
+      | 2          |               | 04/18/2019    | UK       | 34555555     |            | 04/25/2019 16:36:10   | Vien     |
+      | 3 {H}      | Vien Pham {H} | {H}           | VN   {H} | {H}          | {H}        | {H}                   | Oanh {H} |
+      | 4          | Vien Pham     | 04/25/2019    | US       |              |            | 04/25/2019 16:36:50   | Canh     |
+    And preview table is displayed as below
+      | Identifier | Supervisor | Date of birth | National | Phone Number | Email      | Date and time created | Name |
+      | 3          | Vien Pham  |               | VN       |              | [List] 0/1 |                       | Oanh |
+    And I complete merging process
+    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference > referenceChild2"
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId | isolated |
+      | KEY1 | GROUP_ID | Merged | No          | 1            | No       |
+      | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
+      | KEY3 | GROUP_ID | Golden | No          | 3            | No       |
+      | KEY4 | GROUP_ID | Merged | No          | 4            | No       |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+    Then I will see table MergeResult as below
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 1        | 3        | mergingProcessId | No              |
+      | KEY2 | 2        | 3        | mergingProcessId | No              |
+      | KEY3 | 4        | 3        | mergingProcessId | No              |
+    Then I will see table Decision as below
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 1        | 3        | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY2 | 2        | 3        | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY3 | 4        | 3        | Identified as match | admin | decisionDate | mergingProcessId |
+    Then no records found in table "MergeValueLineage"
+    And I delete the dataspace
+    When I delete some MAME config records with primary key as following
+      | Data model                  | Table       |
+      | Publication: Human_Resource | NewEmployee |
+

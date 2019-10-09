@@ -95,6 +95,19 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     }
 
     @Override
+    public void selectDDLByJSWithIndex(String label, int index, String value) {
+        String xPathDDL = "(//tr[contains(@class,'ebx_Field') and not(@style='display: none;')][descendant::*[.='"
+                + label + "']]//button[@title='Open drop-down list'])["+index+"]";
+
+        String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + specialTextPredicates(value)
+                + " and string-length(normalize-space(text())=" + value.length()
+                + ")) and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
+        clickOnElement(xPathDDL);
+
+        executeJS("arguments[0].click();", xPathValue);
+    }
+
+    @Override
     public void clickBtnWithLabel(String label, String value) {
         String xpathBtnExpand = "//tr[contains(@class,'ebx_Field') and not(@style='display: none;')]" +
                 "[descendant::*[.='" + label + "']]//button[@title='" + value + "']";

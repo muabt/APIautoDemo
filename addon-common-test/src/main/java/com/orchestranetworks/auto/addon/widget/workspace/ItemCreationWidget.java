@@ -28,6 +28,8 @@ public interface ItemCreationWidget extends WidgetObject {
 
     void selectDDLByJS(String label, String value);
 
+	void selectDDLByJSWithIndex(String label, int index, String value);
+
     void clickBtnWithLabel(String label, String value);
 
     void clearDDL(String label);
