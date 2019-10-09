@@ -121,10 +121,12 @@ public class ManualMergeDefs {
     public void i_will_see_table_recordmetadata_as_below(List<List<String>> recordMetadataExpect) {
         JsonArray expectedTbl = SessionData.convertArrayListToJson(recordMetadataExpect);
         mergedRecord = SessionData.getDataObjectFromSession(Constants.DATA_OBJECT);
+
         // Filter selected record by Functional ID
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        Map<String, String> condition = null;
         for (int i = 0; i < expectedTbl.size(); i++) {
-            Map<String, String> condition = new HashMap<String, String>();
+            condition = new HashMap<String, String>();
             JsonObject record = expectedTbl.get(i).getAsJsonObject();
             condition.put(Constants.CRITERION, TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
             condition.put(Constants.OPERATION, "equals");
@@ -133,22 +135,52 @@ public class ManualMergeDefs {
             filterConditions.add(condition);
         }
         onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+        String actualGroupID = onManualMergeSteps.get_groupID();
+
+        // Filter by group id if golden record is auto generated
+        if (expectedTbl.size()>mergedRecord.getPKs().size()) {
+            onCommonSteps.delete_all_occurrence();
+            filterConditions = new ArrayList<Map<String, String>>();
+            condition = new HashMap<String, String>();
+            condition.put(Constants.CRITERION, TechnicalTable.RecordMetadata.GROUP_ID);
+            condition.put(Constants.OPERATION, "=");
+            condition.put(Constants.VALUE, actualGroupID);
+            condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+            filterConditions.add(condition);
+            onCommonSteps.input_search_condition(filterConditions);
+            onCommonSteps.click_btn_apply_advanced_search();
+        }
 
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.RECORD_METADATA_TBL);
         mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
 
-        //Get Group ID
-        String groupID = actualTbl.getRecord(0).getAsJsonObject()
-                .get(TechnicalTable.RecordMetadata.GROUP_ID).getAsString();
         //Loop for verify
         for (int i = 0; i < expectedTbl.size(); i++) {
             JsonObject expected = expectedTbl.get(i).getAsJsonObject();
             JsonObject actual = actualTbl.getRecord(i);
 
-            SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.GROUP_ID, groupID);
-            SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.STATE, expected, TechnicalTable.RecordMetadata.STATE);
-            SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.AUTO_CREATED, expected, TechnicalTable.RecordMetadata.AUTO_CREATED);
-            SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, expected, TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
+            String groupID = expected.get(TechnicalTable.RecordMetadata.GROUP_ID).getAsString();
+            String state = expected.get(TechnicalTable.RecordMetadata.STATE).getAsString();
+            String autoCreated = expected.get(TechnicalTable.RecordMetadata.AUTO_CREATED).getAsString();
+            String functionalID = expected.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
+
+            if (!groupID.isEmpty()) {
+                SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.GROUP_ID, actualGroupID);
+            }
+            if (!state.isEmpty()){
+                SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.STATE, state);
+            }
+            if (!autoCreated.isEmpty()){
+                SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.AUTO_CREATED, autoCreated);
+            }
+            if (!functionalID.isEmpty()){
+                SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
+            }else{
+                String autoGeneratePK = actualTbl.getRecord(actualTbl.getRecords().size()-1).get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
+                mergedRecord.addPK(TechnicalTable.RecordMetadata.FUNCTIONAL_ID,autoGeneratePK );
+            }
+
+
         }
     }
 

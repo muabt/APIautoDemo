@@ -42,4 +42,6 @@ public interface SearchWidget extends WidgetObject {
     void clickBtnAddBlock();
 
     void selectSearchItem(String searchType, String fieldName);
+
+    void removeAllOccurrence();
 }

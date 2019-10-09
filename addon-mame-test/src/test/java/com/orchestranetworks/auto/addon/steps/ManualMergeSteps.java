@@ -139,4 +139,8 @@ public class ManualMergeSteps {
     public void confirm_popup() {
         onManualMergePage.getPopupWidget().confirmOK();
     }
+
+    public String get_groupID() {
+       return onManualMergePage.getDefaultViewWidget().getTextDataCell(1,"groupId");
+    }
 }

@@ -217,7 +217,11 @@ public class CommonSteps extends ScenarioSteps {
         click_btn_filter();
         select_advanced_mode();
         select_logical_search(logical);
+        input_search_condition(condition);
+        click_btn_apply_advanced_search();
+    }
 
+    public void input_search_condition(List<Map<String, String>> condition) {
         for (Map<String, String> row : condition) {
             String criterion = row.get("Criterion");
             String oper = row.get("Operation");
@@ -234,6 +238,9 @@ public class CommonSteps extends ScenarioSteps {
                 input_search_value(value, type, criterion);
             }
         }
-        click_btn_apply_advanced_search();
+    }
+
+    public void delete_all_occurrence() {
+        onCommonPage.getAdvanceSearch().removeAllOccurrence();
     }
 }
