@@ -1,63 +1,75 @@
 package com.orchestranetworks.auto.addon.utils;
 
 public interface TechnicalTable {
-    public interface RecordMetadata {
-
-        public final static String ID = "id";
-        public final static String GROUP_ID = "groupId";
-        public final static String STATE = "state";
-        public final static String AUTO_CREATED = "autoCreated";
-        public final static String FUNCTIONAL_ID = "functionalId";
-        public final static String ISOLATED = "isolated";
-
+    interface RecordMetadata {
+        String ID = "id";
+        String GROUP_ID = "groupId";
+        String STATE = "state";
+        String AUTO_CREATED = "autoCreated";
+        String FUNCTIONAL_ID = "functionalId";
+        String ISOLATED = "isolated";
     }
 
-    public interface MergeResult {
-
-        public final static String ID = "id";
-        public final static String RECORD_ID = "recordId";
-        public final static String GOLDEN_ID = "goldenId";
-        public final static String MERGING_PROCESS_ID = "mergingProcessId";
-        public final static String IS_INTERPOLATION = "isInterpolation";
-
+    interface MergeResult {
+        String ID = "id";
+        String RECORD_ID = "recordId";
+        String GOLDEN_ID = "goldenId";
+        String MERGING_PROCESS_ID = "mergingProcessId";
+        String IS_INTERPOLATION = "isInterpolation";
     }
 
-    public interface MergingProcess {
-
-        public final static String ID = "id";
-        public final static String MERGE_POLICY_ID = "mergePolicyId";
-        public final static String MERGE_MODE = "mergeMode";
-        public final static String EXECUTION_DATE = "executionDate";
-        public final static String SNAPSHOT_ID = "snapshotId";
-        public final static String GROUP_ID = "groupId";
-        public final static String USER = "user";
-        public final static String IS_UNMERGED = "isUnmerged";
+    interface MergingProcess {
+        String ID = "id";
+        String MERGE_POLICY_ID = "mergePolicyId";
+        String MERGE_MODE = "mergeMode";
+        String EXECUTION_DATE = "executionDate";
+        String SNAPSHOT_ID = "snapshotId";
+        String GROUP_ID = "groupId";
+        String USER = "user";
+        String IS_UNMERGED = "isUnmerged";
     }
-    public interface Decision {
 
-        public final static String ID = "id";
-        public final static String SOURCE_ID = "sourceId";
-        public final static String TARGET_ID = "targetId";
-        public final static String LAST_DECISION = "lastDecision";
-        public final static String USER = "user";
-        public final static String DECISION_DATE = "decisionDate";
-        public final static String MERGING_PROCESS_ID = "mergingProcessId";
+    interface Decision {
+        String ID = "id";
+        String SOURCE_ID = "sourceId";
+        String TARGET_ID = "targetId";
+        String LAST_DECISION = "lastDecision";
+        String USER = "user";
+        String DECISION_DATE = "decisionDate";
+        String MERGING_PROCESS_ID = "mergingProcessId";
     }
-    public interface MergeValueLineage{
 
-        public final static String ID = "id";
-        public final static String MERGING_PROCESS_ID = "mergingProcessId";
-        public final static String RECORD_ID = "recordId";
-        public final static String SOURCE_INDEX = "sourceIndex";
-        public final static String FIELD_PATH = "fieldPath";
-        public final static String GOLDEN_INDEX = "goldenIndex";
+    interface MergeValueLineage {
+        String ID = "id";
+        String MERGING_PROCESS_ID = "mergingProcessId";
+        String RECORD_ID = "recordId";
+        String SOURCE_INDEX = "sourceIndex";
+        String FIELD_PATH = "fieldPath";
+        String GOLDEN_INDEX = "goldenIndex";
     }
-    public interface MameRecord{
 
-        public final static String FUNCTIONAL_ID = "FUNCTIONAL_ID";
-        public final static String TECHNICAL_ID = "TECHNICAL_ID";
-        public final static String STATE = "STATE";
-        public final static String GROUP_ID = "GROUP_ID";
-        public final static String MERGING_PROCESS_ID = "MERGING_PROCESS_ID";
+    interface MameRecord {
+        String FUNCTIONAL_ID = "FUNCTIONAL_ID";
+        String TECHNICAL_ID = "TECHNICAL_ID";
+        String STATE = "STATE";
+        String GROUP_ID = "GROUP_ID";
+        String MERGING_PROCESS_ID = "MERGING_PROCESS_ID";
+    }
+
+    interface MatchingResult {
+        String ID = "id";
+        String SOURCE_ID = "sourceId";
+        String TARGET_ID = "targetId";
+        String LAST_RESULT = "lastResult";
+        String SESSION_ID = "sessionId";
+    }
+
+    interface MatchingSession {
+        String ID = "id";
+        String EXECUTION_DATE = "executionDate";
+        String MATCHING_PROCESS_ID = "matchingProcessId";
+        String MATCH_AGAINST = "matchAgainst";
+        String MATCH_AGAINST_STATES = "matchAgainstStates";
+        String PHASE = "phase";
     }
 }

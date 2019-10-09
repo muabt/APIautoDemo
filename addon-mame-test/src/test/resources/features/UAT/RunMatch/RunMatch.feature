@@ -98,6 +98,24 @@ Feature: Run Match feature
       | Matching process | Records to match against |
       | SESSION          | Active selection         |
     When I complete Run Match process
+# Sample to verify Matching metadata. Should verify MatchingSession table first
+#    And I access table "MatchingSession" of dataset "StoreModel_Item_MDS" in dataspace "Master Data - Reference > 112"
+#    Then I will see table MatchingSession as below
+#      | id | executionDate | matchingProcessId | matchAgainst | matchAgainstStates | phase         |
+#      | ID | DATE          | 101               | ENTIRE_TABLE |                    | DEDUPLICATION |
+#    Then I will see table MatchingResult as below
+#      | id    | sourceId | targetId | lastResult  | sessionId |
+#      | 1*1~~ | 1*1      |          | NOT_MATCHED | SESSIONID |
+#      | 2*2~~ | 2*2      |          | NOT_MATCHED | SESSIONID |
+#      | 3*3~~ | 3*3      |          | NOT_MATCHED | SESSIONID |
+#      | 4*4~~ | 4*4      |          | NOT_MATCHED | SESSIONID |
+#    Then I will see table MatchingResult as below
+#      | id   | sourceId | targetId | lastResult  | sessionId |
+#      | 1~~  | 1        |          | NOT_MATCHED | SESSIONID |
+#      | 2~~  | 2        |          | NOT_MATCHED | SESSIONID |
+#      | 3~~  | 3        |          | NOT_MATCHED | SESSIONID |
+#      | 4~7~ | 4        | 7        | MATCHED     | SESSIONID |
+#      | 7~~  | 7        |          | MATCHED     | SESSIONID |
     When I delete some MAME config records with primary key as following
       | Data model             | Table  |
       | Publication: Genealogy | Person |
