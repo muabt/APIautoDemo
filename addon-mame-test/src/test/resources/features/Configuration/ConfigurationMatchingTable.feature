@@ -56,19 +56,19 @@ Feature: Matching table configuration
     And I select first "1" records in table
     Then delete it
 
-#  Scenario: SC-CFT33 Validate tooltip of all fields in Matching table details
-#    And I permit to access matching table
-#    And I click to create a record button
-#    And I should see tooltip of all fields as following
-#      | Field                    | Tooltip                                                                                                                                                                                                                                                                                                 |
-#      | Data model               | The data model that contains the table to set under the Match and Merge configuration.                                                                                                                                                                                                                  |
-#      | Table                    | Name of table managed by the add-on.                                                                                                                                                                                                                                                                    |
-#      | Active                   | If 'Yes': The deduplication features are enabled for the selected table. <br> If 'No': The deduplication features are not enabled.                                                                                                                                                                      |
-#      | Default matching process | Define the default matching process that will be applied during automatic execution of the matching                                                                                                                                                                                                     |
-#      | Source field             | Field in the table that is used for getting the record source. <br> This parameter is optional and is used when the record selection policy is 'most trusted source'.                                                                                                                                   |
-#      | Event listener           | Java implementation to listen to deduplication events.                                                                                                                                                                                                                                                  |
-#      | Disable trigger          | Disabling the trigger will block all automatic deduplication and merge actions. <br> <br> All features are still available but they should be used manually via the Stewardship Console or the API. <br> If 'Yes': The trigger is inactive. <br> If 'No': The trigger is active.<br>Default value: 'No' |
-#
+  Scenario: SC-CFT33 Validate tooltip of all fields in Matching table details
+    And I permit to access matching table
+    And I click to create a record button
+    And I should see tooltip of all fields as following
+      | Field                    | Tooltip                                                                                                                                                                                                                                                                      |
+      | Data model               | The data model that contains the table to set under the Match and Merge configuration.                                                                                                                                                                                       |
+      | Table                    | Name of table managed by the add-on.                                                                                                                                                                                                                                         |
+      | Active                   | If 'Yes': The deduplication features are enabled for the selected table.If 'No': The deduplication features are not enabled.                                                                                                                                                 |
+      | Default matching process | Define the default matching process that will be applied during automatic execution of the matching                                                                                                                                                                          |
+      | Source field             | Field in the table that is used for getting the record source.This parameter is optional and is used when the record selection policy is 'most trusted source'.                                                                                                              |
+      | Event listener           | Java implementation to listen to deduplication events.                                                                                                                                                                                                                       |
+      | Disable trigger          | Disabling the trigger will block all automatic deduplication and merge actions.All features are still available but they should be used manually via the Stewardship Console or the API.If 'Yes': The trigger is inactive.If 'No': The trigger is active.Default value: 'No' |
+
   Scenario: SC-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute
     And I permit to access matching table
     When I select filter by simple search with criterion

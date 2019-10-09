@@ -18,7 +18,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
     private static final String XPATH_LABEL_OF_FIELD = "(//td[@class='ebx_Label' and not(contains(.,'FieldExpandCollapse'))]//label[text()='%s'])";
     private static final String XPATH_VALUE = "(//td[@class='ebx_Input']//input[(@value and @type='text')]|//td[@class='ebx_Input']//input[(@type='radio' and @checked='checked')]/parent::*)";
     private static final String XPATH_TOOLTIP_CONTENT = "//div[@class='ebx_dcpTitle'and text()='%s']/following-sibling::div[@class='ebx_dcpDescription']";
-    private static final String XPATH_TOOLTIP = "//label[text()='%s']//ancestor::tr[contains(@class,'ebx_Field')]";
+    private static final String XPATH_TOOLTIP = "//*[text()='%s']/ancestor::tr//*[@title='Show details']";
 
     public RecordDetailWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                   long timeoutInMilliseconds) {
@@ -84,8 +84,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
 
     @Override
     public String getTooltip(String field) {
-        getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field)).replaceAll("<br>", "").trim();
-        return getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field));
+        return getTextValue(XFormat.of(XPATH_TOOLTIP_CONTENT, field)).replaceAll("\n", "").trim();
     }
 
     @Override
@@ -97,8 +96,6 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
 
     @Override
     public void clickShowDetailTooltip(String field) {
-        clickOnElement(XFormat.of(XPATH_LABEL_OF_FIELD, field));
-        waitElementToBePresent(XFormat.of(XPATH_LABEL_OF_FIELD, field));
         clickByJS(XFormat.of(XPATH_TOOLTIP, field));
     }
 
