@@ -66,7 +66,6 @@ public class DataspaceDefs {
         onCommonSteps.go_to_dataspace(parentDataspacePath);
         onDataspaceSteps.click_btn_create_dataspace();
         onDataspaceSteps.enter_dataspace_info(identifier, owner, engLabel);
-
         onDataspaceSteps.click_btn_create();
     }
 
