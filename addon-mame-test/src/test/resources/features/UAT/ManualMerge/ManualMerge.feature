@@ -7,6 +7,7 @@ Feature: Manual Merge
   Background:
     Given I login to EBX successfully
 
+  @MM01
   Scenario: UAT-MM01 Default merge function = Last update and PK isn't auto incremented value
     Given I permit to access matching table
     And I create record with PK "Publication: Genealogy" is "Person" and the content followings
