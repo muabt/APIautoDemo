@@ -2,6 +2,7 @@
 Feature: Merge function for survivor field
   I want to use this template for Merge function for survivor field
 
+  @MPMM80
   Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
