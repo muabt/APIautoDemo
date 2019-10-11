@@ -593,6 +593,11 @@ public class ManualMergeDefs {
         });
 
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.RECORD_METADATA_TBL);
+        if (mergedRecord == null) {
+            mergedRecord = new DataObject();
+        }
+        mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
+
         // Get actual table and add the list of same group ID in the hashmap, using groupId as key
         HashMap<String, List<String>> hashMapGroupId = new HashMap<>();
         HashMap<String, List<String>> actualTblData = new HashMap<>();
