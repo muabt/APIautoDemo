@@ -581,7 +581,7 @@ public class ManualMergeDefs {
     @Then("^no records found in table \"([^\"]*)\"$")
     public void no_records_found_in_table(String tableName) {
         onCommonSteps.click_on_table_name(tableName);
-        onCommonSteps.verify_table_noRecordsFound();
+        onCommonSteps.verify_table_no_record_found();
     }
 
     @Then("^I will verify the group id of table Recordmetadata as below$")

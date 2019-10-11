@@ -209,7 +209,7 @@ public class CommonSteps extends ScenarioSteps {
         onCommonPage.getAdvanceSearch().clickBtnAddBlock();
     }
 
-    public void verify_table_noRecordsFound() {
+    public void verify_table_no_record_found() {
         assertThat(onCommonPage.getDefaultViewWidget().isRecordInTableExisted()).isEqualTo(false);
     }
 

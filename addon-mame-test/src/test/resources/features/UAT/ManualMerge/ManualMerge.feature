@@ -37,7 +37,7 @@ Feature: Manual Merge
     And I complete merging process
     And I close the error popup
     And I delete the dataspace
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model             | Table  |
       | Publication: Genealogy | Person |
 
@@ -88,7 +88,7 @@ Feature: Manual Merge
       | KEY2 | MERGE_PROCESS_ID | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |             | /firstName  |             |
       | KEY3 | MERGE_PROCESS_ID | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |             | /birthPlace |             |
     And I delete the dataspace
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model             | Table  |
       | Publication: Genealogy | Person |
 
@@ -122,9 +122,9 @@ Feature: Manual Merge
     And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
       | id   | groupId  | state  | autoCreated | functionalId |
-      | KEY1 | GROUP_ID | Merged | No          | 1            |
-      | KEY2 | GROUP_ID | Merged | No          | 2            |
-      | KEY3 | GROUP_ID | Golden | Yes         |              |
+      | KEY1 | GROUP_ID | Golden | Yes         |              |
+      | KEY2 | GROUP_ID | Merged | No          | 1            |
+      | KEY3 | GROUP_ID | Merged | No          | 2            |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
@@ -132,9 +132,12 @@ Feature: Manual Merge
       | id   | sourceId | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 1        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
       | KEY1 | 2        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-    Then no records found in table "MergeValueLineage"
+    Then I will see table MergeValueLineage as below
+      | id   | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
+      | KEY1 | MERGE_PROCESS_ID | 1        |             | /id       |             |
+      | KEY2 | MERGE_PROCESS_ID | 2        |             | /name     |             |
     And I delete the dataspace
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model             | Table |
       | Publication: Genealogy | Place |
 
@@ -168,9 +171,9 @@ Feature: Manual Merge
     And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
       | id   | groupId  | state  | autoCreated | functionalId |
-      | KEY1 | GROUP_ID | Merged | No          | 1            |
-      | KEY2 | GROUP_ID | Merged | No          | 2            |
-      | KEY3 | GROUP_ID | Golden | Yes         |              |
+      | KEY1 | GROUP_ID | Golden | Yes         |              |
+      | KEY2 | GROUP_ID | Merged | No          | 1            |
+      | KEY3 | GROUP_ID | Merged | No          | 2            |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
@@ -178,9 +181,12 @@ Feature: Manual Merge
       | id   | sourceId | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 1        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
       | KEY2 | 2        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-    Then no records found in table "MergeValueLineage"
+    Then I will see table MergeValueLineage as below
+      | id   | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
+      | KEY1 | MERGE_PROCESS_ID | 1        |             | /id       |             |
+      | KEY2 | MERGE_PROCESS_ID | 2        |             | /name     |             |
     And I delete the dataspace
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model             | Table |
       | Publication: Genealogy | Place |
 
@@ -225,8 +231,9 @@ Feature: Manual Merge
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 2        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
+    Then no records found in table "MergeValueLineage"
     And I delete the dataspace
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model             | Table |
       | Publication: Genealogy | Place |
 
