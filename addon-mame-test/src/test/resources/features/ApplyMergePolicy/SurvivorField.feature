@@ -8,7 +8,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 38"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID         |
+      | 04/01/2019 |
+      | 06/01/2019 |
+      | 06/06/2019 |
+      | 06/23/2019 |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | Date           | Name      | Company |
@@ -29,7 +34,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 37"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name      | Phone      | National |
@@ -50,7 +60,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 41"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | ID    | Rank  | Company      | Country/Territory | Email             |
@@ -66,34 +81,44 @@ Feature: Merge function for survivor field
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
-#  @Survivor_Field_Longest
-#  Scenario: SC-MPMM83 Validate the pre-selected records at merge view screen when  the Merge function of survivor field is Longest  survivor field type is Html
-#    Given I login to EBX successfully
-#    And I access dataspace "Master Data - Reference>Resource"
-#    And I access dataset "Updater"
-#    And I access table "Table 42"
-#    When I select first "4" records in table
-#    And I select table service "Match and Merge > Merge"
-#    Then record view table will be displayed and highlighted as below
-#      | ID    | Company   | Country/Territory | Sales  | Comment  | Website |
-#      | 1     | LG        | Vietnam           | 100    | LG VN    | {H}     |
-#      | 2     | Lock      | US                | 200    | Lock US  |         |
-#      | 3     | Apple     | US                | 300    | Apple US |         |
-#      | {H} 4 | {H} Irock | {H} UK            | {H} 10 | Irock UK |         |
-#    And preview table is displayed as below
-#      | ID | Company | Country/Territory | Sales | Comment  | Website |
-#      | 4  | Irock   | UK                | 10    | Irock UK | ABC     |
-#    And the screen displays buttons as below
-#      | Name               | Status   |
-#      | Apply merge policy |          |
-#      | Cancel last action | inactive |
+
+  Scenario: SC-MPMM83 Validate the pre-selected records at merge view screen when  the Merge function of survivor field is Longest  survivor field type is Html
+    Given I login to EBX successfully
+    And I access dataspace "Master Data - Reference>Resource"
+    And I access dataset "Updater"
+    And I access table "Table 42"
+    When  I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
+    And I select table service "Match and Merge > Merge"
+    Then record view table will be displayed and highlighted as below
+      | ID    | Company   | Country/Territory | Sales  | Comment      | Website    |
+      | 1     | LG        | Vietnam           | 100    | LG VN        | {H} [html] |
+      | 2     | Lock      | US                | 200    | Lock US      | [html]     |
+      | 3     | Apple     | US                | 300    | Apple US     | [html]     |
+      | {H} 4 | {H} Irock | {H} UK            | {H} 10 | {H} Irock UK | [html]     |
+    And preview table is displayed as below
+      | ID | Company | Country/Territory | Sales | Comment  | Website |
+      | 4  | Irock   | UK                | 10    | Irock UK | [html]  |
+    And the screen displays buttons as below
+      | Name               | Status   |
+      | Apply merge policy |          |
+      | Cancel last action | inactive |
 
   Scenario: SC-MPMM84 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest survivor field type is FK
     Given I login to EBX successfully
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 43"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name      | Phone     | National |
@@ -114,7 +139,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 39"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name      | Phone   | National | Date           |
@@ -135,7 +165,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 45"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | ID    | Company  | Country/Territory | Sales  |
@@ -156,7 +191,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 401"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name   | Phone       | National | Date           |
@@ -177,7 +217,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 49"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | ID    | Company | Country/Territory | Sales        | Date and time           |
@@ -198,7 +243,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 50"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name              | Phone      | National | Time         |
@@ -219,8 +269,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 44"
-
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | ID    | Rank  | Company   | Country/Territory | Catalog            |
@@ -229,8 +283,8 @@ Feature: Merge function for survivor field
       | 3     | 2     | Big C     | Singapore         | [List] 0/4         |
       | {H} 4 | 1     | {H} L&L   | {H} VN            | {H}     [List] 4/4 |
     And preview table is displayed as below
-      | ID | Rank | Company | Country/Territory | Catalog    |
-      | 4  | 3    | L&L     | VN                | [List] 4/4 |
+      | ID | Rank | Company | Country/Territory | Catalog     |
+      | 4  | 3    | L&L     | VN                | [List] 4/11 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -241,17 +295,22 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 46"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
-      | ID    | Rank  | Company   | Country/Territory | Catalog            |
-      | 1     | {H} 3 | Linked in | US                | [List] 0/2         |
-      | 2     | 2     | Terminate | UK                | [List] 0/1         |
-      | 3     | 2     | Big C     | Singapore         | [List] 0/4         |
-      | {H} 4 | 1     | {H} L&L   | {H} VN            | {H}     [List] 4/4 |
+      | ID    | Rank  | Company  | Country/Territory | Catalog            |
+      | 1     | 1     | ONVN     | FK                | [List] 0/2         |
+      | 2     | 2     | Tibco    | US                | [List] 0/3         |
+      | 3     | 3     | Jira     | US                | [List] 0/1         |
+      | {H} 4 | {H} 3 | {H} UUID | {H} VN            | {H}     [List] 2/2 |
     And preview table is displayed as below
       | ID | Rank | Company | Country/Territory | Catalog    |
-      | 4  | 3    | L&L     | VN                | [List] 4/4 |
+      | 4  | 3    | UUID    | VN                | [List] 2/8 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -262,14 +321,19 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 51"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name              | Phone      | National | Date           |
-      | 1          | Ferrovial[        | 12,346     | 1        | 06/24/2019     |
+      | 1          | Ferrovial[        | 12,346     | 1        | {H} 06/24/2019 |
       | 2          | HSBC              | 1,256      | 2        | 06/23/2019     |
       | 3          | Iberdrola         | 897,564    | 3        | 06/04/2019     |
-      | {H} 4      | {H} National Grid | {H} 21,456 | {H}  4   | {H} 06/24/2019 |
+      | {H} 4      | {H} National Grid | {H} 21,456 | {H}  4   | 06/22/2019     |
     And preview table is displayed as below
       | identifier | Name          | Phone  | National | Date       |
       | 4          | National Grid | 21,456 | 4        | 06/24/2019 |
@@ -283,13 +347,18 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 52"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | ID    | Company                  | Country/Territory | Sales       | Date and time           |
       | 1     | Pennon Group             | 984               | 102         | 06/24/2019 15:21:37     |
       | 2     | Repsol                   | 456               | 10.3        | 06/24/2019 15:21:56     |
-      | 3     | Rolls Royce              | 15789             | 1000        | {H} 06/24/2019 22:22:20 |
+      | 3     | Rolls Royce              | 15789             | 1,000       | {H} 06/24/2019 22:22:20 |
       | {H} 4 | {H} Southside Bancshares | {H} 7894          | {H}     200 | 06/24/2019 10:22:38     |
     And preview table is displayed as below
       | ID | Company              | Country/Territory | Sales | Date and time       |
@@ -304,13 +373,18 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 53"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name              | Phone      | National | Time         |
       | 1          | Royal Dutch Shell | 78,456     | 1        | 15:26:17     |
       | 2          | Banco Santander   | 245        | 2        | {H} 23:26:32 |
-      | 3          | National Grid     | 21,456     | 3        | 10:27:00     |
+      | 3          | National Grid     | 21,546     | 3        | 10:27:00     |
       | {H} 4      | {H} Repsol        | {H} 23,456 | {H}  5   | 15:27:26     |
     And preview table is displayed as below
       | identifier | Name   | Phone  | National | Time     |
@@ -325,7 +399,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 34"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name      | Phone       | National |
@@ -346,7 +425,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 35"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name      | Phone      | National |
@@ -367,7 +451,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 36"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name        | Phone      | National  |
@@ -388,7 +477,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Multiple"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | ID    | Rank    | Company      | Country/Territory | Catalog        |
@@ -397,8 +491,8 @@ Feature: Merge function for survivor field
       | 3     | 3       | Linked in    | US                | [List] 0/3     |
       | {H} 4 | {H}   4 | {H} Facebook | {H} UK            | [List] 0/4     |
     And preview table is displayed as below
-      | ID | Rank | Company  | Country/Territory | Catalog    |
-      | 4  | 4    | Facebook | UK                | [List] 3/3 |
+      | ID | Rank | Company  | Country/Territory | Catalog     |
+      | 4  | 4    | Facebook | UK                | [List] 3/11 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -409,7 +503,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 31"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name     | Phone     | National    |
@@ -431,7 +530,13 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 32"
-    When I select first "5" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
+      | 5  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | identifier | Name     | Phone      | National    |
@@ -453,17 +558,22 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 33"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
-      | identifier | Name     | Phone      | National |
-      | 1          | Magnus   | 15         | 1        |
-      | 2          | Alan     | 12         | 2        |
-      | 3          | Jessie   | 15,346     | 2        |
-      | {H}  4     | {H} Alan | {H} 78,456 | {H} 4    |
+      | identifier | Name     | Phone       | National |
+      | 1          | Magnus   | 789,456     | 2        |
+      | 2          | Alan     | 87,456      | 2        |
+      | 3          | Jessie   | 87,456      | 3        |
+      | {H}  4     | {H} Alan | {H} 897,456 | {H} 5    |
     And preview table is displayed as below
-      | identifier | Name | Phone  | National |
-      | 4          | Alan | 78,456 | 4        |
+      | identifier | Name | Phone   | National |
+      | 4          | Alan | 897,456 | 5        |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -474,7 +584,12 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 47"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
       | ID    | Rank    | Company | Country/Territory | Catalog        |
@@ -484,7 +599,7 @@ Feature: Merge function for survivor field
       | {H} 4 | {H}   1 | {H} D   | {H} VN            | {H} [List] 1/1 |
     And preview table is displayed as below
       | ID | Rank | Company | Country/Territory | Catalog    |
-      | 4  | 1    | D       | VN                | [List] 1/1 |
+      | 4  | 1    | D       | VN                | [List] 1/4 |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
@@ -495,17 +610,24 @@ Feature: Merge function for survivor field
     And I access dataspace "Master Data - Reference>Resource"
     And I access dataset "Updater"
     And I access table "Table 48"
-    When I select first "4" records in table
+    When I select some records with primary key as following
+      | ID |
+      | 1  |
+      | 2  |
+      | 3  |
+      | 4  |
+      | 5  |
     And I select table service "Match and Merge > Merge"
     Then record view table will be displayed and highlighted as below
-      | ID    | Rank    | Company | Country/Territory | Catalog        |
-      | 1     | 1       | A       | US                | [List] 0/1     |
-      | 2     | 2       | B       | UK                | [List] 0/1     |
-      | 3     | 3       | C       | FR                | [List] 0/1     |
-      | {H} 4 | {H}   1 | {H} D   | {H} VN            | {H} [List] 1/1 |
+      | ID    | Rank  | Company | Country/Territory | Email             |
+      | 1     | {H} 3 | {H} A   | {H} US            | abcdef@mail.com   |
+      | 2     |       | AB      | UK                | ab@mail.com       |
+      | 3     |       | ABC     | VN                | abc@mail.com      |
+      | 4     |       | ABCD    | FR                | {H} abcd@mail.com |
+      | {H} 5 | 5     | ABCDE   |                   |                   |
     And preview table is displayed as below
-      | ID | Rank | Company | Country/Territory | Catalog    |
-      | 4  | 1    | D       | VN                | [List] 1/1 |
+      | ID | Rank | Company | Country/Territory | Email         |
+      | 5  | 3    | A       | US                | abcd@mail.com |
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
