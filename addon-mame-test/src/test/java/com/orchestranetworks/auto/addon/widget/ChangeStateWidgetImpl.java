@@ -1,35 +1,58 @@
 package com.orchestranetworks.auto.addon.widget;
 
-import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
-import com.orchestranetworks.auto.addon.pages.ChangeStatePage;
+
 import com.orchestranetworks.auto.addon.utils.Constants;
-import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
+
+import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
+
+import net.serenitybdd.core.pages.PageObject;
 
 public class ChangeStateWidgetImpl extends BaseWidgetImpl implements ChangeStateWidget {
 
-    public ChangeStateWidgetImpl(PageObject page, ElementLocator locator, long timeoutMilliseconds) {
-        super(page, locator, timeoutMilliseconds);
+
+    private static final String XPATH_STATE_DES = "//div[@class='select-state-description']";
+    private static final String XPATH_GOLDEN = "//option[@value='GOLDEN']";
+    private static final String XPATH_BTN_LAUNCH_SERVCE = "//button[@class='ebx_Button ebx_TextAndIconRightButton ebx_DefaultButton btn-launch']";
+    private static final String XPATH_UNSET = "//option[@value='UNSET']";
+
+
+    public ChangeStateWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
+        super(page, locator, timeoutInMilliseconds);
     }
-    private static  final String XPATH_STATE_DES ="//div[contains (text(),'Please select the target state value')]";
-    private static  final String XPATH_GOLDEN =  "//select[@class='display-box']//option[2]";
 
 
     @Override
     public String getStateDes() {
-        switchToIFrame(Constants.IFRAME_SERVICE);
-        return getText(XPATH_STATE_DES);
+      //  waitAbit(5000);
+        switchOutDefaultIFrame();
+        switchToIFrame(Constants.IFRAME_LEGACY);
+        switchToLastIFrame();
+        return getTextValue(XPATH_STATE_DES).trim();
     }
     @Override
-    public void selectTargetState(String state) {
-        clickByJS(XPATH_GOLDEN);
+    public void selectTargetState() {
+        switchOutDefaultIFrame();
+        switchToIFrame(Constants.IFRAME_LEGACY);
+        switchToLastIFrame();
+        clickOnElement(XPATH_UNSET);
+    }
+
+    @Override
+    public void selectGodelState() {
+        switchOutDefaultIFrame();
+        switchToIFrame(Constants.IFRAME_LEGACY);
+        switchToLastIFrame();
+        clickOnElement(XPATH_GOLDEN);
 
     }
+
     @Override
-    public void clickBtnLaunchService() {
-        clickOnElement(XPATH_STATE_DES);
+    public void clickBtnLaunchService()
+    {
+        clickOnElement(XPATH_BTN_LAUNCH_SERVCE);
     }
+
 
 
 

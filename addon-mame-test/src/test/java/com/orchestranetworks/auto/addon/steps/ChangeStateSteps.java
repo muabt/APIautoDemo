@@ -1,22 +1,36 @@
 package com.orchestranetworks.auto.addon.steps;
 
 import com.orchestranetworks.auto.addon.pages.ChangeStatePage;
-import org.junit.Assert;
+import net.thucydides.core.annotations.Step;
+import net.thucydides.core.steps.ScenarioSteps;
 
-public class ChangeStateSteps {
+import static org.assertj.core.api.Assertions.assertThat;
 
-    ChangeStatePage onChangeStatePage;
+public class ChangeStateSteps extends ScenarioSteps {
+    ChangeStatePage statePage;
 
+    @Step
     public void verify_state_descriptions (String stateDes){
-        Assert.assertEquals(stateDes, onChangeStatePage.getChangeStateWidget().getStateDes());
-    }
-
-    public void click_button_launch_service() {
-        onChangeStatePage.getChangeStateWidget().clickBtnLaunchService();
+//        System.out.println(stateDes);
+//        waitABit(5000);
+//        System.out.println("statePage getChangeStateWidget == null " + (statePage.getChangeStateWidget() == null));
+//         statePage.getChangeStateWidget().getStateDes();
+//        System.out.println("+++++"+ statePage.getChangeStateWidget().getStateDes());
+        assertThat(statePage.getChangeStateWidget().getStateDes()).isEqualTo(stateDes);
     }
 
     public void select_target_state() {
+    statePage.getChangeStateWidget().selectTargetState();
 
     }
 
+    public void click_button_launch_service()
+    {
+        statePage.getChangeStateWidget().clickBtnLaunchService();
+    }
+
+
+    public void select_golden_state() {
+        statePage.getChangeStateWidget().selectGodelState();
+    }
 }
