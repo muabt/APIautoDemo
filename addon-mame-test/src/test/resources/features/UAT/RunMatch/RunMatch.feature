@@ -25,7 +25,7 @@ Feature: Run Match feature
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
     Then the popup message should be shown "The decision tree has not been configured properly. Please check your configuration."
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model                        | Table  |
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
@@ -74,7 +74,7 @@ Feature: Run Match feature
       | GROUP9 | 2, 1         |
     And I will verify other data of the table Recordmetadata as below
       | functionalId | state  | autoCreated | isolated |
-      | 10           | Golden | No          | Yes      |
+      | 1            | Unset  | No          | No       |
       | 9            | Golden | No          | Yes      |
       | 8            | Golden | No          | Yes      |
       | 7            | Golden | No          | Yes      |
@@ -83,7 +83,7 @@ Feature: Run Match feature
       | 4            | Golden | No          | Yes      |
       | 3            | Golden | No          | Yes      |
       | 2            | Unset  | No          | No       |
-      | 1            | Unset  | No          | No       |
+      | 10           | Golden | No          | Yes      |
     Then I will see table MatchingSession as below
       | id | executionDate | matchingProcessId | matchAgainst | matchAgainstStates | phase         |
       | ID | DATE          |                   | ENTIRE_TABLE |                    | DEDUPLICATION |
@@ -99,7 +99,7 @@ Feature: Run Match feature
       | 7~~  | 7        |          | NOT_MATCHED | SESSIONID |
       | 8~~  | 8        |          | NOT_MATCHED | SESSIONID |
       | 9~~  | 9        |          | NOT_MATCHED | SESSIONID |
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model                        | Table  |
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
@@ -153,7 +153,7 @@ Feature: Run Match feature
       | 7~~  | 7        |          | NOT_MATCHED | SESSIONID |
       | 8~~  | 8        |          | NOT_MATCHED | SESSIONID |
       | 9~~  | 9        |          | NOT_MATCHED | SESSIONID |
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model                        | Table  |
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
@@ -181,17 +181,17 @@ Feature: Run Match feature
 #      | 4*4~~ | 4*4      |          | NOT_MATCHED | SESSIONID |
     Then I will see table MatchingResult as below
       | id   | sourceId | targetId | lastResult  | sessionId |
-      | 1~2~ | 1        | 2        | NOT_MATCHED | SESSIONID |
+      | 1~2~ | 1        | 2        | MATCHED     | SESSIONID |
       | 10~~ | 10       |          | NOT_MATCHED | SESSIONID |
-      | 2~~  | 2        |          | NOT_MATCHED | SESSIONID |
-      | 3~4~ | 3        | 4        | MATCHED     | SESSIONID |
-      | 4~~  | 4        |          | NOT_MATCHED | SESSIONID |
-      | 5~6~ | 5        | 6        | NOT_MATCHED | SESSIONID |
-      | 6~~  | 6        |          | NOT_MATCHED | SESSIONID |
+      | 2~~  | 2        |          | MATCHED     | SESSIONID |
+      | 3~4~ | 3        | 4        | SUSPECTED   | SESSIONID |
+      | 4~~  | 4        |          | SUSPECTED   | SESSIONID |
+      | 5~6~ | 5        | 6        | SUSPECTED   | SESSIONID |
+      | 6~~  | 6        |          | SUSPECTED   | SESSIONID |
       | 7~~  | 7        |          | NOT_MATCHED | SESSIONID |
-      | 8~~  | 8        |          | MATCHED     | SESSIONID |
-      | 9~~  | 9        |          | MATCHED     | SESSIONID |
-    When I delete some MAME config records with primary key as following
+      | 8~~  | 8        |          | NOT_MATCHED | SESSIONID |
+      | 9~~  | 9        |          | NOT_MATCHED | SESSIONID |
+    And I delete some MAME config records with primary key as following
       | Data model                        | Table  |
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
@@ -212,7 +212,7 @@ Feature: Run Match feature
       | Matching process | Records to match against |
       | SESSION          | Active selection         |
     When I complete Run Match process
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model                        | Table  |
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
@@ -233,8 +233,7 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Entire table             |
-    When I complete Run Match process
-    When I delete some MAME config records with primary key as following
+    And I delete some MAME config records with primary key as following
       | Data model                        | Table  |
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
