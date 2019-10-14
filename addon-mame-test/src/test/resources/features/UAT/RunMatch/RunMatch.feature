@@ -211,7 +211,6 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Active selection         |
-    When I complete Run Match process
     And I delete some MAME config records with primary key as following
       | Data model                        | Table  |
       | Publication: genealogyForRunMatch | Person |
