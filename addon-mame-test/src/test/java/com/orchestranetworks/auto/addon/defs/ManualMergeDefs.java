@@ -33,7 +33,7 @@ public class ManualMergeDefs {
     AdministrationSteps onAdministrationSteps;
     @Steps
     CommonSteps onCommonSteps;
-    private DataObject mergedRecord ;
+    private DataObject mergedRecord;
 
     /**
      * Verify the preview table when merging
@@ -162,7 +162,7 @@ public class ManualMergeDefs {
             String groupID = expected.get(TechnicalTable.RecordMetadata.GROUP_ID).getAsString();
             String state = expected.get(TechnicalTable.RecordMetadata.STATE).getAsString();
             String autoCreated = expected.get(TechnicalTable.RecordMetadata.AUTO_CREATED).getAsString();
-            String functionalID = expected.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
+            String functionalID = expected.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString().replace("*", "|");
 
             if (!groupID.isEmpty()) {
                 SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.GROUP_ID, actualGroupID);
@@ -232,7 +232,7 @@ public class ManualMergeDefs {
 
         // Save table to DataObject in session
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGING_PROCESS_TBL);
-        LogWork.info("Test null poiter ="+actualTbl);
+        LogWork.info("Test null poiter =" + actualTbl);
         mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
 
         for (int i = 0; i < expectedTbl.size(); i++) {
@@ -252,7 +252,9 @@ public class ManualMergeDefs {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.MERGE_MODE, mergeMode);
             }
             if (!executionDate.isEmpty()) {
-                executionDate = DateTimeUtils.getCurrentDateTime();
+                if (executionDate.equals("TODAY")) {
+                    executionDate = DateTimeUtils.getCurrentDateTime();
+                }
                 SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.EXECUTION_DATE, executionDate);
             }
             if (!user.isEmpty()) {
@@ -434,7 +436,9 @@ public class ManualMergeDefs {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.USER, user);
             }
             if (!decisionDate.isEmpty()) {
-                decisionDate = DateTimeUtils.getCurrentDateTime();
+                if (decisionDate.equals("TODAY")) {
+                    decisionDate = DateTimeUtils.getCurrentDateTime();
+                }
                 SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.Decision.DECISION_DATE, decisionDate);
             }
             if (!mergingProcessId.isEmpty()) {
