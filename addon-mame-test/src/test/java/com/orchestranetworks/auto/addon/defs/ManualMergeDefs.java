@@ -589,8 +589,9 @@ public class ManualMergeDefs {
     public void i_will_verify_the_groupid_of_table_recordmetadata_as_below(List<Map<String, String>> table) {
         List<List<String>> expectList = new ArrayList<>();
         table.forEach(row -> {
-            expectList.add(Arrays.asList(row.get
-                    (TechnicalTable.RecordMetadata.FUNCTIONAL_ID).split("\\s*,\\s*")));
+            expectList.add(Arrays.asList(row.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID)
+                    .replace("*", "|")
+                    .split("\\s*,\\s*")));
         });
 
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.RECORD_METADATA_TBL);
