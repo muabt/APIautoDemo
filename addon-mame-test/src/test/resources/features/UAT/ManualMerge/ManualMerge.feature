@@ -358,6 +358,7 @@ Feature: Manual Merge
       | Data model             | Table  |
       | Publication: Genealogy | Person |
 
+  @MM09
   Scenario: UAT-MM09 Survivor record selection mode = "Most trust source"
     Given I permit to access matching table
     And I create record with PK "Publication: Genealogy" is "Person" and the content followings
