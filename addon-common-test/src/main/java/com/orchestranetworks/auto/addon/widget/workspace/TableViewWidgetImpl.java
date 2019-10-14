@@ -20,7 +20,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
     private static final String XPATH_TABLE = "//table[@class='ebx_tvFixed']";
     public static final String XPATH_CHECKBOX_RECORD = "//div[@id='ebx_WorkspaceContent']//tr[(td[%1$s]) or (td/div[%1$s])]//input[@type='checkbox']";
-    private static final String XPATH_NO_RECORDS_FOUND = "//div[contains(@class,'tvMessageEmpty') and .='No records found.']";
+    private static final String XPATH_NO_RECORDS_FOUND = "//div[@class='ebx_tvMessageEmpty ebx_ValueND'  and .='No records found.']";
     public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
 
     public TableViewWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
