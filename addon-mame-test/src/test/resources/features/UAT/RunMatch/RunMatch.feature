@@ -1,6 +1,6 @@
 @UAT
 #MAME Test Design: https://docs.google.com/spreadsheets/d/1r_xok0EpPQXFJr23HEAfsY0fW3usrg06wuJ_e6V-Ai8/edit#gid=1172924389
-#@Run_Match
+@Run_Match
 Feature: Run Match feature
   As user
   I want to use this Run Match to know the duplicate record in the table.
@@ -160,7 +160,7 @@ Feature: Run Match feature
 
   Scenario: UAT-RM05 Run Match(Active selection) with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
     And I permit to access matching table
-    When I select "MAME_Configuration_Inline.ebx" file to import
+    When I select "MAME_Configuration_Inline_RunMatch.ebx" file to import
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | childDataspace | admin admin (admin) |               |
@@ -198,7 +198,7 @@ Feature: Run Match feature
 
   Scenario: UAT-RM06 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Advanced Setting.
     And I permit to access matching table
-    When I select "MAME_Configuration_Inline.ebx" file to import
+    When I select "MAME_Configuration_Inline_RunMatch.ebx" file to import
     And I select matching table record of table "Person"
     Then I select matching process record with label "MPC1" in "Matching process" tab
     And the matching process is updated as the followings
@@ -219,7 +219,7 @@ Feature: Run Match feature
 
   Scenario: UAT-RM07 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Both null values Won't match.
     And I permit to access matching table
-    When I select "MAME_Configuration_Inline.ebx" file to import
+    When I select "MAME_Configuration_Inline_RunMatch.ebx" file to import
     And I select matching table record of table "Person"
     Then I select matching process record with label "MPC1" in "Matching process" tab
     And I select matching field record with label "Residence" in "Matching fields" tab

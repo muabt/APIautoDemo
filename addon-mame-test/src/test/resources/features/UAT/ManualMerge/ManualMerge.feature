@@ -395,7 +395,7 @@ Feature: Manual Merge
       | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | No       |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+      | KEY1 |               | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
