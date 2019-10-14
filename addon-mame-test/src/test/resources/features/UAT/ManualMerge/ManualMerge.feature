@@ -154,7 +154,8 @@ Feature: Manual Merge
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
-    And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
+    And I select dataspace service "View or edit datasets"
+    And I access table "Place" of dataset "genealogy"
     When I select some records with primary key as following
       | Id |
       | 1  |
@@ -322,7 +323,8 @@ Feature: Manual Merge
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
-    And I access table "Person" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
+    And I select dataspace service "View or edit datasets"
+    And I access table "Person" of dataset "genealogy"
     When I select some records with primary key as following
       | ID                                   |
       | 0157a930-7725-41d0-b1c4-281b794d38aa |
@@ -371,7 +373,8 @@ Feature: Manual Merge
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
-    And I access table "Person" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
+    And I select dataspace service "View or edit datasets"
+    And I access table "Person" of dataset "genealogy"
     When I select some records with primary key as following
       | ID                                   |
       | 0157a930-7725-41d0-b1c4-281b794d38aa |
@@ -420,7 +423,8 @@ Feature: Manual Merge
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
-    And I access table "Place" of dataset "genealogy" in dataspace "Master Data - Reference > referenceChild"
+    And I select dataspace service "View or edit datasets"
+    And I access table "Place" of dataset "genealogy"
     When I select some records with primary key as following
       | Id |
       | 1  |
