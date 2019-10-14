@@ -44,7 +44,6 @@ public class BasePage extends PageObject {
             LogWork.info("Switch to IFrame has ID=" + iframes.get(0).getAttribute("id"));
             driver.switchTo().frame(iframes.get(0));
             iframes = driver.findElements(By.xpath(XPATH_IFRAME));
-            LogWork.info("Message test Null poiter");
         }
 
     }

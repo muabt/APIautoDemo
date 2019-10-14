@@ -33,7 +33,7 @@ public class ManualMergeDefs {
     AdministrationSteps onAdministrationSteps;
     @Steps
     CommonSteps onCommonSteps;
-    private DataObject mergedRecord = null;
+    private DataObject mergedRecord ;
 
     /**
      * Verify the preview table when merging
@@ -232,6 +232,7 @@ public class ManualMergeDefs {
 
         // Save table to DataObject in session
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGING_PROCESS_TBL);
+        LogWork.info("Test null poiter ="+actualTbl);
         mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
 
         for (int i = 0; i < expectedTbl.size(); i++) {
