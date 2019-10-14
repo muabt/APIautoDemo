@@ -636,7 +636,7 @@ public class ManualMergeDefs {
     public void i_will_verify_the_data_of_table_recordmetadata_as_below(List<Map<String, String>> table) {
         HashMap<String, List<String>> actualTable = Serenity.sessionVariableCalled(RECORDMETADATA_TABLE);
         table.forEach(row -> {
-            String expectedFunctionalId = row.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
+            String expectedFunctionalId = row.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).replace("*", "|");
             String expectedState = row.get(TechnicalTable.RecordMetadata.STATE);
             String expectedAutoCreated = row.get(TechnicalTable.RecordMetadata.AUTO_CREATED);
             String expectedIsolated = row.get(TechnicalTable.RecordMetadata.ISOLATED);
