@@ -1,4 +1,5 @@
 @UAT
+@MM
 Feature: Manual Merge
   In order to use Manual Merge
   As a user
@@ -7,7 +8,6 @@ Feature: Manual Merge
   Background:
     Given I login to EBX successfully
 
-  @MM01
   Scenario: UAT-MM01 Default merge function = Last update and PK isn't auto incremented value
     Given I permit to access matching table
     And I create record with PK "Publication: Genealogy" is "Person" and the content followings
@@ -81,7 +81,7 @@ Feature: Manual Merge
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | TODAY        | mergingProcessId |
     Then I will see table MergeValueLineage as below
       | id   | mergingProcessId | recordId                             | sourceIndex | fieldPath   | goldenIndex |
       | KEY1 | MERGE_PROCESS_ID | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |             | /lastName   |             |
@@ -130,8 +130,8 @@ Feature: Manual Merge
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 1        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-      | KEY1 | 2        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 1        | Golden_record | Identified as match | admin | TODAY        | mergingProcessId |
+      | KEY1 | 2        | Golden_record | Identified as match | admin | TODAY        | mergingProcessId |
     Then I will see table MergeValueLineage as below
       | id   | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
       | KEY1 | MERGE_PROCESS_ID | 1        |             | /id       |             |
@@ -180,8 +180,8 @@ Feature: Manual Merge
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 1        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
-      | KEY2 | 2        | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 1        | Golden_record | Identified as match | admin | TODAY        | mergingProcessId |
+      | KEY2 | 2        | Golden_record | Identified as match | admin | TODAY        | mergingProcessId |
     Then I will see table MergeValueLineage as below
       | id   | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
       | KEY1 | MERGE_PROCESS_ID | 1        |             | /id       |             |
@@ -231,7 +231,7 @@ Feature: Manual Merge
       | KEY1 | 2        | 1        | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 2        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     And I delete some MAME config records with primary key as following
@@ -351,7 +351,7 @@ Feature: Manual Merge
       | KEY1 | 0157a930-7725-41d0-b1c4-281b794d38aa | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 0157a930-7725-41d0-b1c4-281b794d38aa | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 0157a930-7725-41d0-b1c4-281b794d38aa | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | Identified as match | admin | TODAY        | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -402,7 +402,7 @@ Feature: Manual Merge
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | TODAY        | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -452,7 +452,7 @@ Feature: Manual Merge
       | KEY1 | 2        | 1        | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 2        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -509,9 +509,9 @@ Feature: Manual Merge
       | KEY3 | 4        | 1        | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 2        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
-      | KEY2 | 3        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
-      | KEY3 | 4        | 1        | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | mergingProcessId |
+      | KEY2 | 3        | 1        | Identified as match | admin | TODAY        | mergingProcessId |
+      | KEY3 | 4        | 1        | Identified as match | admin | TODAY        | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
@@ -574,9 +574,9 @@ Feature: Manual Merge
       | KEY3 | 4        | 3        | mergingProcessId | No              |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 1        | 3        | Identified as match | admin | decisionDate | mergingProcessId |
-      | KEY2 | 2        | 3        | Identified as match | admin | decisionDate | mergingProcessId |
-      | KEY3 | 4        | 3        | Identified as match | admin | decisionDate | mergingProcessId |
+      | KEY1 | 1        | 3        | Identified as match | admin | TODAY        | mergingProcessId |
+      | KEY2 | 2        | 3        | Identified as match | admin | TODAY        | mergingProcessId |
+      | KEY3 | 4        | 3        | Identified as match | admin | TODAY        | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
     When I delete some MAME config records with primary key as following
