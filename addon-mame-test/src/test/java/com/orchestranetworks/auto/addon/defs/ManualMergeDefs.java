@@ -628,10 +628,21 @@ public class ManualMergeDefs {
                 hashMapGroupId.get(groupId).add(functionalId);
             }
         }
-        System.out.println("");
         Serenity.setSessionVariable(RECORDMETADATA_TABLE).to(actualTblData);
 
         List<List<String>> actualList = new ArrayList<>(hashMapGroupId.values());
+
+        System.out.println("Expected list");
+        expectList.forEach(row -> {
+            row.forEach(cell -> System.out.print(cell + " "));
+            System.out.println();
+        });
+        System.out.println("============");
+        System.out.println("Actual list");
+        actualList.forEach(row -> {
+            row.forEach(cell -> System.out.print(cell + " "));
+            System.out.println();
+        });
         Assert.assertTrue(actualList.containsAll(expectList)
                 && actualList.size() == expectList.size());
     }
