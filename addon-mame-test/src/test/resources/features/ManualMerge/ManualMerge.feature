@@ -6,8 +6,8 @@ Feature: Manual Merge
   Scenario: Check merging process after validate merge view screen
     Given I login to EBX successfully
     And I create a child of dataspace "Master Data - Reference > Resource" with information as following
-      | Identifier | Owner               | English Label |
-      |            | admin admin (admin) |               |
+      | Identifier      | Owner               | English Label |
+      | chilDataspaceMM | admin admin (admin) |               |
     When I select dataspace service "View or edit datasets"
     When I access table "Table 19" of dataset "Updater"
     When I select some records with primary key as following
@@ -29,8 +29,7 @@ Feature: Manual Merge
       | ID | Company                         | Rank | Country/Territory | Sales |
       | 3  | Agricultural Bank of China 3456 | 2    | England           | 150.3 |
     When I complete merging process
-    Then I access dataset "Master Data - Reference > Resource > Resource-child28 > Updater_Table19_MDS"
-    And I access table "RecordMetadata"
+    Then I access table "RecordMetadata" of dataset "Updater_Table19_MDS" in dataspace "chilDataspaceMM"
     Then I will see table RecordMetadata as below
       | recordId | groupId  | state  | autoCreated | functionalId |
       | KEY1     | GROUP_ID | Merged | No          | 1            |
@@ -38,4 +37,4 @@ Feature: Manual Merge
       | KEY3     | GROUP_ID | Golden | No          | 3            |
       | KEY4     | GROUP_ID | Merged | No          | 4            |
       | KEY5     | GROUP_ID | Merged | No          | 5            |
-    And I delete the dataspace
+    And I delete the "chilDataspaceMM" dataspace
