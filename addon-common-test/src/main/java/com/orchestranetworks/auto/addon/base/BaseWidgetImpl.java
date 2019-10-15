@@ -577,7 +577,7 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     public String getColumnNameWithIndex(int index) {
-        String xPathHeader = "(//th[contains(@id,'ebx_workspaceTable_tableField') or (@class='ebx_tvSortableColumn')][descendant::span[@class='ebx_RawLabel']])[" + index + "]";
+        String xPathHeader = "(//th[contains(@id,'ebx_workspaceTable_tableField') or (@class='ebx_tvSortableColumn')][descendant::span[@class='ebx_RawLabel']])[" + index + "]//span[@class='ebx_RawLabel']";
         WebElementFacade header = getElement(xPathHeader);
         highlightElement(xPathHeader);
         if (!header.isDisplayed())
