@@ -3,10 +3,12 @@ package com.orchestranetworks.auto.addon.widget.workspace;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Joiner;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.common.TableObject;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.server.handler.DeleteSession;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import com.orchestranetworks.auto.addon.utils.Constants;
@@ -49,7 +51,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     @Override
     public void selectRecordWithPK(List<String> primaryKey) {
         List<String> newPKs = new ArrayList<String>();
-        String xPathRow = "//div[@id='ebx_WorkspaceContent']//tr[(td[%1$s])";
+        String xPathRow = "//table[@class='ebx_tvFixed']//tr[(td[%1$s])";
         xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(0)));
         if (primaryKey.size() >= 2) {
             for (int i = 1; i < primaryKey.size(); i++) {
@@ -59,7 +61,24 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         }
         xPathRow += "]";
         switchToLastIFrame();
-        clickByJS(xPathRow + "//input[@type='checkbox']");
+        // check if found >1 row satisfy condition
+        int numOfRow = findAllElements(xPathRow).size();
+        if (numOfRow > 1) {
+            String joinPK = Joiner.on("").join(primaryKey);
+            selectRecordWithJoinPK(xPathRow, numOfRow, joinPK);
+        } else {
+            clickByJS(xPathRow + "//input[@type='checkbox']");
+        }
+    }
+
+    private void selectRecordWithJoinPK(String xPathRow, int numOfRow, String joinPK) {
+        for (int i = 1; i <= numOfRow; i++) {
+            String xpathCell = "(" + xPathRow + ")[" + i + "]//input[@type='checkbox']";
+            if (getTextValue(xpathCell + "/ancestor::tr").replaceAll("\n", "").equals(joinPK)) {
+                clickByJS(xpathCell);
+                break;
+            }
+        }
     }
 
     @Override
@@ -147,7 +166,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
     @Override
     public TableObject getDefaultViewTable(String tblName) {
-        TableObject tbl =TableObject.newTable(tblName);
+        TableObject tbl = TableObject.newTable(tblName);
         JsonObject row;
         int numOfRow = getNumberOfTableRow();
         int numOfCol = getNumberOfTableCol();
