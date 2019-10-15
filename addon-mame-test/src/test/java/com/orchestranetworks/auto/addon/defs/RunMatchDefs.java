@@ -226,7 +226,7 @@ public class RunMatchDefs {
             String id = expectedRow.get(TechnicalTable.MatchingResult.ID).getAsString().
                     concat(sessionId).replace("*", "|");
             String sourceId = expectedRow.get(TechnicalTable.MatchingResult.SOURCE_ID).getAsString().replace("*", "|");
-            String targetId = expectedRow.get(TechnicalTable.MatchingResult.TARGET_ID).getAsString();
+            String targetId = expectedRow.get(TechnicalTable.MatchingResult.TARGET_ID).getAsString().replace("*", "|");
             String lastResult = expectedRow.get(TechnicalTable.MatchingResult.LAST_RESULT).getAsString();
 
             SessionData.compareJsonObjectValue(actualRow,

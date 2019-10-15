@@ -98,7 +98,7 @@ public class ManualMergeDefs {
     }
 
     /**
-     * Verify the MergeResult table
+     * Verify the RecordMetadata table
      * <p>
      * <b>Example</b>:
      * <ul>
@@ -130,7 +130,7 @@ public class ManualMergeDefs {
             JsonObject record = expectedTbl.get(i).getAsJsonObject();
             condition.put(Constants.CRITERION, TechnicalTable.RecordMetadata.FUNCTIONAL_ID);
             condition.put(Constants.OPERATION, "equals");
-            condition.put(Constants.VALUE, record.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString());
+            condition.put(Constants.VALUE, record.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString().replace("*", "|"));
             condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
             filterConditions.add(condition);
         }
@@ -329,8 +329,8 @@ public class ManualMergeDefs {
             JsonObject actualRow = actualTbl.getRecord(i);
 
             String id = expectedRow.get(TechnicalTable.MergeResult.ID).getAsString();
-            String recordId = expectedRow.get(TechnicalTable.MergeResult.RECORD_ID).getAsString();
-            String goldenId = expectedRow.get(TechnicalTable.MergeResult.GOLDEN_ID).getAsString();
+            String recordId = expectedRow.get(TechnicalTable.MergeResult.RECORD_ID).getAsString().replace("*", "|");
+            String goldenId = expectedRow.get(TechnicalTable.MergeResult.GOLDEN_ID).getAsString().replace("*", "|");
             String mpID = expectedRow.get(TechnicalTable.MergeResult.MERGING_PROCESS_ID).getAsString();
             String isInterpolation = expectedRow.get(TechnicalTable.MergeResult.IS_INTERPOLATION).getAsString();
 
@@ -379,7 +379,8 @@ public class ManualMergeDefs {
         // Get Merging process ID from MergingProcess table
         String mpID = TableObject.takeTable(mergedRecord, MAMEConstants.MERGING_PROCESS_TBL)
                 .getRecord(0).getAsJsonObject()
-                .get(TechnicalTable.MergingProcess.ID).getAsString();
+                .get(TechnicalTable.MergingProcess.ID)
+                .getAsString();
 
         // Filter selected record by Merging process ID
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
@@ -411,8 +412,8 @@ public class ManualMergeDefs {
             JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
             JsonObject actualRow = actualTbl.getRecord(i);
             String id = expectedRow.get(TechnicalTable.Decision.ID).getAsString();
-            String sourceId = expectedRow.get(TechnicalTable.Decision.SOURCE_ID).getAsString();
-            String targetId = expectedRow.get(TechnicalTable.Decision.TARGET_ID).getAsString();
+            String sourceId = expectedRow.get(TechnicalTable.Decision.SOURCE_ID).getAsString().replace("*", "|");
+            String targetId = expectedRow.get(TechnicalTable.Decision.TARGET_ID).getAsString().replace("*", "|");
             String lastDecision = expectedRow.get(TechnicalTable.Decision.LAST_DECISION).getAsString();
             String user = expectedRow.get(TechnicalTable.Decision.USER).getAsString();
             String decisionDate = expectedRow.get(TechnicalTable.Decision.DECISION_DATE).getAsString();
