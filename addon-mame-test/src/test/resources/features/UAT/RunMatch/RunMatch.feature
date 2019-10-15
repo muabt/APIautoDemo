@@ -168,17 +168,10 @@ Feature: Run Match feature
     Then the Run Match service is executed with the information as belows
       | Matching process | Records to match against |
       | SESSION          | Active selection         |
-# Sample to verify Matching metadata. Should verify MatchingSession table first
     And I access table "RecordMetadata" of dataset "genealogyForRunMatch_person_MDS" in dataspace "Master Data - Reference > childDataspace"
     Then I will see table MatchingSession as below
       | id | executionDate | matchingProcessId | matchAgainst     | matchAgainstStates | phase         |
       | ID | DATE          |                   | ACTIVE_SELECTION |                    | DEDUPLICATION |
-#    Then I will see table MatchingResult as below
-#      | id    | sourceId | targetId | lastResult  | sessionId |
-#      | 1*1~~ | 1*1      |          | NOT_MATCHED | SESSIONID |
-#      | 2*2~~ | 2*2      |          | NOT_MATCHED | SESSIONID |
-#      | 3*3~~ | 3*3      |          | NOT_MATCHED | SESSIONID |
-#      | 4*4~~ | 4*4      |          | NOT_MATCHED | SESSIONID |
     Then I will see table MatchingResult as below
       | id   | sourceId | targetId | lastResult  | sessionId |
       | 1~2~ | 1        | 2        | MATCHED     | SESSIONID |

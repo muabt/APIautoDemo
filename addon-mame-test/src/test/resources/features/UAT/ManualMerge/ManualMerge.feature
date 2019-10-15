@@ -361,17 +361,17 @@ Feature: Manual Merge
 
   @MM09
   Scenario: UAT-MM09 Survivor record selection mode = "Most trust source"
-#    Given I permit to access matching table
-#    And I create record with PK "Publication: Genealogy" is "Person" and the content followings
-#      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-#      | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
-#    And I select matching table record of table "Person"
-#    When I set Merge policy configuration as belows
-#      | Merge policy code | Survivor record selection mode | Default merge function | Mode | Used for manual merge | Apply permission on merge view |
-#      | RANDOM            | Most trust source              |                        |      | Yes                   | No                             |
-#    And I create Survivorship field with selections as followings
-#      | Survivorship field code | Field      | Merge function | Condition for field value survivorship | Execute only if empty |
-#      | RANDOM                  | First name | Most frequent  |                                        | Yes                   |
+    Given I permit to access matching table
+    And I create record with PK "Publication: Genealogy" is "Person" and the content followings
+      | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
+    And I select matching table record of table "Person"
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode | Used for manual merge | Apply permission on merge view |
+      | RANDOM            | Most trust source              |                        |      | Yes                   | No                             |
+    And I create Survivorship field with selections as followings
+      | Survivorship field code | Field      | Merge function | Condition for field value survivorship | Execute only if empty |
+      | RANDOM                  | First name | Most frequent  |                                        | Yes                   |
     And I create a child of dataspace "Master Data - Reference" with information as following
       | Identifier     | Owner               | English Label |
       | referenceChild | admin admin (admin) |               |
@@ -386,9 +386,9 @@ Feature: Manual Merge
       | Id                                         | First name   | Last name    | Gender | Residence | Age   | Birth date     | Birth place        |
       | 0157a930-7725-41d0-b1c4-281b794d38aa   {H} | Huibregt {H} | Heijboer {H} | {H}    | {H}       | 0 {H} | 10/21/1847 {H} | Poortvliet     {H} |
       | 06127a07-3d23-4fb1-bd55-f5044873b0f1       | Cornelia     | Wagemaker    |        |           | 0     | 10/28/1922     | Sint Philipsland   |
-#    And preview table is displayed as below
-#      | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place |
-#      | 0157a930-7725-41d0-b1c4-281b794d38aa | Huibregt   | Heijboer  |        |           | 0   | 10/21/1847 | Poortvliet  |
+    And preview table is displayed as below
+      | Id                                   | First name | Last name | Gender | Residence | Age | Birth date | Birth place |
+      | 0157a930-7725-41d0-b1c4-281b794d38aa | Huibregt   | Heijboer  |        |           | 0   | 10/21/1847 | Poortvliet  |
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
