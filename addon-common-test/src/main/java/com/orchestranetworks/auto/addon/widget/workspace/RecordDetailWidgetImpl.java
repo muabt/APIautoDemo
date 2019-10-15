@@ -39,6 +39,7 @@ public class RecordDetailWidgetImpl extends BaseWidgetImpl implements RecordDeta
     @Override
     public void selectTab(String tabName) {
         waitForAllLoadingCompleted();
+        waitAbit(500);
         clickByJS(XFormat.of(MERGE_POLICY_TAB, tabName));
     }
 
