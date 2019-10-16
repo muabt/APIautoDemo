@@ -6,7 +6,10 @@ Feature: Survivor record selection mode is defined
 
   Scenario: SC-MPMM01 Check pre-selected records at merge view screen when Used for manual merge is No
     And I access table "TableNotUsedforManualMerge" of dataset "Human_Resource" in dataspace "Master Data - Reference>Reference-child"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | id |
+      | 1  |
+      | 2  |
     And I select table service "Match and Merge>Merge"
     Then record view table will be displayed and highlighted as below
       | id | Owner | Employee |
@@ -30,7 +33,10 @@ Feature: Survivor record selection mode is defined
       |            | Dataspace | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "NewEmployee" of dataset "Human_Resource"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | Identifier |
+      | 1          |
+      | 2          |
     And I select table service "Match and Merge>Merge"
     Then record view table will be displayed and highlighted as below
       | Identifier | Supervisor | Date of birth | National | Phone Number  | Email         | Date and time created   | Name      |
@@ -54,11 +60,11 @@ Feature: Survivor record selection mode is defined
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | executionDate |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 2        | 1        | 900              | No              |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 2        | 1        | Identified as match | admin | decisionDate | 900              |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
 
@@ -95,21 +101,23 @@ Feature: Survivor record selection mode is defined
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
-      | id   | recordId     | goldenId      | mergingProcessId | isInterpolation |
-      | KEY1 | Merge_record | Golden_record | mergingProcessId | No              |
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 4        | 3        | mergingProcessId | No              |
     Then I will see table Decision as below
-      | id   | sourceId     | targetId      | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | Merge_record | Golden_record | Identified as match | admin | decisionDate | mergingProcessId |
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 4        | 3        | Identified as match | admin | decisionDate | mergingProcessId |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
 
   Scenario: SC-MPMM05 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and Value of source field (of selected merged records)do not map with the code defined in Table trusted source
-    Given I login to EBX successfully
-    When I access "dataset" menu
+     When I access "dataset" menu
     And I access dataspace "Master Data - Reference>Merge_save_tobackend"
     And I access dataset "Merge_save_tobackend"
     And I access table "Items"
-    When I select first "2" records in table
+    When I select some records with primary key as following
+      | Indentifiers |
+      | 1            |
+      | 2            |
     And I select table service "Match and Merge>Merge"
     Then record view table will be displayed and highlighted as below
       | Indentifiers | integer     | Category    | Brand | Name             | Available       | defaultPrice | Expire_date            | testSourceField |
@@ -124,10 +132,8 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
 #    And I see an exception error
-
   Scenario: SC-MPMM06 Check merging records if Survivor record selection mode is Most trusted source and all values of source field (of selected merged records) are null
-    Given I login to EBX successfully
-    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
+     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
       |            | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
@@ -150,3 +156,28 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
 
+  Scenario: SC-MPMM08 Check merging records when Survivor field is defined and Default merge function is not defined
+    And I create a child of dataspace "Master Data - Reference>Apply_merge_policy" with information as following
+      | Identifier | Owner               | English Label |
+      |            | admin admin (admin) |               |
+    And I select dataspace service "View or edit datasets"
+    And I access table "Company" of dataset "Merge_save_tobackend"
+    When I select some records with primary key as following
+      | ID |
+      | A  |
+      | company_A  |
+      | company_B  |
+    And I select table service "Match and Merge>Merge"
+#    Then record view table will be displayed and highlighted as below
+#      | Identifier | Name | Employee  | Website     |
+#      | {H}8       | {H}  | {H}Davied | {H}  [html] |
+#      | 9          |      | Alice     | [html]      |
+#    And preview table is displayed as below
+#      | Identifier | Name | Employee | Website |
+#      | 8          |      | Davied   | [html]  |
+#    And I see the table name "1. National" in dropdown list
+#    And the screen displays buttons as below
+#      | Name               | Status   |
+#      | Apply merge policy |          |
+#      | Cancel last action | inactive |
+  And I delete the dataspace
