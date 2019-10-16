@@ -50,6 +50,7 @@ Feature: Run Match feature
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
 
+  @MM03
   Scenario: UAT-RM03 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
     And I permit to access matching table
     When I select "MAME_Configuration_RunMatch.ebx" file to import
@@ -71,7 +72,7 @@ Feature: Run Match feature
       | GROUP6 | 5            |
       | GROUP7 | 4            |
       | GROUP8 | 3            |
-      | GROUP9 | 2, 1         |
+      | GROUP9 | 1, 2         |
     And I will verify other data of the table Recordmetadata as below
       | functionalId | state  | autoCreated | isolated |
       | 1            | Unset  | No          | No       |
