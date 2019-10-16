@@ -467,7 +467,7 @@ public class ManualMergeDefs {
      */
     @Then("^I will see table MergeValueLineage as below$")
     public void i_will_see_table_MergeValueLineage_as_below(List<List<String>> table) {
-        onCommonSteps.click_on_table_name(MAMEConstants.MERGEVALUELINEAGE);
+        onCommonSteps.click_on_table_name(MAMEConstants.MERGE_VALUE_LINEAGE_TBL);
         JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
 
         String mpID = TableObject.takeTable(mergedRecord, MAMEConstants.MERGING_PROCESS_TBL)
@@ -487,7 +487,7 @@ public class ManualMergeDefs {
         }
         onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
 
-        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGEVALUELINEAGE);
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGE_VALUE_LINEAGE_TBL);
         mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
 
         for (int i = 0; i < expectedTbl.size(); i++) {
@@ -651,6 +651,11 @@ public class ManualMergeDefs {
                 && actualList.size() == expectList.size());
     }
 
+    /**
+     * Verify the raw data of Recordmetadata table
+     *
+     * @param table
+     */
     @And("^I will verify other data of the table Recordmetadata as below$")
     public void i_will_verify_the_data_of_table_recordmetadata_as_below(List<Map<String, String>> table) {
         HashMap<String, List<String>> actualTable = Serenity.sessionVariableCalled(RECORDMETADATA_TABLE);
@@ -664,5 +669,131 @@ public class ManualMergeDefs {
             assertThat(expectedAutoCreated).isEqualTo(actualTable.get(expectedFunctionalId).get(2));
             assertThat(expectedIsolated).isEqualTo(actualTable.get(expectedFunctionalId).get(3));
         });
+    }
+
+    /**
+     * Verify the raw data of MergingProcess table
+     *
+     * @param table
+     */
+    @And("^I will verify table MergingProcess as below$")
+    public void i_will_verify_table_merging_process_as_below(List<List<String>> table) {
+        onCommonSteps.click_on_table_name(MAMEConstants.MERGING_PROCESS_TBL);
+
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGING_PROCESS_TBL);
+
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.getRecord(i);
+            String expectedId = expectedRow.get(TechnicalTable.MergingProcess.ID).getAsString();
+            String expectedMergePolicyId = expectedRow.get(TechnicalTable.MergingProcess.MERGE_POLICY_ID).getAsString();
+            String expectedMergeMode = expectedRow.get(TechnicalTable.MergingProcess.MERGE_MODE).getAsString();
+            String expectedExecutionDate = expectedRow.get(TechnicalTable.MergingProcess.EXECUTION_DATE).getAsString();
+            String expectedSnapshotId = expectedRow.get(TechnicalTable.MergingProcess.SNAPSHOT_ID).getAsString();
+            String expectedGroupId = expectedRow.get(TechnicalTable.MergingProcess.GROUP_ID).getAsString();
+            String expectedUser = expectedRow.get(TechnicalTable.MergingProcess.USER).getAsString();
+            String expectedIsUnmerged = expectedRow.get(TechnicalTable.MergingProcess.IS_UNMERGED).getAsString();
+
+            SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.ID, expectedId);
+            SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.MERGE_POLICY_ID, expectedMergePolicyId);
+            SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.MERGE_MODE, expectedMergeMode);
+            SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.EXECUTION_DATE, expectedExecutionDate);
+            SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.SNAPSHOT_ID, expectedSnapshotId);
+            SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.GROUP_ID, expectedGroupId);
+            SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.USER, expectedUser);
+            SessionData.compareJsonObjectValueContains(actualRow, TechnicalTable.MergingProcess.IS_UNMERGED, expectedIsUnmerged);
+        }
+
+    }
+
+    /**
+     * Verify the raw data of Decision table
+     *
+     * @param table
+     */
+    @And("^I will verify table Decision as below$")
+    public void i_will_verify_table_decision_as_below(List<List<String>> table) {
+        onCommonSteps.click_on_table_name(MAMEConstants.DECISION);
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.DECISION);
+
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.getRecord(i);
+            String expectedId = expectedRow.get(TechnicalTable.Decision.ID).getAsString();
+            String expectedSourceId = expectedRow.get(TechnicalTable.Decision.SOURCE_ID).getAsString().replace("*", "|");
+            String expectedTargetId = expectedRow.get(TechnicalTable.Decision.TARGET_ID).getAsString().replace("*", "|");
+            String expectedLastDecision = expectedRow.get(TechnicalTable.Decision.LAST_DECISION).getAsString();
+            String expectedUser = expectedRow.get(TechnicalTable.Decision.USER).getAsString();
+            String expectedDecisionDate = expectedRow.get(TechnicalTable.Decision.DECISION_DATE).getAsString();
+            String expectedMergingProcessId = expectedRow.get(TechnicalTable.Decision.MERGING_PROCESS_ID).getAsString();
+
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.ID, expectedId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.SOURCE_ID, expectedSourceId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.TARGET_ID, expectedTargetId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.LAST_DECISION, expectedLastDecision);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.USER, expectedUser);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.DECISION_DATE, expectedDecisionDate);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.MERGING_PROCESS_ID, expectedMergingProcessId);
+        }
+    }
+
+    /**
+     * Verify the raw data of MergeValueLineage table
+     *
+     * @param table
+     */
+    @And("^I will verify table MergeValueLineage as below$")
+    public void i_will_verify_table_merge_value_lineage_as_below(List<List<String>> table) {
+        onCommonSteps.click_on_table_name(MAMEConstants.MERGE_VALUE_LINEAGE_TBL);
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGE_VALUE_LINEAGE_TBL);
+
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.getRecord(i);
+            String expectedId = expectedRow.get(TechnicalTable.MergeValueLineage.ID).getAsString();
+            String expectedMergingProcessId = expectedRow.get(TechnicalTable.MergeValueLineage.MERGING_PROCESS_ID).getAsString();
+            String expectedRecordId = expectedRow.get(TechnicalTable.MergeValueLineage.RECORD_ID).getAsString().replace("*", "|");
+            String expectedSourceIndex = expectedRow.get(TechnicalTable.MergeValueLineage.SOURCE_INDEX).getAsString();
+            String expectedFieldPath = expectedRow.get(TechnicalTable.MergeValueLineage.FIELD_PATH).getAsString();
+            String expectedGoldenIndex = expectedRow.get(TechnicalTable.MergeValueLineage.GOLDEN_INDEX).getAsString();
+
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeValueLineage.ID, expectedId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeValueLineage.MERGING_PROCESS_ID, expectedMergingProcessId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeValueLineage.RECORD_ID, expectedRecordId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeValueLineage.SOURCE_INDEX, expectedSourceIndex);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeValueLineage.FIELD_PATH, expectedFieldPath);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeValueLineage.GOLDEN_INDEX, expectedGoldenIndex);
+        }
+    }
+
+    /**
+     * Verify the raw data of MergeResult table
+     *
+     * @param table
+     */
+    @And("^I will verify table MergeResult as below$")
+    public void i_will_verify_table_merge_result_as_below(List<List<String>> table) {
+        onCommonSteps.click_on_table_name(MAMEConstants.MERGE_RESULT_TBL);
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGE_RESULT_TBL);
+
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.getRecord(i);
+            String expectedId = expectedRow.get(TechnicalTable.MergeResult.ID).getAsString();
+            String expectedRecordId = expectedRow.get(TechnicalTable.MergeResult.RECORD_ID).getAsString().replace("*", "|");
+            String expectedGoldenId = expectedRow.get(TechnicalTable.MergeResult.GOLDEN_ID).getAsString().replace("*", "|");
+            String expectedMergingProcessId = expectedRow.get(TechnicalTable.MergeResult.MERGING_PROCESS_ID).getAsString();
+            String expectIsInterpolation = expectedRow.get(TechnicalTable.MergeResult.IS_INTERPOLATION).getAsString();
+
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.ID, expectedId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.RECORD_ID, expectedRecordId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.GOLDEN_ID, expectedGoldenId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.MERGING_PROCESS_ID, expectedMergingProcessId);
+            SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.IS_INTERPOLATION, expectIsInterpolation);
+        }
     }
 }

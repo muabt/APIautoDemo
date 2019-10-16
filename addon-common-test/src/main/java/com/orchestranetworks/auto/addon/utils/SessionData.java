@@ -245,7 +245,9 @@ public class SessionData {
         if (actual == null)
             LogWork.error("Json Object  is null [" + actual.getAsJsonObject()  + "]");
         String actualValue = actual.get(actualHeader).getAsString();
-        assertThat(actualValue).isEqualTo(expectedValue);
+        if (!expectedValue.isEmpty() && !actualValue.isEmpty()) {
+            assertThat(actualValue).isEqualTo(expectedValue);
+        }
     }
 
     public static void compareJsonObjectValueContains(JsonObject actual, String actualHeader, String expectedValue) {

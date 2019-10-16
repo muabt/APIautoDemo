@@ -15,7 +15,7 @@ public class MAMEConstants {
     public static final String MATCHING_SESSION_TBL = "MatchingSession";
     public static final String MATCHING_RESULT_TBL = "MatchingResult";
     public static final String DECISION = "Decision";
-    public static final String MERGEVALUELINEAGE = "MergeValueLineage";
+    public static final String MERGE_VALUE_LINEAGE_TBL = "MergeValueLineage";
     public static final String IFRAME_INTERNAL_POPUP = "ebx_InternalPopup_frame";
     public static final String MATCHING_PROCESS_CODE = "Matching process code";
     public static final String ACTIVE = "Active";
