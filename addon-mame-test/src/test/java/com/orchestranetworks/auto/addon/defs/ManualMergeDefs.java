@@ -644,6 +644,8 @@ public class ManualMergeDefs {
         System.out.println("Actual list");
         actualList.forEach(row -> {
             Collections.sort(row);
+            row.forEach(cell -> System.out.print(cell + " "));
+            System.out.println();
         });
         Assert.assertTrue(actualList.containsAll(expectList)
                 && actualList.size() == expectList.size());
