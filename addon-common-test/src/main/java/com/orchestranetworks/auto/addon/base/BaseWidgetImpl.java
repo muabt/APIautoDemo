@@ -593,7 +593,8 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
     }
 
     public int getNumberOfTableCol() {
-        String xPathCol = "//div[@id='ebx_workspaceTable_headerContainer']//th[contains(@id,'ebx_workspaceTable_tableField')][descendant::span[@class='ebx_RawLabel']]";
+        // String xPathCol = "//div[@id='ebx_workspaceTable_headerContainer']//th[contains(@id,'ebx_workspaceTable_tableField')][descendant::span[@class='ebx_RawLabel']]";
+        String xPathCol = "//div[@id='ebx_workspaceTable_headerContainer']//th[contains(@id,'ebx_workspaceTable_tableField')][descendant::span[@class='ebx_RawLabel']]//span[@class='ebx_RawLabel']";
         return findAllElements(xPathCol).size();
     }
 
