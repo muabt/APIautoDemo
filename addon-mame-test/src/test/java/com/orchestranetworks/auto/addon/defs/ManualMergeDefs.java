@@ -594,9 +594,11 @@ public class ManualMergeDefs {
     public void i_will_verify_the_groupid_of_table_recordmetadata_as_below(List<Map<String, String>> table) {
         List<List<String>> expectList = new ArrayList<>();
         table.forEach(row -> {
-            expectList.add(Arrays.asList(row.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID)
+            List<String> list = Arrays.asList(row.get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID)
                     .replace("*", "|")
-                    .split("\\s*,\\s*")));
+                    .split("\\s*,\\s*"));
+            Collections.sort(list);
+            expectList.add(list);
         });
 
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.RECORD_METADATA_TBL);
@@ -641,8 +643,7 @@ public class ManualMergeDefs {
         System.out.println("============");
         System.out.println("Actual list");
         actualList.forEach(row -> {
-            row.forEach(cell -> System.out.print(cell + " "));
-            System.out.println();
+            Collections.sort(row);
         });
         Assert.assertTrue(actualList.containsAll(expectList)
                 && actualList.size() == expectList.size());
