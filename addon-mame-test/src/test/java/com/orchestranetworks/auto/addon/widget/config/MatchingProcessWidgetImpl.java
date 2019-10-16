@@ -18,8 +18,4 @@ public class MatchingProcessWidgetImpl extends BaseWidgetImpl implements Matchin
 
     }
 
-    @Override
-    public void selectDDLByJS(String label, String value) {
-
-    }
 }

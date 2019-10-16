@@ -6,7 +6,7 @@ import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features = "src/test/resources/features/", tags = { "@PRE-TESTING"})
+@CucumberOptions(features = "src/test/resources/features/", tags = "@PRE-TESTING")
 public class DefinitionTestSuite {
 
 }

@@ -7,6 +7,5 @@ import net.serenitybdd.core.annotations.ImplementedBy;
 public interface MatchingProcessWidget extends WidgetObject {
 	
 	 void selectRadioBoxWithLabel(String label, String value);
-	void selectDDLByJS(String label, String value);
 
 }

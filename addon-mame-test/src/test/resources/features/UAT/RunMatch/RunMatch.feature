@@ -50,7 +50,7 @@ Feature: Run Match feature
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
 
-  @MM03
+  @RM03
   Scenario: UAT-RM03 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Policy Active = Yes and Decision Tree.
     And I permit to access matching table
     When I select "MAME_Configuration_RunMatch.ebx" file to import
