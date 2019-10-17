@@ -210,6 +210,7 @@ Feature: Run Match feature
       | Publication: genealogyForRunMatch | Person |
     And I delete the dataspace
 
+  @RM07
   Scenario: UAT-RM07 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Both null values Won't match.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline_RunMatch.ebx" file to import

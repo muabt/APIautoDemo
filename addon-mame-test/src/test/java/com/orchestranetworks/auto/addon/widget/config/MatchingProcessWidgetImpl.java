@@ -13,9 +13,4 @@ public class MatchingProcessWidgetImpl extends BaseWidgetImpl implements Matchin
         super(page, locator, timeoutInMilliseconds);
     }
 
-    @Override
-    public void selectRadioBoxWithLabel(String label, String value) {
-
-    }
-
 }
