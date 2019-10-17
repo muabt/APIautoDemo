@@ -225,17 +225,17 @@ public class MatchingTableSteps extends ScenarioSteps {
 
     @Step
     public void select_keep_not_matched_records_untouched(String keepNotMatchedRecordsUntouched) {
-        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel(MAMEConstants.KEEP_NOT_MATCH, keepNotMatchedRecordsUntouched);
+        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel(MAMEConstants.KEEP_NOT_MATCH, keepNotMatchedRecordsUntouched);
     }
 
     @Step
     public void select_merged_record_is_recycled(String mergedRecordIsRecycled) {
-        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel(MAMEConstants.RECORD_RECYCLED, mergedRecordIsRecycled);
+        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel(MAMEConstants.RECORD_RECYCLED, mergedRecordIsRecycled);
     }
 
     @Step
     public void select_modify_merged_without_match(String modifyMergedWithoutMatch) {
-        onMatchingTablePage.getMatchingProcessWidget().selectRadioBoxWithLabel(MAMEConstants.MODIFY_MERGE, modifyMergedWithoutMatch);
+        onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel(MAMEConstants.MODIFY_MERGE, modifyMergedWithoutMatch);
     }
     @Step
     public void select_one_of_the_values_is_null(String oneOfTheValuesIsNull) {
