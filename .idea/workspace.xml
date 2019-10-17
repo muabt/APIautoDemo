@@ -1,40 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[BEN] Update wwait">
-      <change afterPath="$PROJECT_DIR$/addon-common-test/src/main/resources/driver/chromedriver75" afterDir="false" />
+    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[MAME]writing matching configuration feature">
+      <change afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/CustomChromeDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/CustomChromeDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/FileUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/LoadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/LoadConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/LogWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/LogWork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/AdministrationDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/AdministrationDefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/CommonDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/CommonDefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DataspaceDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DataspaceDefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/AdministrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/AdministrationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/CommonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/CommonPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/DataspaceBriefInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/DataspaceBriefInfoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/CommonSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/CommonSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DataspaceSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DataspaceSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/FooterWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/HeaderWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/HeaderWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/NavigationWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/AdministrationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/AdministrationWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/DataspaceBriefInfoWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/TableViewWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/TableViewWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/serenity.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver/chromedriver75" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver/chromedriver75" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ManualMergeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/ManualMergeSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/MetadataWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/MetadataWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/TableViewWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/widget/TableViewWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/PopupWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/PopupWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/PopupWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/PopupWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/UnmergeDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/UnmergeDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/UnmergePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/UnmergePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/UnmergeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/UnmergeSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/serenity.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,17 +44,12 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1989" />
-    <option name="y" value="24" />
-    <option name="width" value="1847" />
-    <option name="height" value="1004" />
-  </component>
   <component name="ProjectId" id="1Qfj1qFiti4eIXZ86jjbadWTBn0" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last.edited.regexp" value="Sample Text" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
@@ -89,19 +59,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.orchestranetworks.auto.addon.pages" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.orchestranetworks.auto.addon" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
       <recent name="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.orchestranetworks.auto.addon" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -122,43 +92,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber java.Feature: Dataspace">
-    <configuration name="Feature: Dataspace" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" />
-      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
-      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-common-test" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
-      <option name="SUGGESTED_NAME" value="Feature: Dataspace" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cucumber.api.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Feature: ManualMerge (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/ManualMerge/ManualMerge.feature" />
-      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
-      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-mame-test" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
-      <option name="SUGGESTED_NAME" value="Feature: ManualMerge" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cucumber.api.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Cucumber java.Feature: Unmerge">
     <configuration name="Feature: ManualMerge" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature" />
@@ -177,34 +111,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Create new data space" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: Unmerge" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-common-test/src/test/resources/features/Common/Dataspace.feature" />
-      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
-      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-common-test" />
-      <option name="NAME_FILTER" value="^Create new data space$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^Create new data space$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Create new data space" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cucumber.api.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Merge policy with Most trusted source, Longest default merge function (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/ManualMerge/ManualMerge.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^Merge policy with Most trusted source\, Longest default merge function$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^Merge policy with Most trusted source\, Longest default merge function$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Merge policy with Most trusted source, Longest default merge function" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
+      <option name="SUGGESTED_NAME" value="Feature: Unmerge" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -215,15 +129,72 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-CFT03 Validate Combobox \&quot;Data model\&quot; when Data model is not defined$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFT03 Validate Combobox \&quot;Data model\&quot; when Data model is not defined$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined" />
+      <option name="NAME_FILTER" value="^SC\-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: SC-UM09- Check service availability when selecting a record with the state &lt;unset&gt;" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-mame-test" />
+      <option name="NAME_FILTER" value="^SC\-UM09\- Check service availability when selecting a record with the state \&lt;unset\&gt;$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-UM09\- Check service availability when selecting a record with the state \&lt;unset\&gt;$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-UM09- Check service availability when selecting a record with the state &lt;unset&gt;" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: SC-uM09- Check service availability when selecting a record with the state &lt;unset&gt;" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-mame-test" />
+      <option name="NAME_FILTER" value="^SC\-uM09\- Check service availability when selecting a record with the state \&lt;unset\&gt;$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-uM09\- Check service availability when selecting a record with the state \&lt;unset\&gt;$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-uM09- Check service availability when selecting a record with the state &lt;unset&gt;" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: " type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-mame-test" />
+      <option name="NAME_FILTER" value="^$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -236,11 +207,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber java.Feature: Dataspace" />
-        <item itemvalue="Cucumber java.Scenario: Merge policy with Most trusted source, Longest default merge function (1)" />
-        <item itemvalue="Cucumber java.Feature: ManualMerge (1)" />
-        <item itemvalue="Cucumber java.Scenario: Create new data space" />
-        <item itemvalue="Cucumber java.Scenario: SC-CFT03 Validate Combobox &quot;Data model&quot; when Data model is not defined" />
+        <item itemvalue="Cucumber java.Feature: Unmerge" />
+        <item itemvalue="Cucumber java.Scenario: " />
+        <item itemvalue="Cucumber java.Scenario: SC-UM09- Check service availability when selecting a record with the state &lt;unset&gt;" />
+        <item itemvalue="Cucumber java.Scenario: SC-uM09- Check service availability when selecting a record with the state &lt;unset&gt;" />
+        <item itemvalue="Cucumber java.Scenario: SC-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute" />
       </list>
     </recent_temporary>
   </component>
@@ -444,7 +415,56 @@
       <option name="project" value="LOCAL" />
       <updated>1569233411316</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="[MAME] Writing matching configuration feature">
+      <created>1569403706897</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1569403706897</updated>
+    </task>
+    <task id="LOCAL-00029" summary="[MAME] writing matching configuration feature">
+      <created>1569488407004</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1569488407004</updated>
+    </task>
+    <task id="LOCAL-00030" summary="[MAME] Update feature Configuration">
+      <created>1569496105804</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1569496105804</updated>
+    </task>
+    <task id="LOCAL-00031" summary="[MAME] Edit SurvivorField feature">
+      <created>1570415888035</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1570415888035</updated>
+    </task>
+    <task id="LOCAL-00032" summary="[MAME] Editting Survivor field feature">
+      <created>1570790985241</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1570790985241</updated>
+    </task>
+    <task id="LOCAL-00033" summary="[MAME] editting Manual merge feature">
+      <created>1571109342040</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1571109342040</updated>
+    </task>
+    <task id="LOCAL-00034" summary="[MAME]writing matching configuration feature">
+      <created>1571110026805</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1571110026805</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -494,11 +514,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[BEN] Add file" />
-    <MESSAGE value="[BEN] Fix Navigation item" />
-    <MESSAGE value="[BEN] Update" />
-    <MESSAGE value="[BEN] Update NavigationWidget" />
-    <MESSAGE value="[BEN] add i_access_table_of_dataset_in_dataspace" />
     <MESSAGE value="[BEN] add" />
     <MESSAGE value="[BEN] update selectOwner" />
     <MESSAGE value="[BEN] Manual merge scenario 1" />
@@ -517,80 +532,35 @@
     <MESSAGE value="[BEN] Add Encode utils" />
     <MESSAGE value="[BEN] Update wwait" />
     <MESSAGE value="[BEN] Update delete_dataspace_by_service" />
-    <option name="LAST_COMMIT_MESSAGE" value="[BEN] Update delete_dataspace_by_service" />
+    <MESSAGE value="[MAME] Writing matching configuration feature" />
+    <MESSAGE value="[MAME] writing matching configuration feature" />
+    <MESSAGE value="[MAME] Update feature Configuration" />
+    <MESSAGE value="[MAME] Edit SurvivorField feature" />
+    <MESSAGE value="[MAME] Editting Survivor field feature" />
+    <MESSAGE value="[MAME] editting Manual merge feature" />
+    <MESSAGE value="[MAME]writing matching configuration feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MAME]writing matching configuration feature" />
   </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>addon-mame-test</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ManualMergeDefs.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/AdministrationSteps.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/RecordDetailWidgetImpl.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="mavenExecuteGoalHistory">
     <option value="$PROJECT_DIR$" />

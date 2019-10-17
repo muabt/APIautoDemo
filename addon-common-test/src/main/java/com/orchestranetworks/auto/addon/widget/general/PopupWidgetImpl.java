@@ -20,6 +20,7 @@ public class PopupWidgetImpl extends BaseWidgetImpl implements PopupWidget {
     }
 
     public static final String XPATH_POPUP = "//div[@id='ebx_DialogBox']";
+    public static final String XPATH_UNMERGE_POPUP = "//div[@class='_ebx-pop-up']//div[@class='_ebx-notification-box_list_item']";
 
     @Override
     public void confirmOK() {
@@ -49,4 +50,10 @@ public class PopupWidgetImpl extends BaseWidgetImpl implements PopupWidget {
         switchToLastIFrame();
         return getTextValue(XPATH_POPUP + "//p").trim();
     }
+    @Override
+    public String getTextPopup() {
+        switchOutDefaultIFrame();
+        return getTextValue(XPATH_UNMERGE_POPUP).trim();
+    }
+
 }
