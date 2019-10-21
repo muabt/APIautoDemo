@@ -78,7 +78,8 @@ Feature: Run Unmerge service
 #      | 2            | 1,604,146,145,501,184 | Pending Approval | No          | No       |
 #      | 3            |                       | Deleted          | Yes         | No       |
 #    And I will see table MergeResult as below
-#
+#      | id               | recordId | goldenId | mergingProcessId | isInterpolation |
+#      | No records found |
 #    And I will see table Decision as below
 #
 #    And I will see table MergeValueLineage as below
