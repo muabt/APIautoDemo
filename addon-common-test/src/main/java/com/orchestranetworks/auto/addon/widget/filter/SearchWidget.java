@@ -44,4 +44,6 @@ public interface SearchWidget extends WidgetObject {
     void selectSearchItem(String searchType, String fieldName);
 
     void removeAllOccurrence();
+
+    boolean isAdvancedSearchActivated();
 }

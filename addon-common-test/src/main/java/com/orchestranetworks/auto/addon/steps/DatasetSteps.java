@@ -120,4 +120,9 @@ public class DatasetSteps extends ScenarioSteps {
     public boolean verify_record_existed(String fieldName, String keyword) {
         return defaultViewPage.getDefaultViewWidget().verifyMAMEConfigRecordExisted(fieldName, keyword);
     }
+
+    @Step
+    public void select_checkbox_with_text(String label) {
+        defaultViewPage.getDefaultViewWidget().selectCheckboxWithText(label);
+    }
 }

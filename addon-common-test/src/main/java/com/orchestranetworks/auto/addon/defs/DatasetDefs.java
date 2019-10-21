@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.common.DataObject;
 import com.orchestranetworks.auto.addon.common.KeyObject;
 import com.orchestranetworks.auto.addon.utils.Constants;
@@ -13,10 +14,7 @@ import cucumber.api.java.en.When;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.*;
 
 public class DatasetDefs {
 
@@ -95,52 +93,6 @@ public class DatasetDefs {
         create_record_with_content(dt);
     }
 
-    /**
-     * Create record with given information and PK
-     * <p>
-     * <b>Example</b>:
-     * <ul>
-     * <font color="blue">And</font> I create record with PK "TXT" and the content followings
-     *      <ul>
-     * 			     <font color="green">| Identifer:TXT | Civil status:DDL | First name:TXT | Last name:TXT | Maiden name:TXT | Birth date:DATE | Gender:RADIO | Marital status:DDL | GDPR type:DDL |</font>
-     *     </ul>
-     *     <ul>
-     * 			     <font color="green">|               | Dr.              | Jenifer        | Pham          |                 | 7/29/1988       | Female       | (C) Single         | Child         |</font>
-     *     </ul>
-     * </ul>
-     * </p>
-     *
-     * @param dt information of the record
-     */
-    @And("^I create record with PK \"([^\"]*)\" is \"([^\\\"]*)\" and the content followings$")
-    public void i_create_record_with_pk_and_the_content_followings(String fieldName, String keyword, DataTable dt) {
-        onCommonSteps.click_btn_filter();
-        filter_record_existed(fieldName, Constants.INPUT_TYPE, keyword, new String[]{Constants.DATA_MODEL_FIELD, Constants.TABLE_FIELD}, dt);
-        if (onDatasetSteps.verify_record_existed(fieldName, keyword)) {
-            onDatasetSteps.select_first_record("1");
-            onDatasetSteps.select_table_service(Constants.DELETE_SERVICE);
-            onCommonSteps.confirm_popup_OK();
-            create_record_with_content(dt);
-        } else {
-            create_record_with_content(dt);
-        }
-    }
-
-    /**
-     * This method will filter the expected record with advance search
-     */
-    private void filter_record_existed(String fieldName, String searchType, String keyword, String[] fields, DataTable dt) {
-        String[] field = fields;
-        for (int i = 0; i < field.length; i++) {
-            onCommonSteps.select_criteria_with_label(field[i]);
-            if (i == 0) {
-                onCommonSteps.input_search_value(fieldName, searchType, field[0]);
-            } else {
-                onCommonSteps.input_search_value(keyword, searchType, field[1]);
-            }
-        }
-        onCommonSteps.click_btn_apply_advanced_search();
-    }
 
     /**
      * Select a record from the table given the primary key
@@ -172,7 +124,38 @@ public class DatasetDefs {
             dataObject.addPK(keyObject);
             onDatasetSteps.select_record_with_PK(row);
         }
-        SessionData.saveDataObjectToSession(Constants.DATA_OBJECT,dataObject);
+        SessionData.saveDataObjectToSession(Constants.DATA_OBJECT, dataObject);
+    }
+
+    @When("^I select some records are filtered with primary key as following$")
+    public void i_select_some_records_are_filtered_with_primary_key_as_following(List<List<String>> dt) {
+        List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        List<String> headers = dt.get(0);
+        Map<String, String> condition = null;
+        for (int j = 1; j < dt.size(); j++) {
+            List<String> record = dt.get(j);
+            for (int i = 0; i < headers.size(); i++) {
+                condition = new HashMap<String, String>();
+                condition.put(Constants.CRITERION, headers.get(i));
+                condition.put(Constants.OPERATION, "equals");
+                condition.put(Constants.VALUE, record.get(i));
+                condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+                filterConditions.add(condition);
+            }
+        }
+        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+        DataObject dataObject = new DataObject();
+        KeyObject keyObject = null;
+        for (int i = 1; i < dt.size(); i++) {
+            List<String> row = dt.get(i);
+            keyObject = new KeyObject();
+            for (int j = 0; j < headers.size(); j++) {
+                keyObject.addPK(headers.get(j), row.get(j));
+            }
+            dataObject.addPK(keyObject);
+            onDatasetSteps.select_checkbox_with_text(row.toString());
+        }
+        SessionData.saveDataObjectToSession(Constants.DATA_OBJECT, dataObject);
     }
 
     @And("^I access to \"([^\"]*)\" tab$")
@@ -236,4 +219,5 @@ public class DatasetDefs {
         }
         onDatasetSteps.click_btn_save_and_close();
     }
+
 }

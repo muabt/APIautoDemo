@@ -10,10 +10,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM01 Default merge function = Last update and PK isn't auto incremented value
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Person" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Person"
+    And I select matching table record of table "Person" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Last update                    | Last update            | Duplicates and singletons | Yes                   | Yes                            |
@@ -44,10 +44,10 @@ Feature: Manual Merge
   @MM02
   Scenario: UAT-MM02 Default merge function = Longest
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Person" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Person"
+    And I select matching table record of table "Person" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most complete                  | Longest                | Disabled | Yes                   | Yes                            |
@@ -95,10 +95,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM03 Default merge function = Max
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Place" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Place"
+    And I select matching table record of table "Place" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode            | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most recently acquired         | Max                    | Only duplicates | Yes                   | Yes                            |
@@ -144,10 +144,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM04 Default merge function = Min
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Place" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Place"
+    And I select matching table record of table "Place" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode            | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most trust source              | Min                    | Only duplicates | Yes                   | Yes                            |
@@ -194,10 +194,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM05 Default merge function = Min
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Place" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Place"
+    And I select matching table record of table "Place" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Was golden                     | Most frequent          |      | Yes                   | No                             |
@@ -241,10 +241,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM06 Apply permission on merge view = No (Have a field is hidden in data model)
     Given I permit to access matching table
-    And I create record with PK "Publication: Metadatas" is "Items" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Items"
+    And I select matching table record of table "Items" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
       | mergeCodeMM06     | Last update                    | Last update            | Duplicates and singletons | Yes                   | No                             |
@@ -276,10 +276,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM07 Verify merge result with field in datamodel is read-only
     Given I permit to access matching table
-    And I create record with PK "Publication: Metadatas" is "Items" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: Metadatas | Items     | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Items"
+    And I select matching table record of table "Items" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode            | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most complete                  |                        | Only duplicates | Yes                   | Yes                            |
@@ -311,10 +311,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM08 Survivor record selection mode = "Most recently acquired"
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Person" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Person"
+    And I select matching table record of table "Person" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most recently acquired         |                        | Disabled | Yes                   | Yes                            |
@@ -362,10 +362,10 @@ Feature: Manual Merge
   @MM09
   Scenario: UAT-MM09 Survivor record selection mode = "Most trust source"
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Person" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Person    | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Person"
+    And I select matching table record of table "Person" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most trust source              |                        |      | Yes                   | No                             |
@@ -412,10 +412,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM10 Survivor record selection mode = "Was golden"
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Place" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Place"
+    And I select matching table record of table "Place" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Was golden                     |                        |      | Yes                   | No                             |
@@ -462,10 +462,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM11 Apply Merge with Field have Merge function = No merge and Survivor record selection mode = Most complete
     Given I permit to access matching table
-    And I create record with PK "Publication: Genealogy" is "Place" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogy | Place     | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Place"
+    And I select matching table record of table "Place" of "Publication: genealogy"
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most complete                  | Longest                | Disabled | Yes                   | Yes                            |
@@ -521,10 +521,10 @@ Feature: Manual Merge
 
   Scenario: UAT-MM12 Apply Most trusted source with Table trusted source config
     Given I permit to access matching table
-    And I create record with PK "Publication: Human_Resource" is "NewEmployee" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL              | Table:DDL   | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: Human_Resource | NewEmployee | Yes          |                              | Supervisor       |                    |                       |
-    And I select matching table record of table "NewEmployee"
+    And I select matching table record of table "NewEmployee" of "Publication: genealogy"
     And the matching process is configured as the followings
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
       | RANDOM                |                | Yes    |                                |                              |              |                                    |                           |                             |

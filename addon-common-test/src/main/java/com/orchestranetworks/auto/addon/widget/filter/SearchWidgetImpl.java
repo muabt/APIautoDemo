@@ -14,7 +14,8 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     private static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
     private static final String XPATH_EXPAND_BUTTON = "//label[contains(.,'%s')]//button[@title='expand']";
     private static final String XPATH_SEARCH_FIELD = "(//span[text()='%s']/ancestor::div[contains(@class,'ebx_SSFFakeFieldset')])[last()]";
-    private static final String XPATH_BTN_DELETE_OCCURRENCE="(//button[@title='Delete this occurrence.'])";
+    private static final String XPATH_BTN_DELETE_OCCURRENCE = "(//button[@title='Delete this occurrence.'])";
+
     public SearchWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                             long timeoutInMilliseconds) {
         super(page, locator, webElement, timeoutInMilliseconds);
@@ -225,9 +226,14 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     public void removeAllOccurrence() {
         int numOfButton = findAllElements(XPATH_BTN_DELETE_OCCURRENCE).size();
         for (int i = numOfButton; i >= 1; i--) {
-            clickOnElement(XPATH_BTN_DELETE_OCCURRENCE+"[" + i + "]");
+            clickOnElement(XPATH_BTN_DELETE_OCCURRENCE + "[" + i + "]");
             numOfButton = findAllElements(XPATH_BTN_DELETE_OCCURRENCE).size();
         }
     }
 
+    @Override
+    public boolean isAdvancedSearchActivated() {
+        System.out.println("Filter: " + isElementExistNow("//button[@class='ebx_Button ebx_IconButton ebx_DefaultButton ebx_Filter ebx_ButtonPushed']"));
+        return isElementExistNow("//button[@class='ebx_Button ebx_IconButton ebx_DefaultButton ebx_Filter ebx_ButtonPushed']");
+    }
 }

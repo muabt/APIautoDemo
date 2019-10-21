@@ -1,8 +1,10 @@
 package com.orchestranetworks.auto.addon.defs.config;
 
 import com.orchestranetworks.auto.addon.steps.AdministrationSteps;
+import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.config.MatchingTableSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
+import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
@@ -12,8 +14,7 @@ import cucumber.api.java.en.When;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MatchingTableDefs {
     @Steps
@@ -22,6 +23,8 @@ public class MatchingTableDefs {
     DatasetSteps onDatasetSteps;
     @Steps
     AdministrationSteps onAdministrationSteps;
+    @Steps
+    CommonSteps onCommonSteps;
 
     /**
      * Verify the error message in fields
@@ -35,7 +38,7 @@ public class MatchingTableDefs {
      * <ul>
      * <font color="green">| Table | More than one table configuration is defined for this table</font>
      * </ul>
-
+     *
      * </ul>
      * </p>
      *
@@ -71,7 +74,7 @@ public class MatchingTableDefs {
      * <ul>
      * <font color="green">| Table | Field 'Table' is mandatory. |</font>
      * </ul>
-
+     *
      * </ul>
      * </p>
      *
@@ -107,7 +110,7 @@ public class MatchingTableDefs {
      * <ul>
      * <font color="green">| Publication: Bulk_data | Person Relationship | Yes    | [not defined]            | [not defined] |                | No              |</font>
      * </ul>
-
+     *
      * </ul>
      * </p>
      *
@@ -127,7 +130,6 @@ public class MatchingTableDefs {
      * <font color="blue">And</font> I click to create a record button
      * </ul>
      * </p>
-     *
      */
     @And("^I click to create a record button$")
     public void i_click_to_create_a_record_button() {
@@ -142,7 +144,6 @@ public class MatchingTableDefs {
      * <font color="blue">And</font> I should see tooltip of all fields as following
      * </ul>
      * </p>
-     *
      */
     @And("^I should see tooltip of all fields as following$")
     public void i_should_see_tooltip_of_all_fields_as_following(DataTable dt) throws Throwable {
@@ -165,7 +166,6 @@ public class MatchingTableDefs {
      * <font color="blue">And</font> I click to preview button
      * </ul>
      * </p>
-     *
      */
     @And("^I click to preview button$")
     public void i_click_to_preview_button() throws Throwable {
@@ -180,7 +180,6 @@ public class MatchingTableDefs {
      * <font color="blue">And</font> I should see matching process record details as following
      * </ul>
      * </p>
-     *
      */
     @And("^I should see matching process record details as following$")
     public void i_should_see_matching_process_record_details_as_following(List<List<String>> recordDetail) {
@@ -195,11 +194,25 @@ public class MatchingTableDefs {
      * <font color="blue">Given</font> I select matching table record of table "<font color="green">Person</font>"
      * </ul>
      * </p>
-     *
      */
-    @Given("^I select matching table record of table \"([^\"]*)\"$")
-    public void i_select_matching_table_record_of_table(String label) {
-        onAdministrationSteps.select_record_with_name(label);
+
+    @And("^I select matching table record of table \"([^\"]*)\" of \"([^\"]*)\"$")
+    public void i_select_matching_table_record_of_publication(String table, String publication) {
+        onCommonSteps.verify_advanced_search_activated();
+        List<String> values = new ArrayList<String>(Arrays.asList(table, publication));
+        List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        Map<String, String> condition = null;
+        String[] fields = {MAMEConstants.TABLE_FIELD, MAMEConstants.DATA_MODEL_FIELD};
+        for (int i = 0; i <fields.length; i ++) {
+            condition = new HashMap<String, String>();
+            condition.put(Constants.CRITERION, fields[i]);
+            condition.put(Constants.OPERATION, "equals");
+            condition.put(Constants.VALUE, values.get(i));
+            condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+        }
+        filterConditions.add(condition);
+        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+        onAdministrationSteps.select_record_with_name(table);
     }
 
     /**
@@ -210,7 +223,6 @@ public class MatchingTableDefs {
      * <font color="blue">Given</font> I select matching table record of table "<font color="green">Person</font>"
      * </ul>
      * </p>
-     *
      */
     @Given("^I want to access the Matching record of table \"([^\"]*)\"$")
     public void i_want_to_access_the_matching_record_of_table(String tblName) {
@@ -432,6 +444,7 @@ public class MatchingTableDefs {
      * </ul>
      * </ul>
      * </p>
+     *
      * @param dt
      */
     @And("^the matching process is updated as the followings$")
@@ -493,6 +506,7 @@ public class MatchingTableDefs {
      * </ul>
      * </ul>
      * </p>
+     *
      * @param dt
      */
     @And("^the matching field is updated as the followings$")
@@ -524,6 +538,78 @@ public class MatchingTableDefs {
         }
         onDatasetSteps.select_table_service("Delete");
         onDatasetSteps.confirmPopupOK();
+    }
+
+    /**
+     * Create record with given information and PK
+     * <p>
+     * <b>Example</b>:
+     * <ul>
+     * <font color="blue">And</font> I create record with PK "TXT" and the content followings
+     *      <ul>
+     * 			     <font color="green">| Identifer:TXT | Civil status:DDL | First name:TXT | Last name:TXT | Maiden name:TXT | Birth date:DATE | Gender:RADIO | Marital status:DDL | GDPR type:DDL |</font>
+     *     </ul>
+     *     <ul>
+     * 			     <font color="green">|               | Dr.              | Jenifer        | Pham          |                 | 7/29/1988       | Female       | (C) Single         | Child         |</font>
+     *     </ul>
+     * </ul>
+     * </p>
+     *
+     * @param dt information of the record
+     */
+    @And("^I create record in Matching table with the content followings$")
+    public void i_create_record_in_matching_table_with_the_content_followings(DataTable dt){
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        Map<String, String> row = list.get(0);
+        String dataModel = row.get("Data model:DDL");
+        String table = row.get("Table:DDL");
+        onCommonSteps.click_btn_filter();
+        filter_record_existed(dataModel, Constants.INPUT_TYPE, table, new String[]{Constants.DATA_MODEL_FIELD, Constants.TABLE_FIELD}, dt);
+        if (onDatasetSteps.verify_record_existed(dataModel, table)) {
+            onDatasetSteps.select_first_record("1");
+            onDatasetSteps.select_table_service(Constants.DELETE_SERVICE);
+            onCommonSteps.confirm_popup_OK();
+            create_record_with_content(dt);
+        } else {
+            create_record_with_content(dt);
+        }
+    }
+
+    /**
+     * This method will filter the expected record with advance search
+     */
+    private void filter_record_existed(String fieldName, String searchType, String keyword, String[] fields, DataTable dt) {
+        String[] field = fields;
+        for (int i = 0; i < field.length; i++) {
+            onCommonSteps.select_criteria_with_label(field[i]);
+            if (i == 0) {
+                onCommonSteps.input_search_value(fieldName, searchType, field[0]);
+            } else {
+                onCommonSteps.input_search_value(keyword, searchType, field[1]);
+            }
+        }
+        onCommonSteps.click_btn_apply_advanced_search();
+    }
+
+    private void create_record_with_content(DataTable dt) {
+        onDatasetSteps.click_btn_create_record();
+        List<List<String>> dataTable = dt.asLists(String.class);
+        List<String> header = dataTable.get(0);
+        // Get header then split to 2 element of array
+        for (int i = 0; i < header.size(); i++) {
+            String[] tmp = header.get(i).split(":");
+            // Get row of data table
+            for (int j = 1; j < dataTable.size(); j++) {
+                List<String> row = dataTable.get(j);
+                String col = tmp[0];
+                String dataType = tmp[1].trim();
+                String cell = row.get(i).trim();
+                if (!cell.isEmpty()) {
+                    onDatasetSteps.input_record_field(col, cell, dataType);
+                }
+            }
+        }
+        onDatasetSteps.click_btn_save_and_close();
     }
 }
 

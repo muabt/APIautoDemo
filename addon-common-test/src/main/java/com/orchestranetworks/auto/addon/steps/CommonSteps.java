@@ -243,4 +243,12 @@ public class CommonSteps extends ScenarioSteps {
     public void delete_all_occurrence() {
         onCommonPage.getAdvanceSearch().removeAllOccurrence();
     }
+
+    public void verify_advanced_search_activated(){
+        if (onCommonPage.getAdvanceSearch().isAdvancedSearchActivated()){
+            delete_all_occurrence();
+            onCommonPage.getAdvanceSearch().clickApplyAdvancedSearch();
+            onCommonPage.getToolbar().clickBtnFilter();
+        }
+    }
 }
