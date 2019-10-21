@@ -45,10 +45,10 @@ Feature: Matching table configuration
 
   Scenario: SC-CFT20 Validate Combobox "Table" when Table has been defined already
     And I permit to access matching table
-    And I create record with PK "Publication: Bulk_data" is "Person Relationship" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL           | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: Bulk_data | Person Relationship |              |                              |                  |                    |                       |
-    And I select matching table record of table "Person Relationship"
+    And I select matching table record of table "Person Relationship" of "Publication: Bulk_data"
     And I should see Matching record detailed as following
       | Data model             | Table               | Active | Default matching process | Source field  | Event listener | Disable trigger |
       | Publication: Bulk_data | Person Relationship | Yes    | [not defined]            | [not defined] |                | No              |
@@ -75,7 +75,7 @@ Feature: Matching table configuration
       | Criterion  | Operation | Value                       | Field type |
       | Data model | equals    | Publication: Human_Resource | INPUT      |
       | Table      | equals    | Employee                    | INPUT      |
-    And I select matching table record of table "Employee"
+    And I select matching table record of table "Person Relationship" of "Publication: Human_Resource"
     And I click to preview button
     And I should see matching process record details as following
       | Matching process code | Active | Matching execution on creation | Matching execution on update | Merge policy  | Keep not matched records untouched | Merged record is recycled | Modify merged without match |

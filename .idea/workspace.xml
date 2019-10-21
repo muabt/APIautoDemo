@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[MAME]writing matching configuration feature">
-      <change afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/PopupWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/PopupWidget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/PopupWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/PopupWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/UnmergeDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/UnmergeDefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/UnmergePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/UnmergePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/UnmergeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/UnmergeSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/serenity.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

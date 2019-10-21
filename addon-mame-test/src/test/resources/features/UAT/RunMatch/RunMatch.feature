@@ -35,10 +35,10 @@ Feature: Run Match feature
 
   Scenario: UAT-RM02 Run Match with MAME configuration with MatchingTable and Matching Policy Active = No.
     Given I permit to access matching table
-    And I create record with PK "Publication: genealogyForRunMatch" is "Person" and the content followings
+    And I create record in Matching table with the content followings
       | Data model:DDL                    | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogyForRunMatch | Person    | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Person"
+    And I select matching table record of table "Person" of "Publication: genealogy"
     And the matching process is configured as the followings
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
       | RANDOM                |                | No     | Inline matching                | Inline matching              |              | Yes                                | Yes                       | Yes                         |
@@ -196,7 +196,7 @@ Feature: Run Match feature
   Scenario: UAT-RM06 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Advanced Setting.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline_RunMatch.ebx" file to import
-    And I select matching table record of table "Person"
+    And I select matching table record of table "Person" of "Publication: genealogy"
     Then I select matching process record with label "MPC1" in "Matching process" tab
     And the matching process is updated as the followings
       | Matching process code | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
@@ -217,7 +217,7 @@ Feature: Run Match feature
   Scenario: UAT-RM07 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Both null values Won't match.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline_RunMatch.ebx" file to import
-    And I select matching table record of table "Person"
+    And I select matching table record of table "Person" of "Publication: genealogy"
     Then I select matching process record with label "MPC1" in "Matching process" tab
     And I select matching field record with label "Residence" in "Matching fields" tab
     And the matching field is updated as the followings
