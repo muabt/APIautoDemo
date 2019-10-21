@@ -36,7 +36,7 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
         int numOfHeader = findAllElements(XPATH_RCV_HEADER).size();
         for (int i = 1; i <= numOfHeader; i++) {
             String xPathHeaderCell = XPATH_RCV_HEADER + "[" + i + "]";
-            row.add(getText(xPathHeaderCell));
+            row.add(getTextCell(xPathHeaderCell));
         }
         actualTable.add(row);
 
@@ -62,8 +62,7 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
         int numOfHeader = findAllElements(XPATH_PREVIEW_HEADER).size();
         for (int i = 1; i <= numOfHeader; i++) {
             String xPathHeaderCell = XPATH_PREVIEW_HEADER + "[" + i + "]";
-
-            listHeader.add(getText(xPathHeaderCell));
+            listHeader.add(getTextCell(xPathHeaderCell));
             row.add(getTextCell(String.format(XPATH_PREVIEW_CELL, i)));
         }
 
@@ -74,8 +73,13 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
     }
 
     private String getTextCell(String xPathCell) {
+        highlightElement(xPathCell);
         try {
-            return getText(xPathCell);
+            if (!getElement(xPathCell).isDisplayed()) {
+                return getElement(xPathCell).getAttribute("textContent").replaceAll("\n", "").trim();
+            } else {
+                return getText(xPathCell).replaceAll("\n", "");
+            }
         } catch (Exception e) {
             return "";
         }

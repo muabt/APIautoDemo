@@ -61,7 +61,7 @@ public class ManualMergeSteps {
                 if (expectedCell.contains(MAMEConstants.HIGHLIGHT_SYNTAX)) {
                     expectedCell = expectedCell.replace(MAMEConstants.HIGHLIGHT_SYNTAX, "").trim();
                 }
-                softAssertions.assertThat(expectedCell).isEqualTo(actualCell);
+                softAssertions.assertThat(actualCell).isEqualTo(expectedCell);
             }
         }
         softAssertions.assertAll();
@@ -142,5 +142,10 @@ public class ManualMergeSteps {
 
     public String get_groupID() {
        return onManualMergePage.getDefaultViewWidget().getTextDataCell(1,"groupId");
+    }
+
+    public void verify_exception_error_popup (String expectedError) {
+      String actual =  onManualMergePage.getPopupWidget().getTextExceptionPopup();
+      assertThat(actual).isEqualTo(expectedError);
     }
 }

@@ -671,6 +671,12 @@ public class ManualMergeDefs {
         });
     }
 
+    @And("^I see an exception error popup \"([^\"]*)\"$")
+    public void i_see_an_exception_error_popup(String expectedError) {
+        onManualMergeSteps.verify_exception_error_popup(expectedError);
+
+    }
+
     /**
      * Verify the raw data of MergingProcess table
      *
@@ -795,5 +801,32 @@ public class ManualMergeDefs {
             SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.MERGING_PROCESS_ID, expectedMergingProcessId);
             SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.IS_INTERPOLATION, expectIsInterpolation);
         }
+    }
+
+    @Then("^no record found in table \"([^\"]*)\" with following information$")
+    public void noRecordFoundInTableWithFollowingInformation(String tblName, List<List<String>> table) {
+        onCommonSteps.click_on_table_name(tblName);
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
+        // Filter selected record by Merging process ID
+        List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            Map<String, String> condition = new HashMap<String, String>();
+            JsonObject record = expectedTbl.get(i).getAsJsonObject();
+
+            condition.put(Constants.CRITERION, "mergingProcessId");
+            condition.put(Constants.OPERATION, "");
+            String value = record.get("mergingProcessId").getAsString();
+
+            if (!value.toLowerCase().equals("auto_generated")) {
+                value = TableObject.takeTable(mergedRecord, MAMEConstants.MERGING_PROCESS_TBL)
+                        .getRecord(0).getAsJsonObject()
+                        .get(TechnicalTable.MergingProcess.ID).getAsString();
+            }
+            condition.put(Constants.VALUE, value);
+            condition.put(Constants.FIELD_TYPE, Constants.ENUMERATION);
+            filterConditions.add(condition);
+        }
+        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+        onCommonSteps.verify_table_no_record_found();
     }
 }

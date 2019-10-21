@@ -110,7 +110,7 @@ Feature: Survivor record selection mode is defined
     And I delete the dataspace
 
   Scenario: SC-MPMM05 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and Value of source field (of selected merged records)do not map with the code defined in Table trusted source
-     When I access "dataset" menu
+    When I access "dataset" menu
     And I access dataspace "Master Data - Reference>Merge_save_tobackend"
     And I access dataset "Merge_save_tobackend"
     And I access table "Items"
@@ -131,11 +131,13 @@ Feature: Survivor record selection mode is defined
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
-#    And I see an exception error
+    And I complete merging process
+    And I see an exception error popup "java.lang.IllegalArgumentException: [/root/Item[*]/integer]: Incompatible value class java.lang.String of type /root/Item/integer"
+
   Scenario: SC-MPMM06 Check merging records if Survivor record selection mode is Most trusted source and all values of source field (of selected merged records) are null
-     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
+    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
-      |            | admin admin (admin) |               |
+      | vienpt     | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
     And I access table "National" of dataset "Human_Resource"
     When I select some records with primary key as following
@@ -155,6 +157,25 @@ Feature: Survivor record selection mode is defined
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
+    And I complete merging process
+    And I access table "RecordMetadata" of dataset "Human_Resource_national_MDS" in dataspace "Master Data - Reference>Reference-child>vienpt"
+    Then I will see table RecordMetadata as below
+      | id   | groupId  | state  | autoCreated | functionalId |
+      | KEY1 | GROUP_ID | Golden | No          | 8            |
+      | KEY2 | GROUP_ID | Merged | No          | 9            |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 14            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+    Then I will see table MergeResult as below
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 9        | 8        | AUTO_GENARATED   | No              |
+    Then I will see table Decision as below
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 9        | 8        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
+    Then no record found in table "MergeValueLineage" with following information
+      | mergingProcessId |
+      | AUTO_GENARATED   |
+    And I delete the dataspace
 
   Scenario: SC-MPMM08 Check merging records when Survivor field is defined and Default merge function is not defined
     And I create a child of dataspace "Master Data - Reference>Apply_merge_policy" with information as following
@@ -163,21 +184,25 @@ Feature: Survivor record selection mode is defined
     And I select dataspace service "View or edit datasets"
     And I access table "Company" of dataset "Merge_save_tobackend"
     When I select some records with primary key as following
-      | ID |
-      | A  |
-      | company_A  |
-      | company_B  |
+      | ID        |
+      | A         |
+      | company_A |
+      | company_B |
     And I select table service "Match and Merge>Merge"
-#    Then record view table will be displayed and highlighted as below
-#      | Identifier | Name | Employee  | Website     |
-#      | {H}8       | {H}  | {H}Davied | {H}  [html] |
-#      | 9          |      | Alice     | [html]      |
-#    And preview table is displayed as below
-#      | Identifier | Name | Employee | Website |
-#      | 8          |      | Davied   | [html]  |
-#    And I see the table name "1. National" in dropdown list
-#    And the screen displays buttons as below
-#      | Name               | Status   |
-#      | Apply merge policy |          |
-#      | Cancel last action | inactive |
-  And I delete the dataspace
+    Then record view table will be displayed and highlighted as below
+      | ID        | Company                                                                                         | Email                       | Text            | Integer | Decimal | Company_name | website | Boolean | Date_time | Date | Time |
+      | {H}A      | {H}                                                                                             | vien@hm.com                 | {H}             | {H}     | {H}     | 1   {H}      | {H}     | {H}     | {H}       | {H}  | {H}  |
+      | company_A | https://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn | vienptphamthi@gmail.com {H} | Text is context | 3       | -6      | 3            |         |         |           |      |      |
+      | company_B | https://tibco-connect.tibco.com/tibco-connect/login?r=%2Ftibco-connect%2F&error=NEED_LOGIN      | vienpt@gmail.com            | Text is context | 3       | -6      | 2            |         |         |           |      |      |
+    And preview table is displayed as below
+      | ID | Company | Email                   | Text | Integer | Decimal | Company_name | website | Boolean | Date_time | Date | Time |
+      | A  |         | vienptphamthi@gmail.com |      |         |         | 1            |         |         |           |      |      |
+    And I see the table name "1. Company" in dropdown list
+    And the screen displays buttons as below
+      | Name               | Status   |
+      | Apply merge policy |          |
+      | Cancel last action | inactive |
+    And I delete the dataspace
+
+
+
