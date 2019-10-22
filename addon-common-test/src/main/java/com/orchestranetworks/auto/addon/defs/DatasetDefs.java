@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.common.DataObject;
 import com.orchestranetworks.auto.addon.common.KeyObject;
@@ -8,6 +9,7 @@ import com.orchestranetworks.auto.addon.steps.CommonSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.utils.SessionData;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -220,4 +222,25 @@ public class DatasetDefs {
         onDatasetSteps.click_btn_save_and_close();
     }
 
+    @Then("^Then no records found in table \"([^\"]*)\" with filter$")
+    public void thenNoRecordsFoundInTableWithFilter(String tableName, List<List<String>> dt) throws Throwable {
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(dt);
+        onCommonSteps.click_on_table_name(tableName);
+
+        List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        Map<String, String> condition = null;
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            condition = new HashMap<String, String>();
+            JsonObject record = expectedTbl.get(i).getAsJsonObject();
+            String header = dt.get(0).get(i);
+            condition.put(Constants.CRITERION, header);
+            condition.put(Constants.OPERATION, "equals");
+            condition.put(Constants.VALUE, record.get(header).getAsString().replace("*", "|"));
+            condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+            filterConditions.add(condition);
+        }
+        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+
+        onCommonSteps.verify_table_no_record_found();
+    }
 }

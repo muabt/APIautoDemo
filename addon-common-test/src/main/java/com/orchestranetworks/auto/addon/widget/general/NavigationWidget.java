@@ -28,4 +28,6 @@ public interface NavigationWidget extends WidgetObject {
 	NavigationWidget clickBtnActions();
 
 	void selectService(String service);
+
+    boolean isDatasetExist(String dataset);
 }

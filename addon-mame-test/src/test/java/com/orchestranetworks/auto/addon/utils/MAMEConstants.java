@@ -24,7 +24,7 @@ public class MAMEConstants {
     public static final String MERGE_POLICY_TAB = "Merge policy";
     public static final String ADVANCED_SETTINGS = "Advanced settings";
     public static final String MERGE_POLICY_CODE_FIELD = "Merge policy code";
-    public static final String SURVIVOR_RECORD_SELECTION_MODE =  "Survivor record selection mode";
+    public static final String SURVIVOR_RECORD_SELECTION_MODE = "Survivor record selection mode";
     public static final String DEFAULT_MERGE_FUNCTION = "Default merge function";
     public static final String USE_MANUAL_MERGE = "Used for manual merge";
     public static final String MODE = "Mode";
@@ -64,4 +64,5 @@ public class MAMEConstants {
     public static final String RECORDMETADATA_TABLE = "table_Recordmetadata_data";
     public static final String DATA_MODEL_FIELD = "Data model";
     public static final String TABLE_FIELD = "Table";
+    public static final String CHANGE_STATE_DATA_OBJECT = "CHANGE_STATE_DATA_OBJECT";
 }

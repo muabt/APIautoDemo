@@ -15,6 +15,8 @@ public class ChangeStateWidgetImpl extends BaseWidgetImpl implements ChangeState
     private static final String XPATH_GOLDEN = "//option[@value='GOLDEN']";
     private static final String XPATH_BTN_LAUNCH_SERVCE = "//button[@class='ebx_Button ebx_TextAndIconRightButton ebx_DefaultButton btn-launch']";
     private static final String XPATH_UNSET = "//option[@value='UNSET']";
+    //private static final String XPATH_METADATASET = "//li[@class='_ebx-tree_item']";
+
 
 
     public ChangeStateWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
@@ -47,8 +49,10 @@ public class ChangeStateWidgetImpl extends BaseWidgetImpl implements ChangeState
 
     }
 
+
     @Override
     public void clickBtnLaunchService()
+
     {
         clickOnElement(XPATH_BTN_LAUNCH_SERVCE);
     }

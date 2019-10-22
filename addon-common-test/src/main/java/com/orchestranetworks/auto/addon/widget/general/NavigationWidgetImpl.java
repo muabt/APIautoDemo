@@ -98,13 +98,19 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
 
     @Override
     public NavigationWidget clickBtnActions() {
-        clickBtn("//div[@id='ebx_Navigation']",Constants.BTN_ACTIONS);
+        clickBtn("//div[@id='ebx_Navigation']", Constants.BTN_ACTIONS);
         return this;
     }
+
     @Override
     public void selectService(String service) {
-        clickOnElement("//li//a[.='"+service+"']");
+        clickOnElement("//li//a[.='" + service + "']");
 
+    }
+
+    @Override
+    public boolean isDatasetExist(String dataset) {
+        return isElementExistNow(String.format(XPATH_NAVIGATION_ITEM, dataset));
     }
 
     @Override
@@ -126,5 +132,5 @@ public class NavigationWidgetImpl extends BaseWidgetImpl implements NavigationWi
         Response response = httpRequest.post("/ebx-dataservices/rest/data/v1/B" + dataspace + ":information");
         return response.getStatusCode() == 200;
     }
-    
+
 }

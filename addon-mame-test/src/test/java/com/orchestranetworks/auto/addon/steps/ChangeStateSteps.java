@@ -10,7 +10,7 @@ public class ChangeStateSteps extends ScenarioSteps {
     ChangeStatePage statePage;
 
     @Step
-    public void verify_state_descriptions (String stateDes){
+    public void verify_state_descriptions(String stateDes) {
 //        System.out.println(stateDes);
 //        waitABit(5000);
 //        System.out.println("statePage getChangeStateWidget == null " + (statePage.getChangeStateWidget() == null));
@@ -20,17 +20,22 @@ public class ChangeStateSteps extends ScenarioSteps {
     }
 
     public void select_target_state() {
-    statePage.getChangeStateWidget().selectTargetState();
+        statePage.getChangeStateWidget().selectTargetState();
 
     }
 
-    public void click_button_launch_service()
-    {
+    public void click_button_launch_service() {
         statePage.getChangeStateWidget().clickBtnLaunchService();
     }
 
 
     public void select_golden_state() {
         statePage.getChangeStateWidget().selectGodelState();
+    }
+
+    public void verify_dataset_not_existed(String metadataSet) {
+        assertThat(statePage.getNavigationWidget().isDatasetExist(metadataSet))
+                .isEqualTo(false)
+                .withFailMessage("Expected data set " + metadataSet + " not exist");
     }
 }
