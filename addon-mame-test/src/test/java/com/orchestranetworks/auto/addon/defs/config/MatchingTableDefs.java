@@ -609,7 +609,7 @@ public class MatchingTableDefs {
                 }
             }
         }
-        onDatasetSteps.click_btn_save_and_close();
+        onCommonSteps.click_btn_save();
     }
 }
 

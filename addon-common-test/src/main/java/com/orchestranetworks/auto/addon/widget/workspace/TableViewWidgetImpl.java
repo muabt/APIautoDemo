@@ -183,6 +183,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     @Override
     public boolean verifyMAMEConfigRecordExisted(String dataModel, String table) {
         String XPATH_MAME_RECORD_CONFIG = "//table[@class='ebx_tvMain']//tr[td[" + specialTextPredicates(dataModel) + "]][td[" + specialTextPredicates(table) + "]]";
+        System.out.println("XPATH_MAME_RECORD_CONFIG" + XPATH_MAME_RECORD_CONFIG);
         boolean isExist = isElementExistNow(XPATH_MAME_RECORD_CONFIG);
         return isExist;
     }

@@ -125,4 +125,5 @@ public class DatasetSteps extends ScenarioSteps {
     public void select_checkbox_with_text(String label) {
         defaultViewPage.getDefaultViewWidget().selectCheckboxWithText(label);
     }
+
 }

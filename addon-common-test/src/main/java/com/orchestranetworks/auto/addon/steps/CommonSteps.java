@@ -251,4 +251,9 @@ public class CommonSteps extends ScenarioSteps {
             onCommonPage.getToolbar().clickBtnFilter();
         }
     }
+
+    @Step
+    public void click_btn_save() {
+        onCommonPage.getFooter().clickBtnSave();
+    }
 }
