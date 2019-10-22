@@ -48,7 +48,6 @@ Feature: Matching table configuration
     And I create record in Matching table with the content followings
       | Data model:DDL         | Table:DDL           | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: Bulk_data | Person Relationship |              |                              |                  |                    |                       |
-    And I select matching table record of table "Person Relationship" of "Publication: Bulk_data"
     And I should see Matching record detailed as following
       | Data model             | Table               | Active | Default matching process | Source field  | Event listener | Disable trigger |
       | Publication: Bulk_data | Person Relationship | Yes    | [not defined]            | [not defined] |                | No              |

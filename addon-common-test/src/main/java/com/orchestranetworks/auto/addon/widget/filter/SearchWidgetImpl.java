@@ -233,7 +233,6 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
 
     @Override
     public boolean isAdvancedSearchActivated() {
-        System.out.println("Filter: " + isElementExistNow("//button[@class='ebx_Button ebx_IconButton ebx_DefaultButton ebx_Filter ebx_ButtonPushed']"));
         return isElementExistNow("//button[@class='ebx_Button ebx_IconButton ebx_DefaultButton ebx_Filter ebx_ButtonPushed']");
     }
 }
