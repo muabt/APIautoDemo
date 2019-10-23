@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[MAME]writing matching configuration feature">
+    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[MAME]writing unmerge feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +84,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber java.Feature: Unmerge">
+  <component name="RunManager" selected="Cucumber java.Scenario: SC-MPMM94 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time">
     <configuration name="Feature: ManualMerge" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature" />
@@ -123,15 +121,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingTable.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute" />
+      <option name="NAME_FILTER" value="^SC\-MPMM80 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM80 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -142,15 +140,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-UM09- Check service availability when selecting a record with the state &lt;unset&gt;" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-MPMM92 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-UM09\- Check service availability when selecting a record with the state \&lt;unset\&gt;$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-UM09\- Check service availability when selecting a record with the state \&lt;unset\&gt;$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-UM09- Check service availability when selecting a record with the state &lt;unset&gt;" />
+      <option name="NAME_FILTER" value="^SC\-MPMM92 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM92 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM92 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -161,15 +159,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-uM09- Check service availability when selecting a record with the state &lt;unset&gt;" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-MPMM93 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-uM09\- Check service availability when selecting a record with the state \&lt;unset\&gt;$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-uM09\- Check service availability when selecting a record with the state \&lt;unset\&gt;$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-uM09- Check service availability when selecting a record with the state &lt;unset&gt;" />
+      <option name="NAME_FILTER" value="^SC\-MPMM93 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM93 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM93 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -180,15 +178,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: " type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-MPMM94 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: " />
+      <option name="NAME_FILTER" value="^SC\-MPMM94 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM94 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM94 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -201,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber java.Scenario: SC-MPMM94 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time" />
+        <item itemvalue="Cucumber java.Scenario: SC-MPMM93 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time" />
+        <item itemvalue="Cucumber java.Scenario: SC-MPMM92 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date" />
+        <item itemvalue="Cucumber java.Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght" />
         <item itemvalue="Cucumber java.Feature: Unmerge" />
-        <item itemvalue="Cucumber java.Scenario: " />
-        <item itemvalue="Cucumber java.Scenario: SC-UM09- Check service availability when selecting a record with the state &lt;unset&gt;" />
-        <item itemvalue="Cucumber java.Scenario: SC-uM09- Check service availability when selecting a record with the state &lt;unset&gt;" />
-        <item itemvalue="Cucumber java.Scenario: SC-CFT42 Validate button Preview when there is a matching process which is selected in Default matching process attribute" />
       </list>
     </recent_temporary>
   </component>
@@ -458,7 +456,21 @@
       <option name="project" value="LOCAL" />
       <updated>1571110026805</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="[MAME]writing unmerge feature">
+      <created>1571309856916</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1571309856916</updated>
+    </task>
+    <task id="LOCAL-00036" summary="[MAME]writing unmerge feature">
+      <created>1571645698025</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1571645698025</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -508,7 +520,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[BEN] add" />
     <MESSAGE value="[BEN] update selectOwner" />
     <MESSAGE value="[BEN] Manual merge scenario 1" />
     <MESSAGE value="[BEN] Update CommonDefs and AdministrationDefs" />
@@ -533,7 +544,8 @@
     <MESSAGE value="[MAME] Editting Survivor field feature" />
     <MESSAGE value="[MAME] editting Manual merge feature" />
     <MESSAGE value="[MAME]writing matching configuration feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="[MAME]writing matching configuration feature" />
+    <MESSAGE value="[MAME]writing unmerge feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MAME]writing unmerge feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
