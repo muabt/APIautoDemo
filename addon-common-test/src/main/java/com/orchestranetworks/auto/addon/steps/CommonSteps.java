@@ -256,4 +256,8 @@ public class CommonSteps extends ScenarioSteps {
     public void click_btn_save() {
         onCommonPage.getFooter().clickBtnSave();
     }
+
+    public void refreshSearch() {
+        onCommonPage.getAdvanceSearch().refreshSearch();
+    }
 }

@@ -46,4 +46,6 @@ public interface SearchWidget extends WidgetObject {
     void removeAllOccurrence();
 
     boolean isAdvancedSearchActivated();
+
+    void refreshSearch();
 }

@@ -235,4 +235,9 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     public boolean isAdvancedSearchActivated() {
         return isElementExistNow("//button[@class='ebx_Button ebx_IconButton ebx_DefaultButton ebx_Filter ebx_ButtonPushed']");
     }
+
+    @Override
+    public void refreshSearch() {
+        refresh();
+    }
 }

@@ -6,11 +6,7 @@ import com.orchestranetworks.auto.addon.common.DataObject;
 import com.orchestranetworks.auto.addon.common.TableObject;
 import com.orchestranetworks.auto.addon.steps.ChangeStateSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
-import com.orchestranetworks.auto.addon.utils.Constants;
-import com.orchestranetworks.auto.addon.utils.MAMEConstants;
-import com.orchestranetworks.auto.addon.utils.SessionData;
-import com.orchestranetworks.auto.addon.utils.TechnicalTable;
-import cucumber.api.DataTable;
+import com.orchestranetworks.auto.addon.utils.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -31,7 +27,6 @@ public class ChangeStateDefs {
     ChangeStateSteps onChangeStateSteps;
     @Steps
     CommonSteps onCommonSteps;
-    private DataObject mergedRecord;
     @Steps
     DatasetSteps onDatasetSteps;
 
@@ -119,6 +114,7 @@ public class ChangeStateDefs {
             condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
             filterConditions.add(condition);
         }
+        onCommonSteps.refreshSearch();
         onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable("RECORD_METADATA_AFTER_CHANGING");
         TableObject sessionTbl = TableObject.takeTable(SessionData.getDataObjectFromSession(MAMEConstants.CHANGE_STATE_DATA_OBJECT), MAMEConstants.RECORD_METADATA_TBL);
@@ -157,6 +153,7 @@ public class ChangeStateDefs {
     @And("^I will see table MergingProcess after changing as below$")
     @Then("^I will see table MergingProcess before changing as below$")
     public void iWillSeeTableMergingProcessBeforeChangingAsBelow(List<List<String>> dt) {
+        onCommonSteps.click_on_table_name("MergingProcess");
         JsonArray expectedTbl = SessionData.convertArrayListToJson(dt);
 
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable("MERGING_PROCESS_BEFORE_CHANGING");
@@ -187,6 +184,67 @@ public class ChangeStateDefs {
             SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.IS_UNMERGED, isUnmerged);
         }
 
+    }
+
+    @Then("^I will see table MergeResult with filter$")
+    public void iWillSeeTableMergeResultWithFilter(List<List<String>> table) {
+        onCommonSteps.click_on_table_name(MAMEConstants.MERGE_RESULT_TBL);
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
+
+        // Filter selected record by Merging process ID
+        List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            Map<String, String> condition = new HashMap<String, String>();
+            JsonObject record = expectedTbl.get(i).getAsJsonObject();
+
+            String recordId = record.get(TechnicalTable.MergeResult.RECORD_ID).getAsString().replace("*", "|");
+            String goldenId = record.get(TechnicalTable.MergeResult.GOLDEN_ID).getAsString().replace("*", "|");
+
+            condition.put(Constants.CRITERION, TechnicalTable.MergeResult.RECORD_ID);
+            condition.put(Constants.OPERATION, "equals");
+            condition.put(Constants.VALUE, recordId);
+            condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+            filterConditions.add(condition);
+
+            condition = new HashMap<String, String>();
+            condition.put(Constants.CRITERION, TechnicalTable.MergeResult.GOLDEN_ID);
+            condition.put(Constants.OPERATION, "equals");
+            condition.put(Constants.VALUE, goldenId);
+            condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+            filterConditions.add(condition);
+        }
+        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+
+        // Save table to DataObject in session
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGE_RESULT_TBL);
+
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.getRecord(i);
+
+            String id = expectedRow.get(TechnicalTable.MergeResult.ID).getAsString();
+            String recordId = expectedRow.get(TechnicalTable.MergeResult.RECORD_ID).getAsString().replace("*", "|");
+            String goldenId = expectedRow.get(TechnicalTable.MergeResult.GOLDEN_ID).getAsString().replace("*", "|");
+            String mpID = expectedRow.get(TechnicalTable.MergeResult.MERGING_PROCESS_ID).getAsString();
+            String isInterpolation = expectedRow.get(TechnicalTable.MergeResult.IS_INTERPOLATION).getAsString();
+
+            if (!id.isEmpty()) {
+
+            }
+            if (!recordId.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.RECORD_ID, recordId);
+            }
+            if (!goldenId.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.GOLDEN_ID, goldenId);
+            }
+            if (!mpID.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.MERGING_PROCESS_ID, mpID);
+            }
+            if (!isInterpolation.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.IS_INTERPOLATION, isInterpolation);
+            }
+
+        }
     }
 }
 

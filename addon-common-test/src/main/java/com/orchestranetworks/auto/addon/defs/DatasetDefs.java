@@ -222,7 +222,7 @@ public class DatasetDefs {
         onDatasetSteps.click_btn_save_and_close();
     }
 
-    @Then("^Then no records found in table \"([^\"]*)\" with filter$")
+    @Then("^no records found in table \"([^\"]*)\" with filter$")
     public void thenNoRecordsFoundInTableWithFilter(String tableName, List<List<String>> dt) throws Throwable {
         JsonArray expectedTbl = SessionData.convertArrayListToJson(dt);
         onCommonSteps.click_on_table_name(tableName);
@@ -230,14 +230,17 @@ public class DatasetDefs {
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
         Map<String, String> condition = null;
         for (int i = 0; i < expectedTbl.size(); i++) {
-            condition = new HashMap<String, String>();
             JsonObject record = expectedTbl.get(i).getAsJsonObject();
-            String header = dt.get(0).get(i);
-            condition.put(Constants.CRITERION, header);
-            condition.put(Constants.OPERATION, "equals");
-            condition.put(Constants.VALUE, record.get(header).getAsString().replace("*", "|"));
-            condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
-            filterConditions.add(condition);
+            List<String> headerlist = dt.get(0);
+            for (int j = 0; j <headerlist.size() ; j++) {
+                condition = new HashMap<String, String>();
+                condition.put(Constants.CRITERION, headerlist.get(j));
+                condition.put(Constants.OPERATION, "equals");
+                condition.put(Constants.VALUE, record.get( headerlist.get(j)).getAsString().replace("*", "|"));
+                condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+                filterConditions.add(condition);
+            }
+
         }
         onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
 
