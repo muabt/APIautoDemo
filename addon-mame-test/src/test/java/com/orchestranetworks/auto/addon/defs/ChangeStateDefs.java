@@ -191,7 +191,7 @@ public class ChangeStateDefs {
         onCommonSteps.click_on_table_name(MAMEConstants.MERGE_RESULT_TBL);
         JsonArray expectedTbl = SessionData.convertArrayListToJson(table);
 
-        // Filter selected record by Merging process ID
+        // Filter selected record by recordId and goldenId
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
         for (int i = 0; i < expectedTbl.size(); i++) {
             Map<String, String> condition = new HashMap<String, String>();
@@ -244,6 +244,75 @@ public class ChangeStateDefs {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.IS_INTERPOLATION, isInterpolation);
             }
 
+        }
+    }
+
+    @Then("^I will see table Decision with filter$")
+    public void iWillSeeTableDecisionWithFilter(List<List<String>> Decisiontable) {
+        onCommonSteps.click_on_table_name(MAMEConstants.DECISION);
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(Decisiontable);
+
+        // Filter selected record by recordId and goldenId
+        List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            Map<String, String> condition = new HashMap<String, String>();
+            JsonObject record = expectedTbl.get(i).getAsJsonObject();
+
+            String sourceId = record.get(TechnicalTable.Decision.SOURCE_ID).getAsString().replace("*", "|");
+            String targetId = record.get(TechnicalTable.Decision.TARGET_ID).getAsString().replace("*", "|");
+
+            condition.put(Constants.CRITERION, TechnicalTable.Decision.SOURCE_ID);
+            condition.put(Constants.OPERATION, "equals");
+            condition.put(Constants.VALUE, sourceId);
+            condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+            filterConditions.add(condition);
+
+            condition = new HashMap<String, String>();
+            condition.put(Constants.CRITERION, TechnicalTable.Decision.TARGET_ID);
+            condition.put(Constants.OPERATION, "equals");
+            condition.put(Constants.VALUE, targetId);
+            condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+            filterConditions.add(condition);
+        }
+        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+
+        // Save table to DataObject in session
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.DECISION);
+
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actualRow = actualTbl.getRecord(i);
+
+            String id = expectedRow.get(TechnicalTable.Decision.ID).getAsString();
+            String sourcedId = expectedRow.get(TechnicalTable.Decision.SOURCE_ID).getAsString().replace("*", "|");
+            String targetId = expectedRow.get(TechnicalTable.Decision.TARGET_ID).getAsString().replace("*", "|");
+            String lastDecision = expectedRow.get(TechnicalTable.Decision.LAST_DECISION).getAsString();
+            String user = expectedRow.get(TechnicalTable.Decision.USER).getAsString();
+            String decisionDate = expectedRow.get(TechnicalTable.Decision.DECISION_DATE).getAsString();
+            String mergingProcessId = expectedRow.get(TechnicalTable.Decision.MERGING_PROCESS_ID).getAsString();
+
+
+            if (!id.isEmpty()) {
+
+            }
+            if (!sourcedId.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.SOURCE_ID, sourcedId);
+            }
+            if (!targetId.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.TARGET_ID, targetId);
+            }
+            if (!lastDecision.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.LAST_DECISION, lastDecision);
+            }
+            if (!user.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.USER, user);
+            }
+            if (!decisionDate.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.DECISION_DATE, decisionDate);
+            }
+            if (!mergingProcessId.isEmpty()) {
+                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.Decision.MERGING_PROCESS_ID, mergingProcessId);
+            }
         }
     }
 }
