@@ -41,6 +41,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         }
     }
 
+
     @Override
     public void selectCheckboxWithText(String text) {
         String xpath = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])" +
@@ -59,6 +60,8 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
                 xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(i)));
             }
         }
+
+
         xPathRow += "]";
         switchToLastIFrame();
         // check if found >1 row satisfy condition

@@ -10,13 +10,9 @@ Feature: Run Match feature
 
   Scenario: UAT-RM01 Run Match with MAME configuration with MatchingTable and Matching Policy Active = true and Without Decision Tree.
     Given I permit to access matching table
-#    And I create record with PK "Publication: genealogyForRunMatch" is "Person" and the content followings
-#      | Data model:DDL                    | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-#      | Publication: genealogyForRunMatch | Person    | Yes          |                              |                  |                    |                       |
     And I create record in Matching table with the content followings
       | Data model:DDL                    | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogyForRunMatch | Person    | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Person" of "Publication: genealogyForRunMatch"
     And the matching process is configured as the followings
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
       | RANDOM                |                | Yes    | Inline matching                | Inline matching              |              | Yes                                | Yes                       | Yes                         |
@@ -38,7 +34,6 @@ Feature: Run Match feature
     And I create record in Matching table with the content followings
       | Data model:DDL                    | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: genealogyForRunMatch | Person    | Yes          |                              |                  |                    |                       |
-    And I select matching table record of table "Person" of "Publication: genealogy"
     And the matching process is configured as the followings
       | Matching process code | Matching table | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
       | RANDOM                |                | No     | Inline matching                | Inline matching              |              | Yes                                | Yes                       | Yes                         |

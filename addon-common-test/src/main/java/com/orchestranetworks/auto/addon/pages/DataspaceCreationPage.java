@@ -37,5 +37,4 @@ public class DataspaceCreationPage extends BasePage {
     public ItemCreationWidget getDataspaceCreationWidget() {
         return dataspaceCreation;
     }
-
 }

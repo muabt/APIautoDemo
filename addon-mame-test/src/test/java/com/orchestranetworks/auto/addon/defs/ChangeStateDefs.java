@@ -141,22 +141,16 @@ public class ChangeStateDefs {
                 SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
             }
 
-            if (groupFromFeature.equals("GROUP_ID")) {
-                assertThat(actualGroup).isEqualTo(groupFromSession);
-            } else if (groupFromFeature.equals("UPDATED_GROUP_ID")) {
-                assertThat(actualGroup).isNotEqualTo(groupFromSession);
-            } else {
-                assertThat(actualGroup).isNullOrEmpty();
+            if (!groupFromFeature.isEmpty()) {
+                if (groupFromFeature.equals("GROUP_ID")) {
+                    assertThat(actualGroup).isEqualTo(groupFromSession);
+                } else if (groupFromFeature.equals("UPDATED_GROUP_ID")) {
+                    assertThat(actualGroup).isNotEqualTo(groupFromSession);
+                } else {
+                    assertThat(actualGroup).isNullOrEmpty();
+                }
             }
-
-
-           /* if (!groupFromFeature.isEmpty()) {
-                assertThat(actualGroup).isNotEqualTo(groupFromSession);
-            } else {
-                assertThat(actualGroup).isNullOrEmpty();
-            }*/
         }
-
     }
 
     @And("^I will see table MergingProcess after changing as below$")

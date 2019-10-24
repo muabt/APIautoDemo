@@ -229,13 +229,6 @@ public class CommonSteps extends ScenarioSteps {
     }
 
     @Step
-    public void execute_advance_search(String logical, List<Map<String, String>> condition){
-        select_logical_search(logical);
-        input_search_condition(condition);
-        click_btn_apply_advanced_search();
-    }
-
-    @Step
     public void input_search_condition(List<Map<String, String>> condition) {
         for (Map<String, String> row : condition) {
             String criterion = row.get("Criterion");

@@ -37,7 +37,6 @@ public class LoadConfig {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         return CONFIG;
     }
 
@@ -97,10 +96,10 @@ public class LoadConfig {
         loginCredentials.addProperty("password", getPassword());
 
         RequestSpecification httpRequest = RestAssured.given()
-				.contentType(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .body(loginCredentials.toString());
 
-        Response response = httpRequest.post(getBaseURL()+"/ebx-ui/rest/authentication/v1/token/create");
+        Response response = httpRequest.post(getBaseURL() + "/ebx-ui/rest/authentication/v1/token/create");
         JsonPath jsonRes = new JsonPath(response.asString());
 
         String token = jsonRes.getString("tokenType") + " " + jsonRes.getString("accessToken");
@@ -112,16 +111,15 @@ public class LoadConfig {
         int end = url.indexOf("/ebx");
         url = url.substring(0, end);
         return url;
-
     }
 
     public static RequestSpecification requestSpecification() {
         RequestSpecification spec = new RequestSpecBuilder()
-				.setBaseUri(getBaseURL())
-				.setContentType("application/json")
-				.addHeader("Authorization",getLoginToken())
-				.setUrlEncodingEnabled(false)
-				.build();
+                .setBaseUri(getBaseURL())
+                .setContentType("application/json")
+                .addHeader("Authorization", getLoginToken())
+                .setUrlEncodingEnabled(false)
+                .build();
         return spec;
     }
 }

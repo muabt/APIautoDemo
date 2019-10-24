@@ -242,14 +242,7 @@ public class DatasetDefs {
             }
             filterConditions.add(condition);
         }
-        if (dt.get(0).contains("mergingProcessId")) {
-            onCommonSteps.click_btn_filter();
-            onCommonSteps.select_advanced_mode();
-            onCommonSteps.select_label_search_mode();
-            onCommonSteps.execute_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
-        } else {
-            onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
-        }
+        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
         onCommonSteps.verify_table_no_record_found();
     }
 }
