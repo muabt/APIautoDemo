@@ -4,6 +4,7 @@ import net.serenitybdd.core.annotations.ImplementedBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.pages.WidgetObject;
 
+
 @ImplementedBy(SearchWidgetImpl.class)
 public interface SearchWidget extends WidgetObject {
 
@@ -48,4 +49,6 @@ public interface SearchWidget extends WidgetObject {
     boolean isAdvancedSearchActivated();
 
     void refreshSearch();
+
+    void selectLabelSearchMode();
 }

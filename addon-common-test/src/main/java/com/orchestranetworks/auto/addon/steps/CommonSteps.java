@@ -189,30 +189,37 @@ public class CommonSteps extends ScenarioSteps {
         onCommonPage.getAdvanceSearch().selectLogicalSearch(logical);
     }
 
+    @Step
     public void input_fuzzy_keyword(String recordContains) {
         onCommonPage.getAdvanceSearch().inputFuzzyKeyword(recordContains);
     }
 
+    @Step
     public void click_btn_apply_fuzzy_search() {
         onCommonPage.getAdvanceSearch().clickApply(4);
     }
 
+    @Step
     public void click_btn_save_and_close() {
         onCommonPage.getFooter().clickBtnSaveAndClose();
     }
 
+    @Step
     public void select_service_add_logical_block() {
         onCommonPage.getAdvanceSearch().addLogicalBlock();
     }
 
+    @Step
     public void click_btn_add_logical_block() {
         onCommonPage.getAdvanceSearch().clickBtnAddBlock();
     }
 
+    @Step
     public void verify_table_no_record_found() {
         assertThat(onCommonPage.getDefaultViewWidget().isRecordInTableExisted()).isEqualTo(false);
     }
 
+    @Step
     public void search_with_advance_search(String logical, List<Map<String, String>> condition) {
         click_btn_filter();
         select_advanced_mode();
@@ -221,6 +228,14 @@ public class CommonSteps extends ScenarioSteps {
         click_btn_apply_advanced_search();
     }
 
+    @Step
+    public void execute_advance_search(String logical, List<Map<String, String>> condition){
+        select_logical_search(logical);
+        input_search_condition(condition);
+        click_btn_apply_advanced_search();
+    }
+
+    @Step
     public void input_search_condition(List<Map<String, String>> condition) {
         for (Map<String, String> row : condition) {
             String criterion = row.get("Criterion");
@@ -240,12 +255,14 @@ public class CommonSteps extends ScenarioSteps {
         }
     }
 
+    @Step
     public void delete_all_occurrence() {
         onCommonPage.getAdvanceSearch().removeAllOccurrence();
     }
 
-    public void verify_advanced_search_activated(){
-        if (onCommonPage.getAdvanceSearch().isAdvancedSearchActivated()){
+    @Step
+    public void verify_advanced_search_activated() {
+        if (onCommonPage.getAdvanceSearch().isAdvancedSearchActivated()) {
             delete_all_occurrence();
             onCommonPage.getAdvanceSearch().clickApplyAdvancedSearch();
             onCommonPage.getToolbar().clickBtnFilter();
@@ -257,7 +274,13 @@ public class CommonSteps extends ScenarioSteps {
         onCommonPage.getFooter().clickBtnSave();
     }
 
+    @Step
     public void refreshSearch() {
         onCommonPage.getAdvanceSearch().refreshSearch();
+    }
+
+    @Step
+    public void select_label_search_mode() {
+        onCommonPage.getAdvanceSearch().selectLabelSearchMode();
     }
 }

@@ -179,8 +179,6 @@ public class ManualMergeDefs {
                 String autoGeneratePK = actualTbl.getRecord(actualTbl.getRecords().size() - 1).get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
                 mergedRecord.addPK(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, autoGeneratePK);
             }
-
-
         }
     }
 

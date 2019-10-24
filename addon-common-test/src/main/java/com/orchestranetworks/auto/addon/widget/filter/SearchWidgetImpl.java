@@ -240,4 +240,9 @@ public class SearchWidgetImpl extends BaseWidgetImpl implements SearchWidget {
     public void refreshSearch() {
         refresh();
     }
+
+    @Override
+    public void selectLabelSearchMode() {
+        selectRadioBoxWithLabel("Label");
+    }
 }

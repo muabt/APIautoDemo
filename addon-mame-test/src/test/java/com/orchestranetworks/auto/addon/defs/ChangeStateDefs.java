@@ -100,7 +100,7 @@ public class ChangeStateDefs {
     }
 
     @Then("^I will see table RecordMetadata after changing as below$")
-    public void iWillSeeTableRecordMetadataAfterChangingAsBelow(List<List<String>> dt) {
+    public void i_will_see_table_RecordMetadata_after_changing_as_below(List<List<String>> dt) {
         JsonArray expectedTbl = SessionData.convertArrayListToJson(dt);
         //Filter selected record by Functional ID
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
@@ -140,19 +140,65 @@ public class ChangeStateDefs {
             if (!functionalID.isEmpty()) {
                 SessionData.compareJsonObjectValue(actual, TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
             }
-            if (!groupFromFeature.isEmpty()) {
+
+            if (groupFromFeature.equals("GROUP_ID")) {
+                assertThat(actualGroup).isEqualTo(groupFromSession);
+            } else if (groupFromFeature.equals("UPDATED_GROUP_ID")) {
                 assertThat(actualGroup).isNotEqualTo(groupFromSession);
             } else {
                 assertThat(actualGroup).isNullOrEmpty();
             }
 
+
+           /* if (!groupFromFeature.isEmpty()) {
+                assertThat(actualGroup).isNotEqualTo(groupFromSession);
+            } else {
+                assertThat(actualGroup).isNullOrEmpty();
+            }*/
         }
 
     }
 
     @And("^I will see table MergingProcess after changing as below$")
+    public void i_will_see_table_MergingProcess_after_changing_as_below(List<List<String>> dt) {
+        onCommonSteps.click_on_table_name("MergingProcess");
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(dt);
+        TableObject actualTbl = onDatasetSteps.getDefaultViewTable("MERGING_PROCESS_AFTER_CHANGING");
+        DataObject dataObject = new DataObject();
+        dataObject.addTable(MAMEConstants.MERGING_PROCESS_TBL, actualTbl.getTable());
+        SessionData.saveDataObjectToSession("MERGING_PROCESS_AFTER_CHANGING", dataObject);
+
+        for (int i = 0; i < expectedTbl.size(); i++) {
+            JsonObject expected = expectedTbl.get(i).getAsJsonObject();
+            JsonObject actual = actualTbl.getRecord(i);
+
+            String id = expected.get(TechnicalTable.MergingProcess.ID).getAsString();
+            String mergePolicyID = expected.get(TechnicalTable.MergingProcess.MERGE_POLICY_ID).getAsString();
+            String mergeMode = expected.get(TechnicalTable.MergingProcess.MERGE_MODE).getAsString();
+            String executionDate = expected.get(TechnicalTable.MergingProcess.EXECUTION_DATE).getAsString();
+            String snapshotId = actual.get(TechnicalTable.MergingProcess.SNAPSHOT_ID).getAsString();
+            String groupId = actual.get(TechnicalTable.MergingProcess.GROUP_ID).getAsString();
+            String user = actual.get(TechnicalTable.MergingProcess.USER).getAsString();
+            String isUnmerged = actual.get(TechnicalTable.MergingProcess.IS_UNMERGED).getAsString();
+
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.ID, id);
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.MERGE_POLICY_ID, mergePolicyID);
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.MERGE_MODE, mergeMode);
+            if (executionDate.equals("TODAY")) {
+                executionDate = DateTimeUtils.getCurrentDateTime();
+                SessionData.compareJsonObjectValueContains(actual, TechnicalTable.MergingProcess.EXECUTION_DATE, executionDate);
+            } else {
+                SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.EXECUTION_DATE, executionDate);
+            }
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.SNAPSHOT_ID, snapshotId);
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.GROUP_ID, groupId);
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.USER, user);
+            SessionData.compareJsonObjectValue(actual, TechnicalTable.MergingProcess.IS_UNMERGED, isUnmerged);
+        }
+    }
+
     @Then("^I will see table MergingProcess before changing as below$")
-    public void iWillSeeTableMergingProcessBeforeChangingAsBelow(List<List<String>> dt) {
+    public void i_will_see_table_MergingProcess_before_changing_as_below(List<List<String>> dt) {
         onCommonSteps.click_on_table_name("MergingProcess");
         JsonArray expectedTbl = SessionData.convertArrayListToJson(dt);
 

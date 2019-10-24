@@ -229,21 +229,27 @@ public class DatasetDefs {
 
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
         Map<String, String> condition = null;
+        List<String> headerlist = dt.get(0);
         for (int i = 0; i < expectedTbl.size(); i++) {
             JsonObject record = expectedTbl.get(i).getAsJsonObject();
-            List<String> headerlist = dt.get(0);
-            for (int j = 0; j <headerlist.size() ; j++) {
+            //  List<String> headerlist = dt.get(0);
+            for (int j = 0; j < headerlist.size(); j++) {
                 condition = new HashMap<String, String>();
                 condition.put(Constants.CRITERION, headerlist.get(j));
                 condition.put(Constants.OPERATION, "equals");
-                condition.put(Constants.VALUE, record.get( headerlist.get(j)).getAsString().replace("*", "|"));
+                condition.put(Constants.VALUE, record.get(headerlist.get(j)).getAsString().replace("*", "|"));
                 condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
-                filterConditions.add(condition);
             }
-
+            filterConditions.add(condition);
         }
-        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
-
+        if (dt.get(0).contains("mergingProcessId")) {
+            onCommonSteps.click_btn_filter();
+            onCommonSteps.select_advanced_mode();
+            onCommonSteps.select_label_search_mode();
+            onCommonSteps.execute_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+        } else {
+            onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+        }
         onCommonSteps.verify_table_no_record_found();
     }
 }
