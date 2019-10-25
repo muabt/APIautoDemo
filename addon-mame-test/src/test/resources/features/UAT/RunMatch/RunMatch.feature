@@ -191,7 +191,7 @@ Feature: Run Match feature
   Scenario: UAT-RM06 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Advanced Setting.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline_RunMatch.ebx" file to import
-    And I select matching table record of table "Person" of "Publication: genealogy"
+    And I select matching table record of table "Person" of "Publication: genealogyForRunMatch"
     Then I select matching process record with label "MPC1" in "Matching process" tab
     And the matching process is updated as the followings
       | Matching process code | Active | Matching execution on creation | Matching execution on update | Merge policy | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
@@ -212,7 +212,7 @@ Feature: Run Match feature
   Scenario: UAT-RM07 Run Match with Import MAME_Configuration.ebx file with configure MatchingTable, Matching Process - Both null values Won't match.
     And I permit to access matching table
     When I select "MAME_Configuration_Inline_RunMatch.ebx" file to import
-    And I select matching table record of table "Person" of "Publication: genealogy"
+    And I select matching table record of table "Person" of "Publication: genealogyForRunMatch"
     Then I select matching process record with label "MPC1" in "Matching process" tab
     And I select matching field record with label "Residence" in "Matching fields" tab
     And the matching field is updated as the followings

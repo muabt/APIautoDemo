@@ -102,7 +102,6 @@ Feature: Run Unmerge service
     And no records found in table "MergeValueLineage" with filter
       | mergingProcessId |
       | 172              |
-#
 #    And I will see table MergingProcess as below
 #      | id  | mergePolicyId | mergeMode | executionDate       | snapshotId                      | groupId  | user  | isUnmerged |
 #      | 172 | 173           | Manual    | 08/23/2019 15:29:30 | V1566548970216_BUnmerge_Service | GROUP_ID | admin | Yes        |
