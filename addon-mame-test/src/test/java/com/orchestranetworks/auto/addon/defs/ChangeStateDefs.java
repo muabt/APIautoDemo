@@ -146,9 +146,9 @@ public class ChangeStateDefs {
                     assertThat(actualGroup).isEqualTo(groupFromSession);
                 } else if (groupFromFeature.equals("UPDATED_GROUP_ID")) {
                     assertThat(actualGroup).isNotEqualTo(groupFromSession);
-                } else {
-                    assertThat(actualGroup).isNullOrEmpty();
                 }
+            } else {
+                assertThat(actualGroup).isNullOrEmpty();
             }
         }
     }
