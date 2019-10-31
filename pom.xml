@@ -14,6 +14,7 @@
 	<modules>
 		<module>addon-common-test</module>
 		<module>addon-mame-test</module>
+		<module>addon-insight-test</module>
 	</modules>
 
 	<properties>
