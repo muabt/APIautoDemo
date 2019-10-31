@@ -1,3 +1,4 @@
+@SYSTEM_TEST
 Feature: Run Unmerge service
 
   Background:
