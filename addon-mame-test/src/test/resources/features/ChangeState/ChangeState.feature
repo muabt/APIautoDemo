@@ -131,7 +131,6 @@ Feature: Change state
     Then no records found in table "MergeValueLineage"
     Then no records found in table "MatchingResult"
     Then no records found in table "MatchingSession"
-
     And I delete the dataspace
 
   Scenario: SC-CS14 Check results when user changes state to "Golden" with selecting all records of a group
@@ -154,11 +153,13 @@ Feature: Change state
     Then I will see table MergeResult with filter
       | id | recordId | goldenId | mergingProcessId | isInterpolation |
       | 28 | 1*2*3*4  | 1*2*3*5   | 14               | No              |
-    And I access table "Decision" of dataset "Metadatas_Manual_merge_view_MDS" in dataspace "ChangeState>SC-CS17"
     Then I will see table Decision with filter
      | id | sourceId | targetId | lastDecision                  | user  |decisionDate       |mergingProcessId|
      | 28 | 1*2*3*4  | 1*2*3*5   | Identified as match          | admin |08/09/2019 14:40:14|14        |
-    And I access table "Manual_merge_view" of dataset "Metadatas"
+    Then I will see table MatchingResult with filter
+      | id | sourceId | targetId  | lastResult | sessionId|
+      | 28 | 1*2*3*4  | 1*2*3*5   | MATCHED    | 12 |
+  And I access table "Manual_merge_view" of dataset "Metadatas"
     And I select some records with primary key as following
       | pk1 | pk2 | ID | pk3 |
       | 1   | 2   | 3  | 4   |
@@ -168,19 +169,31 @@ Feature: Change state
     And I select table service "Match and Merge > Change state"
     When I select target state is Golden
     And I complete change state process
-    And I access table "RecordMetadata" of dataset "Metadatas_Manual_merge_view_MDS" in dataspace "ChangeState>SC-CS14"
+   And I access table "RecordMetadata" of dataset "Metadatas_Manual_merge_view_MDS"
     Then I will see table RecordMetadata after changing as below
-      | id   | groupId  | state   | autoCreated | functionalId | isolated |
-      | KEY1 | GROUP_ID | Golden  | No          | 1*2*3*4      | No       |
-      | KEY2 | GROUP_ID | Golden  | No          | 1*2*3*5      | No       |
-      | KEY3 | GROUP_ID | Golden  | No          | 1*5*3*5      | No       |
-      | KEY4 |          | Deleted | Yes         | 3*1*3*9      | No       |
+      | id   | groupId          | state   | autoCreated | functionalId | isolated |
+      | KEY1 | UPDATED_GROUP_ID | Golden  | No          | 1*2*3*4      | No       |
+      | KEY2 | UPDATED_GROUP_ID | Golden  | No          | 1*2*3*5      | No       |
+      | KEY3 | UPDATED_GROUP_ID | Golden  | No          | 1*5*3*5      | No       |
+      | KEY4 |                  | Deleted | Yes         | 3*1*3*9      | No       |
     Then I will see table MergingProcess after changing as below
       | id | mergePolicyId | mergeMode | executionDate       | snapshotId                  | groupId               | user  | isUnmerged |
       | 14 |               | Manual    | 08/09/2019 14:40:14 | VBChangeState_1565336414113 | 1,602,904,488,051,712 | admin | No         |
       | 15 |               | Manual    | 08/09/2019 15:01:31 | VBChangeState_1565337691735 | 1,602,905,796,336,640 | admin | Yes        |
     Then no records found in table "MergeResult" with filter
       | recordId | goldenId |
+      | 1*2*3*4  | 1*2*3*4  |
+      | 1*2*3*5  | 1*2*3*5  |
+      | 1*5*3*5  | 1*5*3*5  |
+      | 3*1*3*9  | 3*1*3*9  |
+    Then no records found in table "Decision" with filter
+      | sourceId | targetId |
+      | 1*2*3*4  | 1*2*3*4  |
+      | 1*2*3*5  | 1*2*3*5  |
+      | 1*5*3*5  | 1*5*3*5  |
+      | 3*1*3*9  | 3*1*3*9  |
+    Then no records found in table "MatchingResult" with filter
+      | sourceId | targetId |
       | 1*2*3*4  | 1*2*3*4  |
       | 1*2*3*5  | 1*2*3*5  |
       | 1*5*3*5  | 1*5*3*5  |
