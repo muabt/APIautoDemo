@@ -657,6 +657,17 @@ public class MatchingTableDefs {
     public void iSelectMatchingProcessTab() {
         onMatchingTableSteps.select_matching_process_tab();
     }
+
+    @And("^the field \"([^\"]*)\" should be unique with message \"([^\"]*)\"$")
+    public void theFieldShouldBeUniqueWithMessage(String fieldName, String msg) throws Throwable {
+        onCommonSteps.click_btn_save();
+        onMatchingTableSteps.verify_validation_message(fieldName, msg);
+    }
+
+    @And("^I should edit Matching process record detailed as following$")
+    public void i_should_edit_matching_process_record_detailed_as_following(String fieldName, String value) {
+        onMatchingTableSteps.click_btn_expand();
+        onMatchingTableSteps.input_matching_process_code(value);
+
+    }
 }
-
-

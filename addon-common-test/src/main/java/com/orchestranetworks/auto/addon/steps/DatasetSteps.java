@@ -92,6 +92,7 @@ public class DatasetSteps extends ScenarioSteps {
             recordDetailPage.getToolbar().selectService(Constants.BTN_DELETE);
             recordDetailPage.getPopupWidget().confirmOK();
         }
+        assertThat(defaultViewPage.getDefaultViewWidget().isRecordInTableExisted()).isEqualTo(false);
     }
 
     @Step

@@ -137,7 +137,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
     public boolean isRecordInTableExisted() {
         switchToLastIFrame();
-        return !isElementExistNow(XPATH_NO_RECORDS_FOUND);
+        return (!isElementExistNow(XPATH_NO_RECORDS_FOUND) || !getElement(XPATH_NO_RECORDS_FOUND).isDisplayed());
     }
 
 
