@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="addon-common-test" />
         <module name="addon-mame-test" />
+        <module name="addon-insight-test" />
+        <module name="addon-common-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
