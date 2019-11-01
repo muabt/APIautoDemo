@@ -237,11 +237,13 @@ public class MatchingTableSteps extends ScenarioSteps {
     public void select_modify_merged_without_match(String modifyMergedWithoutMatch) {
         onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel(MAMEConstants.MODIFY_MERGE, modifyMergedWithoutMatch);
     }
+
     @Step
     public void select_one_of_the_values_is_null(String oneOfTheValuesIsNull) {
         onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.ONE_VALUE_NULL, oneOfTheValuesIsNull);
 
     }
+
     @Step
     public void select_both_values_are_null(String bothValuesAreNull) {
         onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.BOTH_VALUE_ARE_NULL, bothValuesAreNull);
@@ -250,6 +252,30 @@ public class MatchingTableSteps extends ScenarioSteps {
     @Step
     public void select_record_with_pk(String[] col) {
         onMatchingTablePage.getSourceWidget().selectCheckboxWithPK(col);
+    }
+
+    public void verify_default_value(String fieldType, String field, String value) {
+        String actual = "";
+        switch (fieldType.toLowerCase()) {
+            case "radio":
+                actual = onMatchingTablePage.getMatchingProcessWidget().getValueOfRadioField(field);
+                break;
+            case "input":
+                actual = onMatchingTablePage.getMatchingProcessWidget().getValueOfInputField(field);
+                break;
+            case "drop-down list":
+                actual = onMatchingTablePage.getMatchingProcessWidget().getValueOfDropdownField(field);
+                break;
+            default:
+
+        }
+
+        assertThat(actual).isEqualTo(value);
+    }
+
+    public void verify_validation_message(String fieldName, String msg) {
+       String actual= onMatchingTablePage.getItemCreationWidget().getTextValidationMessage(fieldName);
+       assertThat(actual).isEqualTo(msg);
     }
 }
 

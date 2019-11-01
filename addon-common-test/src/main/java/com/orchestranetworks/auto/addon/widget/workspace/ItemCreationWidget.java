@@ -47,4 +47,6 @@ public interface ItemCreationWidget extends WidgetObject {
 	void clickBtnExpand();
 
 	void inputTextWithLabel(String label, String value);
+
+    String getTextValidationMessage(String fieldName);
 }

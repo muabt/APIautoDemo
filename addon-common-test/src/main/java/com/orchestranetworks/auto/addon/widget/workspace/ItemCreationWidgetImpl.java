@@ -12,6 +12,7 @@ import net.serenitybdd.core.pages.PageObject;
 public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreationWidget {
 
     private static final String XPATH_DATETIME = "//label[text()='%s']/ancestor::tr//span//input[contains(@name,'%s')]";
+    private static final String XPATH_VALIDATION_MSG = "//tr[descendant::label[.='%s']]//div[@class='ebx_Error']";
 
     public ItemCreationWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                   long timeoutInMilliseconds) {
@@ -163,5 +164,10 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     @Override
     public void inputTextWithLabel(String label, String value) {
         waitTypeAndTabWithLabel(label, value);
+    }
+
+    @Override
+    public String getTextValidationMessage(String fieldName) {
+        return getText(String.format(XPATH_VALIDATION_MSG, fieldName));
     }
 }

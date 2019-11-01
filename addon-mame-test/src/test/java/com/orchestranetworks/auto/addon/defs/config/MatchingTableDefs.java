@@ -7,6 +7,7 @@ import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -610,6 +611,42 @@ public class MatchingTableDefs {
             }
         }
         onCommonSteps.click_btn_save();
+    }
+
+    @When("^I open matching process popup$")
+    public void i_open_matching_process_popup() {
+        onMatchingTableSteps.select_matching_process_tab();
+        onMatchingTableSteps.select_btn_create_record(1);
+    }
+
+    /*@And("^the field \"([^\"]*)\" should be mandatory$")
+    public void the_field_should_mandatory(String arg0) {
+        onCommonSteps.click_btn_save();
+    }*/
+
+    @And("^the field \"([^\"]*)\" should have ability to trim space with data \"([^\"]*)\"$")
+    public void the_field_should_have_ability_to_trim_space_with_data(String arg0, String arg1) {
+
+    }
+
+    @And("^the field \"([^\"]*)\" is able to have \"([^\"]*)\" value$")
+    public void the_field_is_able_to_have_value(String arg0, String arg1) {
+
+    }
+
+    @And("^the field \"([^\"]*)\" should be mandatory with message \"([^\"]*)\"$")
+    public void theFieldShouldBeMandatoryWithMessage(String fieldName, String msg) throws Throwable {
+        Thread.sleep(5000);
+        System.out.println("*******************************************");
+        onCommonSteps.click_btn_save();
+        Thread.sleep(3000);
+        onMatchingTableSteps.verify_validation_message(fieldName, msg);
+    }
+
+
+    @Then("^the default value of \"([^\"]*)\" field \"([^\"]*)\" should be \"([^\"]*)\"$")
+    public void theDefaultValueOfFieldShouldBe(String fieldType, String fieldName, String defaultValue) throws Throwable {
+        onMatchingTableSteps.verify_default_value(fieldType, fieldName, defaultValue);
     }
 }
 

@@ -61,6 +61,7 @@ public class MatchingTablePage extends BasePage {
     }
 
     public MatchingProcessWidget getMatchingProcessWidget() {
+        switchToIFrame("ebx_InternalPopup");
         return matchingProcessWidget;
     }
 
