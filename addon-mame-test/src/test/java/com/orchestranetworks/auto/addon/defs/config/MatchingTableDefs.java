@@ -559,7 +559,7 @@ public class MatchingTableDefs {
      * @param dt information of the record
      */
     @And("^I create record in Matching table with the content followings$")
-    public void i_create_record_in_matching_table_with_the_content_followings(DataTable dt){
+    public void i_create_record_in_matching_table_with_the_content_followings(DataTable dt) {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         Map<String, String> row = list.get(0);
         String dataModel = row.get("Data model:DDL");
@@ -623,10 +623,12 @@ public class MatchingTableDefs {
     public void the_field_should_mandatory(String arg0) {
         onCommonSteps.click_btn_save();
     }*/
-
+    @When("^I input field \"([^\"]*)\" with value \"([^\"]*)\"$")
     @And("^the field \"([^\"]*)\" should have ability to trim space with data \"([^\"]*)\"$")
-    public void the_field_should_have_ability_to_trim_space_with_data(String arg0, String arg1) {
-
+    public void the_field_should_have_ability_to_trim_space_with_data(String fieldName, String value) {
+        onMatchingTableSteps.input_matching_process_code(value);
+        onCommonSteps.click_btn_save();
+        onMatchingTableSteps.verify_field_trimspace(fieldName, value.trim());
     }
 
     @And("^the field \"([^\"]*)\" is able to have \"([^\"]*)\" value$")
@@ -636,10 +638,7 @@ public class MatchingTableDefs {
 
     @And("^the field \"([^\"]*)\" should be mandatory with message \"([^\"]*)\"$")
     public void theFieldShouldBeMandatoryWithMessage(String fieldName, String msg) throws Throwable {
-        Thread.sleep(5000);
-        System.out.println("*******************************************");
         onCommonSteps.click_btn_save();
-        Thread.sleep(3000);
         onMatchingTableSteps.verify_validation_message(fieldName, msg);
     }
 
@@ -647,6 +646,16 @@ public class MatchingTableDefs {
     @Then("^the default value of \"([^\"]*)\" field \"([^\"]*)\" should be \"([^\"]*)\"$")
     public void theDefaultValueOfFieldShouldBe(String fieldType, String fieldName, String defaultValue) throws Throwable {
         onMatchingTableSteps.verify_default_value(fieldType, fieldName, defaultValue);
+    }
+
+    public void iInputFieldWithValue(String arg0, String arg1) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^I select matching process tab$")
+    public void iSelectMatchingProcessTab() {
+        onMatchingTableSteps.select_matching_process_tab();
     }
 }
 

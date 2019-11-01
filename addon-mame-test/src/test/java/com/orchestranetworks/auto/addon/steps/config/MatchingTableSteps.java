@@ -277,5 +277,10 @@ public class MatchingTableSteps extends ScenarioSteps {
        String actual= onMatchingTablePage.getItemCreationWidget().getTextValidationMessage(fieldName);
        assertThat(actual).isEqualTo(msg);
     }
+
+    public void verify_field_trimspace(String fieldName, String value) {
+        String actual = onMatchingTablePage.getMatchingProcessWidget().getValueOfInputField(fieldName);
+        assertThat(actual).isEqualTo(value);
+    }
 }
 
