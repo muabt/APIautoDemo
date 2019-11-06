@@ -316,6 +316,7 @@ public class CommonDefs {
                 }
             }
         }
+        onCommonSteps.click_btn_apply_advanced_search();
     }
 
 

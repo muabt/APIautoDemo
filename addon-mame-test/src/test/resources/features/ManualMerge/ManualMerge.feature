@@ -3,7 +3,7 @@ Feature: Manual Merge
   I want to use this template for Manual merge feature
 
   @Survivor_Field_MostTrustedSource
-  Scenario: Check merging process after validate merge view screen
+  Scenario: Check merging process after validate merge view screenâ
     Given I login to EBX successfully
     And I create a child of dataspace "Master Data - Reference > Resource" with information as following
       | Identifier      | Owner               | English Label |
