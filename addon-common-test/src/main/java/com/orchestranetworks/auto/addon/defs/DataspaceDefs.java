@@ -100,7 +100,7 @@ public class DataspaceDefs {
      * @throws Throwable
      */
     @Then("^I should see dataspace with information as following$")
-    public void user_should_see_dataspace_with_information_as_following(DataTable dt) throws Throwable {
+    public void user_should_see_dataspace_with_information_as_following(DataTable dt){
         List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
         Map<String, String> row = dataTable.get(0);
         List<String> info = new ArrayList<String>();
@@ -108,7 +108,7 @@ public class DataspaceDefs {
         info.add(row.get("Type"));
         info.add(row.get("Owner"));
         info.add(row.get("Status"));
-        info.add(row.get("Loading strategy"));
+       // info.add(row.get("Loading strategy"));
         info.add(row.get("Child merge policy"));
         onDataspaceSteps.verify_dataspace(info);
     }
