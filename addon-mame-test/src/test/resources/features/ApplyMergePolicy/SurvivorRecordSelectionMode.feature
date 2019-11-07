@@ -27,10 +27,7 @@ Feature: Survivor record selection mode is defined
   Scenario: SC-MPMM02 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
-      |            | admin admin (admin) |               |
-    Then I should see dataspace with information as following
-      | Identifier | Type      | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
-      |            | Dataspace | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
+      | SC-MPMM02  | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
     And I access table "NewEmployee" of dataset "Human_Resource"
     When I select some records with primary key as following
@@ -51,7 +48,7 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>DATASPACE_IDENTIFIER"
+    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>SC-MPMM02"
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated | isolated |
       | 1            | GROUP_ID | Golden | No          | No       |
@@ -66,12 +63,12 @@ Feature: Survivor record selection mode is defined
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | 900              |
     Then no records found in table "MergeValueLineage"
-    And I delete the dataspace
+    And I delete the "SC-MPMM02" dataspace
 
   Scenario: SC-MPMM03 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and some records come from the same source
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
-      |            | admin admin (admin) |               |
+      | SC-MPMM03  | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
     And I access table "NewEmployee" of dataset "Human_Resource"
     When I select some records with primary key as following
@@ -92,7 +89,7 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>DATASPACE_IDENTIFIER"
+    And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference>Reference-child>SC-MPMM03"
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated | isolated |
       | 3            | GROUP_ID | Golden | No          | No       |
@@ -137,7 +134,7 @@ Feature: Survivor record selection mode is defined
   Scenario: SC-MPMM06 Check merging records if Survivor record selection mode is Most trusted source and all values of source field (of selected merged records) are null
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
-      | vienpt     | admin admin (admin) |               |
+      | SC-MPMM06  | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
     And I access table "National" of dataset "Human_Resource"
     When I select some records with primary key as following
@@ -158,7 +155,7 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_national_MDS" in dataspace "Master Data - Reference>Reference-child>vienpt"
+    And I access table "RecordMetadata" of dataset "Human_Resource_national_MDS" in dataspace "Master Data - Reference>Reference-child>SC-MPMM06"
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated | isolated |
       | 8            | GROUP_ID | Golden | No          | No       |
@@ -180,7 +177,7 @@ Feature: Survivor record selection mode is defined
   Scenario: SC-MPMM08 Check merging records when Survivor field is defined and Default merge function is not defined
     And I create a child of dataspace "Master Data - Reference>Apply_merge_policy" with information as following
       | Identifier | Owner               | English Label |
-      | vienpt     | admin admin (admin) |               |
+      | SC-MPMM08  | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
     And I access table "Company" of dataset "Merge_save_tobackend"
     When I select some records with primary key as following
@@ -203,7 +200,7 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Merge_save_tobackend_Company_MDS" in dataspace "Master Data - Reference>>Apply_merge_policy>vienpt"
+    And I access table "RecordMetadata" of dataset "Merge_save_tobackend_Company_MDS" in dataspace "Master Data - Reference>>Apply_merge_policy>SC-MPMM08"
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated | isolated |
       | A            | GROUP_ID | Golden | No          | No       |
@@ -228,7 +225,7 @@ Feature: Survivor record selection mode is defined
   Scenario: SC-MPMM09 Check merging records when Survivor field is not defined, default merge function is defined
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
-      | vienpt     | admin admin (admin) |               |
+      | SC-MPMM09  | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
     And I access table "Suvivor" of dataset "Human_Resource"
     When I select some records with primary key as following
@@ -251,7 +248,7 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_Suvivor_MDS" in dataspace "Master Data - Reference>Reference-child>vienpt"
+    And I access table "RecordMetadata" of dataset "Human_Resource_Suvivor_MDS" in dataspace "Master Data - Reference>Reference-child>SC-MPMM09"
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated | isolated |
       | 1            | GROUP_ID | Merged | No          | No       |
@@ -273,12 +270,12 @@ Feature: Survivor record selection mode is defined
       | KEY1 | AUTO_GENARATED   | 1        |             | /Name     |             |
       | KEY1 | AUTO_GENARATED   | 1        |             | /Phone    |             |
       | KEY1 | AUTO_GENARATED   | 3        | 0           | /email    | 0           |
-    And I delete the dataspace
+    And I delete the "SC-MPMM09" dataspace
 
   Scenario: SC-MPMM11 Check merging records when Survivor record selection mode: Most trusted source and Table trusted source is not defined and Source field is defined
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
-      | vienpt     | admin admin (admin) |               |
+      | SC-MPMM11  | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
     And I access table "Rank" of dataset "Human_Resource"
     When I select some records with primary key as following
@@ -299,7 +296,7 @@ Feature: Survivor record selection mode is defined
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_rank_MDS" in dataspace "Master Data - Reference>Reference-child>vienpt"
+    And I access table "RecordMetadata" of dataset "Human_Resource_rank_MDS" in dataspace "Master Data - Reference>Reference-child>SC-MPMM11"
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated | isolated |
       | 2            | GROUP_ID | Golden | No          | No       |
@@ -315,7 +312,8 @@ Feature: Survivor record selection mode is defined
       | KEY1 | 3        | 2        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
-@ignored
+
+  @ignored
   Scenario: SC-MPMM12 Check merging records when Survivor record selection mode: Most trusted source and Table trusted source is not defined and Source field is not defined
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |
@@ -356,47 +354,51 @@ Feature: Survivor record selection mode is defined
       | KEY1 | 3        | 2        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
+
   @ignore
   Scenario: SC-MPMM21 Check merging records when Survivor record selection mode: Was golden
-    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
-      | Identifier | Owner               | English Label |
-      | vienpt     | admin admin (admin) |               |
-    And I select dataspace service "View or edit datasets"
-    And I access table "rank2" of dataset "Human_Resource"
-    When I select some records with primary key as following
-      | ID |
-      | 3  |
-      | 2  |
-    And I select table service "Match and Merge>Merge"
-    Then record view table will be displayed and highlighted as below
-      | Identifer | Team  | Rank | Employee |
-      | 2     {H} | {H}ON | {H}1 | {H}      |
-      | 3         | UI    | 1.5  |          |
-    And preview table is displayed as below
-      | Identifer | Team | Rank | Employee |
-      | 2         | ON   | 1    |          |
-    And I see the table name "1. Rank" in dropdown list
-    And the screen displays buttons as below
-      | Name               | Status   |
-      | Apply merge policy |          |
-      | Cancel last action | inactive |
-    And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_rank_MDS" in dataspace "Master Data - Reference>Reference-child>vienpt"
-    Then I will see table RecordMetadata as below
-      | functionalId | groupId  | state  | autoCreated | isolated |
-      | 2            | GROUP_ID | Golden | No          | No       |
-      | 3            | GROUP_ID | Merged | No          | No       |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 153           | Manual    | TODAY         |            | GROUP_ID | admin | No         |
-    Then I will see table MergeResult as below
-      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
-      | KEY1 | 3        | 2        | AUTO_GENARATED   | No              |
-    Then I will see table Decision as below
-      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 3        | 2        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
-    Then no records found in table "MergeValueLineage"
-    And I delete the dataspace
+    And I delete the "vienpt_user" dataspace
+    And I delete the "Performance_1000Recs" dataspace
+#
+#    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
+#      | Identifier | Owner               | English Label |
+#      | vienpt     | admin admin (admin) |               |
+#    And I select dataspace service "View or edit datasets"
+#    And I access table "rank2" of dataset "Human_Resource"
+#    When I select some records with primary key as following
+#      | ID |
+#      | 3  |
+#      | 2  |
+#    And I select table service "Match and Merge>Merge"
+#    Then record view table will be displayed and highlighted as below
+#      | Identifer | Team  | Rank | Employee |
+#      | 2     {H} | {H}ON | {H}1 | {H}      |
+#      | 3         | UI    | 1.5  |          |
+#    And preview table is displayed as below
+#      | Identifer | Team | Rank | Employee |
+#      | 2         | ON   | 1    |          |
+#    And I see the table name "1. Rank" in dropdown list
+#    And the screen displays buttons as below
+#      | Name               | Status   |
+#      | Apply merge policy |          |
+#      | Cancel last action | inactive |
+#    And I complete merging process
+#    And I access table "RecordMetadata" of dataset "Human_Resource_rank_MDS" in dataspace "Master Data - Reference>Reference-child>vienpt"
+#    Then I will see table RecordMetadata as below
+#      | functionalId | groupId  | state  | autoCreated | isolated |
+#      | 2            | GROUP_ID | Golden | No          | No       |
+#      | 3            | GROUP_ID | Merged | No          | No       |
+#    Then I will see table MergingProcess as below
+#      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+#      | KEY1 | 153           | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+#    Then I will see table MergeResult as below
+#      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+#      | KEY1 | 3        | 2        | AUTO_GENARATED   | No              |
+#    Then I will see table Decision as below
+#      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+#      | KEY1 | 3        | 2        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
+#    Then no records found in table "MergeValueLineage"
+#    And I delete the dataspace
 
 
 
