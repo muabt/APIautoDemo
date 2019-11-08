@@ -115,10 +115,12 @@ public class LoadConfig {
 
     public static RequestSpecification requestSpecification() {
         RequestSpecification spec = new RequestSpecBuilder()
-                .setBaseUri(getBaseURL()).setContentType("application/json")
+                .setBaseUri(getBaseURL())
                 .addHeader("Authorization", getLoginToken())
                 .setUrlEncodingEnabled(false)
                 .build();
         return spec;
+
+        //.setContentType("application/json")
     }
 }
