@@ -63,7 +63,7 @@ Feature: Survivor record selection mode is defined
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | 900              |
     Then no records found in table "MergeValueLineage"
-    And I delete the "SC-MPMM02" dataspace
+    And I delete the dataspace
 
   Scenario: SC-MPMM03 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and some records come from the same source
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
@@ -313,92 +313,135 @@ Feature: Survivor record selection mode is defined
     Then no records found in table "MergeValueLineage"
     And I delete the dataspace
 
-  @ignored
   Scenario: SC-MPMM12 Check merging records when Survivor record selection mode: Most trusted source and Table trusted source is not defined and Source field is not defined
-    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
+    And I create a child of dataspace "Master Data - Reference > Reference-child" with information as following
       | Identifier | Owner               | English Label |
-      | vienpt     | admin admin (admin) |               |
+      | SC-MPMM12  | admin admin (admin) |               |
     And I select dataspace service "View or edit datasets"
     And I access table "rank2" of dataset "Human_Resource"
     When I select some records with primary key as following
-      | ID |
-      | 3  |
-      | 2  |
+      | Identifer |
+      | 1         |
+      | 2         |
     And I select table service "Match and Merge>Merge"
     Then record view table will be displayed and highlighted as below
-      | Identifer | Team  | Rank | Employee |
-      | 2     {H} | {H}ON | {H}1 | {H}      |
-      | 3         | UI    | 1.5  |          |
+      | Identifer | Rank | Employee | Team   |
+      | 1     {H} | {H}1 | {H}Alice | {H}IOS |
+      | 2         | 2    | Alice    | IOS    |
     And preview table is displayed as below
-      | Identifer | Team | Rank | Employee |
-      | 2         | ON   | 1    |          |
+      | Identifer | Rank | Employee | Team |
+      | 1         | 1    | Alice    | IOS  |
     And I see the table name "1. rank2" in dropdown list
     And the screen displays buttons as below
       | Name               | Status   |
       | Apply merge policy |          |
       | Cancel last action | inactive |
     And I complete merging process
-    And I access table "RecordMetadata" of dataset "Human_Resource_rank2_MDS" in dataspace "Master Data - Reference>Reference-child>vienpt"
+    And I access table "RecordMetadata" of dataset "Human_Resource_rank2_MDS" in dataspace "Master Data - Reference > Reference-child > SC-MPMM12"
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated | isolated |
+      | 1            | GROUP_ID | Golden | No          | No       |
+      | 2            | GROUP_ID | Merged | No          | No       |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 18            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+    Then I will see table MergeResult as below
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 2        | 1        | AUTO_GENARATED   | No              |
+    Then I will see table Decision as below
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
+    Then no records found in table "MergeValueLineage"
+    And I delete the dataspace
+
+  Scenario: SC-MPMM21 Check merging records when Survivor record selection mode: Was golden
+    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
+      | Identifier | Owner               | English Label |
+      | SC-MPMM21  | admin admin (admin) |               |
+    And I select dataspace service "View or edit datasets"
+    And I access table "Table 1" of dataset "Functions"
+    When I select some records with primary key as following
+      | identifier |
+      | 1          |
+      | 2          |
+    And I select table service "Match and Merge>Merge"
+    Then record view table will be displayed and highlighted as below
+      | identifier | Name        | Phone         | National |
+      | 1          | Rose        | 123,466       | 1        |
+      | 2  {H}     | Lavender{H} | 789,456   {H} | 2{H}     |
+    And preview table is displayed as below
+      | identifier | Name     | Phone   | National |
+      | 2          | Lavender | 789,456 | 2        |
+    And I see the table name "1. Table 1" in dropdown list
+    And the screen displays buttons as below
+      | Name               | Status   |
+      | Apply merge policy |          |
+      | Cancel last action | inactive |
+    And I complete merging process
+    And I access table "RecordMetadata" of dataset "Functions_Table1_MDS" in dataspace "Master Data - Reference>Reference-child>SC-MPMM21"
+    Then I will see table RecordMetadata as below
+      | functionalId | groupId  | state  | autoCreated | isolated |
+      | 1            | GROUP_ID | Merged | No          | No       |
+      | 2            | GROUP_ID | Golden | No          | No       |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 25            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+    Then I will see table MergeResult as below
+      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 1        | 2        | AUTO_GENARATED   | No              |
+    Then I will see table Decision as below
+      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 1        | 2        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
+    Then no records found in table "MergeValueLineage"
+    And I delete the dataspace
+
+  Scenario: SC-MPMM23 Check merging records when Survivor record selection mode: Was golden and Survivor field is defined
+    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
+      | Identifier | Owner               | English Label |
+      | SC-MPMM23  | admin admin (admin) |               |
+    And I select dataspace service "View or edit datasets"
+    And I access table "National" of dataset "Functions"
+    When I select some records with primary key as following
+      | identifier |
+      | 1          |
+      | 2          |
+      | 3          |
+    And I select table service "Match and Merge>Merge"
+    Then record view table will be displayed and highlighted as below
+      | id     | Name    |
+      | 1      | US      |
+      | 2  {H} | UK      |
+      | 3      | FR  {H} |
+    And preview table is displayed as below
+      | id | Name |
+      | 2  | FR   |
+    And I see the table name "1. National" in dropdown list
+    And the screen displays buttons as below
+      | Name               | Status   |
+      | Apply merge policy |          |
+      | Cancel last action | inactive |
+    And I complete merging process
+    And I access table "RecordMetadata" of dataset "Functions_National_MDS" in dataspace "Master Data - Reference>Reference-child>SC-MPMM23"
+    Then I will see table RecordMetadata as below
+      | functionalId | groupId  | state  | autoCreated | isolated |
+      | 1            | GROUP_ID | Merged | No          | No       |
       | 2            | GROUP_ID | Golden | No          | No       |
       | 3            | GROUP_ID | Merged | No          | No       |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 153           | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+      | KEY1 | 692           | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
+      | KEY1 | 1        | 2        | AUTO_GENARATED   | No              |
       | KEY1 | 3        | 2        | AUTO_GENARATED   | No              |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | KEY1 | 1        | 2        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
       | KEY1 | 3        | 2        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
-    Then no records found in table "MergeValueLineage"
+    Then I will see table MergeValueLineage as below
+      | id   | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
+      | KEY1 | AUTO_GENARATED   | 3        |             | /Name     |             |
     And I delete the dataspace
-
-  @ignore
-  Scenario: SC-MPMM21 Check merging records when Survivor record selection mode: Was golden
-    And I delete the "vienpt_user" dataspace
-    And I delete the "Performance_1000Recs" dataspace
-#
-#    And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
-#      | Identifier | Owner               | English Label |
-#      | vienpt     | admin admin (admin) |               |
-#    And I select dataspace service "View or edit datasets"
-#    And I access table "rank2" of dataset "Human_Resource"
-#    When I select some records with primary key as following
-#      | ID |
-#      | 3  |
-#      | 2  |
-#    And I select table service "Match and Merge>Merge"
-#    Then record view table will be displayed and highlighted as below
-#      | Identifer | Team  | Rank | Employee |
-#      | 2     {H} | {H}ON | {H}1 | {H}      |
-#      | 3         | UI    | 1.5  |          |
-#    And preview table is displayed as below
-#      | Identifer | Team | Rank | Employee |
-#      | 2         | ON   | 1    |          |
-#    And I see the table name "1. Rank" in dropdown list
-#    And the screen displays buttons as below
-#      | Name               | Status   |
-#      | Apply merge policy |          |
-#      | Cancel last action | inactive |
-#    And I complete merging process
-#    And I access table "RecordMetadata" of dataset "Human_Resource_rank_MDS" in dataspace "Master Data - Reference>Reference-child>vienpt"
-#    Then I will see table RecordMetadata as below
-#      | functionalId | groupId  | state  | autoCreated | isolated |
-#      | 2            | GROUP_ID | Golden | No          | No       |
-#      | 3            | GROUP_ID | Merged | No          | No       |
-#    Then I will see table MergingProcess as below
-#      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-#      | KEY1 | 153           | Manual    | TODAY         |            | GROUP_ID | admin | No         |
-#    Then I will see table MergeResult as below
-#      | id   | recordId | goldenId | mergingProcessId | isInterpolation |
-#      | KEY1 | 3        | 2        | AUTO_GENARATED   | No              |
-#    Then I will see table Decision as below
-#      | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-#      | KEY1 | 3        | 2        | Identified as match | admin | TODAY        | AUTO_GENARATED   |
-#    Then no records found in table "MergeValueLineage"
-#    And I delete the dataspace
 
 
 
