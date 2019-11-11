@@ -17,6 +17,17 @@
 		<module>addon-insight-test</module>
 	</modules>
 
+	<distributionManagement>
+	    <snapshotRepository>
+	      <id>nexus-snapshots</id>
+	      <url>http://nexus3.vn.orchestranetworks.com/repository/maven-snapshots/</url>
+	    </snapshotRepository>
+	    <repository>
+	      <id>nexus-releases</id>
+	      <url>http://nexus3.vn.orchestranetworks.com/repository/maven-releases/</url>
+	    </repository>
+	</distributionManagement>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<serenity.version>1.7.0</serenity.version>
