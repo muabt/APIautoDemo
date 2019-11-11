@@ -60,7 +60,7 @@ public class PopupWidgetImpl extends BaseWidgetImpl implements PopupWidget {
     @Override
     public String getTextExceptionPopup() {
         switchOutDefaultIFrame();
-        String xPath= "(//div[@class='_ebx-notification-box_list_item'])[1]";
+        String xPath= "//div[@class='_ebx-notification-box_list_item']";
         return getTextValue(xPath);
     }
 }

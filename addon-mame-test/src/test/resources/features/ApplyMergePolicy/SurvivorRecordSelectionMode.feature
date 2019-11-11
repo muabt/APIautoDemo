@@ -103,7 +103,9 @@ Feature: Survivor record selection mode is defined
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 4        | 3        | Identified as match | admin | TODAY        | mergingProcessId |
-    Then no records found in table "MergeValueLineage"
+    Then I will see table MergeValueLineage as below
+      | id   | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
+      | KEY1 | AUTO_GENARATED   | 1        | 0           | /email    | 0           |
     And I delete the dataspace
 
   Scenario: SC-MPMM05 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and Value of source field (of selected merged records)do not map with the code defined in Table trusted source
@@ -477,7 +479,7 @@ Feature: Survivor record selection mode is defined
       | 3            | GROUP_ID | Merged | No          | No       |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 692           | Manual    | TODAY         |            | GROUP_ID | admin | No         |
+      | KEY1 | 693           | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 1        | 2        | AUTO_GENARATED   | No              |
