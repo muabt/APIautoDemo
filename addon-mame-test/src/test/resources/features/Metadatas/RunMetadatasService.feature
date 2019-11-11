@@ -10,9 +10,6 @@ Feature: Run Metadatas service
     And I create a child of dataspace "Reference-child" with information as following
       | Identifier | Owner              | English Label |
       |            | admin admin(admin) |               |
-    Then I should see dataspace with information as following
-      | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
-      |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "Categories" of dataset "Store Item"
 #    And I access table "Categories" of dataset "Store Item" in dataspace "Reference-child"
@@ -40,9 +37,6 @@ Feature: Run Metadatas service
     And I create a child of dataspace "Reference-child" with information as following
       | Identifier | Owner              | English Label |
       |            | admin admin(admin) |               |
-    Then I should see dataspace with information as following
-      | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
-      |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "Brands" of dataset "Store Item"
     # And I access table "Brands" of dataset "Store Item" in dataspace "Reference-child"
@@ -67,9 +61,6 @@ Feature: Run Metadatas service
     And I create a child of dataspace "Reference-child" with information as following
       | Identifier | Owner              | English Label |
       |            | admin admin(admin) |               |
-    Then I should see dataspace with information as following
-      | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
-      |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "Stores" of dataset "Store Item"
     #And I access table "Stores" of dataset "Store Item" in dataspace "Reference-child"
@@ -87,9 +78,6 @@ Feature: Run Metadatas service
     And I create a child of dataspace "Reference-child" with information as following
       | Identifier | Owner              | English Label |
       |            | admin admin(admin) |               |
-    Then I should see dataspace with information as following
-      | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
-      |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "Stores" of dataset "Store Item"
    # And I access table "Stores" of dataset "Store Item" in dataspace "Reference-child"
@@ -106,9 +94,6 @@ Feature: Run Metadatas service
     And I create a child of dataspace "Reference-child" with information as following
       | Identifier | Owner              | English Label |
       |            | admin admin(admin) |               |
-    Then I should see dataspace with information as following
-      | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
-      |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "Brands" of dataset "Store Item"
     When I select some records with primary key as following
@@ -125,9 +110,6 @@ Feature: Run Metadatas service
     And I create a child of dataspace "Reference-child" with information as following
       | Identifier | Owner              | English Label |
       |            | admin admin(admin) |               |
-    Then I should see dataspace with information as following
-      | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
-      |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "Brands" of dataset "Store Item"
     #And I access table "Brands" of dataset "Store Item" in dataspace "Reference-child"
@@ -144,9 +126,6 @@ Feature: Run Metadatas service
     And I create a child of dataspace "Reference-child" with information as following
       | Identifier | Owner              | English Label |
       |            | admin admin(admin) |               |
-    Then I should see dataspace with information as following
-      | Identifier | Type      | Creation | Status | Owner               | Loading strategy                | Child merge policy                 | Child dataspace sort policy |
-      |            | Dataspace |          | Open   | admin admin (admin) | On-demand loading and unloading | Allows validation errors in result | By label                    |
     And I select dataspace service "View or edit datasets"
     And I access table "Stores" of dataset "Store Item"
     #And I access table "Stores" of dataset "Store Item" in dataspace "Reference-child"
