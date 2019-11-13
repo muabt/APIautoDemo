@@ -67,6 +67,7 @@ Feature: Survivor record selection mode is defined
       | KEY1 | AUTO_GENARATED   | 1        | 0           | /Name     | 0           |
     And I delete the dataspace
 
+  @SC-MPMM03
   Scenario: SC-MPMM03 Check pre-selected records at merge view screen when Survivor record selection mode is Most trusted source and some records come from the same source
     And I create a child of dataspace "Master Data - Reference>Reference-child" with information as following
       | Identifier | Owner               | English Label |

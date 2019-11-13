@@ -490,7 +490,7 @@ public class ManualMergeDefs {
 
         TableObject actualTbl = onDatasetSteps.getDefaultViewTable(MAMEConstants.MERGE_VALUE_LINEAGE_TBL);
         mergedRecord.addTable(actualTbl.getTableName(), actualTbl.getTable());
-
+        assertThat(actualTbl.size()).isGreaterThan(0).withFailMessage("Expected table has number of record > 0 but was:" + actualTbl.size());
         for (int i = 0; i < expectedTbl.size(); i++) {
             JsonObject expectedRow = expectedTbl.get(i).getAsJsonObject();
             JsonObject actualRow = actualTbl.getRecord(i);
