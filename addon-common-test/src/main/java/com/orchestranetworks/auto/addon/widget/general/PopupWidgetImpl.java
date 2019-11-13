@@ -61,6 +61,7 @@ public class PopupWidgetImpl extends BaseWidgetImpl implements PopupWidget {
     public String getTextExceptionPopup() {
         switchOutDefaultIFrame();
         String xPath= "//div[@class='_ebx-notification-box_list_item']";
+        waitForPresenceOfElement(xPath);
         return getTextValue(xPath);
     }
 }
