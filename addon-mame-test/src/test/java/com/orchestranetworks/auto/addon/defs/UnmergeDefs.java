@@ -25,5 +25,9 @@ public class UnmergeDefs {
     }
 
 
+    @Then("^I verify business table after changing as below$")
+    public void i_verify_business_table_after_changing_as_below(List<List<String>> dt) {
+        onUnmergeSteps.verify_business_table(dt);
+    }
 
 }
