@@ -62,7 +62,7 @@ Feature: Survivor record selection mode is defined
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | 900              |
-    Then no records found in table "MergeValueLineage"
+    Then I will see table MergeValueLineage as below
       | id   | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
       | KEY1 | AUTO_GENARATED   | 1        | 0           | /Name     | 0           |
     And I delete the dataspace
