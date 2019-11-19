@@ -282,5 +282,16 @@ public class MatchingTableSteps extends ScenarioSteps {
         String actual = onMatchingTablePage.getMatchingProcessWidget().getValueOfInputField(fieldName);
         assertThat(actual).isEqualTo(value);
     }
+
+    public void select_matching_fields_tab() {
+        onMatchingTablePage.getRecordDetailWidget().selectTab(MAMEConstants.MATCHING_FIELDS);
+    }
+
+    public void click_btn_create_matching_field() {
+        onMatchingTablePage.getToolbarWidget().clickCreateNewMatchingField();
+    }
+    public void expand_all_field_group() {
+        onMatchingTablePage.getItemCreationWidget().expandAll();
+    }
 }
 

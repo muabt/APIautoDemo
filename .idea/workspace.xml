@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="">
+    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[MAME]writing matching configuration feature">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/defs/UnmergeDefs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/pages/UnmergePage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/steps/UnmergeSteps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/utils/MAMEConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/widget/ChangeStateWidget.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/widget/ChangeStateWidgetImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/UAT/Benchmark/Benchmark.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/UAT/General.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/UAT/ManualMerge/ManualMerge.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/UAT/RunMatch/RunMatch.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/RecordDetailWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/RecordDetailWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/serenity.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/config/MatchingTableDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/config/MatchingTableDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/config/MatchingTablePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/config/MatchingTablePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/config/MatchingTableSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/config/MatchingTableSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/utils/MAMEConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/utils/MAMEConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/serenity.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +25,9 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="addon-test-web" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -51,22 +57,21 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last.edited.regexp" value="Sample Text" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Automation\addon-tests-web\addon-common-test\src\main\resources\driver" />
+      <recent name="C:\Users\orchestra\git\addon-tests-web\addon-mame-test\src\test\resources\features\Configuration\ConfigurationMatchingProcess" />
       <recent name="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.orchestranetworks.auto.addon" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Automation\addon-tests-web\addon-mame-test\src\main\resources\driver" />
       <recent name="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
       <recent name="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver" />
       <recent name="$PROJECT_DIR$" />
@@ -93,7 +98,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber java.Scenario: SC-uM14 Check Metadata &amp; Value of records in group after running Unmerge successfully for Golden was an auto-created record and there is not any interpolation merged (MI) record target to this Golden">
+  <component name="RunManager" selected="Cucumber java.Scenario: SC-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already">
+    <configuration name="Feature: ConfigurationMatchingProcess" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-mame-test" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
+      <option name="SUGGESTED_NAME" value="Feature: ConfigurationMatchingProcess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Feature: ManualMerge" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch/ManualMerge.feature" />
@@ -112,15 +135,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-MPMM80 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM80 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght" />
+      <option name="NAME_FILTER" value="^SC\-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -131,15 +154,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-MPMM92 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-MPMM92 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM92 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM92 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date" />
+      <option name="NAME_FILTER" value="^SC\-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -150,15 +173,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-MPMM93 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-CFMPs074 Verify the ability to update all attribute of matching process configuration (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-MPMM93 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM93 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM93 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time" />
+      <option name="NAME_FILTER" value="^SC\-CFMPs074 Verify the ability to update all attribute of matching process configuration$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFMPs074 Verify the ability to update all attribute of matching process configuration$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-CFMPs074 Verify the ability to update all attribute of matching process configuration" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -169,34 +192,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-MPMM94 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-CFMPs094 Validate fields when creating a new matching field" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/ApplyMergePolicy/SurvivorField.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-MPMM94 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-MPMM94 Validate the pre\-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-MPMM94 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cucumber.api.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: SC-uM14 Check Metadata &amp; Value of records in group after running Unmerge successfully for Golden was an auto-created record and there is not any interpolation merged (MI) record target to this Golden" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Unmerge/Unmerge.feature" />
-      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
-      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-uM14 Check Metadata \&amp; Value of records in group after running Unmerge successfully for Golden was an auto\-created record and there is not any interpolation merged \(MI\) record target to this Golden$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-uM14 Check Metadata \&amp; Value of records in group after running Unmerge successfully for Golden was an auto\-created record and there is not any interpolation merged \(MI\) record target to this Golden$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-uM14 Check Metadata &amp; Value of records in group after running Unmerge successfully for Golden was an auto-created record and there is not any interpolation merged (MI) record target to this Golden" />
+      <option name="NAME_FILTER" value="^SC\-CFMPs094 Validate fields when creating a new matching field$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFMPs094 Validate fields when creating a new matching field$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-CFMPs094 Validate fields when creating a new matching field" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -209,11 +213,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber java.Scenario: SC-uM14 Check Metadata &amp; Value of records in group after running Unmerge successfully for Golden was an auto-created record and there is not any interpolation merged (MI) record target to this Golden" />
-        <item itemvalue="Cucumber java.Scenario: SC-MPMM94 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Time" />
-        <item itemvalue="Cucumber java.Scenario: SC-MPMM93 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date and time" />
-        <item itemvalue="Cucumber java.Scenario: SC-MPMM92 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Max and survivor field type is Date" />
-        <item itemvalue="Cucumber java.Scenario: SC-MPMM80 Validate the pre-selected records at merge view screen when the Merge function of survivor field is Longest and the sources of survivor field are different lenght" />
+        <item itemvalue="Cucumber java.Scenario: SC-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already" />
+        <item itemvalue="Cucumber java.Scenario: SC-CFMPs094 Validate fields when creating a new matching field" />
+        <item itemvalue="Cucumber java.Scenario: SC-CFMPs074 Verify the ability to update all attribute of matching process configuration (1)" />
+        <item itemvalue="Cucumber java.Scenario: SC-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition" />
+        <item itemvalue="Cucumber java.Feature: ConfigurationMatchingProcess" />
       </list>
     </recent_temporary>
   </component>
@@ -480,21 +484,49 @@
       <option name="project" value="LOCAL" />
       <updated>1571645698025</updated>
     </task>
-    <task id="LOCAL-00037" summary="[MAME] Implement Unmerge TC 14">
-      <created>1571912422250</created>
+    <task id="LOCAL-00037" summary="[MAME]writing matching configuration feature">
+      <created>1572320604391</created>
       <option name="number" value="00037" />
       <option name="presentableId" value="LOCAL-00037" />
       <option name="project" value="LOCAL" />
-      <updated>1571912422250</updated>
+      <updated>1572320604391</updated>
     </task>
-    <task id="LOCAL-00038" summary="[MAME] writing unmerge feature">
-      <created>1573456825190</created>
+    <task id="LOCAL-00038" summary="[MAME]writing matching configuration feature">
+      <created>1572320696550</created>
       <option name="number" value="00038" />
       <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1573456825190</updated>
+      <updated>1572320696550</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="[MAME]writing matching configuration feature">
+      <created>1572514062150</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1572514062150</updated>
+    </task>
+    <task id="LOCAL-00040" summary="[MAME]writing matching configuration feature">
+      <created>1572584538050</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1572584538051</updated>
+    </task>
+    <task id="LOCAL-00041" summary="[MAME]Add test case save new Matching process and delete Matching process">
+      <created>1572584601656</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1572584601656</updated>
+    </task>
+    <task id="LOCAL-00042" summary="[MAME]Add test case save new Matching process and delete Matching process">
+      <created>1573033926562</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1573033926562</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -565,54 +597,39 @@
     <MESSAGE value="[MAME] Edit SurvivorField feature" />
     <MESSAGE value="[MAME] Editting Survivor field feature" />
     <MESSAGE value="[MAME] editting Manual merge feature" />
-    <MESSAGE value="[MAME]writing matching configuration feature" />
     <MESSAGE value="[MAME]writing unmerge feature" />
-    <MESSAGE value="[MAME] Implement Unmerge TC 14" />
-    <MESSAGE value="[MAME] writing unmerge feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="[MAME] writing unmerge feature" />
+    <MESSAGE value="[MAME]Add test case for save new matching process and test case delete matching process" />
+    <MESSAGE value="[MAME]writing matching configuration feature" />
+    <MESSAGE value="[MAME]Add test case save new Matching process and delete Matching process" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MAME]Add test case save new Matching process and delete Matching process" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="java-line">
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ManualMergeDefs.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/AdministrationSteps.java</url>
           <line>37</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/RecordDetailWidgetImpl.java</url>
           <line>57</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ManualMergeDefs.java</url>
-          <line>175</line>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/config/MatchingTableDefs.java</url>
+          <line>647</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ManualMergeDefs.java</url>
-          <line>125</line>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/config/MatchingTableDefs.java</url>
+          <line>676</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DatasetDefs.java</url>
-          <line>232</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/CommonSteps.java</url>
-          <line>226</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/CommonSteps.java</url>
-          <line>232</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DatasetDefs.java</url>
-          <line>245</line>
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

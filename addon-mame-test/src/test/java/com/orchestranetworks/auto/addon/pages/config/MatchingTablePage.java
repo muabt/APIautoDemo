@@ -41,6 +41,7 @@ public class MatchingTablePage extends BasePage {
     }
 
     public ItemCreationWidget getItemCreationWidget() {
+        switchToLastIFrame();
         return itemCreationWidget;
     }
 
@@ -61,7 +62,7 @@ public class MatchingTablePage extends BasePage {
     }
 
     public MatchingProcessWidget getMatchingProcessWidget() {
-        switchToIFrame("ebx_InternalPopup");
+        switchToLastIFrame();
         return matchingProcessWidget;
     }
 

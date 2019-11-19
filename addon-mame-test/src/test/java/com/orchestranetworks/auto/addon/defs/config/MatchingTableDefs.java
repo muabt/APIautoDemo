@@ -637,14 +637,14 @@ public class MatchingTableDefs {
     }
 
     @And("^the field \"([^\"]*)\" should be mandatory with message \"([^\"]*)\"$")
-    public void theFieldShouldBeMandatoryWithMessage(String fieldName, String msg) throws Throwable {
+    public void the_Field_Should_Be_Mandatory_With_Message(String fieldName, String msg) throws Throwable {
         onCommonSteps.click_btn_save();
         onMatchingTableSteps.verify_validation_message(fieldName, msg);
     }
 
 
     @Then("^the default value of \"([^\"]*)\" field \"([^\"]*)\" should be \"([^\"]*)\"$")
-    public void theDefaultValueOfFieldShouldBe(String fieldType, String fieldName, String defaultValue) throws Throwable {
+    public void the_Default_Value_Of_Field_Should_Be(String fieldType, String fieldName, String defaultValue) throws Throwable {
         onMatchingTableSteps.verify_default_value(fieldType, fieldName, defaultValue);
     }
 
@@ -654,12 +654,12 @@ public class MatchingTableDefs {
     }
 
     @When("^I select matching process tab$")
-    public void iSelectMatchingProcessTab() {
+    public void i_Select_Matching_Process_Tab() {
         onMatchingTableSteps.select_matching_process_tab();
     }
 
     @And("^the field \"([^\"]*)\" should be unique with message \"([^\"]*)\"$")
-    public void theFieldShouldBeUniqueWithMessage(String fieldName, String msg) throws Throwable {
+    public void the_Field_Should_Be_Unique_With_Message(String fieldName, String msg) throws Throwable {
         onCommonSteps.click_btn_save();
         onMatchingTableSteps.verify_validation_message(fieldName, msg);
     }
@@ -669,5 +669,12 @@ public class MatchingTableDefs {
         onMatchingTableSteps.click_btn_expand();
         onMatchingTableSteps.input_matching_process_code(value);
 
+    }
+
+    @When("^I open matching field screen$")
+    public void i_Open_Matching_Field_Screen() {
+        onMatchingTableSteps.select_matching_fields_tab();
+        onMatchingTableSteps.click_btn_create_matching_field();
+        onMatchingTableSteps.expand_all_field_group();
     }
 }

@@ -29,4 +29,5 @@ public interface RecordDetailWidget extends WidgetObject {
     void clickBtnPreview();
 
     void viewRecordWithTextWithDecorator(String label);
+
 }

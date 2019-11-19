@@ -2,7 +2,9 @@ package com.orchestranetworks.auto.addon.widget.general;
 
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.XFormat;
+import net.serenitybdd.screenplay.actions.ClickOnElement;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.server.handler.ClickElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
@@ -84,7 +86,12 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
     public void clickBtnCreateRecordMatchAndMerge(int index) {
         waitForAllLoadingCompleted();
         switchToLastIFrame();
-        clickBtn(Constants.BTN_CREATE_A_RECORD, index);
+        clickBtn(Constants.BTN_CREATE_A_RECORD);
         switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+    }
+    public void clickCreateNewMatchingField() {
+        String xPath_create_matching_field = "//button[@class='ebx_FlatButton ebx_IconButton ebx_Add'and@id='ebx_generatedId_77']//span[@class='ebx_Icon']";
+        clickOnElement(xPath_create_matching_field);
+        waitForAllLoadingCompleted();
     }
 }

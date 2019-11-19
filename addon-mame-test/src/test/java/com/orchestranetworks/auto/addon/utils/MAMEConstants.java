@@ -65,4 +65,7 @@ public class MAMEConstants {
     public static final String DATA_MODEL_FIELD = "Data model";
     public static final String TABLE_FIELD = "Table";
     public static final String CHANGE_STATE_DATA_OBJECT = "CHANGE_STATE_DATA_OBJECT";
+    public static final String MATCHING_FIELDS = "Matching fields";
+
+
 }

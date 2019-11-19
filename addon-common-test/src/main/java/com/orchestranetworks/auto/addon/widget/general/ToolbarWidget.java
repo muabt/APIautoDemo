@@ -27,4 +27,5 @@ public interface ToolbarWidget extends WidgetObject {
 
     void clickBtnCreateRecordMatchAndMerge(int index);
 
+    void clickCreateNewMatchingField();
 }

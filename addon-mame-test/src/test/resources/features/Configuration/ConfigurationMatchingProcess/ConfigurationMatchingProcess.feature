@@ -60,6 +60,22 @@ Feature: Matching process configuration
     And the matching process is configured as the followings
       | Matching process code | Active | Matching execution on creation | Matching execution on update | Merge policy  | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
       | test 2                | No     | Inline matching                | Inline matching              | [not defined] | Yes                                | Yes                       | Yes                         |
-    Then I will verify accuracy of data after updated Matching process as the followings
+    Then I select matching process record with label "test 2" in "Matching process" tab
+    And I should see matching process record details as following
       | Matching process code | Active | Matching execution on creation | Matching execution on update | Merge policy  | Keep not matched records untouched | Merged record is recycled | Modify merged without match |
       | test 2                | No     | Inline matching                | Inline matching              | [not defined] | Yes                                | Yes                       | Yes                         |
+
+  Scenario: SC-CFMPs094 Validate fields when creating a new matching field
+    And I permit to access matching table
+    And I select matching table record of table "AutoStore" of "Publication: Matching_Process_Configuration_Auto"
+    Then I select matching process record with label "test" in "Matching process" tab
+    When I open matching field screen
+#    And the default value of "drop-down list" field "Use association" should be "No"
+    And the default value of "drop-down list" field "Field" should be "[not defined]"
+    And the default value of "drop-down list" field "Search strategy" should be "[not defined]"
+    Then the default value of "input" field "Label" should be ""
+    And the default value of "radio" field "Is mandatory" should be "No"
+    And the default value of "radio" field "Must be different" should be "No"
+    And the default value of "input" field "Weight" should be "1"
+    And the default value of "drop-down list" field "Both values are null" should be "Won't match"
+    And the default value of "drop-down list" field "One of the values is null" should be "Won't match"
