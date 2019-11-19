@@ -8,21 +8,21 @@ import java.util.List;
 @ImplementedBy(ItemCreationWidgetImpl.class)
 public interface ItemCreationWidget extends WidgetObject {
 
-	void enterIdentifier(String id);
+    void enterIdentifier(String id);
 
-	void enterUniqueName(String uniqueName);
+    void enterUniqueName(String uniqueName);
 
-	void enterEnglishLabel(String label);
+    void enterEnglishLabel(String label);
 
-	void selectOwner(String owner);
+    void selectOwner(String owner);
 
-	void inputFieldContent(String col, String cell, String dataType);
+    void inputFieldContent(String col, String cell, String dataType);
 
-	void clickProfile();
+    void clickProfile();
 
-	void chooseProfile();
+    void chooseProfile();
 
-	void inputDDLWithLabel(String label, String value);
+    void inputDDLWithLabel(String label, String value);
 
     void inputDDLThenEnter(String label, String selectionMode);
 
@@ -30,7 +30,7 @@ public interface ItemCreationWidget extends WidgetObject {
 
     void selectDDLByJS(String label, String value);
 
-	void selectDDLByJSWithIndex(String label, int index, String value);
+    void selectDDLByJSWithIndex(String label, int index, String value);
 
     void clickBtnWithLabel(String label, String value);
 
@@ -38,20 +38,21 @@ public interface ItemCreationWidget extends WidgetObject {
 
     String getTextErrorDataModelField();
 
-	String getTextErrorTableField();
+    String getTextErrorTableField();
 
-	String getTextErrorDataModelInBlock();
+    String getTextErrorDataModelInBlock();
 
-	String getTextErrorTableInBlock();
+    String getTextErrorTableInBlock();
 
-	String getErrorBlock();
+    String getErrorBlock();
 
-	void clickBtnExpand();
+    void clickBtnExpand();
 
-	void inputTextWithLabel(String label, String value);
+    void inputTextWithLabel(String label, String value);
 
     String getTextValidationMessage(String fieldName);
 
     List<List<String>> getBusinessDataTable();
 
+    void expandAll();
 }

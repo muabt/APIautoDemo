@@ -9,10 +9,15 @@ import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
 import net.serenitybdd.core.pages.PageObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreationWidget {
 
     private static final String XPATH_DATETIME = "//label[text()='%s']/ancestor::tr//span//input[contains(@name,'%s')]";
     private static final String XPATH_VALIDATION_MSG = "//tr[descendant::label[.='%s']]//div[@class='ebx_Error']";
+    private static final String XPATH_HEADER = "(//th[contains(@id,'ebx_workspaceTable_tableField') or (@class='ebx_tvSortableColumn')][descendant::span[@class='ebx_RawLabel']])";
+    private static final String XPATH_ROW = "//div[@id='ebx_workspaceTable_fixedScroller']//table[@class='ebx_tvFixed']/tbody/tr[child::td[not(@class) and not(contains(@style,'hidden'))]]";
 
     public ItemCreationWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                   long timeoutInMilliseconds) {
@@ -175,7 +180,47 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
     public void expandAll() {
         int size = findAllElements(xPathBtn("expand")).size();
         for (int i = 1; i <= size; i++) {
-            clickBtn("expand",i);
+            clickBtn("expand", i);
+        }
+    }
+
+    @Override
+    public List<List<String>> getBusinessDataTable() {
+        waitForAllLoadingCompleted();
+        List<String> row = new ArrayList<String>();
+        List<List<String>> actualBusinessTbl = new ArrayList<List<String>>();
+        int numOfHeader = findAllElements(XPATH_HEADER).size();
+        for (int i = 1; i <= numOfHeader; i++) {
+            String xPathHeaderCell = XPATH_HEADER + "[" + i + "]";
+            row.add(getTextCell(xPathHeaderCell));
+            actualBusinessTbl.add(row);
+            int numOfRow = findAllElements(XPATH_ROW).size();
+            for (int rowind = 1; rowind <= numOfRow; rowind++) {
+                row = new ArrayList<String>();
+                for (int colInd = 1; colInd <= numOfHeader; colInd++) {
+                    String xPahtCell = "((//div[@id='ebx_workspaceTable_container']//tr[contains(@class,'ebx')][" + rowind
+                            + "]//td[not(*) and not(@class='ebx_tvInheritanceCell'  or @class='ebx_tvSelectCell') ]) | (//div[@id='ebx_workspaceTable_container']//tr[contains(@class,'ebx')]["
+                            + rowind
+                            + "]//td[child::div[not(*) and not(@class='ebx_tvInheritanceCell'  or @class='ebx_tvSelectCell') ]]))["
+                            + colInd + "]";
+                    xPahtCell = String.format(xPahtCell, rowind, colInd);
+                    row.add(getTextCell(xPahtCell));
+                }
+                actualBusinessTbl.add(row);
+            }
+        }
+        return actualBusinessTbl;
+    }
+
+    private String getTextCell(String xPathCell) {
+        try {
+            if (!getElement(xPathCell).isDisplayed()) {
+                return getElement(xPathCell).getAttribute("textContent").replaceAll("\n", "").trim();
+            } else {
+                return getText(xPathCell).replaceAll("\n", "");
+            }
+        } catch (Exception e) {
+            return "";
         }
     }
 }
