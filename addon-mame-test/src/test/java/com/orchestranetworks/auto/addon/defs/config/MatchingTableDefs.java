@@ -148,12 +148,12 @@ public class MatchingTableDefs {
      */
     @And("^I should see tooltip of all fields as following$")
     public void i_should_see_tooltip_of_all_fields_as_following(DataTable dt) throws Throwable {
-        onMatchingTableSteps.click_btn_expand();
+//        onMatchingTableSteps.click_btn_expand();
+        onMatchingTableSteps.expand_all_field_group();
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
             String field = row.get("Field");
             String tooltip = row.get("Tooltip");
-
             onMatchingTableSteps.verify_tooltip_of_field(field, tooltip);
         }
 
@@ -660,7 +660,6 @@ public class MatchingTableDefs {
 
     @And("^the field \"([^\"]*)\" should be unique with message \"([^\"]*)\"$")
     public void the_Field_Should_Be_Unique_With_Message(String fieldName, String msg) throws Throwable {
-        onCommonSteps.click_btn_save();
         onMatchingTableSteps.verify_validation_message(fieldName, msg);
     }
 
@@ -676,5 +675,11 @@ public class MatchingTableDefs {
         onMatchingTableSteps.select_matching_fields_tab();
         onMatchingTableSteps.click_btn_create_matching_field();
         onMatchingTableSteps.expand_all_field_group();
+    }
+
+    @And("^I create matching process with Matching process code is \"([^\"]*)\"$")
+    public void i_Create_Matching_Process_With_Matching_Process_Code_Is(String value) {
+        onMatchingTableSteps.input_matching_process_code(value);
+        onCommonSteps.click_btn_save_and_close();
     }
 }

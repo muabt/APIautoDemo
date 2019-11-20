@@ -18,7 +18,6 @@ public class MatchingProcessWidgetImpl extends BaseWidgetImpl implements Matchin
     public String getValueOfRadioField(String fieldName) {
         String xPath = "//tr[descendant::label[.='" + fieldName + "']]//input[@type='radio'][@checked='checked']";
         String value = getElement(xPath).getAttribute("value");
-        System.out.println("value="+value);
         if (value.equals("true")) {
             return "Yes";
         } else {

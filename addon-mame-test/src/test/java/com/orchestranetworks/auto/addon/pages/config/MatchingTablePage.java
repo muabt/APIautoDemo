@@ -41,7 +41,7 @@ public class MatchingTablePage extends BasePage {
     }
 
     public ItemCreationWidget getItemCreationWidget() {
-        switchToLastIFrame();
+//        switchToLastIFrame();
         return itemCreationWidget;
     }
 
@@ -62,7 +62,6 @@ public class MatchingTablePage extends BasePage {
     }
 
     public MatchingProcessWidget getMatchingProcessWidget() {
-        switchToLastIFrame();
         return matchingProcessWidget;
     }
 
