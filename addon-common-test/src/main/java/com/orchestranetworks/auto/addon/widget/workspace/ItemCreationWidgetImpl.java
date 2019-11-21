@@ -223,4 +223,32 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
             return "";
         }
     }
+
+    @Override
+    public String getTextErrorDashboardNameField() {
+        String xPathValue = "//tr[descendant::*[text()='Dashboard name']]//div[@class='ebx_Error']";
+        String message = getText(xPathValue);
+        return message;
+    }
+
+    @Override
+    public String getTextErrorOwnerField() {
+        String xPathValue = "//tr[descendant::*[text()='Owner']]//div[@class='ebx_Error']";
+        String message = getText(xPathValue);
+        return message;
+    }
+
+    @Override
+    public String getTextErrorDashboardInBlock() {
+        String xPathValue = "//li[descendant::*[text()='Data model']]//span";
+        String message = getText(xPathValue);
+        return message;
+    }
+
+    @Override
+    public String getTextErrorOwnerInBlock() {
+        String xPathValue = "//li[descendant::*[text()='Data model']]//span";
+        String message = getText(xPathValue);
+        return message;
+    }
 }

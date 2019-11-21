@@ -55,4 +55,12 @@ public interface ItemCreationWidget extends WidgetObject {
     List<List<String>> getBusinessDataTable();
 
     void expandAll();
+
+    String getTextErrorOwnerField();
+
+    String getTextErrorDashboardNameField();
+
+    String getTextErrorDashboardInBlock();
+
+    String getTextErrorOwnerInBlock();
 }
