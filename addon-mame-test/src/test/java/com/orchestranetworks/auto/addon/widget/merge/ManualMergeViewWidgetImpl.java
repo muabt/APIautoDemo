@@ -153,6 +153,12 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
         return getElement(XPATH_MERGE_STEP_SELECTION).getAttribute("textContent").trim();
     }
 
+    @Override
+    public void selectGoldenValue(int rowind, int colInd, String value) {
+        String xPahtCell = String.format(XPATH_RCV_CELL, rowind, colInd);
+        clickOnElement(xPahtCell);
+    }
+
 
     @Override
     public String getActualTableName() {

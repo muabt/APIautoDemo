@@ -204,15 +204,15 @@ public class MatchingTableDefs {
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
         Map<String, String> condition = null;
         String[] fields = {MAMEConstants.TABLE_FIELD, MAMEConstants.DATA_MODEL_FIELD};
-        for (int i = 0; i <fields.length; i ++) {
+        for (int i = 0; i < fields.length; i++) {
             condition = new HashMap<String, String>();
             condition.put(Constants.CRITERION, fields[i]);
             condition.put(Constants.OPERATION, "equals");
             condition.put(Constants.VALUE, values.get(i));
             condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+            filterConditions.add(condition);
         }
-        filterConditions.add(condition);
-        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+        onCommonSteps.search_with_advance_search(Constants.ALL_CRITERIA_MATCHE, filterConditions);
         onAdministrationSteps.select_record_with_name(table);
     }
 
@@ -324,9 +324,7 @@ public class MatchingTableDefs {
      */
     @When("^I set Merge policy configuration as belows$")
     public void i_set_merge_policy_configuration_as_belows(DataTable dt) {
-
         onMatchingTableSteps.select_merge_policy_tab();
-
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
         for (Map<String, String> row : list) {
             String mergePolicyCode = row.get(MAMEConstants.MERGE_POLICY_CODE_FIELD);
@@ -681,5 +679,12 @@ public class MatchingTableDefs {
     public void i_Create_Matching_Process_With_Matching_Process_Code_Is(String value) {
         onMatchingTableSteps.input_matching_process_code(value);
         onCommonSteps.click_btn_save_and_close();
+    }
+
+    @And("^all merge policy should be deleted$")
+    public void all_merge_policy_should_be_deleted() {
+        onMatchingTableSteps.select_merge_policy_tab();
+        onDatasetSteps.delete_all_record_in_displayed_table();
+
     }
 }

@@ -23,4 +23,5 @@ public interface ManualMergeViewWidget extends WidgetObject {
     String getTextOfCancelActionButton();
     String getMergeStepsSelection();
 
+    void selectGoldenValue(int rowind, int colInd, String value);
 }

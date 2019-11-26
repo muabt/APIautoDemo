@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.google.gson.JsonObject;
@@ -12,6 +14,8 @@ import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import com.orchestranetworks.auto.addon.utils.SessionData;
 import com.orchestranetworks.auto.addon.pages.ManualMergePage;
+import cucumber.api.java.eo.Se;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.assertj.core.api.SoftAssertions;
 
@@ -35,9 +39,9 @@ public class ManualMergeSteps {
                 String expectedCell = expectedTbl.get(row).get(col);
                 boolean isHighlighted = onManualMergePage.getManualMergeViewWidget().isCellHighlighted(row, col);
                 if (expectedCell.contains("{H}")) {
-                    assertTrue(isHighlighted);
+                    assertTrue("Expected cell [" + expectedCell + "] is highlighted", isHighlighted);
                 } else {
-                    assertFalse(isHighlighted);
+                    assertFalse("Expected cell [" + expectedCell + "] is not highlighted", isHighlighted);
                 }
             }
         }
@@ -61,6 +65,9 @@ public class ManualMergeSteps {
                 if (expectedCell.contains(MAMEConstants.HIGHLIGHT_SYNTAX)) {
                     expectedCell = expectedCell.replace(MAMEConstants.HIGHLIGHT_SYNTAX, "").trim();
                 }
+                if (expectedCell.toLowerCase().equals("[last]")) {
+                    expectedCell = Serenity.sessionVariableCalled(Constants.LAST_PK);
+                }
                 softAssertions.assertThat(actualCell).isEqualTo(expectedCell);
             }
         }
@@ -72,6 +79,26 @@ public class ManualMergeSteps {
         List<List<String>> actualTablePreview = onManualMergePage.getManualMergeViewWidget().getDataPreviewTable();
         assertEquals(expectedTablePreview, actualTablePreview);
 
+    }
+
+    @Step
+    public void verify_table_preview_has_auto_created_pk(List<List<String>> expectedTablePreview) {
+        List<List<String>> actualTablePreview = onManualMergePage.getManualMergeViewWidget().getDataPreviewTable();
+        List<List<String>> newList = new ArrayList<List<String>>();
+        for (int i = 0; i < expectedTablePreview.size(); i++) {
+            List<String> row = expectedTablePreview.get(i);
+            List<String> newRow = new ArrayList<String>();
+            if (row.get(0).equals("[Last]")) {
+                newRow.add(0, Serenity.sessionVariableCalled(Constants.LAST_PK));
+                for (int j = 1; j < row.size(); j++) {
+                    newRow.add(j, row.get(j));
+                }
+                newList.add(newRow);
+            } else {
+                newList.add(row);
+            }
+        }
+        assertEquals(newList, actualTablePreview);
     }
 
     @Step
@@ -141,11 +168,20 @@ public class ManualMergeSteps {
     }
 
     public String get_groupID() {
-       return onManualMergePage.getDefaultViewWidget().getTextDataCell(1,"groupId");
+        return onManualMergePage.getDefaultViewWidget().getTextDataCell(1, "groupId");
     }
 
-    public void verify_exception_error_popup (String expectedError) {
-      String actual =  onManualMergePage.getPopupWidget().getTextExceptionPopup();
-      assertThat(actual).isEqualTo(expectedError);
+    public void verify_exception_error_popup(String expectedError) {
+        String actual = onManualMergePage.getPopupWidget().getTextExceptionPopup();
+        assertThat(actual).isEqualTo(expectedError);
+    }
+
+    @Step
+    public void click_btn_back_to_main_view() {
+        onManualMergePage.getFooterWidget().clickBtnBackToMainView();
+    }
+
+    public void select_golden_value(int rowind, int colInd, String value) {
+        onManualMergePage.getManualMergeViewWidget().selectGoldenValue(rowind, colInd, value);
     }
 }

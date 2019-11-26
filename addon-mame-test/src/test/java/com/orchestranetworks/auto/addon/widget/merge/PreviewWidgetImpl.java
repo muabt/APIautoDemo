@@ -1,8 +1,11 @@
 package com.orchestranetworks.auto.addon.widget.merge;
 
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PreviewWidgetImpl extends BaseWidgetImpl implements PreviewWidget {
     public PreviewWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
@@ -14,7 +17,6 @@ public class PreviewWidgetImpl extends BaseWidgetImpl implements PreviewWidget {
 
     @Override
     public void clickBtnMerge() {
-
         waitForVisibilityOfElement(XPATH_MERGE_BUTTON);
         clickOnElement(XPATH_MERGE_BUTTON);
         waitForAllLoadingCompleted();
@@ -24,4 +26,10 @@ public class PreviewWidgetImpl extends BaseWidgetImpl implements PreviewWidget {
     public void clickBtnNext() {
         clickOnElement(XPATH_NEXT_BUTTON);
     }
+
+    @Override
+    public void waitForMergeSuccessful() {
+        waitForInvisibilityOfElement(XPATH_NEXT_BUTTON);
+    }
+
 }

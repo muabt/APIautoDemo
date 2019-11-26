@@ -7,4 +7,5 @@ import net.serenitybdd.core.pages.WidgetObject;
 public interface PreviewWidget extends WidgetObject {
     void clickBtnMerge();
     void clickBtnNext();
+    void waitForMergeSuccessful() ;
 }

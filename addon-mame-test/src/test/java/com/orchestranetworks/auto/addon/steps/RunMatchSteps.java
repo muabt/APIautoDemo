@@ -1,7 +1,5 @@
 package com.orchestranetworks.auto.addon.steps;
 
-import java.util.Map;
-
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.RunMatchPage;
 
@@ -30,7 +28,7 @@ public class RunMatchSteps {
 
     @Step
     public void verify_message_run_match_service_popup(String message) {
-        assertThat(onRunMatchPage.getPopupWidget().getTextPopupRunMatch()).isEqualTo(message);
+        assertThat(onRunMatchPage.getPopupWidget().getPopupContent()).isEqualTo(message);
         onRunMatchPage.getPopupWidget().confirmOK();
     }
 

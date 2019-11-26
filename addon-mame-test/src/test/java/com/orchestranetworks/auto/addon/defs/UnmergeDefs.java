@@ -1,6 +1,11 @@
 package com.orchestranetworks.auto.addon.defs;
 
+import com.orchestranetworks.auto.addon.common.DataObject;
+import com.orchestranetworks.auto.addon.common.KeyObject;
+import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.steps.UnmergeSteps;
+import com.orchestranetworks.auto.addon.utils.Constants;
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import net.thucydides.core.annotations.Steps;
@@ -12,7 +17,8 @@ public class UnmergeDefs {
 
     @Steps
     UnmergeSteps onUnmergeSteps;
-
+    @Steps
+    DatasetSteps onDatasetSteps;
 
     @Then("^the popup message will be shown \"([^\"]*)\"$")
     public void the_popup_message_will_be_shown(String message) {
@@ -30,4 +36,22 @@ public class UnmergeDefs {
         onUnmergeSteps.verify_business_table(dt);
     }
 
+    @And("^I unmerge successful record has primary key as below$")
+    public void iUnmergeSuccessfulRecordHasPrimaryKeyAsBelow(List<List<String>> dt) {
+        onDatasetSteps.unselect_all();
+        List<String> headers = dt.get(0);
+        DataObject dataObject = new DataObject();
+        KeyObject keyObject = null;
+        for (int i = 1; i < dt.size(); i++) {
+            List<String> row = dt.get(i);
+            keyObject = new KeyObject();
+            for (int j = 0; j < headers.size(); j++) {
+                keyObject.addPK(headers.get(j), row.get(j));
+            }
+            dataObject.addPK(keyObject);
+            onDatasetSteps.select_record_with_PK(row);
+        }
+        SessionData.saveDataObjectToSession(Constants.DATA_OBJECT, dataObject);
+        onDatasetSteps.select_table_service("Match and Merge > Unmerge");
+    }
 }

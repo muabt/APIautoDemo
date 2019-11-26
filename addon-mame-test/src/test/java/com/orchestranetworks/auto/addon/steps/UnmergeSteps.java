@@ -1,7 +1,6 @@
 package com.orchestranetworks.auto.addon.steps;
 
 import com.orchestranetworks.auto.addon.pages.ManualMergePage;
-import com.orchestranetworks.auto.addon.pages.RunMatchPage;
 import com.orchestranetworks.auto.addon.pages.TabularViewPage;
 import com.orchestranetworks.auto.addon.pages.UnmergePage;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
@@ -20,7 +19,7 @@ public class UnmergeSteps {
     ManualMergePage manualMergePage;
     @Step
     public void verify_message_unmerge_service_popup(String message) {
-        assertThat(onUnmergePage.getPopupWidget().getTextPopup()).isEqualTo(message);
+        assertThat(onUnmergePage.getPopupWidget().getTextExceptionPopup()).isEqualTo(message);
         onUnmergePage.getPopupWidget();
     }
 
