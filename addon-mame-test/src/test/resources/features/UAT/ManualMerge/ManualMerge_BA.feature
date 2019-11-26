@@ -1,3 +1,4 @@
+@UAT_BA
 Feature: Manual Merge
   A data steward identifies some duplicates,
   so that he wants to merge them. However, he was not sucessful to do it due to some errors.
