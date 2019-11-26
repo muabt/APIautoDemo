@@ -271,6 +271,11 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
     }
 
+    public void waitForNotClickabilityOfElement(String xPath) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), 30);
+        wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(By.xpath(xPath))));
+    }
+
     /**
      * @param xPath
      * @author hue Wait until attribule of element to be a specific value,

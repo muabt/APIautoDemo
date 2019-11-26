@@ -65,9 +65,11 @@ public final class Constants {
     public static final String RANDOM = "RANDOM";
     public static final String DATA_OBJECT = "DATA_OBJECT";
     public static final String AT_LEAST_ONE_MATCHES = "At least one criterion matches";
+    public static final String ALL_CRITERIA_MATCHE =  "All criteria match";
     public static final String CRITERION = "Criterion";
     public static final String OPERATION = "Operation";
     public static final String VALUE = "Value";
     public static final String FIELD_TYPE = "Field type";
     public static final String ENUMERATION = "ENUMERATION";
+    public static final String LAST_PK = "LAST_PK";
 }

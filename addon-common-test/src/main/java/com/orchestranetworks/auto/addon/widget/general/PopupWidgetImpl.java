@@ -44,23 +44,30 @@ public class PopupWidgetImpl extends BaseWidgetImpl implements PopupWidget {
     }
 
     @Override
-    public String getTextPopupRunMatch() {
+    public String getPopupContent() {
         switchOutDefaultIFrame();
         switchToIFrame(Constants.IFRAME_LEGACY);
         switchToLastIFrame();
         return getTextValue(XPATH_POPUP + "//p").trim();
     }
 
-    @Override
-    public String getTextPopup() {
+   /* @Override
+    public String getTextExceptionPopup() {
         switchOutDefaultIFrame();
         return getTextValue(XPATH_UNMERGE_POPUP).trim();
+    }*/
+
+    @Override
+    public String getPopupTitle() {
+        switchToLastIFrame();
+        return getTextValue(XPATH_POPUP+"//h2");
     }
+
 
     @Override
     public String getTextExceptionPopup() {
         switchOutDefaultIFrame();
-        String xPath= "//div[@class='_ebx-notification-box_list_item']";
+        String xPath = "//div[@class='_ebx-notification-box_list_item']";
         waitForPresenceOfElement(xPath);
         return getTextValue(xPath);
     }

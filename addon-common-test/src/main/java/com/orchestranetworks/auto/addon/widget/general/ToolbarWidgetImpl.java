@@ -2,6 +2,7 @@ package com.orchestranetworks.auto.addon.widget.general;
 
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.XFormat;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.actions.ClickOnElement;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.ClickElement;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
 import net.serenitybdd.core.pages.PageObject;
+
+import java.util.List;
 
 public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
     public ToolbarWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
@@ -23,6 +26,7 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
 
     private static final String TOOLBAR_BTN = "//button[contains(@title,'%s')]";
     private static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
+    private static final String XPATH_BTN_ACTIONS="//button[.='Actions']";
 
     @Override
     public void clickBtnFilter() {
@@ -41,13 +45,30 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
     }
 
     @Override
+    public ToolbarWidget clickBtnActionsDisplayed() {
+        List<WebElementFacade> list = findAllElements(XPATH_BTN_ACTIONS);
+        if (list.size() > 1) {
+            for (int i = 0; i < list.size(); i++) {
+                WebElementFacade e = list.get(i);
+                if (e.isDisplayed() && e.isCurrentlyEnabled()) {
+                    e.waitUntilClickable().click();
+                    break;
+                }
+            }
+        } else {
+            list.get(0).waitUntilClickable().click();
+        }
+        return this;
+    }
+
+    @Override
     public void selectService(String service) {
         String[] services = service.split(">");
         for (int i = 0; i < services.length; i++) {
             clickOnElement(XFormat.of(NAVIGATION_ITEM, services[i].trim()));
         }
         waitForAllLoadingCompleted();
-        switchToFirstIFrame();
+        switchToLastIFrame();
     }
 
     @Override
@@ -86,7 +107,7 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
     public void clickBtnCreateRecordMatchAndMerge(int index) {
         waitForAllLoadingCompleted();
         switchToLastIFrame();
-        clickBtn(Constants.BTN_CREATE_A_RECORD);
+        clickBtn(Constants.BTN_CREATE_A_RECORD,index);
         switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
     }
     public void clickCreateNewMatchingField() {
@@ -94,4 +115,5 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
         clickOnElement(xPath_create_matching_field);
         waitForAllLoadingCompleted();
     }
+
 }

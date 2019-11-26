@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.common.DataObject;
+import com.orchestranetworks.auto.addon.common.TableObject;
 import org.assertj.core.api.SoftAssertions;
 
 import net.serenitybdd.core.Serenity;
@@ -232,6 +233,21 @@ public class SessionData {
             arr.add(e);
         }
         return arr;
+    }
+
+    public static TableObject convertArrayListToTableObject(String tblName, List<List<String>> list) {
+        TableObject tbl = TableObject.newTable(tblName);
+        JsonObject row;
+        List<String> headers = list.get(0);
+        for (int i = 1; i < list.size(); i++) {
+            row = new JsonObject();
+            List<String> expectedRow = list.get(i);
+            for (int j = 0; j < expectedRow.size(); j++) {
+                row.addProperty(headers.get(j), expectedRow.get(j));
+            }
+            tbl.addRecord(row);
+        }
+        return tbl;
     }
 
     public static void compareJsonObjectValue(JsonObject actual, String actualHeader, JsonObject expected, String expectedHeader) {

@@ -126,5 +126,19 @@ public class DatasetSteps extends ScenarioSteps {
     public void select_checkbox_with_text(String label) {
         defaultViewPage.getDefaultViewWidget().selectCheckboxWithText(label);
     }
+    @Step
+    public void unselect_all() {
+        defaultViewPage.getDefaultViewWidget().unselectAllRecord();
+    }
+    @Step
+    public void select_all() {
+        defaultViewPage.getDefaultViewWidget().selectAllRecord();
+    }
 
+
+    public void delete_all_record_in_displayed_table() {
+        defaultViewPage.getDefaultViewWidget().selectAllRecordInDisplayedTable();
+        defaultViewPage.getToolbar().clickBtnActionsDisplayed().selectService("Delete");
+        defaultViewPage.getPopupWidget().confirmOK();
+    }
 }

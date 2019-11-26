@@ -81,4 +81,10 @@ public class FooterWidgetImpl extends BaseWidgetImpl implements FooterWidget {
     public void clickBtnCreateAndAdd() {
 
     }
+
+	@Override
+	public void clickBtnBackToMainView() {
+		waitForVisibilityOfElement(xPathBtn("Back to main view"));
+		clickBtn("Back to main view");
+	}
 }

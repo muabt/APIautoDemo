@@ -9,7 +9,9 @@ public interface PopupWidget extends WidgetObject {
 	void confirmOK();
 	void confirmYES();
 	void clickBtnClose();
-	String getTextPopupRunMatch();
+	String getPopupContent();
 	String getTextExceptionPopup();
-	String getTextPopup();
+//	String getTextExceptionPopup();
+
+    String getPopupTitle();
 }

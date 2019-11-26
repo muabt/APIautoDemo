@@ -10,6 +10,8 @@ public interface ToolbarWidget extends WidgetObject {
     void clickBtnView();
 
     ToolbarWidget clickBtnActions();
+    ToolbarWidget clickBtnActionsDisplayed();
+
 
     void selectService(String service);
 
@@ -28,4 +30,5 @@ public interface ToolbarWidget extends WidgetObject {
     void clickBtnCreateRecordMatchAndMerge(int index);
 
     void clickCreateNewMatchingField();
+
 }

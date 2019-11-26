@@ -501,4 +501,10 @@ public class CommonDefs {
         onCommonSteps.click_btn_apply_advanced_search();
         Thread.sleep(10000);
     }
+
+    @Then("^I should see dialog box with title is \"([^\"]*)\" and content is \"([^\"]*)\"$")
+    public void i_should_see_idalog_box_with_title_and_content(String title, String content) throws Throwable {
+        onCommonSteps.verify_dialog_box(title,content);
+
+    }
 }

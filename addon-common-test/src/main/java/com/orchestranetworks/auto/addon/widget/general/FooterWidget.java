@@ -32,4 +32,5 @@ public interface FooterWidget extends WidgetObject {
 	void clickBtnCreateAndAdd();
 
 
+    void clickBtnBackToMainView();
 }

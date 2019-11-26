@@ -276,4 +276,14 @@ public class CommonSteps extends ScenarioSteps {
     public void select_label_search_mode() {
         onCommonPage.getAdvanceSearch().selectLabelSearchMode();
     }
+
+    @Step
+    public void verify_dialog_box(String title, String content) {
+        assertThat(onCommonPage.getPopupWidget().getPopupTitle()).isEqualTo(title);
+        assertThat(onCommonPage.getPopupWidget().getPopupContent()).isEqualTo(content);
+    }
+
+    public String get_last_record_pk() {
+        return onCommonPage.getDefaultViewWidget().getLastRecordPK();
+    }
 }

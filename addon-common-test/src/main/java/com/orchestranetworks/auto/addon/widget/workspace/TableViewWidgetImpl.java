@@ -7,6 +7,7 @@ import com.google.common.base.Joiner;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.orchestranetworks.auto.addon.common.TableObject;
+import net.serenitybdd.core.Serenity;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.DeleteSession;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
@@ -24,6 +25,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     public static final String XPATH_CHECKBOX_RECORD = "//div[@id='ebx_WorkspaceContent']//tr[(td[%1$s]) or (td/div[%1$s])]//input[@type='checkbox']";
     private static final String XPATH_NO_RECORDS_FOUND = "//div[@class='ebx_tvMessageEmpty ebx_ValueND'  and .='No records found.']";
     public static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
+    public static final String XPATH_SELECT_AND_SORT = "//button[@title='Select and sort']";
 
     public TableViewWidgetImpl(PageObject page, ElementLocator locator, WebElement webElement,
                                long timeoutInMilliseconds) {
@@ -60,8 +62,9 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
                 xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(i)));
             }
         }
-
-
+        if (xPathRow.contains("[Last]")) {
+            xPathRow = xPathRow.replace("[Last]",Serenity.sessionVariableCalled(Constants.LAST_PK));
+        }
         xPathRow += "]";
         switchToLastIFrame();
         // check if found >1 row satisfy condition
@@ -72,6 +75,12 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         } else {
             clickByJS(xPathRow + "//input[@type='checkbox']");
         }
+    }
+    @Override
+    public String getLastRecordPK() {
+        String pk = getElement("//table[@class='ebx_tvFixed']//tr[last()]").getTextValue().trim();
+        Serenity.setSessionVariable(Constants.LAST_PK).to(pk);
+        return pk;
     }
 
     private void selectRecordWithJoinPK(String xPathRow, int numOfRow, String joinPK) {
@@ -120,6 +129,29 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         xPathRow = XFormat.of(xPathRow, primaryKeys);
         switchToLastIFrame();
         return isElementExistNow(xPathRow);
+    }
+
+    @Override
+    public void unselectAllRecord() {
+        clickBtn("Select and sort");
+        clickOnElement("//span[.='Unselect all']");
+    }
+
+    @Override
+    public void selectAllRecordInDisplayedTable() {
+        List<WebElementFacade> list = findAllElements(XPATH_SELECT_AND_SORT);
+        if (list.size() > 1) {
+            for (int i = 0; i < list.size(); i++) {
+                WebElementFacade e = list.get(i);
+                if (e.isDisplayed() && e.isCurrentlyEnabled()) {
+                    e.waitUntilClickable().click();
+                    break;
+                }
+            }
+        } else {
+            list.get(0).waitUntilClickable().click();
+        }
+        clickOnElement("//*[.='Select all in page']");
     }
 
     @Override

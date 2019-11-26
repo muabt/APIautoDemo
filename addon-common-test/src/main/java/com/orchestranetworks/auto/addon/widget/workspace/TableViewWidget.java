@@ -20,7 +20,7 @@ public interface TableViewWidget extends WidgetObject {
     void selectRecordWithPK(List<String> primaryKey);
 
     void selectRecordWithPK(String selectRecordWithPk);
-    
+
     void accessRecordWithText(String label);
 
     boolean isRecordInTableExisted();
@@ -41,4 +41,9 @@ public interface TableViewWidget extends WidgetObject {
 
     boolean isRecordExistedWithPK(String[] pks);
 
+    void unselectAllRecord();
+
+    void selectAllRecordInDisplayedTable();
+
+    String getLastRecordPK();
 }
