@@ -26,6 +26,7 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
 
     private static final String TOOLBAR_BTN = "//button[contains(@title,'%s')]";
     private static final String NAVIGATION_ITEM = "//a//descendant-or-self::*[text()='%s']";
+    private static final String NAVIGATION_DATASET = "//descendant-or-self::*[text()='%s']";
     private static final String XPATH_BTN_ACTIONS="//button[.='Actions']";
 
     @Override
@@ -41,6 +42,12 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
     @Override
     public ToolbarWidget clickBtnActions() {
         clickBtn(Constants.BTN_ACTIONS);
+        return this;
+    }
+
+    @Override
+    public ToolbarWidget clickBtnDatasetActions() {
+        clickOnElement("//div[contains(@class,'navigation')]//button[contains(.,'Actions')]");
         return this;
     }
 
@@ -69,6 +76,17 @@ public class ToolbarWidgetImpl extends BaseWidgetImpl implements ToolbarWidget {
         }
         waitForAllLoadingCompleted();
         switchToLastIFrame();
+    }
+
+    @Override
+    public void selectDatasetService(String service){
+        String[] services = service.split(">");
+        for (int i = 0; i < services.length; i++) {
+            clickOnElement(XFormat.of(NAVIGATION_DATASET, services[i].trim()));
+        }
+        waitForAllLoadingCompleted();
+        switchToLastIFrame();
+
     }
 
     @Override

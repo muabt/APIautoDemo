@@ -4,6 +4,7 @@ import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
 import com.orchestranetworks.auto.addon.widget.general.*;
 import com.orchestranetworks.auto.addon.widget.workspace.DefaultViewImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
+import javafx.scene.control.ToolBar;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -34,6 +35,9 @@ public class CommonPage extends BasePage {
 
     public ToolbarWidget getToolbar() {
         switchToIFrame(Constants.IFRAME_LEGACY);
+        return toolbar;
+    }
+    public ToolbarWidget getDatasetToolbar() {
         return toolbar;
     }
 
@@ -69,6 +73,7 @@ public class CommonPage extends BasePage {
     public SearchWidget getTextSearch() {
         return textSearch;
     }
+
 
     public void access_login_page() {
         open();

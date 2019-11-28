@@ -37,7 +37,10 @@ public class DatasetSteps extends ScenarioSteps {
     public void select_table_service(String service) {
         commonPage.getToolbar().clickBtnActions().selectService(service);
     }
-
+    @Step
+    public void select_dataset_service(String service) {
+        commonPage.getDatasetToolbar().clickBtnDatasetActions().selectDatasetService(service);
+    }
     @Step
     public void select_record_with_PK(List<String> recordPKs) {
         defaultViewPage.getDefaultViewWidget().selectRecordWithPK(recordPKs);
@@ -141,4 +144,6 @@ public class DatasetSteps extends ScenarioSteps {
         defaultViewPage.getToolbar().clickBtnActionsDisplayed().selectService("Delete");
         defaultViewPage.getPopupWidget().confirmOK();
     }
+
+
 }

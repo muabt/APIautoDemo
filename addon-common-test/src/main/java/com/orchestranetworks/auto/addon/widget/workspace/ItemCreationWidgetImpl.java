@@ -2,6 +2,7 @@ package com.orchestranetworks.auto.addon.widget.workspace;
 
 import com.orchestranetworks.auto.addon.utils.Constants;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -9,6 +10,7 @@ import com.orchestranetworks.auto.addon.base.BaseWidgetImpl;
 
 import net.serenitybdd.core.pages.PageObject;
 
+import javax.xml.bind.Element;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +66,13 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
             case "DATE":
                 inputDateTime(col, cell);
                 break;
+            case "GROUP":
+                pressCtrlToSelect(col, cell);
+                break;
         }
     }
+
+
 
     @Override
     public void clickProfile() {
@@ -111,6 +118,21 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
         clickOnElement(xPathDDL);
 
         executeJS("arguments[0].click();", xPathValue);
+    }
+    public void pressCtrlToSelect(String label, String values) {
+        String xPath = "//descendant-or-self::*[@name='___40_xtusd_5f_DashboardCreation__shareWith']";
+        getElement(xPath).sendKeys(Keys.CONTROL);
+        String[] valuesList= values.split(",");
+        for (int i = 0; i < valuesList.length; i++) {
+            String xpathE = "//select/option[contains(.,'"+valuesList[i]+"')]";
+            scrollElementIntoView(xpathE);
+            clickOnElement(xpathE);
+//            int nextElementIndex = i + 1;
+//            if (nextElementIndex < valuesList.length) {
+//                String nextXPathElement = "//select/option[contains(.,'"+valuesList[nextElementIndex]+"')]";
+//                srollToNextElement(nextXPathElement);
+//            }
+        }
     }
 
     @Override
@@ -224,31 +246,7 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
         }
     }
 
-    @Override
-    public String getTextErrorDashboardNameField() {
-        String xPathValue = "//tr[descendant::*[text()='Dashboard name']]//div[@class='ebx_Error']";
-        String message = getText(xPathValue);
-        return message;
-    }
 
-    @Override
-    public String getTextErrorOwnerField() {
-        String xPathValue = "//tr[descendant::*[text()='Owner']]//div[@class='ebx_Error']";
-        String message = getText(xPathValue);
-        return message;
-    }
 
-    @Override
-    public String getTextErrorDashboardInBlock() {
-        String xPathValue = "//li[descendant::*[text()='Data model']]//span";
-        String message = getText(xPathValue);
-        return message;
-    }
 
-    @Override
-    public String getTextErrorOwnerInBlock() {
-        String xPathValue = "//li[descendant::*[text()='Data model']]//span";
-        String message = getText(xPathValue);
-        return message;
-    }
 }

@@ -56,11 +56,4 @@ public interface ItemCreationWidget extends WidgetObject {
 
     void expandAll();
 
-    String getTextErrorOwnerField();
-
-    String getTextErrorDashboardNameField();
-
-    String getTextErrorDashboardInBlock();
-
-    String getTextErrorOwnerInBlock();
 }

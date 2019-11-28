@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[MAME]writing matching configuration feature">
+    <list default="true" id="f03d9cba-0083-4faf-b6a9-ec504e75f904" name="Default Changelist" comment="[DPRA]writing dashboard creation feature file">
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/main/resources/driver/chromedriver78.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/defs/DashboardDefs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/pages/DashboardPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/steps/DashboardSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/widget/DashboardWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/widget/DashboardWidgetImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/1.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/DashboardFeature.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/General.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/serenity.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DatasetDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/defs/DatasetDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/CommonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/pages/CommonPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DatasetSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/steps/DatasetSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidget.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/general/ToolbarWidgetImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidget.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/RecordDetailWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/RecordDetailWidget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/serenity.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/config/MatchingTableDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/config/MatchingTableDefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/config/MatchingTablePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/pages/config/MatchingTablePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/config/MatchingTableSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/config/MatchingTableSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/utils/MAMEConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/utils/MAMEConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-insight-test/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/addon-insight-test/serenity.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-insight-test/src/test/java/com/orchestranetworks/auto/addon/DefinitionTestSuite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/Dashboard.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/UnmergeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/steps/UnmergeSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serenity.properties" beforeDir="false" afterPath="$PROJECT_DIR$/serenity.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,36 +65,46 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last.edited.regexp" value="Sample Text" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/addon-insight-test/src/test/resources/features" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Automation\addon-tests-web\addon-insight-test\src\main\resources\driver" />
       <recent name="C:\Users\orchestra\git\addon-tests-web\addon-mame-test\src\test\resources\features\Configuration\ConfigurationMatchingProcess" />
       <recent name="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/UAT/RunMatch" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="DefinitionTestSuite" />
       <recent name="com.orchestranetworks.auto.addon" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
-      <recent name="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.orchestranetworks.auto.addon.pages" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Automation\addon-tests-web\addon-insight-test\src\test\resources\features" />
+      <recent name="D:\Automation\addon-tests-web\addon-insight-test" />
+      <recent name="$PROJECT_DIR$/addon-common-test/src/main/resources/driver" />
+      <recent name="$PROJECT_DIR$/addon-mame-test/src/main/resources/driver" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean install -Dmaven.skip.test=true" />
       <command value="mvn clean install -Dmaven.test.skip=true " />
+      <command value="mvn clean install -U -Dmaven.skip.test=true" />
+      <command value="mvn clean install -U -Dmaven.test.skip=true " />
     </option>
   </component>
   <component name="RunDashboard">
@@ -98,15 +119,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber java.Scenario: SC-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already">
-    <configuration name="Feature: ConfigurationMatchingProcess" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber java.Scenario: SC-DPRA-DC12- Create new a dashboard successfully (2)">
+    <configuration name="Feature: Dashboard" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
+      <option name="FILE_PATH" value="D:\Automation\addon-tests-web\addon-insight-test\src\test\resources\features\Dashboard.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="addon-mame-test" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
-      <option name="SUGGESTED_NAME" value="Feature: ConfigurationMatchingProcess" />
+      <option name="SUGGESTED_NAME" value="Feature: ManualMerge" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Feature: DashboardFeature1" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/DashboardFeature1.feature" />
+      <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="addon-insight-test" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome" />
+      <option name="SUGGESTED_NAME" value="Feature: DashboardFeature1" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -135,15 +174,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-DPRA-DC12- Create new a dashboard successfully (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/General.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already" />
+      <module name="addon-insight-test" />
+      <option name="NAME_FILTER" value="^SC\-DPRA\-DC12\- Create new a dashboard successfully$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-DPRA\-DC12\- Create new a dashboard successfully$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-DPRA-DC12- Create new a dashboard successfully" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -154,15 +193,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-DPRA-DC12- Create new a dashboard successfully (2)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/DashboardFeature.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition" />
+      <module name="addon-insight-test" />
+      <option name="NAME_FILTER" value="^SC\-DPRA\-DC12\- Create new a dashboard successfully$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-DPRA\-DC12\- Create new a dashboard successfully$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-DPRA-DC12- Create new a dashboard successfully" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -173,15 +212,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-CFMPs074 Verify the ability to update all attribute of matching process configuration (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: SC-DPRA-DC12- Create new a dashboard successfully" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/1.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-CFMPs074 Verify the ability to update all attribute of matching process configuration$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFMPs074 Verify the ability to update all attribute of matching process configuration$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-CFMPs074 Verify the ability to update all attribute of matching process configuration" />
+      <module name="addon-insight-test" />
+      <option name="NAME_FILTER" value="^SC\-DPRA\-DC12\- Create new a dashboard successfully$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-DPRA\-DC12\- Create new a dashboard successfully$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: SC-DPRA-DC12- Create new a dashboard successfully" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -192,15 +231,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: SC-CFMPs094 Validate fields when creating a new matching field" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Validate tootips of all tabs in configuration pane (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="2" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-mame-test/src/test/resources/features/Configuration/ConfigurationMatchingProcess/ConfigurationMatchingProcess.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/addon-insight-test/src/test/resources/features/DashboardFeature1.feature" />
       <option name="GLUE" value="net.serenitybdd.cucumber.actors com.orchestranetworks.auto.addon.defs" />
       <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
-      <module name="addon-mame-test" />
-      <option name="NAME_FILTER" value="^SC\-CFMPs094 Validate fields when creating a new matching field$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^SC\-CFMPs094 Validate fields when creating a new matching field$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: SC-CFMPs094 Validate fields when creating a new matching field" />
+      <module name="addon-insight-test" />
+      <option name="NAME_FILTER" value="^Validate tootips of all tabs in configuration pane$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm2SMFormatter --monochrome --name &quot;^Validate tootips of all tabs in configuration pane$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Validate tootips of all tabs in configuration pane" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cucumber.api.cli.*" />
@@ -211,13 +250,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Cucumber java.Feature: ManualMerge" />
+      <item itemvalue="Cucumber java.Feature: Dashboard" />
+      <item itemvalue="Cucumber java.Scenario: Validate tootips of all tabs in configuration pane (1)" />
+      <item itemvalue="Cucumber java.Feature: DashboardFeature1" />
+      <item itemvalue="Cucumber java.Scenario: SC-DPRA-DC12- Create new a dashboard successfully" />
+      <item itemvalue="Cucumber java.Scenario: SC-DPRA-DC12- Create new a dashboard successfully (1)" />
+      <item itemvalue="Cucumber java.Scenario: SC-DPRA-DC12- Create new a dashboard successfully (2)" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber java.Scenario: SC-CFMPs035 Verify system when create new matching process for table that its Matching process is exist already" />
-        <item itemvalue="Cucumber java.Scenario: SC-CFMPs094 Validate fields when creating a new matching field" />
-        <item itemvalue="Cucumber java.Scenario: SC-CFMPs074 Verify the ability to update all attribute of matching process configuration (1)" />
-        <item itemvalue="Cucumber java.Scenario: SC-CFMPs036 Verify system if clicking on Save button after create new Matching process with input value meet condition" />
-        <item itemvalue="Cucumber java.Feature: ConfigurationMatchingProcess" />
+        <item itemvalue="Cucumber java.Scenario: SC-DPRA-DC12- Create new a dashboard successfully (2)" />
+        <item itemvalue="Cucumber java.Scenario: SC-DPRA-DC12- Create new a dashboard successfully (1)" />
+        <item itemvalue="Cucumber java.Scenario: SC-DPRA-DC12- Create new a dashboard successfully" />
+        <item itemvalue="Cucumber java.Feature: DashboardFeature1" />
+        <item itemvalue="Cucumber java.Scenario: Validate tootips of all tabs in configuration pane (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -526,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573033926562</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="[DPRA] writing dashboard creation feature file">
+      <created>1574334812877</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1574334812878</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -576,8 +631,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[BEN] Update CommonDefs and AdministrationDefs" />
-    <MESSAGE value="[BEN] Add manual merge feature" />
     <MESSAGE value="[BEN] Add Merge Policy with Most trusted source" />
     <MESSAGE value="[MAME] recomit" />
     <MESSAGE value="Remove Throwable in definition" />
@@ -601,14 +654,16 @@
     <MESSAGE value="[MAME]Add test case for save new matching process and test case delete matching process" />
     <MESSAGE value="[MAME]writing matching configuration feature" />
     <MESSAGE value="[MAME]Add test case save new Matching process and delete Matching process" />
-    <option name="LAST_COMMIT_MESSAGE" value="[MAME]Add test case save new Matching process and delete Matching process" />
+    <MESSAGE value="[DPRA]writing dashboard creation feature file" />
+    <MESSAGE value="[DPRA] writing dashboard creation feature file" />
+    <option name="LAST_COMMIT_MESSAGE" value="[DPRA] writing dashboard creation feature file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/ManualMergeDefs.java</url>
-          <line>135</line>
+          <line>132</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -623,16 +678,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/config/MatchingTableDefs.java</url>
-          <line>647</line>
+          <line>645</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/addon-mame-test/src/test/java/com/orchestranetworks/auto/addon/defs/config/MatchingTableDefs.java</url>
-          <line>676</line>
+          <line>674</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addon-common-test/src/main/java/com/orchestranetworks/auto/addon/widget/workspace/ItemCreationWidgetImpl.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CucumberJavaRunConfigurationType">
+        <watch expression="dataTable.size()" />
+        <watch expression="xpathE" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="mavenExecuteGoalHistory">
     <option value="$PROJECT_DIR$" />

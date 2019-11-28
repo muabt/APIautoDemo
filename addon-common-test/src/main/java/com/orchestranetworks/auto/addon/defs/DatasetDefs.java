@@ -73,6 +73,11 @@ public class DatasetDefs {
         onDatasetSteps.select_table_service(service);
     }
 
+    @And("^I select dataset service \"([^\"]*)\"$")
+    public void I_select_dataset_service(String service) {
+        onDatasetSteps.select_dataset_service(service);
+    }
+
     /**
      * Create record with given information
      * <p>
@@ -245,4 +250,6 @@ public class DatasetDefs {
         onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
         onCommonSteps.verify_table_no_record_found();
     }
+
+
 }

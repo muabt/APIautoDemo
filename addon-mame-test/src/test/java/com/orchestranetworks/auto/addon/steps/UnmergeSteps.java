@@ -29,8 +29,6 @@ public class UnmergeSteps {
         compare_business_table(expectedBusinessTbl, actualBusinessTbl);
     }
 
-
-
     private void compare_business_table(List<List<String>> expectedBusinessTbl, List<List<String>> actualBusinessTbl) {
         SoftAssertions softAssertions = SessionData.softAssert();
         List<String> expectedHeader = expectedBusinessTbl.get(0);

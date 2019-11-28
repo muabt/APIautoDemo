@@ -10,6 +10,7 @@ public interface ToolbarWidget extends WidgetObject {
     void clickBtnView();
 
     ToolbarWidget clickBtnActions();
+    ToolbarWidget clickBtnDatasetActions();
     ToolbarWidget clickBtnActionsDisplayed();
 
 
@@ -31,4 +32,5 @@ public interface ToolbarWidget extends WidgetObject {
 
     void clickCreateNewMatchingField();
 
+    void selectDatasetService(String service);
 }
