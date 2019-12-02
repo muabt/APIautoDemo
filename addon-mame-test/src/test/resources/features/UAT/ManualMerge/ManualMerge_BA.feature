@@ -292,6 +292,10 @@ Feature: Manual Merge
     Then I will see table MergeResult as below
       | recordId | goldenId | mergingProcessId | isInterpolation |
       | 11       | 25       | [AUTO_GENERATED] | Yes             |
+      | 21       | 25       | [AUTO_GENERATED] | Yes             |
+      | 22       | 25       | [AUTO_GENERATED] | Yes             |
+      | 23       | 25       | [AUTO_GENERATED] | Yes             |
+      | 24       | 25       | [AUTO_GENERATED] | Yes             |
       | 26       | 25       | [AUTO_GENERATED] | No              |
     Then I will see table MergingProcess as below
       | Id               | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
