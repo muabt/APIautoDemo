@@ -295,5 +295,15 @@ public class MatchingTableSteps extends ScenarioSteps {
     }
 
 
+    public void select_relation_tab() {
+        onMatchingTablePage.switchToIFrame(Constants.IFRAME_INTERNAL_POPUP);
+        onMatchingTablePage.getRecordDetailWidget().selectTab(MAMEConstants.MatchingTable.RELATIONS_TAB);
+    }
+
+    public void open_relation_record(String relationPath, String relationName) {
+    }
+
+    public void select_relation_management(String relationManagement) {
+    }
 }
 

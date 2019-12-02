@@ -3,9 +3,12 @@ package com.orchestranetworks.auto.addon.steps;
 import static com.orchestranetworks.auto.addon.utils.Constants.IFRAME_LEGACY;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.google.gson.JsonArray;
+import com.orchestranetworks.auto.addon.common.TableObject;
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 
+import com.orchestranetworks.auto.addon.utils.SessionData;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -285,5 +288,11 @@ public class CommonSteps extends ScenarioSteps {
 
     public String get_last_record_pk() {
         return onCommonPage.getDefaultViewWidget().getLastRecordPK();
+    }
+
+    public void verify_defaut_view_table(String tableName, List<List<String>> dt) {
+        JsonArray expectedTbl = SessionData.convertArrayListToJson(dt);
+        JsonArray actual = onCommonPage.getDefaultViewWidget().getDefaultViewTable(tableName).getTable().getAsJsonArray();
+        assertThat(actual).isEqualTo(expectedTbl);
     }
 }

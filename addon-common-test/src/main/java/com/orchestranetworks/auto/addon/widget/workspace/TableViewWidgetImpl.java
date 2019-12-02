@@ -75,17 +75,17 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
     }
 
     private String getRecordWithMultiplePK(List<String> primaryKey) {
-        List<String> newPKs = new ArrayList<String>();
         String xPathRow = "//table[@class='ebx_tvFixed']//tr[(td[%1$s])";
-        xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(0)));
+        String firstPK = primaryKey.get(0);
+        if (primaryKey.get(0).toLowerCase().contains("[last]")) {
+            firstPK=  Serenity.sessionVariableCalled(Constants.LAST_PK);
+        }
+        xPathRow = String.format(xPathRow, specialTextPredicates(firstPK));
         if (primaryKey.size() >= 2) {
             for (int i = 1; i < primaryKey.size(); i++) {
                 xPathRow += " and (td[%s])";
                 xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(i)));
             }
-        }
-        if (xPathRow.contains("[Last]")) {
-            xPathRow = xPathRow.replace("[Last]", Serenity.sessionVariableCalled(Constants.LAST_PK));
         }
         xPathRow += "]";
         return xPathRow;

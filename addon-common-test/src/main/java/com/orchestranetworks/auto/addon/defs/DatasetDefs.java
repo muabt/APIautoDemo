@@ -252,4 +252,13 @@ public class DatasetDefs {
     }
 
 
+    @Then("^the table \"([^\"]*)\" of dataset \"([^\"]*)\" in dataspace \"([^\"]*)\" should be displayed as bellow$")
+    public void theTableOfDatasetInDataspaceShouldBeDisplayedAsBellow(String tableName, String dataset, String dataspace, List<List<String>> dt) {
+        onCommonSteps.access_menu(Constants.MENU_DATASET);
+        onCommonSteps.go_to_dataspace(dataspace);
+        onCommonSteps.go_to_dataset(dataset);
+        onCommonSteps.click_on_table_name(tableName);
+        onCommonSteps.verify_defaut_view_table(tableName, dt);
+    }
 }
+

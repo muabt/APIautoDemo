@@ -35,8 +35,8 @@ Feature: Manual Merge
     And I access table "Items" of dataset "Stores" in dataspace "UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
+      | 1          |
       | 2          |
-      | 3          |
       | [Last]     |
     Then I should see dialog box with title is "Merge" and content is "At least two records, different from 'Merged' or 'Deleted', must be selected."
 
@@ -339,14 +339,15 @@ Feature: Manual Merge
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
       | UC11              | Was golden                     | [not defined]          | Disabled | Yes                   | No                             |
-    And I access table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child"
-    Then default view table should display as following
+    And relation management should be defined as following
+      | Relation path   | Relation name | Relation management |
+      | /root/Inventory | Inventories   | Manual              |
+    Then the table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child" should be displayed as bellow
       | Item           | Store           | Stock | Price | Modified                |
       | Laptop Pro     | Computer Market | 16    | 699   | 2012-04-17T17:27:38.000 |
       | Pocket Handy   | Phone Depot     | 7     | 299   | 2012-04-17T17:27:38.313 |
       | Star Cooker    | Phone Depot     | 9     | 399   | 2012-04-17T17:27:38.318 |
       | Energy Freezer | Mister Freeze   | 0     | 100   | 2012-04-17T17:27:38.000 |
-
     And I access table "Items" of dataset "Stores" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
@@ -365,7 +366,7 @@ Feature: Manual Merge
 
     And records should be merged successful
     And I access table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child"
-    Then default view table should display as following
+    Then the table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child" should be displayed as bellow
       | Item           | Store           | Stock | Price | Modified                |
       | Laptop Pro     | Computer Market | 16    | 699   | 2012-04-17T17:27:38.000 |
       | Pocket Handy   | Phone Depot     | 7     | 299   | 2012-04-17T17:27:38.313 |

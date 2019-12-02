@@ -68,4 +68,13 @@ public class MAMEConstants {
     public static final String MATCHING_FIELDS = "Matching fields";
 
 
+    public static class MatchingTable {
+        public static final String RELATIONS_TAB = "Relations";
+        public static class Relations{
+            public static final String RELATION_PATH  = "Relation path";
+            public static final String RELATION_NAME  = "Relation path";
+            public static final String RELATION_MANAGEMENT  = "Relation path";
+        }
+
+    }
 }

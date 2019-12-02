@@ -200,7 +200,7 @@ public class MatchingTableDefs {
 
     @And("^I select matching table record of table \"([^\"]*)\" of \"([^\"]*)\"$")
     public void i_select_matching_table_record_of_publication(String table, String publication) {
-        onCommonSteps.verify_advanced_search_activated();
+        onCommonSteps.refreshSearch();
         List<String> values = new ArrayList<String>(Arrays.asList(table, publication));
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
         Map<String, String> condition = null;
@@ -388,7 +388,7 @@ public class MatchingTableDefs {
      * @param dt table information
      */
     @And("^I create Survivorship field with selections as followings$")
-    public void i_create_survivorship_field_with_selections_as_followings(DataTable dt) throws Exception {
+    public void i_create_survivorship_field_with_selections_as_followings(DataTable dt) {
         onMatchingTableSteps.select_merge_policy_record(Serenity.sessionVariableCalled(MAMEConstants.MERGE_POLICY_CODE));
         onMatchingTableSteps.select_survivor_field_tab();
 
@@ -705,5 +705,25 @@ public class MatchingTableDefs {
         onMatchingTableSteps.select_merge_policy_tab();
         onDatasetSteps.delete_all_record_in_displayed_table();
 
+    }
+
+    @And("^relation management should be defined as following$")
+    public void relation_management_should_be_defined(DataTable dt) {
+
+        onMatchingTableSteps.select_merge_policy_record(Serenity.sessionVariableCalled(MAMEConstants.MERGE_POLICY_CODE));
+        onMatchingTableSteps.select_relation_tab();
+
+        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+        for (Map<String, String> row : list) {
+            String relationPath = row.get(MAMEConstants.MatchingTable.Relations.RELATION_PATH);
+            String relationName = row.get(MAMEConstants.MatchingTable.Relations.RELATION_NAME);
+            String relationManagement = row.get(MAMEConstants.MatchingTable.Relations.RELATION_MANAGEMENT);
+            onMatchingTableSteps.open_relation_record(relationPath,relationName);
+            onMatchingTableSteps.select_relation_management(relationManagement);
+            onMatchingTableSteps.click_btn_save_and_close();
+
+        }
+        onMatchingTableSteps.click_btn_save_and_close();
+        onMatchingTableSteps.click_btn_save_and_close();
     }
 }
