@@ -4,7 +4,6 @@ import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
 import com.orchestranetworks.auto.addon.widget.general.*;
 import com.orchestranetworks.auto.addon.widget.workspace.DefaultViewImpl;
 import com.orchestranetworks.auto.addon.widget.workspace.TableViewWidget;
-import javafx.scene.control.ToolBar;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
