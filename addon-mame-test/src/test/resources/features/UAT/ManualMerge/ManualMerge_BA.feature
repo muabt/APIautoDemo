@@ -257,53 +257,41 @@ Feature: Manual Merge
     And no records found in table "MergeValueLineage"
 
   Scenario: UC08 Merge successful with a new auto golden created after the merge
-#    Given I permit to access matching table
-#    And I create record in Matching table with the content followings
-#      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-#      | Publication: Human_Resource | Employee  | Yes          |                              |                  |                    |                       |
-#    When I set Merge policy configuration as belows
-#      | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
-#      | UC08              | Most complete                  | [not defined]          | Duplicates and singletons | Yes                   | Yes                            |
-    And I create a child of dataspace "Master Data - Reference>UAT" with information as following
-      | Identifier | Owner               | English Label |
-      | UAT-Child  | admin admin (admin) |               |
-
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | Employee  | Yes          |                              |                  |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
+      | UC08              | Most complete                  | [not defined]          | Duplicates and singletons | Yes                   | Yes                            |
     And I access table "Employee" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
       | 25         |
       | 26         |
       | 11         |
-#    Then record view table will be displayed and highlighted as below
-#      | Identifier | Date of birth  | National | Phone Number       | Email          | Rank     | Supervisor  | Date and time created    | Name      | Comments                      | PIT           | Assurance number | Employee |
-#      | 11         | 04/25/2019     | UK       | 45661895565556     | [List] 0/1     | 5        |             |                          |           |                               | 13757477      | 8578578878       |          |
-#      | 25    {H}  | 04/25/2019 {H} | UK  {H}  | 45661895565556 {H} | [List] 1/1 {H} | 5    {H} | Vincent {H} | 04/25/2019 11:25:09  {H} | Zoe.vu{H} | Auto Created, State=Golden{H} | 13757477  {H} | 8578578878   {H} | {H}      |
-#      | 26         | 05/02/2019     | FR       | 0962555823         | [List] 0/2     | 5        | Thanh       | 05/02/2019 10:44:49      | Lily      | Auto created. State=Golden    | 1255999       | 5555555          |          |
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Date of birth  | National | Phone Number   | Email          | Rank     | Supervisor  | Date and time created    | Name      | Comments                      | PIT           | Assurance number | Employee |
+      | 11         | 04/25/2019     | UK       | 45661895565556 | [List] 0/1     | 5        |             |                          |           |                               | 13757477      | 8578578878       |          |
+      | 25    {H}  | 04/25/2019 {H} | UK  {H}  | {H}            | [List] 1/1 {H} | 5    {H} | Vincent {H} | 04/25/2019 11:25:09  {H} | Zoe.vu{H} | Auto Created, State=Golden{H} | 13757477  {H} | 8578578878   {H} | {H}      |
+      | 26         | 05/02/2019     | FR       | 0962555823     | [List] 0/2     | 5        | Thanh       | 05/02/2019 10:44:49      | Lily      | Auto created. State=Golden    | 1255999       | 5555555          |          |
     When multi value field "Email" is defined as below
       | Field label | Selected value |
       | Lily        | lily@gmail.com |
       | Zoe.vu      | alex@mail.com  |
-    Then preview table which has auto created PK is displayed as below
-      | Identifier | Date of birth | National | Phone Number   | Email      | Rank | Supervisor | Date and time created | Name   | Comments                   | PIT      | Assurance number | Employee |
-      | 25         | 04/25/2019    | UK       | 45661895565556 | [List] 2/4 | 5    | Vincent    | 04/25/2019 11:25:09   | Zoe.vu | Auto Created, State=Golden | 13757477 | 8578578878       |          |
+    Then preview table is displayed as below
+      | Identifier | Date of birth | National | Phone Number | Email      | Rank | Supervisor | Date and time created | Name   | Comments                   | PIT      | Assurance number | Employee |
+      | 25         | 04/25/2019    | UK       |              | [List] 2/4 | 5    | Vincent    | 04/25/2019 11:25:09   | Zoe.vu | Auto Created, State=Golden | 13757477 | 8578578878       |          |
     And records should be merged successful
-    And I access table "RecordMetadata" of dataset "Human_Resource_Employee_MDS" in dataspace "UAT > UAT-Child"
+    And I access table "RecordMetadata" of dataset "Human_Resource_employee_MDS" in dataspace "UAT > UAT-Child"
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated |
       | 11           | GROUP_ID | Merged | No          |
-      | 21           | GROUP_ID | Merged | No          |
-      | 22           | GROUP_ID | Merged | No          |
-      | 23           | GROUP_ID | Merged | No          |
-      | 24           | GROUP_ID | Merged | No          |
-      | 25           | GROUP_ID | Golden | No          |
-      | 26           | GROUP_ID | Merged | No          |
+      | 25           | GROUP_ID | Golden | Yes         |
+      | 26           | GROUP_ID | Merged | Yes         |
     Then I will see table MergeResult as below
       | recordId | goldenId | mergingProcessId | isInterpolation |
       | 11       | 25       | [AUTO_GENERATED] | Yes             |
-      | 21       | 25       | [AUTO_GENERATED] | Yes             |
-      | 22       | 25       | [AUTO_GENERATED] | Yes             |
-      | 23       | 25       | [AUTO_GENERATED] | Yes             |
-      | 24       | 25       | [AUTO_GENERATED] | Yes             |
       | 26       | 25       | [AUTO_GENERATED] | No              |
     Then I will see table MergingProcess as below
       | Id               | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
@@ -314,7 +302,8 @@ Feature: Manual Merge
       | [AUTO_GENERATED] | 26       | 25       | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
     Then I will see table MergeValueLineage as below
       | id               | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
-      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 25       |             | /email    | 0           |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 25       | 0           | /email    | 0           |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       | 1           | /email    | 1           |
 
   Scenario: UC10 Bypass EBX permission on Merge view
     Given I permit to access matching table
