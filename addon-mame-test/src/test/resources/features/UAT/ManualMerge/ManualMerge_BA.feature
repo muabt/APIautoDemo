@@ -6,15 +6,15 @@ Feature: Manual Merge
 
   Background:
     Given I login to EBX successfully
-#    And I create a child of dataspace "Master Data - Reference>UAT" with information as following
-#      | Identifier | Owner               | English Label |
-#      | UAT-Child  | admin admin (admin) |               |
+    And I create a child of dataspace "Master Data - Reference>UAT" with information as following
+      | Identifier | Owner               | English Label |
+      | UAT-Child  | admin admin (admin) |               |
 
   Scenario: UC01 Merge unsuccessful - verify how the add-on handles error - Entry condition
     And I permit to access matching table
     And I create record in Matching table with the content followings
-      | Data model:DDL     | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: Store | Items     | Yes          |                              |                  |                    |                       |
+      | Data model:DDL          | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: StoreModel | Items     | Yes          |                              |                  |                    |                       |
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
       | RANDOM            | Most trusted source            | Most trusted source    | Duplicates and singletons | Yes                   | Yes                            |
@@ -256,7 +256,7 @@ Feature: Manual Merge
       | [AUTO_GENERATED] | 3        | 2        | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
     And no records found in table "MergeValueLineage"
 
-  Scenario: UC08 Merge successful with a new auto golden created after the merge
+  Scenario: UC08 Merge successful several existing auto create records
     Given I permit to access matching table
     And I create record in Matching table with the content followings
       | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
@@ -312,7 +312,7 @@ Feature: Manual Merge
       | Publication: Run_match_service | Audience  | Yes          |                              |                  |                    |                       |
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
-      | UC10              | Last update                    | Last updated           | Disabled | Yes                   | No                             |
+      | UC10              | Last update                    | Last update            | Disabled | Yes                   | No                             |
     And I access table "Audience" of dataset "Run match service" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
@@ -321,11 +321,53 @@ Feature: Manual Merge
       | 3          |
       | 4          |
     Then record view table will be displayed and highlighted as below
+      | Identifier | Name        | Comment | Age   | Marital status | Email               | Phone number |
+      | 1          | Linda4      | KK      | 20    | Single         | linda@tibco.com     | true         |
+      | 2          | Linda2      | KK      | 20    | Single         | linda@tibco.com     | true         |
+      | 3          | Linda3      | KK      | 20    | Single         | linda@tibco.com     | true         |
+      | 4   {H}    | Linda41 {H} | KK  {H} | 20{H} | Single     {H} | linda@tibco.com {H} | true    {H}  |
+    And preview table is displayed as below
       | Identifier | Name    | Comment | Age | Marital status | Email           | Phone number |
-      | 1          | Linda4  | KK      | 20  | Single         | linda@tibco.com | true         |
-      | 2          | Linda2  | KK      | 20  | Single         | linda@tibco.com | true         |
-      | 3          | Lind3   | KK      | 20  | Single         | linda@tibco.com | true         |
       | 4          | Linda41 | KK      | 20  | Single         | linda@tibco.com | true         |
-    And preview table which has auto created PK is displayed as below
-      | Identifier | Name    | Comment | Age | Marital status | Email           | Phone number |
-      | 1          | Linda41 | KK      | 20  | Single         | linda@tibco.com | true         |
+    And records should be merged successful
+
+  Scenario: UC16 Align FK failed - FK is also PK
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL          | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: StoreModel | Items     | Yes          |                              |                  |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | UC11              | Was golden                     | [not defined]          | Disabled | Yes                   | No                             |
+    And I access table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child"
+    Then default view table should display as following
+      | Item           | Store           | Stock | Price | Modified                |
+      | Laptop Pro     | Computer Market | 16    | 699   | 2012-04-17T17:27:38.000 |
+      | Pocket Handy   | Phone Depot     | 7     | 299   | 2012-04-17T17:27:38.313 |
+      | Star Cooker    | Phone Depot     | 9     | 399   | 2012-04-17T17:27:38.318 |
+      | Energy Freezer | Mister Freeze   | 0     | 100   | 2012-04-17T17:27:38.000 |
+
+    And I access table "Items" of dataset "Stores" in dataspace "UAT>UAT-Child"
+    When I want to merge some records with primary key as following
+      | Identifier |
+      | 1          |
+      | 2          |
+      | 3          |
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Category      | Brand          | Name           | Available   | Default price |
+      | 1    {H}   | Computers {H} | Apricot{H}     | Laptop Pro {H} | true    {H} | 720     {H}   |
+      | 2          | Phones        | Sunny          | Pocket Handy   | true        | 240           |
+      | 3          | Cooking       | Usual Electric | Star Cooker    | true        | 320           |
+    And preview table is displayed as below
+      | Identifier | Category  | Brand   | Name       | Available | Default price |
+      | 1          | Computers | Apricot | Laptop Pro | true      | 720           |
+    And relation table should be as following
+
+    And records should be merged successful
+    And I access table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child"
+    Then default view table should display as following
+      | Item           | Store           | Stock | Price | Modified                |
+      | Laptop Pro     | Computer Market | 16    | 699   | 2012-04-17T17:27:38.000 |
+      | Pocket Handy   | Phone Depot     | 7     | 299   | 2012-04-17T17:27:38.313 |
+      | Star Cooker    | Phone Depot     | 9     | 399   | 2012-04-17T17:27:38.318 |
+      | Energy Freezer | Mister Freeze   | 0     | 100   | 2012-04-17T17:27:38.000 |
