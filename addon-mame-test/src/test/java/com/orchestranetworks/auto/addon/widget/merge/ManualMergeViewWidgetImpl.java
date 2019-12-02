@@ -147,7 +147,6 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
         return status;
     }
 
-
     @Override
     public String getMergeStepsSelection() {
         return getElement(XPATH_MERGE_STEP_SELECTION).getAttribute("textContent").trim();
@@ -159,6 +158,19 @@ public class ManualMergeViewWidgetImpl extends BaseWidgetImpl implements ManualM
         clickOnElement(xPahtCell);
     }
 
+    @Override
+    public void selectMultiValueField(String fieldName) {
+        int colInd = getRecordViewColumnIndex(fieldName);
+        String xPahtCell = String.format(XPATH_RCV_CELL, 1, colInd)+"/ancestor::td//button";
+        clickOnElement(xPahtCell);
+        waitForVisibilityOfElement("//list-view-preview");
+    }
+
+    public int getRecordViewColumnIndex(String colName) {
+        int numOfHeader = findAllElements("//record-view//th[descendant::span[@class='ebx_RawLabel' and .='"+colName+"']]/preceding-sibling::th").size()+1;
+        int numOfPKHeader= findAllElements("//record-view//table[@class='record-view-pane']//th[contains(@class,'thFixed')]").size();
+        return numOfHeader+numOfPKHeader;
+    }
 
     @Override
     public String getActualTableName() {

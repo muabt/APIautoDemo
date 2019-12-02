@@ -53,19 +53,7 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
 
     @Override
     public void selectRecordWithPK(List<String> primaryKey) {
-        List<String> newPKs = new ArrayList<String>();
-        String xPathRow = "//table[@class='ebx_tvFixed']//tr[(td[%1$s])";
-        xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(0)));
-        if (primaryKey.size() >= 2) {
-            for (int i = 1; i < primaryKey.size(); i++) {
-                xPathRow += " and (td[%s])";
-                xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(i)));
-            }
-        }
-        if (xPathRow.contains("[Last]")) {
-            xPathRow = xPathRow.replace("[Last]",Serenity.sessionVariableCalled(Constants.LAST_PK));
-        }
-        xPathRow += "]";
+        String xPathRow = getRecordWithMultiplePK(primaryKey);
         switchToLastIFrame();
         // check if found >1 row satisfy condition
         int numOfRow = findAllElements(xPathRow).size();
@@ -76,6 +64,33 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
             clickByJS(xPathRow + "//input[@type='checkbox']");
         }
     }
+
+    @Override
+    public void accessRecordWithPK(List<String> primaryKey) {
+        String xPathRow = getRecordWithMultiplePK(primaryKey) + "//td[1]";
+        switchToLastIFrame();
+        executeJS("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent('dblclick',true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);", xPathRow);
+
+
+    }
+
+    private String getRecordWithMultiplePK(List<String> primaryKey) {
+        List<String> newPKs = new ArrayList<String>();
+        String xPathRow = "//table[@class='ebx_tvFixed']//tr[(td[%1$s])";
+        xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(0)));
+        if (primaryKey.size() >= 2) {
+            for (int i = 1; i < primaryKey.size(); i++) {
+                xPathRow += " and (td[%s])";
+                xPathRow = String.format(xPathRow, specialTextPredicates(primaryKey.get(i)));
+            }
+        }
+        if (xPathRow.contains("[Last]")) {
+            xPathRow = xPathRow.replace("[Last]", Serenity.sessionVariableCalled(Constants.LAST_PK));
+        }
+        xPathRow += "]";
+        return xPathRow;
+    }
+
     @Override
     public String getLastRecordPK() {
         String pk = getElement("//table[@class='ebx_tvFixed']//tr[last()]").getTextValue().trim();

@@ -492,9 +492,11 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
             for (int i = 1; i < numText; i++) {
                 resultsPattern += " and contains(.,\"" + tokens[i] + "\")";
             }
-            return resultsPattern + "and string-length(normalize-space(.=" + givenText.length() + "))";
+            return resultsPattern + " and ( string-length(normalize-space(text()))=" + givenText.length() +
+                    " or string-length(normalize-space(.))=" + givenText.length() + ")";
         } else {
-            return "contains(.,'" + givenText + "') and string-length(normalize-space(.=" + givenText.length() + "))";
+            return "contains(.,'" + givenText + "') and ( string-length(normalize-space(text()))=" + givenText.length() +
+                    " or string-length(normalize-space(.))=" + givenText.length() + ")";
         }
     }
 
@@ -510,6 +512,12 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
         WebElementFacade e = waitElementToBePresent(xPathDDL);
         e.clear();
         e.type(value);
+        waitForPresenceOfElement("//div[@id='ebx_ISS_Results']");
+        String xpathValue = "//div[@id='ebx_ISS_Results']//div[" + specialTextPredicates(value) + "]";
+        while (!getElement(xpathValue).getAttribute("class").contains("highlighted")) {
+            waitAbit(1000);
+            e.sendKeys(Keys.ARROW_DOWN);
+        }
         e.sendKeys(Keys.ENTER);
         waitAbit(500);
         e.sendKeys(Keys.ENTER);

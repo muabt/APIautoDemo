@@ -18,6 +18,7 @@ import java.util.*;
 import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 import cucumber.api.DataTable;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -253,7 +254,7 @@ public class ManualMergeDefs {
             if (!isUnmerged.isEmpty()) {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.IS_UNMERGED, isUnmerged);
             }
-            if (!mergePolicyId.isEmpty()) {
+            if (!mergePolicyId.isEmpty() && !mergePolicyId.toUpperCase().equals("[AUTO_GENERATED]")) {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.MERGE_POLICY_ID, mergePolicyId);
             }
         }
@@ -802,6 +803,37 @@ public class ManualMergeDefs {
         onCommonSteps.verify_table_no_record_found();
     }
 
+    @When("^I want to merge some records with primary key is filtered as following$")
+    public void iWantToMergeSomeRecordsWithPrimaryKeyIsFilteredAsFollowing(List<List<String>> dt) {
+        onCommonSteps.refreshSearch();
+        List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        List<String> headers = dt.get(0);
+        DataObject dataObject = new DataObject();
+        KeyObject keyObject = null;
+        for (int i = 1; i < dt.size(); i++) {
+            List<String> row = dt.get(i);
+            keyObject = new KeyObject();
+            for (int j = 0; j < headers.size(); j++) {
+                String pk = row.get(j);
+                if (pk.toLowerCase().equals("[last]")) {
+                    pk = onCommonSteps.get_last_record_pk();
+                    autoCreatedRecordPK = pk;
+                }
+                keyObject.addPK(headers.get(j), pk);
+                filterConditions.add(filterCondition(headers.get(j), "equals", pk, Constants.INPUT_TYPE));
+            }
+            dataObject.addPK(keyObject);
+        }
+        SessionData.saveDataObjectToSession(Constants.DATA_OBJECT, dataObject);
+
+        onCommonSteps.search_with_advance_search(Constants.AT_LEAST_ONE_MATCHES, filterConditions);
+        for (int i = 1; i < dt.size(); i++) {
+            List<String> row = dt.get(i);
+            onDatasetSteps.select_record_with_PK(row);
+        }
+        onDatasetSteps.select_table_service("Match and Merge > Merge");
+    }
+
     @When("^I want to merge some records with primary key as following$")
     public void iWantToMergeSomeRecordsWithPrimaryKeyAsFollowing(List<List<String>> dt) {
         onDatasetSteps.unselect_all();
@@ -834,7 +866,7 @@ public class ManualMergeDefs {
     }
 
     @Then("^merge process will be blocked with exception message \"([^\"]*)\"$")
-    public void merge_process_iwll_be_blocked_with_exception_message(String message) throws Throwable {
+    public void merge_process_iwll_be_blocked_with_exception_message(String message) {
         onManualMergeSteps.click_button_next();
         onManualMergeSteps.click_button_merge();
         onManualMergeSteps.verify_exception_error_popup(message);
@@ -858,5 +890,19 @@ public class ManualMergeDefs {
     @And("^preview table which has auto created PK is displayed as below$")
     public void previewTableWhichHasAutoCreatedPKIsDisplayedAsBelow(List<List<String>> tablePreview) {
         onManualMergeSteps.verify_table_preview_has_auto_created_pk(tablePreview);
+    }
+
+    @When("^multi value field \"([^\"]*)\" is defined as below$")
+    public void multiValueFieldIsDefinedAsBelow(String fieldName, DataTable dt)  {
+        List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
+       onManualMergeSteps.select_multi_value_field(fieldName);
+       dataTable.forEach(row ->{
+           String recordLabel = row.get("Field label");
+           String value = row.get("Selected value");
+           onManualMergeSteps.select_relation_value(recordLabel,value);
+
+       });
+       onManualMergeSteps.click_button_done();
+
     }
 }

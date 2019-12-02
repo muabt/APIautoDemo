@@ -33,4 +33,6 @@ public interface FooterWidget extends WidgetObject {
 
 
     void clickBtnBackToMainView();
+
+    void clickBtnDone();
 }

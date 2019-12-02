@@ -19,6 +19,8 @@ public interface TableViewWidget extends WidgetObject {
 
     void selectRecordWithPK(List<String> primaryKey);
 
+    void accessRecordWithPK(List<String> primaryKey);
+
     void selectRecordWithPK(String selectRecordWithPk);
 
     void accessRecordWithText(String label);

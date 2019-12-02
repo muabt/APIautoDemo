@@ -1,5 +1,6 @@
 package com.orchestranetworks.auto.addon.pages;
 
+import com.orchestranetworks.auto.addon.steps.ManualMergeSteps;
 import com.orchestranetworks.auto.addon.widget.merge.*;
 import com.orchestranetworks.auto.addon.widget.workspace.*;
 import org.openqa.selenium.WebDriver;
@@ -21,21 +22,22 @@ public class ManualMergePage extends BasePage {
     private ToolbarWidget toolbarWidget;
     private AdministrationWidget administrationWidget;
     private PopupWidget popupWidget;
+    private ListViewWidget listViewWidget;
 
     public ManualMergePage(WebDriver driver) {
         super(driver);
-        this.navPanel = new NavigationWidgetImpl(this, null, 100);
-        this.header = new HeaderWidgetImpl(this, null, 100);
-        this.manualMergeViewWidget = new ManualMergeViewWidgetImpl(this, null, 100);
-        this.relationWidget = new RelationWidgetImpl(this, null, 100);
-        this.previewWidget = new PreviewWidgetImpl(this, null, 100);
-        this.summaryWidget = new SummaryWidgetImpl(this, null, 100);
-        this.footerWidget = new FooterWidgetImpl(this, null, 100);
-        this.itemCreationWidget = new ItemCreationWidgetImpl(this, null, 100);
-        this.recordDetailWidget = new RecordDetailWidgetImpl(this, null, 100);
-        this.toolbarWidget = new ToolbarWidgetImpl(this, null, 100);
-        this.defaultViewWidget = new DefaultViewImpl(this, null, 100);
-        this.popupWidget = new PopupWidgetImpl(this, null, 100);
+//        this.navPanel = new NavigationWidgetImpl(this, null, 100);
+//        this.header = new HeaderWidgetImpl(this, null, 100);
+//        this.manualMergeViewWidget = new ManualMergeViewWidgetImpl(this, null, 100);
+//        this.relationWidget = new RelationWidgetImpl(this, null, 100);
+//        this.previewWidget = new PreviewWidgetImpl(this, null, 100);
+//        this.summaryWidget = new SummaryWidgetImpl(this, null, 100);
+//        this.footerWidget = new FooterWidgetImpl(this, null, 100);
+//        this.itemCreationWidget = new ItemCreationWidgetImpl(this, null, 100);
+//        this.recordDetailWidget = new RecordDetailWidgetImpl(this, null, 100);
+//        this.toolbarWidget = new ToolbarWidgetImpl(this, null, 100);
+//        this.defaultViewWidget = new DefaultViewImpl(this, null, 100);
+//        this.popupWidget = new PopupWidgetImpl(this, null, 100);
     }
 
     public NavigationWidget getNavPanel() {
@@ -96,4 +98,7 @@ public class ManualMergePage extends BasePage {
         return administrationWidget;
     }
 
+    public ListViewWidget getListViewWidget() {
+        return listViewWidget;
+    }
 }

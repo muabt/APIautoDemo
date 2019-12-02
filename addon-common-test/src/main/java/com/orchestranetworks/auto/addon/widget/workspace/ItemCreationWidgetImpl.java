@@ -100,8 +100,7 @@ public class ItemCreationWidgetImpl extends BaseWidgetImpl implements ItemCreati
                 + label + "']]//button[@title='Open drop-down list']";
 
         String xPathValue = "//div[@id='ebx_ISS_pane' ]//div[(" + specialTextPredicates(value)
-                + " and string-length(normalize-space(text())=" + value.length()
-                + ")) and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
+                + ") and (contains(@id,'ebx_ISS_Item') or contains(@class,'ebx_ISS_Item'))]";
         clickOnElement(xPathDDL);
         waitForAllLoadingCompleted();
         executeJS("arguments[0].click();", xPathValue);

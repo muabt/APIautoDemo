@@ -24,4 +24,6 @@ public interface ManualMergeViewWidget extends WidgetObject {
     String getMergeStepsSelection();
 
     void selectGoldenValue(int rowind, int colInd, String value);
+
+    void selectMultiValueField(String fieldName);
 }

@@ -184,4 +184,16 @@ public class ManualMergeSteps {
     public void select_golden_value(int rowind, int colInd, String value) {
         onManualMergePage.getManualMergeViewWidget().selectGoldenValue(rowind, colInd, value);
     }
+
+    public void select_relation_value(String recordLabel, String value) {
+        onManualMergePage.getListViewWidget().selectRelationValue(recordLabel,value);
+    }
+
+    public void select_multi_value_field(String fieldName) {
+        onManualMergePage.getManualMergeViewWidget().selectMultiValueField(fieldName);
+    }
+
+    public void click_button_done() {
+        onManualMergePage.getFooterWidget().clickBtnDone();
+    }
 }

@@ -6,6 +6,7 @@ import com.orchestranetworks.auto.addon.steps.config.MatchingTableSteps;
 import com.orchestranetworks.auto.addon.steps.DatasetSteps;
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
+import com.orchestranetworks.auto.addon.utils.TechnicalTable;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -212,7 +213,7 @@ public class MatchingTableDefs {
             condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
             filterConditions.add(condition);
         }
-        onCommonSteps.search_with_advance_search(Constants.ALL_CRITERIA_MATCHE, filterConditions);
+        onCommonSteps.search_with_advance_search(Constants.ALL_CRITERIA_MATCH, filterConditions);
         onAdministrationSteps.select_record_with_name(table);
     }
 
@@ -423,9 +424,11 @@ public class MatchingTableDefs {
             if (!executeEmpty.isEmpty()) {
                 onMatchingTableSteps.select_execute_option(executeEmpty);
             }
+            onMatchingTableSteps.click_btn_save_and_close_internal_popup(1);
         }
 
-        onMatchingTableSteps.click_btn_save_and_close_internal_popup(2);
+
+        onMatchingTableSteps.click_btn_save_and_close();
         onMatchingTableSteps.click_btn_save_and_close();
     }
 
@@ -562,8 +565,24 @@ public class MatchingTableDefs {
         Map<String, String> row = list.get(0);
         String dataModel = row.get("Data model:DDL");
         String table = row.get("Table:DDL");
-        onCommonSteps.click_btn_filter();
-        filter_record_existed(dataModel, Constants.INPUT_TYPE, table, new String[]{Constants.DATA_MODEL_FIELD, Constants.TABLE_FIELD}, dt);
+
+        List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
+        Map<String, String> condition = new HashMap<String, String>();
+        condition.put(Constants.CRITERION, "Data model");
+        condition.put(Constants.OPERATION, "equals");
+        condition.put(Constants.VALUE, dataModel);
+        condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+        filterConditions.add(condition);
+        condition = new HashMap<String, String>();
+        condition.put(Constants.CRITERION, "Table");
+        condition.put(Constants.OPERATION, "equals");
+        condition.put(Constants.VALUE, table);
+        condition.put(Constants.FIELD_TYPE, Constants.INPUT_TYPE);
+        filterConditions.add(condition);
+        onCommonSteps.search_with_advance_search(Constants.ALL_CRITERIA_MATCH, filterConditions);
+
+//        onCommonSteps.click_btn_filter();
+//        filter_record_existed(dataModel, Constants.INPUT_TYPE, table, new String[]{Constants.DATA_MODEL_FIELD, Constants.TABLE_FIELD}, dt);
         if (onDatasetSteps.verify_record_existed(dataModel, table)) {
             onDatasetSteps.select_first_record("1");
             onDatasetSteps.select_table_service(Constants.DELETE_SERVICE);
