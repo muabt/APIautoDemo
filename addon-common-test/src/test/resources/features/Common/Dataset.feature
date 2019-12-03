@@ -44,3 +44,9 @@ Feature: Dataset and table
   Scenario: Access table
 
     And I access table "Employee" of dataset "Human_Resource" in dataspace "Master Data - Reference>Reference-child"
+    Then the table "Stores" should be displayed as bellow
+      | Identifier | Name            | Street              | City          | State | Postcode | Country       |
+      | 1          | Computer Market | 56 Kendall Square   | Boston        | MA    | 12870    | United States |
+      | 2          | Phone Depot     | 19 Brookline Avenue | Austin        | TX    | 84743    | United States |
+      | 3          | Cook Store      | 17 Tremont Street   | San Francisco | CA    | 9376     | United States |
+      | 4          | Mister Freeze   | 92 Southwest Street | Miami         | FL    | 98056    | United States |

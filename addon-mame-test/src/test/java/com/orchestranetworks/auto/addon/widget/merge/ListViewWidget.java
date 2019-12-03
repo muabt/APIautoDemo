@@ -6,4 +6,6 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy(ListViewWidgetImpl.class)
 public interface ListViewWidget extends WidgetObject {
     void selectRelationValue(String fieldLabel,String value);
+
+    void selectAllRelationValue();
 }

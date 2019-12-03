@@ -123,5 +123,6 @@ Feature: General
     And I delete the dataspace
 
     When I select some records are filtered with primary key as following
-      | Data model                        | Table  |
-      | Publication: genealogyForRunMatch | Person |
+      | Data model                        | Table                |
+      | Publication: genealogyForRunMatch | Person               |
+

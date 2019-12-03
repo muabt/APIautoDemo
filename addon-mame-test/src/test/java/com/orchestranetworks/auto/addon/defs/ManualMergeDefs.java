@@ -905,4 +905,11 @@ public class ManualMergeDefs {
        onManualMergeSteps.click_button_done();
 
     }
+
+    @And("^all relation records should be updated$")
+    public void allRelationRecordsShouldBeUpdated() {
+        onManualMergeSteps.click_button_next();
+        onManualMergeSteps.select_all_relation_value();
+//        onManualMergeSteps.click_button_next();
+    }
 }

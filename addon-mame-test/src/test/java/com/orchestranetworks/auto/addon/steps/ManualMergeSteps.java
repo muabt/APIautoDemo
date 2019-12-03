@@ -196,4 +196,8 @@ public class ManualMergeSteps {
     public void click_button_done() {
         onManualMergePage.getFooterWidget().clickBtnDone();
     }
+
+    public void select_all_relation_value() {
+        onManualMergePage.getListViewWidget().selectAllRelationValue();
+    }
 }

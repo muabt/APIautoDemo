@@ -18,4 +18,10 @@ public class ListViewWidgetImpl extends BaseWidgetImpl implements ListViewWidget
         }
 
     }
+
+    @Override
+    public void selectAllRelationValue() {
+        String xpath = "//input[@type='checkbox'][following-sibling::label[normalize-space(.)='Select all']]";
+        clickOnElement(xpath);
+    }
 }

@@ -1,5 +1,5 @@
 package com.orchestranetworks.auto.addon.widget.config;
 
-public interface MergingProcessWidget {
+public interface MergePolicyWidget {
 
 }

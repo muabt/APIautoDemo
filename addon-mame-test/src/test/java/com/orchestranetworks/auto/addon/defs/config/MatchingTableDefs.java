@@ -724,6 +724,5 @@ public class MatchingTableDefs {
 
         }
         onMatchingTableSteps.click_btn_save_and_close();
-        onMatchingTableSteps.click_btn_save_and_close();
     }
 }

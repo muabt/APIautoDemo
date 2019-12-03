@@ -72,8 +72,8 @@ public class MAMEConstants {
         public static final String RELATIONS_TAB = "Relations";
         public static class Relations{
             public static final String RELATION_PATH  = "Relation path";
-            public static final String RELATION_NAME  = "Relation path";
-            public static final String RELATION_MANAGEMENT  = "Relation path";
+            public static final String RELATION_NAME  = "Relation name";
+            public static final String RELATION_MANAGEMENT  = "Relation management";
         }
 
     }

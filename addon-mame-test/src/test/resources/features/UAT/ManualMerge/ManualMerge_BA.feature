@@ -335,7 +335,44 @@ Feature: Manual Merge
       | 4          | Linda41 | KK      | 20  | Single         | linda@tibco.com | true         |
     And records should be merged successful
 
-  Scenario: UC16 Align FK failed - FK is also PK
+  Scenario: UC11 Align FK successful
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL          | Table:DDL  | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: StoreModel | Categories | Yes          |                              |                  |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | UC14F             | Was golden                     | [not defined]          | Disabled | Yes                   | No                             |
+    And relation management should be defined as following
+      | Relation path | Relation name | Relation management |
+      | /root/Item    | Items         | Automatic           |
+    Then the table "Items" of dataset "Stores" in dataspace "UAT>UAT-Child" should be displayed as bellow
+      | Identifier | Category      | Brand          | Name           | Available | Default price |
+      | 1          | Computers     | Apricot        | Laptop Pro     | Yes       | 720           |
+      | 2          | Phones        | Sunny          | Pocket Handy   | Yes       | 240           |
+      | 3          | Cooking       | Usual Electric | Star Cooker    | Yes       | 320           |
+      | 4          | Refrigeration | Whitepool      | Energy Freezer | No        | 100           |
+    And I access table "Categories" of dataset "Stores" in dataspace "UAT>UAT-Child"
+    When I want to merge some records with primary key as following
+      | Identifier |
+      | 2          |
+      | 3          |
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Parent          | Name         | Comment |
+      | 2    {H}   | Electronics {H} | Computers{H} | {H}     |
+      | 3          | Electronics     | Phones       |         |
+    And preview table is displayed as below
+      | Identifier | Parent      | Name      | Comment |
+      | 2          | Electronics | Computers |         |
+    And records should be merged successful
+    Then the table "Items" of dataset "Stores" in dataspace "UAT>UAT-Child" should be displayed as bellow
+      | Identifier | Category      | Brand          | Name           | Available | Default price |
+      | 1          | Computers     | Apricot        | Laptop Pro     | Yes       | 720           |
+      | 2          | Computers     | Sunny          | Pocket Handy   | Yes       | 240           |
+      | 3          | Cooking       | Usual Electric | Star Cooker    | Yes       | 320           |
+      | 4          | Refrigeration | Whitepool      | Energy Freezer | No        | 100           |
+
+  Scenario: UC12 Align FK succesfully -  FK is part of PK
     Given I permit to access matching table
     And I create record in Matching table with the content followings
       | Data model:DDL          | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
@@ -347,11 +384,11 @@ Feature: Manual Merge
       | Relation path   | Relation name | Relation management |
       | /root/Inventory | Inventories   | Manual              |
     Then the table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child" should be displayed as bellow
-      | Item           | Store           | Stock | Price | Modified                |
-      | Laptop Pro     | Computer Market | 16    | 699   | 2012-04-17T17:27:38.000 |
-      | Pocket Handy   | Phone Depot     | 7     | 299   | 2012-04-17T17:27:38.313 |
-      | Star Cooker    | Phone Depot     | 9     | 399   | 2012-04-17T17:27:38.318 |
-      | Energy Freezer | Mister Freeze   | 0     | 100   | 2012-04-17T17:27:38.000 |
+      | Item           | Store           | Stock | Price | Modified            |
+      | Laptop Pro     | Computer Market | 16    | 699   | 04/17/2012 17:27:38 |
+      | Pocket Handy   | Phone Depot     | 7     | 299   | 04/17/2012 17:27:38 |
+      | Star Cooker    | Cook Store      | 9     | 399   | 04/17/2012 17:27:38 |
+      | Energy Freezer | Mister Freeze   | 0     | 100   | 04/17/2012 17:27:38 |
     And I access table "Items" of dataset "Stores" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
@@ -366,13 +403,53 @@ Feature: Manual Merge
     And preview table is displayed as below
       | Identifier | Category  | Brand   | Name       | Available | Default price |
       | 1          | Computers | Apricot | Laptop Pro | true      | 720           |
-    And relation table should be as following
-
+    And all relation records should be updated
     And records should be merged successful
     And I access table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child"
     Then the table "Inventories" of dataset "Stores" in dataspace "UAT>UAT-Child" should be displayed as bellow
-      | Item           | Store           | Stock | Price | Modified                |
-      | Laptop Pro     | Computer Market | 16    | 699   | 2012-04-17T17:27:38.000 |
-      | Pocket Handy   | Phone Depot     | 7     | 299   | 2012-04-17T17:27:38.313 |
-      | Star Cooker    | Phone Depot     | 9     | 399   | 2012-04-17T17:27:38.318 |
-      | Energy Freezer | Mister Freeze   | 0     | 100   | 2012-04-17T17:27:38.000 |
+      | Item           | Store           | Stock | Price | Modified            |
+      | Laptop Pro     | Computer Market | 16    | 699   | 04/17/2012 17:27:38 |
+      | Laptop Pro     | Phone Depot     | 7     | 299   | 04/17/2012 17:27:38 |
+      | Laptop Pro     | Cook Store      | 9     | 399   | 04/17/2012 17:27:38 |
+      | Pocket Handy   | Phone Depot     | 7     | 299   | 04/17/2012 17:27:38 |
+      | Star Cooker    | Cook Store      | 9     | 399   | 04/17/2012 17:27:38 |
+      | Energy Freezer | Mister Freeze   | 0     | 100   | 04/17/2012 17:27:38 |
+
+  Scenario: UC13 Align FK failed - FK is also PK
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | Country   | Yes          |                              |                  |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | UC13              | Was golden                     | [not defined]          | Disabled | Yes                   | No                             |
+    And relation management should be defined as following
+      | Relation path      | Relation name | Relation management |
+      | /root/EmployeeArea | Employee Area | Manual              |
+    Then the table "Employee Area" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
+      | Identifier | Name       | Date of birth | Phone Number | Email          | Area Code |
+      | 4          | Lily       | 1991-05-11    | 962555823    |                | AUS       |
+      | 5          | Lily Hoang | 1992-04-11    | 966666555    |                | FR        |
+      | 6          | Alice      | 1993-01-05    | 962555888    | alice@mail.com | US        |
+      | 7          | Tracy      | 1988-11-11    | 966555858    | tracy@mail.net | VN        |
+    And I access table "Country" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
+    When I want to merge some records with primary key as following
+      | Code |
+      | AUS  |
+      | FR   |
+    Then record view table will be displayed and highlighted as below
+      | Code    | Name          |
+      | AUS {H} | Australia {H} |
+      | FR      | France        |
+    And preview table is displayed as below
+      | Code | Name      |
+      | AUS  | Australia |
+    And all relation records should be updated
+    And records should be merged successful
+    Then the table "Employee Area" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
+      | Identifier | Name       | Date of birth | Phone Number | Email          | Area Code |
+      | 4          | Lily       | 1991-05-11    | 962555823    |                | AUS       |
+      | 5          | Lily Hoang | 1992-04-11    | 966666555    |                | FR        |
+      | 6          | Alice      | 1993-01-05    | 962555888    | alice@mail.com | US        |
+      | 7          | Tracy      | 1988-11-11    | 966555858    | tracy@mail.net | VN        |
+

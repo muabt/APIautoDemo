@@ -3,7 +3,6 @@ package com.orchestranetworks.auto.addon.steps.config;
 import com.orchestranetworks.auto.addon.pages.CommonPage;
 import com.orchestranetworks.auto.addon.utils.Constants;
 import com.orchestranetworks.auto.addon.pages.config.MatchingTablePage;
-import com.orchestranetworks.auto.addon.pages.RecordDetailPage;
 import com.orchestranetworks.auto.addon.utils.MAMEConstants;
 import com.orchestranetworks.auto.addon.utils.SessionData;
 import net.serenitybdd.core.Serenity;
@@ -11,6 +10,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.junit.Assert;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -219,7 +219,7 @@ public class MatchingTableSteps extends ScenarioSteps {
 
     @Step
     public void click_btn_save_and_close() {
-        onMatchingTablePage.switchToIFrame(Constants.IFRAME_LEGACY);
+        onMatchingTablePage.switchToLastIFrame();
         onMatchingTablePage.getFooterWidget().clickBtnSaveAndClose();
     }
 
@@ -274,8 +274,8 @@ public class MatchingTableSteps extends ScenarioSteps {
     }
 
     public void verify_validation_message(String fieldName, String msg) {
-       String actual= onMatchingTablePage.getItemCreationWidget().getTextValidationMessage(fieldName);
-       assertThat(actual).isEqualTo(msg);
+        String actual = onMatchingTablePage.getItemCreationWidget().getTextValidationMessage(fieldName);
+        assertThat(actual).isEqualTo(msg);
     }
 
     public void verify_field_trimspace(String fieldName, String value) {
@@ -290,6 +290,7 @@ public class MatchingTableSteps extends ScenarioSteps {
     public void click_btn_create_matching_field() {
         onMatchingTablePage.getToolbarWidget().clickCreateNewMatchingField();
     }
+
     public void expand_all_field_group() {
         onMatchingTablePage.getItemCreationWidget().expandAll();
     }
@@ -301,9 +302,12 @@ public class MatchingTableSteps extends ScenarioSteps {
     }
 
     public void open_relation_record(String relationPath, String relationName) {
+        onCommonPage.getDefaultViewWidget().accessRecordWithText(relationPath);
     }
 
     public void select_relation_management(String relationManagement) {
+        onMatchingTablePage.switchToLastIFrame();
+        onMatchingTablePage.getItemCreationWidget().inputDDLThenEnter(MAMEConstants.MatchingTable.Relations.RELATION_MANAGEMENT,relationManagement);
     }
 }
 

@@ -2,7 +2,7 @@ package com.orchestranetworks.auto.addon.pages.config;
 
 import com.orchestranetworks.auto.addon.pages.BasePage;
 import com.orchestranetworks.auto.addon.widget.config.MatchingProcessWidget;
-import com.orchestranetworks.auto.addon.widget.config.MergingProcessWidget;
+import com.orchestranetworks.auto.addon.widget.config.MergePolicyWidget;
 import com.orchestranetworks.auto.addon.widget.config.SourceWidget;
 import com.orchestranetworks.auto.addon.widget.filter.AdvancedSearchImpl;
 import com.orchestranetworks.auto.addon.widget.filter.SearchWidget;
@@ -22,7 +22,7 @@ public class MatchingTablePage extends BasePage {
     private TableViewWidget defaultViewWidget;
     private FooterWidget footerWidget;
     private ToolbarWidget toolbarWidget;
-    private MergingProcessWidget mergingProcessWidget;
+    private MergePolicyWidget mergePolicyWidget;
     private MatchingProcessWidget matchingProcessWidget;
     private SourceWidget sourceWidget;
 
@@ -57,8 +57,8 @@ public class MatchingTablePage extends BasePage {
         return toolbarWidget;
     }
 
-    public MergingProcessWidget getMergingProcessWidget() {
-        return mergingProcessWidget;
+    public MergePolicyWidget getMergePolicyWidget() {
+        return mergePolicyWidget;
     }
 
     public MatchingProcessWidget getMatchingProcessWidget() {

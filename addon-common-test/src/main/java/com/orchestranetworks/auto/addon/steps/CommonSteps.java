@@ -291,8 +291,8 @@ public class CommonSteps extends ScenarioSteps {
     }
 
     public void verify_defaut_view_table(String tableName, List<List<String>> dt) {
-        JsonArray expectedTbl = SessionData.convertArrayListToJson(dt);
-        JsonArray actual = onCommonPage.getDefaultViewWidget().getDefaultViewTable(tableName).getTable().getAsJsonArray();
-        assertThat(actual).isEqualTo(expectedTbl);
+        TableObject expectedTbl = SessionData.convertArrayListToTableObject(tableName, dt);
+        TableObject actual = onCommonPage.getDefaultViewWidget().getDefaultViewTable(tableName);
+        assertThat(actual.getTable()).isEqualTo(expectedTbl.getTable());
     }
 }
