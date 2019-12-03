@@ -910,6 +910,5 @@ public class ManualMergeDefs {
     public void allRelationRecordsShouldBeUpdated() {
         onManualMergeSteps.click_button_next();
         onManualMergeSteps.select_all_relation_value();
-//        onManualMergeSteps.click_button_next();
     }
 }

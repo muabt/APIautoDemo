@@ -142,6 +142,55 @@ Feature: Manual Merge
       | KEY1 | 1        | [Last]   | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
     And no records found in table "MergeValueLineage"
 
+  Scenario: UC05 Data is merged successful following merge policy defined for manual merge
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | Employee  | Yes          |                              |                  |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | UC05              | Most complete                  | [not defined]          | Disabled | Yes                   | Yes                            |
+    And I create Survivorship field with selections as followings
+      | Survivorship field code | Field                 | Merge function | Condition for field value survivorship | Execute only if empty |
+      | F1                      | Date of birth         | Max            |                                        | No                    |
+      | F2                      | Supervisor            | Longest        |                                        | Yes                   |
+      | F3                      | Date and time created | Min            |                                        | Yes                   |
+    And I access table "Employee" of dataset "Human_Resource" in dataspace "UAT > UAT-Child"
+    When I want to merge some records with primary key as following
+      | Identifier |
+      | 1          |
+      | 2          |
+      | 3          |
+      | 19         |
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Date of birth   | National | Phone Number    | Email          | Rank     | Supervisor    | Date and time created    | Name   | Comments | PIT            | Assurance number | Employee |
+      | 1          | 04/11/1987      | US       |                 |                | 1        | Jasmine   {H} |                          | Davied |          | 54354410564036 | 4204365065063    |          |
+      | 2    {H}   | 04/03/1989      | VN  {H}  | 54565326654 {H} | [List] 0/1 {H} | 1    {H} |               | 04/11/2019 17:15:40  {H} | {H}    | {H}      | 556652387  {H} | 5317485785   {H} | {H}      |
+      | 3          | 02/07/1995  {H} | FR       |                 |                | 1.5      | OP            | 04/11/2018 17:20:59      |        |          | 85789685625    | 7871998439671    |          |
+    And preview table which has auto created PK is displayed as below
+      | Identifier | Date of birth | National | Phone Number | Email      | Rank | Supervisor | Date and time created | Name | Comments | PIT       | Assurance number | Employee |
+      | 2          | 02/07/1995    | VN       | 54565326654  | [List] 0/1 | 1    | Jasmine    | 04/11/2019 17:15:40   |      |          | 556652387 | 5317485785       |          |
+    And records should be merged successful
+    And I access table "RecordMetadata" of dataset "StoreModel_Category_MDS" in dataspace "UAT > UAT-Child"
+    Then I will see table RecordMetadata as below
+      | functionalId | groupId  | state   | autoCreated |
+      | 1            | GROUP_ID | Merged  | No          |
+      | 2            | GROUP_ID | Golden  | No          |
+      | 3            | GROUP_ID | Merged  | No          |
+      | 19           | GROUP_ID | Deleted | Yes         |
+    Then I will see table MergeResult as below
+      | recordId | goldenId | mergingProcessId | isInterpolation |
+      | 1        | 2        | [AUTO_GENERATED] | No              |
+      | 3        | 2        | [AUTO_GENERATED] | No              |
+    Then I will see table MergingProcess as below
+      | Id               | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | Manual    | TODAY         |            | admin | No         |
+    Then I will see table Decision as below
+      | id               | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | [AUTO_GENERATED] | 1        | 2        | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
+      | [AUTO_GENERATED] | 3        | 2        | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
+    And no records found in table "MergeValueLineage"
+
   Scenario: UC06 Merged records is not participated in the manual merge process but it will follow its Golden to move to a new group after mergeing
     Given I permit to access matching table
     And I create record in Matching table with the content followings
@@ -207,54 +256,6 @@ Feature: Manual Merge
       | KEY1 | c633d1a0-74ae-4e65-9efd-378e27682683 | d495ceb9-e2fe-4350-8e0e-3f630ade2ee9 | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
     And no records found in table "MergeValueLineage"
 
-  Scenario: UC05 Data is merged successful following merge policy defined for manual merge
-    Given I permit to access matching table
-    And I create record in Matching table with the content followings
-      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: Human_Resource | Employee  | Yes          |                              |                  |                    |                       |
-    When I set Merge policy configuration as belows
-      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
-      | UC05              | Most complete                  | [not defined]          | Disabled | Yes                   | Yes                            |
-    And I create Survivorship field with selections as followings
-      | Survivorship field code | Field                 | Merge function | Condition for field value survivorship | Execute only if empty |
-      | F1                      | Date of birth         | Max            |                                        | No                    |
-      | F2                      | Supervisor            | Longest        |                                        | Yes                   |
-      | F3                      | Date and time created | Min            |                                        | Yes                   |
-    And I access table "Employee" of dataset "Human_Resource" in dataspace "UAT > UAT-Child"
-    When I want to merge some records with primary key as following
-      | Identifier |
-      | 1          |
-      | 2          |
-      | 3          |
-      | 19         |
-    Then record view table will be displayed and highlighted as below
-      | Identifier | Date of birth   | National | Phone Number    | Email          | Rank     | Supervisor    | Date and time created    | Name   | Comments | PIT            | Assurance number | Employee |
-      | 1          | 04/11/1987      | US       |                 |                | 1        | Jasmine   {H} |                          | Davied |          | 54354410564036 | 4204365065063    |          |
-      | 2    {H}   | 04/03/1989      | VN  {H}  | 54565326654 {H} | [List] 0/1 {H} | 1    {H} |               | 04/11/2019 17:15:40  {H} | {H}    | {H}      | 556652387  {H} | 5317485785   {H} | {H}      |
-      | 3          | 02/07/1995  {H} | FR       |                 |                | 1.5      | OP            | 04/11/2018 17:20:59      |        |          | 85789685625    | 7871998439671    |          |
-    And preview table which has auto created PK is displayed as below
-      | Identifier | Date of birth | National | Phone Number | Email      | Rank | Supervisor | Date and time created | Name | Comments | PIT       | Assurance number | Employee |
-      | 2          | 02/07/1995    | VN       | 54565326654  | [List] 0/1 | 1    | Jasmine    | 04/11/2019 17:15:40   |      |          | 556652387 | 5317485785       |          |
-    And records should be merged successful
-    And I access table "RecordMetadata" of dataset "StoreModel_Category_MDS" in dataspace "UAT > UAT-Child"
-    Then I will see table RecordMetadata as below
-      | functionalId | groupId  | state   | autoCreated |
-      | 1            | GROUP_ID | Merged  | No          |
-      | 2            | GROUP_ID | Golden  | No          |
-      | 3            | GROUP_ID | Merged  | No          |
-      | 19           | GROUP_ID | Deleted | Yes         |
-    Then I will see table MergeResult as below
-      | recordId | goldenId | mergingProcessId | isInterpolation |
-      | 1        | 2        | [AUTO_GENERATED] | No              |
-      | 3        | 2        | [AUTO_GENERATED] | No              |
-    Then I will see table MergingProcess as below
-      | Id               | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
-      | [AUTO_GENERATED] | [AUTO_GENERATED] | Manual    | TODAY         |            | admin | No         |
-    Then I will see table Decision as below
-      | id               | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-      | [AUTO_GENERATED] | 1        | 2        | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
-      | [AUTO_GENERATED] | 3        | 2        | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
-    And no records found in table "MergeValueLineage"
 
   Scenario: UC08 Merge successful several existing auto create records
     Given I permit to access matching table
@@ -418,38 +419,74 @@ Feature: Manual Merge
   Scenario: UC13 Align FK failed - FK is also PK
     Given I permit to access matching table
     And I create record in Matching table with the content followings
-      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: Human_Resource | Country   | Yes          |                              |                  |                    |                       |
+      | Data model:DDL              | Table:DDL      | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | Employee Areas | Yes          |                              |                  |                    |                       |
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
       | UC13              | Was golden                     | [not defined]          | Disabled | Yes                   | No                             |
     And relation management should be defined as following
-      | Relation path      | Relation name | Relation management |
-      | /root/EmployeeArea | Employee Area | Manual              |
-    Then the table "Employee Area" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
-      | Identifier | Name       | Date of birth | Phone Number | Email          | Area Code |
-      | 4          | Lily       | 1991-05-11    | 962555823    |                | AUS       |
-      | 5          | Lily Hoang | 1992-04-11    | 966666555    |                | FR        |
-      | 6          | Alice      | 1993-01-05    | 962555888    | alice@mail.com | US        |
-      | 7          | Tracy      | 1988-11-11    | 966555858    | tracy@mail.net | VN        |
-    And I access table "Country" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
+      | Relation path   | Relation name | Relation management |
+      | /root/Countries | Countries     | Manual              |
+    Then the table "Countries" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
+      | Code  | Name           | Comment |
+      | EMP01 | Vietnam        | 2       |
+      | EMP02 | United Kingdom | 4       |
+      | EMP03 | United States  | 1       |
+      | EMP04 | France         | 3       |
+    And I access table "Employee Area" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
-      | Code |
-      | AUS  |
-      | FR   |
+      | Identifier |
+      | EMP01      |
+      | EMP02      |
     Then record view table will be displayed and highlighted as below
-      | Code    | Name          |
-      | AUS {H} | Australia {H} |
-      | FR      | France        |
+      | Identifier  | Name       | Date of birth   | Phone Number  | Email | Area Code |
+      | EMP01   {H} | Lily {H}   | 05/11/1991  {H} | 962555823 {H} | {H}   | UK   {H}  |
+      | EMP02       | Lily Hoang | 04/11/1992      | 966666555     |       | FR        |
     And preview table is displayed as below
-      | Code | Name      |
-      | AUS  | Australia |
+      | Identifier | Name | Date of birth | Phone Number | Email | Area Code |
+      | EMP01      | Lily | 05/11/1991    | 962555823    |       | UK        |
     And all relation records should be updated
     And records should be merged successful
-    Then the table "Employee Area" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
-      | Identifier | Name       | Date of birth | Phone Number | Email          | Area Code |
-      | 4          | Lily       | 1991-05-11    | 962555823    |                | AUS       |
-      | 5          | Lily Hoang | 1992-04-11    | 966666555    |                | FR        |
-      | 6          | Alice      | 1993-01-05    | 962555888    | alice@mail.com | US        |
-      | 7          | Tracy      | 1988-11-11    | 966555858    | tracy@mail.net | VN        |
+    Then the table "Countries" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
+      | Code  | Name           | Comment |
+      | EMP01 | Vietnam        | 2 - VN  |
+      | EMP02 | United Kingdom | 4 - UK  |
+      | EMP03 | United States  | 1 - US  |
+      | EMP04 | France         | 3 - FR  |
 
+  Scenario: UC14 Align FK failed - FK is also PK
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | National  | Yes          |                              |                  |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | UC14              | Was golden                     | [not defined]          | Disabled | Yes                   | No                             |
+    And relation management should be defined as following
+      | Relation path   | Relation name | Relation management |
+      | /root/Countries | Countries     | Manual              |
+    Then the table "Countries" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
+      | Code  | Name           | Comment |
+      | EMP01 | Vietnam        | 2 - VN  |
+      | EMP02 | United Kingdom | 4 - UK  |
+      | EMP03 | United States  | 1 - US  |
+      | EMP04 | France         | 3 - FR  |
+    And I access table "National" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
+    When I want to merge some records with primary key as following
+      | Identifier |
+      | 1          |
+      | 2          |
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Name   | Employee | Website    |
+      | 1   {H}    | US {H} | {H}      | [html] {H} |
+      | 2          | VN     |          | [html]     |
+    And preview table is displayed as below
+      | Identifier | Name | Employee | Website |
+      | 1          | US   |          | [html]  |
+    And records should be merged successful
+    Then the table "Countries" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
+      | Code  | Name           | Comment |
+      | EMP01 | Vietnam        | 2 - VN  |
+      | EMP02 | United Kingdom | 4 - UK  |
+      | EMP03 | United States  | 1 - US  |
+      | EMP04 | France         | 3 - FR  |

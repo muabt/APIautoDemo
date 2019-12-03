@@ -200,7 +200,7 @@ public class MatchingTableDefs {
 
     @And("^I select matching table record of table \"([^\"]*)\" of \"([^\"]*)\"$")
     public void i_select_matching_table_record_of_publication(String table, String publication) {
-        onCommonSteps.refreshSearch();
+        onCommonSteps.verify_advanced_search_activated();
         List<String> values = new ArrayList<String>(Arrays.asList(table, publication));
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
         Map<String, String> condition = null;

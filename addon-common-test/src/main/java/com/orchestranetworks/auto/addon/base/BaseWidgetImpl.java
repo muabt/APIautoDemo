@@ -492,11 +492,9 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
             for (int i = 1; i < numText; i++) {
                 resultsPattern += " and contains(.,\"" + tokens[i] + "\")";
             }
-            return resultsPattern + " and ( string-length(normalize-space(text()))=" + givenText.length() +
-                    " or string-length(normalize-space(.))=" + givenText.length() + ")";
+            return resultsPattern + " and string-length(normalize-space(.))<=" + (int) (givenText.length() + 2);
         } else {
-            return "contains(.,'" + givenText + "') and ( string-length(normalize-space(text()))=" + givenText.length() +
-                    " or string-length(normalize-space(.))=" + givenText.length() + ")";
+            return "contains(.,'" + givenText + "')  and string-length(normalize-space(.))<=" + (int) (givenText.length() + 2);
         }
     }
 
