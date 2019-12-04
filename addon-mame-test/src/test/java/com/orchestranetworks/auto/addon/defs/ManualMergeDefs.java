@@ -254,8 +254,8 @@ public class ManualMergeDefs {
             if (!isUnmerged.isEmpty()) {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.IS_UNMERGED, isUnmerged);
             }
-            if (!mergePolicyId.isEmpty() && !mergePolicyId.toUpperCase().equals("[AUTO_GENERATED]")) {
-                SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.MERGE_POLICY_ID, mergePolicyId);
+            if (!mergePolicyId.isEmpty()) {
+                assertThat(actualRow.get(TechnicalTable.MergingProcess.MERGE_POLICY_ID).getAsString()).isNullOrEmpty();
             }
         }
     }

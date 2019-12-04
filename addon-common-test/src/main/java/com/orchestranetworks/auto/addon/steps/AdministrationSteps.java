@@ -44,15 +44,14 @@ public class AdministrationSteps extends ScenarioSteps {
     }
 
 
+    @Step
+    public void access_import_service_in_actions_in_left_panel() {
+        administration.getNavPanel().clickBtnActions().selectService(Constants.LBL_IMPORT);
+    }
 
     @Step
-	public void access_import_service_in_actions_in_left_panel() {
-		administration.getNavPanel().clickBtnActions().selectService(Constants.LBL_IMPORT);
-	}
-	
-    @Step
-	public void select_file_to_import(String fileName) {
-		administration.getImportWidget().selectFileThenImport(fileName);
-		
-	}
+    public void select_file_to_import(String fileName) {
+        administration.getImportWidget().selectFileThenImport(fileName);
+
+    }
 }

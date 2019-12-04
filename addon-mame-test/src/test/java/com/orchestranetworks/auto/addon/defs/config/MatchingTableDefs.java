@@ -200,7 +200,7 @@ public class MatchingTableDefs {
 
     @And("^I select matching table record of table \"([^\"]*)\" of \"([^\"]*)\"$")
     public void i_select_matching_table_record_of_publication(String table, String publication) {
-        onCommonSteps.verify_advanced_search_activated();
+        onCommonSteps.refreshSearch();
         List<String> values = new ArrayList<String>(Arrays.asList(table, publication));
         List<Map<String, String>> filterConditions = new ArrayList<Map<String, String>>();
         Map<String, String> condition = null;
@@ -214,6 +214,11 @@ public class MatchingTableDefs {
             filterConditions.add(condition);
         }
         onCommonSteps.search_with_advance_search(Constants.ALL_CRITERIA_MATCH, filterConditions);
+        onAdministrationSteps.select_record_with_name(table);
+    }
+
+    @And("^I select matching table record of table \"([^\"]*)\" of \"([^\"]*)\" without filter$")
+    public void i_select_matching_table_record_of_publication_without_filter(String table, String publication) {
         onAdministrationSteps.select_record_with_name(table);
     }
 
@@ -718,11 +723,13 @@ public class MatchingTableDefs {
             String relationPath = row.get(MAMEConstants.MatchingTable.Relations.RELATION_PATH);
             String relationName = row.get(MAMEConstants.MatchingTable.Relations.RELATION_NAME);
             String relationManagement = row.get(MAMEConstants.MatchingTable.Relations.RELATION_MANAGEMENT);
-            onMatchingTableSteps.open_relation_record(relationPath,relationName);
+            onMatchingTableSteps.open_relation_record(relationPath, relationName);
             onMatchingTableSteps.select_relation_management(relationManagement);
             onMatchingTableSteps.click_btn_save_and_close();
 
         }
         onMatchingTableSteps.click_btn_save_and_close();
     }
+
+
 }
