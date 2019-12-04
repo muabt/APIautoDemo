@@ -40,7 +40,7 @@ Feature: Manual Merge
       | [Last]     |
     Then I should see dialog box with title is "Merge" and content is "At least two records, different from 'Merged' or 'Deleted', must be selected."
 
-  Scenario: UC02 Merge unsuccessful - To verify how the add-on handles error - Merge failed due to blocking errors
+  Scenario: UC02 Merge unsuccessful to verify how the add-on handles error merge failed due to blocking errors
     And I permit to access matching table
     And I create record in Matching table with the content followings
       | Data model:DDL          | Table:DDL   | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
@@ -107,7 +107,7 @@ Feature: Manual Merge
       | 6          |
     And records should be merged successful
     Given I permit to access matching table
-    And I select matching table record of table "Categories" of "Publication: StoreModel"
+    And I select matching table record of table "Categories" of "Publication: StoreModel" without filter
     And all merge policy should be deleted
     And I access table "Categories" of dataset "Stores" in dataspace "UAT-Child"
     When I want to merge some records with primary key as following
@@ -135,8 +135,8 @@ Feature: Manual Merge
       | 5        | [Last]   | [AUTO_GENERATED] | Yes             |
       | 6        | [Last]   | [AUTO_GENERATED] | Yes             |
     Then I will see table MergingProcess as below
-      | Id               | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
-      | [AUTO_GENERATED] | [AUTO_GENERATED] | Manual    | TODAY         |            | admin | No         |
+      | Id               | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | [AUTO_GENERATED] |               | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 1        | [Last]   | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
