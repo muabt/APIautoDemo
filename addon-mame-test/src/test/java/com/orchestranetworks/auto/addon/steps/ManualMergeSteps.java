@@ -49,7 +49,7 @@ public class ManualMergeSteps {
 
     @Step
     private void compare_record_view_tbl(List<List<String>> expectedTb, List<List<String>> actualTb) {
-        SoftAssertions softAssertions = SessionData.softAssert();
+        SoftAssertions softAssertions = new SoftAssertions();
         List<String> expectedHeader = expectedTb.get(0);
         List<String> actualHeader = actualTb.get(0);
 
