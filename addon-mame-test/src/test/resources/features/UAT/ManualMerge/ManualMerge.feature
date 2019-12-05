@@ -72,12 +72,12 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId                         |
       | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa |
       | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | TODAY        | mergingProcessId |
@@ -219,12 +219,12 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId | isolated |
       | KEY1 | GROUP_ID | Golden | No          | 1            | No       |
       | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 2        | 1        | mergingProcessId | No              |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | mergingProcessId |
@@ -336,12 +336,12 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId                         | isolated |
       | KEY1 | GROUP_ID | Merged | No          | 0157a930-7725-41d0-b1c4-281b794d38aa | No       |
       | KEY2 | GROUP_ID | Golden | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | No       |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
       | KEY1 | 0157a930-7725-41d0-b1c4-281b794d38aa | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | mergingProcessId | No              |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 0157a930-7725-41d0-b1c4-281b794d38aa | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | Identified as match | admin | TODAY        | mergingProcessId |
@@ -386,12 +386,13 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId                         | isolated |
       | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa | No       |
       | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | No       |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 |               | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
+
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | KEY1 |               | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId                             | targetId                             | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | Identified as match | admin | TODAY        | mergingProcessId |
@@ -435,12 +436,12 @@ Feature: Manual Merge
       | id   | groupId  | state  | autoCreated | functionalId | isolated |
       | KEY1 | GROUP_ID | Golden | No          | 1            | No       |
       | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 2        | 1        | mergingProcessId | No              |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | mergingProcessId |
@@ -489,14 +490,14 @@ Feature: Manual Merge
       | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
       | KEY3 | GROUP_ID | Merged | No          | 3            | No       |
       | KEY4 | GROUP_ID | Merged | No          | 4            | No       |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 2        | 1        | mergingProcessId | No              |
       | KEY2 | 3        | 1        | mergingProcessId | No              |
       | KEY3 | 4        | 1        | mergingProcessId | No              |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | mergingProcessId |
@@ -553,14 +554,14 @@ Feature: Manual Merge
       | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
       | KEY3 | GROUP_ID | Golden | No          | 3            | No       |
       | KEY4 | GROUP_ID | Merged | No          | 4            | No       |
-    Then I will see table MergingProcess as below
-      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
-      | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 1        | 3        | mergingProcessId | No              |
       | KEY2 | 2        | 3        | mergingProcessId | No              |
       | KEY3 | 4        | 3        | mergingProcessId | No              |
+    Then I will see table MergingProcess as below
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | KEY1 | 15            | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 1        | 3        | Identified as match | admin | TODAY        | mergingProcessId |

@@ -255,7 +255,7 @@ public class ManualMergeDefs {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergingProcess.IS_UNMERGED, isUnmerged);
             }
             if (!mergePolicyId.isEmpty()) {
-                assertThat(actualRow.get(TechnicalTable.MergingProcess.MERGE_POLICY_ID).getAsString()).isNullOrEmpty();
+                assertThat(actualRow.get(TechnicalTable.MergingProcess.MERGE_POLICY_ID).getAsString()).isNotEmpty();
             }
         }
     }
