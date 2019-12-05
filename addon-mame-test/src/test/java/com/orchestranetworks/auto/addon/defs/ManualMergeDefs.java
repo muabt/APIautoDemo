@@ -136,7 +136,7 @@ public class ManualMergeDefs {
 
         // Filter by group id if golden record is auto generated
         String actualGroupID = onManualMergeSteps.get_groupID();
-        if (expectedTbl.size() > mergedRecord.getPKs().size()) {
+        if (expectedTbl.filter(TechnicalTable.RecordMetadata.AUTO_CREATED,"Yes").size()>0) {
             filterConditions = new ArrayList<Map<String, String>>();
             onCommonSteps.delete_all_occurrence();
             filterConditions.add(filterCondition(TechnicalTable.RecordMetadata.GROUP_ID, "=", actualGroupID, Constants.INPUT_TYPE));

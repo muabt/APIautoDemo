@@ -85,8 +85,8 @@ Feature: Manual Merge
       | recordId | goldenId | mergingProcessId | isInterpolation |
       | 2        | 1        | [AUTO_GENERATED] | No              |
     Then I will see table MergingProcess as below
-      | id   | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
-      | KEY1 | [AUTO_GENERATED] | Manual    | TODAY         |            | admin | No         |
+      | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | KEY1 |               | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
       | KEY1 | 2        | 1        | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
@@ -256,6 +256,39 @@ Feature: Manual Merge
       | KEY1 | c633d1a0-74ae-4e65-9efd-378e27682683 | d495ceb9-e2fe-4350-8e0e-3f630ade2ee9 | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
     And no records found in table "MergeValueLineage"
 
+  Scenario: UC07 Merge successful with a new auto golden created after the merge
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | Employee  | Yes          |                              | Name             |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view | Customize source value for new golden |
+      | UC08              | Most trusted source            | Most trusted source    | Duplicates and singletons | Yes                   | Yes                            | Lily                                  |
+    And the Table trusted source with the followings
+      | Matching table | Trusted source list |
+      | Employee       | Source              |
+    And the Field trusted source with the followings
+      | Matching table | Field    | Trusted source list |
+      | Employee       | Comments | Field               |
+    And I access table "Employee" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
+    When I want to merge some records with primary key as following
+      | Identifier |
+      | 29         |
+      | 30         |
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Name   | Date of birth    | National | Phone Number   | Email          | Rank   | Supervisor | Date and time created    | Name                        | Comments   | PIT            | Assurance number | Employee |
+      | 29         | Source | 05/02/2019   {H} | FR  {H}  | 0962555823 {H} | [List] 0/1 {H} | 5  {H} | Thanh {H}  | 05/02/2019 10:44:49  {H} | nothing                     | 1255999{H} | 5555555    {H} | {H}              |          |
+      | 30         | Field  | 05/12/1992       | US       | 0965478965     |                | 1.5    | Steve      | 06/05/2019 00:00:00      | Check for trusted field {H} |            |                |                  |          |
+    Then preview table is displayed as below
+      | Identifier       | Name | Date of birth | National | Phone Number | Email      | Rank | Supervisor | Date and time created | Comments                | PIT | Assurance number | Employee |
+      | [AUTO_GENERATED] | Lily | 05/02/2019    | FR       | 0962555823   | [List] 0/1 | 5    | Thanh      | 05/02/2019 10:44:49   | Check for trusted field |     |                  |          |
+    And records should be merged successful
+    And I access table "RecordMetadata" of dataset "Human_Resource_employee_MDS" in dataspace "UAT > UAT-Child"
+    Then I will see table RecordMetadata as below
+      | functionalId | groupId  | state  | autoCreated |
+      | 29           | GROUP_ID | Merged | No          |
+      | 30           | GROUP_ID | Merged | No          |
+      | [Last]       | GROUP_ID | Golden | Yes         |
 
   Scenario: UC08 Merge successful several existing auto create records
     Given I permit to access matching table
@@ -288,6 +321,10 @@ Feature: Manual Merge
     Then I will see table RecordMetadata as below
       | functionalId | groupId  | state  | autoCreated |
       | 11           | GROUP_ID | Merged | No          |
+      | 21           | GROUP_ID | Merged | No          |
+      | 22           | GROUP_ID | Merged | No          |
+      | 23           | GROUP_ID | Merged | No          |
+      | 24           | GROUP_ID | Merged | No          |
       | 25           | GROUP_ID | Golden | Yes         |
       | 26           | GROUP_ID | Merged | Yes         |
     Then I will see table MergeResult as below
@@ -429,10 +466,10 @@ Feature: Manual Merge
       | /root/Countries | Countries     | Manual              |
     Then the table "Countries" of dataset "Human_Resource" in dataspace "UAT>UAT-Child" should be displayed as bellow
       | Code  | Name           | Comment |
-      | EMP01 | Vietnam        | 2       |
-      | EMP02 | United Kingdom | 4       |
-      | EMP03 | United States  | 1       |
-      | EMP04 | France         | 3       |
+      | EMP01 | Vietnam        | 2 - VN  |
+      | EMP02 | United Kingdom | 4 - UK  |
+      | EMP03 | United States  | 1 - US  |
+      | EMP04 | France         | 3 - FR  |
     And I access table "Employee Area" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
@@ -454,7 +491,7 @@ Feature: Manual Merge
       | EMP03 | United States  | 1 - US  |
       | EMP04 | France         | 3 - FR  |
 
-  Scenario: UC14 Align FK failed - FK is also PK
+  Scenario: UC14 Align FK failed - do not have 'Write' permission on the FK
     Given I permit to access matching table
     And I create record in Matching table with the content followings
       | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
