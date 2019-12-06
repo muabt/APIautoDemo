@@ -172,7 +172,10 @@ public class MatchingTableSteps extends ScenarioSteps {
     public void select_auto_create_new_golden_mode(String autoCreateNewGolden) {
         onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.MODE, autoCreateNewGolden);
     }
-
+    @Step
+    public void select_custom_source_value(String customSource) {
+        onMatchingTablePage.getItemCreationWidget().selectDDLByJS(MAMEConstants.CUSTOMIZE_SOURCE_VALUE_FOR_NEW_GOLDEN, customSource);
+    }
     @Step
     public void apply_permission_on_merge_view(String applyPermission) {
         onMatchingTablePage.getItemCreationWidget().selectRadioBoxWithLabel(MAMEConstants.APPLY_PERMISSION_ON_MERGE_VIEW, applyPermission);
@@ -309,5 +312,7 @@ public class MatchingTableSteps extends ScenarioSteps {
         onMatchingTablePage.switchToLastIFrame();
         onMatchingTablePage.getItemCreationWidget().inputDDLThenEnter(MAMEConstants.MatchingTable.Relations.RELATION_MANAGEMENT,relationManagement);
     }
+
+
 }
 

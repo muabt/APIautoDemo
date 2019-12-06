@@ -339,6 +339,7 @@ public class MatchingTableDefs {
             String useManualMerge = row.get(MAMEConstants.USE_MANUAL_MERGE);
             String mode = row.get(MAMEConstants.MODE);
             String applyPermission = row.get(MAMEConstants.APPLY_PERMISSION_ON_MERGE_VIEW);
+            String customSource = row.get(MAMEConstants.CUSTOMIZE_SOURCE_VALUE_FOR_NEW_GOLDEN);
 
             if (!mergePolicyCode.isEmpty()) {
                 if (onMatchingTableSteps.verify_code_existed(mergePolicyCode)) {
@@ -365,6 +366,10 @@ public class MatchingTableDefs {
 
             if (!mode.isEmpty()) {
                 onMatchingTableSteps.select_auto_create_new_golden_mode(mode);
+            }
+            if(!customSource.isEmpty()){
+                onCommonSteps.click_btn_save();
+                onMatchingTableSteps.select_custom_source_value(customSource);
             }
 
             if (!applyPermission.isEmpty()) {

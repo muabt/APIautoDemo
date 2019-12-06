@@ -43,7 +43,6 @@ public class TableViewWidgetImpl extends BaseWidgetImpl implements TableViewWidg
         }
     }
 
-
     @Override
     public void selectCheckboxWithText(String text) {
         String xpath = "(//td[@class='ebx_tvSelectCell']//input[@type='checkbox'])" +

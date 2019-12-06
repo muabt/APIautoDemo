@@ -25,6 +25,7 @@ public class MAMEConstants {
     public static final String ADVANCED_SETTINGS = "Advanced settings";
     public static final String MERGE_POLICY_CODE_FIELD = "Merge policy code";
     public static final String SURVIVOR_RECORD_SELECTION_MODE = "Survivor record selection mode";
+    public static final String CUSTOMIZE_SOURCE_VALUE_FOR_NEW_GOLDEN="Customize source value for new golden";
     public static final String DEFAULT_MERGE_FUNCTION = "Default merge function";
     public static final String USE_MANUAL_MERGE = "Used for manual merge";
     public static final String MODE = "Mode";

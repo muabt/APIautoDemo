@@ -232,16 +232,18 @@ Feature: Manual Merge
 
   Scenario: UC07 Merge successful with a new auto golden created after the merge
     Given I permit to access matching table
+    And the Source in Trusted source are
+      | Name of source | Description |
+      | Source         | Source      |
+      | Field          | Field       |
+      | Lily           | Lily        |
+    Given I permit to access matching table
     And I create record in Matching table with the content followings
       | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: Human_Resource | Employee  | Yes          |                              | Name             |                    |                       |
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view | Customize source value for new golden |
       | UC08              | Most trusted source            | Most trusted source    | Duplicates and singletons | Yes                   | Yes                            | Lily                                  |
-    And the Source in Trusted source are
-      | Name of source | Description |
-      | Source         | Source      |
-      | Field          | Field       |
     And the Table trusted source with the followings
       | Matching table | Trusted source list |
       | Employee       | Source              |
@@ -307,7 +309,7 @@ Feature: Manual Merge
       | 26           | GROUP_ID | Merged | Yes         |
     Then I will see table MergeResult as below
       | recordId | goldenId | mergingProcessId | isInterpolation |
-      | 11       | 25       | [AUTO_GENERATED] | No             |
+      | 11       | 25       | [AUTO_GENERATED] | No              |
       | 21       | 25       | [AUTO_GENERATED] | Yes             |
       | 22       | 25       | [AUTO_GENERATED] | Yes             |
       | 23       | 25       | [AUTO_GENERATED] | Yes             |

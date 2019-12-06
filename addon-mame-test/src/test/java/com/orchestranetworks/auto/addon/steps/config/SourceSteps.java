@@ -66,7 +66,8 @@ public class SourceSteps extends ScenarioSteps {
 
     @Step
     public void select_source_record_with_name(String name){
-        onSourcePage.getDefaultViewWidget().selectCheckboxWithText(name);
+       // onSourcePage.getDefaultViewWidget().selectCheckboxWithText(name);
+        onCommonPage.getDefaultViewWidget().selectRecordWithPK(name);
     }
     @Step
     public void delete_selected_record() {
