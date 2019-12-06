@@ -83,18 +83,6 @@ Feature: Manual Merge
     And I create record in Matching table with the content followings
       | Data model:DDL          | Table:DDL  | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
       | Publication: StoreModel | Categories | Yes          |                              |                  |                    |                       |
-    When I set Merge policy configuration as belows
-      | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view |
-      | UC04              | Most trusted source            | Most trusted source    | Duplicates and singletons | Yes                   | Yes                            |
-    And I access table "Categories" of dataset "Stores" in dataspace "UAT-Child"
-    When I want to merge some records with primary key as following
-      | Identifier |
-      | 5          |
-      | 6          |
-    And records should be merged successful
-    Given I permit to access matching table
-    And I select matching table record of table "Categories" of "Publication: StoreModel" without filter
-    And all merge policy should be deleted
     And I access table "Categories" of dataset "Stores" in dataspace "UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
@@ -117,7 +105,7 @@ Feature: Manual Merge
       | 55           | GROUP_ID | Golden | Yes         |
     Then I will see table MergeResult as below
       | recordId | goldenId | mergingProcessId | isInterpolation |
-      | 1        | 55       | [AUTO_GENERATED] | Yes             |
+      | 1        | 55       | [AUTO_GENERATED] | No              |
       | 5        | 55       | [AUTO_GENERATED] | Yes             |
       | 6        | 55       | [AUTO_GENERATED] | Yes             |
     Then I will see table MergingProcess as below
@@ -231,8 +219,8 @@ Feature: Manual Merge
       | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
       | 13847121-e45d-46d4-b061-8440cfc187ff | d495ceb9-e2fe-4350-8e0e-3f630ade2ee9 | [AUTO_GENERATED] | Yes             |
       | 73f646d9-f2de-43a5-acef-69b5547b3f4a | d495ceb9-e2fe-4350-8e0e-3f630ade2ee9 | [AUTO_GENERATED] | Yes             |
-      | 9f842bd5-2935-40ba-ad41-ccd7634fb28c | d495ceb9-e2fe-4350-8e0e-3f630ade2ee9 | [AUTO_GENERATED] | Yes             |
-      | c633d1a0-74ae-4e65-9efd-378e27682683 | d495ceb9-e2fe-4350-8e0e-3f630ade2ee9 | [AUTO_GENERATED] | Yes             |
+      | 9f842bd5-2935-40ba-ad41-ccd7634fb28c | d495ceb9-e2fe-4350-8e0e-3f630ade2ee9 | [AUTO_GENERATED] | No              |
+      | c633d1a0-74ae-4e65-9efd-378e27682683 | d495ceb9-e2fe-4350-8e0e-3f630ade2ee9 | [AUTO_GENERATED] | No              |
     Then I will see table MergingProcess as below
       | Id               | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
       | [AUTO_GENERATED] | [AUTO_GENERATED] | Manual    | TODAY         |            | admin | No         |
@@ -319,7 +307,7 @@ Feature: Manual Merge
       | 26           | GROUP_ID | Merged | Yes         |
     Then I will see table MergeResult as below
       | recordId | goldenId | mergingProcessId | isInterpolation |
-      | 11       | 25       | [AUTO_GENERATED] | Yes             |
+      | 11       | 25       | [AUTO_GENERATED] | No             |
       | 21       | 25       | [AUTO_GENERATED] | Yes             |
       | 22       | 25       | [AUTO_GENERATED] | Yes             |
       | 23       | 25       | [AUTO_GENERATED] | Yes             |
@@ -336,6 +324,61 @@ Feature: Manual Merge
       | id               | mergingProcessId | recordId | sourceIndex | fieldPath | goldenIndex |
       | [AUTO_GENERATED] | MERGE_PROCESS_ID | 25       | 0           | /email    | 0           |
       | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       | 1           | /email    | 1           |
+
+
+  Scenario: UC09 Merge successful several records belonging to some existing groups
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | Workers   | Yes          |                              |                  |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | UC08              | Most complete                  | Last update            | Disabled | Yes                   | Yes                            |
+    And I access table "Workers" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
+    When I want to merge some records with primary key as following
+      | Identifier |
+      | 22         |
+      | 25         |
+      | 30         |
+    Then record view table will be displayed and highlighted as below
+      | Identifier | Date of birth  | National | Phone Number   | Email      | Rank      | Supervisor  | Date and time created     | Name      | Comments                    | PIT      | Assurance number | Employee |
+      | 22 {H}     | 05/02/2019     | FR       | 09625558       | [List] 0/1 | 5         | Thanhh      | 05/02/2019 10:44:49       | Lily      |                             | 1255999  | 5555555          |          |
+      | 25         | 04/25/2019     | UK       |                | [List] 0/1 | 5         | Vincent {H} | 04/25/2019 11:25:09       | Zoe.vu    | Auto Created, State=Golden  | 13757477 | 8578578878       |          |
+      | 30         | 05/12/1992 {H} | US  {H}  | 0965478965 {H} | {H}        | 1.5   {H} | Steve   {H} | 06/05/2019 00:00:00   {H} | Field {H} | Check for trusted field {H} |          | {H}              | {H}      |
+    Then preview table is displayed as below
+      | Identifier | Date of birth | National | Phone Number | Email | Rank | Supervisor | Date and time created | Name  | Comments                | PIT | Assurance number | Employee |
+      | 30         | 05/12/1992    | US       | 0965478965   |       | 1.5  | Steve      | 06/05/2019 00:00:00   | Field | Check for trusted field |     |                  |          |
+    And records should be merged successful
+    And I access table "RecordMetadata" of dataset "Human_Resource_workers_MDS" in dataspace "UAT > UAT-Child"
+    Then I will see table RecordMetadata as below
+      | functionalId | groupId          | state  | autoCreated | isolated |
+      | 22           | 1613435459694592 | Golden | No          | No       |
+      | 25           | 1613435459694592 | Merged | No          | No       |
+      | 30           | 1613435459694592 | Merged | No          | No       |
+
+    Then I will see table MergeResult as below
+      | recordId | goldenId | mergingProcessId | isInterpolation |
+      | 25       | 22       | [AUTO_GENERATED] | No              |
+      | 30       | 22       | [AUTO_GENERATED] | No              |
+    Then I will see table MergingProcess as below
+      | Id               | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | Manual    | TODAY         |            | admin | No         |
+    Then I will see table Decision as below
+      | id               | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
+      | [AUTO_GENERATED] | 25       | 22       | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
+      | [AUTO_GENERATED] | 30       | 22       | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
+    Then I will see table MergeValueLineage as below
+      | id               | mergingProcessId | recordId | sourceIndex | fieldPath           | goldenIndex |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 30       |             | /National           |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /phone              |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /rank               |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /supervisor         |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /dateNtime          |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /Name               |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /Comments           |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /Personal/pit       |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /Personal/assurance |             |
+      | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       |             | /Personal/employee  |             |
 
 
   Scenario: UC10 Bypass EBX permission on Merge view

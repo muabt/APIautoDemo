@@ -64,8 +64,9 @@ public class TrustedSourceDefs {
             if (!description.isEmpty()) {
                 onSourceSteps.input_description(description);
             }
+            onCommonSteps.click_btn_save_and_close();
         }
-        onCommonSteps.click_btn_save_and_close();
+
     }
 
     /**
