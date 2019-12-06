@@ -69,12 +69,12 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild1"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId                         |
-      | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa |
-      | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 |
+      | functionalId                         | groupId  | state  | autoCreated |
+      | 0157a930-7725-41d0-b1c4-281b794d38aa | GROUP_ID | Golden | No          |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | GROUP_ID | Merged | No          |
     Then I will see table MergeResult as below
-      | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
-      | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
+      | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | admin | No         |
@@ -119,10 +119,10 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId |
-      | KEY1 | GROUP_ID | Golden | Yes         |              |
-      | KEY2 | GROUP_ID | Merged | No          | 1            |
-      | KEY3 | GROUP_ID | Merged | No          | 2            |
+      | functionalId | groupId  | state  | autoCreated |
+      | 1            | GROUP_ID | Merged | No          |
+      | 2            | GROUP_ID | Merged | No          |
+      |              | GROUP_ID | Golden | Yes         |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
@@ -168,10 +168,10 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId |
-      | KEY1 | GROUP_ID | Golden | Yes         |              |
-      | KEY2 | GROUP_ID | Merged | No          | 1            |
-      | KEY3 | GROUP_ID | Merged | No          | 2            |
+      | functionalId | groupId  | state  | autoCreated |
+      |              | GROUP_ID | Golden | Yes         |
+      | 1            | GROUP_ID | Merged | No          |
+      | 2            | GROUP_ID | Merged | No          |
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | groupId  | user  | isUnmerged |
       | KEY1 | 15            | Manual    | TODAY         |            | GROUP_ID | admin | No         |
@@ -216,9 +216,9 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId | isolated |
-      | KEY1 | GROUP_ID | Golden | No          | 1            | No       |
-      | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
+      | functionalId | groupId  | state  | autoCreated | isolated |
+      | 1            | GROUP_ID | Golden | No          | No       |
+      | 2            | GROUP_ID | Merged | No          | No       |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 2        | 1        | mergingProcessId | No              |
@@ -333,9 +333,9 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId                         | isolated |
-      | KEY1 | GROUP_ID | Merged | No          | 0157a930-7725-41d0-b1c4-281b794d38aa | No       |
-      | KEY2 | GROUP_ID | Golden | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | No       |
+      | functionalId                         | groupId  | state  | autoCreated | isolated |
+      | 0157a930-7725-41d0-b1c4-281b794d38aa | GROUP_ID | Merged | No          | No       |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | GROUP_ID | Golden | No          | No       |
     Then I will see table MergeResult as below
       | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
       | KEY1 | 0157a930-7725-41d0-b1c4-281b794d38aa | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | mergingProcessId | No              |
@@ -383,13 +383,12 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_person_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId                         | isolated |
-      | KEY1 | GROUP_ID | Golden | No          | 0157a930-7725-41d0-b1c4-281b794d38aa | No       |
-      | KEY2 | GROUP_ID | Merged | No          | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | No       |
+      | functionalId                         | groupId  | state  | autoCreated | isolated |
+      | 0157a930-7725-41d0-b1c4-281b794d38aa | GROUP_ID | Golden | No          | No       |
+      | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | GROUP_ID | Merged | No          | No       |
     Then I will see table MergeResult as below
       | id   | recordId                             | goldenId                             | mergingProcessId | isInterpolation |
       | KEY1 | 06127a07-3d23-4fb1-bd55-f5044873b0f1 | 0157a930-7725-41d0-b1c4-281b794d38aa | mergingProcessId | No              |
-
     Then I will see table MergingProcess as below
       | id   | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
       | KEY1 |               | Manual    | TODAY         |            | admin | No         |
@@ -433,9 +432,9 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId | isolated |
-      | KEY1 | GROUP_ID | Golden | No          | 1            | No       |
-      | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
+      | functionalId | groupId  | state  | autoCreated | isolated |
+      | 1            | GROUP_ID | Golden | No          | No       |
+      | 2            | GROUP_ID | Merged | No          | No       |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 2        | 1        | mergingProcessId | No              |
@@ -485,11 +484,11 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "genealogy_place_MDS" in dataspace "Master Data - Reference > referenceChild2"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId | isolated |
-      | KEY1 | GROUP_ID | Golden | No          | 1            | No       |
-      | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
-      | KEY3 | GROUP_ID | Merged | No          | 3            | No       |
-      | KEY4 | GROUP_ID | Merged | No          | 4            | No       |
+      | functionalId | groupId  | state  | autoCreated | isolated |
+      | 1            | GROUP_ID | Golden | No          | No       |
+      | 2            | GROUP_ID | Merged | No          | No       |
+      | 3            | GROUP_ID | Merged | No          | No       |
+      | 4            | GROUP_ID | Merged | No          | No       |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 2        | 1        | mergingProcessId | No              |
@@ -549,11 +548,11 @@ Feature: Manual Merge
     And I complete merging process
     And I access table "RecordMetadata" of dataset "Human_Resource_NewEmployee_MDS" in dataspace "Master Data - Reference > referenceChild2"
     Then I will see table RecordMetadata as below
-      | id   | groupId  | state  | autoCreated | functionalId | isolated |
-      | KEY1 | GROUP_ID | Merged | No          | 1            | No       |
-      | KEY2 | GROUP_ID | Merged | No          | 2            | No       |
-      | KEY3 | GROUP_ID | Golden | No          | 3            | No       |
-      | KEY4 | GROUP_ID | Merged | No          | 4            | No       |
+      | functionalId | groupId  | state  | autoCreated | isolated |
+      | 1            | GROUP_ID | Merged | No          | No       |
+      | 2            | GROUP_ID | Merged | No          | No       |
+      | 3            | GROUP_ID | Golden | No          | No       |
+      | 4            | GROUP_ID | Merged | No          | No       |
     Then I will see table MergeResult as below
       | id   | recordId | goldenId | mergingProcessId | isInterpolation |
       | KEY1 | 1        | 3        | mergingProcessId | No              |

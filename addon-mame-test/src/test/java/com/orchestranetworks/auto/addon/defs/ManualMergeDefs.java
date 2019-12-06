@@ -136,7 +136,7 @@ public class ManualMergeDefs {
 
         // Filter by group id if golden record is auto generated
         String actualGroupID = onManualMergeSteps.get_groupID();
-        if (expectedTbl.filter(TechnicalTable.RecordMetadata.AUTO_CREATED,"Yes").size()>0) {
+        if (expectedTbl.filter(TechnicalTable.RecordMetadata.AUTO_CREATED, "Yes").size() > 0) {
             filterConditions = new ArrayList<Map<String, String>>();
             onCommonSteps.delete_all_occurrence();
             filterConditions.add(filterCondition(TechnicalTable.RecordMetadata.GROUP_ID, "=", actualGroupID, Constants.INPUT_TYPE));
@@ -154,13 +154,16 @@ public class ManualMergeDefs {
             String functionalID = expectedTbl.getRecord(i).getAsJsonObject()
                     .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString().replace("*", "|");
 
-            if (functionalID.toLowerCase().equals("[last]")) {
-                functionalID = autoCreatedRecordPK;
-                expectedTbl.getRecord(i).addProperty(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, autoCreatedRecordPK);
-
+            if (functionalID.isEmpty()) {
+                functionalID = actualTbl.filter(TechnicalTable.RecordMetadata.AUTO_CREATED, "Yes")
+                        .get(0).getAsJsonObject()
+                        .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
             }
             JsonArray expected = expectedTbl.filter(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
             JsonArray actual = actualTbl.filter(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
+
+            System.out.println("expected=" + expected);
+            System.out.println("actual=" + actual);
             assertThat(actual.size()).isEqualTo(expected.size()).isEqualTo(1).withFailMessage("Actual size =" + actual.size() + ", expected size =" + expected.size());
 
             JsonObject expectedRecord = expected.get(0).getAsJsonObject();
@@ -321,8 +324,8 @@ public class ManualMergeDefs {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.RECORD_ID, recordId);
             }
             if (!goldenId.isEmpty()) {
-                if (goldenId.equalsIgnoreCase("[Last]"))
-                    goldenId = goldenID;
+//                if (goldenId.equalsIgnoreCase("[Last]"))
+//                    goldenId = goldenID;
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.GOLDEN_ID, goldenId);
 
             }
@@ -815,10 +818,10 @@ public class ManualMergeDefs {
             keyObject = new KeyObject();
             for (int j = 0; j < headers.size(); j++) {
                 String pk = row.get(j);
-                if (pk.toLowerCase().equals("[last]")) {
+               /* if (pk.toLowerCase().equals("[last]")) {
                     pk = onCommonSteps.get_last_record_pk();
                     autoCreatedRecordPK = pk;
-                }
+                }*/
                 keyObject.addPK(headers.get(j), pk);
                 filterConditions.add(filterCondition(headers.get(j), "equals", pk, Constants.INPUT_TYPE));
             }
@@ -845,10 +848,10 @@ public class ManualMergeDefs {
             keyObject = new KeyObject();
             for (int j = 0; j < headers.size(); j++) {
                 String pk = row.get(j);
-                if (pk.toLowerCase().equals("[last]")) {
+               /* if (pk.toLowerCase().equals("[last]")) {
                     pk = onCommonSteps.get_last_record_pk();
                     autoCreatedRecordPK = pk;
-                }
+                }*/
                 keyObject.addPK(headers.get(j), pk);
             }
             dataObject.addPK(keyObject);
@@ -893,16 +896,16 @@ public class ManualMergeDefs {
     }
 
     @When("^multi value field \"([^\"]*)\" is defined as below$")
-    public void multiValueFieldIsDefinedAsBelow(String fieldName, DataTable dt)  {
+    public void multiValueFieldIsDefinedAsBelow(String fieldName, DataTable dt) {
         List<Map<String, String>> dataTable = dt.asMaps(String.class, String.class);
-       onManualMergeSteps.select_multi_value_field(fieldName);
-       dataTable.forEach(row ->{
-           String recordLabel = row.get("Field label");
-           String value = row.get("Selected value");
-           onManualMergeSteps.select_relation_value(recordLabel,value);
+        onManualMergeSteps.select_multi_value_field(fieldName);
+        dataTable.forEach(row -> {
+            String recordLabel = row.get("Field label");
+            String value = row.get("Selected value");
+            onManualMergeSteps.select_relation_value(recordLabel, value);
 
-       });
-       onManualMergeSteps.click_button_done();
+        });
+        onManualMergeSteps.click_button_done();
 
     }
 

@@ -21,23 +21,9 @@ Feature: Manual Merge
     And I access table "Items" of dataset "Stores" in dataspace "UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
+      | 2          |
       | 3          |
-      | 4          |
-    Then records should be merged successful
-    When I want to merge some records with primary key as following
-      | Identifier |
-      | 1          |
-      | 2          |
-    Then records should be merged successful
-    And I unmerge successful record has primary key as below
-      | Identifier |
-      | 1          |
-    And I access table "Items" of dataset "Stores" in dataspace "UAT-Child"
-    When I want to merge some records with primary key as following
-      | Identifier |
-      | 1          |
-      | 2          |
-      | [Last]     |
+      | 48         |
     Then I should see dialog box with title is "Merge" and content is "At least two records, different from 'Merged' or 'Deleted', must be selected."
 
   Scenario: UC02 Merge unsuccessful to verify how the add-on handles error merge failed due to blocking errors
@@ -347,6 +333,7 @@ Feature: Manual Merge
       | [AUTO_GENERATED] | MERGE_PROCESS_ID | 25       | 0           | /email    | 0           |
       | [AUTO_GENERATED] | MERGE_PROCESS_ID | 26       | 1           | /email    | 1           |
 
+
   Scenario: UC10 Bypass EBX permission on Merge view
     Given I permit to access matching table
     And I create record in Matching table with the content followings
@@ -470,7 +457,7 @@ Feature: Manual Merge
       | EMP02 | United Kingdom | 4 - UK  |
       | EMP03 | United States  | 1 - US  |
       | EMP04 | France         | 3 - FR  |
-    And I access table "Employee Area" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
+    And I access table "Employee Areas" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
       | EMP01      |
