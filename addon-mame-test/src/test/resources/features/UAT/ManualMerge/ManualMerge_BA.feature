@@ -99,14 +99,14 @@ Feature: Manual Merge
     When I want to merge some records with primary key as following
       | Identifier |
       | 1          |
-      | [Last]     |
+      | 55         |
     Then record view table will be displayed and highlighted as below
       | Identifier | Parent         | Name        | Comment |
       | 1          |                | Electronics |         |
-      | [Last]{H}  | Appliances {H} | Cooking {H} | {H}     |
+      | 55{H}      | Appliances {H} | Cooking {H} | {H}     |
     And preview table which has auto created PK is displayed as below
       | Identifier | Parent     | Name    | Comment |
-      | [Last]     | Appliances | Cooking |         |
+      | 55         | Appliances | Cooking |         |
     And records should be merged successful
     And I access table "RecordMetadata" of dataset "StoreModel_Category_MDS" in dataspace "UAT > UAT-Child"
     Then I will see table RecordMetadata as below
@@ -114,18 +114,18 @@ Feature: Manual Merge
       | 1            | GROUP_ID | Merged | No          |
       | 5            | GROUP_ID | Merged | No          |
       | 6            | GROUP_ID | Merged | No          |
-      | [Last]       | GROUP_ID | Golden | Yes         |
+      | 55           | GROUP_ID | Golden | Yes         |
     Then I will see table MergeResult as below
       | recordId | goldenId | mergingProcessId | isInterpolation |
-      | 1        | [Last]   | [AUTO_GENERATED] | Yes             |
-      | 5        | [Last]   | [AUTO_GENERATED] | Yes             |
-      | 6        | [Last]   | [AUTO_GENERATED] | Yes             |
+      | 1        | 55       | [AUTO_GENERATED] | Yes             |
+      | 5        | 55       | [AUTO_GENERATED] | Yes             |
+      | 6        | 55       | [AUTO_GENERATED] | Yes             |
     Then I will see table MergingProcess as below
       | Id               | mergePolicyId | mergeMode | executionDate | snapshotId | user  | isUnmerged |
       | [AUTO_GENERATED] |               | Manual    | TODAY         |            | admin | No         |
     Then I will see table Decision as below
       | id   | sourceId | targetId | lastDecision        | user  | decisionDate | mergingProcessId |
-      | KEY1 | 1        | [Last]   | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
+      | KEY1 | 1        | 55       | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
     And no records found in table "MergeValueLineage"
 
   Scenario: UC05 Data is merged successful following merge policy defined for manual merge
@@ -250,6 +250,10 @@ Feature: Manual Merge
     When I set Merge policy configuration as belows
       | Merge policy code | Survivor record selection mode | Default merge function | Mode                      | Used for manual merge | Apply permission on merge view | Customize source value for new golden |
       | UC08              | Most trusted source            | Most trusted source    | Duplicates and singletons | Yes                   | Yes                            | Lily                                  |
+    And the Source in Trusted source are
+      | Name of source | Description |
+      | Source         | Source      |
+      | Field          | Field       |
     And the Table trusted source with the followings
       | Matching table | Trusted source list |
       | Employee       | Source              |
@@ -274,7 +278,7 @@ Feature: Manual Merge
       | functionalId | groupId  | state  | autoCreated |
       | 29           | GROUP_ID | Merged | No          |
       | 30           | GROUP_ID | Merged | No          |
-      | [Last]       | GROUP_ID | Golden | Yes         |
+      |              | GROUP_ID | Golden | Yes         |
 
   Scenario: UC08 Merge successful several existing auto create records
     Given I permit to access matching table
@@ -377,6 +381,9 @@ Feature: Manual Merge
       | 2          | Phones        | Sunny          | Pocket Handy   | Yes       | 240           |
       | 3          | Cooking       | Usual Electric | Star Cooker    | Yes       | 320           |
       | 4          | Refrigeration | Whitepool      | Energy Freezer | No        | 100           |
+      | 47         | Cooking       | Whitepool      | Star Cooker    | No        | 320           |
+      | 48         | Computers     | Sunny          | Laptop Pro     | Yes       | 720           |
+      | 49         | Electronics   | Usual Electric | Star Cooker    | Yes       | 120           |
     And I access table "Categories" of dataset "Stores" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
@@ -396,6 +403,9 @@ Feature: Manual Merge
       | 2          | Computers     | Sunny          | Pocket Handy   | Yes       | 240           |
       | 3          | Cooking       | Usual Electric | Star Cooker    | Yes       | 320           |
       | 4          | Refrigeration | Whitepool      | Energy Freezer | No        | 100           |
+      | 47         | Cooking       | Whitepool      | Star Cooker    | No        | 320           |
+      | 48         | Computers     | Sunny          | Laptop Pro     | Yes       | 720           |
+      | 49         | Electronics   | Usual Electric | Star Cooker    | Yes       | 120           |
 
   Scenario: UC12 Align FK succesfully -  FK is part of PK
     Given I permit to access matching table
@@ -419,12 +429,12 @@ Feature: Manual Merge
       | Identifier |
       | 1          |
       | 2          |
-      | 3          |
+      | 49         |
     Then record view table will be displayed and highlighted as below
       | Identifier | Category      | Brand          | Name           | Available   | Default price |
       | 1    {H}   | Computers {H} | Apricot{H}     | Laptop Pro {H} | true    {H} | 720     {H}   |
       | 2          | Phones        | Sunny          | Pocket Handy   | true        | 240           |
-      | 3          | Cooking       | Usual Electric | Star Cooker    | true        | 320           |
+      | 49         | Electronics   | Usual Electric | Star Cooker    | true        | 120           |
     And preview table is displayed as below
       | Identifier | Category  | Brand   | Name       | Available | Default price |
       | 1          | Computers | Apricot | Laptop Pro | true      | 720           |
@@ -435,7 +445,6 @@ Feature: Manual Merge
       | Item           | Store           | Stock | Price | Modified            |
       | Laptop Pro     | Computer Market | 16    | 699   | 04/17/2012 17:27:38 |
       | Laptop Pro     | Phone Depot     | 7     | 299   | 04/17/2012 17:27:38 |
-      | Laptop Pro     | Cook Store      | 9     | 399   | 04/17/2012 17:27:38 |
       | Pocket Handy   | Phone Depot     | 7     | 299   | 04/17/2012 17:27:38 |
       | Star Cooker    | Cook Store      | 9     | 399   | 04/17/2012 17:27:38 |
       | Energy Freezer | Mister Freeze   | 0     | 100   | 04/17/2012 17:27:38 |
