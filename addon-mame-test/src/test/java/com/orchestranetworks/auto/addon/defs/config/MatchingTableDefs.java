@@ -339,8 +339,10 @@ public class MatchingTableDefs {
             String useManualMerge = row.get(MAMEConstants.USE_MANUAL_MERGE);
             String mode = row.get(MAMEConstants.MODE);
             String applyPermission = row.get(MAMEConstants.APPLY_PERMISSION_ON_MERGE_VIEW);
-            String customSource = row.get(MAMEConstants.CUSTOMIZE_SOURCE_VALUE_FOR_NEW_GOLDEN);
-
+            String customSource = "";
+            if (row.containsKey(MAMEConstants.CUSTOMIZE_SOURCE_VALUE_FOR_NEW_GOLDEN)) {
+                 customSource = row.get(MAMEConstants.CUSTOMIZE_SOURCE_VALUE_FOR_NEW_GOLDEN);
+            }
             if (!mergePolicyCode.isEmpty()) {
                 if (onMatchingTableSteps.verify_code_existed(mergePolicyCode)) {
                     onMatchingTableSteps.select_record_with_label(mergePolicyCode);
@@ -367,7 +369,7 @@ public class MatchingTableDefs {
             if (!mode.isEmpty()) {
                 onMatchingTableSteps.select_auto_create_new_golden_mode(mode);
             }
-            if(!customSource.isEmpty()){
+            if (!customSource.isEmpty()) {
                 onCommonSteps.click_btn_save();
                 onMatchingTableSteps.select_custom_source_value(customSource);
             }
@@ -606,7 +608,8 @@ public class MatchingTableDefs {
     /**
      * This method will filter the expected record with advance search
      */
-    private void filter_record_existed(String fieldName, String searchType, String keyword, String[] fields, DataTable dt) {
+    private void filter_record_existed(String fieldName, String searchType, String keyword, String[]
+            fields, DataTable dt) {
         String[] field = fields;
         for (int i = 0; i < field.length; i++) {
             onCommonSteps.select_criteria_with_label(field[i]);
@@ -671,7 +674,8 @@ public class MatchingTableDefs {
 
 
     @Then("^the default value of \"([^\"]*)\" field \"([^\"]*)\" should be \"([^\"]*)\"$")
-    public void the_Default_Value_Of_Field_Should_Be(String fieldType, String fieldName, String defaultValue) throws Throwable {
+    public void the_Default_Value_Of_Field_Should_Be(String fieldType, String fieldName, String defaultValue) throws
+            Throwable {
         onMatchingTableSteps.verify_default_value(fieldType, fieldName, defaultValue);
     }
 
