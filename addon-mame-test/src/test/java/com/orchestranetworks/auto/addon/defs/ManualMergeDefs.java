@@ -153,17 +153,17 @@ public class ManualMergeDefs {
         for (int i = 0; i < expectedTbl.size(); i++) {
             String functionalID = expectedTbl.getRecord(i).getAsJsonObject()
                     .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString().replace("*", "|");
+            JsonArray expected = expectedTbl.filter(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
+            JsonArray actual = actualTbl.filter(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
 
             if (functionalID.isEmpty()) {
                 functionalID = actualTbl.filter(TechnicalTable.RecordMetadata.AUTO_CREATED, "Yes")
                         .get(0).getAsJsonObject()
                         .get(TechnicalTable.RecordMetadata.FUNCTIONAL_ID).getAsString();
+                actual = actualTbl.filter(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
             }
-            JsonArray expected = expectedTbl.filter(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
-            JsonArray actual = actualTbl.filter(TechnicalTable.RecordMetadata.FUNCTIONAL_ID, functionalID);
 
-            System.out.println("expected=" + expected);
-            System.out.println("actual=" + actual);
+
             assertThat(actual.size()).isEqualTo(expected.size()).isEqualTo(1).withFailMessage("Actual size =" + actual.size() + ", expected size =" + expected.size());
 
             JsonObject expectedRecord = expected.get(0).getAsJsonObject();
@@ -324,8 +324,8 @@ public class ManualMergeDefs {
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.RECORD_ID, recordId);
             }
             if (!goldenId.isEmpty()) {
-//                if (goldenId.equalsIgnoreCase("[Last]"))
-//                    goldenId = goldenID;
+                if (goldenId.equalsIgnoreCase("[AUTO_GENERATED]"))
+                    goldenId = goldenID;
                 SessionData.compareJsonObjectValue(actualRow, TechnicalTable.MergeResult.GOLDEN_ID, goldenId);
 
             }

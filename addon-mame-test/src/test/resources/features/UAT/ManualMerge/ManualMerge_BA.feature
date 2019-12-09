@@ -3,7 +3,6 @@ Feature: Manual Merge
   A data steward identifies some duplicates,
   so that he wants to merge them. However, he was not sucessful to do it due to some errors.
 
-
   Background:
     Given I login to EBX successfully
     And I create a child of dataspace "Master Data - Reference>UAT" with information as following
@@ -125,10 +124,10 @@ Feature: Manual Merge
       | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
       | UC05              | Most complete                  | [not defined]          | Disabled | Yes                   | Yes                            |
     And I create Survivorship field with selections as followings
-      | Survivorship field code | Field                 | Merge function | Condition for field value survivorship | Execute only if empty |
-      | F1                      | Date of birth         | Max            |                                        | No                    |
-      | F2                      | Supervisor            | Longest        |                                        | Yes                   |
-      | F3                      | Date and time created | Min            |                                        | Yes                   |
+      | Survivorship field code | Field                 | Merge function | Condition for field value survivorship               | Execute only if empty |
+      | F1                      | Date of birth         | Max            | osd:is-null(./phone) and osd:is-not-null(./National) | No                    |
+      | F2                      | Supervisor            | Longest        |                                                      | Yes                   |
+      | F3                      | Date and time created | Min            |                                                      | Yes                   |
     And I access table "Employee" of dataset "Human_Resource" in dataspace "UAT > UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
@@ -256,12 +255,12 @@ Feature: Manual Merge
       | 29         |
       | 30         |
     Then record view table will be displayed and highlighted as below
-      | Identifier | Name   | Date of birth    | National | Phone Number   | Email          | Rank   | Supervisor | Date and time created    | Name                        | Comments   | PIT            | Assurance number | Employee |
-      | 29         | Source | 05/02/2019   {H} | FR  {H}  | 0962555823 {H} | [List] 0/1 {H} | 5  {H} | Thanh {H}  | 05/02/2019 10:44:49  {H} | nothing                     | 1255999{H} | 5555555    {H} | {H}              |          |
-      | 30         | Field  | 05/12/1992       | US       | 0965478965     |                | 1.5    | Steve      | 06/05/2019 00:00:00      | Check for trusted field {H} |            |                |                  |          |
+      | Identifier | Name   | Date of birth    | National | Phone Number   | Email          | Rank   | Supervisor | Date and time created    | Comments                    | PIT        | Assurance number | Employee |
+      | 29         | Source | 05/02/2019   {H} | FR  {H}  | 0962555823 {H} | [List] 1/1 {H} | 5  {H} | Thanh {H}  | 05/02/2019 10:44:49  {H} | nothing                     | 1255999{H} | 5555555    {H}   | {H}      |
+      | 30         | Field  | 05/12/1992       | US       | 0965478965     |                | 1.5    | Steve      | 06/05/2019 00:00:00      | Check for trusted field {H} |            |                  |          |
     Then preview table is displayed as below
-      | Identifier       | Name | Date of birth | National | Phone Number | Email      | Rank | Supervisor | Date and time created | Comments                | PIT | Assurance number | Employee |
-      | [AUTO_GENERATED] | Lily | 05/02/2019    | FR       | 0962555823   | [List] 0/1 | 5    | Thanh      | 05/02/2019 10:44:49   | Check for trusted field |     |                  |          |
+      | Identifier       | Name | Date of birth | National | Phone Number | Email      | Rank | Supervisor | Date and time created | Comments                | PIT     | Assurance number | Employee |
+      | [auto generated] | Lily | 05/02/2019    | FR       | 0962555823   | [List] 1/1 | 5    | Thanh      | 05/02/2019 10:44:49   | Check for trusted field | 1255999 | 5555555          |          |
     And records should be merged successful
     And I access table "RecordMetadata" of dataset "Human_Resource_employee_MDS" in dataspace "UAT > UAT-Child"
     Then I will see table RecordMetadata as below
@@ -269,6 +268,30 @@ Feature: Manual Merge
       | 29           | GROUP_ID | Merged | No          |
       | 30           | GROUP_ID | Merged | No          |
       |              | GROUP_ID | Golden | Yes         |
+    Then I will see table MergeResult as below
+      | recordId | goldenId         | mergingProcessId | isInterpolation |
+      | 29       | [AUTO_GENERATED] | [AUTO_GENERATED] | No              |
+      | 30       | [AUTO_GENERATED] | [AUTO_GENERATED] | No              |
+    Then I will see table MergingProcess as below
+      | Id               | mergePolicyId    | mergeMode | executionDate | snapshotId | user  | isUnmerged |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | Manual    | TODAY         |            | admin | No         |
+    Then I will see table Decision as below
+      | id               | sourceId | targetId         | lastDecision        | user  | decisionDate | mergingProcessId |
+      | [AUTO_GENERATED] | 29       | [AUTO_GENERATED] | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
+      | [AUTO_GENERATED] | 30       | [AUTO_GENERATED] | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
+    Then I will see table MergeValueLineage as below
+      | id               | mergingProcessId | recordId | sourceIndex | fieldPath           | goldenIndex |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /birth              |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /National           |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /phone              |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       | 0           | /email              | 0           |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /rank               |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /supervisor         |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /dateNtime          |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 30       |             | /Comments           |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /Personal/pit       |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /Personal/assurance |             |
+      | [AUTO_GENERATED] | [AUTO_GENERATED] | 29       |             | /Personal/employee  |             |
 
   Scenario: UC08 Merge successful several existing auto create records
     Given I permit to access matching table
@@ -329,13 +352,13 @@ Feature: Manual Merge
 
 
   Scenario: UC09 Merge successful several records belonging to some existing groups
-    Given I permit to access matching table
-    And I create record in Matching table with the content followings
-      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-      | Publication: Human_Resource | Workers   | Yes          |                              |                  |                    |                       |
-    When I set Merge policy configuration as belows
-      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
-      | UC08              | Most complete                  | Last update            | Disabled | Yes                   | Yes                            |
+#    Given I permit to access matching table
+#    And I create record in Matching table with the content followings
+#      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+#      | Publication: Human_Resource | Workers   | Yes          |                              |                  |                    |                       |
+#    When I set Merge policy configuration as belows
+#      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+#      | UC08              | Most complete                  | Last update            | Disabled | Yes                   | Yes                            |
     And I access table "Workers" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
@@ -345,19 +368,18 @@ Feature: Manual Merge
     Then record view table will be displayed and highlighted as below
       | Identifier | Date of birth  | National | Phone Number   | Email      | Rank      | Supervisor  | Date and time created     | Name      | Comments                    | PIT      | Assurance number | Employee |
       | 22 {H}     | 05/02/2019     | FR       | 09625558       | [List] 0/1 | 5         | Thanhh      | 05/02/2019 10:44:49       | Lily      |                             | 1255999  | 5555555          |          |
-      | 25         | 04/25/2019     | UK       |                | [List] 0/1 | 5         | Vincent {H} | 04/25/2019 11:25:09       | Zoe.vu    | Auto Created, State=Golden  | 13757477 | 8578578878       |          |
-      | 30         | 05/12/1992 {H} | US  {H}  | 0965478965 {H} | {H}        | 1.5   {H} | Steve   {H} | 06/05/2019 00:00:00   {H} | Field {H} | Check for trusted field {H} |          | {H}              | {H}      |
+      | 25         | 04/25/2019     | UK       |                | [List] 0/1 | 5         | Vincent     | 04/25/2019 11:25:09       | Zoe.vu    | Auto Created, State=Golden  | 13757477 | 8578578878       |          |
+      | 30         | 05/12/1992 {H} | US  {H}  | 0965478965 {H} | {H}        | 1.5   {H} | Steve   {H} | 06/05/2019 00:00:00   {H} | Field {H} | Check for trusted field {H} | {H}      | {H}              | {H}      |
     Then preview table is displayed as below
-      | Identifier | Date of birth | National | Phone Number | Email | Rank | Supervisor | Date and time created | Name  | Comments                | PIT | Assurance number | Employee |
-      | 30         | 05/12/1992    | US       | 0965478965   |       | 1.5  | Steve      | 06/05/2019 00:00:00   | Field | Check for trusted field |     |                  |          |
+      | Identifier | Date of birth | National | Phone Number | Email      | Rank | Supervisor | Date and time created | Name  | Comments                | PIT | Assurance number | Employee |
+      | 22         | 05/12/1992    | US       | 0965478965   | [List] 0/2 | 1.5  | Steve      | 06/05/2019 00:00:00   | Field | Check for trusted field |     |                  |          |
     And records should be merged successful
-    And I access table "RecordMetadata" of dataset "Human_Resource_workers_MDS" in dataspace "UAT > UAT-Child"
+    And I access table "RecordMetadata" of dataset "Human_Resource_worker_MDS" in dataspace "UAT > UAT-Child"
     Then I will see table RecordMetadata as below
       | functionalId | groupId          | state  | autoCreated | isolated |
       | 22           | 1613435459694592 | Golden | No          | No       |
       | 25           | 1613435459694592 | Merged | No          | No       |
       | 30           | 1613435459694592 | Merged | No          | No       |
-
     Then I will see table MergeResult as below
       | recordId | goldenId | mergingProcessId | isInterpolation |
       | 25       | 22       | [AUTO_GENERATED] | No              |
