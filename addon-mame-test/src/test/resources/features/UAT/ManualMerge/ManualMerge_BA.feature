@@ -115,6 +115,7 @@ Feature: Manual Merge
       | KEY1 | 1        | 55       | Identified as match | admin | TODAY        | [AUTO_GENERATED] |
     And no records found in table "MergeValueLineage"
 
+  @issue:MAME-3467
   Scenario: UC05 Data is merged successful following merge policy defined for manual merge
     Given I permit to access matching table
     And I create record in Matching table with the content followings
