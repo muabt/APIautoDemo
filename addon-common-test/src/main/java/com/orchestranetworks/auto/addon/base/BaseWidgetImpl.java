@@ -517,8 +517,8 @@ public class BaseWidgetImpl extends WidgetObjectImpl {
             e.sendKeys(Keys.ARROW_DOWN);
         }
         e.sendKeys(Keys.ENTER);
-        waitAbit(500);
-        e.sendKeys(Keys.ENTER);
+//        waitAbit(500);
+//        e.sendKeys(Keys.ENTER);
 
     }
 
