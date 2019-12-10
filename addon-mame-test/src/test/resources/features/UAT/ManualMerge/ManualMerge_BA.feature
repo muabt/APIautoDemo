@@ -353,13 +353,13 @@ Feature: Manual Merge
 
 
   Scenario: UC09 Merge successful several records belonging to some existing groups
-#    Given I permit to access matching table
-#    And I create record in Matching table with the content followings
-#      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
-#      | Publication: Human_Resource | Workers   | Yes          |                              |                  |                    |                       |
-#    When I set Merge policy configuration as belows
-#      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
-#      | UC08              | Most complete                  | Last update            | Disabled | Yes                   | Yes                            |
+    Given I permit to access matching table
+    And I create record in Matching table with the content followings
+      | Data model:DDL              | Table:DDL | Active:RADIO | Default matching process:DDL | Source field:DDL | Event listener:TXT | Disable trigger:RADIO |
+      | Publication: Human_Resource | Workers   | Yes          |                              |                  |                    |                       |
+    When I set Merge policy configuration as belows
+      | Merge policy code | Survivor record selection mode | Default merge function | Mode     | Used for manual merge | Apply permission on merge view |
+      | UC08              | Most complete                  | Last update            | Disabled | Yes                   | Yes                            |
     And I access table "Workers" of dataset "Human_Resource" in dataspace "UAT>UAT-Child"
     When I want to merge some records with primary key as following
       | Identifier |
