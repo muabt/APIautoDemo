@@ -46,21 +46,13 @@ public class DashboardDefs {
         onDashboardSteps.verify_the_display_configuration_pane();
     }
 
-    @And("I should see tooltip of all tabs as following$")
-    public void i_should_see_tooltip_of_all_tabs_as_following(DataTable dt) throws Throwable {
-        List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-        for (Map<String, String> row : list) {
-            String tabs = row.get("Tabs");
-            String tooltip = row.get("Tooltip");
-            onDashboardSteps.verify_tooltip_of_tabs(tabs, tooltip);
-        }
-    }
 
     @And("^I create dashboard with the followings$")
     public void i_create_dashboard_with_the_followings(DataTable dt) {
         List<List<String>> dataTable = dt.asLists(String.class);
         List<String> header = dataTable.get(0);
         // Get header then split to 2 element of array
+        //onDashboardSteps.click_btn_expand_french_locale();
         for (int i = 0; i < header.size(); i++) {
             String[] tmp = header.get(i).split(":");
             // Get row of data table
@@ -76,4 +68,6 @@ public class DashboardDefs {
         }
         onDashboardSteps.click_btn_save_and_close();
     }
+
+
 }

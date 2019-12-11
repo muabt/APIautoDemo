@@ -8,11 +8,14 @@ import net.serenitybdd.core.pages.WidgetObject;
 
 public interface DashboardWidget extends WidgetObject {
 
-    void getConfigurationPane();
+    boolean getConfigurationPane();
 
     void hoverShowDetailTooltip(String tabs);
 
     String getTooltip(String tabs);
     String getTextErrorDashboardNameField();
-    String getTextErrorDashboardInBlock();
+
+    String getPopupCloseContent();
+
+    void clickBtnExpandFrench();
 }
